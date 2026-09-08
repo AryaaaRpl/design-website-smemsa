@@ -1,0 +1,9507 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    SMKS Muhammadiyah 1 Genteng - Pusat Keunggulan Vokasi & Karakter Islami
+  </title>
+  <meta name="description"
+    content="Website Resmi SMKS Muhammadiyah 1 Genteng (SMEMSA / SMEMSA Genteng) Banyuwangi. SMK Pusat Keunggulan, Akreditasi A BAN-S/M, Berlisensi LSP-P1 BNSP, dengan 7 Konsentrasi Keahlian Industri." />
+
+  <!-- Open Graph / WhatsApp Preview Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://smksmuh1gtg.com/" />
+  <meta property="og:title" content="SMKS Muhammadiyah 1 Genteng - Good Skill, Good Attitude" />
+  <meta property="og:description"
+    content="SMK Pusat Keunggulan di Genteng Banyuwangi. Terakreditasi A, LSP-P1 BNSP, Kelas Industri Dudika, dan 7 Konsentrasi Keahlian Unggulan." />
+  <meta property="og:image" content="assets/logo.png" />
+
+  <!-- Structured Data (JSON-LD) for School -->
+  <script type="application/ld+json">
+      {
+        "@@context": "https://schema.org",
+        "@@type": "School",
+        "name": "SMKS Muhammadiyah 1 Genteng",
+        "alternateName": ["SMEMSA", "SMEMSA Genteng"],
+        "url": "https://smksmuh1gtg.com",
+        "logo": "assets/logo.png",
+        "image": "assets/logo.png",
+        "description": "Sekolah Menengah Kejuruan Pusat Keunggulan di Genteng Banyuwangi dengan 7 Konsentrasi Keahlian Industri dan Lisensi LSP-P1 BNSP.",
+        "address": {
+          "@@type": "PostalAddress",
+          "streetAddress": "Jl. KH Imam Bahri No.10, Dusun Krajan, Genteng Wetan",
+          "addressLocality": "Genteng, Banyuwangi",
+          "addressRegion": "Jawa Timur",
+          "postalCode": "68465",
+          "addressCountry": "ID"
+        },
+        "telephone": "+62-333-845605",
+        "email": "smkmuhi.genteng1968@gmail.com"
+      }
+    </script>
+
+  <!-- Typography: Plus Jakarta Sans with display=swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+           1. DESIGN TOKENS - MODERN MINIMAL
+           ========================================================================== */
+    :root {
+      /* Palette: Blue + Yellow, flat & minimal */
+      --primary: #1e40af;
+      --primary-light: #2563eb;
+      --primary-dark: #16296b;
+      --primary-surface: rgba(30, 64, 175, 0.06);
+      --primary-glow: rgba(30, 64, 175, 0.2);
+
+      --secondary: #eab308;
+      --secondary-light: #facc15;
+      --secondary-surface: rgba(234, 179, 8, 0.1);
+      --secondary-glow: rgba(234, 179, 8, 0.25);
+
+      --accent-yellow: #facc15;
+      --accent-cyan: #3b82f6;
+
+      --bg-main: #ffffff;
+      --bg-alt: #f8fafc;
+      --bg-surface-card: #ffffff;
+      --bg-dark: #0f172a;
+      --bg-dark-card: #16213c;
+      --bg-dark-elevated: #1c2b4d;
+
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --text-subtle: #94a3b8;
+      --text-light: #f8fafc;
+
+      --border-light: rgba(30, 64, 175, 0.1);
+      --border-card: #e2e8f0;
+      --border-dark: #263559;
+      --border-glow: rgba(234, 179, 8, 0.3);
+
+      --radius-xs: 4px;
+      --radius-sm: 8px;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-full: 9999px;
+
+      --shadow-subtle: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-card:
+        0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-card-hover: 0 8px 24px -4px rgba(15, 23, 42, 0.1);
+      --shadow-dark: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+      --font-display: "Plus Jakarta Sans", sans-serif;
+      --font-head: "Plus Jakarta Sans", sans-serif;
+      --font-body: "Plus Jakarta Sans", sans-serif;
+      --font-mono: "Plus Jakarta Sans", sans-serif;
+
+      --transition: all 0.3s ease;
+      --transition-fast: all 0.2s ease;
+    }
+
+    /* Focus Visible for High Accessibility (A11y) */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    [tabindex="0"]:focus-visible {
+      outline: 2px solid #d97706 !important;
+      outline-offset: 3px !important;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Hero Proof Strip */
+    .hero-proof-strip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(30, 64, 175, 0.12);
+    }
+
+    .hero-lead {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      text-align: left;
+      max-width: 46ch;
+      margin-top: 1.5rem;
+    }
+
+    .hero-proof-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-dark);
+      font-family: var(--font-head);
+      font-weight: 700;
+    }
+
+    .hero-proof-dot {
+      color: #d97706;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    /* Quick Major Chips Bar */
+    .major-quick-chips-wrapper {
+      margin: 2.2rem auto 0;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .major-chips-label {
+      font-size: 0.82rem;
+      font-family: var(--font-head);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .major-chips-list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .major-chip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    .major-chip-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-surface);
+      transform: translateY(-2px);
+    }
+
+    .major-chip-icon {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      display: inline-block;
+    }
+
+    /* BKK Summary Banner */
+    .bkk-summary-banner {
+      background: linear-gradient(135deg,
+          var(--primary) 0%,
+          var(--primary-light) 100%);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 2.5rem 3rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      box-shadow: 0 15px 35px -10px rgba(30, 64, 175, 0.25);
+    }
+
+    .bkk-summary-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--secondary-light);
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+
+    .bkk-summary-text h3 {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+    }
+
+    .bkk-summary-text p {
+      font-size: 0.96rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* SPMB Quota Progress Bars */
+    .spmb-quota-card {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem;
+      margin-top: 1.5rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .quota-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .quota-item {
+      margin-bottom: 0.85rem;
+    }
+
+    .quota-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-family: var(--font-head);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .quota-bar-track {
+      width: 100%;
+      height: 7px;
+      background: #e2e8f0;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .quota-bar-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* BLUD Learner Managed Tag */
+    .blud-learner-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(234, 179, 8, 0.15);
+      color: #facc15;
+      border: 1px solid rgba(234, 179, 8, 0.3);
+      border-radius: var(--radius-full);
+      padding: 0.25rem 0.75rem;
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      width: fit-content;
+    }
+
+    /* Base Resets & Lenis Compatibility */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      line-height: 1.65;
+      overflow-x: hidden;
+      letter-spacing: -0.01em;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .font-head {
+      font-family: var(--font-head);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.18;
+    }
+
+    .font-display {
+      font-family: var(--font-display);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+    }
+
+    .font-mono {
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge,
+    .step-badge-tag,
+    .major-code-pill,
+    .skill-tag {
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    /* ==========================================================================
+           2. MODERN ATOMIC UI COMPONENTS & UTILITIES
+           ========================================================================== */
+    .flex {
+      display: flex;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .relative {
+      position: relative;
+    }
+
+    /* Modern Glowing Pill Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 10px;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--primary);
+      background: var(--primary-surface);
+      transition: var(--transition);
+    }
+
+    .badge span {
+      color: #a16207;
+      font-weight: 800;
+    }
+
+    .badge-primary {
+      background: var(--primary-surface);
+    }
+
+    .badge-amber {
+      background: var(--secondary-surface);
+      color: #a16207;
+    }
+
+    .badge-dark {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f5f5f4;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .badge-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-yellow);
+      box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7);
+      animation: pulseYellow 2s infinite;
+    }
+
+    @keyframes pulseYellow {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(250, 204, 21, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
+      }
+    }
+
+    /* High-Impact Interactive Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.8rem;
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: var(--transition);
+      letter-spacing: -0.01em;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      transition: var(--transition);
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       AJAKAN SPMB RINGKAS (pengganti section SPMB yang dipindah ke spmb.html)
+       ========================================================================== */
+    .spmb-cta-section {
+      padding: 4.5rem 0;
+      background: var(--bg-main, #ffffff);
+    }
+
+    .spmb-cta-band {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      border-radius: var(--radius-xl);
+      padding: 2.8rem 2.6rem;
+      display: grid;
+      grid-template-columns: 1.5fr auto;
+      gap: 2.5rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 50px -30px rgba(30, 64, 175, 0.55);
+    }
+
+    .spmb-cta-badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.14);
+      color: var(--secondary-light);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .spmb-cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 0.7rem;
+      letter-spacing: -0.03em;
+    }
+
+    .spmb-cta-desc {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      max-width: 52ch;
+      margin-bottom: 1.6rem;
+    }
+
+    .spmb-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--secondary);
+      color: var(--primary-dark);
+      padding: 0.9rem 1.7rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.94rem;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .spmb-cta-btn:hover {
+      background: var(--secondary-light);
+      transform: translateY(-2px);
+    }
+
+    .spmb-cta-points {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 2.5rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+    }
+
+    .spmb-cta-points li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
+    }
+
+    .spmb-point-num {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--secondary-light);
+      line-height: 1;
+      min-width: 3.2rem;
+    }
+
+    .spmb-point-label {
+      font-size: 0.86rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 900px) {
+      .spmb-cta-band {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+        padding: 2.2rem 1.8rem;
+      }
+
+      .spmb-cta-points {
+        padding: 1.5rem 0 0 0;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.5rem 2rem;
+      }
+
+      .spmb-cta-points li {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .spmb-cta-section {
+        padding: 3rem 0;
+      }
+
+      .spmb-cta-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .spmb-cta-points {
+        gap: 1.2rem 1.5rem;
+      }
+
+      .spmb-point-num {
+        font-size: 1.25rem;
+        min-width: 0;
+      }
+    }
+
+    .btn-amber {
+      transition: var(--transition);
+      background: var(--secondary);
+      color: var(--text-dark);
+    }
+
+    .btn-amber:hover {
+      background: var(--secondary-light);
+    }
+
+    .btn-outline {
+      transition: var(--transition);
+      background: #ffffff;
+      color: var(--primary);
+      border: 1.5px solid var(--border-card);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      background: var(--primary-surface);
+    }
+
+    .btn-outline-light {
+      transition: var(--transition);
+      background: transparent;
+      color: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-outline-light:hover {
+      background: #ffffff;
+      color: var(--bg-dark);
+      border-color: #ffffff;
+    }
+
+    /* Section Headers */
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      color: var(--primary-dark);
+      margin-top: 0.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.035em;
+    }
+
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    /* Hyper-Bento Glass Container */
+    .bento-card {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+      border-color: rgba(30, 58, 138, 0.25);
+    }
+
+    .bento-card-dark {
+      transition: var(--transition);
+      background: var(--bg-dark-card);
+      border: 1px solid var(--border-dark);
+      color: var(--text-light);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .bento-card-dark:hover {
+      border-color: rgba(234, 179, 8, 0.4);
+    }
+
+    /* ==========================================================================
+           3. FLOATING ISLAND NAVBAR WITH GLASSMORPHISM 2.0
+           ========================================================================== */
+    .header-wrapper {
+      position: fixed;
+      border-radius: 50px;
+      top: 1rem;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 90%;
+      z-index: 1000;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    .nav-island {
+      width: 100% !important;
+      max-width: 1320px !important;
+      margin: 0 auto !important;
+      padding: 0.8rem 1.8rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+    }
+
+    .nav-island.scrolled {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand-logo {
+      width: auto;
+      max-width: 180px;
+      height: auto;
+      max-height: 60px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06));
+      transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+    }
+
+    .brand-logo:hover {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+    }
+
+    .brand-text-main {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--primary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .brand-text-sub {
+      font-size: 0.72rem;
+      color: var(--secondary);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      padding: 0.55rem 0.95rem;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: var(--primary-surface);
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      background: var(--primary-surface);
+    }
+
+    /* Dropdown styling */
+    .dropdown-menu {
+      position: absolute;
+      top: calc(80% + 12px);
+      left: 0;
+      min-width: 250px;
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius);
+      padding: 0.6rem;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px) scale(0.98);
+      transition: var(--transition);
+      z-index: 100;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: var(--transition-fast);
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item.active {
+      background: var(--primary-surface);
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .dropdown-icon {
+      font-size: 1.1rem;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(30, 58, 138, 0.06);
+      border-radius: var(--radius-xs);
+    }
+
+    .hamburger {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--primary);
+      cursor: pointer;
+      padding: 0.3rem;
+    }
+
+    /* Mobile Drawer */
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 18, 16, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 1050;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .mobile-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 320px;
+      max-width: 85vw;
+      background: #ffffff;
+      z-index: 1100;
+      padding: 2rem 1.5rem;
+      transform: translateX(100%);
+      transition: var(--transition);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+      overflow-y: auto;
+    }
+
+    .mobile-drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-close {
+      background: var(--bg-alt);
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-bottom: 1.5rem;
+    }
+
+    .drawer-links a {
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .drawer-links a:hover,
+    .drawer-links a.active {
+      background: var(--primary-surface);
+      color: var(--primary);
+    }
+
+    .drawer-section-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-subtle);
+      font-weight: 800;
+      margin: 1.2rem 0 0.5rem 0.8rem;
+    }
+
+    /* ==========================================================================
+           4. HERO SECTION - ULTRA-MODERN ASYMMETRICAL TECH-EDITORIAL
+           ========================================================================== */
+    .hero-section {
+      padding: 8rem 0rem 4rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-glow-1,
+    .hero-glow-2 {
+      display: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 52% 48%;
+      gap: 3rem;
+      align-items: end;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text-col {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-image-col {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 480px;
+    }
+
+    .hero-img-wrapper {
+      border-radius: 24px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-students-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-fade-gradient {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 15%;
+      background: linear-gradient(to top,
+          var(--bg-main) 0%,
+          rgba(255, 255, 255, 0) 100%);
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    .hero-proof-bar-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88%;
+      height: 88px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 20px 45px -22px rgba(30, 64, 175, 0.35);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      border-top: 3px solid var(--secondary);
+    }
+
+    .hero-proof-bar-bottom .proof-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-proof-bar-bottom .proof-col:not(:last-child) {
+      border-right: 1px solid rgba(30, 64, 175, 0.1);
+    }
+
+    .hero-proof-bar-bottom .proof-number {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 800;
+      font-family: var(--font-display);
+      line-height: 1;
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-proof-bar-bottom .proof-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .hero-proof-bar-bottom {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin: 2rem auto 0;
+        height: auto;
+        padding: 1rem 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-proof-bar-bottom {
+        flex-wrap: wrap;
+        padding: 1rem;
+        gap: 1rem 0;
+      }
+
+      .hero-proof-bar-bottom .proof-col {
+        flex: 1 1 40%;
+      }
+
+      .hero-proof-bar-bottom .proof-col:nth-child(2) {
+        border-right: none;
+      }
+
+      .hero-proof-bar-bottom .proof-col:nth-child(3) {
+        flex: 1 1 100%;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(30, 64, 175, 0.1);
+      }
+
+      .hero-proof-bar-bottom .proof-number {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* ==========================================================================
+       PERBAIKAN MOBILE: UKURAN TAP TARGET & LUAPAN
+       ========================================================================== */
+    @media (max-width: 900px) {
+
+      /* Semua elemen interaktif minimal 44x44px (pedoman WCAG) */
+      .btn,
+      .btn-amber,
+      .btn-primary,
+      .btn-outline,
+      .nav-cta,
+      .major-chip,
+      .filter-btn,
+      .news-filter-item,
+      .spmb-cta-btn,
+      .mobile-drawer a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Jarak antar target sentuh agar tidak salah ketuk */
+      .hero-cta-row,
+      .hero-chip-row {
+        gap: 0.75rem;
+      }
+    }
+
+    /* Tombol hero: 44px cukup, jangan lebih besar dari itu di layar kecil */
+    @media (max-width: 560px) {
+
+      .hero-cta-row .btn,
+      .hero-cta-row .btn-amber,
+      .hero-cta-row .btn-primary,
+      .hero-cta-row .btn-outline {
+        min-height: 44px;
+        padding: 0.7rem 1.1rem;
+        font-size: 0.86rem;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+
+      /* Dua tombol berdampingan agar tidak memakan tinggi layar */
+      .hero-cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .hero-cta-row>* {
+        flex: 1 1 auto;
+      }
+
+      /* Cegah scroll horizontal di seluruh halaman */
+      html,
+      body {
+        overflow-x: hidden;
+        max-width: 100%;
+      }
+
+      /* Gambar tidak boleh melebihi lebar layar */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Input tidak memicu auto-zoom di iOS */
+      input,
+      select,
+      textarea {
+        font-size: 16px;
+      }
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 4.8vw, 4.4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      color: var(--primary-dark);
+      letter-spacing: -0.04em;
+      margin: 1.2rem 0 1.2rem;
+    }
+
+    .hero-headline .highlight-amber {
+      background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Hero Quick Jurusan Search Pill */
+    .hero-search-pill {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border: 1.5px solid var(--border-card);
+      border-radius: var(--radius-full);
+      padding: 0.4rem 0.5rem 0.4rem 1.4rem;
+      box-shadow: 0 12px 30px -6px rgba(30, 58, 138, 0.1);
+      max-width: 540px;
+      margin-bottom: 2rem;
+      transition: var(--transition);
+    }
+
+    .hero-search-pill:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 16px 36px -6px rgba(30, 58, 138, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .hero-search-pill input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .hero-search-pill button {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-search-pill button:hover {
+      background: var(--primary-light);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    /* Hero Hub Dashboard (Terminal / Card 3D-inspired) */
+    .hero-hub-card {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+
+    .hub-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border-card);
+      margin-bottom: 1.5rem;
+    }
+
+    .hub-mac-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .hub-mac-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .hub-mac-dot.red {
+      background: #ef4444;
+    }
+
+    .hub-mac-dot.amber {
+      background: #facc15;
+    }
+
+    .hub-mac-dot.emerald {
+      background: #facc15;
+    }
+
+    .hub-live-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--primary-surface);
+      color: var(--primary);
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hub-nav-tabs {
+      display: flex;
+      background: var(--bg-alt);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.5rem;
+    }
+
+    .hub-nav-tab {
+      flex: 1;
+      padding: 0.6rem 0.8rem;
+      border: none;
+      background: transparent;
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-radius: var(--radius-xs);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      text-align: center;
+    }
+
+    .hub-nav-tab.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .hub-tab-panel {
+      display: none;
+      animation: fadeInHub 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hub-tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeInHub {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hub-feature-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius);
+      background: var(--bg-main);
+      border: 1px solid var(--border-card);
+      margin-bottom: 0.85rem;
+      transition: var(--transition-fast);
+    }
+
+    .hub-feature-row:hover {
+      border-color: rgba(30, 58, 138, 0.3);
+      background: #ffffff;
+      transform: translateX(4px);
+      box-shadow: 0 8px 20px rgba(30, 58, 138, 0.06);
+    }
+
+    .hub-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    /* Floating Achievement Badges around Hero Hub */
+    .floating-badge {
+      position: absolute;
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius);
+      padding: 0.75rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      box-shadow: var(--shadow-card-hover);
+      z-index: 10;
+      animation: floatHeroBadge 4s ease-in-out infinite;
+    }
+
+    .floating-badge-1 {
+      top: -24px;
+      right: -20px;
+    }
+
+    .floating-badge-2 {
+      bottom: -22px;
+      left: -20px;
+      animation-delay: 2s;
+    }
+
+    @keyframes floatHeroBadge {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    /* ==========================================================================
+           5. SAMBUTAN SECTION (UNPINNED) & SINERGI TIGA PILAR (PINNED)
+           ========================================================================== */
+    .sambutan-section {
+      padding: 7.5rem 0 8.5rem;
+      background: var(--bg-alt);
+      position: relative;
+      border-top: 1px solid var(--border-card);
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    .sinergi-section,
+    .unit-usaha-section {
+      padding: 7.5rem 0;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .sinergi-stage-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      min-height: 70vh;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .synergy-svg-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .pillar-line {
+      stroke: var(--secondary-light);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+    }
+
+    .pillar-node-group {
+      transform-origin: center;
+    }
+
+    .pillar-node-ring {
+      fill: none;
+      stroke: var(--secondary);
+      stroke-width: 1.5;
+      opacity: 0.35;
+    }
+
+    .pillar-node-core {
+      fill: var(--secondary-light);
+    }
+
+    .pillar-node-label {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      fill: var(--text-light);
+      text-anchor: middle;
+      letter-spacing: -0.01em;
+    }
+
+    .pillar-node-sub {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      fill: var(--text-subtle);
+      text-anchor: middle;
+    }
+
+    /* Star & Aura in Center */
+    .synergy-star-aura {
+      fill: url(#starAuraGrad);
+      opacity: 0;
+    }
+
+    .synergy-center-star {
+      fill: var(--secondary-surface);
+      stroke: var(--secondary-light);
+      stroke-width: 2.5;
+      stroke-linejoin: round;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    /* Synergy Text Content - Layered Over SVG */
+    .synergy-text-container {
+      position: relative;
+      z-index: 3;
+      max-width: 860px;
+      width: 100%;
+      min-height: 70vh;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .synergy-kicker {
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--secondary-light);
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .signature-text {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.7vw, 2.25rem);
+      font-weight: 800;
+      color: var(--text-light);
+      max-width: 840px;
+      margin: 0 auto 1.2rem;
+      line-height: 1.38;
+      letter-spacing: -0.025em;
+    }
+
+    .synergy-highlight {
+      color: var(--secondary-light);
+    }
+
+    .synergy-closing {
+      font-family: var(--font-body);
+      font-size: 1.02rem;
+      color: var(--text-subtle);
+      max-width: 620px;
+      margin: 0 auto 1.8rem;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .synergy-action-btn {
+      opacity: 0;
+      transform: translateY(10px);
+      margin-top: 0.5rem;
+    }
+
+    /* Scroll Progress Rail */
+    .synergy-progress-rail {
+      width: 120px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-full);
+      margin: 2.2rem auto 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .synergy-progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          var(--secondary) 0%,
+          var(--secondary-light) 100%);
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 8px var(--secondary-glow);
+    }
+
+    @media (max-width: 640px) {
+      .pillar-node-sub {
+        display: none;
+      }
+    }
+
+    /* ---- Text Scroll Reveal (skiper31-style, word by word) ---- */
+    .sr-word {
+      display: inline-block;
+      opacity: 0.18;
+      filter: blur(2px);
+      transform: translateY(0.12em);
+      will-change: opacity, filter, transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sr-word {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+      }
+
+      .synergy-center-star,
+      .synergy-star-aura,
+      .synergy-kicker,
+      .synergy-closing {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* ---- Parallax Layers ---- */
+    [data-parallax] {
+      will-change: transform;
+    }
+
+    .px-stage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .px-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.5;
+    }
+
+    .px-orb-blue {
+      background: radial-gradient(circle,
+          rgba(37, 99, 235, 0.5) 0%,
+          rgba(37, 99, 235, 0) 70%);
+    }
+
+    .px-orb-amber {
+      background: radial-gradient(circle,
+          rgba(234, 179, 8, 0.42) 0%,
+          rgba(234, 179, 8, 0) 70%);
+    }
+
+    .px-grid {
+      position: absolute;
+      inset: -20% -10%;
+      background-image:
+        linear-gradient(to right,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 1px),
+        linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at center,
+          #000 20%,
+          transparent 72%);
+      -webkit-mask-image: radial-gradient(ellipse at center,
+          #000 20%,
+          transparent 72%);
+    }
+
+    .px-grid-dark {
+      background-image:
+        linear-gradient(to right,
+          rgba(30, 64, 175, 0.07) 1px,
+          transparent 1px),
+        linear-gradient(to bottom,
+          rgba(30, 64, 175, 0.07) 1px,
+          transparent 1px);
+    }
+
+    .px-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .hero-section,
+    .majors-section,
+    .blud-section,
+    .bkk-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid,
+    .majors-section .container,
+    .blud-section .container,
+    .stats-section .container,
+    .bkk-section .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 900px) {
+      .px-orb {
+        opacity: 0.3;
+      }
+
+      .px-ring {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .px-stage {
+        display: none;
+      }
+    }
+
+    .marquee-section {
+      padding: 2.2rem 0;
+      background: #ffffff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      width: max-content;
+    }
+
+    .marquee-group {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      padding-right: 4rem;
+    }
+
+    .mitra-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      letter-spacing: -0.01em;
+      transition: var(--transition-fast);
+    }
+
+    .mitra-item:hover {
+      color: var(--primary);
+      transform: scale(1.05);
+    }
+
+    .mitra-item img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      opacity: 1;
+      transition: var(--transition-fast);
+    }
+
+    /* ==========================================================================
+           6. EXECUTIVE CARD - SAMBUTAN KEPALA SEKOLAH (PAK WAHID)
+           ========================================================================== */
+    .executive-section {
+      padding: 7.5rem 0;
+      position: relative;
+    }
+
+    .executive-card {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3.5rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .executive-photo-frame {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .executive-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+      margin-bottom: 50px;
+    }
+
+    .executive-photo-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    .executive-photo-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      padding: 1rem 1.4rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .executive-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.35;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.025em;
+    }
+
+    .executive-bio-text {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    /* Why Choose SMEMSA Bento Cards - Matched to gridcontext.PNG */
+    .why-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .why-bento-card {
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      border-radius: var(--radius-xl);
+      padding: 2rem 1.8rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .why-bento-card h3 {
+      color: var(--text-dark, #1e293b);
+      transition: color 0.35s ease;
+    }
+
+    .why-bento-card p {
+      color: var(--text-muted, #64748b);
+      transition: color 0.35s ease;
+    }
+
+    .why-bento-card:hover {
+      background: var(--primary) !important;
+      border-style: solid !important;
+      border-color: var(--primary) !important;
+      box-shadow: 0 14px 32px rgba(30, 64, 175, 0.3) !important;
+      transform: translateY(-5px) !important;
+    }
+
+    .why-bento-card:hover h3 {
+      color: #ffffff !important;
+    }
+
+    .why-bento-card:hover p {
+      color: rgba(255, 255, 255, 0.92) !important;
+    }
+
+    .why-bento-card:hover .why-icon-box {
+      background: #ffffff !important;
+      color: var(--primary) !important;
+      transform: scale(1.08);
+    }
+
+    .why-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      background: #f1f5f9;
+      color: #334155;
+      flex-shrink: 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ==========================================================================
+           7. COUNTER STATS STRIP
+           ========================================================================== */
+    .stats-section {
+      padding: 4.5rem 0;
+      background: linear-gradient(135deg,
+          var(--primary-dark) 0%,
+          #1e3a8a 100%);
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-card {
+      padding: 1.5rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .stat-card:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      font-weight: 800;
+      color: var(--secondary-light);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      opacity: 0.9;
+      letter-spacing: -0.01em;
+    }
+
+    /* ==========================================================================
+           8. KONSENTRASI KEAHLIAN: ORBIT DUAL-RING (CINCIN DALAM & LUAR) + 2 KOLOM
+           ========================================================================== */
+    .majors-section {
+      padding: 5.5rem 0 7.5rem;
+      background: var(--bg-alt);
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--border-card);
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    /* ═══ A. AREA ORBIT MELEBAR PENUH: TINGGI 520PX & ZONA AMAN ═══ */
+    .majors-hero-orbit {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 3.5rem;
+      overflow: visible;
+    }
+
+    .orbit-hero-stage {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ═══ D. CINCIN PANDUAN TIPIS (SVG PADA R=210PX & R=300PX) ═══ */
+    .orbit-hero-svg {
+      position: absolute;
+      width: 640px;
+      height: 640px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .orbit-guide-ring {
+      fill: none;
+      stroke: var(--border-light, rgba(30, 64, 175, 0.14));
+      stroke-width: 1px;
+    }
+
+    .orbit-guide-ring-dashed {
+      stroke-dasharray: 6 6;
+    }
+
+    .orbit-guide-dot {
+      fill: var(--primary-light);
+      opacity: 0.35;
+    }
+
+    /* ═══ B. LINTASAN MELINGKAR PRESISI: PEMISAHAN TRANSLATE & ROTATE ═══ */
+    /* Lapisan 1: .orbit-ring — HANYA elemen ini yang berputar 360deg, 90s, linear, infinite */
+    .orbit-ring-inner {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      transform-origin: center center;
+      animation: orbitSpin 90s linear infinite;
+      pointer-events: none;
+    }
+
+    .orbit-ring-outer {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      transform-origin: center center;
+      animation: orbitSpin 90s linear infinite reverse;
+      pointer-events: none;
+    }
+
+    @keyframes orbitSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Lapisan 2: .orbit-slot — titik sudut + radius, transform-origin: center center */
+    .orbit-slot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      transform-origin: center center;
+      transform: rotate(var(--a)) translateY(calc(var(--r) * -1));
+      pointer-events: none;
+    }
+
+    /* Lapisan 3: .orbit-center — HANYA translate(-50%, -50%), statis, TIDAK dianimasikan */
+    .orbit-center {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      /* translate + koreksi statis sudut slot agar kartu berbentuk persegi tegak (bukan ketupat) */
+      transform: translate(-50%, -50%) rotate(calc(var(--a) * -1));
+      transform-origin: center center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    /* Lapisan 4: .orbit-icon — HANYA counter-rotate (90s, linear, infinite) */
+    .orbit-icon {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid var(--border-light, rgba(30, 64, 175, 0.12));
+      box-shadow: 0 6px 18px -8px rgba(30, 64, 175, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      pointer-events: none;
+      transform-origin: center center;
+      flex-shrink: 0;
+    }
+
+    /* Counter-Rotation Cincin Dalam (berlawanan dari rotate(0deg) -> rotate(360deg)) */
+    .orbit-ring-inner .orbit-icon {
+      width: 56px;
+      height: 56px;
+      animation: orbitCounter 90s linear infinite;
+    }
+
+    /* Counter-Rotation Cincin Luar (reverse cincin outer berlawanan dengan reverse counter) */
+    .orbit-ring-outer .orbit-icon {
+      width: 48px;
+      height: 48px;
+      animation: orbitCounter 90s linear infinite reverse;
+    }
+
+    @keyframes orbitCounter {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(-360deg);
+      }
+    }
+
+    /* Logo di dalam kartu: 60% x 60%, object-fit: contain */
+    .orbit-icon img {
+      width: 60%;
+      height: 60%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .orbit-icon .orbit-node-emoji {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    /* ═══ A. PUSAT ORBIT DENGAN ZONA AMAN (MAX-WIDTH 560PX & RADIAL GRADIENT) ═══ */
+    .orbit-hero-center {
+      position: relative;
+      z-index: 5;
+      max-width: 560px;
+      text-align: center;
+      padding: 2.2rem 2.5rem;
+      border-radius: 32px;
+      background: radial-gradient(ellipse 520px 260px at center,
+          var(--bg-alt) 55%,
+          transparent 100%);
+      backdrop-filter: blur(3px);
+      pointer-events: auto;
+    }
+
+    .orbit-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--primary);
+      background: var(--primary-surface);
+      margin-bottom: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .orbit-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.85rem);
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.035em;
+      line-height: 1.16;
+      margin-bottom: 0.75rem;
+    }
+
+    .orbit-hero-desc {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.62;
+      margin: 0 auto;
+      max-width: 480px;
+    }
+
+    /* ═══ BAGIAN BAWAH — DUA KOLOM (Kiri 38%, Kanan 62%) ═══ */
+    .majors-split-grid {
+      display: grid;
+      grid-template-columns: 38% 62%;
+      gap: 2.5rem;
+      align-items: start;
+      position: relative;
+    }
+
+    /* KOLOM KIRI — DAFTAR 8 JURUSAN */
+    .majors-list-col {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-card);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+
+    .major-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      width: 100%;
+      padding: 1.15rem 1.4rem;
+      background: #ffffff;
+      border: none;
+      border-bottom: 1px solid var(--border-card);
+      text-align: left;
+      cursor: pointer;
+      position: relative;
+      transition:
+        background-color 0.2s ease,
+        padding-left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      outline: none;
+    }
+
+    .major-nav-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Rel Kuning Vertikal di Sisi Kiri */
+    .major-nav-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--secondary);
+      transform: scaleY(0);
+      transform-origin: center;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .major-nav-item:hover {
+      background: var(--bg-alt);
+    }
+
+    .major-nav-item.active {
+      background: var(--primary-surface);
+      padding-left: 1.65rem;
+    }
+
+    .major-nav-item.active::before {
+      transform: scaleY(1);
+    }
+
+    .major-nav-item:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: -2px;
+      z-index: 2;
+    }
+
+    .major-nav-num {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-subtle);
+      width: 26px;
+      flex-shrink: 0;
+      transition: color 0.25s;
+    }
+
+    .major-nav-item.active .major-nav-num {
+      color: var(--primary);
+    }
+
+    .major-nav-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .major-nav-top {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .major-nav-name {
+      font-family: var(--font-head);
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+      margin: 0;
+      transition: color 0.25s;
+    }
+
+    .major-nav-item.active .major-nav-name {
+      color: var(--primary);
+    }
+
+    .major-nav-code {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: rgba(30, 64, 175, 0.08);
+      padding: 0.12rem 0.45rem;
+      border-radius: var(--radius-xs);
+    }
+
+    .major-nav-tefa {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .major-nav-item.active .major-nav-tefa {
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .major-nav-chevron {
+      color: var(--text-subtle);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition:
+        transform 0.25s,
+        color 0.25s;
+    }
+
+    .major-nav-item:hover .major-nav-chevron,
+    .major-nav-item.active .major-nav-chevron {
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    /* KOLOM KANAN — ALUR PENDIDIKAN (STICKY, TOP 6REM) */
+    .majors-detail-col {
+      position: sticky;
+      top: 6rem;
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-card);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+
+    /* Container Transisi Halus (Crossfade + Geser 12px, Max 250ms) */
+    .major-pathway-view {
+      transition:
+        opacity 250ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .major-pathway-view.anim-switching {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    /* ═══ KEPALA PANEL DUA KOLOM: KIRI 38% (FIGUR SISWA) + KANAN 62% (IDENTITAS) ═══ */
+    .major-panel-head-grid {
+      display: grid;
+      grid-template-columns: 38% 62%;
+      gap: 1.5rem;
+      padding: 1.6rem;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-card);
+      align-items: stretch;
+    }
+
+    /* KIRI: AREA FIGUR SISWA (Aspect-Ratio 3:4, Potret Utuh) */
+    .major-figure-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 14px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* Alas Bayangan Lembut di Dasar Figur */
+    .major-figure-shadow {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75%;
+      height: 14px;
+      background: radial-gradient(ellipse at center,
+          rgba(0, 0, 0, 0.5) 0%,
+          rgba(0, 0, 0, 0) 72%);
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Foto Potret Cutout Siswa (object-fit: contain, menempel di dasar) */
+    .major-figure-img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 15px;
+      object-fit: contain !important;
+      object-position: center bottom !important;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.27));
+      transition: transform 0.35s ease;
+    }
+
+    /* Fallback Placeholder jika foto tidak ada */
+    .major-figure-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      z-index: 1;
+    }
+
+    /* Logo Jurusan Kecil di Pojok Kanan Atas Area Figur */
+    .major-figure-corner-logo {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(4px);
+      border-radius: 10px;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 4;
+    }
+
+    .major-figure-corner-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .major-figure-corner-logo .corner-emoji {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* KANAN: IDENTITAS JURUSAN */
+    .major-identity-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.4rem 0.2rem;
+    }
+
+    .major-id-badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--secondary);
+      color: var(--text-dark);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.06em;
+      width: fit-content;
+      margin-bottom: 0.6rem;
+      box-shadow: 0 2px 6px rgba(234, 179, 8, 0.35);
+    }
+
+    .major-id-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.03em;
+      line-height: 1.22;
+      margin: 0 0 0.55rem 0;
+    }
+
+    .major-id-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin: 0 0 1rem 0;
+    }
+
+    .major-id-info-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: 0.75rem 0.9rem;
+      background: var(--bg-alt);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-card);
+    }
+
+    .major-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text-dark);
+      line-height: 1.4;
+    }
+
+    .major-info-icon {
+      color: var(--primary);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .major-info-label {
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    /* ═══ C. ALUR 4 TAHAP DI BAWAH KEPALA PANEL (D. TEKS TIDAK TERPOTONG) ═══ */
+    .major-flow-section {
+      padding: 1.5rem 1.6rem 1.6rem;
+      background: #ffffff;
+    }
+
+    .major-steps-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+      align-items: stretch;
+      position: relative;
+    }
+
+    .major-step-box {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius);
+      padding: 1rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: visible;
+      height: auto;
+      min-height: 100%;
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .major-step-box:hover {
+      border-color: var(--primary);
+      background: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(30, 64, 175, 0.08);
+    }
+
+    .major-step-header {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .major-step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #ffffff;
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .major-step-box:nth-child(4) .major-step-num {
+      background: var(--secondary);
+      color: var(--text-dark);
+    }
+
+    .major-step-title {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    .major-step-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0.75rem 0;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      flex: 1 0 auto;
+    }
+
+    .major-step-list li {
+      position: relative;
+      padding-left: 0.85rem;
+      margin-bottom: 0.32rem;
+    }
+
+    .major-step-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .major-step-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .major-step-tag {
+      font-size: 0.73rem;
+      font-weight: 600;
+      padding: 0.45rem 0.6rem;
+      border-radius: var(--radius-xs);
+      background: var(--primary-surface);
+      color: var(--primary-dark);
+      border-left: 2.5px solid var(--primary);
+      line-height: 1.35;
+      margin-top: auto;
+      flex-shrink: 0;
+    }
+
+    .major-step-box:nth-child(4) .major-step-tag {
+      background: var(--secondary-surface);
+      color: #854d0e;
+      border-left-color: var(--secondary);
+    }
+
+    /* ═══ E. RESPONSIF ═══ */
+    @media (max-width: 1100px) {
+      .majors-hero-orbit {
+        height: 420px;
+      }
+
+      .orbit-hero-stage {
+        height: 420px;
+      }
+
+      .orbit-hero-svg {
+        width: 520px;
+        height: 520px;
+      }
+
+      .orbit-hero-svg circle:nth-child(1) {
+        r: 240px;
+      }
+
+      .orbit-hero-svg circle:nth-child(2) {
+        r: 170px;
+      }
+
+      .orbit-ring-inner {
+        width: 340px;
+        height: 340px;
+      }
+
+      .orbit-ring-inner .orbit-slot {
+        transform: rotate(var(--a)) translateY(-170px);
+      }
+
+      .orbit-ring-outer {
+        width: 480px;
+        height: 480px;
+      }
+
+      .orbit-ring-outer .orbit-slot {
+        transform: rotate(var(--a)) translateY(-240px);
+      }
+
+      .orbit-hero-center {
+        max-width: 480px;
+        padding: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .majors-hero-orbit {
+        height: 320px;
+        margin-bottom: 2rem;
+      }
+
+      .orbit-hero-stage {
+        height: 320px;
+      }
+
+      .orbit-hero-svg {
+        width: 380px;
+        height: 380px;
+      }
+
+      .orbit-hero-svg circle:nth-child(1) {
+        r: 185px;
+      }
+
+      .orbit-hero-svg circle:nth-child(2) {
+        r: 130px;
+      }
+
+      .orbit-ring-inner {
+        width: 260px;
+        height: 260px;
+      }
+
+      .orbit-ring-inner .orbit-slot {
+        transform: rotate(var(--a)) translateY(-130px);
+      }
+
+      .orbit-ring-inner .orbit-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+      }
+
+      .orbit-ring-outer {
+        width: 370px;
+        height: 370px;
+      }
+
+      .orbit-ring-outer .orbit-slot {
+        transform: rotate(var(--a)) translateY(-185px);
+      }
+
+      .orbit-ring-outer .orbit-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 9px;
+      }
+
+      .orbit-hero-center {
+        max-width: 340px;
+        padding: 1.2rem 1.4rem;
+      }
+
+      .orbit-hero-title {
+        font-size: 1.65rem;
+      }
+
+      .majors-split-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+
+      .majors-detail-col {
+        position: relative;
+        top: 0;
+        /* Mode akordeon: panel menempel pada baris jurusan di atasnya */
+        margin: 0 0 1rem 0;
+        border-top: 2px solid var(--secondary);
+        border-radius: 0 0 14px 14px;
+      }
+
+      .major-panel-head-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .major-figure-wrapper {
+        max-width: 240px;
+        margin: 0 auto;
+      }
+
+      .major-steps-track {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+
+      .orbit-ring-outer,
+      .orbit-hero-svg circle:nth-child(1) {
+        display: none;
+      }
+
+      .orbit-ring-inner {
+        width: 240px;
+        height: 240px;
+      }
+
+      .orbit-ring-inner .orbit-slot {
+        transform: rotate(var(--a)) translateY(-120px);
+      }
+
+      .orbit-hero-center {
+        padding: 1rem;
+        max-width: 280px;
+      }
+
+      .orbit-hero-title {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .orbit-ring-inner,
+      .orbit-ring-outer,
+      .orbit-icon {
+        animation: none !important;
+      }
+
+      .major-pathway-view {
+        transition: none !important;
+      }
+    }
+
+    /* ==========================================================================
+           9. PRESTASI & TESTIMONI STRIP - PARALLAX & SCROLLTRIGGER
+           ========================================================================== */
+    .achievements-section {
+      padding: 8rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .achieve-glow-bg {
+      position: absolute;
+      top: 20%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle,
+          rgba(234, 179, 8, 0.08) 0%,
+          transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .achieve-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      position: relative;
+      z-index: 2;
+      align-items: center;
+    }
+
+    .timeline-box {
+      position: relative;
+      padding-left: 2.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .timeline-progress-line {
+      position: absolute;
+      left: 6px;
+      top: 12px;
+      bottom: 12px;
+      width: 3px;
+      background: rgba(30, 58, 138, 0.12);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .timeline-progress-bar {
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom,
+          var(--secondary) 0%,
+          var(--primary) 100%);
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(234, 179, 8, 0.5);
+      transition: height 0.1s linear;
+    }
+
+    .timeline-card {
+      position: relative;
+      margin-bottom: 2rem;
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.8rem;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: left center;
+    }
+
+    .timeline-card:hover {
+      border-color: var(--primary);
+      transform: translateX(8px) scale(1.02);
+      box-shadow: 0 14px 30px rgba(30, 58, 138, 0.1);
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      left: -2.85rem;
+      top: 2rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3.5px solid var(--secondary);
+      box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.2);
+      transition: all 0.3s;
+      z-index: 3;
+    }
+
+    .timeline-card:hover::before {
+      background: var(--secondary);
+      transform: scale(1.2);
+      box-shadow: 0 0 0 6px rgba(234, 179, 8, 0.35);
+    }
+
+    .testi-parallax-wrapper {
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .testi-card {
+      background: linear-gradient(135deg,
+          var(--primary-dark) 0%,
+          var(--primary) 100%);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 3.5rem 3rem;
+      box-shadow: var(--shadow-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+      transition:
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s;
+    }
+
+    .testi-card::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle,
+          rgba(234, 179, 8, 0.15) 0%,
+          transparent 60%);
+      pointer-events: none;
+    }
+
+    .testi-quote-mark {
+      font-family: var(--font-display);
+      font-size: 4.5rem;
+      line-height: 0.8;
+      color: var(--secondary-light);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .testi-badge-float {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-full);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--secondary-light);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ==========================================================================
+           10. SPMB 2026/2027 INTERACTIVE STEPPER & COUNTDOWN
+           ========================================================================== */
+    .spmb-section {
+      padding: 7.5rem 0;
+      background: var(--bg-alt);
+    }
+
+    .spmb-wrapper {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .stepper-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .step-card {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.4rem;
+      transition: var(--transition-fast);
+    }
+
+    .step-card:hover {
+      border-color: var(--primary);
+      transform: translateX(6px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .step-number-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .spmb-live-card {
+      background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 100%);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+    }
+
+    .countdown-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+      margin: 2rem 0;
+    }
+
+    .countdown-box {
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+      padding: 1rem 0.5rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .countdown-val {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      display: block;
+      line-height: 1;
+    }
+
+    .countdown-lbl {
+      font-size: 0.75rem;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ==========================================================================
+           11. BLUD PRODUCTS & BKK JOBS PORTAL
+           ========================================================================== */
+    .blud-section {
+      padding: 7.5rem 0;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      position: relative;
+    }
+
+    .blud-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .product-bento {
+      background: var(--bg-dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-dark);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-bento:hover {
+      transform: translateY(-4px);
+      border-color: var(--secondary);
+    }
+
+    .p-icon-hero {
+      font-size: 3.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .p-price-tag {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--secondary-light);
+      margin-top: 1.5rem;
+    }
+
+    /* BLUD MODAL COMPONENT (Matching Visi-Misi Modal Style) */
+    .blud-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 9999 !important;
+      overflow-y: auto !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      overscroll-behavior: contain;
+      touch-action: pan-y;
+    }
+
+    .blud-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .blud-modal-card {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      border-radius: 24px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.35);
+      transform: scale(0.92) translateY(20px);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      color: #1e293b;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) rgba(6, 78, 59, 0.05);
+    }
+
+    .blud-modal-overlay.active .blud-modal-card {
+      transform: scale(1) translateY(0);
+    }
+
+    .blud-modal-banner {
+      height: 200px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
+    }
+
+    .blud-modal-banner img.bg-cover {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      filter: brightness(0.7);
+    }
+
+    .blud-modal-banner-icon {
+      position: relative;
+      z-index: 2;
+      width: 100px;
+      height: 100px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+      animation: modalFloat 3s ease-in-out infinite;
+    }
+
+    .blud-modal-close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      z-index: 10;
+      line-height: 1;
+    }
+
+    .blud-modal-close-btn:hover {
+      background: #ffffff;
+      color: #064e3b;
+      transform: rotate(90deg);
+    }
+
+    .blud-modal-body {
+      padding: 2rem;
+    }
+
+    .blud-modal-tag {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #d97706;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .blud-modal-title {
+      font-family: var(--font-head);
+      font-size: 1.75rem;
+      color: #0f172a;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .blud-modal-desc {
+      color: #475569;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .blud-modal-specs-box {
+      margin-bottom: 1.5rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 1.2rem;
+    }
+
+    .blud-modal-section-title {
+      font-family: var(--font-head);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .blud-modal-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .blud-modal-chip {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #0f172a;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .blud-modal-highlight-box {
+      background: rgba(6, 78, 59, 0.06);
+      border: 1px solid rgba(6, 78, 59, 0.15);
+      border-radius: 14px;
+      padding: 1.2rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .blud-modal-highlight-text {
+      font-size: 0.92rem;
+      color: #064e3b;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .blud-modal-footer-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1.25rem;
+    }
+
+    @media (max-width: 640px) {
+      .blud-modal-card {
+        max-height: 94vh;
+        border-radius: 20px;
+      }
+
+      .blud-modal-body {
+        padding: 1.4rem;
+      }
+
+      .blud-modal-title {
+        font-size: 1.4rem;
+      }
+
+      .blud-modal-banner {
+        height: 160px;
+      }
+
+      .blud-modal-banner-icon {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .bkk-section {
+      padding: 7.5rem 0;
+      background: var(--bg-main);
+    }
+
+    .bkk-table-card {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .bkk-table-header {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
+      padding: 1.2rem 2rem;
+      background: var(--bg-alt);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    .bkk-table-row {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
+      align-items: center;
+      padding: 1.4rem 2rem;
+      border-bottom: 1px solid var(--border-card);
+      transition: var(--transition-fast);
+    }
+
+    .bkk-table-row:last-child {
+      border-bottom: none;
+    }
+
+    .bkk-table-row:hover {
+      background: var(--primary-surface);
+    }
+
+    /* ==========================================================================
+           12. NEWS & EDITORIAL JOURNAL
+           ========================================================================== */
+    .news-section {
+      padding: 7.5rem 0;
+      background: var(--bg-alt);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 3rem;
+    }
+
+    .news-filter-card {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-card);
+      height: fit-content;
+      position: sticky;
+      top: 6rem;
+      z-index: 10;
+    }
+
+    .news-filter-list li {
+      margin-bottom: 0.6rem;
+    }
+
+    .news-filter-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+    }
+
+    .news-filter-list a:hover,
+    .news-filter-list a.active {
+      background: var(--primary-surface);
+      color: var(--primary);
+    }
+
+    .news-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.8rem;
+    }
+
+    .article-card {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-card);
+    }
+
+    .article-thumb {
+      height: 240px;
+      background: linear-gradient(135deg,
+          var(--primary-surface) 0%,
+          rgba(234, 179, 8, 0.1) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .article-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+    }
+
+    /* ==========================================================================
+           13. NEXT-GEN FOOTER & FLOATING AI CHATBOT
+           ========================================================================== */
+    .site-footer {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      padding: 5.5rem 0 2.5rem;
+      border-top: 1px solid var(--border-dark);
+      position: relative;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1.2fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-map-box {
+      margin-top: 1.2rem;
+      border-radius: var(--radius-sm, 12px);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .footer-map-box iframe {
+      width: 100%;
+      height: 150px;
+      border: 0;
+      display: block;
+      filter: grayscale(0.2) contrast(1.05);
+      transition: filter 0.3s ease;
+    }
+
+    .footer-map-box:hover iframe {
+      filter: grayscale(0) contrast(1);
+    }
+
+    /* D. Judul Kolom Footer: 0.78rem, weight 800, letter-spacing 0.1em, uppercase, var(--text-subtle) */
+    .footer-col h4,
+    .footer-brand-title {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-brand-name {
+      color: #ffffff;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.05rem;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-brand-sub {
+      color: var(--secondary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    .footer-address {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+
+    /* A. Baris Kontak dengan Inline SVG Stroke Sederhana (16x16, var(--text-subtle)) */
+    .footer-contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-contact-icon {
+      width: 16px;
+      height: 16px;
+      stroke: var(--text-subtle);
+      stroke-width: 1.8;
+      fill: none;
+      flex-shrink: 0;
+    }
+
+    .footer-contact-link {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-contact-link:hover {
+      color: var(--secondary-light);
+    }
+
+    /* C. Media Sosial Monokrom (Tombol Lingkaran 36px, SVG 18x18) */
+    .footer-social-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-top: 0.5rem;
+    }
+
+    .footer-social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.8);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+    }
+
+    .footer-social-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      transition: transform 0.25s ease;
+    }
+
+    .footer-social-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary-light);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
+    }
+
+    .footer-social-btn:hover svg {
+      transform: scale(1.08);
+    }
+
+    /* A. & D. Tautan Navigasi Footer: Jarak 0.7rem, Tap Target Nyaman, Chevron Saat Hover */
+    .footer-nav {
+      display: block;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+      min-height: 28px;
+    }
+
+    .footer-chevron {
+      opacity: 0;
+      transform: translateX(-4px);
+      color: var(--secondary);
+      font-weight: bold;
+      font-size: 1.05rem;
+      line-height: 1;
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-light);
+      transform: translateX(4px);
+    }
+
+    .footer-links a:hover .footer-chevron {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Kartu Identitas Lembaga */
+    .footer-identity-card {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 1.15rem 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-dark);
+      font-size: 0.85rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-identity-card strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #78716c;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    @media (max-width: 992px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* AI Chatbot Widget */
+    .chatbot-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,
+          var(--primary) 0%,
+          var(--primary-light) 100%);
+      color: #ffffff;
+      border: none;
+      box-shadow: var(--shadow-card-hover);
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .chatbot-btn:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .chat-panel {
+      position: fixed;
+      bottom: 6.5rem;
+      right: 2rem;
+      width: 360px;
+      max-width: 90vw;
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card-hover);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px) scale(0.95);
+      transition: var(--transition);
+    }
+
+    .chat-panel.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .chat-header {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-head);
+      font-weight: 700;
+    }
+
+    .chat-body {
+      height: 280px;
+      padding: 1.2rem;
+      overflow-y: auto !important;
+      overscroll-behavior: contain !important;
+      touch-action: auto !important;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      background: var(--bg-alt);
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) rgba(30, 58, 138, 0.05);
+    }
+
+    .chat-body::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .chat-body::-webkit-scrollbar-track {
+      background: rgba(30, 58, 138, 0.03);
+    }
+
+    .chat-body::-webkit-scrollbar-thumb {
+      background: var(--primary-light);
+      border-radius: 10px;
+    }
+
+    .chat-msg {
+      max-width: 82%;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .chat-msg.bot {
+      background: #ffffff;
+      color: var(--text-dark);
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      align-self: flex-start;
+    }
+
+    .chat-msg.user {
+      background: var(--primary);
+      color: #ffffff;
+      border-bottom-right-radius: 4px;
+      align-self: flex-end;
+    }
+
+    .chat-quick-pills {
+      padding: 0.6rem 1rem;
+      background: #ffffff;
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      border-top: 1px solid var(--border-card);
+    }
+
+    .chat-pill {
+      background: var(--primary-surface);
+      color: var(--primary);
+      border: none;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .chat-input-bar {
+      padding: 0.8rem 1rem;
+      background: #ffffff;
+      display: flex;
+      gap: 0.5rem;
+      border-top: 1px solid var(--border-card);
+    }
+
+    .chat-input-bar input {
+      flex: 1;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-full);
+      padding: 0.55rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .chat-input-bar button {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+           14. RESPONSIVE BREAKPOINTS
+           ========================================================================== */
+    @media (max-width: 1024px) {
+
+      .hero-grid,
+      .executive-card,
+      .major-spotlight-card,
+      .achieve-grid,
+      .spmb-wrapper,
+      .news-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .why-bento-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-col-8,
+      .why-col-4,
+      .why-col-6 {
+        grid-column: span 1;
+      }
+
+      .majors-sub-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .blud-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .bkk-table-header {
+        display: none;
+      }
+
+      .bkk-table-row {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+        padding: 1.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .blud-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .majors-sub-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .executive-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .major-spotlight-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .countdown-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ==========================================================================
+           15. COMPREHENSIVE MOBILE ULTRA-OPTIMIZATION (360px, 390px, 768px)
+           ========================================================================== */
+    /* Tap Target & Global Padding Standard */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 20px !important;
+      }
+
+      html,
+      body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+      }
+
+      /* Disable heavy effects for silky smooth mobile scroll (I) */
+      .px-stage,
+      .px-orb,
+      .px-grid,
+      .achieve-glow-bg {
+        display: none !important;
+      }
+
+      /* Responsive Navbar (B) */
+      .header-wrapper {
+        position: fixed;
+        border-radius: 50px;
+        top: 1rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 90%;
+        z-index: 1000;
+        background: #ffffff;
+        border-bottom: 1px solid var(--border-card);
+      }
+
+      .nav-island {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 1rem 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: var(--transition);
+      }
+
+      .nav-island.scrolled {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+
+      .brand-box {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+
+      .brand-logo {
+        width: auto;
+        max-width: 180px;
+        height: auto;
+        max-height: 60px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06));
+        transition:
+          transform 0.3s ease,
+          filter 0.3s ease;
+      }
+
+      .brand-logo:hover {
+        transform: translateY(-2px);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+      }
+
+      .brand-text-main {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.15rem;
+        color: var(--primary);
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+
+      .brand-text-sub {
+        font-size: 0.72rem;
+        color: var(--secondary);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-top: 3px;
+      }
+
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-link {
+        font-family: var(--font-head);
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        padding: 0.55rem 0.95rem;
+        border-radius: var(--radius-full);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        transition: var(--transition-fast);
+      }
+
+      .nav-link:hover {
+        color: var(--primary);
+        background: var(--primary-surface);
+      }
+
+      .nav-link.active {
+        color: var(--primary);
+        background: var(--primary-surface);
+      }
+
+      /* Dropdown styling */
+      .dropdown-menu {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem !important;
+        top: calc(80% + 12px);
+        left: 0;
+        min-width: 250px;
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius);
+        padding: 0.6rem;
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px) scale(0.98);
+        transition: var(--transition);
+        z-index: 100;
+      }
+
+      .nav-item:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+      }
+
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.65rem 0.9rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        transition: var(--transition-fast);
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item.active {
+        background: var(--primary-surface);
+        color: var(--primary);
+        transform: translateX(4px);
+      }
+
+      .dropdown-icon {
+        font-size: 1.1rem;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(30, 58, 138, 0.06);
+        border-radius: var(--radius-xs);
+      }
+
+      .hamburger {
+        display: none;
+        background: transparent;
+        border: none;
+        font-size: 1.6rem;
+        color: var(--primary);
+        cursor: pointer;
+        padding: 0.3rem;
+      }
+
+      /* Mobile Drawer */
+      .mobile-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(20, 18, 16, 0.6);
+        backdrop-filter: blur(8px);
+        z-index: 1050;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+
+      .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .mobile-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 320px;
+        max-width: 85vw;
+        background: #ffffff;
+        z-index: 1100;
+        padding: 2rem 1.5rem;
+        transform: translateX(100%);
+        transition: var(--transition);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+      }
+
+      .mobile-drawer.active {
+        transform: translateX(0);
+      }
+
+      .drawer-close {
+        background: var(--bg-alt);
+        border: none;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+      }
+
+      .drawer-links a {
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.8rem 1rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-radius: var(--radius-sm);
+        color: var(--text-dark);
+        margin-bottom: 0.3rem;
+      }
+
+      .drawer-links a:hover,
+      .drawer-links a.active {
+        background: var(--primary-surface);
+        color: var(--primary);
+      }
+
+      .drawer-section-title {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-subtle);
+        font-weight: 800;
+        margin: 1.2rem 0 0.5rem 0.8rem;
+      }
+
+      /* ==========================================================================
+           4. HERO SECTION - ULTRA-MODERN ASYMMETRICAL TECH-EDITORIAL
+           ========================================================================== */
+      .hero-section {
+        padding: 8rem 0rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-glow-1,
+      .hero-glow-2 {
+        display: none;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 52% 48%;
+        gap: 3rem;
+        align-items: end;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-text-col {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-image-col {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        min-height: 480px;
+      }
+
+      .hero-img-wrapper {
+        border-radius: 24px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .hero-students-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
+      .hero-fade-gradient {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 15%;
+        background: linear-gradient(to top,
+            var(--bg-main) 0%,
+            rgba(255, 255, 255, 0) 100%);
+        pointer-events: none;
+        z-index: 15;
+      }
+
+      .hero-proof-bar-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 88%;
+        height: 88px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 20px 45px -22px rgba(30, 64, 175, 0.35);
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        border-top: 3px solid var(--secondary);
+      }
+
+      .hero-proof-bar-bottom .proof-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        text-align: center;
+      }
+
+      .hero-proof-bar-bottom .proof-col:not(:last-child) {
+        border-right: 1px solid rgba(30, 64, 175, 0.1);
+      }
+
+      .hero-proof-bar-bottom .proof-number {
+        font-size: 1.5rem;
+        color: var(--primary);
+        font-weight: 800;
+        font-family: var(--font-display);
+        line-height: 1;
+        margin-bottom: 0.1rem;
+      }
+
+      .hero-proof-bar-bottom .proof-label {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+      }
+
+      @media (max-width: 900px) {
+        .hero-proof-bar-bottom {
+          position: static;
+          transform: none;
+          width: 100%;
+          margin: auto 0;
+          height: auto;
+          padding: 1rem 0;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .hero-proof-bar-bottom {
+          flex-wrap: wrap;
+          padding: 1rem;
+          gap: 1rem 0;
+        }
+
+        .hero-proof-bar-bottom .proof-col {
+          flex: 1 1 40%;
+        }
+
+        .hero-proof-bar-bottom .proof-col:nth-child(2) {
+          border-right: none;
+        }
+
+        .hero-proof-bar-bottom .proof-col:nth-child(3) {
+          flex: 1 1 100%;
+          padding-top: 1rem;
+          border-top: 1px solid rgba(30, 64, 175, 0.1);
+        }
+
+        .hero-proof-bar-bottom .proof-number {
+          font-size: 1.6rem;
+        }
+      }
+
+      .mobile-only {
+        display: none;
+      }
+
+      .hero-headline {
+        font-family: var(--font-display);
+        font-size: clamp(2.6rem, 4.8vw, 4.4rem);
+        font-weight: 800;
+        line-height: 1.08;
+        color: var(--primary-dark);
+        letter-spacing: -0.04em;
+        margin: 1.2rem 0 1.2rem;
+      }
+
+      .hero-headline .highlight-amber {
+        background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Hero Quick Jurusan Search Pill */
+      .hero-search-pill {
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        border: 1.5px solid var(--border-card);
+        border-radius: var(--radius-full);
+        padding: 0.4rem 0.5rem 0.4rem 1.4rem;
+        box-shadow: 0 12px 30px -6px rgba(30, 58, 138, 0.1);
+        max-width: 540px;
+        margin-bottom: 2rem;
+        transition: var(--transition);
+      }
+
+      .hero-search-pill:focus-within {
+        border-color: var(--primary);
+        box-shadow: 0 16px 36px -6px rgba(30, 58, 138, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .hero-search-pill input {
+        flex: 1;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        color: var(--text-dark);
+      }
+
+      .hero-search-pill button {
+        background: var(--primary);
+        color: #ffffff;
+        border: none;
+        padding: 0.75rem 1.4rem;
+        border-radius: var(--radius-full);
+        font-family: var(--font-head);
+        font-size: 0.88rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: var(--transition-fast);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .hero-search-pill button:hover {
+        background: var(--primary-light);
+      }
+
+      .hero-actions {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1.2rem;
+      }
+
+      /* Hero Hub Dashboard (Terminal / Card 3D-inspired) */
+      .hero-hub-card {
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-xl);
+        padding: 2rem;
+        box-shadow: var(--shadow-card);
+        position: relative;
+      }
+
+      .hub-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1.2rem;
+        border-bottom: 1px solid var(--border-card);
+        margin-bottom: 1.5rem;
+      }
+
+      .hub-mac-dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .hub-mac-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      .hub-mac-dot.red {
+        background: #ef4444;
+      }
+
+      .hub-mac-dot.amber {
+        background: #facc15;
+      }
+
+      .hub-mac-dot.emerald {
+        background: #facc15;
+      }
+
+      .hub-live-badge {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 700;
+        background: var(--primary-surface);
+        color: var(--primary);
+        padding: 0.25rem 0.7rem;
+        border-radius: var(--radius-full);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .hub-nav-tabs {
+        display: flex;
+        background: var(--bg-alt);
+        padding: 4px;
+        border-radius: var(--radius-sm);
+        margin-bottom: 1.5rem;
+      }
+
+      .hub-nav-tab {
+        flex: 1;
+        padding: 0.6rem 0.8rem;
+        border: none;
+        background: transparent;
+        font-family: var(--font-head);
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        border-radius: var(--radius-xs);
+        cursor: pointer;
+        transition: var(--transition-fast);
+        text-align: center;
+      }
+
+      .hub-nav-tab.active {
+        background: #ffffff;
+        color: var(--primary);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .hub-tab-panel {
+        display: none;
+        animation: fadeInHub 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .hub-tab-panel.active {
+        display: block;
+      }
+
+      @keyframes fadeInHub {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hub-feature-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: var(--radius);
+        background: var(--bg-main);
+        border: 1px solid var(--border-card);
+        margin-bottom: 0.85rem;
+        transition: var(--transition-fast);
+      }
+
+      .hub-feature-row:hover {
+        border-color: rgba(30, 58, 138, 0.3);
+        background: #ffffff;
+        transform: translateX(4px);
+        box-shadow: 0 8px 20px rgba(30, 58, 138, 0.06);
+      }
+
+      .hub-icon-wrap {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+      }
+
+      /* Floating Achievement Badges around Hero Hub */
+      .floating-badge {
+        position: absolute;
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius);
+        padding: 0.75rem 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        box-shadow: var(--shadow-card-hover);
+        z-index: 10;
+        animation: floatHeroBadge 4s ease-in-out infinite;
+      }
+
+      .floating-badge-1 {
+        top: -24px;
+        right: -20px;
+      }
+
+      .floating-badge-2 {
+        bottom: -22px;
+        left: -20px;
+        animation-delay: 2s;
+      }
+
+      @keyframes floatHeroBadge {
+
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      /* ==========================================================================
+           5. SAMBUTAN SECTION (UNPINNED) & SINERGI TIGA PILAR (PINNED)
+           ========================================================================== */
+      .sambutan-section {
+        padding: 7.5rem 0 8.5rem;
+        background: var(--bg-alt);
+        position: relative;
+        border-top: 1px solid var(--border-card);
+        border-bottom: 1px solid var(--border-card);
+      }
+
+      .sinergi-section {
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        background: var(--bg-dark);
+        color: var(--text-light);
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid var(--border-dark);
+        border-bottom: 1px solid var(--border-dark);
+        padding: 4rem 0;
+      }
+
+      .sinergi-stage-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        min-height: 70vh;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .synergy-svg-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .pillar-line {
+        stroke: var(--secondary-light);
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        fill: none;
+        stroke-dasharray: 400;
+        stroke-dashoffset: 400;
+      }
+
+      .pillar-node-group {
+        transform-origin: center;
+      }
+
+      .pillar-node-ring {
+        fill: none;
+        stroke: var(--secondary);
+        stroke-width: 1.5;
+        opacity: 0.35;
+      }
+
+      .pillar-node-core {
+        fill: var(--secondary-light);
+      }
+
+      .pillar-node-label {
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 800;
+        fill: var(--text-light);
+        text-anchor: middle;
+        letter-spacing: -0.01em;
+      }
+
+      .pillar-node-sub {
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 500;
+        fill: var(--text-subtle);
+        text-anchor: middle;
+      }
+
+      /* Star & Aura in Center */
+      .synergy-star-aura {
+        fill: url(#starAuraGrad);
+        opacity: 0;
+      }
+
+      .synergy-center-star {
+        fill: var(--secondary-surface);
+        stroke: var(--secondary-light);
+        stroke-width: 2.5;
+        stroke-linejoin: round;
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      /* Synergy Text Content - Layered Over SVG */
+      .synergy-text-container {
+        position: relative;
+        z-index: 3;
+        max-width: 860px;
+        width: 100%;
+        min-height: 70vh;
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .synergy-kicker {
+        font-family: var(--font-head);
+        font-size: 0.88rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--secondary-light);
+        margin-bottom: 1rem;
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      .signature-text {
+        font-family: var(--font-display);
+        font-size: clamp(1.4rem, 2.7vw, 2.25rem);
+        font-weight: 800;
+        color: var(--text-light);
+        max-width: 840px;
+        margin: 0 auto 1.2rem;
+        line-height: 1.38;
+        letter-spacing: -0.025em;
+      }
+
+      .synergy-highlight {
+        color: var(--secondary-light);
+      }
+
+      .synergy-closing {
+        font-family: var(--font-body);
+        font-size: 1.02rem;
+        color: var(--text-subtle);
+        max-width: 620px;
+        margin: 0 auto 1.8rem;
+        line-height: 1.6;
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      .synergy-action-btn {
+        opacity: 0;
+        transform: translateY(10px);
+        margin-top: 0.5rem;
+      }
+
+      /* Scroll Progress Rail */
+      .synergy-progress-rail {
+        width: 120px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius-full);
+        margin: 2.2rem auto 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .synergy-progress-bar {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg,
+            var(--secondary) 0%,
+            var(--secondary-light) 100%);
+        border-radius: var(--radius-full);
+        box-shadow: 0 0 8px var(--secondary-glow);
+      }
+
+      @media (max-width: 640px) {
+        .pillar-node-sub {
+          display: none;
+        }
+      }
+
+      /* ---- Text Scroll Reveal (skiper31-style, word by word) ---- */
+      .sr-word {
+        display: inline-block;
+        opacity: 0.18;
+        filter: blur(2px);
+        transform: translateY(0.12em);
+        will-change: opacity, filter, transform;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .sr-word {
+          opacity: 1 !important;
+          filter: none !important;
+          transform: none !important;
+        }
+
+        .synergy-center-star,
+        .synergy-star-aura,
+        .synergy-kicker,
+        .synergy-closing {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+
+      /* ---- Parallax Layers ---- */
+      [data-parallax] {
+        will-change: transform;
+      }
+
+      .px-stage {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .px-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.5;
+      }
+
+      .px-orb-blue {
+        background: radial-gradient(circle,
+            rgba(37, 99, 235, 0.5) 0%,
+            rgba(37, 99, 235, 0) 70%);
+      }
+
+      .px-orb-amber {
+        background: radial-gradient(circle,
+            rgba(234, 179, 8, 0.42) 0%,
+            rgba(234, 179, 8, 0) 70%);
+      }
+
+      .px-grid {
+        position: absolute;
+        inset: -20% -10%;
+        background-image:
+          linear-gradient(to right,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px),
+          linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px);
+        background-size: 64px 64px;
+        mask-image: radial-gradient(ellipse at center,
+            #000 20%,
+            transparent 72%);
+        -webkit-mask-image: radial-gradient(ellipse at center,
+            #000 20%,
+            transparent 72%);
+      }
+
+      .px-grid-dark {
+        background-image:
+          linear-gradient(to right,
+            rgba(30, 64, 175, 0.07) 1px,
+            transparent 1px),
+          linear-gradient(to bottom,
+            rgba(30, 64, 175, 0.07) 1px,
+            transparent 1px);
+      }
+
+      .px-ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+      }
+
+      .hero-section,
+      .majors-section,
+      .blud-section,
+      .bkk-section {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-grid,
+      .majors-section .container,
+      .blud-section .container,
+      .stats-section .container,
+      .bkk-section .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      @media (max-width: 900px) {
+        .px-orb {
+          opacity: 0.3;
+        }
+
+        .px-ring {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .px-stage {
+          display: none;
+        }
+      }
+
+      .marquee-section {
+        padding: 2.2rem 0;
+        background: #ffffff;
+        overflow: hidden;
+        position: relative;
+        border-bottom: 1px solid var(--border-card);
+      }
+
+      .marquee-track {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        width: max-content;
+      }
+
+      .marquee-group {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        padding-right: 4rem;
+      }
+
+      .mitra-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        letter-spacing: -0.01em;
+        transition: var(--transition-fast);
+      }
+
+      .mitra-item:hover {
+        color: var(--primary);
+        transform: scale(1.05);
+      }
+
+      .mitra-item img {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: var(--transition-fast);
+      }
+
+      .mitra-item:hover img {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
+
+      /* ==========================================================================
+           6. EXECUTIVE CARD - SAMBUTAN KEPALA SEKOLAH (PAK WAHID)
+           ========================================================================== */
+      .executive-section {
+        padding: 7.5rem 0;
+        position: relative;
+      }
+
+      .executive-card {
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-xl);
+        padding: 3.5rem;
+        box-shadow: var(--shadow-card);
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 3.5rem;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .executive-photo-frame {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+      }
+
+      .executive-photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+        margin-bottom: 50px;
+      }
+
+      .executive-photo-frame:hover img {
+        transform: scale(1.03);
+      }
+
+      .executive-photo-badge {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        right: 1.5rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        border-radius: var(--radius);
+        padding: 1rem 1.4rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .executive-quote {
+        font-family: var(--font-display);
+        font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+        font-weight: 700;
+        color: var(--primary);
+        line-height: 1.35;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.025em;
+      }
+
+      .executive-bio-text {
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      /* Why Choose SMEMSA Bento Cards */
+      .why-bento-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1.5rem;
+        margin-top: 4rem;
+      }
+
+      .why-bento-card {
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-lg);
+        padding: 2.2rem;
+        box-shadow: var(--shadow-card);
+        transition: var(--transition);
+      }
+
+      .why-bento-card:hover {
+        background: var(--primary) !important;
+        border-color: var(--primary) !important;
+        box-shadow: 0 14px 32px rgba(30, 64, 175, 0.3) !important;
+        transform: translateY(-5px) !important;
+      }
+
+      .why-col-8 {
+        transition: var(--transition);
+        grid-column: span 8;
+        background: linear-gradient(135deg,
+            var(--primary) 0%,
+            var(--primary-dark) 100%);
+        color: #ffffff;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .why-col-8:hover {
+        border: none;
+      }
+
+      .why-col-4 {
+        grid-column: span 4;
+      }
+
+      .why-col-6 {
+        grid-column: span 6;
+      }
+
+      .why-icon-box {
+        width: 52px;
+        height: 52px;
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+        background: var(--primary-surface);
+        color: var(--primary);
+      }
+
+      /* ==========================================================================
+           7. COUNTER STATS STRIP
+           ========================================================================== */
+      .stats-section {
+        padding: 4.5rem 0;
+        background: linear-gradient(135deg,
+            var(--primary-dark) 0%,
+            #1e3a8a 100%);
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .stat-card {
+        padding: 1.5rem;
+        border-right: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .stat-card:last-child {
+        border-right: none;
+      }
+
+      .stat-num {
+        font-family: var(--font-display);
+        font-size: clamp(2.5rem, 4vw, 3.8rem);
+        font-weight: 800;
+        color: var(--secondary-light);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.03em;
+      }
+
+      .stat-label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        opacity: 0.9;
+        letter-spacing: -0.01em;
+      }
+
+      /* ==========================================================================
+           8. KONSENTRASI KEAHLIAN: ORBIT DUAL-RING (CINCIN DALAM & LUAR) + 2 KOLOM
+           ========================================================================== */
+      .majors-section {
+        padding: 5.5rem 0 7.5rem;
+        background: var(--bg-alt);
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid var(--border-card);
+        border-bottom: 1px solid var(--border-card);
+      }
+
+      /* ═══ A. AREA ORBIT MELEBAR PENUH: TINGGI 520PX & ZONA AMAN ═══ */
+      .majors-hero-orbit {
+        position: relative;
+        width: 100%;
+        height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 3.5rem;
+        overflow: visible;
+      }
+
+      .orbit-hero-stage {
+        position: relative;
+        width: 100%;
+        max-width: 1100px;
+        height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ═══ D. CINCIN PANDUAN TIPIS (SVG PADA R=210PX & R=300PX) ═══ */
+      .orbit-hero-svg {
+        position: absolute;
+        width: 640px;
+        height: 640px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .orbit-guide-ring {
+        fill: none;
+        stroke: var(--border-light, rgba(30, 64, 175, 0.14));
+        stroke-width: 1px;
+      }
+
+      .orbit-guide-ring-dashed {
+        stroke-dasharray: 6 6;
+      }
+
+      .orbit-guide-dot {
+        fill: var(--primary-light);
+        opacity: 0.35;
+      }
+
+      /* ═══ B. LINTASAN MELINGKAR PRESISI: PEMISAHAN TRANSLATE & ROTATE ═══ */
+      /* Lapisan 1: .orbit-ring — HANYA elemen ini yang berputar 360deg, 90s, linear, infinite */
+      .orbit-ring-inner {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        transform-origin: center center;
+        animation: orbitSpin 90s linear infinite;
+        pointer-events: none;
+      }
+
+      .orbit-ring-outer {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        transform-origin: center center;
+        animation: orbitSpin 90s linear infinite reverse;
+        pointer-events: none;
+      }
+
+      @keyframes orbitSpin {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Lapisan 2: .orbit-slot — titik sudut + radius, transform-origin: center center */
+      .orbit-slot {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0;
+        height: 0;
+        transform-origin: center center;
+        transform: rotate(var(--a)) translateY(calc(var(--r) * -1));
+        pointer-events: none;
+      }
+
+      /* Lapisan 3: .orbit-center — HANYA translate(-50%, -50%), statis, TIDAK dianimasikan */
+      .orbit-center {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        /* translate + koreksi statis sudut slot agar kartu berbentuk persegi tegak (bukan ketupat) */
+        transform: translate(-50%, -50%) rotate(calc(var(--a) * -1));
+        transform-origin: center center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      /* Lapisan 4: .orbit-icon — HANYA counter-rotate (90s, linear, infinite) */
+      .orbit-icon {
+        background: #ffffff;
+        border-radius: 14px;
+        border: 1px solid var(--border-light, rgba(30, 64, 175, 0.12));
+        box-shadow: 0 6px 18px -8px rgba(30, 64, 175, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        pointer-events: none;
+        transform-origin: center center;
+        flex-shrink: 0;
+      }
+
+      /* Counter-Rotation Cincin Dalam (berlawanan dari rotate(0deg) -> rotate(360deg)) */
+      .orbit-ring-inner .orbit-icon {
+        width: 56px;
+        height: 56px;
+        animation: orbitCounter 90s linear infinite;
+      }
+
+      /* Counter-Rotation Cincin Luar (reverse cincin outer berlawanan dengan reverse counter) */
+      .orbit-ring-outer .orbit-icon {
+        width: 48px;
+        height: 48px;
+        animation: orbitCounter 90s linear infinite reverse;
+      }
+
+      @keyframes orbitCounter {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      /* Logo di dalam kartu: 60% x 60%, object-fit: contain */
+      .orbit-icon img {
+        width: 60%;
+        height: 60%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .orbit-icon .orbit-node-emoji {
+        font-size: 1.35rem;
+        line-height: 1;
+      }
+
+      /* ═══ A. PUSAT ORBIT DENGAN ZONA AMAN (MAX-WIDTH 560PX & RADIAL GRADIENT) ═══ */
+      .orbit-hero-center {
+        position: relative;
+        z-index: 5;
+        max-width: 560px;
+        text-align: center;
+        padding: 2.2rem 2.5rem;
+        border-radius: 32px;
+        background: radial-gradient(ellipse 520px 260px at center,
+            var(--bg-alt) 55%,
+            transparent 100%);
+        backdrop-filter: blur(3px);
+        pointer-events: auto;
+      }
+
+      .orbit-hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 1rem;
+        border-radius: var(--radius-full);
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 0.82rem;
+        color: var(--primary);
+        background: var(--primary-surface);
+        margin-bottom: 0.85rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .orbit-hero-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 3.5vw, 2.85rem);
+        font-weight: 800;
+        color: var(--primary-dark);
+        letter-spacing: -0.035em;
+        line-height: 1.16;
+        margin-bottom: 0.75rem;
+      }
+
+      .orbit-hero-desc {
+        font-size: 0.98rem;
+        color: var(--text-muted);
+        line-height: 1.62;
+        margin: 0 auto;
+        max-width: 480px;
+      }
+
+      /* ═══ BAGIAN BAWAH — DUA KOLOM (Kiri 38%, Kanan 62%) ═══ */
+      .majors-split-grid {
+        display: grid;
+        grid-template-columns: 38% 62%;
+        gap: 2.5rem;
+        align-items: start;
+        position: relative;
+      }
+
+      /* KOLOM KIRI — DAFTAR 8 JURUSAN */
+      .majors-list-col {
+        background: #ffffff;
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--border-card);
+        box-shadow: var(--shadow-card);
+        overflow: hidden;
+      }
+
+      .major-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 1.1rem;
+        width: 100%;
+        padding: 1.15rem 1.4rem;
+        background: #ffffff;
+        border: none;
+        border-bottom: 1px solid var(--border-card);
+        text-align: left;
+        cursor: pointer;
+        position: relative;
+        transition:
+          background-color 0.2s ease,
+          padding-left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        outline: none;
+      }
+
+      .major-nav-item:last-child {
+        border-bottom: none;
+      }
+
+      /* Rel Kuning Vertikal di Sisi Kiri */
+      .major-nav-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--secondary);
+        transform: scaleY(0);
+        transform-origin: center;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        border-radius: 0 4px 4px 0;
+      }
+
+      .major-nav-item:hover {
+        background: var(--bg-alt);
+      }
+
+      .major-nav-item.active {
+        background: var(--primary-surface);
+        padding-left: 1.65rem;
+      }
+
+      .major-nav-item.active::before {
+        transform: scaleY(1);
+      }
+
+      .major-nav-item:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: -2px;
+        z-index: 2;
+      }
+
+      .major-nav-num {
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--text-subtle);
+        width: 26px;
+        flex-shrink: 0;
+        transition: color 0.25s;
+      }
+
+      .major-nav-item.active .major-nav-num {
+        color: var(--primary);
+      }
+
+      .major-nav-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .major-nav-top {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.15rem;
+      }
+
+      .major-nav-name {
+        font-family: var(--font-head);
+        font-size: 1.02rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        letter-spacing: -0.02em;
+        margin: 0;
+        transition: color 0.25s;
+      }
+
+      .major-nav-item.active .major-nav-name {
+        color: var(--primary);
+      }
+
+      .major-nav-code {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--primary);
+        background: rgba(30, 64, 175, 0.08);
+        padding: 0.12rem 0.45rem;
+        border-radius: var(--radius-xs);
+      }
+
+      .major-nav-tefa {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .major-nav-item.active .major-nav-tefa {
+        color: #475569;
+        font-weight: 500;
+      }
+
+      .major-nav-chevron {
+        color: var(--text-subtle);
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        transition:
+          transform 0.25s,
+          color 0.25s;
+      }
+
+      .major-nav-item:hover .major-nav-chevron,
+      .major-nav-item.active .major-nav-chevron {
+        color: var(--primary);
+        transform: translateX(4px);
+      }
+
+      /* KOLOM KANAN — ALUR PENDIDIKAN (STICKY, TOP 6REM) */
+      .majors-detail-col {
+        position: sticky;
+        top: 6rem;
+        background: #ffffff;
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--border-card);
+        box-shadow: var(--shadow-card);
+        overflow: hidden;
+      }
+
+      /* Container Transisi Halus (Crossfade + Geser 12px, Max 250ms) */
+      .major-pathway-view {
+        transition:
+          opacity 250ms cubic-bezier(0.16, 1, 0.3, 1),
+          transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .major-pathway-view.anim-switching {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      /* ═══ KEPALA PANEL DUA KOLOM: KIRI 38% (FIGUR SISWA) + KANAN 62% (IDENTITAS) ═══ */
+      .major-panel-head-grid {
+        display: grid;
+        grid-template-columns: 38% 62%;
+        gap: 1.5rem;
+        padding: 1.6rem;
+        background: #ffffff;
+        border-bottom: 1px solid var(--border-card);
+        align-items: stretch;
+      }
+
+      /* KIRI: AREA FIGUR SISWA (Aspect-Ratio 3:4, Potret Utuh) */
+      .major-figure-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        border-radius: 14px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+
+      /* Alas Bayangan Lembut di Dasar Figur */
+      .major-figure-shadow {
+        position: absolute;
+        bottom: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 75%;
+        height: 14px;
+        background: radial-gradient(ellipse at center,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0) 72%);
+        border-radius: 50%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* Foto Potret Cutout Siswa (object-fit: contain, menempel di dasar) */
+      .major-figure-img {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 15px;
+        object-fit: contain !important;
+        object-position: center bottom !important;
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.27));
+        transition: transform 0.35s ease;
+      }
+
+      /* Fallback Placeholder jika foto tidak ada */
+      .major-figure-fallback {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-family: var(--font-display);
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        z-index: 1;
+      }
+
+      /* Logo Jurusan Kecil di Pojok Kanan Atas Area Figur */
+      .major-figure-corner-logo {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(4px);
+        border-radius: 10px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 4;
+      }
+
+      .major-figure-corner-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .major-figure-corner-logo .corner-emoji {
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+
+      /* KANAN: IDENTITAS JURUSAN */
+      .major-identity-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.4rem 0.2rem;
+      }
+
+      .major-id-badge {
+        display: inline-flex;
+        align-items: center;
+        background: var(--secondary);
+        color: var(--text-dark);
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        font-weight: 800;
+        padding: 0.25rem 0.7rem;
+        border-radius: var(--radius-full);
+        letter-spacing: 0.06em;
+        width: fit-content;
+        margin-bottom: 0.6rem;
+        box-shadow: 0 2px 6px rgba(234, 179, 8, 0.35);
+      }
+
+      .major-id-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.35rem, 2vw, 1.75rem);
+        font-weight: 800;
+        color: var(--primary-dark);
+        letter-spacing: -0.03em;
+        line-height: 1.22;
+        margin: 0 0 0.55rem 0;
+      }
+
+      .major-id-desc {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        line-height: 1.55;
+        margin: 0 0 1rem 0;
+      }
+
+      .major-id-info-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        padding: 0.75rem 0.9rem;
+        background: var(--bg-alt);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-card);
+      }
+
+      .major-info-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--text-dark);
+        line-height: 1.4;
+      }
+
+      .major-info-icon {
+        color: var(--primary);
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+
+      .major-info-label {
+        font-weight: 700;
+        color: var(--primary-dark);
+      }
+
+      /* ═══ C. ALUR 4 TAHAP DI BAWAH KEPALA PANEL (D. TEKS TIDAK TERPOTONG) ═══ */
+      .major-flow-section {
+        padding: 1.5rem 1.6rem 1.6rem;
+        background: #ffffff;
+      }
+
+      .major-steps-track {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.8rem;
+        align-items: stretch;
+        position: relative;
+      }
+
+      .major-step-box {
+        background: var(--bg-alt);
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius);
+        padding: 1rem 0.85rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: visible;
+        height: auto;
+        min-height: 100%;
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .major-step-box:hover {
+        border-color: var(--primary);
+        background: #ffffff;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(30, 64, 175, 0.08);
+      }
+
+      .major-step-header {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-bottom: 0.6rem;
+        flex-shrink: 0;
+      }
+
+      .major-step-num {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: #ffffff;
+        font-family: var(--font-head);
+        font-size: 0.72rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .major-step-box:nth-child(4) .major-step-num {
+        background: var(--secondary);
+        color: var(--text-dark);
+      }
+
+      .major-step-title {
+        font-family: var(--font-head);
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        line-height: 1.2;
+      }
+
+      .major-step-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 0.75rem 0;
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        line-height: 1.45;
+        flex: 1 0 auto;
+      }
+
+      .major-step-list li {
+        position: relative;
+        padding-left: 0.85rem;
+        margin-bottom: 0.32rem;
+      }
+
+      .major-step-list li:last-child {
+        margin-bottom: 0;
+      }
+
+      .major-step-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: bold;
+      }
+
+      .major-step-tag {
+        font-size: 0.73rem;
+        font-weight: 600;
+        padding: 0.45rem 0.6rem;
+        border-radius: var(--radius-xs);
+        background: var(--primary-surface);
+        color: var(--primary-dark);
+        border-left: 2.5px solid var(--primary);
+        line-height: 1.35;
+        margin-top: auto;
+        flex-shrink: 0;
+      }
+
+      .major-step-box:nth-child(4) .major-step-tag {
+        background: var(--secondary-surface);
+        color: #854d0e;
+        border-left-color: var(--secondary);
+      }
+
+      /* ═══ E. RESPONSIF ═══ */
+      @media (max-width: 1100px) {
+        .majors-hero-orbit {
+          height: 420px;
+        }
+
+        .orbit-hero-stage {
+          height: 420px;
+        }
+
+        .orbit-hero-svg {
+          width: 520px;
+          height: 520px;
+        }
+
+        .orbit-hero-svg circle:nth-child(1) {
+          r: 240px;
+        }
+
+        .orbit-hero-svg circle:nth-child(2) {
+          r: 170px;
+        }
+
+        .orbit-ring-inner {
+          width: 340px;
+          height: 340px;
+        }
+
+        .orbit-ring-inner .orbit-slot {
+          transform: rotate(var(--a)) translateY(-170px);
+        }
+
+        .orbit-ring-outer {
+          width: 480px;
+          height: 480px;
+        }
+
+        .orbit-ring-outer .orbit-slot {
+          transform: rotate(var(--a)) translateY(-240px);
+        }
+
+        .orbit-hero-center {
+          max-width: 480px;
+          padding: 1.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .majors-hero-orbit {
+          height: 320px;
+          margin-bottom: 2rem;
+        }
+
+        .orbit-hero-stage {
+          height: 320px;
+        }
+
+        .orbit-hero-svg {
+          width: 380px;
+          height: 380px;
+        }
+
+        .orbit-hero-svg circle:nth-child(1) {
+          r: 185px;
+        }
+
+        .orbit-hero-svg circle:nth-child(2) {
+          r: 130px;
+        }
+
+        .orbit-ring-inner {
+          width: 260px;
+          height: 260px;
+        }
+
+        .orbit-ring-inner .orbit-slot {
+          transform: rotate(var(--a)) translateY(-130px);
+        }
+
+        .orbit-ring-inner .orbit-icon {
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
+        }
+
+        .orbit-ring-outer {
+          width: 370px;
+          height: 370px;
+        }
+
+        .orbit-ring-outer .orbit-slot {
+          transform: rotate(var(--a)) translateY(-185px);
+        }
+
+        .orbit-ring-outer .orbit-icon {
+          width: 38px;
+          height: 38px;
+          border-radius: 9px;
+        }
+
+        .orbit-hero-center {
+          max-width: 340px;
+          padding: 1.2rem 1.4rem;
+        }
+
+        .orbit-hero-title {
+          font-size: 1.65rem;
+        }
+
+        .majors-split-grid {
+          grid-template-columns: 1fr;
+          gap: 1.8rem;
+        }
+
+        .majors-detail-col {
+          position: relative;
+          top: 0;
+        }
+
+        .major-panel-head-grid {
+          grid-template-columns: 1fr;
+          gap: 1.2rem;
+        }
+
+        .major-figure-wrapper {
+          max-width: 240px;
+          margin: 0 auto;
+        }
+
+        .major-steps-track {
+          grid-template-columns: 1fr;
+          gap: 0.8rem;
+        }
+      }
+
+      @media (max-width: 560px) {
+
+        .orbit-ring-outer,
+        .orbit-hero-svg circle:nth-child(1) {
+          display: none;
+        }
+
+        .orbit-ring-inner {
+          width: 240px;
+          height: 240px;
+        }
+
+        .orbit-ring-inner .orbit-slot {
+          transform: rotate(var(--a)) translateY(-120px);
+        }
+
+        .orbit-hero-center {
+          padding: 1rem;
+          max-width: 280px;
+        }
+
+        .orbit-hero-title {
+          font-size: 1.4rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+
+        .orbit-ring-inner,
+        .orbit-ring-outer,
+        .orbit-icon {
+          animation: none !important;
+        }
+
+        .major-pathway-view {
+          transition: none !important;
+        }
+      }
+
+      /* ==========================================================================
+           9. PRESTASI & TESTIMONI STRIP - PARALLAX & SCROLLTRIGGER
+           ========================================================================== */
+      .achievements-section {
+        padding: 8rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .achieve-glow-bg {
+        position: absolute;
+        top: 20%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle,
+            rgba(234, 179, 8, 0.08) 0%,
+            transparent 70%);
+        filter: blur(50px);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .achieve-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
+        position: relative;
+        z-index: 2;
+        align-items: center;
+      }
+
+      .timeline-box {
+        position: relative;
+        padding-left: 2.2rem;
+        margin-top: 1.5rem;
+      }
+
+      .timeline-progress-line {
+        position: absolute;
+        left: 6px;
+        top: 12px;
+        bottom: 12px;
+        width: 3px;
+        background: rgba(30, 58, 138, 0.12);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .timeline-progress-bar {
+        width: 100%;
+        height: 0%;
+        background: linear-gradient(to bottom,
+            var(--secondary) 0%,
+            var(--primary) 100%);
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(234, 179, 8, 0.5);
+        transition: height 0.1s linear;
+      }
+
+      .timeline-card {
+        position: relative;
+        margin-bottom: 2rem;
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius);
+        padding: 1.6rem 1.8rem;
+        box-shadow: var(--shadow-subtle);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        transform-origin: left center;
+      }
+
+      .timeline-card:hover {
+        border-color: var(--primary);
+        transform: translateX(8px) scale(1.02);
+        box-shadow: 0 14px 30px rgba(30, 58, 138, 0.1);
+      }
+
+      .timeline-card::before {
+        content: "";
+        position: absolute;
+        left: -2.85rem;
+        top: 2rem;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 3.5px solid var(--secondary);
+        box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.2);
+        transition: all 0.3s;
+        z-index: 3;
+      }
+
+      .timeline-card:hover::before {
+        background: var(--secondary);
+        transform: scale(1.2);
+        box-shadow: 0 0 0 6px rgba(234, 179, 8, 0.35);
+      }
+
+      .testi-parallax-wrapper {
+        position: relative;
+        perspective: 1000px;
+      }
+
+      .testi-card {
+        background: linear-gradient(135deg,
+            var(--primary-dark) 0%,
+            var(--primary) 100%);
+        color: #ffffff;
+        border-radius: var(--radius-xl);
+        padding: 3.5rem 3rem;
+        box-shadow: var(--shadow-dark);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        will-change: transform;
+        transition:
+          transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.4s;
+      }
+
+      .testi-card::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle,
+            rgba(234, 179, 8, 0.15) 0%,
+            transparent 60%);
+        pointer-events: none;
+      }
+
+      .testi-quote-mark {
+        font-family: var(--font-display);
+        font-size: 4.5rem;
+        line-height: 0.8;
+        color: var(--secondary-light);
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+
+      .testi-badge-float {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-full);
+        padding: 0.35rem 0.9rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--secondary-light);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      /* ==========================================================================
+           10. SPMB 2026/2027 INTERACTIVE STEPPER & COUNTDOWN
+           ========================================================================== */
+      .spmb-section {
+        padding: 7.5rem 0;
+        background: var(--bg-alt);
+      }
+
+      .spmb-wrapper {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 3.5rem;
+        align-items: center;
+      }
+
+      .stepper-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .step-card {
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius);
+        padding: 1.6rem 2rem;
+        box-shadow: var(--shadow-subtle);
+        display: flex;
+        align-items: flex-start;
+        gap: 1.4rem;
+        transition: var(--transition-fast);
+      }
+
+      .step-card:hover {
+        border-color: var(--primary);
+        transform: translateX(6px);
+        box-shadow: var(--shadow-card);
+      }
+
+      .step-number-box {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: #ffffff;
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .spmb-live-card {
+        background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 100%);
+        color: #ffffff;
+        border-radius: var(--radius-xl);
+        padding: 3rem 2.5rem;
+        box-shadow: var(--shadow-card);
+        text-align: center;
+      }
+
+      .countdown-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.8rem;
+        margin: 2rem 0;
+      }
+
+      .countdown-box {
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(8px);
+        padding: 1rem 0.5rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .countdown-val {
+        font-family: var(--font-display);
+        font-size: 1.8rem;
+        font-weight: 800;
+        display: block;
+        line-height: 1;
+      }
+
+      .countdown-lbl {
+        font-size: 0.75rem;
+        opacity: 0.85;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-top: 4px;
+        display: block;
+      }
+
+      /* ==========================================================================
+           11. BLUD PRODUCTS & BKK JOBS PORTAL
+           ========================================================================== */
+      .blud-section {
+        padding: 7.5rem 0;
+        background: var(--bg-dark);
+        color: var(--text-light);
+        position: relative;
+      }
+
+      .blud-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .product-bento {
+        background: var(--bg-dark-card);
+        border: 1px solid var(--border-dark);
+        border-radius: var(--radius-lg);
+        padding: 2.2rem;
+        box-shadow: var(--shadow-dark);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .product-bento:hover {
+        transform: translateY(-4px);
+        border-color: var(--secondary);
+      }
+
+      .p-icon-hero {
+        font-size: 3.5rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .p-price-tag {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--secondary-light);
+        margin-top: 1.5rem;
+      }
+
+      .bkk-section {
+        padding: 7.5rem 0;
+        background: var(--bg-main);
+      }
+
+      .bkk-table-card {
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+      }
+
+      .bkk-table-header {
+        display: grid;
+        grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
+        padding: 1.2rem 2rem;
+        background: var(--bg-alt);
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        border-bottom: 1px solid var(--border-card);
+      }
+
+      .bkk-table-row {
+        display: grid;
+        grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
+        align-items: center;
+        padding: 1.4rem 2rem;
+        border-bottom: 1px solid var(--border-card);
+        transition: var(--transition-fast);
+      }
+
+      .bkk-table-row:last-child {
+        border-bottom: none;
+      }
+
+      .bkk-table-row:hover {
+        background: var(--primary-surface);
+      }
+
+      /* ==========================================================================
+           12. NEWS & EDITORIAL JOURNAL
+           ========================================================================== */
+      .news-section {
+        padding: 7.5rem 0;
+        background: var(--bg-alt);
+      }
+
+      .news-grid {
+        display: grid;
+        grid-template-columns: 1fr 2.2fr;
+        gap: 3rem;
+      }
+
+      .news-filter-card {
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        box-shadow: var(--shadow-card);
+        height: fit-content;
+      }
+
+      .news-filter-list li {
+        margin-bottom: 0.6rem;
+      }
+
+      .news-filter-list a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.7rem 1rem;
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+        font-size: 0.92rem;
+        color: var(--text-dark);
+      }
+
+      .news-filter-list a:hover,
+      .news-filter-list a.active {
+        background: var(--primary-surface);
+        color: var(--primary);
+      }
+
+      .news-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+      }
+
+      .article-card {
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-subtle);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .article-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--primary);
+        box-shadow: var(--shadow-card);
+      }
+
+      .article-thumb {
+        height: 140px;
+        background: linear-gradient(135deg,
+            var(--primary-surface) 0%,
+            rgba(234, 179, 8, 0.1) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+      }
+
+      .article-body {
+        padding: 1.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+      }
+
+      /* ==========================================================================
+           13. NEXT-GEN FOOTER & FLOATING AI CHATBOT
+           ========================================================================== */
+      .site-footer {
+        background: var(--bg-dark);
+        color: var(--text-light);
+        padding: 5.5rem 0 2.5rem;
+        border-top: 1px solid var(--border-dark);
+        position: relative;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1.2fr 1.2fr;
+        gap: 3rem;
+        margin-bottom: 3.5rem;
+      }
+
+      /* D. Judul Kolom Footer: 0.78rem, weight 800, letter-spacing 0.1em, uppercase, var(--text-subtle) */
+      .footer-col h4,
+      .footer-brand-title {
+        font-family: var(--font-head);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-subtle);
+        margin-bottom: 1.2rem;
+      }
+
+      .footer-brand-name {
+        color: #ffffff;
+        font-family: var(--font-head);
+        font-weight: 800;
+        font-size: 1.05rem;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+      }
+
+      .footer-brand-sub {
+        color: var(--secondary);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 0.2rem;
+      }
+
+      .footer-address {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.88rem;
+        line-height: 1.65;
+        margin-bottom: 1.2rem;
+      }
+
+      /* A. Baris Kontak dengan Inline SVG Stroke Sederhana (16x16, var(--text-subtle)) */
+      .footer-contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .footer-contact-icon {
+        width: 16px;
+        height: 16px;
+        stroke: var(--text-subtle);
+        stroke-width: 1.8;
+        fill: none;
+        flex-shrink: 0;
+      }
+
+      .footer-contact-link {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .footer-contact-link:hover {
+        color: var(--secondary-light);
+      }
+
+      /* C. Media Sosial Monokrom (Tombol Lingkaran 36px, SVG 18x18) */
+      .footer-social-row {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin-top: 0.5rem;
+      }
+
+      .footer-social-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        text-decoration: none;
+      }
+
+      .footer-social-btn svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+        transition: transform 0.25s ease;
+      }
+
+      .footer-social-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary-light);
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
+      }
+
+      .footer-social-btn:hover svg {
+        transform: scale(1.08);
+      }
+
+      /* A. & D. Tautan Navigasi Footer: Jarak 0.7rem, Tap Target Nyaman, Chevron Saat Hover */
+      .footer-nav {
+        display: block;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        transition:
+          color 0.2s ease,
+          transform 0.2s ease;
+        min-height: 28px;
+      }
+
+      .footer-chevron {
+        opacity: 0;
+        transform: translateX(-4px);
+        color: var(--secondary);
+        font-weight: bold;
+        font-size: 1.05rem;
+        line-height: 1;
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary-light);
+        transform: translateX(4px);
+      }
+
+      .footer-links a:hover .footer-chevron {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* Kartu Identitas Lembaga */
+      .footer-identity-card {
+        background: rgba(255, 255, 255, 0.04);
+        padding: 1.15rem 1.25rem;
+        border-radius: var(--radius);
+        border: 1px solid var(--border-dark);
+        font-size: 0.85rem;
+        line-height: 1.75;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .footer-identity-card strong {
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .footer-bottom {
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-dark);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        color: #78716c;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      @media (max-width: 992px) {
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2.5rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 2.2rem;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      /* AI Chatbot Widget */
+      .chatbot-btn {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg,
+            var(--primary) 0%,
+            var(--primary-light) 100%);
+        color: #ffffff;
+        border: none;
+        box-shadow: var(--shadow-card-hover);
+        cursor: pointer;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .chatbot-btn:hover {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .chat-panel {
+        position: fixed;
+        bottom: 6.5rem;
+        right: 2rem;
+        width: 360px;
+        max-width: 90vw;
+        background: #ffffff;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-card-hover);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px) scale(0.95);
+        transition: var(--transition);
+      }
+
+      .chat-panel.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+      }
+
+      .chat-header {
+        background: var(--primary);
+        color: #ffffff;
+        padding: 1.2rem 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: var(--font-head);
+        font-weight: 700;
+      }
+
+      .chat-body {
+        height: 280px;
+        padding: 1.2rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        background: var(--bg-alt);
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary) rgba(30, 58, 138, 0.05);
+      }
+
+      .chat-body::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .chat-body::-webkit-scrollbar-track {
+        background: rgba(30, 58, 138, 0.03);
+      }
+
+      .chat-body::-webkit-scrollbar-thumb {
+        background: var(--primary-light);
+        border-radius: 10px;
+      }
+
+      .chat-msg {
+        max-width: 82%;
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius);
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+
+      .chat-msg.bot {
+        background: #ffffff;
+        color: var(--text-dark);
+        border-bottom-left-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        align-self: flex-start;
+      }
+
+      .chat-msg.user {
+        background: var(--primary);
+        color: #ffffff;
+        border-bottom-right-radius: 4px;
+        align-self: flex-end;
+      }
+
+      .chat-quick-pills {
+        padding: 0.6rem 1rem;
+        background: #ffffff;
+        display: flex;
+        gap: 0.4rem;
+        overflow-x: auto;
+        border-top: 1px solid var(--border-card);
+      }
+
+      .chat-pill {
+        background: var(--primary-surface);
+        color: var(--primary);
+        border: none;
+        padding: 0.35rem 0.7rem;
+        border-radius: var(--radius-full);
+        font-size: 0.75rem;
+        font-weight: 700;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+
+      .chat-input-bar {
+        padding: 0.8rem 1rem;
+        background: #ffffff;
+        display: flex;
+        gap: 0.5rem;
+        border-top: 1px solid var(--border-card);
+      }
+
+      .chat-input-bar input {
+        flex: 1;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-full);
+        padding: 0.55rem 1rem;
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        outline: none;
+      }
+
+      .chat-input-bar button {
+        background: var(--primary);
+        color: #ffffff;
+        border: none;
+        padding: 0.55rem 1.1rem;
+        border-radius: var(--radius-full);
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+      }
+
+      /* ==========================================================================
+           14. RESPONSIVE BREAKPOINTS
+           ========================================================================== */
+      @media (max-width: 1024px) {
+
+        .hero-grid,
+        .executive-card,
+        .major-spotlight-card,
+        .achieve-grid,
+        .spmb-wrapper,
+        .news-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        .why-bento-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .why-col-8,
+        .why-col-4,
+        .why-col-6 {
+          grid-column: span 1;
+        }
+
+        .majors-sub-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .blud-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .bkk-table-header {
+          display: none;
+        }
+
+        .bkk-table-row {
+          grid-template-columns: 1fr;
+          gap: 0.6rem;
+          padding: 1.2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0;
+        }
+
+        /* Garis pemisah dibuat rapi seperti kisi, bukan hanya kanan */
+        .stats-grid .stat-card {
+          padding: 1.2rem 0.8rem;
+          border-right: 1px solid rgba(255, 255, 255, 0.12);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .stats-grid .stat-card:nth-child(2n) {
+          border-right: none;
+        }
+
+        .stats-grid .stat-card:nth-last-child(-n + 2) {
+          border-bottom: none;
+        }
+
+        .stats-grid .stat-num {
+          font-size: 2rem;
+          margin-bottom: 0.35rem;
+        }
+
+        /* Label panjang seperti "Tahun Berdiri (58+ Th Pengabdian)"
+           dan "Akreditasi BAN-S/M Kemendikbudristek" perlu dikecilkan
+           agar tidak pecah berantakan di kolom sempit. */
+        .stats-grid .stat-label {
+          font-size: 0.76rem;
+          line-height: 1.4;
+          opacity: 0.85;
+          hyphens: auto;
+          -webkit-hyphens: auto;
+        }
+
+        .blud-grid {
+          grid-template-columns: 1fr !important;
+        }
+
+        .majors-sub-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .news-cards-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .executive-card {
+          padding: 2rem 1.5rem;
+        }
+
+        .major-spotlight-card {
+          padding: 2rem 1.5rem;
+        }
+
+        .countdown-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* ==========================================================================
+           15. COMPREHENSIVE MOBILE ULTRA-OPTIMIZATION (360px, 390px, 768px)
+           ========================================================================== */
+      /* Tap Target & Global Padding Standard */
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 20px !important;
+        }
+
+        html,
+        body {
+          overflow-x: hidden !important;
+          max-width: 100vw !important;
+        }
+
+        /* Disable heavy effects for silky smooth mobile scroll (I) */
+        .px-stage,
+        .px-orb,
+        .px-grid,
+        .achieve-glow-bg {
+          display: none !important;
+        }
+
+        /* Responsive Navbar (B) */
+        .header-wrapper {
+          top: 0.5rem;
+          width: calc(100% - 20px);
+          border-radius: 20px;
+        }
+
+        .nav-island {
+          padding: 0.6rem 1rem !important;
+        }
+
+        .brand-logo {
+          max-height: 42px;
+          max-width: 130px;
+        }
+
+        .nav-menu {
+          display: none !important;
+        }
+
+        .nav-mobile-cta {
+          display: inline-flex !important;
+          margin-left: auto;
+          margin-right: 0.5rem;
+          padding: 0.45rem 0.9rem !important;
+          font-size: 0.8rem !important;
+          min-height: 38px;
+        }
+
+        .hamburger {
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          min-width: 44px;
+          min-height: 44px;
+          border-radius: 8px;
+          background: var(--primary-surface);
+          color: var(--primary);
+          font-size: 1.4rem;
+          padding: 0;
+        }
+
+        .mobile-drawer {
+          width: 85vw;
+          max-width: 340px;
+          background: #ffffff !important;
+        }
+
+        .drawer-close {
+          width: 44px;
+          height: 44px;
+          min-width: 44px;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .drawer-links a {
+          transition: var(--transition);
+          min-height: 44px;
+          font-size: 16px;
+          /* Prevents iOS auto zoom */
+        }
+
+        .hero-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 2rem;
+        }
+
+        .hero-text-col {
+          align-items: center;
+          text-align: center;
+        }
+
+        .hero-actions {
+          justify-content: center;
+        }
+
+        .hero-proof-strip {
+          justify-content: center;
+        }
+
+        .hero-students-img {
+          max-height: 320px;
+        }
+
+        /* HERO SECTION (C) */
+        .hero-section {
+          padding: 5.5rem 0 3.5rem !important;
+        }
+
+        .hero-headline {
+          font-size: clamp(1.75rem, 7.5vw, 2.4rem) !important;
+          line-height: 1.2 !important;
+          letter-spacing: -0.03em;
+        }
+
+        .hero-cta-group {
+          flex-direction: column !important;
+          width: 100%;
+          gap: 0.75rem !important;
+        }
+
+        .hero-cta-group .btn {
+          width: 100% !important;
+          min-height: 46px;
+          font-size: 16px;
+        }
+
+        .hero-stats-strip {
+          display: grid !important;
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 0.75rem !important;
+        }
+
+        .hero-strip-item {
+          padding: 0.75rem 0.5rem;
+          text-align: center;
+        }
+
+        /* KONSENTRASI KEAHLIAN (D) */
+        .majors-hero-orbit {
+          height: 280px !important;
+          margin-bottom: 2rem !important;
+        }
+
+        .orbit-hero-stage {
+          height: 280px !important;
+        }
+
+        .orbit-ring-outer {
+          display: none !important;
+        }
+
+        .orbit-ring-inner {
+          width: 240px !important;
+          height: 240px !important;
+        }
+
+        .orbit-ring-inner .orbit-slot {
+          transform: rotate(var(--a)) translateY(-120px) !important;
+        }
+
+        .orbit-ring-inner .orbit-icon {
+          width: 42px !important;
+          height: 42px !important;
+        }
+
+        .orbit-hero-center {
+          max-width: 290px !important;
+          padding: 1rem !important;
+        }
+
+        .orbit-hero-title {
+          font-size: clamp(1.4rem, 5.5vw, 1.85rem) !important;
+          line-height: 1.25 !important;
+        }
+
+        .orbit-hero-desc {
+          font-size: 0.88rem !important;
+          line-height: 1.5 !important;
+        }
+
+        .majors-split-grid {
+          grid-template-columns: 1fr !important;
+          gap: 1.5rem !important;
+        }
+
+        .major-nav-item {
+          min-height: 64px !important;
+          padding: 0.9rem 1.1rem !important;
+        }
+
+        .major-nav-name {
+          font-size: 0.98rem !important;
+        }
+
+        .majors-detail-col {
+          position: static !important;
+          top: auto !important;
+        }
+
+        .major-panel-head-grid {
+          grid-template-columns: 1fr !important;
+          gap: 1.2rem !important;
+          padding: 1.2rem !important;
+        }
+
+        .major-figure-wrapper {
+          max-width: 240px !important;
+          margin: 0 auto !important;
+          aspect-ratio: 3 / 4 !important;
+        }
+
+        .major-steps-track {
+          grid-template-columns: 1fr !important;
+          gap: 0.85rem !important;
+        }
+
+        .major-step-box {
+          padding: 0.9rem !important;
+          border-left: 3px solid var(--primary) !important;
+        }
+
+        .major-step-box:nth-child(4) {
+          border-left-color: var(--secondary) !important;
+        }
+
+        .major-step-header {
+          margin-bottom: 0.4rem;
+        }
+
+        .major-step-list {
+          font-size: 0.84rem !important;
+          line-height: 1.5 !important;
+        }
+
+        /* BKK SECTION & TABLE (G) */
+        .bkk-table-header {
+          display: none !important;
+        }
+
+        .bkk-table-row {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 0.4rem !important;
+          padding: 1rem !important;
+          border-bottom: 1px solid var(--border-card) !important;
+        }
+
+        .bkk-table-row:last-child {
+          border-bottom: none !important;
+        }
+
+        /* PRESTASI & TESTIMONI */
+        .achieve-grid {
+          grid-template-columns: 1fr !important;
+          gap: 2.5rem !important;
+        }
+
+        .timeline-card {
+          padding: 1.2rem !important;
+          margin-bottom: 1.2rem !important;
+        }
+
+        /* FOOTER (H) */
+        .site-footer {
+          padding: 4rem 0 2rem !important;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr !important;
+          gap: 2rem !important;
+        }
+
+        .footer-social-row {
+          justify-content: flex-start !important;
+        }
+
+        .footer-bottom {
+          flex-direction: column !important;
+          text-align: center !important;
+          gap: 0.5rem !important;
+        }
+
+        /* CHATBOT FLOATING BUTTON */
+        .chatbot-btn {
+          transition: var(--transition);
+          width: 50px !important;
+          height: 50px !important;
+          bottom: 1.2rem !important;
+          right: 1.2rem !important;
+          font-size: 1.3rem !important;
+        }
+
+        .chat-panel {
+          bottom: 4.8rem !important;
+          right: 1rem !important;
+          left: 1rem !important;
+          width: auto !important;
+          max-width: none !important;
+        }
+      }
+
+      /* 360px & 390px (Narrow Mobile Benchmark) */
+      @media (max-width: 560px) {
+
+        .orbit-hero-svg circle:nth-child(1),
+        .orbit-ring-inner .orbit-slot {
+          display: none !important;
+        }
+
+        .orbit-hero-center {
+          max-width: 100% !important;
+          padding: 0.8rem 0.5rem !important;
+        }
+
+        .hero-stats-strip {
+          grid-template-columns: 1fr !important;
+        }
+
+        .desktop-only {
+          display: none;
+        }
+
+        .mobile-only {
+          display: block;
+        }
+
+        .hero-students-img {
+          max-height: 300px;
+          width: auto;
+          margin: 0 auto;
+          display: block;
+          object-fit: contain;
+        }
+
+
+
+        .p-icon-hero {
+          font-size: 2.5rem !important;
+        }
+
+        .countdown-row {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 0.5rem !important;
+        }
+
+        .countdown-val {
+          font-size: 1.4rem !important;
+        }
+      }
+
+      /* ==========================================================================
+           ROBUST STANDARD NAVBAR & MOBILE DRAWER (Z-INDEX & ACCESSIBILITY FIX)
+           ========================================================================== */
+      .header-wrapper {
+        position: fixed !important;
+        top: 1rem;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90% !important;
+        max-width: 1320px !important;
+        background: #ffffff !important;
+        border-radius: 50px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+        border: 1px solid var(--border-card) !important;
+        pointer-events: auto !important;
+      }
+
+      .nav-island {
+        width: 100% !important;
+        padding: 0.8rem 1.8rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        position: relative !important;
+      }
+
+      /* Hamburger button MUST have relative position, high z-index, and pointer-events */
+      .hamburger,
+      .nav-toggle {
+        display: none;
+        background: var(--primary-surface) !important;
+        border: 1px solid rgba(30, 64, 175, 0.15) !important;
+        color: var(--primary) !important;
+        font-size: 1.4rem !important;
+        cursor: pointer !important;
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        border-radius: 10px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+        z-index: 10000 !important;
+        pointer-events: auto !important;
+        transition: all 0.2s ease !important;
+        user-select: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+
+      .hamburger:hover,
+      .nav-toggle:hover,
+      .hamburger:focus,
+      .nav-toggle:focus {
+        background: var(--primary) !important;
+        color: #ffffff !important;
+        outline: none !important;
+      }
+
+      /* Mobile Drawer */
+      .mobile-overlay {
+        position: fixed !important;
+        inset: 0 !important;
+        background: rgba(15, 23, 42, 0.65) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        z-index: 99998 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease !important;
+        pointer-events: none !important;
+      }
+
+      .mobile-overlay.active {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+      }
+
+      .mobile-drawer {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 85vw !important;
+        max-width: 340px !important;
+        height: 100dvh !important;
+        background: #ffffff !important;
+        z-index: 99999 !important;
+        padding: 2rem 1.6rem !important;
+        transform: translateX(100%) !important;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.25) !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        pointer-events: auto !important;
+      }
+
+      .mobile-drawer.active {
+        transform: translateX(0) !important;
+      }
+
+      .drawer-close {
+        background: var(--bg-alt) !important;
+        border: 1px solid var(--border-card) !important;
+        color: var(--text-dark) !important;
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        border-radius: 50% !important;
+        font-size: 1.4rem !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-bottom: 1.5rem !important;
+        position: relative !important;
+        z-index: 100000 !important;
+        pointer-events: auto !important;
+      }
+
+      /* Ensure decorative layers do NOT block touch events */
+      .px-stage,
+      .px-orb,
+      .px-grid,
+      .px-ring,
+      .watermark,
+      .header-bg-pattern {
+        pointer-events: none !important;
+      }
+
+      @media (max-width: 900px) {
+        .header-wrapper {
+          top: 0.5rem !important;
+          width: calc(100% - 20px) !important;
+          border-radius: 20px !important;
+        }
+
+        .nav-island {
+          padding: 0.6rem 1rem !important;
+        }
+
+        .nav-menu {
+          display: none !important;
+        }
+
+        .nav-mobile-cta {
+          display: inline-flex !important;
+          margin-left: auto;
+          margin-right: 0.6rem;
+          padding: 0.45rem 1rem !important;
+          font-size: 0.82rem !important;
+          min-height: 40px !important;
+        }
+
+        .hamburger,
+        .nav-toggle {
+          display: flex !important;
+        }
+      }
+  </style>
+</head>
+
+<body>
+  <!-- 1. FLOATING ISLAND NAVBAR WITH GLASSMORPHISM 2.0 -->
+    @include('partials.navbar')
+    @yield('content')
+    @include('partials.footer')
+
+  <!-- 14. CHATBOT AI ASISTEN VIRTUAL -->
+  <button class="chatbot-btn" id="chatbot-toggle" aria-label="Buka Asisten AI">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="lucide lucide-message-circle-more-icon lucide-message-circle-more">
+      <path
+        d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+      <path d="M8 12h.01" />
+      <path d="M12 12h.01" />
+      <path d="M16 12h.01" />
+    </svg>
+  </button>
+  <div class="chat-panel" id="chat-panel" data-lenis-prevent>
+    <div class="chat-header">
+      <span>Asisten AI SMEMSA</span>
+      <span style="
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+          ">Online</span>
+    </div>
+    <div class="chat-body" id="chat-body" data-lenis-prevent>
+      <div class="chat-msg bot">
+        Assalamu'alaikum! Saya asisten AI resmi SMKS Muhammadiyah 1 Genteng.
+        Ada yang bisa saya bantu terkait info 7 jurusan, alur pendaftaran SPMB,
+        sertifikasi LSP-P1 BNSP, fasilitas, atau loker BKK?
+      </div>
+    </div>
+    <div class="chat-quick-pills">
+      <button class="chat-pill" onclick="sendQuickMsg('Info 7 Jurusan')">
+        Info 7 Jurusan
+      </button>
+      <button class="chat-pill" onclick="sendQuickMsg('Alur Pendaftaran SPMB')">
+        Alur SPMB
+      </button>
+      <button class="chat-pill" onclick="sendQuickMsg('Info LSP-P1 BNSP')">
+        LSP-P1 BNSP
+      </button>
+      <button class="chat-pill" onclick="sendQuickMsg('Lowongan BKK')">
+        Lowongan BKK
+      </button>
+    </div>
+    <div class="chat-input-bar">
+      <input type="text" id="chat-input-text" placeholder="Ketik pertanyaan Anda..." />
+      <button onclick="handleChatSubmit()">Kirim</button>
+    </div>
+  </div>
+
+  <!-- GSAP, ScrollTrigger & Lenis Smooth Scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- STANDARDIZED ACCESSIBLE NAVBAR & DRAWER SCRIPT (INITIALIZED FIRST) -->
+  <script>
+    (function () {
+      function initNavigation() {
+        var hamburgerBtn =
+          document.querySelector("#hamburger-btn") ||
+          document.querySelector(".hamburger") ||
+          document.querySelector(".nav-toggle");
+        var drawerCloseBtn =
+          document.querySelector("#drawer-close-btn") ||
+          document.querySelector(".drawer-close");
+        var mobileDrawer =
+          document.querySelector("#mobile-drawer") ||
+          document.querySelector(".mobile-drawer");
+        var mobileOverlay =
+          document.querySelector("#mobile-overlay") ||
+          document.querySelector(".mobile-overlay");
+
+        function openDrawer() {
+          if (mobileDrawer) mobileDrawer.classList.add("active");
+          if (mobileOverlay) mobileOverlay.classList.add("active");
+          document.body.style.overflow = "hidden";
+          if (hamburgerBtn)
+            hamburgerBtn.setAttribute("aria-expanded", "true");
+          if (window.lenis) window.lenis.stop();
+        }
+
+        function closeDrawer() {
+          if (mobileDrawer) mobileDrawer.classList.remove("active");
+          if (mobileOverlay) mobileOverlay.classList.remove("active");
+          document.body.style.overflow = "";
+          if (hamburgerBtn)
+            hamburgerBtn.setAttribute("aria-expanded", "false");
+          if (window.lenis) window.lenis.start();
+        }
+
+        if (hamburgerBtn) {
+          hamburgerBtn.removeEventListener("click", openDrawer);
+          hamburgerBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (mobileDrawer && mobileDrawer.classList.contains("active")) {
+              closeDrawer();
+            } else {
+              openDrawer();
+            }
+          });
+        }
+
+        if (drawerCloseBtn) {
+          drawerCloseBtn.removeEventListener("click", closeDrawer);
+          drawerCloseBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            closeDrawer();
+          });
+        }
+
+        if (mobileOverlay) {
+          mobileOverlay.removeEventListener("click", closeDrawer);
+          mobileOverlay.addEventListener("click", function (e) {
+            e.preventDefault();
+            closeDrawer();
+          });
+        }
+
+        // Close on drawer link click
+        if (mobileDrawer) {
+          var drawerLinks = mobileDrawer.querySelectorAll("a");
+          drawerLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+              closeDrawer();
+            });
+          });
+        }
+
+        // Escape key listener
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            closeDrawer();
+            if (typeof closeItemModal === "function") closeItemModal();
+            if (typeof closeNewsModal === "function") closeNewsModal();
+            if (typeof closeAwardModal === "function") closeAwardModal();
+            if (typeof closeMajorModal === "function") closeMajorModal();
+            if (typeof closeBludModal === "function") closeBludModal();
+          }
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initNavigation);
+      } else {
+        initNavigation();
+      }
+    })();
+  </script>
+
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+  <script>
+    // 1. Initialize Lenis Smooth Scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    // Synchronize Lenis with GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    // Smooth Scroll for anchor links using Lenis
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href");
+        if (targetId && targetId !== "#" && targetId.length > 1) {
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            lenis.scrollTo(targetEl, { offset: -70, duration: 1.2 });
+            // Close mobile drawer if open
+            closeMobileDrawer();
+          }
+        }
+      });
+    });
+
+    // 2. Navbar Scrolled Island Effect
+    const mainNav = document.getElementById("main-nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40) {
+        mainNav.classList.add("scrolled");
+      } else {
+        mainNav.classList.remove("scrolled");
+      }
+    });
+
+    // 3. Mobile Drawer Logic
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const drawerCloseBtn = document.getElementById("drawer-close-btn");
+    const mobileDrawer = document.getElementById("mobile-drawer");
+    const mobileOverlay = document.getElementById("mobile-overlay");
+
+    function openMobileDrawer() {
+      if (mobileDrawer) mobileDrawer.classList.add("active");
+      if (mobileOverlay) mobileOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+      if (hamburgerBtn) hamburgerBtn.setAttribute("aria-expanded", "true");
+      if (typeof lenis !== "undefined" && lenis) lenis.stop();
+    }
+
+    function closeMobileDrawer() {
+      if (mobileDrawer) mobileDrawer.classList.remove("active");
+      if (mobileOverlay) mobileOverlay.classList.remove("active");
+      document.body.style.overflow = "";
+      if (hamburgerBtn) hamburgerBtn.setAttribute("aria-expanded", "false");
+      if (typeof lenis !== "undefined" && lenis) lenis.start();
+    }
+
+    /* Listener navbar DIHAPUS di sini — sudah ditangani initNavigation()
+       yang memakai toggle. Dua listener pada tombol yang sama membuat
+       drawer langsung terbuka lagi setiap kali ditutup. Fungsi
+       openMobileDrawer/closeMobileDrawer tetap ada karena masih
+       dipanggil dari handler anchor Lenis. */
+
+    // 4. Hero Hub Tabs
+    function switchHubTab(tabName, btn) {
+      document
+        .querySelectorAll(".hub-nav-tab")
+        .forEach((b) => b.classList.remove("active"));
+      document
+        .querySelectorAll(".hub-tab-panel")
+        .forEach((p) => p.classList.remove("active"));
+
+      btn.classList.add("active");
+      const target = document.getElementById("hub-panel-" + tabName);
+      if (target) target.classList.add("active");
+    }
+
+    // 5. Hero Quick Search / Filter Jurusan
+    function handleHeroSearch() {
+      const query = (
+        document.getElementById("hero-search-input")?.value || ""
+      )
+        .toLowerCase()
+        .trim();
+      if (!query) return;
+
+      const jurusanSection = document.getElementById("jurusan");
+      if (jurusanSection) {
+        if (typeof lenis !== "undefined" && lenis) {
+          lenis.scrollTo(jurusanSection, { offset: -70, duration: 1.2 });
+        } else {
+          jurusanSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+
+      if (
+        query.includes("code") ||
+        query.includes("web") ||
+        query.includes("rpl") ||
+        query.includes("software") ||
+        query.includes("aplikasi") ||
+        query.includes("flutter")
+      ) {
+        selectMajorPathway("rpl");
+      } else if (
+        query.includes("jaringan") ||
+        query.includes("tkj") ||
+        query.includes("network") ||
+        query.includes("server") ||
+        query.includes("wifi") ||
+        query.includes("fiber")
+      ) {
+        selectMajorPathway("tkj");
+      } else if (
+        query.includes("desain") ||
+        query.includes("video") ||
+        query.includes("dkv") ||
+        query.includes("multimedia") ||
+        query.includes("foto") ||
+        query.includes("animasi")
+      ) {
+        selectMajorPathway("dkv");
+      } else if (
+        query.includes("bisnis") ||
+        query.includes("digital") ||
+        query.includes("bd") ||
+        query.includes("marketing") ||
+        query.includes("toko") ||
+        query.includes("shopee")
+      ) {
+        selectMajorPathway("bd");
+      } else if (
+        query.includes("akuntansi") ||
+        query.includes("uang") ||
+        query.includes("akl") ||
+        query.includes("pajak") ||
+        query.includes("bank")
+      ) {
+        selectMajorPathway("akl");
+      } else if (
+        query.includes("kantor") ||
+        query.includes("mplb") ||
+        query.includes("admin") ||
+        query.includes("arsip") ||
+        query.includes("sekretaris")
+      ) {
+        selectMajorPathway("mplb");
+      } else if (
+        query.includes("hotel") ||
+        query.includes("ph") ||
+        query.includes("wisata") ||
+        query.includes("hospitality") ||
+        query.includes("edutel")
+      ) {
+        selectMajorPathway("ph");
+      } else if (
+        query.includes("motor") ||
+        query.includes("tbsm") ||
+        query.includes("bengkel") ||
+        query.includes("honda") ||
+        query.includes("ahass") ||
+        query.includes("otomotif")
+      ) {
+        selectMajorPathway("tbsm");
+      }
+    }
+
+    document
+      .getElementById("hero-search-input")
+      ?.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") handleHeroSearch();
+      });
+
+    // 6. KONSENTRASI KEAHLIAN: SATU SUMBER DATA TERPADU (7 JURUSAN LENGKAP)
+    const majorsData = [
+      {
+        key: "rpl",
+        code: "PPLG",
+        num: "01",
+        title: "Pengembang Perangkat Lunak & Gim",
+        badge: "ALUR PENDIDIKAN VOKASI • PPLG",
+        tefa: "Software House TEFA SMEMSA & Lab iMac Cloud",
+        certSummary: "LSP-P1 BNSP Junior Web Developer & Cloud Database",
+        logo: "assets/major/PPLG-removebg-preview.png",
+        foto: "assets/major-person/rpl.png",
+        desc: "Mencetak software engineer berkarakter Islami yang menguasai ekosistem web modern, mobile app development, backend cloud, dan siap terjun ke industri teknologi.",
+        kompetensi: [
+          "Web Modern (HTML5, CSS3, JS, Laravel/Node)",
+          "Mobile Application (Flutter & Kotlin)",
+          "Database SQL & Firebase Cloud Server",
+        ],
+        tempatPraktik: {
+          title: "Software House TEFA SMEMSA",
+          items: [
+            "Pengerjaan proyek sistem informasi & aplikasi web klien.",
+            "Lab iMac & Workstation gigabit standar industri.",
+          ],
+          box: "Portofolio live production sebelum wisuda.",
+        },
+        sertifikasi: {
+          title: "LSP-P1 BNSP & Cloud",
+          items: [
+            "Skema Junior Web Developer & Programmer (BNSP).",
+            "Sertifikasi Internasional Cloud & Database.",
+          ],
+          box: "Sertifikat Garuda Emas resmi diakui ASEAN.",
+        },
+        setelahLulus: {
+          title: "Mitra Dudika & Karir",
+          items: [
+            "Mitra: Semesta Multitekno, Hummatech, Jagoan Hosting.",
+            "Karir: Frontend/Backend Developer, QA, IT Support.",
+          ],
+          box: "Penyaluran via BKK & inkubasi startup.",
+        },
+      },
+      {
+        key: "tkj",
+        code: "TJKT",
+        num: "02",
+        title: "Teknik Jaringan Komputer & Telekomunikasi",
+        badge: "ALUR PENDIDIKAN VOKASI • TJKT",
+        tefa: "ISP & Network Operations Center (NOC) TEFA",
+        certSummary: "LSP-P1 BNSP Network Administrator & MikroTik MTCNA",
+        logo: "assets/major/TJKT-removebg-preview.png",
+        foto: "assets/major-person/tkj.png",
+        desc: "Spesialisasi arsitektur jaringan skala enterprise, instalasi fiber optic backbone, administrasi server Linux/Cloud, dan protokol pertahanan cyber security.",
+        kompetensi: [
+          "Routing-Switching Enterprise (Cisco & MikroTik)",
+          "Instalasi & Splicing Kabel Fiber Optic (FTTH/OTDR)",
+          "Administrasi Cloud Server Linux & Virtualisasi",
+        ],
+        tempatPraktik: {
+          title: "TEFA Network Operation Center",
+          items: [
+            "Pengelolaan infrastruktur internet sekolah 24/7.",
+            "Lab Fiber Optic & Cisco Router Rack industri.",
+          ],
+          box: "Troubleshooting jaringan live production.",
+        },
+        sertifikasi: {
+          title: "MikroTik & BNSP",
+          items: [
+            "LSP-P1 BNSP: Network Administrator Madya & FO.",
+            "Sertifikasi Internasional MikroTik (MTCNA).",
+          ],
+          box: "Diakui oleh asosiasi APJII seluruh Indonesia.",
+        },
+        setelahLulus: {
+          title: "Mitra Dudika & Karir",
+          items: [
+            "Mitra: PT Telkom Indonesia, Telkomsel, Lintasarta.",
+            "Karir: Network Engineer, Cloud Admin, Teknisi FO.",
+          ],
+          box: "Prioritas rekrutmen ISP regional Jawa Timur.",
+        },
+      },
+      {
+        key: "dkv",
+        code: "DKV",
+        num: "03",
+        title: "Desain Komunikasi Visual",
+        badge: "ALUR PENDIDIKAN VOKASI • DKV",
+        tefa: "Studio Creative Agency & Multimedia Lab",
+        certSummary: "LSP-P1 BNSP Desainer Grafis & Adobe Certified Pro",
+        logo: "assets/major/dkv.png",
+        foto: "assets/major-person/dkv.png",
+        desc: "Pusat eksplorasi visual komersial, produksi video sinematik, animasi motion graphics 2D/3D, branding periklanan, dan perancangan antarmuka digital UI/UX.",
+        kompetensi: [
+          "Desain Komersial, Brand Identity & Ilustrasi Vektor",
+          "Videografi Sinematik, Lighting & Audio Engineering",
+          "User Interface & UX Design (Figma & Prototyping)",
+        ],
+        tempatPraktik: {
+          title: "Studio Creative Agency TEFA",
+          items: [
+            "Pesanan video profil korporat & foto produk UMKM.",
+            "Studio Green Screen & Broadcast Audio Suite.",
+          ],
+          box: "Produksi konten bernilai jual komersial tinggi.",
+        },
+        sertifikasi: {
+          title: "Adobe Certified & BNSP",
+          items: [
+            "LSP-P1 BNSP: Desainer Grafis Muda & Multimedia.",
+            "Sertifikasi Adobe Certified Professional (Ps, Ai, Pr).",
+          ],
+          box: "Standar kompetensi industri periklanan kreatif.",
+        },
+        setelahLulus: {
+          title: "Mitra Dudika & Karir",
+          items: [
+            "Mitra: Studio Kinetik, Citra Visual, Radar Banyuwangi.",
+            "Karir: UI/UX Designer, Motion Animator, Creative Director.",
+          ],
+          box: "Portofolio aktif Behance/Dribbble siap kerja.",
+        },
+      },
+      {
+        key: "bd",
+        code: "BD",
+        num: "04",
+        title: "Bisnis Digital",
+        badge: "ALUR PENDIDIKAN VOKASI • BISNIS DIGITAL",
+        tefa: "SMEMSA E-Commerce Hub & Live Studio TEFA",
+        certSummary: "LSP-P1 BNSP Toko Daring & Meta Certified Marketing",
+        logo: "assets/major/logo bdp.png",
+        foto: "assets/major-person/BD.png",
+        desc: "Mengolaborasikan strategi niaga modern dengan teknologi: manajemen marketplace omnichannel, paid digital ads (Meta & Google), live commerce selling, dan analitik data pasar.",
+        kompetensi: [
+          "Manajemen Marketplace (Shopee, TikTok Shop, Tokopedia)",
+          "Digital Ads Marketing (Meta Ads, Google Ads & TikTok)",
+          "Live Commerce Broadcasting & Copywriting Persuasif",
+        ],
+        tempatPraktik: {
+          title: "SMEMSA E-Commerce Hub TEFA",
+          items: [
+            "Studio Live Streaming komersial penjualan harian.",
+            "Mini Fulfillment Center: pergudangan & ekspedisi.",
+          ],
+          box: "Praktik omzet nyata dan kalkulasi profit harian.",
+        },
+        sertifikasi: {
+          title: "Digital Marketing BNSP",
+          items: [
+            "LSP-P1 BNSP: Pengelola Toko Daring & Digital Marketer.",
+            "Meta Certified Digital Marketing Associate.",
+          ],
+          box: "Legalitas kompetensi resmi agensi pemasaran.",
+        },
+        setelahLulus: {
+          title: "Mitra Dudika & Karir",
+          items: [
+            "Mitra: Astra International (Digital), JNE, Brand Fashion.",
+            "Karir: E-Commerce Specialist, Ads Optimizer, Live Host.",
+          ],
+          box: "Banyak siswa beromzet mandiri sebelum lulus.",
+        },
+      },
+      {
+        key: "akl",
+        code: "AKL",
+        num: "05",
+        title: "Akuntansi & Keuangan Lembaga",
+        badge: "ALUR PENDIDIKAN VOKASI • AKL",
+        tefa: "Bank Mini Syariah SMEMSA & Tax Center TEFA",
+        certSummary: "LSP-P1 BNSP Teknisi Akuntansi & Accurate Professional",
+        logo: "assets/major/logo AKL.png",
+        foto: "assets/major-person/ak.png",
+        desc: "Membina teknisi akuntansi handal yang menguasai software akuntansi komputer, perpajakan digital (e-Faktur/e-SPT), audit laporan korporasi, dan layanan perbankan syariah.",
+        kompetensi: [
+          "Software Komputer Akuntansi (Accurate & MYOB)",
+          "Perpajakan Digital (e-SPT, e-Faktur, PPh 21/23/PPN)",
+          "Penyusunan Laporan Keuangan Manufaktur & UMKM",
+        ],
+        tempatPraktik: {
+          title: "Bank Mini Syariah TEFA",
+          items: [
+            "Layanan tabungan siswa & simulasi teller perbankan riil.",
+            "Tax Center: konsultasi & pengisian SPT tahunan.",
+          ],
+          box: "Standar SOP Teller & CS perbankan nasional.",
+        },
+        sertifikasi: {
+          title: "Teknisi Akuntansi BNSP",
+          items: [
+            "LSP-P1 BNSP: Teknisi Akuntansi Yunior & Pajak Terapan.",
+            "Sertifikasi Software Accurate Professional.",
+          ],
+          box: "Diakui kantor akuntan publik & perbankan.",
+        },
+        setelahLulus: {
+          title: "Mitra Dudika & Karir",
+          items: [
+            "Mitra: Bank Jatim Syariah, BSI, BMT Genteng, KAP.",
+            "Karir: Junior Accountant, Tax Officer, Teller Bank, Payroll.",
+          ],
+          box: "Jalur prioritas rekrutmen institusi keuangan.",
+        },
+      },
+      {
+        key: "mplb",
+        code: "MPLB",
+        num: "06",
+        title: "Manajemen Perkantoran",
+        badge: "ALUR PENDIDIKAN VOKASI • MPLB",
+        tefa: "SMEMSA Office Service & Executive Meeting Room",
+        certSummary: "LSP-P1 BNSP Administrative Assistant & Digital Office",
+        logo: "assets/major/mp.jpeg",
+        emoji: "🏢",
+        foto: "assets/major-person/mp.png",
+        desc: "Mencetak staf administrasi eksekutif dan sekretaris cekatan dengan kemampuan public relations prima, otomasi perkantoran digital cloud, dan keprotokolan formal.",
+        kompetensi: [
+          "Otomasi Kantor Digital (Google Workspace & ERP Admin)",
+          "Manajemen Kearsipan Elektronik Modern (E-Records)",
+          "Komunikasi Bisnis Internasional & Public Relations",
+        ],
+        tempatPraktik: {
+          title: "SMEMSA Office Service TEFA",
+          items: [
+            "Pusat persuratan terpadu & resepsionis sekolah.",
+            "Executive Meeting Simulator: tata ruang rapat korporat.",
+          ],
+          box: "Membiasakan etika kantor eksekutif sejak dini.",
+        },
+        sertifikasi: {
+          title: "Administrasi Perkantoran BNSP",
+          items: [
+            "LSP-P1 BNSP: Executive Administrative Assistant & Arsip.",
+            "Sertifikasi Digital Office Professional.",
+          ],
+          box: "Standarisasi kesekretariatan instansi & BUMN.",
+        },
+        setelahLulus: {
+          title: "Mitra Dudika & Karir",
+          items: [
+            "Mitra: Instansi Pemerintah Daerah, PT Pelindo, Notaris.",
+            "Karir: Sekretaris Eksekutif, Front Office Manager, HR Admin.",
+          ],
+          box: "Terserap cepat di BUMN dan korporasi swasta.",
+        },
+      },
+      {
+        key: "ph",
+        code: "PH",
+        num: "07",
+        title: "Perhotelan",
+        badge: "ALUR PENDIDIKAN VOKASI • PERHOTELAN",
+        tefa: "Edutel Hotel SMEMSA & Mockup Suite Room TEFA",
+        certSummary: "LSP-P1 BNSP Front Office Receptionist & CHSE",
+        logo: "assets/major/PH.png",
+        emoji: "🏨",
+        foto: "assets/major-person/PH.png",
+        desc: "Menyiapkan tenaga hospitality internasional: keahlian reservasi Front Office, tata graha Housekeeping bintang lima, food & beverage service, serta etiket perjamuan formal.",
+        kompetensi: [
+          "Property Management System (Front Office Reservation)",
+          "Housekeeping Bintang Lima & Standard Bed Making",
+          "Food & Beverage Service, Table Manner & Banquet",
+        ],
+        tempatPraktik: {
+          title: "Edutel Hotel SMEMSA TEFA",
+          items: [
+            "Fasilitas penginapan riil beroperasi melayani tamu umum.",
+            "Mockup Suite Room, Bar Resto & Commercial Laundry.",
+          ],
+          box: "Pengalaman melayani tamu standar hotel bintang 5.",
+        },
+        sertifikasi: {
+          title: "Hospitality BNSP & CHSE",
+          items: [
+            "LSP-P1 BNSP: Front Office Receptionist & Housekeeper.",
+            "Sertifikasi Kebersihan & Keselamatan Hotel (CHSE).",
+          ],
+          box: "Diakui jaringan hotel internasional & kapal pesiar.",
+        },
+        setelahLulus: {
+          title: "Mitra Dudika & Karir",
+          items: [
+            "Mitra: Hotel Ketapang Indah, Dialoog Banyuwangi, Aston.",
+            "Karir: Front Desk Agent, Housekeeper, F&B Captain, GRO.",
+          ],
+          box: "Peluang magang hotel resort Bali & kapal pesiar.",
+        },
+      },
+    ];
+
+    let activeMajorKey = "rpl";
+    let hoverDebounceTimer = null;
+    let preloadedImages = [];
+
+    // B.2 PRELOAD SEMUA FOTO JURUSAN AGAR TIDAK ADA KEDIP SAAT HOVER
+    function preloadMajorImages() {
+      majorsData.forEach((m) => {
+        if (m.foto) {
+          const img = new Image();
+          img.src = m.foto;
+          preloadedImages.push(img);
+        }
+      });
+    }
+
+    // Render 8 Baris Jurusan dengan Aksesibilitas & Debounce Hover 120ms (B.1)
+    function renderMajorTabList() {
+      const container = document.getElementById("major-tablist-container");
+      if (!container) return;
+
+      container.innerHTML = majorsData
+        .map(
+          (m, index) => `
+                <button class="major-nav-item ${m.key === activeMajorKey ? "active" : ""}"
+                        id="tab-btn-${m.key}"
+                        role="tab"
+                        aria-selected="${m.key === activeMajorKey ? "true" : "false"}"
+                        aria-controls="major-tabpanel-container"
+                        tabindex="${m.key === activeMajorKey ? "0" : "-1"}"
+                        onclick="handleMajorClick('${m.key}')"
+                        onfocus="handleMajorFocus('${m.key}')"
+                        onkeydown="handleMajorTabKey(event, ${index})"
+                        onmouseenter="handleMajorMouseEnter('${m.key}')"
+                        onmouseleave="handleMajorMouseLeave()">
+                    <span class="major-nav-num">${m.num}</span>
+                    <div class="major-nav-content">
+                        <div class="major-nav-top">
+                            <h4 class="major-nav-name">${m.title}</h4>
+                            <span class="major-nav-code">${m.code}</span>
+                        </div>
+                        <p class="major-nav-tefa">TEFA: ${m.tefa}</p>
+                    </div>
+                    <span class="major-nav-chevron">&rarr;</span>
+                </button>
+            `,
+        )
+        .join("");
+    }
+
+    // B.1 Debounce 120ms untuk Mouse Enter
+    function handleMajorMouseEnter(majorKey) {
+      clearTimeout(hoverDebounceTimer);
+      if (window.innerWidth > 900 && majorKey !== activeMajorKey) {
+        hoverDebounceTimer = setTimeout(() => {
+          selectMajorPathway(majorKey);
+        }, 120);
+      }
+    }
+
+    function handleMajorMouseLeave() {
+      clearTimeout(hoverDebounceTimer);
+    }
+
+    // Klik & Focus mengganti SEKETIKA tanpa jeda debounce
+    /* Kembalikan panel ke kolom aslinya saat layar melebar ke desktop */
+    let majorLayoutTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(majorLayoutTimer);
+      majorLayoutTimer = setTimeout(function () {
+        const panel = document.getElementById("major-tabpanel-container");
+        const grid = document.querySelector(".majors-content-grid")
+          || document.querySelector(".majors-list-col")?.parentNode;
+        if (!panel || !grid) return;
+        if (window.innerWidth > 900 && panel.parentNode !== grid) {
+          grid.appendChild(panel);
+        }
+      }, 200);
+    });
+
+    function handleMajorClick(majorKey) {
+      clearTimeout(hoverDebounceTimer);
+      selectMajorPathway(majorKey);
+    }
+
+    function handleMajorFocus(majorKey) {
+      clearTimeout(hoverDebounceTimer);
+      if (majorKey !== activeMajorKey) {
+        selectMajorPathway(majorKey);
+      }
+    }
+
+    // Navigasi Keyboard Panah Atas & Bawah antar Jurusan (A11y)
+    function handleMajorTabKey(event, currentIndex) {
+      let nextIndex = currentIndex;
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+        event.preventDefault();
+        nextIndex = (currentIndex + 1) % majorsData.length;
+      } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+        event.preventDefault();
+        nextIndex =
+          (currentIndex - 1 + majorsData.length) % majorsData.length;
+      } else if (event.key === "Home") {
+        event.preventDefault();
+        nextIndex = 0;
+      } else if (event.key === "End") {
+        event.preventDefault();
+        nextIndex = majorsData.length - 1;
+      } else {
+        return;
+      }
+
+      const nextMajor = majorsData[nextIndex];
+      if (nextMajor) {
+        selectMajorPathway(nextMajor.key);
+        const nextBtn = document.getElementById(`tab-btn-${nextMajor.key}`);
+        if (nextBtn) nextBtn.focus();
+      }
+    }
+
+    // Lompat dari Hero Search / Chips
+    function jumpToMajor(majorKey) {
+      const section = document.getElementById("jurusan");
+      if (section) {
+        if (typeof lenis !== "undefined" && lenis) {
+          lenis.scrollTo(section, { offset: -70, duration: 1.0 });
+        } else {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+      selectMajorPathway(majorKey);
+    }
+
+    let pathwaySwitchTimeout = null;
+
+    // B.3 Pilih Jurusan & Update Panel dengan Transisi Cepat (250ms) dan Overwrite Tween
+    function selectMajorPathway(majorKey) {
+      const major = majorsData.find((m) => m.key === majorKey);
+      if (!major) return;
+
+      activeMajorKey = majorKey;
+
+      // 1. Update State Tombol Tab
+      document.querySelectorAll(".major-nav-item").forEach((btn) => {
+        const isActive = btn.id === `tab-btn-${majorKey}`;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-selected", isActive ? "true" : "false");
+        btn.setAttribute("tabindex", isActive ? "0" : "-1");
+      });
+
+      // 2. Update Label Tabpanel
+      const panelContainer = document.getElementById(
+        "major-tabpanel-container",
+      );
+      if (panelContainer) {
+        panelContainer.setAttribute("aria-labelledby", `tab-btn-${majorKey}`);
+      }
+
+      // 3. Update Konten Panel dengan Transisi Cepat (Maks 250ms)
+      const pathwayView = document.getElementById("major-pathway-view");
+      if (!pathwayView) return;
+
+      // Batalkan timeout sebelumnya jika ada pergantian cepat
+      if (pathwaySwitchTimeout) clearTimeout(pathwaySwitchTimeout);
+
+      // Jika GSAP aktif, hentikan tween berjalan
+      if (typeof gsap !== "undefined") {
+        gsap.killTweensOf(pathwayView);
+      }
+
+      pathwayView.classList.add("anim-switching");
+
+      pathwaySwitchTimeout = setTimeout(() => {
+        const photoEl = document.getElementById("panel-student-photo");
+        const cornerLogoEl = document.getElementById("panel-figure-logo");
+        const fallbackEl = document.getElementById("panel-figure-fallback");
+        const fallbackCodeEl = document.getElementById("panel-fallback-code");
+        const codeEl = document.getElementById("panel-major-code");
+        const titleEl = document.getElementById("panel-major-title");
+        const descEl = document.getElementById("panel-major-desc");
+        const tefaNameEl = document.getElementById("panel-tefa-name");
+        const certNameEl = document.getElementById("panel-cert-name");
+        const stage1El = document.getElementById("panel-flow-stage1");
+        const stage2El = document.getElementById("panel-flow-stage2");
+        const stage2Box = document.getElementById("panel-flow-stage2-box");
+        const stage3El = document.getElementById("panel-flow-stage3");
+        const stage3Box = document.getElementById("panel-flow-stage3-box");
+        const stage4El = document.getElementById("panel-flow-stage4");
+        const stage4Box = document.getElementById("panel-flow-stage4-box");
+
+        // Foto Siswa & Fallback
+        if (photoEl) {
+          if (major.foto) {
+            photoEl.style.display = "block";
+            photoEl.src = major.foto;
+            photoEl.alt = `Siswa Berseragam ${major.title}`;
+            if (fallbackEl) fallbackEl.style.display = "none";
+          } else {
+            photoEl.style.display = "none";
+            if (fallbackEl) {
+              fallbackEl.style.display = "flex";
+              if (fallbackCodeEl) fallbackCodeEl.textContent = major.code;
+            }
+          }
+
+          if (major.key === "rpl") {
+            photoEl.removeAttribute("loading");
+          } else {
+            photoEl.setAttribute("loading", "lazy");
+          }
+        }
+
+        // Logo Pojok Figur
+        if (cornerLogoEl) {
+          if (major.logo) {
+            cornerLogoEl.innerHTML = `<img src="${major.logo}" alt="Logo ${major.code}" width="28" height="28" onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">`;
+          } else if (major.emoji) {
+            cornerLogoEl.innerHTML = `<span class="corner-emoji">${major.emoji}</span>`;
+          } else {
+            cornerLogoEl.innerHTML = `<span class="corner-emoji">🎓</span>`;
+          }
+        }
+
+        // Identitas Kanan
+        if (codeEl) codeEl.textContent = major.code;
+        if (titleEl) titleEl.textContent = major.title;
+        if (descEl) descEl.textContent = major.desc;
+        if (tefaNameEl) tefaNameEl.textContent = major.tefa;
+        if (certNameEl) certNameEl.textContent = major.certSummary;
+
+        // Alur 4 Tahap
+        if (stage1El) {
+          stage1El.innerHTML = major.kompetensi
+            .map((c) => `<li>${c}</li>`)
+            .join("");
+        }
+        if (stage2El) {
+          stage2El.innerHTML = major.tempatPraktik.items
+            .map((t) => `<li>${t}</li>`)
+            .join("");
+        }
+        if (stage2Box) stage2Box.textContent = major.tempatPraktik.box;
+
+        if (stage3El) {
+          stage3El.innerHTML = major.sertifikasi.items
+            .map((s) => `<li>${s}</li>`)
+            .join("");
+        }
+        if (stage3Box) stage3Box.textContent = major.sertifikasi.box;
+
+        if (stage4El) {
+          stage4El.innerHTML = major.setelahLulus.items
+            .map((l) => `<li>${l}</li>`)
+            .join("");
+        }
+        if (stage4Box) stage4Box.textContent = major.setelahLulus.box;
+
+        pathwayView.classList.remove("anim-switching");
+
+        /* MOBILE: panel dipindahkan tepat DI BAWAH baris jurusan yang
+           diketuk, sehingga bekerja seperti akordeon. Pengguna tidak
+           perlu menggulir naik-turun untuk berpindah jurusan. */
+        if (window.innerWidth <= 900) {
+          setTimeout(() => {
+            const panel = document.getElementById("major-tabpanel-container");
+            const item = document.getElementById("tab-btn-" + majorKey);
+            if (panel && item && item.parentNode) {
+              if (item.nextElementSibling !== panel) {
+                item.parentNode.insertBefore(panel, item.nextElementSibling);
+              }
+              // Gulir hanya sedikit, cukup agar panel terlihat
+              const rect = panel.getBoundingClientRect();
+              if (rect.top < 0 || rect.top > window.innerHeight * 0.6) {
+                if (typeof lenis !== "undefined" && lenis) {
+                  lenis.scrollTo(item, { offset: -90, duration: 0.6 });
+                } else {
+                  item.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }
+            }
+          }, 50);
+        }
+      }, 125);
+    }
+
+    // Inisialisasi awal saat load
+    preloadMajorImages();
+    renderMajorTabList();
+    selectMajorPathway("rpl");
+
+    // 7. AI Chatbot Logic
+    const chatbotToggle = document.getElementById("chatbot-toggle");
+    const chatPanel = document.getElementById("chat-panel");
+    const chatBody = document.getElementById("chat-body");
+    const chatInput = document.getElementById("chat-input-text");
+
+    if (chatbotToggle) {
+      chatbotToggle.addEventListener("click", () => {
+        chatPanel.classList.toggle("active");
+      });
+    }
+
+    function appendMsg(text, sender) {
+      const div = document.createElement("div");
+      div.className = `chat-msg ${sender}`;
+      div.innerText = text;
+      chatBody.appendChild(div);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function getBotResponse(input) {
+      const text = input.toLowerCase();
+      if (
+        text.includes("jurusan") ||
+        text.includes("prodi") ||
+        text.includes("keahlian")
+      ) {
+        return "SMEMSA Genteng memiliki 7 Konsentrasi Keahlian Unggulan Industri:\n1. PPLG (Pengembang Perangkat Lunak & Gim)\n2. TJKT (Teknik Jaringan Komputer & Telekomunikasi)\n3. DKV (Desain Komunikasi Visual)\n4. BD (Bisnis Digital)\n5. AKL (Akuntansi & Keuangan Lembaga)\n6. MPLB (Manajemen Perkantoran)\n7. PH (Perhotelan)";
+      } else if (
+        text.includes("spmb") ||
+        text.includes("daftar") ||
+        text.includes("syarat") ||
+        text.includes("biaya") ||
+        text.includes("alur") ||
+        text.includes("jadwal")
+      ) {
+        return "Alur Pendaftaran SPMB SMEMSA TA 2026/2027:\n\n🌐 ALUR ONLINE (Praktis & Cepat):\n1. Akses halaman Pendaftaran di website/menu SPMB.\n2. Isi data diri & pilih konsentrasi keahlian impian.\n3. Upload berkas (Rapor/SKL, KK, Akta).\n4. Cetak Kartu Pendaftaran & konfirmasi via WA Panitia.\n\n🏫 ALUR OFFLINE (Langsung di Sekolah):\n1. Datang ke Sekretariat SPMB SMEMSA Genteng (Jl. KH Imam Bahri No.10).\n2. Dampingi oleh Tim Admin pendaftaran untuk pengisian form.\n3. Verifikasi berkas cetak & pengukuran seragam di tempat.\n4. Menerima bukti pendaftaran resmi & informasi orientasi.";
+      } else if (
+        text.includes("loker") ||
+        text.includes("bkk") ||
+        text.includes("kerja") ||
+        text.includes("magang") ||
+        text.includes("lowongan")
+      ) {
+        return "🔥 Lowongan Kerja Terbaru Bursa Kerja Khusus (BKK) SMEMSA:\n\n1. Web & Mobile Developer - PT Digital Kreatif Nusantara (Malang)\n   • Gaji: Rp 4.200.000 - Rp 6.000.000 / bln\n   • Kualifikasi: Lulusan PPLG, paham JS/Laravel/Flutter.\n\n2. Junior Network & Cloud Support - PT Telkomsel Infrastructure (Surabaya)\n   • Gaji: Rp 4.500.000 - Rp 5.800.000 / bln\n   • Kualifikasi: Lulusan TJKT, menguasai MikroTik / Fiber Optic.\n\n3. Graphic & Motion Designer - Studio Visual Kinetik (Banyuwangi)\n   • Gaji: Rp 3.200.000 - Rp 4.500.000 / bln\n   • Kualifikasi: Lulusan DKV, mahir Adobe Ps/Ai/Pr.\n\n4. E-Commerce & Social Media Host - PT Astra Digital Commerce (Surabaya)\n   • Gaji: Rp 3.800.000 - Rp 5.000.000 / bln\n   • Kualifikasi: Lulusan BD/MPLB, komunikatif & mahir Live Streaming.\n\n5. Front Office & Hospitality Staff - Hotel Ketapang Indah / Dialoog Resort\n   • Gaji: Rp 3.500.000 - Rp 4.800.000 / bln\n   • Kualifikasi: Lulusan PH, penampilan menarik, bahasa Inggris aktif.\n\n💼 Pendaftaran & penyerahan berkas langsung melalui Kantor BKK SMEMSA!";
+      } else if (
+        text.includes("lsp") ||
+        text.includes("bnsp") ||
+        text.includes("sertifikat")
+      ) {
+        return "SMEMSA memiliki Lembaga Sertifikasi Profesi Pihak Kesatu (LSP-P1) berlisensi resmi BNSP. Setiap lulusan dibekali Ijazah + Sertifikat Kompetensi Garuda Emas berstandar nasional.";
+      } else if (text.includes("kepala") || text.includes("wahid")) {
+        return "Kepala Sekolah SMKS Muhammadiyah 1 Genteng adalah Bapak Wahid Wahyudi, S.E., M.M.";
+      } else if (text.includes("fasilitas") || text.includes("lab")) {
+        return "Fasilitas unggulan meliputi Lab iMac PPLG, TEFA NOC & Fiber Optic TJKT, Studio Creative DKV, Live E-Commerce Hub BD, Bank Mini Syariah AKL, Executive Office MPLB, dan Edutel Hotel PH.";
+      } else {
+        return "Terima kasih atas pertanyaannya! Silakan tanya mengenai Info 7 Jurusan, Alur SPMB (Online/Offline), Lowongan Kerja BKK, atau Sertifikasi LSP-P1 BNSP. Anda juga bisa menghubungi Panitia via WA di 0822-4135-6668.";
+      }
+    }
+
+    function handleChatSubmit() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      appendMsg(text, "user");
+      chatInput.value = "";
+      setTimeout(() => {
+        appendMsg(getBotResponse(text), "bot");
+      }, 400);
+    }
+
+    function sendQuickMsg(text) {
+      appendMsg(text, "user");
+      setTimeout(() => {
+        appendMsg(getBotResponse(text), "bot");
+      }, 400);
+    }
+
+    if (chatInput) {
+      chatInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") handleChatSubmit();
+      });
+    }
+
+    // 8. GSAP ScrollTrigger Animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Counter Numbers Animation
+    const counters = document.querySelectorAll(".counter-value");
+    counters.forEach((counter) => {
+      const target = parseInt(counter.getAttribute("data-target"));
+      ScrollTrigger.create({
+        trigger: counter,
+        start: "top 90%",
+        once: true,
+        onEnter: () => {
+          let zero = { val: 0 };
+          gsap.to(zero, {
+            val: target,
+            duration: 2,
+            ease: "power2.out",
+            onUpdate: () => {
+              counter.innerHTML = Math.floor(zero.val);
+            },
+          });
+        },
+      });
+    });
+
+    /* =====================================================================
+           TEXT SCROLL ANIMATION (skiper31-style)
+           Kata demi kata memudar masuk seiring scroll, di-scrub oleh Lenis.
+           ===================================================================== */
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    // Pecah teks menjadi <span class="sr-word"> per kata (spasi dipertahankan)
+    function splitIntoWords(el) {
+      if (el.dataset.srSplit === "true")
+        return Array.from(el.querySelectorAll(".sr-word"));
+      const words = el.textContent.trim().split(/\s+/);
+      el.textContent = "";
+      const frag = document.createDocumentFragment();
+      words.forEach((w, i) => {
+        const span = document.createElement("span");
+        span.className = "sr-word";
+        span.textContent = w;
+        frag.appendChild(span);
+        if (i < words.length - 1)
+          frag.appendChild(document.createTextNode(" "));
+      });
+      el.appendChild(frag);
+      el.dataset.srSplit = "true";
+      return Array.from(el.querySelectorAll(".sr-word"));
+    }
+
+    // Reveal mandiri (elemen yang tidak berada di dalam section ter-pin)
+    document.querySelectorAll("[data-scroll-reveal]").forEach((el) => {
+      if (el.closest(".sinergi-section") || el.closest("#sinergi")) return; // ditangani timeline pinned di bawah
+      const words = splitIntoWords(el);
+      if (prefersReducedMotion) return;
+
+      gsap.to(words, {
+        opacity: 1,
+        filter: "blur(0px)",
+        y: 0,
+        ease: "none",
+        stagger: 0.6,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          end: "bottom 60%",
+          once: true,
+          scrub: 0.8,
+        },
+      });
+    });
+
+    /* =====================================================================
+           HERO SECTION ANIMATIONS
+           ===================================================================== */
+    if (!prefersReducedMotion) {
+      const heroTL = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      // Left column texts
+      const leftEls = [
+        ".hero-text-col .badge",
+        ".hero-text-col .hero-headline",
+        ".hero-text-col .hero-lead",
+        ".hero-text-col .hero-actions",
+      ];
+      heroTL.from(leftEls, {
+        opacity: 0,
+        x: -24,
+        duration: 0.8,
+        stagger: 0.1,
+      });
+
+      // Right column images
+      const rightEls = [".hero-students-img"];
+      heroTL.from(
+        rightEls,
+        {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          stagger: 0.12,
+        },
+        "-=0.6",
+      );
+    }
+
+    /* =====================================================================
+           SCROLL PARALLAX ENGINE
+           Pakai atribut: data-parallax="0.25"  (positif = lebih lambat/turun,
+           negatif = berlawanan arah). Nilai = fraksi dari tinggi section.
+           ===================================================================== */
+    function initParallax() {
+      if (prefersReducedMotion) return;
+
+      document.querySelectorAll("[data-parallax]").forEach((layer) => {
+        const speed = parseFloat(layer.dataset.parallax) || 0;
+        const section = layer.closest("section") || layer.parentElement;
+
+        gsap.fromTo(
+          layer,
+          { yPercent: -speed * 50 },
+          {
+            yPercent: speed * 50,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1,
+            },
+          },
+        );
+      });
+    }
+    initParallax();
+
+    // Depth reveal untuk kartu: naik + skala halus, berurutan
+    [
+      ".major-path-card",
+      ".why-bento-card",
+      ".step-card",
+      ".product-bento",
+      ".article-card",
+      ".stat-card",
+    ].forEach((sel) => {
+      const items = document.querySelectorAll(sel);
+      if (!items.length || prefersReducedMotion) return;
+
+      ScrollTrigger.batch(items, {
+        start: "top 85%",
+        once: true,
+        onEnter: (batch) =>
+          gsap.fromTo(
+            batch,
+            { opacity: 0, y: 40, scale: 0.98 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.65,
+              stagger: 0.08,
+              ease: "power3.out",
+              clearProps: "transform",
+            },
+          ),
+      });
+    });
+
+    // 8. TIGA PILAR SINERGI VOKASI - GSAP PINNED SCROLLTRIGGER ANIMATION
+    const synergyStage = document.getElementById("synergy-stage");
+    if (synergyStage && !prefersReducedMotion) {
+      // Split quote text into word spans using existing splitIntoWords()
+      const quoteEl = document.getElementById("synergy-main-quote");
+      const quoteWords = quoteEl ? splitIntoWords(quoteEl) : [];
+
+      // Initial states via GSAP (so content stays visible if JS disabled)
+      gsap.set(["#node-vokasi", "#node-islami", "#node-bnsp"], {
+        opacity: 0,
+        scale: 0.3,
+        svgOrigin: "250 160",
+      });
+      gsap.set(["#line-top-right", "#line-right-left", "#line-left-top"], {
+        strokeDashoffset: 400,
+      });
+      gsap.set("#synergy-center-star", {
+        opacity: 0,
+        scale: 0,
+        rotation: 0,
+        svgOrigin: "250 160",
+      });
+      gsap.set("#synergy-star-aura", {
+        opacity: 0,
+        scale: 0.2,
+        svgOrigin: "250 160",
+      });
+      gsap.set("#synergy-kicker", { opacity: 0, y: 14 });
+      gsap.set(quoteWords, { opacity: 0.15, filter: "blur(2px)", y: 6 });
+      gsap.set("#synergy-closing", { opacity: 0, y: 12 });
+      gsap.set("#synergy-action-btn", { opacity: 0, y: 12 });
+      gsap.set("#synergy-progress-bar", { width: "0%" });
+
+      // Master Timeline: Pinned and Scrubbed on #sinergi
+      const synergyTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#sinergi",
+          start: "top top",
+          end: "+=200%",
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            // Progres rail tipis di bawah section
+            const bar = document.getElementById("synergy-progress-bar");
+            if (bar) bar.style.width = self.progress * 100 + "%";
+          },
+        },
+      });
+
+      // 1. Tiga node muncul berurutan (Keahlian Vokasi, Karakter Islami, Sertifikasi BNSP)
+      synergyTL
+        .to("#node-vokasi", {
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "back.out(1.7)",
+        })
+        .to(
+          "#node-islami",
+          { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" },
+          "-=0.3",
+        )
+        .to(
+          "#node-bnsp",
+          { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" },
+          "-=0.3",
+        );
+
+      // 2. Garis segitiga sinergi tergambar menghubungkan ketiga node
+      synergyTL.to(
+        ["#line-top-right", "#line-right-left", "#line-left-top"],
+        {
+          strokeDashoffset: 0,
+          duration: 1.0,
+          stagger: 0.2,
+          ease: "power2.inOut",
+        },
+      );
+
+      // Jeda agar garis & segitiga sempat terbaca (+=0.3)
+      // 3. Node & garis menyusut ke pusat lalu melebur
+      synergyTL
+        .to(
+          ["#node-vokasi", "#node-islami", "#node-bnsp"],
+          {
+            scale: 0,
+            opacity: 0,
+            duration: 0.7,
+            ease: "power2.in",
+          },
+          "+=0.3",
+        )
+        .to(
+          ["#line-top-right", "#line-right-left", "#line-left-top"],
+          {
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+          "<",
+        );
+
+      // 4. Bintang lahir di pusat: skala 0 -> 1, garis luar + aura halus menyala (opacity 0.45)
+      synergyTL
+        .to(
+          "#synergy-star-aura",
+          {
+            opacity: 0.45,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.2",
+        )
+        .to(
+          "#synergy-center-star",
+          {
+            opacity: 1,
+            scale: 1.0,
+            duration: 0.8,
+            ease: "back.out(2)",
+          },
+          "<",
+        );
+
+      // Jeda agar kelahiran bintang sempat terbaca (+=0.3)
+      // 5. Bintang membesar, berputar 22 derajat, opacity turun jadi 0.22 (scale 1.8), aura opacity 0.18 (scale 1.3)
+      synergyTL
+        .to(
+          "#synergy-center-star",
+          {
+            scale: 1.8,
+            rotation: 22,
+            opacity: 0.22,
+            duration: 1.0,
+            ease: "power1.inOut",
+          },
+          "+=0.3",
+        )
+        .to(
+          "#synergy-star-aura",
+          {
+            scale: 1.3,
+            opacity: 0.18,
+            duration: 1.0,
+            ease: "power1.inOut",
+          },
+          "<",
+        );
+
+      // 6. Kicker "Tiga Pilar, Satu Tujuan" muncul
+      synergyTL.to(
+        "#synergy-kicker",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "-=0.4",
+      );
+
+      // 7. Kalimat utama tampil kata demi kata (.sr-word)
+      if (quoteWords.length > 0) {
+        synergyTL.to(
+          quoteWords,
+          {
+            opacity: 1,
+            filter: "blur(0px)",
+            y: 0,
+            ease: "none",
+            stagger: 0.08,
+            duration: 1.4,
+          },
+          "-=0.2",
+        );
+      }
+
+      // 8. Kalimat penutup memudar masuk
+      synergyTL.to(
+        "#synergy-closing",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.3",
+      );
+
+      // 9. Tombol Ajakan Menuju Jurusan Tampil di Akhir
+      synergyTL.to(
+        "#synergy-action-btn",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "+=0.1",
+      );
+    } else if (prefersReducedMotion) {
+      // If reduced motion: make everything fully visible without pinning
+      const quoteEl = document.getElementById("synergy-main-quote");
+      if (quoteEl) splitIntoWords(quoteEl);
+      document.querySelectorAll(".sr-word").forEach((w) => {
+        w.style.opacity = "1";
+        w.style.filter = "none";
+        w.style.transform = "none";
+      });
+      gsap.set(
+        [
+          "#node-vokasi",
+          "#node-islami",
+          "#node-bnsp",
+          "#synergy-center-star",
+          "#synergy-star-aura",
+          "#synergy-kicker",
+          "#synergy-closing",
+          "#synergy-action-btn",
+        ],
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+        },
+      );
+      const bar = document.getElementById("synergy-progress-bar");
+      if (bar) bar.style.width = "100%";
+    }
+
+    // 9. Prestasi Section GSAP ScrollTrigger & Parallax
+    const timelineBar = document.getElementById("timeline-bar");
+    if (timelineBar) {
+      gsap.to(timelineBar, {
+        height: "100%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".timeline-box",
+          start: "top 75%",
+          end: "bottom 70%",
+          scrub: 0.5,
+        },
+      });
+    }
+
+    // Stagger Reveal for Timeline Cards
+    ScrollTrigger.batch(".prestasi-item", {
+      onEnter: (batch) =>
+        gsap.fromTo(
+          batch,
+          { opacity: 0, x: -30 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            stagger: 0.18,
+            ease: "power2.out",
+          },
+        ),
+      start: "top 85%",
+      once: true,
+    });
+
+    // Parallax 3D Card Effect on Scroll
+    const testiCard = document.getElementById("testi-parallax-card");
+    if (testiCard) {
+      gsap.fromTo(
+        testiCard,
+        { y: 60, rotationY: -4, rotationX: 4 },
+        {
+          y: -40,
+          rotationY: 2,
+          rotationX: -2,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".achievements-section",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        },
+      );
+    }
+
+    // Infinite Partner Marquee
+    // Refresh posisi ScrollTrigger setelah font & gambar selesai dimuat,
+    // supaya perhitungan parallax tidak meleset.
+    window.addEventListener("load", () => ScrollTrigger.refresh());
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => ScrollTrigger.refresh());
+    }
+
+    gsap.to(".marquee-track", {
+      xPercent: -50,
+      ease: "none",
+      duration: 22,
+      repeat: -1,
+    });
+
+    /* ======================================================================
+           X. RENDER BLUD PRODUCTS & INTERACTIVE MODAL
+           ====================================================================== */
+    const bludProducts = [
+      {
+        id: "eners-perfume",
+        name: "Eners Perfume",
+        subtitle: "Parfum Badan Premium Vokasi",
+        jurusan: "Perhotelan (PH)",
+        badge: "Teaching Factory • Perhotelan",
+        desc: "Parfum badan eksklusif formulasi siswa Perhotelan SMEMSA Genteng.",
+        detail: "Eners Perfume adalah produk unggulan hasil riset & praktik siswa Konsentrasi Keahlian Perhotelan. Menggunakan bibit parfum pilihan standar internasional, aman di kulit, tidak meninggalkan noda di pakaian, dan diracik dalam lingkungan lab Teaching Factory yang higienis.",
+        varian: ["Bubblegum", "Taylor Swift", "Scandalous", "Baccarat"],
+        kemasan: "Eau de Parfum 35 mL",
+        highlight: "Siswa dilatih dalam manajemen produksi, kontrol kualitas (QC), kemasan estetik, hingga strategi pemasaran langsung ke kustomer.",
+        foto: "assets/produk/produk-parfum-ph.webp",
+        icon: "🌸",
+        gradient: "linear-gradient(135deg, #064e3b 0%, #047857 100%)"
+      },
+      {
+        id: "eners-perfume-laundry",
+        name: "Eners Perfume Laundry",
+        subtitle: "Pewangi Laundry Standar Hospitalitas",
+        jurusan: "Perhotelan (PH)",
+        badge: "Unit Usaha BLUD • Housekeeping",
+        desc: "Parfum laundry konsentrat tinggi untuk pakaian segar & harum tahan lama.",
+        detail: "Diformulasikan khusus oleh tim Teaching Factory Housekeeping Perhotelan untuk kebutuhan laundry hotel dan masyarakat umum. Menghasilkan keharuman serat kain yang bertahan berhari-hari tanpa merusak tekstur pakaian.",
+        varian: ["Snappy Fresh", "Sakura Blossom"],
+        kemasan: "250 mL & 1 Liter",
+        highlight: "Standardisasi kebersihan hotel bintang, diproduksi dan dikelola oleh siswa Perhotelan sebagai unit bisnis nyata.",
+        foto: "assets/produk/produk-ph.webp",
+        icon: "🧺",
+        gradient: "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)"
+      },
+      {
+        id: "catet-coffee",
+        name: "Catet Coffee",
+        subtitle: "Kopi Sangrai Komunitas IT SMEMSA",
+        jurusan: "PPLG & TJKT (Kolaborasi)",
+        badge: "Kolaborasi Lintas Jurusan IT",
+        desc: "Kopi bubuk nusantara racikan spesial untuk menemani jam coding & produktivitas.",
+        detail: "Catet Coffee merupakan produk wirausaha hasil kolaborasi siswa PPLG dan TJKT. Dipilih dari biji kopi arabika/robusta kualitas terbaik yang disangrai dengan profil sangrai sedang (medium roast), sangat cocok untuk penikmat kopi saat belajar dan bekerja.",
+        catatan: "Cocok untuk French Press, V60, Vietnam Drip, dan Espresso Machine",
+        kemasan: "30 gram (Sachet) & 100 gram (Pouch)",
+        highlight: "Melatih siswa dalam sinergi antar-jurusan: PPLG menangani desain branding & website e-commerce, TJKT mengelola operasional & jaringan logistik.",
+        foto: "assets/produk/produk-rpl-tkjt-kopi.webp",
+        icon: "☕",
+        gradient: "linear-gradient(135deg, #78350f 0%, #92400e 100%)"
+      },
+      {
+        id: "drasina",
+        name: "Drasina",
+        subtitle: "Snack Ladrang Daun Sirih Cina",
+        jurusan: "Bisnis Digital (BD)",
+        badge: "Inovasi Kuliner • Bisnis Digital",
+        desc: "Camilan renyah kaya khasiat herbal alami buatan siswa Bisnis Digital.",
+        detail: "Drasina (Ladrang Sirih Cina) adalah kreasi kuliner sehat berbasis tanaman herbal Daun Sirih Cina. Mengombinasikan rasa gurih renyah tanpa bahan pengawet sintesis dengan khasiat tinggi antioksidan untuk kesehatan tubuh.",
+        rasa: "Gurih Original & Pedas Manis",
+        kemasan: "200 gram Standup Pouch",
+        highlight: "Platform pembelajaran langsung siswa Bisnis Digital dalam riset produk, riset pasar, TikTok Live Selling, Shopee, & digital ads marketing.",
+        foto: "assets/produk/produk-snack-bd.webp",
+        icon: "🌱",
+        gradient: "linear-gradient(135deg, #15803d 0%, #166534 100%)"
+      },
+      {
+        id: "totebag-daur-ulang",
+        name: "Totebag Daur Ulang Banner",
+        subtitle: "Eco-Fashion Upcycling Bag",
+        jurusan: "Desain Komunikasi Visual (DKV)",
+        badge: "Creative Eco-Design • DKV",
+        desc: "Tas daur ulang ramah lingkungan bermaterial flexi banner bekas event.",
+        detail: "Produk ideasi ramah lingkungan dari siswa DKV yang mengolah limbah baliho/banner menjadi totebag bergaya urban, waterproof, dan berdaya tahan ekstra tinggi. Setiap tas memiliki corak grafis unik yang tidak ada duanya.",
+        material: "Flexi Banner Recycled + Heavy Webbing Strap",
+        fitur: "Tahan Air, Kapasitas Besar, Jahitan Kuat Double Stitch",
+        highlight: "Mengasah kesadaran ekologis siswa DKV, keterampilan jahit industri kreatif, branding eco-friendly, dan katalogisasi visual komersial.",
+        foto: 'assets/tefa/totenbag.jpeg',
+        icon: "🛍️",
+        gradient: "linear-gradient(135deg, #4338ca 0%, #3730a3 100%)"
+      },
+      {
+        id: "icaremu",
+        name: "iCareMu",
+        subtitle: "Platform Digital Health & Care",
+        jurusan: "Pengembang Perangkat Lunak & Gim (PPLG)",
+        badge: "Software TEFA Project • PPLG",
+        desc: "Aplikasi digital layanan kesehatan & konseling terpadu karya siswa PPLG.",
+        detail: "iCareMu adalah produk perangkat lunak aplikasi berbasis web dan mobile yang dikembangkan oleh tim TEFA PPLG. Menyediakan fitur reservasi konsultasi, pencatatan rekam medis sederhana, dan notifikasi pengingat kesehatan mandiri.",
+        platform: "Web App & Responsive Mobile UI",
+        fitur: "Dashboard Pasien/Konselor, Multi-User Auth, Realtime Notification",
+        highlight: "Siswa mempraktikkan SDLC (Software Development Life Cycle) modern, framework Laravel/Flutter, API integration, dan database Security.",
+        foto: null,
+        icon: "📱",
+        gradient: "linear-gradient(135deg, #0d9488 0%, #0f766e 100%)"
+      },
+      {
+        id: "minducare",
+        name: "MinduCare",
+        subtitle: "Aplikasi EdTech & Self-Assessment System",
+        jurusan: "Pengembang Perangkat Lunak & Gim (PPLG)",
+        badge: "EdTech Innovation • PPLG",
+        desc: "Sistem aplikasi pencatatan perkembangan karakter & pendampingan konseling.",
+        detail: "MinduCare diciptakan untuk mendukung sistem bimbingan dan konseling berbasis digital. Mengakomodasi fitur modul evaluasi mandiri, jurnal harian, dan analitik perkembangan siswa yang aman dan privat bagi guru pembimbing.",
+        platform: "Cloud-Based Web Application",
+        fitur: "Self-Assessment Survey, Analytics Charts, Encrypted Notes",
+        highlight: "Siswa PPLG mengasah kemampuan UI/UX design, arsitektur database relasional, serta pengujian sistem (QA Testing) sebelum komersialisasi.",
+        foto: null,
+        icon: "💡",
+        gradient: "linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)"
+      },
+      {
+        id: "jasa-reparasi-pc",
+        name: "Jasa Reparasi & Instalasi Komputer",
+        subtitle: "Layanan Service Hardware & Networking",
+        jurusan: "Teknik Jaringan Komputer & Telekomunikasi (TJKT)",
+        badge: "NOC TEFA Service • TJKT",
+        desc: "Layanan profesional perbaikan PC, Laptop, Install OS, & Maintenance Jaringan.",
+        detail: "Unit pelayanan teknis komersial dari TEFA TJKT. Melayani perawatan hardware komputer, pembersihan debu thermal paste, perbaikan kerusakan software/OS, instalasi driver, hingga setting jaringan Wi-Fi dan LAN untuk rumah & kantor.",
+        layanan: "Servis PC/Laptop, Install Windows/Linux, Diagnostic Hardware, Splicing FO",
+        garansi: "Garansi Service 30 Hari & Konsultasi Gratis",
+        highlight: "Dikerjakan langsung oleh teknisi siswa bersertifikat LSP-P1 BNSP Network Administrator di bawah bimbingan instruktur profesional industri.",
+        foto: 'assets/tefa/jasa-reparasi-komputer.webp',
+        icon: "🛠️",
+        gradient: "linear-gradient(135deg, #b45309 0%, #78350f 100%)"
+      }
+    ];
+
+    function renderBludProducts() {
+      const container = document.getElementById("blud-container");
+      if (!container) return;
+
+      let html = "";
+      bludProducts.forEach((prod, index) => {
+        let imageHtml = "";
+        if (prod.foto) {
+          imageHtml = `<div style="position: relative; overflow: hidden; border-radius: var(--radius-sm); margin-bottom: 1.2rem;">
+            <img src="${prod.foto}" alt="${prod.name}" width="400" height="300" loading="lazy" style="width: 100%; height: 220px; object-fit: cover; border-radius: var(--radius-sm); transition: transform 0.4s ease;" onerror="this.closest('.product-bento') ? this.closest('.product-bento').classList.add('no-image') : null; this.remove();">
+          </div>`;
+        } else {
+          imageHtml = `<div style="width: 100%; height: 220px; border-radius: var(--radius-sm); background: ${prod.gradient || 'linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%)'}; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);">
+            <span style="font-size: 3rem; margin-bottom: 0.5rem;">${prod.icon || '💼'}</span>
+            <h4 style="color: #fff; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.3; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">${prod.name}</h4>
+          </div>`;
+        }
+
+        let detailsHtml = "";
+        if (prod.desc)
+          detailsHtml += `<p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0.6rem; line-height: 1.5;">${prod.desc}</p>`;
+
+        let specSummary = "";
+        if (prod.kemasan) specSummary += `<span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;">📦 <strong>Kemasan:</strong> ${prod.kemasan}</span>`;
+        if (prod.varian) {
+          const vStr = Array.isArray(prod.varian) ? prod.varian.join(", ") : prod.varian;
+          specSummary += `<span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;">🎨 <strong>Varian:</strong> ${vStr}</span>`;
+        }
+
+        html += `
+          <div class="product-bento" style="padding: 1.5rem; justify-content: space-between; cursor: pointer;" onclick="openBludModal(${index})">
+            <div>
+              ${imageHtml}
+              <div class="blud-learner-tag">💼 Dikelola siswa ${prod.jurusan}</div>
+              <h3 class="font-head" style="font-size:1.25rem; color:#ffffff; margin: 0.4rem 0 0.6rem; line-height: 1.3;">${prod.name}</h3>
+              ${detailsHtml}
+              ${specSummary}
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function openBludModal(index) {
+      const prod = bludProducts[index];
+      if (!prod) return;
+
+      const overlay = document.getElementById("blud-modal-overlay");
+      const bgImg = document.getElementById("blud-modal-bg-img");
+      const iconEmoji = document.getElementById("blud-modal-icon-emoji");
+      const iconImg = document.getElementById("blud-modal-icon-img");
+      const banner = document.getElementById("blud-modal-banner");
+
+      if (prod.foto) {
+        bgImg.src = prod.foto;
+        bgImg.style.display = "block";
+        iconImg.src = prod.foto;
+        iconImg.style.display = "block";
+        iconEmoji.style.display = "none";
+      } else {
+        bgImg.style.display = "none";
+        iconImg.style.display = "none";
+        iconEmoji.innerText = prod.icon || "💼";
+        iconEmoji.style.display = "inline-block";
+      }
+
+      if (prod.gradient) {
+        banner.style.background = prod.gradient;
+      } else {
+        banner.style.background = "linear-gradient(135deg, #064e3b 0%, #047857 100%)";
+      }
+
+      document.getElementById("blud-modal-tag").innerText = prod.badge || `💼 Dikelola siswa ${prod.jurusan}`;
+      document.getElementById("blud-modal-title").innerText = prod.name;
+      document.getElementById("blud-modal-desc").innerText = prod.detail || prod.desc;
+
+      // Populate spec chips
+      const chipsContainer = document.getElementById("blud-modal-chips");
+      chipsContainer.innerHTML = "";
+
+      if (prod.jurusan) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">🎓 <strong>Pengelola:</strong> ${prod.jurusan}</span>`;
+      }
+      if (prod.kemasan) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">📦 <strong>Kemasan:</strong> ${prod.kemasan}</span>`;
+      }
+      if (prod.varian && Array.isArray(prod.varian)) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">🎨 <strong>Varian:</strong> ${prod.varian.join(", ")}</span>`;
+      } else if (prod.varian) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">🎨 <strong>Varian:</strong> ${prod.varian}</span>`;
+      }
+      if (prod.rasa) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">😋 <strong>Rasa:</strong> ${prod.rasa}</span>`;
+      }
+      if (prod.catatan) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">💡 <strong>Penyajian:</strong> ${prod.catatan}</span>`;
+      }
+      if (prod.material) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">🧵 <strong>Material:</strong> ${prod.material}</span>`;
+      }
+      if (prod.fitur) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">⚡ <strong>Fitur:</strong> ${prod.fitur}</span>`;
+      }
+      if (prod.platform) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">💻 <strong>Platform:</strong> ${prod.platform}</span>`;
+      }
+      if (prod.layanan) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">🛠️ <strong>Cakupan:</strong> ${prod.layanan}</span>`;
+      }
+      if (prod.garansi) {
+        chipsContainer.innerHTML += `<span class="blud-modal-chip">🛡️ <strong>Garansi:</strong> ${prod.garansi}</span>`;
+      }
+
+      document.getElementById("blud-modal-highlight").innerText = prod.highlight || "Unit produksi BLUD memberikan pengalaman mengelola wirausaha nyata bagi siswa SMEMSA Genteng.";
+
+      overlay.classList.add("active");
+      const modalCard = document.getElementById("blud-modal-card");
+      if (modalCard) modalCard.scrollTop = 0;
+
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+
+      if (typeof lenis !== "undefined" && lenis) lenis.stop();
+      else if (window.lenis) window.lenis.stop();
+    }
+
+    function closeBludModal() {
+      const overlay = document.getElementById("blud-modal-overlay");
+      if (overlay) overlay.classList.remove("active");
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+
+      if (typeof lenis !== "undefined" && lenis) lenis.start();
+      else if (window.lenis) window.lenis.start();
+    }
+
+    function closeBludModalOnOverlay(e) {
+      if (e.target.id === "blud-modal-overlay") {
+        closeBludModal();
+      }
+    }
+
+    /* DATA UNIT USAHA SEKOLAH (TEFA & BLUD) */
+    const unitUsahaData = [
+      {
+        title: "SMEMSA Print Studio",
+        subtitle: "Percetakan & Merchandise Komersial",
+        tag: "💼 Dikelola DKV & Bisnis Digital",
+        icon: "🖨️",
+        gradient: "linear-gradient(135deg, #064e3b 0%, #047857 100%)",
+        desc: "Layanan percetakan digital profesional dan cetak merchandise berstandar industri. Melayani pesanan cetak banner outdoor/indoor, sablon kaos custom, mug suvenir, ID card institusi, hingga perlengkapan promosi usaha.",
+        specs: [
+          { label: "Pengelola", val: "Konsentrasi Keahlian DKV & Bisnis Digital" },
+          { label: "Produk Utama", val: "Banner, Kaos Sablon, Mug, ID Card, Brosur" },
+          { label: "Fasilitas", val: "Mesin Digital Print High-Res & Press Heat Studio" },
+          { label: "Layanan", val: "Pemesanan Satuan & Partai Besar (Grosir)" }
+        ],
+        highlight: "Siswa terlibat langsung dalam proses pra-cetak (setting layout), proses produksi print/sablon, finishing, quality check, hingga manajemen transaksi finansial bisnis."
+      },
+      {
+        title: "SMEMSA Tech Solutions",
+        subtitle: "Service Center Hardware & Software House",
+        tag: "💼 Dikelola TJKT & PPLG",
+        icon: "🔧",
+        gradient: "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)",
+        desc: "Pusat pelayanan teknologi terpadu yang melayani perbaikan laptop/PC, instalasi sistem operasi & jaringan Wi-Fi/LAN, hingga jasa pembuatan website e-commerce dan aplikasi digital untuk instansi & UMKM.",
+        specs: [
+          { label: "Pengelola", val: "Konsentrasi Keahlian TJKT & PPLG" },
+          { label: "Layanan Tech", val: "Service Laptop/PC, Fiber Optic, Web Dev, UI/UX" },
+          { label: "Standar", val: "Teknisi Terakreditasi BNSP & Supervisor DUDIKA" },
+          { label: "Garansi", val: "Garansi Service 30 Hari & Support Teknis" }
+        ],
+        highlight: "Memberikan pengalaman nyata bagi siswa TJKT dan PPLG untuk menangani trouble-shooting perangkat nyata pelanggan dan meng-hosting aplikasi produksi."
+      },
+      {
+        title: "SMEMSA Hospitality Hub",
+        subtitle: "Mini Hotel (Edutel) & Express Laundry",
+        tag: "💼 Dikelola Perhotelan & MPLB",
+        icon: "🏨",
+        gradient: "linear-gradient(135deg, #b45309 0%, #78350f 100%)",
+        desc: "Unit bisnis hospitalitas yang mengoperasikan kamar penginapan mini hotel (Edutel) standar bintang, layanan laundry pakaian harum & higienis, serta persewaan ruang rapat (meeting room) terpadu.",
+        specs: [
+          { label: "Pengelola", val: "Konsentrasi Keahlian Perhotelan & MPLB" },
+          { label: "Fasilitas", val: "Kamar AC Edutel, Laundry Commercial, Meeting Room" },
+          { label: "Standar Service", val: "SOP Standard Hotel Bintang & Public Service" },
+          { label: "Operasional", val: "Resepsionis 24 Jam & Layanan Housekeeping" }
+        ],
+        highlight: "Siswa mempraktikkan langsung manajemen front office, penerimaan tamu, tata graha (housekeeping), hingga tata kelola administrasi perkantoran modern."
+      },
+      {
+        title: "SMEMSA Mart & Business Center",
+        subtitle: "Ritel, POS Kasir & Mini Market Sekolah",
+        tag: "💼 Dikelola Bisnis Digital & AKL",
+        icon: "🛍️",
+        gradient: "linear-gradient(135deg, #15803d 0%, #166534 100%)",
+        desc: "Pusat ritel komersial yang menyediakan kebutuhan ATK, produk makanan/minuman olahan siswa, hingga barang konsumsi harian berbasis sistem kasir modern (Point of Sale).",
+        specs: [
+          { label: "Pengelola", val: "Konsentrasi Keahlian Bisnis Digital & AKL" },
+          { label: "Sistem", val: "POS Multi-Kasir & Barcode Scanner System" },
+          { label: "Produk", val: "ATK, Snack TEFA, Produk UMKM Mitra, Minuman" },
+          { label: "Manajemen", val: "Pencatatan Keuangan & Stok Realtime AKL" }
+        ],
+        highlight: "Mengasah keterampilan siswa dalam transaksi ritel, perancangan visual merchandising, pencatatan neraca akuntansi ritel, serta layanan pelanggan ramah."
+      }
+    ];
+
+    function openUnitUsahaModal(index) {
+      const unit = unitUsahaData[index];
+      if (!unit) return;
+
+      const overlay = document.getElementById("unit-usaha-modal-overlay");
+      const banner = document.getElementById("unit-usaha-modal-banner");
+      const iconEmoji = document.getElementById("unit-usaha-modal-icon-emoji");
+
+      iconEmoji.innerText = unit.icon || "🏢";
+      banner.style.background = unit.gradient || "linear-gradient(135deg, #064e3b 0%, #047857 100%)";
+
+      document.getElementById("unit-usaha-modal-tag").innerText = unit.tag || "🏢 Unit Usaha Sekolah";
+      document.getElementById("unit-usaha-modal-title").innerText = unit.title;
+      document.getElementById("unit-usaha-modal-desc").innerText = unit.desc;
+
+      const chipsContainer = document.getElementById("unit-usaha-modal-chips");
+      chipsContainer.innerHTML = "";
+
+      if (unit.specs && Array.isArray(unit.specs)) {
+        unit.specs.forEach(s => {
+          chipsContainer.innerHTML += `<span class="blud-modal-chip">⚡ <strong>${s.label}:</strong> ${s.val}</span>`;
+        });
+      }
+
+      document.getElementById("unit-usaha-modal-highlight").innerText = unit.highlight || "Unit usaha sekolah memberikan wadah praktik vokasi nyata bagi siswa SMEMSA Genteng.";
+
+      overlay.classList.add("active");
+      const modalCard = document.getElementById("unit-usaha-modal-card");
+      if (modalCard) modalCard.scrollTop = 0;
+
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+
+      if (typeof lenis !== "undefined" && lenis) lenis.stop();
+      else if (window.lenis) window.lenis.stop();
+    }
+
+    function closeUnitUsahaModal() {
+      const overlay = document.getElementById("unit-usaha-modal-overlay");
+      if (overlay) overlay.classList.remove("active");
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+
+      if (typeof lenis !== "undefined" && lenis) lenis.start();
+      else if (window.lenis) window.lenis.start();
+    }
+
+    function closeUnitUsahaModalOnOverlay(e) {
+      if (e.target.id === "unit-usaha-modal-overlay") {
+        closeUnitUsahaModal();
+      }
+    }
+
+    function filterIndexNews(category, element) {
+      const filterLinks = document.querySelectorAll(".news-filter-link");
+      filterLinks.forEach(link => link.classList.remove("active"));
+      if (element) {
+        element.classList.add("active");
+      }
+
+      const articles = document.querySelectorAll(".news-cards-grid .article-card");
+      articles.forEach(article => {
+        const itemCat = article.getAttribute("data-category");
+        if (category === "all" || itemCat === category) {
+          article.style.display = "flex";
+        } else {
+          article.style.display = "none";
+        }
+      });
+    }
+
+    renderBludProducts();
+  </script>
+</body>
+
+</html>
