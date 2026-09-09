@@ -155,6 +155,26 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- MODAL EKSTRAKURIKULER -->
+  <div class="ekskul-modal-overlay" id="ekskul-modal" onclick="if(event.target===this) closeEkskulModal()">
+    <div class="ekskul-modal-content" role="dialog" aria-modal="true" data-lenis-prevent>
+      <button class="ekskul-modal-close" onclick="closeEkskulModal()" aria-label="Tutup modal">&times;</button>
+      <img src="" alt="" class="ekskul-modal-hero" id="modal-hero">
+      <div class="ekskul-modal-body">
+        <span class="ekskul-modal-badge" id="modal-badge"></span>
+        <h2 class="ekskul-modal-title" id="modal-title"></h2>
+        <div class="ekskul-modal-desc" id="modal-desc"></div>
+        
+        <div class="ekskul-modal-info-grid" id="modal-info-grid">
+          <!-- Diisi dinamis -->
+        </div>
+
+        <div class="ekskul-modal-achievements" id="modal-achievements" style="display:none;">
+          <h4>Prestasi & Penghargaan</h4>
+          <ul id="modal-achievements-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection

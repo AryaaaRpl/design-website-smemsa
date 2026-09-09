@@ -52,17 +52,27 @@
     @php
     $path = trim(request()->path(), '/');
     if (empty($path) || $path === '/') {
-        $pageCss = 'index';
+        $pageName = 'index';
     } else {
-        $pageCss = str_replace('/', '-', $path);
+        $pageName = str_replace('/', '-', $path);
+    }
+
+    $pageAssets = ['resources/css/app.css'];
+
+    if (file_exists(resource_path('css/pages/' . $pageName . '.css'))) {
+        $pageAssets[] = 'resources/css/pages/' . $pageName . '.css';
+    } else {
+        $pageAssets[] = 'resources/css/pages/index.css';
+    }
+
+    $pageAssets[] = 'resources/js/app.js';
+
+    if (file_exists(resource_path('js/pages/' . $pageName . '.js'))) {
+        $pageAssets[] = 'resources/js/pages/' . $pageName . '.js';
     }
   @endphp
 
-  @if (file_exists(resource_path('css/pages/' . $pageCss . '.css')))
-    @vite(['resources/css/app.css', 'resources/css/pages/' . $pageCss . '.css', 'resources/js/app.js'])
-  @else
-    @vite(['resources/css/app.css', 'resources/css/pages/index.css', 'resources/js/app.js'])
-  @endif
+  @vite($pageAssets)
   @stack('styles')
 </head>
 
@@ -1952,6 +1962,7 @@
 
     renderBludProducts();
   </script>
+  @stack('scripts')
 </body>
 
 </html>

@@ -20,6 +20,9 @@ export default defineConfig({
                 'resources/css/pages/prestasi.css',
                 'resources/css/pages/spmb.css',
                 'resources/js/app.js',
+                'resources/js/pages/fasilitas.js',
+                'resources/js/pages/ekstrakurikuler.js',
+                'resources/js/pages/prestasi.js',
             ],
             refresh: true,
             fonts: [
