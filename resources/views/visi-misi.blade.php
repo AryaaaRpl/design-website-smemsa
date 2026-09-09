@@ -459,8 +459,8 @@
     </div>
   </section>
   <!-- INTERACTIVE DETAIL MODAL -->
-  <div class="modal-overlay" id="major-modal-overlay" onclick="closeMajorModalOnOverlay(event)">
-    <div class="major-modal-card" id="major-modal-card">
+  <div class="modal-overlay" id="major-modal-overlay" onclick="closeMajorModalOnOverlay(event)" data-lenis-prevent>
+    <div class="major-modal-card" id="major-modal-card" data-lenis-prevent>
       <!-- Modal Header Banner with Animated Icon -->
       <div class="modal-banner" id="modal-banner">
         <div class="modal-banner-icon" id="modal-icon">
@@ -522,4 +522,277 @@
   </div>
   <!-- FOOTER -->
 
+@push('scripts')
+  <script>
+    (function () {
+      function initVisiMisi() {
+        if (typeof gsap !== "undefined") {
+          if (typeof ScrollTrigger !== "undefined") {
+            gsap.registerPlugin(ScrollTrigger);
+          }
+
+          // Simple Reveal Animation
+          gsap.utils.toArray(".reveal").forEach((elem) => {
+            gsap.fromTo(elem, 
+              { opacity: 0, y: 30 },
+              {
+                scrollTrigger: {
+                  trigger: elem,
+                  start: "top 85%",
+                },
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power2.out",
+                clearProps: "transform"
+              }
+            );
+          });
+
+          // Timeline Progress Bar ScrollTrigger Animation for Tujuan Section
+          const tujuanBar = document.getElementById("tujuan-bar");
+          if (tujuanBar) {
+            gsap.to(tujuanBar, {
+              height: "100%",
+              ease: "none",
+              scrollTrigger: {
+                trigger: ".tujuan-box",
+                start: "top 75%",
+                end: "bottom 70%",
+                scrub: 0.5,
+              },
+            });
+          }
+
+          // Parallax for Header Pattern
+          const headerPattern = document.querySelector(".header-bg-pattern");
+          if (headerPattern) {
+            gsap.to(headerPattern, {
+              y: 100,
+              rotation: 15,
+              ease: "none",
+              scrollTrigger: {
+                trigger: ".page-header",
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+              },
+            });
+          }
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initVisiMisi);
+      } else {
+        initVisiMisi();
+      }
+    })();
+
+    // ==========================================
+    // DATA KONSENTRASI KEAHLIAN & MODAL LOGIC
+    // ==========================================
+    const visiMisiMajorsData = {
+      rpl: {
+        title: "Pengembang Perangkat Lunak & Gim (PPLG)",
+        tag: "PPLG / Software Engineering",
+        icon: "/assets/major/PPLG-removebg-preview.png",
+        gradient: "linear-gradient(135deg, #064e3b 0%, #0d7056 100%)",
+        desc: "Konsentrasi keahlian yang berfokus pada analisis kebutuhan, desain arsitektur perangkat lunak, pemrograman web dan mobile modern, manajemen basis data, serta pengujian sistem. Siswa dilatih langsung mengerjakan proyek riil sesuai standar industri software house.",
+        skills: [
+          "Fullstack Web Development",
+          "Mobile App (Flutter/Android)",
+          "Database SQL & NoSQL",
+          "API Integration",
+          "Git & Github Workflow",
+          "Clean Architecture",
+        ],
+        career:
+          "Software Engineer, Web Developer, Frontend/Backend Developer, Mobile Developer, Database Administrator, QA System Tester.",
+      },
+      tkj: {
+        title: "Teknik Jaringan Komputer & Telekomunikasi (TJKT)",
+        tag: "TJKT / Network & Cloud Infrastructure",
+        icon: "/assets/major/TJKT-removebg-preview.png",
+        gradient: "linear-gradient(135deg, #064e3b 0%, #0369a1 100%)",
+        desc: "Mempelajari perancangan, instalasi, dan pemeliharaan infrastruktur jaringan komputer enterprise, fiber optik, administrasi Cloud & Linux server, serta sistem keamanan siber (cybersecurity) untuk mendukung transformasi digital industri.",
+        skills: [
+          "Routing & Switching (MikroTik MTCNA / Cisco)",
+          "Linux Enterprise & Cloud Server",
+          "Fiber Optic Splicing & OTDR",
+          "Network Security & Firewall",
+          "Wireless Network Deployment",
+        ],
+        career:
+          "Network Administrator, Cloud Infrastructure Engineer, Fiber Optic Specialist, IT Support Specialist, System Administrator.",
+      },
+      bd: {
+        title: "Bisnis Digital",
+        tag: "Digital Commerce & Marketing Strategy",
+        icon: "/assets/major/logo bdp.png",
+        gradient: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
+        desc: "Mempersiapkan wirausahawan digital dan praktisi e-commerce yang menguasai marketplace optimization, riset pasar digital, social media marketing, strategi SEO/SEM, copywriting promosi, serta pengelolaan toko daring modern.",
+        skills: [
+          "E-Commerce & Marketplace Management",
+          "Social Media Advertising (Meta/Tiktok Ads)",
+          "SEO & Content Marketing",
+          "Digital Analytics",
+          "Copywriting & Branding",
+        ],
+        career:
+          "Digital Marketer, E-Commerce Specialist, Social Media Strategist, Digital Business Consultant, Marketplace Operations Lead.",
+      },
+      mplb: {
+        title: "Manajemen Perkantoran & Layanan Bisnis (MPLB)",
+        tag: "Corporate Management & Digital Administration",
+        icon: "/assets/major/mp.jpeg",
+        gradient: "linear-gradient(135deg, #064e3b 0%, #0f766e 100%)",
+        desc: "Membekali siswa keterampilan administrasi perkantoran modern, digital document archiving, korespondensi bisnis formal, manajemen rapat, tata kelola kehumasan, serta kemampuan komunikasi profesional berstandar internasional.",
+        skills: [
+          "Digital Office Administration",
+          "Digital Archiving & Cloud Storage",
+          "Business Correspondence",
+          "Public Relations & Event Handling",
+          "Customer Relationship Management",
+        ],
+        career:
+          "Administrative Officer, Executive Secretary, Public Relations Staff, Customer Service Specialist, HR Administration Staff.",
+      },
+      akl: {
+        title: "Akuntansi & Keuangan Lembaga (AKL)",
+        tag: "Financial Accounting & Islamic Banking",
+        icon: "/assets/major/logo AKL.png",
+        gradient: "linear-gradient(135deg, #064e3b 0%, #15803d 100%)",
+        desc: "Fokus pada penguasaan pembukuan keuangan, perpajakan, audit laporan keuangan, komputer akuntansi (MYOB/Accurate), serta dasar-dasar operasional perbankan syariah yang presisi dan transparan.",
+        skills: [
+          "Komputer Akuntansi (MYOB/Accurate)",
+          "Laporan Keuangan & Audit",
+          "Perpajakan (PPh & PPN)",
+          "Operasional Perbankan Syariah",
+          "Spreadsheet Analytics",
+        ],
+        career:
+          "Junior Accountant, Tax Staff, Bank Teller & Customer Service, Financial Analyst Assistant, Bookkeeper.",
+      },
+      hotel: {
+        title: "Perhotelan",
+        tag: "Tourism & Hotel Hospitality Industry",
+        icon: "/assets/major/PH.png",
+        gradient: "linear-gradient(135deg, #b45309 0%, #d97706 100%)",
+        desc: "Mengasah keahlian pelayanan prima berstandar bintang lima, tata kelola front office, tata graha (housekeeping), pelayanan makanan & minuman (food & beverage), serta etika keramahtamahan internasional.",
+        skills: [
+          "Front Office Operations",
+          "Housekeeping & Room Service",
+          "Food & Beverage Service",
+          "Hospitality Ethics & Communication",
+          "Hotel Property Management System",
+        ],
+        career:
+          "Front Desk Agent, Guest Relation Officer, Housekeeping Supervisor, F&B Service Specialist, Hotel Event Coordinator.",
+      },
+      dkv: {
+        title: "Desain Komunikasi Visual (DKV)",
+        tag: "Creative Media & Visual Communication",
+        icon: "/assets/major/dkv.png",
+        gradient: "linear-gradient(135deg, #7c2d12 0%, #ea580c 100%)",
+        desc: "Eksplorasi kreativitas visual tanpa batas meliputi desain grafis profesional, ilustrasi digital, videografi sinematik, animasi 2D/3D, motion graphics, audio production, dan konten promosi multimedia komersial.",
+        skills: [
+          "Adobe Illustrator & Photoshop",
+          "Premiere Pro & After Effects",
+          "Motion Graphics 2D/3D",
+          "Cinematography & Lighting",
+          "Brand Identity Design",
+        ],
+        career:
+          "Graphic Designer, Video Editor, Motion Graphic Artist, Videographer/Cinematographer, UI/UX Designer, Creative Director.",
+      },
+      boga: {
+        title: "Tata Boga / Kuliner",
+        tag: "Culinary Arts & Bakery Production",
+        icon: "/assets/major/SMEMSA Chibi-chibi.png",
+        gradient: "linear-gradient(135deg, #d97706 0%, #ca8a04 100%)",
+        desc: "Mempelajari seni pengolahan masakan nusantara dan internasional (kontinental), bakery & pastry, pengolahan makanan sehat, hygiene sanitasi halal, serta manajemen usaha katering komersial berstandar industri.",
+        skills: [
+          "Bakery & Pastry Production",
+          "Indonesian & Continental Cuisine",
+          "Food Plating & Presentation",
+          "Hygiene & Halal Food Sanitation",
+          "Catering Business Management",
+        ],
+        career:
+          "Pastry Chef, Commis Chef, Baker, Food Stylist, Restaurant/Catering Entrepreneur, F&B Supervisor.",
+      },
+      tbsm: {
+        title: "Teknik & Bisnis Sepeda Motor (TBSM)",
+        tag: "Automotive Engineering & Workshop Management",
+        icon: "/assets/major/SMEMSA Chibi-chibi.png",
+        gradient: "linear-gradient(135deg, #1c1917 0%, #064e3b 100%)",
+        desc: "Mencetak teknisi otomotif roda dua profesional dengan keahlian perawatan mesin injeksi, kelistrikan kendaraan, sistem transmisi otomatis/manual, serta manajemen bengkel berstandar resmi Astra Honda Authorized Service Station (AHASS).",
+        skills: [
+          "EFI & Injection Diagnostic Tools",
+          "Engine Overhaul & Tune-Up",
+          "Motorcycle Electrical Systems",
+          "Brake & Suspension Maintenance",
+          "Workshop Management",
+        ],
+        career:
+          "Automotive Technician, Service Advisor Bengkel Resmi, Diagnostic Specialist, Sparepart Officer, Wirausaha Bengkel Motor Mandiri.",
+      },
+    };
+
+    function openMajorModal(majorKey) {
+      const data = visiMisiMajorsData[majorKey];
+      if (!data) return;
+
+      document.getElementById("modal-tag").innerText = data.tag;
+      document.getElementById("modal-title").innerText = data.title;
+      document.getElementById("modal-desc").innerText = data.desc;
+
+      const modalIconImg = document.getElementById("modal-icon-img");
+      if (modalIconImg) {
+        modalIconImg.src = data.icon;
+        modalIconImg.alt = data.title + " Logo";
+      }
+
+      document.getElementById("modal-banner").style.background =
+        data.gradient;
+      document.getElementById("modal-career").innerText = data.career;
+
+      // Populate skills
+      const skillsContainer = document.getElementById("modal-skills");
+      skillsContainer.innerHTML = "";
+      data.skills.forEach((skill) => {
+        const chip = document.createElement("span");
+        chip.className = "modal-skill-chip";
+        chip.innerText = skill;
+        skillsContainer.appendChild(chip);
+      });
+
+      const modalOverlay = document.getElementById("major-modal-overlay");
+      modalOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMajorModal() {
+      const modalOverlay = document.getElementById("major-modal-overlay");
+      if (modalOverlay) modalOverlay.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    function closeMajorModalOnOverlay(e) {
+      if (e.target.id === "major-modal-overlay") {
+        closeMajorModal();
+      }
+    }
+
+    // Close modal on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeMajorModal();
+        if (typeof closeMobileDrawer === "function") closeMobileDrawer();
+      }
+    });
+
+  </script>
+@endpush
 @endsection

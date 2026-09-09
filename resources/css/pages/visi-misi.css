@@ -806,10 +806,10 @@
       padding-top: 1.5rem;
     }
 
-    /* GSAP Prep */
+    /* GSAP Prep / Fallback visible */
     .reveal {
-      opacity: 0;
-      transform: translateY(30px);
+      opacity: 1;
+      transform: none;
     }
 
     /* ==========================================================================
