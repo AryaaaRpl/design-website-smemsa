@@ -618,8 +618,8 @@
             wirausaha nyata.
           </p>
           <div class="flex" style="gap: 1rem; flex-wrap: wrap">
-            <a href="visi-misi.html" class="btn btn-outline">Visi & Misi Sekolah &rarr;</a>
-            <a href="fasilitas.html" class="btn btn-outline">Jelajahi Fasilitas &rarr;</a>
+            <a href="/visi-misi" class="btn btn-outline">Visi & Misi Sekolah &rarr;</a>
+            <a href="fasilitas" class="btn btn-outline">Jelajahi Fasilitas &rarr;</a>
           </div>
         </div>
       </div>
