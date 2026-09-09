@@ -2,46 +2,6 @@
 
 @section('content')
 
-  <!-- Mobile Drawer -->
-
-  <!-- Mobile Drawer -->
-  <div class="mobile-overlay" id="mobile-overlay"></div>
-  <div class="mobile-drawer" id="mobile-drawer">
-    <button class="drawer-close" id="drawer-close-btn">×</button>
-    <div class="brand-box" style="margin-bottom: 2rem">
-      <img alt="Logo SMEMSA" class="brand-logo" onerror="
-            this.closest('.card')
-              ? this.closest('.card').classList.add('no-image')
-              : null;
-            this.remove();
-          " src="{{ asset('assets/logo.webp') }}" />
-      <div>
-        <strong style="color: var(--primary); font-size: 1.1rem; display: block">SMEMSA GENTENG</strong>
-        <small style="color: var(--text-muted); font-size: 0.75rem">NPSN 20525597 • Akreditasi A</small>
-      </div>
-    </div>
-    <div class="drawer-links">
-      <a class="" href="index.html#hero">🏠 Beranda</a>
-      <div class="drawer-section-title">Halaman Informasi</div>
-      <a class="" href="/bkk">💼 Bursa Kerja Khusus (BKK)</a>
-      <a href="/visi-misi">🎯 Visi &amp; Misi Sekolah</a>
-      <a href="/guru">👥 Guru &amp; Tenaga Kependidikan</a>
-      <a href="/fasilitas">🏢 Fasilitas Unggulan</a>
-      <a href="/ekstrakurikuler">⚽ Ekstrakurikuler &amp; IPM</a>
-      <a href="/prestasi">🏆 Prestasi &amp; Penghargaan</a>
-      <a class="" href="/berita">📰 Jurnal &amp; Kabar Sekolah</a>
-      <div class="drawer-section-title">Navigasi Halaman Utama</div>
-      <a href="index.html#sambutan">👤 Sambutan Kepala Sekolah</a>
-      <a href="index.html#jurusan">💻 7 Program Keahlian</a>
-      <a class="" href="/lsp">📜 LSP-P1</a>
-      <a href="index.html#blud">🏬 Unit Produksi BLUD</a>
-      <div style="margin-top: 1.5rem">
-        <a class="btn btn-primary" href="/spmb"
-          style="width: 100%; text-align: center; justify-content: center">Daftar SPMB 2026</a>
-      </div>
-    </div>
-  </div>
-
   <!-- HEADER -->
   <header class="page-header">
     <!-- Geometric Star SVG Pattern -->

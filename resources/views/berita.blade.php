@@ -2,43 +2,6 @@
 
 @section('content')
 
-    <!-- Mobile Drawer -->
-    <div class="mobile-overlay" id="mobile-overlay"></div>
-    <div class="mobile-drawer" id="mobile-drawer">
-        <button class="drawer-close" id="drawer-close-btn">&times;</button>
-        <div class="brand-box" style="margin-bottom: 2rem;">
-            <img src="{{ asset('assets/logo.webp') }}" alt="Logo SMKS MUHI" class="brand-logo"
-                onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
-            <div>
-                <strong style="color:var(--primary); font-size:1.1rem; display:block;">SMKS MUHI GENTENG</strong>
-                <small style="color:var(--text-muted); font-size:0.75rem;">NPSN 20525597 &bull; Akreditasi A</small>
-            </div>
-        </div>
-
-        <div class="drawer-links">
-            <a href="/index">🏠 Beranda</a>
-
-            <div class="drawer-section-title">Halaman Informasi</div>
-            <a href="/visi-misi">🎯 Visi & Misi Sekolah</a>
-            <a href="/guru">👥 Guru & Tenaga Kependidikan</a>
-            <a href="/fasilitas">🏢 Fasilitas Unggulan</a>
-            <a href="/ekstrakurikuler">⚽ Ekstrakurikuler & IPM</a>
-            <a href="/prestasi">🏆 Prestasi & Penghargaan</a>
-            <a href="/berita" class="active">📰 Jurnal & Kabar Kampus</a>
-
-            <div class="drawer-section-title">Navigasi Halaman Utama</div>
-            <a href="index.html#sambutan">👤 Sambutan Kepala Sekolah</a>
-            <a href="index.html#jurusan">💻 8 Program Keahlian</a>
-            <a href="index.html#blud">🏬 Unit Produksi BLUD</a>
-            <a href="/bkk">💼 Bursa Kerja Khusus (BKK)</a>
-
-            <div style="margin-top: 1.5rem;">
-                <a href="index.html#ppdb" class="btn btn-primary"
-                    style="width: 100%; text-align: center; justify-content: center;">Daftar SPMB 2026</a>
-            </div>
-        </div>
-    </div>
-
     <!-- 2. PAGE HEADER -->
     <header class="page-header">
         <div class="container">

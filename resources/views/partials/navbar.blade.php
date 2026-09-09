@@ -1,6 +1,6 @@
   <header class="header-wrapper">
     <nav class="nav-island" id="main-nav">
-      <a href="#hero" class="brand-box">
+      <a href="{{ url('/') }}" class="brand-box">
         <img src="{{ asset('assets/logo.png') }}" alt="Logo SMKS Muhammadiyah 1 Genteng" class="brand-logo" onerror="
               this.closest('.card')
                 ? this.closest('.card').classList.add('no-image')
@@ -10,15 +10,15 @@
       </a>
 
       <div class="nav-menu">
-        <a href="#hero" class="nav-link active">Beranda</a>
+        <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Beranda</a>
 
         <!-- Profil & Info Dropdown -->
         <div class="nav-item">
-          <a href="visi-misi.html#sambutan" class="nav-link">
+          <a href="{{ url('/visi-misi') }}" class="nav-link {{ request()->is('visi-misi*', 'guru*', 'fasilitas*', 'ekstrakurikuler*', 'prestasi*') ? 'active' : '' }}">
             Profil & Info <span style="font-size: 0.65rem">▼</span>
           </a>
           <div class="dropdown-menu">
-            <a href="/visi-misi" class="dropdown-item">
+            <a href="{{ url('/visi-misi') }}" class="dropdown-item {{ request()->is('visi-misi*') ? 'active' : '' }}">
               <span class="dropdown-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -32,7 +32,7 @@
                 <small style="color: var(--text-subtle); font-size: 0.75rem">Arah & Tujuan Lembaga</small>
               </div>
             </a>
-            <a href="/guru" class="dropdown-item">
+            <a href="{{ url('/guru') }}" class="dropdown-item {{ request()->is('guru*') ? 'active' : '' }}">
               <span class="dropdown-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -47,7 +47,7 @@
                 <small style="color: var(--text-subtle); font-size: 0.75rem">Tenaga Pendidik</small>
               </div>
             </a>
-            <a href="/fasilitas" class="dropdown-item">
+            <a href="{{ url('/fasilitas') }}" class="dropdown-item {{ request()->is('fasilitas*') ? 'active' : '' }}">
               <span class="dropdown-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -65,7 +65,7 @@
                 <small style="color: var(--text-subtle); font-size: 0.75rem">Laboratorium & Ruang Belajar</small>
               </div>
             </a>
-            <a href="/ekstrakurikuler" class="dropdown-item">
+            <a href="{{ url('/ekstrakurikuler') }}" class="dropdown-item {{ request()->is('ekstrakurikuler*') ? 'active' : '' }}">
               <span class="dropdown-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -78,7 +78,7 @@
                 <small style="color: var(--text-subtle); font-size: 0.75rem">Bakat, Seni & Karakter</small>
               </div>
             </a>
-            <a href="/prestasi" class="dropdown-item">
+            <a href="{{ url('/prestasi') }}" class="dropdown-item {{ request()->is('prestasi*') ? 'active' : '' }}">
               <span class="dropdown-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -98,22 +98,64 @@
           </div>
         </div>
 
-        <a href="#jurusan" class="nav-link">Konsentrasi Keahlian</a>
+        <a href="{{ url('/#jurusan') }}" class="nav-link">Konsentrasi Keahlian</a>
 
-        <a href="/lsp" class="nav-link">LSP</a>
+        <a href="{{ url('/lsp') }}" class="nav-link {{ request()->is('lsp*') ? 'active' : '' }}">LSP</a>
 
-        <a href="/bkk" class="nav-link">BKK</a>
+        <a href="{{ url('/bkk') }}" class="nav-link {{ request()->is('bkk*') ? 'active' : '' }}">BKK</a>
 
         <!-- Layanan Siswa (BLUD) -->
-        <a href="#blud" class="nav-link">BLUD</a>
+        <a href="{{ url('/#blud') }}" class="nav-link">BLUD</a>
 
-        <a href="/berita" class="nav-link">Berita</a>
-        <a href="/spmb" class="btn btn-primary" style="padding: 0.55rem 1.4rem; font-size: 0.88rem">Daftar SPMB</a>
+        <a href="{{ url('/berita') }}" class="nav-link {{ request()->is('berita*') ? 'active' : '' }}">Berita</a>
+        <a href="{{ url('/spmb') }}" class="btn btn-primary {{ request()->is('spmb*') ? 'active' : '' }}" style="padding: 0.55rem 1.4rem; font-size: 0.88rem">Daftar SPMB</a>
       </div>
 
-      <a href="#spmb" class="btn btn-primary nav-mobile-cta" style="display: none">Daftar SPMB</a>
+      <a href="{{ url('/spmb') }}" class="btn btn-primary nav-mobile-cta" style="display: none">Daftar SPMB</a>
       <button class="hamburger" id="hamburger-btn" aria-label="Buka Menu Navigasi">
         ☰
       </button>
     </nav>
   </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <div class="mobile-drawer" id="mobile-drawer">
+    <button class="drawer-close" id="drawer-close-btn">&times;</button>
+    <div class="brand-box" style="margin-bottom: 2rem">
+      <img src="{{ asset('assets/logo.webp') }}" alt="Logo SMEMSA" class="brand-logo" onerror="
+            this.closest('.card')
+              ? this.closest('.card').classList.add('no-image')
+              : null;
+            this.remove();
+          " />
+      <div>
+        <strong style="color: var(--primary); font-size: 1.1rem; display: block">SMEMSA GENTENG</strong>
+        <small style="color: var(--text-muted); font-size: 0.75rem">NPSN 20525597 &bull; Akreditasi A</small>
+      </div>
+    </div>
+
+    <div class="drawer-links">
+      <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">🏠 Beranda</a>
+
+      <div class="drawer-section-title">Halaman Informasi</div>
+      <a href="{{ url('/bkk') }}" class="{{ request()->is('bkk*') ? 'active' : '' }}">💼 Bursa Kerja Khusus (BKK)</a>
+      <a href="{{ url('/visi-misi') }}" class="{{ request()->is('visi-misi*') ? 'active' : '' }}">🎯 Visi & Misi Sekolah</a>
+      <a href="{{ url('/guru') }}" class="{{ request()->is('guru*') ? 'active' : '' }}">👥 Guru & Tenaga Kependidikan</a>
+      <a href="{{ url('/fasilitas') }}" class="{{ request()->is('fasilitas*') ? 'active' : '' }}">🏢 Fasilitas Unggulan</a>
+      <a href="{{ url('/ekstrakurikuler') }}" class="{{ request()->is('ekstrakurikuler*') ? 'active' : '' }}">⚽ Ekstrakurikuler & IPM</a>
+      <a href="{{ url('/prestasi') }}" class="{{ request()->is('prestasi*') ? 'active' : '' }}">🏆 Prestasi & Penghargaan</a>
+      <a href="{{ url('/berita') }}" class="{{ request()->is('berita*') ? 'active' : '' }}">📰 Jurnal & Kabar Sekolah</a>
+
+      <div class="drawer-section-title">Navigasi Halaman Utama</div>
+      <a href="{{ url('/#sambutan') }}">👤 Sambutan Kepala Sekolah</a>
+      <a href="{{ url('/#jurusan') }}">💻 7 Program Keahlian</a>
+      <a href="{{ url('/lsp') }}" class="{{ request()->is('lsp*') ? 'active' : '' }}">📜 LSP-P1</a>
+      <a href="{{ url('/#blud') }}">🏬 Unit Produksi BLUD</a>
+
+      <div style="margin-top: 1.5rem">
+        <a href="{{ url('/spmb') }}" class="btn btn-primary"
+          style="width: 100%; text-align: center; justify-content: center">Daftar SPMB 2026</a>
+      </div>
+    </div>
+  </div>
