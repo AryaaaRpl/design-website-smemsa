@@ -1,7 +1,7 @@
   <header class="header-wrapper">
     <nav class="nav-island" id="main-nav">
       <a href="{{ url('/') }}" class="brand-box">
-        <img src="{{ asset('assets/logo.png') }}" alt="Logo SMKS Muhammadiyah 1 Genteng" class="brand-logo" onerror="
+        <img src="{{ request()->is('lsp*') ? asset('assets/LSP.png') : asset('assets/logo.png') }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMKS Muhammadiyah 1 Genteng' : 'Logo SMKS Muhammadiyah 1 Genteng' }}" class="brand-logo" onerror="
               this.closest('.card')
                 ? this.closest('.card').classList.add('no-image')
                 : null;
@@ -123,7 +123,7 @@
   <div class="mobile-drawer" id="mobile-drawer">
     <button class="drawer-close" id="drawer-close-btn">&times;</button>
     <div class="brand-box" style="margin-bottom: 2rem">
-      <img src="{{ asset('assets/logo.webp') }}" alt="Logo SMEMSA" class="brand-logo" onerror="
+      <img src="{{ request()->is('lsp*') ? asset('assets/LSP.png') : asset('assets/logo.webp') }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMEMSA' : 'Logo SMEMSA' }}" class="brand-logo" onerror="
             this.closest('.card')
               ? this.closest('.card').classList.add('no-image')
               : null;
