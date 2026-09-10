@@ -54,11 +54,11 @@
     </section>
 
     <!-- 4. NEWS CARDS GRID -->
-    <section class="container">
+    <section id="news-card" class="container">
         <div class="news-grid">
 
             <!-- Card 1: Featured ME Awards -->
-            <article class="news-card" data-category="prestasi" onclick="openNewsModal('me-awards-liputan')">
+            <article id="1" class="news-card" data-category="prestasi" onclick="openNewsModal('me-awards-liputan')">
                 <div class="news-card-img-wrap">
                     <img src="{{ asset('assets/juara-me-awards.jpg') }}" alt="Liputan ME Awards SMKS MUHI" class="news-card-img"
                         onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
@@ -82,7 +82,7 @@
             </article>
 
             <!-- Card 2: Pengenalan Jurusan -->
-            <article class="news-card" data-category="kegiatan" onclick="openNewsModal('mpls-jurusan')">
+            <article id="2" class="news-card" data-category="kegiatan" onclick="openNewsModal('mpls-jurusan')">
                 <div class="news-card-img-wrap">
                     <img src="{{ asset('assets/berita/mpls.jpeg') }}" alt="MPLS Pengenalan Jurusan" class="news-card-img"
                         onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
@@ -106,7 +106,7 @@
             </article>
 
             <!-- Card 3: Taekwondo -->
-            <article class="news-card" data-category="prestasi" onclick="openNewsModal('taekwondo-liputan')">
+            <article id="3" class="news-card" data-category="prestasi" onclick="openNewsModal('taekwondo-liputan')">
                 <div class="news-card-img-wrap">
                     <img src="{{ asset('assets/berita/juara-tapak-suci.jpg') }}" alt="Juara Taekwondo" class="news-card-img"
                         onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
@@ -130,7 +130,7 @@
             </article>
 
             <!-- Card 4: Karaoke -->
-            <article class="news-card" data-category="prestasi" onclick="openNewsModal('karaoke-liputan')">
+            <article id="4" class="news-card" data-category="prestasi" onclick="openNewsModal('karaoke-liputan')">
                 <div class="news-card-img-wrap">
                     <img src="{{ asset('assets/berita/lomba-karaoke.jpg') }}" alt="Lomba Karaoke" class="news-card-img"
                         onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
@@ -154,7 +154,7 @@
             </article>
 
             <!-- Card 5: Pembekalan PKL -->
-            <article class="news-card" data-category="kegiatan" onclick="openNewsModal('pembekalan-pkl')">
+            <article id="5" class="news-card" data-category="kegiatan" onclick="openNewsModal('pembekalan-pkl')">
                 <div class="news-card-img-wrap">
                     <img src="{{ asset('assets/berita/pembekalan-pkl.jpg') }}" alt="Pembekalan PKL" class="news-card-img"
                         onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">

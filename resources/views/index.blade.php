@@ -41,7 +41,7 @@
           </p>
 
           <div class="hero-actions">
-            <a href="#spmb" class="btn btn-primary">Daftar SPMB 2026 &rarr;</a>
+            <a href="/spmb" class="btn btn-primary">Daftar SPMB 2026 &rarr;</a>
             <a href="#jurusan" class="btn btn-outline">Jelajahi 7 Konsentrasi Keahlian &rarr;</a>
           </div>
         </div>
@@ -1240,7 +1240,7 @@
             </div>
           </div>
 
-          <a href="prestasi.html" class="btn btn-outline" style="margin-top: 1.5rem">Lihat Galeri Prestasi Lengkap
+          <a href="/prestasi" class="btn btn-outline" style="margin-top: 1.5rem">Lihat Galeri Prestasi Lengkap
             &rarr;</a>
         </div>
 
@@ -1462,7 +1462,7 @@
             Mulai langkah menuju karier vokasi bersama sekolah pusat keunggulan
             dengan Teaching Factory, sertifikasi BNSP, dan penyaluran kerja.
           </p>
-          <a href="spmb.html" class="spmb-cta-btn">
+          <a href="/spmb" class="spmb-cta-btn">
             Informasi &amp; Pendaftaran SPMB
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1528,7 +1528,7 @@
 
         <!-- Articles Grid -->
         <div class="news-cards-grid">
-          <!-- Article 0 (Featured ME Awards) -->
+          <!-- Article 1 (Featured ME Awards) -->
           <div class="article-card" data-category="prestasi">
             <div class="article-thumb"><img src="{{ asset('assets/juara-me-awards.jpg') }}" alt="Liputan ME Awards SMKS MUHI"
                 style="width: 100%; height: 100%; object-fit: cover;"></div>
@@ -1552,7 +1552,7 @@
                   Delegasi SMKS Muhammadiyah 1 Genteng berhasil menorehkan prestasi gemilang dengan memboyong trofi Juara Umum dalam perhelatan akbar ME Awards 2026.
                 </p>
               </div>
-              <a href="berita.html" style="
+              <a href="/berita#1" style="
                     color: var(--secondary);
                     font-weight: 700;
                     font-size: 0.92rem;
@@ -1560,7 +1560,7 @@
             </div>
           </div>
 
-          <!-- Article 1 -->
+          <!-- Article 2 -->
           <div class="article-card" data-category="kegiatan">
             <div class="article-thumb"><img src="{{ asset('assets/berita/mpls.jpeg') }}" alt="MPLS Pengenalan Jurusan"
                 style="width: 100%; height: 100%; object-fit: cover;"></div>
@@ -1585,7 +1585,7 @@
                   mentalitas juara.
                 </p>
               </div>
-              <a href="berita.html" style="
+              <a href="/berita#2" style="
                     color: var(--secondary);
                     font-weight: 700;
                     font-size: 0.92rem;
@@ -1593,7 +1593,7 @@
             </div>
           </div>
 
-          <!-- Article 2 -->
+          <!-- Article 3 -->
           <div class="article-card" data-category="prestasi">
             <div class="article-thumb"><img src="{{ asset('assets/berita/juara-tapak-suci.jpg') }}" alt="Juara Taekwondo"
                 style="width: 100%; height: 100%; object-fit: cover;"></div>
@@ -1617,7 +1617,7 @@
                   Ibellino Novendra dan Ahmad Husaini sukses mengharumkan nama sekolah di tingkat Provinsi Jawa Timur.
                 </p>
               </div>
-              <a href="berita.html" style="
+              <a href="/berita#3" style="
                     color: var(--secondary);
                     font-weight: 700;
                     font-size: 0.92rem;
@@ -1625,7 +1625,7 @@
             </div>
           </div>
 
-          <!-- Article 3 -->
+          <!-- Article 4 -->
           <div class="article-card" data-category="prestasi">
             <div class="article-thumb"><img src="{{ asset('assets/berita/lomba-karaoke.jpg') }}" alt="Lomba Karaoke"
                 style="width: 100%; height: 100%; object-fit: cover;"></div>
@@ -1649,7 +1649,7 @@
                   Chelsea Princes F. dan Rennyyu Galuh Sivanni tampil gemilang di tingkat Kabupaten Banyuwangi.
                 </p>
               </div>
-              <a href="berita.html" style="
+              <a href="/berita#4" style="
                     color: var(--secondary);
                     font-weight: 700;
                     font-size: 0.92rem;
@@ -1657,7 +1657,7 @@
             </div>
           </div>
 
-          <!-- Article 4 -->
+          <!-- Article 5 -->
           <div class="article-card" data-category="kegiatan">
             <div class="article-thumb"><img src="{{ asset('assets/berita/pembekalan-pkl.jpg') }}" alt="Pembekalan PKL"
                 style="width: 100%; height: 100%; object-fit: cover;"></div>
@@ -1681,7 +1681,7 @@
                   Membekali peserta didik dengan pengetahuan, etos kerja, dan kesadaran hukum sebelum terjun ke DUDIKA.
                 </p>
               </div>
-              <a href="berita.html" style="
+              <a href="/berita#5" style="
                     color: var(--secondary);
                     font-weight: 700;
                     font-size: 0.92rem;

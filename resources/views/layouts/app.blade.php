@@ -77,6 +77,9 @@
 </head>
 
 <body>
+  <!-- 0. PAGE PRELOADER ANIMATION -->
+  @include('partials.loader')
+
   <!-- 1. FLOATING ISLAND NAVBAR WITH GLASSMORPHISM 2.0 -->
     @include('partials.navbar')
     @yield('content')
