@@ -1047,7 +1047,7 @@
         text.includes("magang") ||
         text.includes("lowongan")
       ) {
-        return "🔥 Lowongan Kerja Terbaru Bursa Kerja Khusus (BKK) SMEMSA:\n\n1. Web & Mobile Developer - PT Digital Kreatif Nusantara (Malang)\n   • Gaji: Rp 4.200.000 - Rp 6.000.000 / bln\n   • Kualifikasi: Lulusan PPLG, paham JS/Laravel/Flutter.\n\n2. Junior Network & Cloud Support - PT Telkomsel Infrastructure (Surabaya)\n   • Gaji: Rp 4.500.000 - Rp 5.800.000 / bln\n   • Kualifikasi: Lulusan TJKT, menguasai MikroTik / Fiber Optic.\n\n3. Graphic & Motion Designer - Studio Visual Kinetik (Banyuwangi)\n   • Gaji: Rp 3.200.000 - Rp 4.500.000 / bln\n   • Kualifikasi: Lulusan DKV, mahir Adobe Ps/Ai/Pr.\n\n4. E-Commerce & Social Media Host - PT Astra Digital Commerce (Surabaya)\n   • Gaji: Rp 3.800.000 - Rp 5.000.000 / bln\n   • Kualifikasi: Lulusan BD/MPLB, komunikatif & mahir Live Streaming.\n\n5. Front Office & Hospitality Staff - Hotel Ketapang Indah / Dialoog Resort\n   • Gaji: Rp 3.500.000 - Rp 4.800.000 / bln\n   • Kualifikasi: Lulusan PH, penampilan menarik, bahasa Inggris aktif.\n\n💼 Pendaftaran & penyerahan berkas langsung melalui Kantor BKK SMEMSA!";
+        return "🔥 Lowongan Kerja Terbaru Bursa Kerja Khusus (BKK) SMEMSA:\n\n1. Web & Mobile Developer - PT Digital Kreatif Nusantara (Malang)\n   • Gaji: Rp 4.200.000 - Rp 6.000.000 / bln\n   • Kualifikasi: Lulusan PPLG, paham JS/Laravel/Flutter.\n\n2. Junior Network & Cloud Support - PT Telkomsel Infrastructure (Surabaya)\n   • Gaji: Rp 4.500.000 - Rp 5.800.000 / bln\n   • Kualifikasi: Lulusan TJKT, menguasai MikroTik / Fiber Optic.\n\n3. Graphic & Motion Designer - Studio Visual Kinetik (Banyuwangi)\n   • Gaji: Rp 3.200.000 - Rp 4.500.000 / bln\n   • Kualifikasi: Lulusan DKV, mahir Adobe Ps/Ai/Pr.\n\n4. E-Commerce & Social Media Host - PT Astra Digital Commerce (Surabaya)\n   • Gaji: Rp 3.800.000 - Rp 5.000.000 / bln\n   • Kualifikasi: Lulusan BD/MPLB, komunikatif & mahir Live Streaming.\n\n5. Front Office & Hospitality Staff - Hotel Ketapang Indah / Dialoog Resort\n   • Gaji: Rp 3.500.000 - Rp 4.800.000 / bln\n   • Kualifikasi: Lulusan PH, penampilan menarik, bahasa Inggris aktif.\n\n Pendaftaran & penyerahan berkas langsung melalui Kantor BKK SMEMSA!";
       } else if (
         text.includes("lsp") ||
         text.includes("bnsp") ||
@@ -1648,7 +1648,7 @@
         platform: "Web App & Responsive Mobile UI",
         fitur: "Dashboard Pasien/Konselor, Multi-User Auth, Realtime Notification",
         highlight: "Siswa mempraktikkan SDLC (Software Development Life Cycle) modern, framework Laravel/Flutter, API integration, dan database Security.",
-        foto: null,
+        foto: 'assets/produk/icaremu.jpeg',
         icon: "📱",
         gradient: "linear-gradient(135deg, #0d9488 0%, #0f766e 100%)"
       },
@@ -1663,7 +1663,7 @@
         platform: "Cloud-Based Web Application",
         fitur: "Self-Assessment Survey, Analytics Charts, Encrypted Notes",
         highlight: "Siswa PPLG mengasah kemampuan UI/UX design, arsitektur database relasional, serta pengujian sistem (QA Testing) sebelum komersialisasi.",
-        foto: null,
+        foto: 'assets/produk/mindu.jpeg',
         icon: "💡",
         gradient: "linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)"
       },
@@ -1707,17 +1707,17 @@
           detailsHtml += `<p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0.6rem; line-height: 1.5;">${prod.desc}</p>`;
 
         let specSummary = "";
-        if (prod.kemasan) specSummary += `<span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;">📦 <strong>Kemasan:</strong> ${prod.kemasan}</span>`;
+        if (prod.kemasan) specSummary += `<span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;"> <strong>Kemasan:</strong> ${prod.kemasan}</span>`;
         if (prod.varian) {
           const vStr = Array.isArray(prod.varian) ? prod.varian.join(", ") : prod.varian;
-          specSummary += `<span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;">🎨 <strong>Varian:</strong> ${vStr}</span>`;
+          specSummary += `<span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;"><strong>Varian:</strong> ${vStr}</span>`;
         }
 
         html += `
           <div class="product-bento" style="padding: 1.5rem; justify-content: space-between; cursor: pointer;" onclick="openBludModal(${index})">
             <div>
               ${imageHtml}
-              <div class="blud-learner-tag">💼 Dikelola siswa ${prod.jurusan}</div>
+              <div class="blud-learner-tag">Dikelola siswa ${prod.jurusan}</div>
               <h3 class="font-head" style="font-size:1.25rem; color:#ffffff; margin: 0.4rem 0 0.6rem; line-height: 1.3;">${prod.name}</h3>
               ${detailsHtml}
               ${specSummary}
@@ -1740,16 +1740,22 @@
       const banner = document.getElementById("blud-modal-banner");
 
       if (prod.foto) {
-        bgImg.src = prod.foto;
-        bgImg.style.display = "block";
-        iconImg.src = prod.foto;
-        iconImg.style.display = "block";
-        iconEmoji.style.display = "none";
+        if (bgImg) {
+          bgImg.src = prod.foto;
+          bgImg.style.display = "block";
+        }
+        if (iconImg) {
+          iconImg.src = prod.foto;
+          iconImg.style.display = "block";
+        }
+        if (iconEmoji) iconEmoji.style.display = "none";
       } else {
-        bgImg.style.display = "none";
-        iconImg.style.display = "none";
-        iconEmoji.innerText = prod.icon || "💼";
-        iconEmoji.style.display = "inline-block";
+        if (bgImg) bgImg.style.display = "none";
+        if (iconImg) iconImg.style.display = "none";
+        if (iconEmoji) {
+          iconEmoji.innerText = prod.icon || "💼";
+          iconEmoji.style.display = "inline-block";
+        }
       }
 
       if (prod.gradient) {
@@ -1758,7 +1764,7 @@
         banner.style.background = "linear-gradient(135deg, #064e3b 0%, #047857 100%)";
       }
 
-      document.getElementById("blud-modal-tag").innerText = prod.badge || `💼 Dikelola siswa ${prod.jurusan}`;
+      document.getElementById("blud-modal-tag").innerText = prod.badge || `Dikelola siswa ${prod.jurusan}`;
       document.getElementById("blud-modal-title").innerText = prod.name;
       document.getElementById("blud-modal-desc").innerText = prod.detail || prod.desc;
 
@@ -1767,36 +1773,36 @@
       chipsContainer.innerHTML = "";
 
       if (prod.jurusan) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">🎓 <strong>Pengelola:</strong> ${prod.jurusan}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>Pengelola:</strong> ${prod.jurusan}</span>`;
       }
       if (prod.kemasan) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">📦 <strong>Kemasan:</strong> ${prod.kemasan}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"> <strong>Kemasan:</strong> ${prod.kemasan}</span>`;
       }
       if (prod.varian && Array.isArray(prod.varian)) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">🎨 <strong>Varian:</strong> ${prod.varian.join(", ")}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>Varian:</strong> ${prod.varian.join(", ")}</span>`;
       } else if (prod.varian) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">🎨 <strong>Varian:</strong> ${prod.varian}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>Varian:</strong> ${prod.varian}</span>`;
       }
       if (prod.rasa) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">😋 <strong>Rasa:</strong> ${prod.rasa}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>Rasa:</strong> ${prod.rasa}</span>`;
       }
       if (prod.catatan) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">💡 <strong>Penyajian:</strong> ${prod.catatan}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>Penyajian:</strong> ${prod.catatan}</span>`;
       }
       if (prod.material) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">🧵 <strong>Material:</strong> ${prod.material}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>Material:</strong> ${prod.material}</span>`;
       }
       if (prod.fitur) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">⚡ <strong>Fitur:</strong> ${prod.fitur}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>Fitur:</strong> ${prod.fitur}</span>`;
       }
       if (prod.platform) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">💻 <strong>Platform:</strong> ${prod.platform}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>Platform:</strong> ${prod.platform}</span>`;
       }
       if (prod.layanan) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">🛠️ <strong>Cakupan:</strong> ${prod.layanan}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>Cakupan:</strong> ${prod.layanan}</span>`;
       }
       if (prod.garansi) {
-        chipsContainer.innerHTML += `<span class="blud-modal-chip">🛡️ <strong>Garansi:</strong> ${prod.garansi}</span>`;
+        chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>Garansi:</strong> ${prod.garansi}</span>`;
       }
 
       document.getElementById("blud-modal-highlight").innerText = prod.highlight || "Unit produksi BLUD memberikan pengalaman mengelola wirausaha nyata bagi siswa SMEMSA Genteng.";
@@ -1833,7 +1839,7 @@
       {
         title: "SMEMSA Print Studio",
         subtitle: "Percetakan & Merchandise Komersial",
-        tag: "💼 Dikelola DKV & Bisnis Digital",
+        tag: "Dikelola DKV & Bisnis Digital",
         icon: "🖨️",
         gradient: "linear-gradient(135deg, #064e3b 0%, #047857 100%)",
         desc: "Layanan percetakan digital profesional dan cetak merchandise berstandar industri. Melayani pesanan cetak banner outdoor/indoor, sablon kaos custom, mug suvenir, ID card institusi, hingga perlengkapan promosi usaha.",
@@ -1848,7 +1854,7 @@
       {
         title: "SMEMSA Tech Solutions",
         subtitle: "Service Center Hardware & Software House",
-        tag: "💼 Dikelola TJKT & PPLG",
+        tag: "Dikelola TJKT & PPLG",
         icon: "🔧",
         gradient: "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)",
         desc: "Pusat pelayanan teknologi terpadu yang melayani perbaikan laptop/PC, instalasi sistem operasi & jaringan Wi-Fi/LAN, hingga jasa pembuatan website e-commerce dan aplikasi digital untuk instansi & UMKM.",
@@ -1863,7 +1869,7 @@
       {
         title: "SMEMSA Hospitality Hub",
         subtitle: "Mini Hotel (Edutel) & Express Laundry",
-        tag: "💼 Dikelola Perhotelan & MPLB",
+        tag: "Dikelola Perhotelan & MPLB",
         icon: "🏨",
         gradient: "linear-gradient(135deg, #b45309 0%, #78350f 100%)",
         desc: "Unit bisnis hospitalitas yang mengoperasikan kamar penginapan mini hotel (Edutel) standar bintang, layanan laundry pakaian harum & higienis, serta persewaan ruang rapat (meeting room) terpadu.",
@@ -1878,7 +1884,7 @@
       {
         title: "SMEMSA Mart & Business Center",
         subtitle: "Ritel, POS Kasir & Mini Market Sekolah",
-        tag: "💼 Dikelola Bisnis Digital & AKL",
+        tag: "Dikelola Bisnis Digital & AKL",
         icon: "🛍️",
         gradient: "linear-gradient(135deg, #15803d 0%, #166534 100%)",
         desc: "Pusat ritel komersial yang menyediakan kebutuhan ATK, produk makanan/minuman olahan siswa, hingga barang konsumsi harian berbasis sistem kasir modern (Point of Sale).",
@@ -1912,7 +1918,7 @@
 
       if (unit.specs && Array.isArray(unit.specs)) {
         unit.specs.forEach(s => {
-          chipsContainer.innerHTML += `<span class="blud-modal-chip">⚡ <strong>${s.label}:</strong> ${s.val}</span>`;
+          chipsContainer.innerHTML += `<span class="blud-modal-chip"><strong>${s.label}:</strong> ${s.val}</span>`;
         });
       }
 

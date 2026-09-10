@@ -121,7 +121,10 @@
   <!-- Mobile Drawer -->
   <div class="mobile-overlay" id="mobile-overlay"></div>
   <div class="mobile-drawer" id="mobile-drawer">
-    <button class="drawer-close" id="drawer-close-btn">&times;</button>
+    <button class="drawer-close" id="drawer-close-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg></button>
     <div class="brand-box" style="margin-bottom: 2rem">
       <img src="{{ request()->is('lsp*') ? asset('assets/LSP.png') : asset('assets/logo.webp') }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMEMSA' : 'Logo SMEMSA' }}" class="brand-logo" onerror="
             this.closest('.card')
@@ -136,16 +139,16 @@
     </div>
 
     <div class="drawer-links">
-      <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">🏠 Beranda</a>
+      <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Beranda</a>
 
       <div class="drawer-section-title">Halaman Informasi</div>
-      <a href="{{ url('/bkk') }}" class="{{ request()->is('bkk*') ? 'active' : '' }}">💼 Bursa Kerja Khusus (BKK)</a>
-      <a href="{{ url('/visi-misi') }}" class="{{ request()->is('visi-misi*') ? 'active' : '' }}">🎯 Visi & Misi Sekolah</a>
-      <a href="{{ url('/guru') }}" class="{{ request()->is('guru*') ? 'active' : '' }}">👥 Guru & Tenaga Kependidikan</a>
-      <a href="{{ url('/fasilitas') }}" class="{{ request()->is('fasilitas*') ? 'active' : '' }}">🏢 Fasilitas Unggulan</a>
-      <a href="{{ url('/ekstrakurikuler') }}" class="{{ request()->is('ekstrakurikuler*') ? 'active' : '' }}">⚽ Ekstrakurikuler & IPM</a>
-      <a href="{{ url('/prestasi') }}" class="{{ request()->is('prestasi*') ? 'active' : '' }}">🏆 Prestasi & Penghargaan</a>
-      <a href="{{ url('/berita') }}" class="{{ request()->is('berita*') ? 'active' : '' }}">📰 Jurnal & Kabar Sekolah</a>
+      <a href="{{ url('/bkk') }}" class="{{ request()->is('bkk*') ? 'active' : '' }}">Bursa Kerja Khusus (BKK)</a>
+      <a href="{{ url('/visi-misi') }}" class="{{ request()->is('visi-misi*') ? 'active' : '' }}">Visi & Misi Sekolah</a>
+      <a href="{{ url('/guru') }}" class="{{ request()->is('guru*') ? 'active' : '' }}">Guru & Tenaga Kependidikan</a>
+      <a href="{{ url('/fasilitas') }}" class="{{ request()->is('fasilitas*') ? 'active' : '' }}">Fasilitas Unggulan</a>
+      <a href="{{ url('/ekstrakurikuler') }}" class="{{ request()->is('ekstrakurikuler*') ? 'active' : '' }}">Ekstrakurikuler & IPM</a>
+      <a href="{{ url('/prestasi') }}" class="{{ request()->is('prestasi*') ? 'active' : '' }}">Prestasi & Penghargaan</a>
+      <a href="{{ url('/berita') }}" class="{{ request()->is('berita*') ? 'active' : '' }}">Jurnal & Kabar Sekolah</a>
 
       <div class="drawer-section-title">Navigasi Halaman Utama</div>
       <a href="{{ url('/#sambutan') }}">👤 Sambutan Kepala Sekolah</a>

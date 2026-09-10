@@ -57,22 +57,18 @@
       <!-- BKK Key Statistics -->
       <div class="bkk-stats-grid">
         <div class="stat-card">
-          <div class="stat-icon">🤝</div>
           <div class="stat-value">120+</div>
           <div class="stat-label">Mitra DUDI & Industri</div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">🎓</div>
           <div class="stat-value">92.4%</div>
           <div class="stat-label">Alumni Terserap Kerja</div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">📋</div>
           <div class="stat-value">85+</div>
           <div class="stat-label">Lowongan Kerja Per Tahun</div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">🚀</div>
           <div class="stat-value">100%</div>
           <div class="stat-label">Fasilitasi Rekrutmen Direct</div>
         </div>
@@ -232,7 +228,6 @@
 
         <div class="service-grid">
           <div class="service-card">
-            <div class="service-icon">💼</div>
             <h3>Penyaluran Kerja Direct</h3>
             <p>
               Rekrutmen sekolah langsung (Campus Recruitment) bekerjasama

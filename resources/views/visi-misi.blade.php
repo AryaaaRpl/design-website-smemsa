@@ -467,7 +467,10 @@
           <img alt="Major Logo" id="modal-icon-img" src="{{ asset('assets/major/PPLG-removebg-preview.png') }}" />
         </div>
         <button aria-label="Tutup Detail Jurusan" class="modal-close-btn" onclick="closeMajorModal()">
-          ×
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
         </button>
       </div>
       <!-- Modal Content Body -->
@@ -483,7 +486,7 @@
         </p>
         <div class="modal-skills-box">
           <div class="modal-section-title">
-            <span>🛠️</span> Kompetensi &amp; Tools Unggulan:
+            Kompetensi &amp; Tools Unggulan:
           </div>
           <div class="modal-chips-row" id="modal-skills">
             <span class="modal-skill-chip">Web &amp; Mobile Dev</span>
@@ -494,7 +497,7 @@
         </div>
         <div class="modal-career-box">
           <div class="modal-section-title" style="color: var(--primary); margin-bottom: 0.4rem">
-            <span>🚀</span> Peluang &amp; Prospek Karir:
+            Peluang &amp; Prospek Karir:
           </div>
           <div class="modal-career-text" id="modal-career">
             Software Engineer, Web Developer, Mobile App Developer, Database

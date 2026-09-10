@@ -1292,10 +1292,17 @@ a {
   justify-content: center;
 }
 
+.guru-card:hover .guru-jabatan {
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
 .guru-jabatan {
   color: var(--text-muted);
   font-size: 13px;
   font-weight: 500;
+  transition: all;
 }
 
 .headmaster-quote {
