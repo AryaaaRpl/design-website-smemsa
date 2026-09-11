@@ -1333,7 +1333,7 @@
         onclick="openUnitUsahaModal(0)">
         <div>
           <div
-            style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #064e3b 0%, #047857 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);">
+            style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);">
             <span style="font-size: 3rem; margin-bottom: 0.4rem;">🖨️</span>
             <h4
               style="color: #fff; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.3; font-weight: 800;">
@@ -1395,7 +1395,7 @@
         onclick="openUnitUsahaModal(2)">
         <div>
           <div
-            style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #b45309 0%, #78350f 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);">
+            style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);">
             <span style="font-size: 3rem; margin-bottom: 0.4rem;">🏨</span>
             <h4
               style="color: #fff; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.3; font-weight: 800;">
@@ -1426,7 +1426,7 @@
         onclick="openUnitUsahaModal(3)">
         <div>
           <div
-            style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #15803d 0%, #166534 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);">
+            style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);">
             <span style="font-size: 3rem; margin-bottom: 0.4rem;">🛍️</span>
             <h4
               style="color: #fff; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.3; font-weight: 800;">

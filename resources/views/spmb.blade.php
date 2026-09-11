@@ -24,45 +24,151 @@
       </div>
     </header>
 
-    <!-- 2. ALUR PENDAFTARAN (LINIMASA VERTIKAL BERNOMOR) -->
+    <!-- 2. ALUR PENDAFTARAN (ONLINE & OFFLINE INTERAKTIF DENGAN ANIMASI GARIS) -->
     <section class="spmb-section spmb-section-alt" id="alur-pendaftaran">
       <div class="container">
         <div class="section-header">
           <span class="badge-primary">Tahapan Seleksi</span>
           <h2 class="section-title">Alur Pendaftaran Siswa Baru</h2>
           <p class="section-desc">
-            Empat langkah praktis menuju status siswa resmi SMKS Muhammadiyah 1 Genteng.
+            Pilih jalur pendaftaran online atau offline sesuai kenyamanan Anda untuk bergabung bersama SMKS Muhammadiyah 1 Genteng.
           </p>
         </div>
 
+        <!-- Mode Pendaftaran Switcher (Online vs Offline) -->
+        <div class="alur-switch-wrapper">
+          <div class="alur-switch-container">
+            <button type="button" class="alur-switch-btn active" id="btn-alur-online" onclick="switchAlur('online')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span>Pendaftaran Online</span>
+              <span class="alur-badge-pill">Praktis 24 Jam</span>
+            </button>
+            <button type="button" class="alur-switch-btn" id="btn-alur-offline" onclick="switchAlur('offline')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Pendaftaran Offline</span>
+              <span class="alur-badge-pill">Di Sekolah</span>
+            </button>
+          </div>
+        </div>
+
         <div class="timeline-vertical-wrapper">
-          <div class="timeline-vertical-track" id="steps-container">
-            <div class="timeline-step-item">
-              <div class="timeline-step-bullet">1</div>
-              <div class="timeline-step-card">
-                <h3 class="step-card-title">Isi Formulir Online</h3>
-                <p class="step-card-desc">Lengkapi data calon siswa secara online melalui formulir resmi SPMB SMKS SMEMSA Genteng atau hubungi sekretariat pendaftaran.</p>
+          <!-- PANEL ALUR ONLINE -->
+          <div class="alur-timeline-panel active" id="alur-panel-online">
+            <div class="timeline-vertical-box" id="timeline-box-online">
+              <div class="timeline-progress-line">
+                <div class="timeline-progress-bar" id="timeline-bar-online"></div>
+              </div>
+
+              <!-- Langkah 1 Online -->
+              <div class="timeline-step-card-v2">
+                <div class="timeline-step-icon">1</div>
+                <div class="timeline-step-body">
+                  <div class="timeline-step-tag">Tahap 1 • Registrasi Digital</div>
+                  <h3 class="step-card-title">Isi Formulir Online</h3>
+                  <p class="step-card-desc">
+                    Lengkapi formulir pendaftaran digital melalui portal SPMB SMKS Muhammadiyah 1 Genteng atau hubungi narahubung panitia. Pilih 2 konsentrasi keahlian yang diminati.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Langkah 2 Online -->
+              <div class="timeline-step-card-v2">
+                <div class="timeline-step-icon">2</div>
+                <div class="timeline-step-body">
+                  <div class="timeline-step-tag">Tahap 2 • Dokumen Persyaratan</div>
+                  <h3 class="step-card-title">Unggah Berkas Persyaratan</h3>
+                  <p class="step-card-desc">
+                    Unggah foto/scan Kartu Keluarga (KK), Akta Kelahiran, SKHUN/Ijazah SMP (dapat menyusul), pas foto 3x4, serta sertifikat/piagam prestasi bagi pendaftar jalur prestasi/beasiswa.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Langkah 3 Online -->
+              <div class="timeline-step-card-v2">
+                <div class="timeline-step-icon">3</div>
+                <div class="timeline-step-body">
+                  <div class="timeline-step-tag">Tahap 3 • Validasi Panitia</div>
+                  <h3 class="step-card-title">Verifikasi & Konfirmasi Kelulusan</h3>
+                  <p class="step-card-desc">
+                    Panitia SPMB memvalidasi data dan keabsahan berkas secara daring dalam 1x24 jam. Anda akan menerima notifikasi status penerimaan dan nomor registrasi resmi via WhatsApp.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Langkah 4 Online -->
+              <div class="timeline-step-card-v2">
+                <div class="timeline-step-icon">4</div>
+                <div class="timeline-step-body">
+                  <div class="timeline-step-tag">Tahap 4 • Finalisasi & MPLS</div>
+                  <h3 class="step-card-title">Daftar Ulang & Orientasi Siswa</h3>
+                  <p class="step-card-desc">
+                    Konfirmasi daftar ulang dan skema pembayaran PSM (dapat dicicil), fitting/pengambilan seragam kejuruan di kampus SMEMSA, serta persiapan Masa Pengenalan Lingkungan Sekolah (MPLS).
+                  </p>
+                </div>
               </div>
             </div>
-            <div class="timeline-step-item">
-              <div class="timeline-step-bullet">2</div>
-              <div class="timeline-step-card">
-                <h3 class="step-card-title">Unggah Berkas Persyaratan</h3>
-                <p class="step-card-desc">Siapkan scan pas foto, Kartu Keluarga, SKHUN/Ijazah, dan piagam prestasi (bagi pendaftar jalur prestasi/beasiswa).</p>
+          </div>
+
+          <!-- PANEL ALUR OFFLINE -->
+          <div class="alur-timeline-panel" id="alur-panel-offline" style="display: none;">
+            <div class="timeline-vertical-box" id="timeline-box-offline">
+              <div class="timeline-progress-line">
+                <div class="timeline-progress-bar" id="timeline-bar-offline"></div>
               </div>
-            </div>
-            <div class="timeline-step-item">
-              <div class="timeline-step-bullet">3</div>
-              <div class="timeline-step-card">
-                <h3 class="step-card-title">Verifikasi Panitia</h3>
-                <p class="step-card-desc">Panitia SPMB akan memvalidasi data administrasi dan mengonfirmasi jurusan pilihan Anda dalam waktu 1x24 jam kerja.</p>
+
+              <!-- Langkah 1 Offline -->
+              <div class="timeline-step-card-v2">
+                <div class="timeline-step-icon">1</div>
+                <div class="timeline-step-body">
+                  <div class="timeline-step-tag">Tahap 1 • Kunjungan Kampus</div>
+                  <h3 class="step-card-title">Datang ke Sekretariat SPMB SMEMSA</h3>
+                  <p class="step-card-desc">
+                    Kunjungi Sekretariat SPMB di SMKS Muhammadiyah 1 Genteng (Jl. KH. Imam Bahri No.10, Genteng) pada jam layanan kantor (Senin–Sabtu, 07.00–14.30 WIB) didampingi orang tua/wali.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="timeline-step-item">
-              <div class="timeline-step-bullet">4</div>
-              <div class="timeline-step-card">
-                <h3 class="step-card-title">Daftar Ulang & Orientasi</h3>
-                <p class="step-card-desc">Daftar ulang fisik di sekolah, fitting seragam kejuruan, dan pembekalan Masa Pengenalan Lingkungan Sekolah (MPLS).</p>
+
+              <!-- Langkah 2 Offline -->
+              <div class="timeline-step-card-v2">
+                <div class="timeline-step-icon">2</div>
+                <div class="timeline-step-body">
+                  <div class="timeline-step-tag">Tahap 2 • Pengisian Formulir & Berkas</div>
+                  <h3 class="step-card-title">Pengisian Formulir & Penyerahan Berkas Fisik</h3>
+                  <p class="step-card-desc">
+                    Ambil lembar formulir fisik pendaftaran di loket sekretariat, isi data calon siswa dengan panduan panitia, dan serahkan berkas fotokopi (KK, Akta, Ijazah/SKHUN, & Pas Foto 3x4).
+                  </p>
+                </div>
+              </div>
+
+              <!-- Langkah 3 Offline -->
+              <div class="timeline-step-card-v2">
+                <div class="timeline-step-icon">3</div>
+                <div class="timeline-step-body">
+                  <div class="timeline-step-tag">Tahap 3 • Peminatan & Tes Kejuruan</div>
+                  <h3 class="step-card-title">Wawancara Minat Bakat & Cek Fisik</h3>
+                  <p class="step-card-desc">
+                    Mengikuti konsultasi pemilihan jurusan bersama guru BK/panitia, cek kesehatan kejuruan (tes buta warna untuk konsentrasi tertentu), dan validasi kriteria beasiswa jika mengajukan.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Langkah 4 Offline -->
+              <div class="timeline-step-card-v2">
+                <div class="timeline-step-icon">4</div>
+                <div class="timeline-step-body">
+                  <div class="timeline-step-tag">Tahap 4 • Administrasi & Seragam</div>
+                  <h3 class="step-card-title">Daftar Ulang, Fitting Seragam & Cetak Kartu</h3>
+                  <p class="step-card-desc">
+                    Menyelesaikan administrasi daftar ulang di loket kasir sekolah, melakukan pengukuran/fitting seragam kejuruan langsung di tempat, serta menerima Surat Tanda Diterima resmi.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -745,27 +851,109 @@
     </section>
   </main>
 
+@push('scripts')
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const faqItems = document.querySelectorAll(".faq-item");
-      faqItems.forEach(function (item) {
-        const trigger = item.querySelector(".faq-trigger");
-        if (trigger) {
-          trigger.addEventListener("click", function () {
-            const isActive = item.classList.contains("active");
-            faqItems.forEach(function (other) {
-              other.classList.remove("active");
-              const otherTrigger = other.querySelector(".faq-trigger");
-              if (otherTrigger) otherTrigger.setAttribute("aria-expanded", "false");
-            });
-            if (!isActive) {
-              item.classList.add("active");
-              trigger.setAttribute("aria-expanded", "true");
-            }
-          });
+    function switchAlur(mode) {
+      const btnOnline = document.getElementById("btn-alur-online");
+      const btnOffline = document.getElementById("btn-alur-offline");
+      const panelOnline = document.getElementById("alur-panel-online");
+      const panelOffline = document.getElementById("alur-panel-offline");
+
+      if (mode === "online") {
+        if (btnOnline) btnOnline.classList.add("active");
+        if (btnOffline) btnOffline.classList.remove("active");
+        if (panelOnline) {
+          panelOnline.classList.add("active");
+          panelOnline.style.display = "block";
         }
-      });
-    });
+        if (panelOffline) {
+          panelOffline.classList.remove("active");
+          panelOffline.style.display = "none";
+        }
+      } else {
+        if (btnOffline) btnOffline.classList.add("active");
+        if (btnOnline) btnOnline.classList.remove("active");
+        if (panelOffline) {
+          panelOffline.classList.add("active");
+          panelOffline.style.display = "block";
+        }
+        if (panelOnline) {
+          panelOnline.classList.remove("active");
+          panelOnline.style.display = "none";
+        }
+      }
+
+      if (typeof ScrollTrigger !== "undefined") {
+        ScrollTrigger.refresh();
+      }
+    }
+
+    (function () {
+      function initSPMBAnimations() {
+        if (typeof gsap !== "undefined") {
+          if (typeof ScrollTrigger !== "undefined") {
+            gsap.registerPlugin(ScrollTrigger);
+          }
+
+          // Timeline Progress Bar ScrollTrigger Animation for Online Alur
+          const onlineBar = document.getElementById("timeline-bar-online");
+          if (onlineBar) {
+            gsap.to(onlineBar, {
+              height: "100%",
+              ease: "none",
+              scrollTrigger: {
+                trigger: "#timeline-box-online",
+                start: "top 75%",
+                end: "bottom 70%",
+                scrub: 0.5,
+              },
+            });
+          }
+
+          // Timeline Progress Bar ScrollTrigger Animation for Offline Alur
+          const offlineBar = document.getElementById("timeline-bar-offline");
+          if (offlineBar) {
+            gsap.to(offlineBar, {
+              height: "100%",
+              ease: "none",
+              scrollTrigger: {
+                trigger: "#timeline-box-offline",
+                start: "top 75%",
+                end: "bottom 70%",
+                scrub: 0.5,
+              },
+            });
+          }
+        }
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll(".faq-item");
+        faqItems.forEach(function (item) {
+          const trigger = item.querySelector(".faq-trigger");
+          if (trigger) {
+            trigger.addEventListener("click", function () {
+              const isActive = item.classList.contains("active");
+              faqItems.forEach(function (other) {
+                other.classList.remove("active");
+                const otherTrigger = other.querySelector(".faq-trigger");
+                if (otherTrigger) otherTrigger.setAttribute("aria-expanded", "false");
+              });
+              if (!isActive) {
+                item.classList.add("active");
+                trigger.setAttribute("aria-expanded", "true");
+              }
+            });
+          }
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initSPMBAnimations);
+      } else {
+        initSPMBAnimations();
+      }
+    })();
   </script>
+@endpush
 
 @endsection
