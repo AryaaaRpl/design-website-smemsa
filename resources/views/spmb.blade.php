@@ -14,7 +14,7 @@
         </p>
         <div class="header-actions">
           <a href="https://wa.me/6282241356668?text=Halo%20Panitia%20SPMB%20SMKS%20Muhammadiyah%201%20Genteng,%20saya%20ingin%20mendaftar%20siswa%20baru"
-            target="_blank" rel="noopener noreferrer" class="btn btn-amber">
+            target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             Daftar Sekarang
           </a>
           <a href="https://wa.me/6282241356668" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
@@ -301,7 +301,7 @@
               </div>
 
               <!-- Seragam Perempuan -->
-              <div class="fee-seragam-card female">
+              <div class="fee-seragam-card">
                 <div>
                   <div class="fee-card-top">
                     <span class="badge-amber">Siswi Putri (PR)</span>
@@ -334,7 +334,7 @@
                   <strong>Skema Cicilan PSM:</strong> Biaya PSM 1 Tahun & Daftar Ulang (Rp 6.350.000) <strong>bisa dicicil 2x per semester (Rp 3.175.000 / semester)</strong> guna memudahkan perencanaan keuangan keluarga.
                 </div>
               </div>
-              <span class="badge-status-open" style="background: rgba(34, 197, 94, 0.15); color: #15803d; border-color: rgba(34, 197, 94, 0.3);">Dicicil 2x / Semester</span>
+              <span class="badge-status-open" style="background: var(--secondary-surface); color: #a16207; border: 1px solid rgba(234, 179, 8, 0.35);">Dicicil 2x / Semester</span>
             </div>
 
             <div class="fee-grade-grid">

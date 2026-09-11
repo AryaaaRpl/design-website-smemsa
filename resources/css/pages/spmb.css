@@ -230,17 +230,11 @@
     }
 
     .btn-amber {
-      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
-      color: var(--text-dark);
-      box-shadow: 0 8px 24px -4px rgba(234, 179, 8, 0.35);
+      background: var(--secondary-surface); 
+      color: #ff9a0c; 
+      border: 1px solid rgba(234, 179, 8, 0.35);
     }
-
-    .btn-amber:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px -4px rgba(234, 179, 8, 0.45);
-      color: var(--text-dark);
-    }
-
+    
     .btn-outline {
       background: #ffffff;
       color: var(--primary);

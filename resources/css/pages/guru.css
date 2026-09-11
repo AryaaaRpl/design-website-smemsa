@@ -678,7 +678,7 @@ a {
 .guru-img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/4;
   overflow: hidden;
   background-color: var(--bg-alt);
 }

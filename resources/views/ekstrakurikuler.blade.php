@@ -23,7 +23,7 @@
     <!-- 1. Hizbul Wathan -->
     <div class="ekskul-card featured reveal-item" role="button" tabindex="0" onclick="openEkskulModal('hw')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openEkskulModal('hw'); }">
       <!-- GAMBAR SEMENTARA (Akan diganti dengan dokumentasi asli) -->
-      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/hw.webp') }}\');"></div>
+      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/hizbul-wathan.png') }}');"></div>
       <div class="card-content">
         <span class="tag">Kepanduan Islami Wajib</span>
         <h2 class="card-title">Hizbul Wathan (HW)</h2>
@@ -40,7 +40,7 @@
     <!-- 2. Paskibra -->
     <div class="ekskul-card tall reveal-item" role="button" tabindex="0" onclick="openEkskulModal('paskibra')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openEkskulModal('paskibra'); }">
       <!-- GAMBAR SEMENTARA (Akan diganti dengan dokumentasi asli) -->
-      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/paskibra.webp') }}\');"></div>
+      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/paskibra.jpeg') }}');"></div>
       <div class="card-content">
         <span class="tag">Kedisiplinan & Patriotisme</span>
         <h2 class="card-title">Paskibra Pasukan Inti</h2>
@@ -55,7 +55,7 @@
     <!-- 3. Pencak Silat Tapak Suci -->
     <div class="ekskul-card reveal-item" role="button" tabindex="0" onclick="openEkskulModal('silat')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openEkskulModal('silat'); }">
       <!-- GAMBAR SEMENTARA (Akan diganti dengan dokumentasi asli) -->
-      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/silat.webp') }}\');"></div>
+      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/silat.webp') }}');"></div>
       <div class="card-content">
         <span class="tag">Seni Bela Diri Tradisi</span>
         <h2 class="card-title">Pencak Silat Tapak Suci</h2>
@@ -70,7 +70,7 @@
     <!-- 4. Pramuka -->
     <div class="ekskul-card reveal-item" role="button" tabindex="0" onclick="openEkskulModal('pramuka')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openEkskulModal('pramuka'); }">
       <!-- GAMBAR SEMENTARA (Akan diganti dengan dokumentasi asli) -->
-      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/pramuka.webp') }}\');"></div>
+      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/pramuka.jpg') }}');"></div>
       <div class="card-content">
         <span class="tag">Kepanduan Penegak</span>
         <h2 class="card-title">Gerakan Pramuka</h2>
@@ -85,7 +85,7 @@
     <!-- 5. PMR (Palang Merah Remaja) -->
     <div class="ekskul-card reveal-item" role="button" tabindex="0" onclick="openEkskulModal('pmr')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openEkskulModal('pmr'); }">
       <!-- GAMBAR SEMENTARA (Akan diganti dengan dokumentasi asli) -->
-      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/pmr.webp') }}\');"></div>
+      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/pmr.jpeg') }}');"></div>
       <div class="card-content">
         <span class="tag">Kesehatan & Kemanusiaan</span>
         <h2 class="card-title">PMR Wira Unit SMEMSA</h2>
@@ -100,7 +100,7 @@
     <!-- 6. Klub Olahraga -->
     <div class="ekskul-card reveal-item" role="button" tabindex="0" onclick="openEkskulModal('olahraga')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openEkskulModal('olahraga'); }">
       <!-- GAMBAR SEMENTARA (Akan diganti dengan dokumentasi asli) -->
-      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/olahraga.webp') }}\');"></div>
+      <div class="card-bg" style="background-image: url('{{ asset('assets/ekskul/klub-olahraga.jpeg') }}');"></div>
       <div class="card-content">
         <span class="tag">Prestasi Atletik</span>
         <h2 class="card-title">Klub Olahraga Terpadu</h2>

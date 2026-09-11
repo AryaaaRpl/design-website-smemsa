@@ -1803,6 +1803,13 @@
       transform: translateX(3px);
     }
 
+    .index-btn.is-active {
+      border-color: var(--primary);
+      background: #eff6ff;
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
+      transform: translateX(3px);
+    }
+
     .index-btn.is-hidden {
       display: none;
     }

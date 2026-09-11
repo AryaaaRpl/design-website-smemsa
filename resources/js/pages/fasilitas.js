@@ -357,6 +357,21 @@
 
     let currentFilter = "all";
 
+    function scrollToMap() {
+  setTimeout(() => {
+    const mapLayout = document.querySelector(".map-layout");
+    if (mapLayout) {
+      const nav = document.querySelector(".header-wrapper");
+      const navOffset = nav ? nav.offsetHeight + 24 : 90;
+      const targetPos = mapLayout.getBoundingClientRect().top + window.pageYOffset - navOffset;
+      window.scrollTo({
+        top: Math.max(0, targetPos),
+        behavior: "smooth",
+      });
+    }
+  }, 100); // jeda 100 milidetik
+}
+
     function select(id) {
       const loc = LOCATIONS.find(function (l) {
         return l.id === id;
@@ -365,6 +380,10 @@
 
       document.querySelectorAll(".hotspot").forEach(function (h) {
         h.classList.toggle("is-active", h.dataset.id === id);
+      });
+
+      document.querySelectorAll(".index-btn").forEach(function (btn) {
+        btn.classList.toggle("is-active", btn.dataset.id === id);
       });
 
       if (panelEmpty) panelEmpty.hidden = true;
@@ -492,6 +511,7 @@
           "</span>";
         btn.addEventListener("click", function () {
           select(loc.id);
+          scrollToMap();
         });
         indexGrid.appendChild(btn);
       });
