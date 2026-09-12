@@ -480,6 +480,10 @@
       background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
       color: #ffffff;
       padding: 8rem 0 4rem;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
     }
 

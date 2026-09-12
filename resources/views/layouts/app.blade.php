@@ -1554,7 +1554,7 @@
     gsap.to(".marquee-track", {
       xPercent: -50,
       ease: "none",
-      duration: 22,
+      duration: 50,
       repeat: -1,
     });
 

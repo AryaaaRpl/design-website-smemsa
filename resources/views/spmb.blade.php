@@ -24,7 +24,106 @@
       </div>
     </header>
 
-    <!-- 2. ALUR PENDAFTARAN (ONLINE & OFFLINE INTERAKTIF DENGAN ANIMASI GARIS) -->
+     <!-- 2. SYARAT & BERKAS PERSYARATAN -->
+    <section class="spmb-section" id="syarat-berkas">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge-primary">Kelengkapan Administrasi</span>
+          <h2 class="section-title">Syarat & Berkas Pendaftaran</h2>
+          <p class="section-desc">
+            Persiapkan dokumen berikut sesuai dengan jalur pendaftaran yang Anda pilih.
+          </p>
+        </div>
+
+        <div class="berkas-grid" id="berkas-container">
+          <!-- Berkas Wajib -->
+          <div class="berkas-card featured">
+            <div class="berkas-category-tag" style="color: var(--primary);">Semua Jalur</div>
+            <h3 class="berkas-title">Berkas Wajib</h3>
+            <ul class="berkas-list">
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Scan/Fotokopi Kartu Keluarga (KK)</span>
+              </li>
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Scan/Fotokopi Akta Kelahiran</span>
+              </li>
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Scan/Fotokopi SKHUN atau Ijazah SMP/MTs (bisa menyusul)</span>
+              </li>
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Pas Foto Berwarna 3x4 terbaru (3 lembar)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Jalur Prestasi -->
+          <div class="berkas-card">
+            <div class="berkas-category-tag" style="color: #a16207;">Jalur Khusus</div>
+            <h3 class="berkas-title">Jalur Prestasi</h3>
+            <ul class="berkas-list">
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Seluruh dokumen persyaratan berkas wajib</span>
+              </li>
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Sertifikat/Piagam Kejuaraan Akademik atau Non-Akademik min. tingkat Kabupaten</span>
+              </li>
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Surat rekomendasi dari Kepala Sekolah SMP/MTs asal (opsional)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Jalur Bantuan & Beasiswa -->
+          <div class="berkas-card">
+            <div class="berkas-category-tag" style="color: #15803d;">Jalur Bantuan</div>
+            <h3 class="berkas-title">Jalur Beasiswa & KIP</h3>
+            <ul class="berkas-list">
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Seluruh dokumen persyaratan berkas wajib</span>
+              </li>
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Kartu Indonesia Pintar (KIP) / Kartu PKH / KKS aktif</span>
+              </li>
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Surat Keterangan Tidak Mampu (SKTM) dari Kelurahan/Desa</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ALUR PENDAFTARAN (ONLINE & OFFLINE INTERAKTIF DENGAN ANIMASI GARIS) -->
     <section class="spmb-section spmb-section-alt" id="alur-pendaftaran">
       <div class="container">
         <div class="section-header">
@@ -45,7 +144,6 @@
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
               </svg>
               <span>Pendaftaran Online</span>
-              <span class="alur-badge-pill">Praktis 24 Jam</span>
             </button>
             <button type="button" class="alur-switch-btn" id="btn-alur-offline" onclick="switchAlur('offline')">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -53,7 +151,6 @@
                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
               </svg>
               <span>Pendaftaran Offline</span>
-              <span class="alur-badge-pill">Di Sekolah</span>
             </button>
           </div>
         </div>
@@ -176,203 +273,6 @@
       </div>
     </section>
 
-    <!-- 3. SYARAT & BERKAS PERSYARATAN -->
-    <section class="spmb-section" id="syarat-berkas">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge-primary">Kelengkapan Administrasi</span>
-          <h2 class="section-title">Syarat & Berkas Pendaftaran</h2>
-          <p class="section-desc">
-            Persiapkan dokumen berikut sesuai dengan jalur pendaftaran yang Anda pilih.
-          </p>
-        </div>
-
-        <div class="berkas-grid" id="berkas-container">
-          <!-- Berkas Wajib -->
-          <div class="berkas-card featured">
-            <div class="berkas-category-tag" style="color: var(--primary);">Semua Jalur</div>
-            <h3 class="berkas-title">Berkas Wajib</h3>
-            <ul class="berkas-list">
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Scan/Fotokopi Kartu Keluarga (KK)</span>
-              </li>
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Scan/Fotokopi Akta Kelahiran</span>
-              </li>
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Scan/Fotokopi SKHUN atau Ijazah SMP/MTs (bisa menyusul)</span>
-              </li>
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Pas Foto Berwarna 3x4 terbaru (3 lembar)</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Jalur Prestasi -->
-          <div class="berkas-card">
-            <div class="berkas-category-tag" style="color: #a16207;">Jalur Khusus</div>
-            <h3 class="berkas-title">Jalur Prestasi</h3>
-            <ul class="berkas-list">
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Seluruh dokumen persyaratan berkas wajib</span>
-              </li>
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Sertifikat/Piagam Kejuaraan Akademik atau Non-Akademik min. tingkat Kabupaten</span>
-              </li>
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Surat rekomendasi dari Kepala Sekolah SMP/MTs asal (opsional)</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Jalur Bantuan & Beasiswa -->
-          <div class="berkas-card">
-            <div class="berkas-category-tag" style="color: #15803d;">Jalur Bantuan</div>
-            <h3 class="berkas-title">Jalur Beasiswa & KIP</h3>
-            <ul class="berkas-list">
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Seluruh dokumen persyaratan berkas wajib</span>
-              </li>
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Kartu Indonesia Pintar (KIP) / Kartu PKH / KKS aktif</span>
-              </li>
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Surat Keterangan Tidak Mampu (SKTM) dari Kelurahan/Desa</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. JADWAL GELOMBANG -->
-    <section class="spmb-section spmb-section-alt" id="jadwal-gelombang">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge-primary">Agenda Pendaftaran</span>
-          <h2 class="section-title">Jadwal Gelombang SPMB</h2>
-          <p class="section-desc">
-            Informasi periode pendaftaran, tes bakat kejuruan, dan pengumuman hasil seleksi.
-          </p>
-        </div>
-
-        <div id="schedule-container">
-          <div class="schedule-empty-banner">
-            <div class="badge-amber mb-2" style="margin-bottom: 0.8rem;">Status Penjadwalan</div>
-            <h3 class="font-head" style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--primary-dark);">Jadwal Resmi Akan Diumumkan</h3>
-            <p style="max-width: 580px; margin: 0 auto 1.5rem; font-size: 0.95rem; line-height: 1.6;">
-              Kalender resmi gelombang pendaftaran Tahun Ajaran 2026/2027 sedang difinalisasi oleh Panitia SPMB SMKS Muhammadiyah 1 Genteng.
-            </p>
-            <a href="https://wa.me/6282241356668?text=Halo%20Panitia%20SPMB,%20apakah%20jadwal%20gelombang%20sudah%20dapat%20diperoleh?" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-              Dapatkan Notifikasi via WhatsApp &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. KUOTA PER KONSENTRASI KEAHLIAN (KUALITATIF) -->
-    <section class="spmb-section" id="kuota-jurusan">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge-primary">Kapasitas Kelas</span>
-          <h2 class="section-title">Kuota Konsentrasi Keahlian</h2>
-          <p class="section-desc">
-            Status ketersediaan kuota kelas pada 7 konsentrasi keahlian unggulan.
-          </p>
-        </div>
-
-        <div class="quota-grid" id="quota-container">
-          <div class="quota-item-card">
-            <div class="quota-item-head">
-              <span class="quota-code-badge">PPLG</span>
-              <span class="badge-quota-available">Kuota Tersedia</span>
-            </div>
-            <h3 class="quota-major-name">Pengembangan Perangkat Lunak dan Gim</h3>
-            <p class="quota-major-desc">Web development, mobile apps, database cloud, dan TEFA Software House.</p>
-          </div>
-          <div class="quota-item-card">
-            <div class="quota-item-head">
-              <span class="quota-code-badge">TJKT</span>
-              <span class="badge-quota-available">Kuota Tersedia</span>
-            </div>
-            <h3 class="quota-major-name">Teknik Jaringan Komputer dan Telekomunikasi</h3>
-            <p class="quota-major-desc">Infrastruktur jaringan enterprise, fiber optic, server linux & Mikrotik.</p>
-          </div>
-          <div class="quota-item-card">
-            <div class="quota-item-head">
-              <span class="quota-code-badge">DKV</span>
-              <span class="badge-quota-limited">Kuota Terbatas</span>
-            </div>
-            <h3 class="quota-major-name">Desain Komunikasi Visual</h3>
-            <p class="quota-major-desc">Multimedia kreatif, videografi, animasi 2D/3D, branding periklanan.</p>
-          </div>
-          <div class="quota-item-card">
-            <div class="quota-item-head">
-              <span class="quota-code-badge">BD</span>
-              <span class="badge-quota-available">Kuota Tersedia</span>
-            </div>
-            <h3 class="quota-major-name">Bisnis Digital</h3>
-            <p class="quota-major-desc">Omnichannel marketplace, digital ads Meta/Google, live commerce studio.</p>
-          </div>
-          <div class="quota-item-card">
-            <div class="quota-item-head">
-              <span class="quota-code-badge">AKL</span>
-              <span class="badge-quota-available">Kuota Tersedia</span>
-            </div>
-            <h3 class="quota-major-name">Akuntansi & Keuangan Lembaga</h3>
-            <p class="quota-major-desc">Komputer akuntansi Accurate, perpajakan digital, dan Bank Mini Syariah.</p>
-          </div>
-          <div class="quota-item-card">
-            <div class="quota-item-head">
-              <span class="quota-code-badge">MPLB</span>
-              <span class="badge-quota-available">Kuota Tersedia</span>
-            </div>
-            <h3 class="quota-major-name">Manajemen Perkantoran</h3>
-            <p class="quota-major-desc">Otomasi perkantoran digital, public relations, kearsipan cloud modern.</p>
-          </div>
-          <div class="quota-item-card">
-            <div class="quota-item-head">
-              <span class="quota-code-badge">PH</span>
-              <span class="badge-quota-limited">Kuota Terbatas</span>
-            </div>
-            <h3 class="quota-major-name">Perhotelan</h3>
-            <p class="quota-major-desc">Front office hotel, housekeeping bintang 5, F&B service, Edutel SMEMSA.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- 6. BIAYA PENDIDIKAN & SKEMA BEASISWA (SUMBER: Rincian_Biaya_Pendidikan_dan_Beasiswa) -->
     <section class="spmb-section spmb-section-alt" id="biaya-pendidikan">
       <div class="container">
@@ -397,7 +297,7 @@
               <div class="fee-seragam-card">
                 <div>
                   <div class="fee-card-top">
-                    <span class="badge-primary">Siswa Putra (LK)</span>
+                    <span class="badge-amber">Siswa Putra (LK)</span>
                     <span class="fee-tag-pill">1x di Awal Masuk</span>
                   </div>
                   <h4 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 0.3rem;">Paket Seragam Laki-laki</h4>
@@ -559,128 +459,241 @@
               Dukungan nyata SMKS Muhammadiyah 1 Genteng melalui 9 kategori beasiswa. Program beasiswa sosial/tahfidz berlaku berkelanjutan <strong>selama 3 tahun masa studi</strong>, dan voucher pendaftaran awal dapat dikombinasikan dengan jalur beasiswa prestasi/alumni.
             </p>
 
-            <div class="beasiswa-grid">
-              <!-- 1. Voucher Pendaftaran (100 Pendaftar Pertama) -->
-              <div class="beasiswa-card highlight">
-                <div>
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="beasiswa-num">1</div>
-                    <span class="badge-amber" style="font-size: 0.68rem; padding: 0.2rem 0.55rem;">PSM Thn Pertama</span>
-                  </div>
-                  <h4 class="beasiswa-title">Voucher Early Bird (100 Pendaftar Pertama)</h4>
-                  <p class="beasiswa-kriteria">Khusus 100 pendaftar pertama pada gelombang awal. <em>Potongan langsung pada biaya PSM Tahun Pertama (Kelas X) & dapat dikombinasikan dengan beasiswa prestasi/alumni.</em></p>
-                </div>
-                <div class="beasiswa-amount-badge discount">
-                  <span>Potongan Rp 1.000.000</span>
-                </div>
-              </div>
+            <div class="beasiswa-table-hint">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8L22 12L18 16"/><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
+              <span>Geser tabel ke samping untuk melihat detail beasiswa</span>
+            </div>
 
-              <!-- 2. Alumni SMP Muhammadiyah -->
-              <div class="beasiswa-card">
-                <div>
-                  <div class="beasiswa-num">2</div>
-                  <h4 class="beasiswa-title">Beasiswa Alumni Muhammadiyah – SMP</h4>
-                  <p class="beasiswa-kriteria">Bagi calon peserta didik lulusan dari <strong>SMP / MTs Muhammadiyah</strong>.</p>
-                </div>
-                <div class="beasiswa-amount-badge nominal">
-                  <span>Potongan Rp 500.000</span>
-                </div>
-              </div>
+            <div class="beasiswa-table-wrapper">
+              <div class="beasiswa-table-responsive">
+                <table class="beasiswa-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 50px; text-align: center;">No</th>
+                      <th style="min-width: 220px;">Skema Beasiswa</th>
+                      <th style="min-width: 280px;">Kriteria & Syarat Penerima</th>
+                      <th style="min-width: 170px;">Masa Berlaku</th>
+                      <th style="min-width: 190px; text-align: right;">Besaran Keringanan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- 1. Voucher Early Bird (100 Pendaftar Pertama) -->
+                    <tr class="row-highlight">
+                      <td style="text-align: center;">
+                        <span class="beasiswa-num-badge highlight">1</span>
+                      </td>
+                      <td>
+                        <div class="beasiswa-name-cell">
+                          <span class="beasiswa-name">Voucher Early Bird</span>
+                          <span class="badge-tag-sm amber">100 Pendaftar Pertama</span>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="beasiswa-table-desc">
+                          Khusus 100 pendaftar pertama pada gelombang awal. <em>Potongan langsung pada biaya PSM Tahun Pertama (Kelas X) & dapat dikombinasikan dengan beasiswa prestasi/alumni.</em>
+                        </p>
+                      </td>
+                      <td>
+                        <span class="beasiswa-period-tag amber">PSM Thn Pertama (Kelas X)</span>
+                      </td>
+                      <td style="text-align: right;">
+                        <span class="beasiswa-amount-badge discount">Potongan Rp 1.000.000</span>
+                      </td>
+                    </tr>
 
-              <!-- 3. Orang Tua Alumni SMK -->
-              <div class="beasiswa-card">
-                <div>
-                  <div class="beasiswa-num">3</div>
-                  <h4 class="beasiswa-title">Beasiswa Orang Tua Alumni SMK</h4>
-                  <p class="beasiswa-kriteria">Bagi calon siswa yang <strong>orang tuanya merupakan alumni SMK Muhammadiyah</strong>.</p>
-                </div>
-                <div class="beasiswa-amount-badge nominal">
-                  <span>Potongan Rp 500.000</span>
-                </div>
-              </div>
+                    <!-- 2. Alumni SD Muhammadiyah -->
+                    <tr>
+                      <td style="text-align: center;">
+                        <span class="beasiswa-num-badge">2</span>
+                      </td>
+                      <td>
+                        <div class="beasiswa-name-cell">
+                          <span class="beasiswa-name">Beasiswa Alumni Muhammadiyah – SD</span>
+                          <span class="badge-tag-sm blue">Jalur Alumni</span>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="beasiswa-table-desc">
+                          Bagi calon peserta didik yang merupakan <strong>alumni SD / MI Muhammadiyah</strong>.
+                        </p>
+                      </td>
+                      <td>
+                        <span class="beasiswa-period-tag">Sekali (Daftar Ulang)</span>
+                      </td>
+                      <td style="text-align: right;">
+                        <span class="beasiswa-amount-badge nominal">Potongan Rp 200.000</span>
+                      </td>
+                    </tr>
 
-              <!-- 4. Beasiswa Berprestasi -->
-              <div class="beasiswa-card">
-                <div>
-                  <div class="beasiswa-num">4</div>
-                  <h4 class="beasiswa-title">Beasiswa Berprestasi</h4>
-                  <p class="beasiswa-kriteria">Bagi siswa dengan <strong>prestasi akademik atau non-akademik</strong> (kejuaraan olahraga/seni/sains).</p>
-                </div>
-                <div class="beasiswa-amount-badge nominal">
-                  <span>Potongan Rp 500.000</span>
-                </div>
-              </div>
+                    <!-- 3. Alumni SMP Muhammadiyah -->
+                    <tr>
+                      <td style="text-align: center;">
+                        <span class="beasiswa-num-badge">3</span>
+                      </td>
+                      <td>
+                        <div class="beasiswa-name-cell">
+                          <span class="beasiswa-name">Beasiswa Alumni Muhammadiyah – SMP</span>
+                          <span class="badge-tag-sm blue">Jalur Alumni</span>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="beasiswa-table-desc">
+                          Bagi calon peserta didik lulusan dari <strong>SMP / MTs Muhammadiyah</strong>.
+                        </p>
+                      </td>
+                      <td>
+                        <span class="beasiswa-period-tag">Sekali (Daftar Ulang)</span>
+                      </td>
+                      <td style="text-align: right;">
+                        <span class="beasiswa-amount-badge nominal">Potongan Rp 500.000</span>
+                      </td>
+                    </tr>
 
-              <!-- 5. Alumni SD Muhammadiyah -->
-              <div class="beasiswa-card">
-                <div>
-                  <div class="beasiswa-num">5</div>
-                  <h4 class="beasiswa-title">Beasiswa Alumni Muhammadiyah – SD</h4>
-                  <p class="beasiswa-kriteria">Bagi calon peserta didik yang merupakan <strong>alumni SD / MI Muhammadiyah</strong>.</p>
-                </div>
-                <div class="beasiswa-amount-badge nominal">
-                  <span>Potongan Rp 200.000</span>
-                </div>
-              </div>
+                    <!-- 4. Orang Tua Alumni SMK -->
+                    <tr>
+                      <td style="text-align: center;">
+                        <span class="beasiswa-num-badge">4</span>
+                      </td>
+                      <td>
+                        <div class="beasiswa-name-cell">
+                          <span class="beasiswa-name">Beasiswa Orang Tua Alumni SMK</span>
+                          <span class="badge-tag-sm slate">Keluarga Alumni</span>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="beasiswa-table-desc">
+                          Bagi calon siswa yang <strong>orang tuanya merupakan alumni SMK Muhammadiyah</strong>.
+                        </p>
+                      </td>
+                      <td>
+                        <span class="beasiswa-period-tag">Sekali (Daftar Ulang)</span>
+                      </td>
+                      <td style="text-align: right;">
+                        <span class="beasiswa-amount-badge nominal">Potongan Rp 500.000</span>
+                      </td>
+                    </tr>
 
-              <!-- 6. Beasiswa Tidak Mampu -->
-              <div class="beasiswa-card">
-                <div>
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="beasiswa-num">6</div>
-                    <span class="badge-primary" style="font-size: 0.68rem; padding: 0.2rem 0.55rem;">Berlaku 3 Tahun</span>
-                  </div>
-                  <h4 class="beasiswa-title">Beasiswa Tidak Mampu (Afirmasi)</h4>
-                  <p class="beasiswa-kriteria">Bagi siswa dari <strong>keluarga kurang mampu</strong> (pemegang KIP/PKH/SKTM kelurahan). Berlaku selama 3 tahun masa studi.</p>
-                </div>
-                <div class="beasiswa-amount-badge discount">
-                  <span>Potongan 50% / Tahun</span>
-                </div>
-              </div>
+                    <!-- 5. Beasiswa Berprestasi -->
+                    <tr>
+                      <td style="text-align: center;">
+                        <span class="beasiswa-num-badge">5</span>
+                      </td>
+                      <td>
+                        <div class="beasiswa-name-cell">
+                          <span class="beasiswa-name">Beasiswa Berprestasi</span>
+                          <span class="badge-tag-sm blue">Akademik & Non-Akademik</span>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="beasiswa-table-desc">
+                          Bagi siswa dengan <strong>prestasi akademik atau non-akademik</strong> (kejuaraan olahraga/seni/sains).
+                        </p>
+                      </td>
+                      <td>
+                        <span class="beasiswa-period-tag">Sekali (Daftar Ulang)</span>
+                      </td>
+                      <td style="text-align: right;">
+                        <span class="beasiswa-amount-badge nominal">Potongan Rp 500.000</span>
+                      </td>
+                    </tr>
 
-              <!-- 7. Beasiswa Yatim / Piatu -->
-              <div class="beasiswa-card">
-                <div>
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="beasiswa-num">7</div>
-                    <span class="badge-primary" style="font-size: 0.68rem; padding: 0.2rem 0.55rem;">Berlaku 3 Tahun</span>
-                  </div>
-                  <h4 class="beasiswa-title">Beasiswa Yatim / Piatu</h4>
-                  <p class="beasiswa-kriteria">Bagi calon siswa dengan <strong>salah satu orang tua (ayah atau ibu) telah wafat</strong>. Berlaku selama 3 tahun masa studi.</p>
-                </div>
-                <div class="beasiswa-amount-badge discount">
-                  <span>Potongan 50% / Tahun</span>
-                </div>
-              </div>
+                    <!-- 6. Beasiswa Tidak Mampu -->
+                    <tr>
+                      <td style="text-align: center;">
+                        <span class="beasiswa-num-badge">6</span>
+                      </td>
+                      <td>
+                        <div class="beasiswa-name-cell">
+                          <span class="beasiswa-name">Beasiswa Tidak Mampu (Afirmasi)</span>
+                          <span class="badge-tag-sm blue">KIP / PKH / SKTM</span>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="beasiswa-table-desc">
+                          Bagi siswa dari <strong>keluarga kurang mampu</strong> (pemegang KIP/PKH/SKTM kelurahan).
+                        </p>
+                      </td>
+                      <td>
+                        <span class="beasiswa-period-tag blue">Berlaku 3 Tahun</span>
+                      </td>
+                      <td style="text-align: right;">
+                        <span class="beasiswa-amount-badge discount">Potongan 50% / Tahun</span>
+                      </td>
+                    </tr>
 
-              <!-- 8. Beasiswa Yatim Piatu -->
-              <div class="beasiswa-card full-free">
-                <div>
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="beasiswa-num">8</div>
-                    <span class="badge-status-open" style="font-size: 0.68rem; padding: 0.2rem 0.55rem;">Berlaku 3 Tahun Penuh</span>
-                  </div>
-                  <h4 class="beasiswa-title">Beasiswa Yatim Piatu</h4>
-                  <p class="beasiswa-kriteria">Bagi calon siswa yang <strong>kedua orang tuanya telah wafat</strong>. Bebas biaya pendidikan 100% selama 3 tahun.</p>
-                </div>
-                <div class="beasiswa-amount-badge free">
-                  <span>Gratis 100% (Bebas Biaya 3 Thn)</span>
-                </div>
-              </div>
+                    <!-- 7. Beasiswa Yatim / Piatu -->
+                    <tr>
+                      <td style="text-align: center;">
+                        <span class="beasiswa-num-badge">7</span>
+                      </td>
+                      <td>
+                        <div class="beasiswa-name-cell">
+                          <span class="beasiswa-name">Beasiswa Yatim atau Piatu</span>
+                          <span class="badge-tag-sm blue">Sosial Afirmasi</span>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="beasiswa-table-desc">
+                          Bagi calon siswa dengan <strong>salah satu orang tua (ayah atau ibu) telah wafat</strong>.
+                        </p>
+                      </td>
+                      <td>
+                        <span class="beasiswa-period-tag blue">Berlaku 3 Tahun</span>
+                      </td>
+                      <td style="text-align: right;">
+                        <span class="beasiswa-amount-badge discount">Potongan 50% / Tahun</span>
+                      </td>
+                    </tr>
 
-              <!-- 9. Beasiswa Hafidz 30 Juz -->
-              <div class="beasiswa-card full-free">
-                <div>
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="beasiswa-num">9</div>
-                    <span class="badge-status-open" style="font-size: 0.68rem; padding: 0.2rem 0.55rem;">Berlaku 3 Tahun Penuh</span>
-                  </div>
-                  <h4 class="beasiswa-title">Beasiswa Hafidz 30 Juz</h4>
-                  <p class="beasiswa-kriteria">Bagi penghafal <strong>Al-Qur'an 30 Juz</strong> dengan syahadah resmi. Bebas biaya pendidikan 100% selama 3 tahun.</p>
-                </div>
-                <div class="beasiswa-amount-badge free">
-                  <span>Gratis 100% (Bebas Biaya 3 Thn)</span>
-                </div>
+                    <!-- 8. Beasiswa Yatim Piatu -->
+                    <tr class="row-free">
+                      <td style="text-align: center;">
+                        <span class="beasiswa-num-badge green">8</span>
+                      </td>
+                      <td>
+                        <div class="beasiswa-name-cell">
+                          <span class="beasiswa-name">Beasiswa Yatim Piatu</span>
+                          <span class="badge-tag-sm green">Bebas Biaya 100%</span>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="beasiswa-table-desc">
+                          Bagi calon siswa yang <strong>kedua orang tuanya telah wafat</strong>. Bebas biaya pendidikan 100% selama 3 tahun.
+                        </p>
+                      </td>
+                      <td>
+                        <span class="beasiswa-period-tag green">Berlaku 3 Tahun Penuh</span>
+                      </td>
+                      <td style="text-align: right;">
+                        <span class="beasiswa-amount-badge free">Gratis 100% (Bebas Biaya 3 Thn)</span>
+                      </td>
+                    </tr>
+
+                    <!-- 9. Beasiswa Hafidz 30 Juz -->
+                    <tr class="row-free">
+                      <td style="text-align: center;">
+                        <span class="beasiswa-num-badge green">9</span>
+                      </td>
+                      <td>
+                        <div class="beasiswa-name-cell">
+                          <span class="beasiswa-name">Beasiswa Hafidz 30 Juz</span>
+                          <span class="badge-tag-sm green">Bebas Biaya 100%</span>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="beasiswa-table-desc">
+                          Bagi penghafal <strong>Al-Qur'an 30 Juz</strong> dengan syahadah resmi. Bebas biaya pendidikan 100% selama 3 tahun.
+                        </p>
+                      </td>
+                      <td>
+                        <span class="beasiswa-period-tag green">Berlaku 3 Tahun Penuh</span>
+                      </td>
+                      <td style="text-align: right;">
+                        <span class="beasiswa-amount-badge free">Gratis 100% (Bebas Biaya 3 Thn)</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
 
@@ -822,7 +835,7 @@
               <h3 class="panitia-card-title">Telepon Sekolah</h3>
               <p class="panitia-card-desc">Jam layanan kantor: Senin – Sabtu, pukul 07.00 – 14.30 WIB.</p>
             </div>
-            <a href="tel:0333845605" class="btn btn-outline" style="width: 100%;">
+            <a href="tel:0333845605" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">
               (0333) 845605
             </a>
           </div>
@@ -842,7 +855,7 @@
                 68465.</p>
             </div>
             <a href="https://maps.google.com/?q=SMKS+Muhammadiyah+1+Genteng" target="_blank" rel="noopener noreferrer"
-              class="btn btn-outline" style="width: 100%;">
+              class="btn btn-primary" style="width: 100%;">
               Buka Google Maps
             </a>
           </div>

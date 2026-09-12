@@ -732,8 +732,6 @@ a {
   background: var(--primary);
 }
 
-.guru-card:hover .guru-card:hover
-
 /* 5. NEWS READER MODAL */
 .modal-overlay {
   position: fixed;

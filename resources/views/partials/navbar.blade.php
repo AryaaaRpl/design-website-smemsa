@@ -1,7 +1,7 @@
   <header class="header-wrapper">
     <nav class="nav-island" id="main-nav">
       <a href="{{ url('/') }}" class="brand-box">
-        <img src="{{ request()->is('lsp*') ? asset('assets/LSP.png') : asset('assets/logo.png') }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMKS Muhammadiyah 1 Genteng' : 'Logo SMKS Muhammadiyah 1 Genteng' }}" class="brand-logo" onerror="
+        <img src="{{ request()->is('lsp*') ? asset('assets/LSP.png') : (request()->is('bkk*') ? asset('assets/bkk.png') : asset('assets/logo.png')) }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMKS Muhammadiyah 1 Genteng' : (request()->is('bkk*') ? 'Logo BKK SMKS Muhammadiyah 1 Genteng' : 'Logo SMKS Muhammadiyah 1 Genteng') }}" class="brand-logo" onerror="
               this.closest('.card')
                 ? this.closest('.card').classList.add('no-image')
                 : null;
@@ -126,7 +126,7 @@
         <path d="m6 6 12 12" />
       </svg></button>
     <div class="brand-box" style="margin-bottom: 2rem">
-      <img src="{{ request()->is('lsp*') ? asset('assets/LSP.png') : asset('assets/logo.webp') }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMEMSA' : 'Logo SMEMSA' }}" class="brand-logo" onerror="
+      <img src="{{ request()->is('lsp*') ? asset('assets/LSP.png') : (request()->is('bkk*') ? asset('assets/bkk.png') : asset('assets/logo.webp')) }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMEMSA' : (request()->is('bkk*') ? 'Logo BKK SMEMSA' : 'Logo SMEMSA') }}" class="brand-logo" onerror="
             this.closest('.card')
               ? this.closest('.card').classList.add('no-image')
               : null;

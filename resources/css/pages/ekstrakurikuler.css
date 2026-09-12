@@ -379,6 +379,10 @@
     /* 2. PAGE HEADER */
     .page-header {
       padding: 10rem 0 5rem;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       border-bottom: 1px solid var(--border-card);
       background: linear-gradient(to bottom,

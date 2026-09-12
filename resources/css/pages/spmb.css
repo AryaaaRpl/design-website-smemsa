@@ -496,6 +496,10 @@
        ========================================================================== */
     .page-header {
       padding: 9.5rem 0 4.5rem;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       position: relative;
       background: linear-gradient(180deg, rgba(30, 64, 175, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
@@ -1144,6 +1148,196 @@
       gap: 2rem;
     }
 
+    .beasiswa-table-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      margin-bottom: 1.5rem;
+    }
+
+    .beasiswa-table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .beasiswa-table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .beasiswa-table th {
+      background: var(--bg-alt);
+      padding: 1.15rem 1.4rem;
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-card);
+      white-space: nowrap;
+    }
+
+    .beasiswa-table td {
+      padding: 1.2rem 1.4rem;
+      border-bottom: 1px solid var(--border-card);
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      vertical-align: middle;
+    }
+
+    .beasiswa-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .beasiswa-table tbody tr {
+      transition: background 0.2s ease;
+    }
+
+    .beasiswa-table tbody tr:hover td {
+      background: var(--primary-surface);
+    }
+
+    .beasiswa-table tbody tr.row-highlight td {
+      background: rgba(234, 179, 8, 0.035);
+    }
+
+    .beasiswa-table tbody tr.row-highlight:hover td {
+      background: rgba(234, 179, 8, 0.08);
+    }
+
+    .beasiswa-table tbody tr.row-free td {
+      background: rgba(34, 197, 94, 0.035);
+    }
+
+    .beasiswa-table tbody tr.row-free:hover td {
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .beasiswa-num-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-card);
+    }
+
+    .beasiswa-num-badge.highlight {
+      background: rgba(234, 179, 8, 0.15);
+      color: #a16207;
+      border-color: rgba(234, 179, 8, 0.35);
+    }
+
+    .beasiswa-num-badge.green {
+      background: rgba(34, 197, 94, 0.15);
+      color: #15803d;
+      border-color: rgba(34, 197, 94, 0.35);
+    }
+
+    .beasiswa-name-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      align-items: flex-start;
+    }
+
+    .beasiswa-name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: var(--primary-dark);
+      line-height: 1.35;
+    }
+
+    .badge-tag-sm {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .badge-tag-sm.amber {
+      background: rgba(234, 179, 8, 0.15);
+      color: #a16207;
+    }
+
+    .badge-tag-sm.green {
+      background: rgba(34, 197, 94, 0.15);
+      color: #15803d;
+    }
+
+    .badge-tag-sm.blue {
+      background: rgba(30, 64, 175, 0.08);
+      color: var(--primary);
+    }
+
+    .badge-tag-sm.slate {
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      border: 1px solid var(--border-card);
+    }
+
+    .beasiswa-table-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .beasiswa-period-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-card);
+      white-space: nowrap;
+    }
+
+    .beasiswa-period-tag.amber {
+      background: rgba(234, 179, 8, 0.1);
+      color: #a16207;
+      border-color: rgba(234, 179, 8, 0.25);
+    }
+
+    .beasiswa-period-tag.blue {
+      background: rgba(30, 64, 175, 0.06);
+      color: var(--primary);
+      border-color: rgba(30, 64, 175, 0.15);
+    }
+
+    .beasiswa-period-tag.green {
+      background: rgba(34, 197, 94, 0.1);
+      color: #15803d;
+      border-color: rgba(34, 197, 94, 0.25);
+    }
+
+    .beasiswa-table-hint {
+      display: none;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
     .beasiswa-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1219,9 +1413,8 @@
       border-radius: var(--radius-full);
       font-family: var(--font-head);
       font-weight: 800;
-      font-size: 0.95rem;
-      margin-top: auto;
-      align-self: flex-start;
+      font-size: 0.92rem;
+      white-space: nowrap;
     }
 
     .beasiswa-amount-badge.nominal {
@@ -1284,6 +1477,10 @@
       .fee-grade-grid,
       .beasiswa-grid {
         grid-template-columns: 1fr;
+      }
+
+      .beasiswa-table-hint {
+        display: flex;
       }
 
       .fee-cicilan-banner {
