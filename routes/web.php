@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -44,4 +46,24 @@ Route::get('/guru', function () {
 
 Route::get('/fasilitas', function () {
     return view('fasilitas');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Admin
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [AuthController::class, 'create'])->name('login');
+        Route::post('/login', [AuthController::class, 'store'])
+            ->middleware('throttle:5,1')
+            ->name('login.store');
+    });
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/', DashboardController::class)->name('dashboard');
+        Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
+    });
 });

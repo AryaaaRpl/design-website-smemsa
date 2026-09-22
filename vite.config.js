@@ -23,6 +23,8 @@ export default defineConfig({
                 'resources/js/pages/fasilitas.js',
                 'resources/js/pages/ekstrakurikuler.js',
                 'resources/js/pages/prestasi.js',
+                'resources/css/admin.css',
+                'resources/js/admin.js',
             ],
             refresh: true,
             fonts: [

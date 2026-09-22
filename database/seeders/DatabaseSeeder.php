@@ -15,11 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Akun admin awal. Ganti password setelah login pertama.
+        User::firstOrCreate(
+            ['email' => 'admin@smemsa.sch.id'],
+            ['name' => 'Administrator', 'password' => 'password'],
+        );
     }
 }

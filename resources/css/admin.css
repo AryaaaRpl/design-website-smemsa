@@ -1,0 +1,460 @@
+/*
+ * Admin dashboard
+ * Palet: putih (background), biru & kuning (aksen), hitam (teks).
+ * Garis & teks sekunder memakai biru/hitam transparan, bukan warna baru.
+ */
+
+:root {
+    --white: #ffffff;
+    --blue: #1e40af;
+    --yellow: #eab308;
+    --black: #0f172a;
+
+    --blue-soft: rgba(30, 64, 175, 0.06);
+    --blue-line: rgba(30, 64, 175, 0.12);
+    --yellow-soft: rgba(234, 179, 8, 0.15);
+    --text-muted: rgba(15, 23, 42, 0.6);
+
+    --radius: 10px;
+    --sidebar-width: 240px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 15px;
+    color: var(--black);
+    background: var(--white);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+/* ---------- Form & Button ---------- */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-input {
+    width: 100%;
+    padding: 11px 14px;
+    font: inherit;
+    color: var(--black);
+    background: var(--white);
+    border: 1px solid var(--blue-line);
+    border-radius: var(--radius);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    border-color: var(--blue);
+}
+
+.form-error {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--black);
+    border-left: 3px solid var(--yellow);
+    padding-left: 8px;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    accent-color: var(--blue);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 20px;
+    font: inherit;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-primary {
+    color: var(--white);
+    background: var(--blue);
+}
+
+.btn-outline {
+    color: var(--blue);
+    background: var(--white);
+    border-color: var(--blue-line);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* ---------- Alert ---------- */
+
+.alert {
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    font-size: 14px;
+    background: var(--yellow-soft);
+    border-left: 4px solid var(--yellow);
+    border-radius: var(--radius);
+}
+
+/* ---------- Login ---------- */
+
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 36px 32px;
+    border: 1px solid var(--blue-line);
+    border-top: 4px solid var(--yellow);
+    border-radius: var(--radius);
+}
+
+.login-brand {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.login-brand img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.login-brand h1 {
+    margin-top: 12px;
+    font-size: 20px;
+    color: var(--blue);
+}
+
+.login-brand p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.login-back {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.login-back:hover {
+    color: var(--blue);
+}
+
+/* ---------- Layout Dashboard ---------- */
+
+.admin-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    width: var(--sidebar-width);
+    padding: 20px 14px;
+    background: var(--white);
+    border-right: 1px solid var(--blue-line);
+    transition: transform 0.25s;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 8px 20px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--blue-line);
+}
+
+.sidebar-brand img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.sidebar-brand strong {
+    display: block;
+    font-size: 15px;
+    color: var(--blue);
+}
+
+.sidebar-brand span {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.sidebar-title {
+    margin: 16px 10px 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 12px;
+    margin-bottom: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link:hover {
+    background: var(--blue-soft);
+}
+
+.sidebar-link.active {
+    font-weight: 700;
+    color: var(--blue);
+    background: var(--blue-soft);
+    border-left-color: var(--yellow);
+}
+
+.sidebar-link.disabled {
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.badge-soon {
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--black);
+    background: var(--yellow-soft);
+    border-radius: 999px;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--blue-line);
+}
+
+.admin-main {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+}
+
+.admin-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: 64px;
+    padding: 0 28px;
+    background: var(--white);
+    border-bottom: 1px solid var(--blue-line);
+}
+
+.topbar-title {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.topbar-user {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.topbar-user strong {
+    color: var(--black);
+}
+
+.sidebar-toggle {
+    display: none;
+    padding: 6px 10px;
+    font: inherit;
+    font-size: 18px;
+    color: var(--blue);
+    background: var(--white);
+    border: 1px solid var(--blue-line);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.sidebar-backdrop {
+    display: none;
+}
+
+.admin-content {
+    padding: 28px;
+}
+
+.admin-navbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Dashboard ---------- */
+
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    font-size: 24px;
+}
+
+.page-header p {
+    margin: 6px 0 0;
+    color: var(--text-muted);
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    padding: 18px 20px;
+    border: 1px solid var(--blue-line);
+    border-radius: var(--radius);
+}
+
+.stat-card span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.stat-card strong {
+    display: block;
+    margin-top: 6px;
+    font-size: 28px;
+    color: var(--blue);
+}
+
+.card {
+    border: 1px solid var(--blue-line);
+    border-radius: var(--radius);
+}
+
+.card-header {
+    padding: 16px 20px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--blue-line);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.table th,
+.table td {
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--blue-line);
+}
+
+.table th {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--blue-soft);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.empty-state {
+    padding: 32px 20px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 900px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .admin-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-backdrop.open {
+        position: fixed;
+        inset: 0;
+        z-index: 15;
+        display: block;
+        background: rgba(15, 23, 42, 0.3);
+    }
+
+    .admin-main {
+        margin-left: 0;
+    }
+
+    .sidebar-toggle {
+        display: inline-block;
+    }
+
+    .admin-topbar,
+    .admin-content {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .topbar-user {
+        display: none;
+    }
+}
