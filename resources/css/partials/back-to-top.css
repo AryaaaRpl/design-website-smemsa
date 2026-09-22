@@ -1,0 +1,61 @@
+/* ==========================================================================
+   PARTIALS / BACK TO TOP BUTTON (GLOBAL)
+   ========================================================================== */
+
+#backToTopBtn,
+.back-to-top-btn {
+  position: fixed;
+  bottom: 6.5rem;
+  right: 2.35rem;
+  width: 48px;
+  height: 48px;
+  background: var(--primary, #1e40af);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-card-hover, 0 4px 14px rgba(15, 23, 42, 0.25));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+}
+
+#backToTopBtn.show,
+.back-to-top-btn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#backToTopBtn:hover,
+.back-to-top-btn:hover {
+  background: var(--primary-dark, #16296b);
+  transform: translateY(-3px);
+}
+
+#backToTopBtn svg,
+.back-to-top-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+@media (max-width: 640px) {
+  #backToTopBtn,
+  .back-to-top-btn {
+    bottom: 4.8rem;
+    right: 1.55rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  #backToTopBtn svg,
+  .back-to-top-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}

@@ -84,6 +84,7 @@
     @include('partials.navbar')
     @yield('content')
     @include('partials.footer')
+    @include('partials.back-to-top')
 
   <!-- 14. CHATBOT AI ASISTEN VIRTUAL -->
   <button class="chatbot-btn" id="chatbot-toggle" aria-label="Buka Asisten AI">
@@ -1968,6 +1969,30 @@
         }
       });
     }
+
+    // Global Back to Top Button
+    (function () {
+      const btt = document.getElementById("backToTopBtn");
+      if (btt) {
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 400) {
+            btt.classList.add("show");
+          } else {
+            btt.classList.remove("show");
+          }
+        }, { passive: true });
+
+        btt.addEventListener("click", function () {
+          if (typeof lenis !== "undefined" && lenis) {
+            lenis.scrollTo(0);
+          } else if (window.lenis) {
+            window.lenis.scrollTo(0);
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        });
+      }
+    })();
 
     renderBludProducts();
   </script>
