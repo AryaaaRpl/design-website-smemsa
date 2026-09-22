@@ -3,7 +3,7 @@
     $menuGroups = [
         'Master Data' => [
             ['label' => 'Jurusan', 'route' => 'admin.majors.index', 'active' => 'admin.majors.*'],
-            ['label' => 'Kategori', 'route' => null],
+            ['label' => 'Kategori', 'route' => 'admin.categories.index', 'active' => 'admin.categories.*'],
         ],
         'Konten' => [
             ['label' => 'Berita', 'route' => null],

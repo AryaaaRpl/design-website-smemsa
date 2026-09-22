@@ -49,7 +49,7 @@
                                     <div class="table-actions">
                                         <a href="{{ route('admin.majors.edit', $major) }}" class="btn btn-outline btn-sm">Edit</a>
                                         <form method="POST" action="{{ route('admin.majors.destroy', $major) }}"
-                                            onsubmit="return confirm('Hapus jurusan {{ $major->code }}?')">
+                                            data-confirm="Hapus jurusan {{ $major->code }}?">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline btn-sm">Hapus</button>

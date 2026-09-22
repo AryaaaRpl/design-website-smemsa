@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Administrator', 'password' => 'password'],
         );
 
-        $this->call(MajorSeeder::class);
+        $this->call([
+            MajorSeeder::class,
+            CategorySeeder::class,
+        ]);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MajorController;
 use App\Http\Controllers\HomeController;
@@ -67,5 +68,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 
         Route::resource('majors', MajorController::class)->except('show');
+        Route::resource('categories', CategoryController::class)->except('show');
     });
 });

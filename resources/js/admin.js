@@ -12,3 +12,12 @@ if (sidebar && toggle) {
     toggle.addEventListener('click', toggleSidebar);
     backdrop.addEventListener('click', toggleSidebar);
 }
+
+// Konfirmasi sebelum submit: <form data-confirm="Pesan konfirmasi">
+document.querySelectorAll('form[data-confirm]').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+        if (!confirm(form.dataset.confirm)) {
+            event.preventDefault();
+        }
+    });
+});

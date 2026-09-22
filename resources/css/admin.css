@@ -522,6 +522,36 @@ textarea.form-input {
     gap: 10px;
 }
 
+.form-narrow {
+    max-width: 640px;
+}
+
+.filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.filter-tab {
+    padding: 7px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    border: 1px solid var(--blue-line);
+    border-radius: 999px;
+}
+
+.filter-tab:hover {
+    color: var(--blue);
+}
+
+.filter-tab.active {
+    color: var(--white);
+    background: var(--blue);
+    border-color: var(--blue);
+}
+
 /* ---------- Mobile ---------- */
 
 @media (max-width: 900px) {

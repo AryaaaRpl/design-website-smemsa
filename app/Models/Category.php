@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Shared category table for berita (post) and prestasi (achievement).
- * Slugs are unique per type, so no HasSlug trait here.
+ * Slug hanya unik per tipe, jadi route binding tetap memakai id.
  */
 #[Fillable(['type', 'name', 'slug'])]
 class Category extends Model
@@ -21,11 +21,6 @@ class Category extends Model
         return [
             'type' => CategoryType::class,
         ];
-    }
-
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
     }
 
     public function posts(): HasMany

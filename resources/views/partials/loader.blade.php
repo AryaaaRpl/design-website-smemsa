@@ -342,11 +342,13 @@
       isHidden = true;
 
       loaderEl.classList.add('loaded');
+      document.body.style.overflow = 'hidden';
 
       // Bersihkan style display setelah animasi fade-out selesai
       setTimeout(function () {
         if (loaderEl && loaderEl.parentNode) {
           loaderEl.style.display = 'none';
+          document.body.style.overflow = 'none';
         }
       }, 550);
     }
