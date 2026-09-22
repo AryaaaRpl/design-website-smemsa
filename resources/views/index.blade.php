@@ -804,13 +804,14 @@
           <circle cx="20" cy="320" r="3.5" class="orbit-guide-dot" />
         </svg>
 
-        <!-- B. CINCIN DALAM (Radius 210px, 4 Logo: PPLG, TJKT, DKV, BD) -->
+        <!-- B. CINCIN DALAM (Radius 210px, 4 logo pertama) -->
         <div class="orbit-ring-inner" aria-hidden="true">
-          <!-- PPLG (0 deg, 56x56) -->
-          <div class="orbit-slot" style="--a: 0deg; --r: 210px">
+          @foreach ($majors->take(4) as $major)
+          <!-- {{ $major->code }} ({{ $loop->index * 90 }} deg, 56x56) -->
+          <div class="orbit-slot" style="--a: {{ $loop->index * 90 }}deg; --r: 210px">
             <div class="orbit-center">
               <div class="orbit-icon">
-                <img src="{{ asset('assets/major/PPLG-removebg-preview.png') }}" alt="" loading="lazy" onerror="
+                <img src="{{ $major->logo_url }}" alt="" loading="lazy" onerror="
                         this.closest('.card')
                           ? this.closest('.card').classList.add('no-image')
                           : null;
@@ -819,54 +820,17 @@
               </div>
             </div>
           </div>
-          <!-- TJKT (90 deg, 56x56) -->
-          <div class="orbit-slot" style="--a: 90deg; --r: 210px">
-            <div class="orbit-center">
-              <div class="orbit-icon">
-                <img src="{{ asset('assets/major/TJKT-removebg-preview.png') }}" alt="" loading="lazy" onerror="
-                        this.closest('.card')
-                          ? this.closest('.card').classList.add('no-image')
-                          : null;
-                        this.remove();
-                      " />
-              </div>
-            </div>
-          </div>
-          <!-- DKV (180 deg, 56x56) -->
-          <div class="orbit-slot" style="--a: 180deg; --r: 210px">
-            <div class="orbit-center">
-              <div class="orbit-icon">
-                <img src="{{ asset('assets/major/dkv.png') }}" alt="" loading="lazy" onerror="
-                        this.closest('.card')
-                          ? this.closest('.card').classList.add('no-image')
-                          : null;
-                        this.remove();
-                      " />
-              </div>
-            </div>
-          </div>
-          <!-- BD (270 deg, 56x56) -->
-          <div class="orbit-slot" style="--a: 270deg; --r: 210px">
-            <div class="orbit-center">
-              <div class="orbit-icon">
-                <img src="{{ asset('assets/major/logo bdp.png') }}" alt="" loading="lazy" onerror="
-                        this.closest('.card')
-                          ? this.closest('.card').classList.add('no-image')
-                          : null;
-                        this.remove();
-                      " />
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
 
-        <!-- B. CINCIN LUAR (Radius 300px, 4 Logo: AKL, MPLB, PH, TBSM, Offset 45deg) -->
+        <!-- B. CINCIN LUAR (Radius 300px, logo sisanya, Offset 45deg) -->
         <div class="orbit-ring-outer" aria-hidden="true">
-          <!-- AKL (45 deg, 48x48) -->
-          <div class="orbit-slot" style="--a: 45deg; --r: 300px">
+          @foreach ($majors->slice(4)->values() as $major)
+          <!-- {{ $major->code }} ({{ 45 + $loop->index * 90 }} deg, 48x48) -->
+          <div class="orbit-slot" style="--a: {{ 45 + $loop->index * 90 }}deg; --r: 300px">
             <div class="orbit-center">
               <div class="orbit-icon">
-                <img src="{{ asset('assets/major/logo AKL.png') }}" alt="" loading="lazy" onerror="
+                <img src="{{ $major->logo_url }}" alt="" onerror="
                         this.closest('.card')
                           ? this.closest('.card').classList.add('no-image')
                           : null;
@@ -875,32 +839,7 @@
               </div>
             </div>
           </div>
-          <!-- MPLB (135 deg, 48x48) -->
-          <div class="orbit-slot" style="--a: 135deg; --r: 300px">
-            <div class="orbit-center">
-              <div class="orbit-icon">
-                <img src="{{ asset('assets/major/PH.png') }}" alt="" onerror="
-                        this.closest('.card')
-                          ? this.closest('.card').classList.add('no-image')
-                          : null;
-                        this.remove();
-                      " />
-              </div>
-            </div>
-          </div>
-          <!-- PH (225 deg, 48x48) -->
-          <div class="orbit-slot" style="--a: 225deg; --r: 300px">
-            <div class="orbit-center">
-              <div class="orbit-icon">
-                <img src="{{ asset('assets/major/mp.jpeg') }}" alt="" onerror="
-                        this.closest('.card')
-                          ? this.closest('.card').classList.add('no-image')
-                          : null;
-                        this.remove();
-                      " />
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
 
         <!-- A. Pusat Orbit: Judul Section Menyatu dengan Latar Radial Lembut (Max-Width 560px) -->
@@ -917,6 +856,16 @@
     </div>
 
     <!-- ═══ BAGIAN BAWAH: DUA KOLOM (Kiri 38%, Kanan 62%) ═══ -->
+    @php($firstMajor = $majors->first())
+    @if ($majors->isEmpty())
+    <!-- Tampilan saat belum ada data jurusan -->
+    <div class="majors-empty">
+      <h3 class="majors-empty-title">Data jurusan belum tersedia</h3>
+      <p class="majors-empty-desc">
+        Informasi konsentrasi keahlian sedang disiapkan. Silakan kembali lagi nanti.
+      </p>
+    </div>
+    @else
     <div class="majors-split-grid">
       <!-- KOLOM KIRI — DAFTAR 8 JURUSAN -->
       <div class="majors-list-col" id="major-tablist-container" role="tablist"
@@ -926,7 +875,7 @@
 
       <!-- KOLOM KANAN — PANEL ALUR PENDIDIKAN (STICKY, TOP 6REM) -->
       <div class="majors-detail-col" id="major-tabpanel-container" role="tabpanel" aria-live="polite"
-        aria-labelledby="tab-btn-rpl">
+        aria-labelledby="tab-btn-{{ $firstMajor?->slug }}">
         <div class="major-pathway-view" id="major-pathway-view">
           <!-- ═══ KEPALA PANEL: KIRI (FIGUR SISWA 3:4) + KANAN (IDENTITAS JURUSAN) ═══ -->
           <div class="major-panel-head-grid">
@@ -934,7 +883,7 @@
             <div class="major-figure-wrapper">
               <!-- Logo Jurusan Kecil di Pojok Kanan Atas -->
               <div class="major-figure-corner-logo" id="panel-figure-logo" title="Logo Program Keahlian">
-                <img src="{{ asset('assets/major/PPLG-removebg-preview.png') }}" alt="Logo Jurusan" width="28" height="28" onerror="
+                <img src="{{ $firstMajor?->logo_url }}" alt="Logo Jurusan" width="28" height="28" onerror="
                         this.closest('.card')
                           ? this.closest('.card').classList.add('no-image')
                           : null;
@@ -944,8 +893,8 @@
               <!-- Bayangan Lembut di Dasar Figur -->
               <div class="major-figure-shadow"></div>
               <!-- Foto Siswa (object-fit: contain, menempel di dasar bingkai) -->
-              <img id="panel-student-photo" class="major-figure-img" src="{{ asset('assets/major-person/rpl.png') }}"
-                alt="Siswa Berseragam Pengembang Perangkat Lunak & Gim" width="300" height="400" onerror="
+              <img id="panel-student-photo" class="major-figure-img" src="{{ $firstMajor?->student_photo_url }}"
+                alt="Siswa Berseragam {{ $firstMajor?->name }}" width="300" height="400" onerror="
                       this.closest('.card')
                         ? this.closest('.card').classList.add('no-image')
                         : null;
@@ -953,34 +902,32 @@
                     " />
               <!-- Fallback jika foto belum siap -->
               <div class="major-figure-fallback" id="panel-figure-fallback" style="display: none">
-                <span id="panel-fallback-code">PPLG</span>
+                <span id="panel-fallback-code">{{ $firstMajor?->code }}</span>
               </div>
             </div>
 
             <!-- Kanan (62%): Identitas Jurusan Lengkap -->
             <div class="major-identity-body">
-              <span class="major-id-badge" id="panel-major-code">PPLG</span>
+              <span class="major-id-badge" id="panel-major-code">{{ $firstMajor?->code }}</span>
               <h3 class="major-id-title" id="panel-major-title">
-                Pengembang Perangkat Lunak & Gim
+                {{ $firstMajor?->name }}
               </h3>
               <p class="major-id-desc" id="panel-major-desc">
-                Membina software engineer berkarakter Islami yang menguasai
-                ekosistem web, mobile app development, backend cloud, dan
-                siap terjun ke industri teknologi.
+                {{ $firstMajor?->description }}
               </p>
               <div class="major-id-info-row">
                 <div class="major-info-item">
                   <span class="major-info-icon">🏬</span>
                   <div>
                     <span class="major-info-label">TEFA:</span>
-                    <span id="panel-tefa-name">Software House TEFA SMEMSA & Lab iMac Cloud</span>
+                    <span id="panel-tefa-name">{{ $firstMajor?->tefa_name }}</span>
                   </div>
                 </div>
                 <div class="major-info-item">
                   <span class="major-info-icon">📜</span>
                   <div>
                     <span class="major-info-label">Sertifikasi:</span>
-                    <span id="panel-cert-name">LSP BNSP Junior Web Developer</span>
+                    <span id="panel-cert-name">{{ $firstMajor?->certification_summary }}</span>
                   </div>
                 </div>
               </div>
@@ -1040,6 +987,7 @@
         </div>
       </div>
     </div>
+    @endif
   </div>
 </section>
 

@@ -1,10 +1,25 @@
 @php
-    // Menu modul yang akan dikerjakan pada tahap berikutnya.
-    $upcomingMenus = [
-        'Master Data' => ['Jurusan', 'Kategori'],
-        'Konten' => ['Berita', 'Prestasi', 'Guru & Staf', 'Fasilitas', 'Ekstrakurikuler', 'Testimoni'],
-        'BKK' => ['Mitra Industri', 'Lowongan Kerja'],
-        'Sistem' => ['Pengaturan'],
+    // Menu modul. Isi 'route' jika modul sudah selesai, null = belum tersedia.
+    $menuGroups = [
+        'Master Data' => [
+            ['label' => 'Jurusan', 'route' => 'admin.majors.index', 'active' => 'admin.majors.*'],
+            ['label' => 'Kategori', 'route' => null],
+        ],
+        'Konten' => [
+            ['label' => 'Berita', 'route' => null],
+            ['label' => 'Prestasi', 'route' => null],
+            ['label' => 'Guru & Staf', 'route' => null],
+            ['label' => 'Fasilitas', 'route' => null],
+            ['label' => 'Ekstrakurikuler', 'route' => null],
+            ['label' => 'Testimoni', 'route' => null],
+        ],
+        'BKK' => [
+            ['label' => 'Mitra Industri', 'route' => null],
+            ['label' => 'Lowongan Kerja', 'route' => null],
+        ],
+        'Sistem' => [
+            ['label' => 'Pengaturan', 'route' => null],
+        ],
     ];
 @endphp
 
@@ -23,13 +38,20 @@
             Dashboard
         </a>
 
-        @foreach ($upcomingMenus as $group => $menus)
+        @foreach ($menuGroups as $group => $menus)
             <div class="sidebar-title">{{ $group }}</div>
             @foreach ($menus as $menu)
-                <span class="sidebar-link disabled">
-                    {{ $menu }}
-                    <span class="badge-soon">Segera</span>
-                </span>
+                @if ($menu['route'])
+                    <a href="{{ route($menu['route']) }}"
+                        class="sidebar-link {{ request()->routeIs($menu['active']) ? 'active' : '' }}">
+                        {{ $menu['label'] }}
+                    </a>
+                @else
+                    <span class="sidebar-link disabled">
+                        {{ $menu['label'] }}
+                        <span class="badge-soon">Segera</span>
+                    </span>
+                @endif
             @endforeach
         @endforeach
     </nav>

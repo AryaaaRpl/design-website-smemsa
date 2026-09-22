@@ -357,6 +357,13 @@
         <li><strong>Rudi Hariyanto</strong> - Staff Karyawan</li>
       </ul>
     </div>
+  </noscript>
+  <button aria-label="Kembali ke atas" id="backToTopBtn" title="Kembali ke atas">
+    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+      <path d="m18 15-6-6-6 6"></path>
+    </svg>
+  </button>
   <!-- FOOTER -->
 
 @push('scripts')
@@ -1084,6 +1091,26 @@
           if (ariaLive) {
             ariaLive.innerText = `Menampilkan ${filtered.length} profil`;
           }
+        });
+      }
+
+      // Back to top
+      const btt = document.getElementById("backToTopBtn");
+      if (btt) {
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 600) {
+            btt.style.display = "flex";
+            btt.style.opacity = "1";
+          } else {
+            btt.style.opacity = "0";
+            setTimeout(() => {
+              if (window.scrollY <= 600) btt.style.display = "none";
+            }, 300);
+          }
+        });
+        btt.addEventListener("click", () => {
+          if (window.lenis) lenis.scrollTo(0);
+          else window.scrollTo({ top: 0, behavior: "smooth" });
         });
       }
 

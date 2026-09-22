@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MajorController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/peta-kampus', function () {
     return view('peta-kampus');
@@ -65,5 +65,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/', DashboardController::class)->name('dashboard');
         Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
+
+        Route::resource('majors', MajorController::class)->except('show');
     });
 });

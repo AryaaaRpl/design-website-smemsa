@@ -6,14 +6,23 @@ use App\Models\Concerns\HasSlug;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Konsentrasi Keahlian (jurusan).
  */
-#[Fillable(['code', 'name', 'slug', 'short_description', 'description', 'image', 'sort_order', 'is_active'])]
+#[Fillable([
+    'code', 'name', 'slug', 'description', 'logo', 'student_photo',
+    'tefa_name', 'certification_summary', 'competencies',
+    'practice_items', 'practice_note',
+    'certification_items', 'certification_note',
+    'career_items', 'career_note',
+    'sort_order', 'is_active',
+])]
 class Major extends Model
 {
     use HasSlug;
@@ -21,6 +30,10 @@ class Major extends Model
     protected function casts(): array
     {
         return [
+            'competencies' => 'array',
+            'practice_items' => 'array',
+            'certification_items' => 'array',
+            'career_items' => 'array',
             'sort_order' => 'integer',
             'is_active' => 'boolean',
         ];
@@ -61,5 +74,51 @@ class Major extends Model
     protected function ordered(Builder $query): void
     {
         $query->orderBy('sort_order')->orderBy('name');
+    }
+
+    protected function logoUrl(): Attribute
+    {
+        return Attribute::get(fn () => self::fileUrl($this->logo));
+    }
+
+    protected function studentPhotoUrl(): Attribute
+    {
+        return Attribute::get(fn () => self::fileUrl($this->student_photo));
+    }
+
+    /**
+     * Data untuk panel jurusan di beranda (dipakai oleh JavaScript).
+     */
+    public function toLandingArray(int $number): array
+    {
+        return [
+            'key' => $this->slug,
+            'code' => $this->code,
+            'num' => str_pad((string) $number, 2, '0', STR_PAD_LEFT),
+            'title' => $this->name,
+            'tefa' => $this->tefa_name,
+            'certSummary' => $this->certification_summary,
+            'logo' => $this->logo_url,
+            'foto' => $this->student_photo_url,
+            'desc' => $this->description,
+            'kompetensi' => $this->competencies ?? [],
+            'tempatPraktik' => ['items' => $this->practice_items ?? [], 'box' => $this->practice_note],
+            'sertifikasi' => ['items' => $this->certification_items ?? [], 'box' => $this->certification_note],
+            'setelahLulus' => ['items' => $this->career_items ?? [], 'box' => $this->career_note],
+        ];
+    }
+
+    /**
+     * File bawaan desain ada di public/assets, file upload ada di storage publik.
+     */
+    public static function fileUrl(?string $path): ?string
+    {
+        if (blank($path)) {
+            return null;
+        }
+
+        return str_starts_with($path, 'assets/')
+            ? asset($path)
+            : Storage::disk('public')->url($path);
     }
 }
