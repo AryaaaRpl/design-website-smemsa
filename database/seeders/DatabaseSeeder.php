@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             PostSeeder::class,
             AchievementSeeder::class,
+            BkkSeeder::class,
         ]);
     }
 }

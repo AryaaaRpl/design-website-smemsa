@@ -15,7 +15,7 @@ enum EmploymentType: string
             self::FullTime => 'Full-time',
             self::PartTime => 'Part-time',
             self::Contract => 'Kontrak',
-            self::Internship => 'Magang',
+            self::Internship => 'Magang / PKL',
         };
     }
 }

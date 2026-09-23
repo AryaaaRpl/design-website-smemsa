@@ -121,7 +121,8 @@ class AchievementTest extends TestCase
 
         $this->get(route('prestasi'))
             ->assertOk()
-            ->assertSee('Mahkota Prestasi Nasional 2026')
+            ->assertSee('Mahkota Prestasi')
+            ->assertSee('Juara Umum Muhammadiyah Education Awards')
             ->assertSee('Juara 1 MPL Student League', false)
             ->assertSee('<option value="2024">2024</option>', false);
     }

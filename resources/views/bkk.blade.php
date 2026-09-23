@@ -104,24 +104,25 @@
           <div>Aksi</div>
         </div>
 
-        <!-- Job 1 -->
+        @forelse ($vacancies as $vacancy)
+        <!-- Job {{ $loop->iteration }} -->
         <div class="bkk-table-row">
           <div>
             <strong style="
                   color: var(--primary);
                   font-size: 1.05rem;
                   display: block;
-                ">PT Digital Kreatif Nusantara</strong>
-            <small style="color: var(--text-muted)">Surabaya / Banyuwangi</small>
+                ">{{ $vacancy->partner->name }}</strong>
+            <small style="color: var(--text-muted)">{{ $vacancy->location }}</small>
           </div>
-          <div style="font-weight: 600">Junior Web Developer</div>
-          <div><span class="skill-tag">Full-time</span></div>
+          <div style="font-weight: 600">{{ $vacancy->position }}</div>
+          <div><span class="skill-tag">{{ $vacancy->employment_type->label() }}</span></div>
           <div>
             <span class="badge badge-primary" style="font-size: 0.75rem">Dibuka</span>
           </div>
           <div>
-            <a href="https://wa.me/6282241356668?text=Halo%20BKK%20SMK%20MUHI,%20saya%20tertarik%20melamar%20Junior%20Web%20Developer"
-              target="_blank" style="
+            <a href="{{ $vacancy->apply_link }}"
+              target="_blank" rel="noopener" style="
                   color: var(--secondary);
                   font-weight: 700;
                   font-size: 0.9rem;
@@ -129,80 +130,13 @@
           </div>
         </div>
 
-        <!-- Job 2 -->
-        <div class="bkk-table-row">
-          <div>
-            <strong style="
-                  color: var(--primary);
-                  font-size: 1.05rem;
-                  display: block;
-                ">Hotel Ketapang Indah</strong>
-            <small style="color: var(--text-muted)">Banyuwangi</small>
-          </div>
-          <div style="font-weight: 600">PKL Perhotelan & Tata Boga</div>
-          <div><span class="skill-tag">Magang / PKL</span></div>
-          <div>
-            <span class="badge badge-primary" style="font-size: 0.75rem">Dibuka</span>
-          </div>
-          <div>
-            <a href="https://wa.me/6282241356668?text=Halo%20BKK%20SMK%20MUHI,%20saya%20tertarik%20melamar%20PKL%20Perhotelan"
-              target="_blank" style="
-                  color: var(--secondary);
-                  font-weight: 700;
-                  font-size: 0.9rem;
-                ">Lamar Loker &rarr;</a>
-          </div>
+        @empty
+        <!-- Tampilan saat belum ada lowongan dibuka -->
+        <div class="content-empty" style="margin: 2rem auto;">
+          <h3 class="content-empty-title">Belum ada lowongan yang dibuka</h3>
+          <p class="content-empty-desc">Lowongan kerja & magang terbaru dari mitra BKK akan tampil di sini. Silakan cek kembali nanti.</p>
         </div>
-
-        <!-- Job 3 -->
-        <div class="bkk-table-row">
-          <div>
-            <strong style="
-                  color: var(--primary);
-                  font-size: 1.05rem;
-                  display: block;
-                ">Bank Jatim Syariah Genteng</strong>
-            <small style="color: var(--text-muted)">Genteng, Banyuwangi</small>
-          </div>
-          <div style="font-weight: 600">Staff Administrasi Operasional</div>
-          <div><span class="skill-tag">Full-time</span></div>
-          <div>
-            <span class="badge badge-primary" style="font-size: 0.75rem">Dibuka</span>
-          </div>
-          <div>
-            <a href="https://wa.me/6282241356668?text=Halo%20BKK%20SMK%20MUHI,%20saya%20tertarik%20melamar%20Staff%20Administrasi"
-              target="_blank" style="
-                  color: var(--secondary);
-                  font-weight: 700;
-                  font-size: 0.9rem;
-                ">Lamar Loker &rarr;</a>
-          </div>
-        </div>
-
-        <!-- Job 5 -->
-        <div class="bkk-table-row">
-          <div>
-            <strong style="
-                  color: var(--primary);
-                  font-size: 1.05rem;
-                  display: block;
-                ">PT Telkom Indonesia (Witel Jatim)</strong>
-            <small style="color: var(--text-muted)">Jember / Banyuwangi</small>
-          </div>
-          <div style="font-weight: 600">Teknisi Jaringan & Fiber Optik</div>
-          <div><span class="skill-tag">Full-time</span></div>
-          <div>
-            <span class="badge badge-primary" style="font-size: 0.75rem">Dibuka</span>
-          </div>
-          <div>
-            <a href="https://wa.me/6282241356668?text=Halo%20BKK%20SMK%20MUHI,%20saya%20tertarik%20melamar%20Teknisi%20Jaringan"
-              target="_blank" style="
-                  color: var(--secondary);
-                  font-weight: 700;
-                  font-size: 0.9rem;
-                ">Lamar Loker &rarr;</a>
-          </div>
-        </div>
+        @endforelse
       </div>
 
       <!-- LAYANAN UNGGULAN BKK -->
@@ -283,184 +217,22 @@
         </div>
 
         <div class="mitra-grid">
+          @forelse ($partners as $partner)
           <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/semesta.webp') }}"
-                alt="PT. Semesta Multitekno"
+            <div class="mitra-icon" style="background:transparent;"><img src="{{ $partner->logo_url }}"
+                alt="{{ $partner->name }}"
                 style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
             <div class="mitra-info">
-              <h4>PT. Semesta Multitekno</h4>
+              <h4>{{ $partner->name }}</h4>
             </div>
           </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/11.jpg') }}" alt="PT. Hummatech"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>PT. Hummatech</h4>
-            </div>
+          @empty
+          <!-- Tampilan saat belum ada mitra -->
+          <div class="content-empty">
+            <h3 class="content-empty-title">Data mitra belum tersedia</h3>
+            <p class="content-empty-desc">Daftar perusahaan mitra industri sedang disiapkan.</p>
           </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/3.jpg') }}" alt="CircleK"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>CircleK</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/10.jpg') }}"
-                alt="TERAS Hotel & Villa"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>TERAS Hotel & Villa</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/22.jpg') }}" alt="KDS Genteng"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>KDS Genteng</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/12.jpg') }}"
-                alt="Gold Vitel Surabaya"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Gold Vitel Surabaya</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/2.jpg') }}"
-                alt="Deles Spesial Teh Tarik"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Deles Spesial Teh Tarik</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/1.jpg') }}" alt="Rays Hotel VIP"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Rays Hotel VIP</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/4.jpg') }}" alt="PT. Indo Bismar"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>PT. Indo Bismar</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/5.jpg') }}" alt="Ayu Printing"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Ayu Printing</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/6.jpg') }}" alt="Bank BTPN"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Bank BTPN</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/7.jpg') }}" alt="Pegadaian"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Pegadaian</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/8.jpg') }}"
-                alt="Pacific Indonesia"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Pacific Indonesia</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/9.jpg') }}"
-                alt="LPK Nusantara Gakkou"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>LPK Nusantara Gakkou</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/13.jpg') }}" alt="Alfamart"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Alfamart</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/14.jpg') }}"
-                alt="Juragan Tas Online"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Juragan Tas Online</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/15.jpg') }}"
-                alt="MicroTik Academy"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>MicroTik Academy</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/16.jpg') }}"
-                alt="PT. Sumber Alam Santoso Pratama"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>PT. Sumber Alam Santoso Pratama</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/17.jpg') }}" alt="New Surya Hotel"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>New Surya Hotel</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/18.jpg') }}" alt="Indomaret"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Indomaret</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/19.jpg') }}" alt="BTN"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>BTN</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/20.jpg') }}" alt="Bank Muamalat"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Bank Muamalat</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/21.jpg') }}" alt="YAMAHA"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>YAMAHA</h4>
-            </div>
-          </div>
-          <div class="mitra-card">
-            <div class="mitra-icon" style="background:transparent;"><img src="{{ asset('assets/mitra/23.jpg') }}"
-                alt="Surya Mart SMKS Muhammadiyah 1 Genteng"
-                style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
-            <div class="mitra-info">
-              <h4>Surya Mart SMKS Muhammadiyah 1 Genteng</h4>
-            </div>
-          </div>
+          @endforelse
         </div>
       </div>
     </div>

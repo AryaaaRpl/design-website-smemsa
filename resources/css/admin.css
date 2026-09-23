@@ -694,3 +694,9 @@ textarea.form-input {
         width: 100%;
     }
 }
+
+.checkbox-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+}

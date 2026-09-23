@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\CategoryType;
 use App\Models\Category;
 use App\Models\Major;
+use App\Models\Partner;
 use App\Models\Post;
 use Illuminate\View\View;
 
@@ -21,6 +22,8 @@ class HomeController extends Controller
 
         $postCategories = Category::ofType(CategoryType::Post)->orderBy('name')->get();
 
-        return view('index', compact('majors', 'majorsData', 'latestPosts', 'postCategories'));
+        $partners = Partner::active()->ordered()->get();
+
+        return view('index', compact('majors', 'majorsData', 'latestPosts', 'postCategories', 'partners'));
     }
 }

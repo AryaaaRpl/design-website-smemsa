@@ -5,8 +5,11 @@ use App\Http\Controllers\Admin\AchievementController as AdminAchievementControll
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\JobVacancyController;
 use App\Http\Controllers\Admin\MajorController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\BkkController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +28,7 @@ Route::get('/lsp', function () {
     return view('lsp');
 });
 
-Route::get('/bkk', function () {
-    return view('bkk');
-});
+Route::get('/bkk', BkkController::class)->name('bkk');
 
 Route::get('/spmb', function () {
     return view('spmb');
@@ -71,5 +72,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('categories', CategoryController::class)->except('show');
         Route::resource('posts', PostController::class)->except('show');
         Route::resource('achievements', AdminAchievementController::class)->except('show');
+        Route::resource('partners', PartnerController::class)->except('show');
+        Route::resource('vacancies', JobVacancyController::class)
+            ->parameters(['vacancies' => 'vacancy'])
+            ->except('show');
     });
 });
