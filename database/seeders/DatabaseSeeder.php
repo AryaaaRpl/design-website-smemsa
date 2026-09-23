@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             AchievementSeeder::class,
             BkkSeeder::class,
+            ExtracurricularSeeder::class,
         ]);
     }
 }
