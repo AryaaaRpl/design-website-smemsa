@@ -23,6 +23,7 @@ export default defineConfig({
                 'resources/js/pages/fasilitas.js',
                 'resources/js/pages/ekstrakurikuler.js',
                 'resources/js/pages/prestasi.js',
+                'resources/js/pages/berita.js',
                 'resources/css/admin.css',
                 'resources/js/admin.js',
             ],

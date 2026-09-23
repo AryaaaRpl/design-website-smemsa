@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasMediaUrl;
 use App\Models\Concerns\HasSlug;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Scope;
@@ -10,7 +11,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Konsentrasi Keahlian (jurusan).
@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Storage;
 ])]
 class Major extends Model
 {
-    use HasSlug;
+    use HasMediaUrl, HasSlug;
 
     protected function casts(): array
     {
@@ -78,12 +78,12 @@ class Major extends Model
 
     protected function logoUrl(): Attribute
     {
-        return Attribute::get(fn () => self::fileUrl($this->logo));
+        return Attribute::get(fn () => $this->mediaUrl($this->logo));
     }
 
     protected function studentPhotoUrl(): Attribute
     {
-        return Attribute::get(fn () => self::fileUrl($this->student_photo));
+        return Attribute::get(fn () => $this->mediaUrl($this->student_photo));
     }
 
     /**
@@ -106,19 +106,5 @@ class Major extends Model
             'sertifikasi' => ['items' => $this->certification_items ?? [], 'box' => $this->certification_note],
             'setelahLulus' => ['items' => $this->career_items ?? [], 'box' => $this->career_note],
         ];
-    }
-
-    /**
-     * File bawaan desain ada di public/assets, file upload ada di storage publik.
-     */
-    public static function fileUrl(?string $path): ?string
-    {
-        if (blank($path)) {
-            return null;
-        }
-
-        return str_starts_with($path, 'assets/')
-            ? asset($path)
-            : Storage::disk('public')->url($path);
     }
 }

@@ -6,7 +6,7 @@
             ['label' => 'Kategori', 'route' => 'admin.categories.index', 'active' => 'admin.categories.*'],
         ],
         'Konten' => [
-            ['label' => 'Berita', 'route' => null],
+            ['label' => 'Berita', 'route' => 'admin.posts.index', 'active' => 'admin.posts.*'],
             ['label' => 'Prestasi', 'route' => null],
             ['label' => 'Guru & Staf', 'route' => null],
             ['label' => 'Fasilitas', 'route' => null],

@@ -15,8 +15,11 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             CategoryType::Post->value => [
+                'akademik' => 'Akademik & TEFA',
+                'industri' => 'Kerja Sama Industri',
                 'kegiatan' => 'Kegiatan Siswa',
                 'prestasi' => 'Prestasi Kejuaraan',
+                'pengumuman' => 'Pengumuman & Profil',
             ],
             CategoryType::Achievement->value => [
                 'teknologi' => 'Teknologi',

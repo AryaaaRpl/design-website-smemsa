@@ -1465,36 +1465,33 @@
         </h3>
         <ul class="news-filter-list">
           <li>
-            <a href="javascript:void(0)" class="news-filter-link active" onclick="filterIndexNews('all', this)">Semua Berita <span>(5)</span></a>
+            <a href="javascript:void(0)" class="news-filter-link active" onclick="filterIndexNews('all', this)">Semua Berita <span>({{ $latestPosts->count() }})</span></a>
           </li>
+          @foreach ($postCategories as $category)
           <li>
-            <a href="javascript:void(0)" class="news-filter-link" onclick="filterIndexNews('prestasi', this)">Prestasi & Prestisius <span>(3)</span></a>
+            <a href="javascript:void(0)" class="news-filter-link" onclick="filterIndexNews('{{ $category->slug }}', this)">{{ $category->name }} <span>({{ $latestPosts->where('category_id', $category->id)->count() }})</span></a>
           </li>
-          <li>
-            <a href="javascript:void(0)" class="news-filter-link" onclick="filterIndexNews('kegiatan', this)">Kegiatan Siswa & IPM <span>(2)</span></a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" class="news-filter-link" onclick="filterIndexNews('pengumuman', this)">Pengumuman & Profil <span>(0)</span></a>
-          </li>
+          @endforeach
         </ul>
       </div>
 
       <!-- Articles Grid -->
       <div class="news-cards-grid">
-        <!-- Article 1 (Featured ME Awards) -->
-        <div class="article-card" data-category="prestasi">
-          <div class="article-thumb"><img src="{{ asset('assets/juara-me-awards.jpg') }}" alt="Liputan ME Awards SMKS MUHI"
+        @forelse ($latestPosts as $post)
+        <!-- Article {{ $loop->iteration }} -->
+        <div class="article-card" data-category="{{ $post->category?->slug }}">
+          <div class="article-thumb"><img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}"
               style="width: 100%; height: 100%; object-fit: cover;"></div>
           <div class="article-body">
             <div>
-              <span class="badge badge-primary mb-2" style="font-size: 0.75rem">18 Juni 2026</span>
+              <span class="badge badge-primary mb-2" style="font-size: 0.75rem">{{ $post->published_date }}</span>
               <h3 class="font-head" style="
                       font-size: 1.15rem;
                       color: var(--primary);
                       margin: 0.4rem 0 0.6rem;
                       line-height: 1.35;
                     ">
-                SMKS MUHI Genteng Raih Juara Umum ME Awards Tingkat Nasional 2026
+                {{ $post->title }}
               </h3>
               <p style="
                       font-size: 0.88rem;
@@ -1502,10 +1499,10 @@
                       line-height: 1.6;
                       margin-bottom: 1rem;
                     ">
-                Delegasi SMKS Muhammadiyah 1 Genteng berhasil menorehkan prestasi gemilang dengan memboyong trofi Juara Umum dalam perhelatan akbar ME Awards 2026.
+                {{ $post->excerpt }}
               </p>
             </div>
-            <a href="/berita#1" style="
+            <a href="{{ route('berita') }}#{{ $post->id }}" style="
                     color: var(--secondary);
                     font-weight: 700;
                     font-size: 0.92rem;
@@ -1513,134 +1510,13 @@
           </div>
         </div>
 
-        <!-- Article 2 -->
-        <div class="article-card" data-category="kegiatan">
-          <div class="article-thumb"><img src="{{ asset('assets/berita/mpls.jpeg') }}" alt="MPLS Pengenalan Jurusan"
-              style="width: 100%; height: 100%; object-fit: cover;"></div>
-          <div class="article-body">
-            <div>
-              <span class="badge badge-primary mb-2" style="font-size: 0.75rem">17 Juni 2026</span>
-              <h3 class="font-head" style="
-                      font-size: 1.15rem;
-                      color: var(--primary);
-                      margin: 0.4rem 0 0.6rem;
-                      line-height: 1.35;
-                    ">
-                SMKS Muhammadiyah 1 Genteng Gelar Pengenalan Jurusan untuk Siswa Baru
-              </h3>
-              <p style="
-                      font-size: 0.88rem;
-                      color: var(--text-muted);
-                      line-height: 1.6;
-                      margin-bottom: 1rem;
-                    ">
-                Ratusan siswa diajak lab tour interaktif dan simulasi dunia kerja agar memiliki arah yang jelas serta
-                mentalitas juara.
-              </p>
-            </div>
-            <a href="/berita#2" style="
-                    color: var(--secondary);
-                    font-weight: 700;
-                    font-size: 0.92rem;
-                  ">Baca selengkapnya &rarr;</a>
-          </div>
+        @empty
+        <!-- Tampilan saat belum ada berita -->
+        <div class="news-empty">
+          <h3 class="news-empty-title">Belum ada berita</h3>
+          <p class="news-empty-desc">Liputan dan kabar terbaru sekolah akan tampil di sini. Silakan kembali lagi nanti.</p>
         </div>
-
-        <!-- Article 3 -->
-        <div class="article-card" data-category="prestasi">
-          <div class="article-thumb"><img src="{{ asset('assets/berita/juara-tapak-suci.jpg') }}" alt="Juara Taekwondo"
-              style="width: 100%; height: 100%; object-fit: cover;"></div>
-          <div class="article-body">
-            <div>
-              <span class="badge badge-primary mb-2" style="font-size: 0.75rem">Juni 2026</span>
-              <h3 class="font-head" style="
-                      font-size: 1.15rem;
-                      color: var(--primary);
-                      margin: 0.4rem 0 0.6rem;
-                      line-height: 1.35;
-                    ">
-                Dua Siswa SMEMSA Sabet Juara 3 Kejurprov Taekwondo Antar Pelajar
-              </h3>
-              <p style="
-                      font-size: 0.88rem;
-                      color: var(--text-muted);
-                      line-height: 1.6;
-                      margin-bottom: 1rem;
-                    ">
-                Ibellino Novendra dan Ahmad Husaini sukses mengharumkan nama sekolah di tingkat Provinsi Jawa Timur.
-              </p>
-            </div>
-            <a href="/berita#3" style="
-                    color: var(--secondary);
-                    font-weight: 700;
-                    font-size: 0.92rem;
-                  ">Baca selengkapnya &rarr;</a>
-          </div>
-        </div>
-
-        <!-- Article 4 -->
-        <div class="article-card" data-category="prestasi">
-          <div class="article-thumb"><img src="{{ asset('assets/berita/lomba-karaoke.jpg') }}" alt="Lomba Karaoke"
-              style="width: 100%; height: 100%; object-fit: cover;"></div>
-          <div class="article-body">
-            <div>
-              <span class="badge badge-primary mb-2" style="font-size: 0.75rem">Juni 2026</span>
-              <h3 class="font-head" style="
-                      font-size: 1.15rem;
-                      color: var(--primary);
-                      margin: 0.4rem 0 0.6rem;
-                      line-height: 1.35;
-                    ">
-                Siswi SMEMSA Raih Juara 1 & 2 Lomba Karaoke Indonesia Berbakat
-              </h3>
-              <p style="
-                      font-size: 0.88rem;
-                      color: var(--text-muted);
-                      line-height: 1.6;
-                      margin-bottom: 1rem;
-                    ">
-                Chelsea Princes F. dan Rennyyu Galuh Sivanni tampil gemilang di tingkat Kabupaten Banyuwangi.
-              </p>
-            </div>
-            <a href="/berita#4" style="
-                    color: var(--secondary);
-                    font-weight: 700;
-                    font-size: 0.92rem;
-                  ">Baca selengkapnya &rarr;</a>
-          </div>
-        </div>
-
-        <!-- Article 5 -->
-        <div class="article-card" data-category="kegiatan">
-          <div class="article-thumb"><img src="{{ asset('assets/berita/pembekalan-pkl.jpg') }}" alt="Pembekalan PKL"
-              style="width: 100%; height: 100%; object-fit: cover;"></div>
-          <div class="article-body">
-            <div>
-              <span class="badge badge-primary mb-2" style="font-size: 0.75rem">11-13 Juni 2026</span>
-              <h3 class="font-head" style="
-                      font-size: 1.15rem;
-                      color: var(--primary);
-                      margin: 0.4rem 0 0.6rem;
-                      line-height: 1.35;
-                    ">
-                Pembekalan Intensif Praktik Kerja Lapangan (PKL) Siswa Kelas XI
-              </h3>
-              <p style="
-                      font-size: 0.88rem;
-                      color: var(--text-muted);
-                      line-height: 1.6;
-                      margin-bottom: 1rem;
-                    ">
-                Membekali peserta didik dengan pengetahuan, etos kerja, dan kesadaran hukum sebelum terjun ke DUDIKA.
-              </p>
-            </div>
-            <a href="/berita#5" style="
-                    color: var(--secondary);
-                    font-weight: 700;
-                    font-size: 0.92rem;
-                  ">Baca selengkapnya &rarr;</a>
-          </div>
-        </div>
+        @endforelse
       </div>
     </div>
   </div>

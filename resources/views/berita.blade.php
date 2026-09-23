@@ -14,36 +14,33 @@
 
         <!-- Filter Pills -->
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterCategory('all')">Semua Berita</button>
-            <button class="filter-btn" onclick="filterCategory('akademik')">Akademik & TEFA</button>
-            <button class="filter-btn" onclick="filterCategory('industri')">Kerja Sama Industri</button>
-            <button class="filter-btn" onclick="filterCategory('kegiatan')">Kegiatan Siswa</button>
-            <button class="filter-btn" onclick="filterCategory('prestasi')">Prestasi Kejuaraan</button>
+            <button class="filter-btn active" onclick="filterCategory('all', this)">Semua Berita</button>
+            @foreach ($categories as $category)
+            <button class="filter-btn" onclick="filterCategory('{{ $category->slug }}', this)">{{ $category->name }}</button>
+            @endforeach
         </div>
     </div>
 </header>
 
 <!-- 3. FEATURED HEADLINE ARTICLE -->
+@if ($featured)
 <section class="featured-news-section container">
-    <article class="featured-news-card" onclick="openNewsModal('me-awards-liputan')">
+    <article class="featured-news-card" onclick="openNewsModal('{{ $featured->slug }}')">
         <div class="featured-news-img-wrap">
-            <img src="{{ asset('assets/juara-me-awards.jpg') }}" alt="Liputan ME Awards SMKS MUHI" class="featured-news-img"
+            <img src="{{ $featured->thumbnail_url }}" alt="{{ $featured->title }}" class="featured-news-img"
                 onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
         </div>
         <div class="featured-news-body">
             <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:1rem;">
                 <span class="badge-gold" style="font-size:0.75rem;">HEADLINE UTAMA</span>
-                <span style="font-size:0.85rem; color:var(--text-subtle); font-weight:600;">18 Juni 2026 &bull; Tim
-                    Jurnalistik</span>
+                <span style="font-size:0.85rem; color:var(--text-subtle); font-weight:600;">{{ $featured->published_date }}@if ($featured->byline) &bull; {{ $featured->byline }}@endif</span>
             </div>
             <h2 class="font-display"
                 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem); color: var(--primary-dark); margin-bottom: 1rem; line-height: 1.25;">
-                SMKS MUHI Genteng Raih Juara Umum ME Awards Tingkat Nasional 2026
+                {{ $featured->title }}
             </h2>
             <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 1.8rem;">
-                Delegasi SMKS Muhammadiyah 1 Genteng berhasil menorehkan prestasi gemilang dengan memboyong trofi
-                Juara Umum dalam perhelatan akbar Muhammadiyah Education Awards 2026 di Surabaya setelah memenangkan
-                beragam cabang lomba digital dan inovasi kejuruan.
+                {{ $featured->excerpt }}
             </p>
             <div
                 style="display:flex; align-items:center; gap:0.5rem; color:var(--primary); font-family:var(--font-head); font-weight:700; font-size:0.92rem;">
@@ -52,140 +49,55 @@
         </div>
     </article>
 </section>
+@endif
 
 <!-- 4. NEWS CARDS GRID -->
 <section id="news-card" class="container">
+    @if ($posts->isEmpty())
+    <!-- Tampilan saat belum ada berita -->
+    <div class="news-empty">
+        <h3 class="news-empty-title">Belum ada berita</h3>
+        <p class="news-empty-desc">Liputan dan kabar terbaru sekolah akan tampil di sini. Silakan kembali lagi nanti.</p>
+    </div>
+    @else
     <div class="news-grid">
 
-        <!-- Card 1: Featured ME Awards -->
-        <article id="1" class="news-card" data-category="prestasi" onclick="openNewsModal('me-awards-liputan')">
+        @foreach ($posts as $post)
+        <!-- Card {{ $loop->iteration }}: {{ $post->title }} -->
+        <article id="{{ $post->id }}" class="news-card" data-category="{{ $post->category?->slug }}" onclick="openNewsModal('{{ $post->slug }}')">
             <div class="news-card-img-wrap">
-                <img src="{{ asset('assets/juara-me-awards.jpg') }}" alt="Liputan ME Awards SMKS MUHI" class="news-card-img"
+                <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}" class="news-card-img"
                     onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
             </div>
             <div class="news-card-body">
                 <div>
                     <div class="news-card-meta">
-                        <span class="badge-primary" style="font-size:0.72rem;">PRESTASI KEJUARAAN</span>
-                        <span>&bull; 18 Juni 2026</span>
+                        <span class="badge-primary" style="font-size:0.72rem;">{{ mb_strtoupper($post->category?->name ?? 'Berita') }}</span>
+                        <span>&bull; {{ $post->published_date }}</span>
                     </div>
-                    <h3 class="news-card-title">SMKS MUHI Genteng Raih Juara Umum ME Awards Tingkat Nasional 2026</h3>
+                    <h3 class="news-card-title">{{ $post->title }}</h3>
                     <p class="news-card-excerpt">
-                        Delegasi SMKS Muhammadiyah 1 Genteng berhasil menorehkan prestasi gemilang dengan memboyong trofi Juara Umum dalam perhelatan akbar ME Awards 2026.
+                        {{ $post->excerpt }}
                     </p>
                 </div>
                 <div class="news-card-footer">
-                    <span>Surabaya</span>
+                    <span>{{ $post->location }}</span>
                     <span>Baca Warta &rarr;</span>
                 </div>
             </div>
         </article>
 
-        <!-- Card 2: Pengenalan Jurusan -->
-        <article id="2" class="news-card" data-category="kegiatan" onclick="openNewsModal('mpls-jurusan')">
-            <div class="news-card-img-wrap">
-                <img src="{{ asset('assets/berita/mpls.jpeg') }}" alt="MPLS Pengenalan Jurusan" class="news-card-img"
-                    onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
-            </div>
-            <div class="news-card-body">
-                <div>
-                    <div class="news-card-meta">
-                        <span class="badge-primary" style="font-size:0.72rem;">KEGIATAN SISWA</span>
-                        <span>&bull; 17 Juni 2026</span>
-                    </div>
-                    <h3 class="news-card-title">SMKS Muhammadiyah 1 Genteng Gelar Pengenalan Jurusan untuk Siswa Baru</h3>
-                    <p class="news-card-excerpt">
-                        Ratusan siswa diajak lab tour interaktif dan simulasi dunia kerja agar memiliki arah yang jelas serta mentalitas juara.
-                    </p>
-                </div>
-                <div class="news-card-footer">
-                    <span>Kampus MUHI</span>
-                    <span>Baca Warta &rarr;</span>
-                </div>
-            </div>
-        </article>
-
-        <!-- Card 3: Taekwondo -->
-        <article id="3" class="news-card" data-category="prestasi" onclick="openNewsModal('taekwondo-liputan')">
-            <div class="news-card-img-wrap">
-                <img src="{{ asset('assets/berita/juara-tapak-suci.jpg') }}" alt="Juara Taekwondo" class="news-card-img"
-                    onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
-            </div>
-            <div class="news-card-body">
-                <div>
-                    <div class="news-card-meta">
-                        <span class="badge-primary" style="font-size:0.72rem;">PRESTASI KEJUARAAN</span>
-                        <span>&bull; Juni 2026</span>
-                    </div>
-                    <h3 class="news-card-title">Dua Siswa SMEMSA Sabet Juara 3 Kejurprov Taekwondo Antar Pelajar</h3>
-                    <p class="news-card-excerpt">
-                        Ibellino Novendra dan Ahmad Husaini sukses mengharumkan nama sekolah di tingkat Provinsi Jawa Timur.
-                    </p>
-                </div>
-                <div class="news-card-footer">
-                    <span>Malang, Jatim</span>
-                    <span>Baca Warta &rarr;</span>
-                </div>
-            </div>
-        </article>
-
-        <!-- Card 4: Karaoke -->
-        <article id="4" class="news-card" data-category="prestasi" onclick="openNewsModal('karaoke-liputan')">
-            <div class="news-card-img-wrap">
-                <img src="{{ asset('assets/berita/lomba-karaoke.jpg') }}" alt="Lomba Karaoke" class="news-card-img"
-                    onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
-            </div>
-            <div class="news-card-body">
-                <div>
-                    <div class="news-card-meta">
-                        <span class="badge-primary" style="font-size:0.72rem;">PRESTASI KEJUARAAN</span>
-                        <span>&bull; Juni 2026</span>
-                    </div>
-                    <h3 class="news-card-title">Siswi SMEMSA Raih Juara 1 & 2 Lomba Karaoke Indonesia Berbakat</h3>
-                    <p class="news-card-excerpt">
-                        Chelsea Princes F. dan Rennyyu Galuh Sivanni tampil gemilang di tingkat Kabupaten Banyuwangi.
-                    </p>
-                </div>
-                <div class="news-card-footer">
-                    <span>Banyuwangi</span>
-                    <span>Baca Warta &rarr;</span>
-                </div>
-            </div>
-        </article>
-
-        <!-- Card 5: Pembekalan PKL -->
-        <article id="5" class="news-card" data-category="kegiatan" onclick="openNewsModal('pembekalan-pkl')">
-            <div class="news-card-img-wrap">
-                <img src="{{ asset('assets/berita/pembekalan-pkl.jpg') }}" alt="Pembekalan PKL" class="news-card-img"
-                    onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
-            </div>
-            <div class="news-card-body">
-                <div>
-                    <div class="news-card-meta">
-                        <span class="badge-primary" style="font-size:0.72rem;">KEGIATAN SISWA</span>
-                        <span>&bull; 11-13 Juni 2026</span>
-                    </div>
-                    <h3 class="news-card-title">Pembekalan Intensif Praktik Kerja Lapangan (PKL) Siswa Kelas XI</h3>
-                    <p class="news-card-excerpt">
-                        Membekali peserta didik dengan pengetahuan, etos kerja, dan kesadaran hukum sebelum terjun ke DUDIKA.
-                    </p>
-                </div>
-                <div class="news-card-footer">
-                    <span>Aula MUHI</span>
-                    <span>Baca Warta &rarr;</span>
-                </div>
-            </div>
-        </article>
-
+        @endforeach
     </div>
+    @endif
 </section>
 
 <!-- 5. INTERACTIVE NEWS DETAIL MODAL -->
 <div class="modal-overlay" id="news-modal-overlay" onclick="closeNewsModalOnOverlay(event)">
-    <div class="news-modal-card" id="news-modal-card">
+    <div class="news-modal-card" id="news-modal-card" data-lenis-prevent>
         <!-- Modal Hero Header -->
         <div class="modal-news-hero">
-            <img src="{{ asset('assets/juara-me-awards.jpg') }}" alt="Header Berita" id="modal-news-img"
+            <img src="{{ $featured?->thumbnail_url }}" alt="Header Berita" id="modal-news-img"
                 onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
             <button class="modal-close-btn" onclick="closeNewsModal()" aria-label="Tutup Berita">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
@@ -224,3 +136,10 @@
 <!-- FOOTER -->
 
 @endsection
+
+@push('scripts')
+<script>
+    // Data detail berita dari database (dipakai oleh resources/js/pages/berita.js)
+    window.newsDatabase = {{ Js::from($newsData) }};
+</script>
+@endpush

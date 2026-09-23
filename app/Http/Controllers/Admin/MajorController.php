@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Concerns\HandlesUploads;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\MajorRequest;
 use App\Models\Major;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class MajorController extends Controller
 {
+    use HandlesUploads;
+
+    private const UPLOAD_FIELDS = ['logo', 'student_photo'];
+
     public function index(): View
     {
         $majors = Major::ordered()->get();
@@ -28,9 +31,11 @@ class MajorController extends Controller
 
     public function store(MajorRequest $request): RedirectResponse
     {
-        $data = $request->safe()->except(['logo', 'student_photo']);
-        $data['logo'] = $this->upload($request->file('logo'));
-        $data['student_photo'] = $this->upload($request->file('student_photo'));
+        $data = $request->safe()->except(self::UPLOAD_FIELDS);
+
+        foreach (self::UPLOAD_FIELDS as $field) {
+            $data[$field] = $this->storeUpload($request->file($field), 'majors');
+        }
 
         Major::create($data);
 
@@ -44,12 +49,12 @@ class MajorController extends Controller
 
     public function update(MajorRequest $request, Major $major): RedirectResponse
     {
-        $data = $request->safe()->except(['logo', 'student_photo']);
+        $data = $request->safe()->except(self::UPLOAD_FIELDS);
 
-        foreach (['logo', 'student_photo'] as $field) {
+        foreach (self::UPLOAD_FIELDS as $field) {
             if ($request->hasFile($field)) {
-                $this->deleteFile($major->{$field});
-                $data[$field] = $this->upload($request->file($field));
+                $this->deleteUpload($major->{$field});
+                $data[$field] = $this->storeUpload($request->file($field), 'majors');
             }
         }
 
@@ -60,26 +65,12 @@ class MajorController extends Controller
 
     public function destroy(Major $major): RedirectResponse
     {
-        $this->deleteFile($major->logo);
-        $this->deleteFile($major->student_photo);
+        foreach (self::UPLOAD_FIELDS as $field) {
+            $this->deleteUpload($major->{$field});
+        }
 
         $major->delete();
 
         return redirect()->route('admin.majors.index')->with('success', 'Jurusan berhasil dihapus.');
-    }
-
-    private function upload(?UploadedFile $file): ?string
-    {
-        return $file?->store('majors', 'public');
-    }
-
-    /**
-     * Hapus file upload lama. File bawaan desain (public/assets) tidak disentuh.
-     */
-    private function deleteFile(?string $path): void
-    {
-        if ($path && ! str_starts_with($path, 'assets/')) {
-            Storage::disk('public')->delete($path);
-        }
     }
 }

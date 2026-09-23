@@ -63,3 +63,28 @@
     --transition: all 0.3s ease;
     --transition-fast: all 0.2s ease;
 }
+
+/* ═══ TAMPILAN KOSONG BERITA (beranda & halaman berita) ═══ */
+.news-empty {
+    grid-column: 1 / -1;
+    max-width: 560px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    background: var(--bg-main);
+    border: 1px dashed var(--border-card);
+    border-radius: var(--radius-lg);
+}
+
+.news-empty-title {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-head);
+    font-size: 1.15rem;
+    color: var(--primary);
+}
+
+.news-empty-desc {
+    margin: 0;
+    color: var(--text-muted);
+}
