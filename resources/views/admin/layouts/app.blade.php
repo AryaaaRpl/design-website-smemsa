@@ -18,7 +18,7 @@
     <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
     <div class="admin-main">
-        <header class="admin-topbar">
+        <nav class="admin-topbar">
             <div style="display: flex; align-items: center; gap: 12px;">
                 <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Buka menu">&#9776;</button>
                 <span class="topbar-title">@yield('title')</span>
@@ -26,7 +26,7 @@
             <div class="topbar-user">
                 Masuk sebagai <strong>{{ auth()->user()->name }}</strong>
             </div>
-        </header>
+        </nav>
 
         <main class="admin-content">
             @if (session('success'))

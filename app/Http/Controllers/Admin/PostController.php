@@ -5,18 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\CategoryType;
 use App\Enums\PostStatus;
 use App\Http\Controllers\Concerns\HandlesUploads;
+use App\Http\Controllers\Concerns\SavesWithHeadline;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    use HandlesUploads;
+    use HandlesUploads, SavesWithHeadline;
 
     public function index(Request $request): View
     {
@@ -51,10 +51,10 @@ class PostController extends Controller
         $data['user_id'] = $request->user()->id;
         $data['thumbnail'] = $this->storeUpload($request->file('thumbnail'), 'posts');
 
-        $previousHeadline = $this->savePost(new Post, $data);
+        $previousHeadline = $this->saveWithHeadline(new Post, $data);
 
         return redirect()->route('admin.posts.index')
-            ->with('success', $this->successMessage('Berita berhasil ditambahkan.', $previousHeadline));
+            ->with('success', $this->headlineMessage('Berita berhasil ditambahkan.', $previousHeadline, 'headline utama'));
     }
 
     public function edit(Post $post): View
@@ -71,10 +71,10 @@ class PostController extends Controller
             $data['thumbnail'] = $this->storeUpload($request->file('thumbnail'), 'posts');
         }
 
-        $previousHeadline = $this->savePost($post, $data);
+        $previousHeadline = $this->saveWithHeadline($post, $data);
 
         return redirect()->route('admin.posts.index')
-            ->with('success', $this->successMessage('Berita berhasil diperbarui.', $previousHeadline));
+            ->with('success', $this->headlineMessage('Berita berhasil diperbarui.', $previousHeadline, 'headline utama'));
     }
 
     public function destroy(Post $post): RedirectResponse
@@ -96,40 +96,6 @@ class PostController extends Controller
                 ->when($post->exists, fn ($query) => $query->whereKeyNot($post->id))
                 ->first(),
         ]);
-    }
-
-    /**
-     * Simpan berita. Jika berita ini dijadikan headline, headline lama dilepas
-     * dalam transaksi yang sama agar headline selalu hanya satu.
-     *
-     * @return Post|null Headline lama yang digantikan.
-     */
-    private function savePost(Post $post, array $data): ?Post
-    {
-        return DB::transaction(function () use ($post, $data) {
-            $previousHeadline = null;
-
-            if ($data['is_featured']) {
-                $otherHeadlines = Post::headline()
-                    ->when($post->exists, fn ($query) => $query->whereKeyNot($post->id));
-
-                $previousHeadline = (clone $otherHeadlines)->lockForUpdate()->first();
-                $otherHeadlines->update(['is_featured' => false]);
-            }
-
-            $post->fill($data)->save();
-
-            return $previousHeadline;
-        });
-    }
-
-    private function successMessage(string $message, ?Post $previousHeadline): string
-    {
-        if (! $previousHeadline) {
-            return $message;
-        }
-
-        return "{$message} Berita \"{$previousHeadline->title}\" tidak lagi menjadi headline utama.";
     }
 
     /**

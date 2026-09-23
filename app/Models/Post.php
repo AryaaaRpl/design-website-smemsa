@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\PostStatus;
 use App\Models\Concerns\HasMediaUrl;
+use App\Models\Concerns\HasParagraphText;
 use App\Models\Concerns\HasSlug;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Scope;
@@ -19,7 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 #[Fillable(['user_id', 'category_id', 'title', 'slug', 'excerpt', 'body', 'thumbnail', 'location', 'byline', 'status', 'is_featured', 'published_at'])]
 class Post extends Model
 {
-    use HasMediaUrl, HasSlug, SoftDeletes;
+    use HasMediaUrl, HasParagraphText, HasSlug, SoftDeletes;
 
     protected $attributes = [
         'status' => 'draft',
@@ -90,14 +91,7 @@ class Post extends Model
      */
     protected function bodyHtml(): Attribute
     {
-        return Attribute::get(function () {
-            $paragraphs = preg_split('/\R\s*\R/', trim((string) $this->body));
-
-            return collect($paragraphs)
-                ->filter(fn (string $paragraph) => trim($paragraph) !== '')
-                ->map(fn (string $paragraph) => '<p>'.nl2br(e(trim($paragraph))).'</p>')
-                ->implode("\n");
-        });
+        return Attribute::get(fn () => $this->paragraphsToHtml($this->body));
     }
 
     /**

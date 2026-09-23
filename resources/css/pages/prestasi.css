@@ -855,11 +855,13 @@
       box-shadow: var(--shadow-card-hover);
     }
 
-    /* Typographic Hero Area (No Emoji) */
+    /* Typographic Hero Area with Image Background Support */
     .award-card-header {
       background: linear-gradient(135deg,
           var(--primary-dark) 0%,
           var(--primary) 100%);
+      background-size: cover;
+      background-position: center;
       padding: 1.8rem 1.6rem;
       color: #ffffff;
       position: relative;
@@ -868,6 +870,29 @@
       flex-direction: column;
       justify-content: space-between;
       min-height: 155px;
+      isolation: isolate;
+    }
+
+    .award-card-header.has-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+          rgba(15, 23, 42, 0.55) 0%,
+          rgba(15, 23, 42, 0.88) 100%);
+      z-index: 0;
+      transition: var(--transition);
+    }
+
+    .award-card:hover .award-card-header.has-image::before {
+      background: linear-gradient(180deg,
+          rgba(15, 23, 42, 0.45) 0%,
+          rgba(15, 23, 42, 0.82) 100%);
+    }
+
+    .award-card-header > * {
+      position: relative;
+      z-index: 1;
     }
 
     .award-card-header::after {
@@ -882,6 +907,7 @@
           transparent 70%);
       border-radius: 50%;
       pointer-events: none;
+      z-index: 0;
     }
 
     .award-card-tags-row {
@@ -1182,11 +1208,11 @@
       height: 44px;
       min-width: 44px;
       min-height: 44px;
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(0, 80, 253, 0.25);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 50%;
-      color: #ffffff;
+      color: var(--primary);
       font-size: 1.5rem;
       display: flex;
       align-items: center;
@@ -1198,7 +1224,6 @@
 
     .modal-close-btn:hover {
       background: #ffffff;
-      color: var(--primary);
       transform: rotate(90deg);
     }
 

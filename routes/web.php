@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\Admin\AchievementController as AdminAchievementController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -35,9 +37,7 @@ Route::get('/ekstrakurikuler', function () {
     return view('ekstrakurikuler');
 });
 
-Route::get('/prestasi', function () {
-    return view('prestasi');
-});
+Route::get('/prestasi', AchievementController::class)->name('prestasi');
 
 Route::get('/berita', NewsController::class)->name('berita');
 
@@ -70,5 +70,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('majors', MajorController::class)->except('show');
         Route::resource('categories', CategoryController::class)->except('show');
         Route::resource('posts', PostController::class)->except('show');
+        Route::resource('achievements', AdminAchievementController::class)->except('show');
     });
 });

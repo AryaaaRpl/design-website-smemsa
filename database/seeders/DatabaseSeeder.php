@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         // Akun admin awal. Ganti password setelah login pertama.
         User::firstOrCreate(
-            ['email' => 'admin@smemsa.sch.id'],
+            ['email' => 'danis.samsunga01@gmail.com'],
             ['name' => 'Administrator', 'password' => 'password'],
         );
 
@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             MajorSeeder::class,
             CategorySeeder::class,
             PostSeeder::class,
+            AchievementSeeder::class,
         ]);
     }
 }
