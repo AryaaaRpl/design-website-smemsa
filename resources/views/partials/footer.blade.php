@@ -174,7 +174,7 @@
           &copy; 2026 SMKS Muhammadiyah 1 Genteng. Seluruh hak cipta
           dilindungi.
         </div>
-        <div>Created By PPLG &bull; Kompetisi JHIC Jagoan Hosting</div>
+        <div>Dibuat oleh RPL SMEMSA &bull; SMKS MUHAMMADIYAH 1 GENTENG</div>
       </div>
     </div>
   </footer>

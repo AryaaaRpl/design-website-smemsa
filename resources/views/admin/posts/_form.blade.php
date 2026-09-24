@@ -104,7 +104,7 @@
                 <div class="form-group">
                     <label for="location" class="form-label">Lokasi</label>
                     <input type="text" id="location" name="location" class="form-input"
-                        value="{{ old('location', $post->location) }}" placeholder="Kampus MUHI">
+                        value="{{ old('location', $post->location) }}" placeholder="Sekolah MUHI">
                     @error('location') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
 

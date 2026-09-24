@@ -700,3 +700,88 @@ textarea.form-input {
     flex-wrap: wrap;
     gap: 8px 16px;
 }
+
+/* ---------- Pemilih titik denah (form fasilitas) ---------- */
+
+.map-picker {
+    border: 1px solid var(--blue-line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+.map-picker .campus-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Warna denah mengikuti halaman fasilitas */
+.map-picker .campus-outline { fill: none; stroke: var(--blue); stroke-width: 3; }
+.map-picker .blk { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1.2; }
+.map-picker .blk-room { fill: #e8f0fe; stroke: #c7d7f5; stroke-width: 1.2; }
+.map-picker .field { fill: #eff6ff; stroke: #dbeafe; stroke-width: 1.2; }
+.map-picker .road { fill: #334155; }
+.map-picker .road-dash { stroke: #f8fafc; stroke-width: 3; stroke-dasharray: 18 14; }
+.map-picker .lbl { font-size: 10px; font-weight: 700; fill: #64748b; text-anchor: middle; dominant-baseline: central; }
+.map-picker .lbl-sm { font-size: 8.5px; font-weight: 600; fill: #94a3b8; }
+.map-picker .lbl-zone { font-size: 10px; font-weight: 800; fill: #94a3b8; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.map-picker .picker-other {
+    fill: rgba(15, 23, 42, 0.25);
+    stroke: var(--white);
+    stroke-width: 2;
+}
+
+.map-picker .picker-marker {
+    fill: var(--yellow);
+    stroke: var(--blue);
+    stroke-width: 3;
+    pointer-events: none;
+}
+
+/* ---------- Galeri foto (form fasilitas) ---------- */
+
+.gallery-list {
+    display: grid;
+    gap: 12px;
+}
+
+.gallery-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.gallery-thumb {
+    width: 88px;
+    height: 64px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--blue-line);
+}
+
+.gallery-fields {
+    flex: 1;
+    display: grid;
+    gap: 6px;
+}
+
+.gallery-fields .form-input {
+    padding: 7px 10px;
+    font-size: 13px;
+}
+
+.gallery-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.gallery-order {
+    width: 70px !important;
+    display: inline-block;
+    margin-left: 6px;
+}

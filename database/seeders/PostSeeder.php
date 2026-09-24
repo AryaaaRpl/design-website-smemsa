@@ -41,7 +41,7 @@ class PostSeeder extends Seeder
                 'body' => "SMKS Muhammadiyah 1 Genteng menyelenggarakan agenda Pengenalan Jurusan secara interaktif untuk seluruh siswa baru tahun ajaran 2026/2027.\n\n"
                     .'Ratusan siswa diajak melakukan tour laboratorium ke masing-masing Teaching Factory (TEFA) jurusan serta mendengarkan pemaparan prospek karier industri langsung dari Kepala Konsentrasi Keahlian agar memiliki peta jalan belajar yang jelas.',
                 'thumbnail' => 'assets/berita/mpls.jpeg',
-                'location' => 'Kampus MUHI',
+                'location' => 'Sekolah MUHI',
                 'byline' => 'Tim Kesiswaan MUHI',
                 'published_at' => '2026-06-17 08:00:00',
             ],
@@ -51,7 +51,7 @@ class PostSeeder extends Seeder
                 'title' => 'Dua Siswa SMEMSA Sabet Juara 3 Kejurprov Taekwondo Antar Pelajar',
                 'excerpt' => 'Ibellino Novendra dan Ahmad Husaini sukses mengharumkan nama sekolah di tingkat Provinsi Jawa Timur.',
                 'body' => "Dua atlet binaan SMKS Muhammadiyah 1 Genteng atas nama Ibellino Novendra dan Ahmad Husaini sukses menyabet juara 3 pada Kejuaraan Provinsi (Kejurprov) Taekwondo Antar Pelajar Jawa Timur.\n\n"
-                    .'Capaian prestasi ini menambah deretan piala kejuaraan cabang olahraga bela diri yang berhasil dibawa pulang ke Kampus SMEMSA Genteng.',
+                    .'Capaian prestasi ini menambah deretan piala kejuaraan cabang olahraga bela diri yang berhasil dibawa pulang ke Sekolah SMEMSA Genteng.',
                 'thumbnail' => 'assets/berita/juara-tapak-suci.jpg',
                 'location' => 'Malang, Jatim',
                 'byline' => 'Pembina Ekstrakurikuler',

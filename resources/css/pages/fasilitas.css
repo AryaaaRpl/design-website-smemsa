@@ -98,7 +98,7 @@
     }
 
     .section-padding {
-      padding: 6rem 0;
+      padding: 6rem 5%;
     }
 
     .text-center {
@@ -1704,3 +1704,193 @@
         display: flex !important;
       }
     }
+/* ==========================================================================
+   DENAH INTERAKTIF — PERFORMA, GALERI, BOTTOM SHEET (HP) & DAFTAR LENGKAP
+   ========================================================================== */
+
+/* Titik denah membesar dengan transform (bukan mengubah radius `r`),
+   agar browser tidak menggambar ulang seluruh denah setiap frame. */
+.hs-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: fill 0.25s ease, transform 0.25s ease !important;
+}
+
+.hotspot:hover .hs-dot,
+.hotspot:focus-visible .hs-dot {
+  r: 13;
+  transform: scale(1.23);
+}
+
+.hotspot.is-active .hs-dot {
+  r: 13;
+  transform: scale(1.31);
+}
+
+/* Transisi hanya pada properti yang berubah (sebelumnya `all`). */
+.filter-btn {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
+}
+
+.index-btn {
+  transition: border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease !important;
+}
+
+/* Animasi ringan saat isi panel berganti (hanya opacity & transform). */
+#panelContent.is-entering {
+  animation: panelEnter 0.32s ease-out both;
+}
+
+@keyframes panelEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Galeri foto kecil di panel detail (bisa digeser) */
+.panel-thumbs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.panel-thumb {
+  flex: 0 0 64px;
+  height: 46px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg-alt);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, border-color 0.2s ease !important;
+}
+
+.panel-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.panel-thumb:hover,
+.panel-thumb.is-active {
+  opacity: 1;
+  border-color: var(--secondary);
+}
+
+/* Sorotan kartu TEFA yang sesuai dengan titik terpilih */
+.tefa-item.highlighted-card {
+  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.4);
+}
+
+/* Bagian khusus bottom sheet: disembunyikan di laptop */
+.panel-sheet-bar,
+.panel-backdrop {
+  display: none;
+}
+
+/* Laptop: titik denah menjadi cara utama memilih lokasi */
+.index-list {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* HP: Daftar Lengkap menjadi cara utama memilih lokasi */
+  .index-list {
+    display: block;
+  }
+
+  /* Panel detail menjadi bottom sheet yang naik dari bawah layar */
+  .detail-panel {
+    position: fixed !important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    z-index: 1200;
+    max-height: 85vh;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-radius: 18px 18px 0 0;
+    transform: translateY(105%);
+    transition: transform 0.3s ease !important;
+    visibility: hidden;
+  }
+
+  .detail-panel.is-open {
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .detail-panel .panel-empty {
+    display: none;
+  }
+
+  .panel-sheet-bar {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background: #fff;
+    border-bottom: 1px solid var(--border-card);
+  }
+
+  .panel-sheet-handle {
+    width: 42px;
+    height: 5px;
+    border-radius: 99px;
+    background: var(--border-card);
+  }
+
+  .panel-sheet-close {
+    position: absolute;
+    right: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: var(--bg-alt);
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .panel-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1150;
+    background: rgba(15, 23, 42, 0.45);
+  }
+
+  .panel-backdrop[hidden] {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #panelContent.is-entering {
+    animation: none;
+  }
+
+  .detail-panel {
+    transition: none !important;
+  }
+}

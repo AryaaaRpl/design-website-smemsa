@@ -206,7 +206,7 @@
                   <div class="timeline-step-tag">Tahap 4 • Finalisasi & MPLS</div>
                   <h3 class="step-card-title">Daftar Ulang & Orientasi Siswa</h3>
                   <p class="step-card-desc">
-                    Konfirmasi daftar ulang dan skema pembayaran PSM (dapat dicicil), fitting/pengambilan seragam kejuruan di kampus SMEMSA, serta persiapan Masa Pengenalan Lingkungan Sekolah (MPLS).
+                    Konfirmasi daftar ulang dan skema pembayaran PSM (dapat dicicil), fitting/pengambilan seragam kejuruan di sekolah SMEMSA, serta persiapan Masa Pengenalan Lingkungan Sekolah (MPLS).
                   </p>
                 </div>
               </div>
@@ -224,7 +224,7 @@
               <div class="timeline-step-card-v2">
                 <div class="timeline-step-icon">1</div>
                 <div class="timeline-step-body">
-                  <div class="timeline-step-tag">Tahap 1 • Kunjungan Kampus</div>
+                  <div class="timeline-step-tag">Tahap 1 • Kunjungan Sekolah</div>
                   <h3 class="step-card-title">Datang ke Sekretariat SPMB SMEMSA</h3>
                   <p class="step-card-desc">
                     Kunjungi Sekretariat SPMB di SMKS Muhammadiyah 1 Genteng (Jl. KH. Imam Bahri No.10, Genteng) pada jam layanan kantor (Senin–Sabtu, 07.00–14.30 WIB) didampingi orang tua/wali.

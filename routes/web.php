@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExtracurricularController as AdminExtracurricularController;
+use App\Http\Controllers\Admin\FacilityController as AdminFacilityController;
 use App\Http\Controllers\Admin\JobVacancyController;
 use App\Http\Controllers\Admin\MajorController;
 use App\Http\Controllers\Admin\PartnerController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TeacherController as AdminTeacherController;
 use App\Http\Controllers\BkkController;
 use App\Http\Controllers\ExtracurricularController;
+use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeacherController;
@@ -45,9 +47,7 @@ Route::get('/berita', NewsController::class)->name('berita');
 
 Route::get('/guru', TeacherController::class)->name('guru');
 
-Route::get('/fasilitas', function () {
-    return view('fasilitas');
-});
+Route::get('/fasilitas', FacilityController::class)->name('fasilitas');
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +73,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('achievements', AdminAchievementController::class)->except('show');
         Route::resource('extracurriculars', AdminExtracurricularController::class)->except('show');
         Route::resource('teachers', AdminTeacherController::class)->except('show');
+        Route::resource('facilities', AdminFacilityController::class)->except('show');
         Route::resource('partners', PartnerController::class)->except('show');
         Route::resource('vacancies', JobVacancyController::class)
             ->parameters(['vacancies' => 'vacancy'])
