@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             MajorSeeder::class,
+            TeacherSeeder::class,
             CategorySeeder::class,
             PostSeeder::class,
             AchievementSeeder::class,
