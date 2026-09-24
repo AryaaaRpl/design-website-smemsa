@@ -42,12 +42,12 @@
       <!-- BKK Impact Summary Banner -->
       <div class="bkk-summary-banner">
         <div class="bkk-summary-number">
-          <span>92.4%</span>
+          <span>{{ $site->percent('employment_rate') }}%</span>
         </div>
         <div class="bkk-summary-text">
           <h3>Tingkat Keterserapan Alumni SMEMSA</h3>
           <p>
-            Sebanyak <strong>450+ lulusan tahun terakhir</strong> langsung
+            Sebanyak <strong>{{ $site->get('graduates_absorbed') }}+ lulusan tahun terakhir</strong> langsung
             terserap kerja di mitra DUDIKA, berwirausaha mandiri lewat BLUD,
             dan melanjutkan studi ke perguruan tinggi negeri/swasta ternama.
           </p>
@@ -57,15 +57,15 @@
       <!-- BKK Key Statistics -->
       <div class="bkk-stats-grid">
         <div class="stat-card">
-          <div class="stat-value">120+</div>
+          <div class="stat-value">{{ $partnerCount }}+</div>
           <div class="stat-label">Mitra DUDI & Industri</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value">92.4%</div>
+          <div class="stat-value">{{ $site->percent('employment_rate') }}%</div>
           <div class="stat-label">Alumni Terserap Kerja</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value">85+</div>
+          <div class="stat-value">{{ $site->get('vacancies_per_year') }}+</div>
           <div class="stat-label">Lowongan Kerja Per Tahun</div>
         </div>
         <div class="stat-card">

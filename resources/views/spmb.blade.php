@@ -6,18 +6,18 @@
     <!-- 1. PAGE HEADER -->
     <header class="page-header">
       <div class="container">
-        <div class="badge-amber mb-2">Tahun Ajaran 2026/2027</div>
+        <div class="badge-amber mb-2">Tahun Ajaran {{ $site->get('spmb_academic_year') }}</div>
         <h1 class="page-title">Sistem Penerimaan Siswa Baru</h1>
         <p class="page-subtitle">
           Wujudkan potensi dan keahlian vokasi masa depan bersama SMK Pusat Keunggulan berstandar nasional dan
           berkarakter Islami.
         </p>
         <div class="header-actions">
-          <a href="https://wa.me/6282241356668?text=Halo%20Panitia%20SPMB%20SMKS%20Muhammadiyah%201%20Genteng,%20saya%20ingin%20mendaftar%20siswa%20baru"
+          <a href="{{ $site->whatsappLink('spmb', 'Halo Panitia SPMB SMKS Muhammadiyah 1 Genteng, saya ingin mendaftar siswa baru') }}"
             target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             Daftar Sekarang
           </a>
-          <a href="https://wa.me/6282241356668" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          <a href="{{ $site->whatsappLink('spmb') }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             Hubungi Panitia (WhatsApp)
           </a>
         </div>
@@ -227,7 +227,7 @@
                   <div class="timeline-step-tag">Tahap 1 • Kunjungan Sekolah</div>
                   <h3 class="step-card-title">Datang ke Sekretariat SPMB SMEMSA</h3>
                   <p class="step-card-desc">
-                    Kunjungi Sekretariat SPMB di SMKS Muhammadiyah 1 Genteng (Jl. KH. Imam Bahri No.10, Genteng) pada jam layanan kantor (Senin–Sabtu, 07.00–14.30 WIB) didampingi orang tua/wali.
+                    Kunjungi Sekretariat SPMB di SMKS Muhammadiyah 1 Genteng ({{ $site->get('address') }}) pada jam layanan kantor (Senin–Sabtu, 07.00–14.30 WIB) didampingi orang tua/wali.
                   </p>
                 </div>
               </div>
@@ -705,7 +705,7 @@
                   Ingin mengonfirmasi kombinasi Voucher Early Bird dengan jalur beasiswa prestasi/alumni? Tim Panitia SPMB SMEMSA siap memandu Anda melalui WhatsApp.
                 </p>
               </div>
-              <a href="https://wa.me/6282241356668?text=Halo%20Panitia%20SPMB,%20saya%20ingin%20berkonsultasi%20mengenai%20skema%20beasiswa%20dan%20keringanan%20biaya"
+              <a href="{{ $site->whatsappLink('spmb', 'Halo Panitia SPMB, saya ingin berkonsultasi mengenai skema beasiswa dan keringanan biaya') }}"
                 target="_blank" rel="noopener noreferrer" class="btn btn-amber" style="white-space: nowrap;">
                 Konsultasi Beasiswa via WhatsApp &rarr;
               </a>
@@ -729,7 +729,7 @@
         <div class="faq-wrapper" id="faq-container">
           <div class="faq-item">
             <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-1">
-              <span>Kapan periode pendaftaran siswa baru Tahun Ajaran 2026/2027 dibuka?</span>
+              <span>Kapan periode pendaftaran siswa baru Tahun Ajaran {{ $site->get('spmb_academic_year') }} dibuka?</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9" />
               </svg>
@@ -816,9 +816,9 @@
               <p class="panitia-card-desc">Layanan konsultasi cepat SPMB, pengiriman bukti berkas, dan panduan formulir.
               </p>
             </div>
-            <a href="https://wa.me/6282241356668" target="_blank" rel="noopener noreferrer" class="btn btn-primary"
+            <a href="{{ $site->whatsappLink('spmb') }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary"
               style="width: 100%;">
-              0822-4135-6668
+              {{ $site->whatsappDisplay('spmb') }}
             </a>
           </div>
 
@@ -835,8 +835,8 @@
               <h3 class="panitia-card-title">Telepon Sekolah</h3>
               <p class="panitia-card-desc">Jam layanan kantor: Senin – Sabtu, pukul 07.00 – 14.30 WIB.</p>
             </div>
-            <a href="tel:0333845605" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">
-              (0333) 845605
+            <a href="tel:{{ $site->phoneLink() }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">
+              {{ $site->get('phone') }}
             </a>
           </div>
 
@@ -851,10 +851,9 @@
                 </svg>
               </div>
               <h3 class="panitia-card-title">Lokasi Sekolah</h3>
-              <p class="panitia-card-desc">Jl. KH. Imam Bahri No.10, Dusun Krajan, Genteng Wetan, Genteng, Banyuwangi
-                68465.</p>
+              <p class="panitia-card-desc">{{ $site->get('address') }}.</p>
             </div>
-            <a href="https://maps.google.com/?q=SMKS+Muhammadiyah+1+Genteng" target="_blank" rel="noopener noreferrer"
+            <a href="{{ $site->get('maps_url') }}" target="_blank" rel="noopener noreferrer"
               class="btn btn-primary" style="width: 100%;">
               Buka Google Maps
             </a>

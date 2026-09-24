@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\CategoryType;
 use App\Models\Category;
+use App\Models\Extracurricular;
 use App\Models\Major;
 use App\Models\Partner;
 use App\Models\Post;
@@ -24,6 +25,12 @@ class HomeController extends Controller
 
         $partners = Partner::active()->ordered()->get();
 
-        return view('index', compact('majors', 'majorsData', 'latestPosts', 'postCategories', 'partners'));
+        // Angka statistik yang dihitung otomatis dari database.
+        $stats = [
+            'partners' => Partner::count(),
+            'extracurriculars' => Extracurricular::active()->count(),
+        ];
+
+        return view('index', compact('majors', 'majorsData', 'latestPosts', 'postCategories', 'partners', 'stats'));
     }
 }

@@ -121,7 +121,7 @@ class BkkTest extends TestCase
     public function test_apply_link_falls_back_to_whatsapp(): void
     {
         $vacancy = $this->makeVacancy(['position' => 'Junior Web Developer']);
-        $this->assertStringStartsWith('https://wa.me/'.JobVacancy::DEFAULT_WHATSAPP, $vacancy->apply_link);
+        $this->assertStringStartsWith('https://wa.me/'.'6282241356668', $vacancy->apply_link);
         $this->assertStringContainsString('Junior%20Web%20Developer', $vacancy->apply_link);
 
         $vacancy->update(['apply_url' => 'https://karir.example.com']);

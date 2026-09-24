@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\EmploymentType;
 use App\Enums\VacancyStatus;
 use App\Models\Concerns\HasSlug;
+use App\Support\SiteSettings;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
@@ -20,11 +21,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class JobVacancy extends Model
 {
     use HasSlug;
-
-    /**
-     * Nomor WhatsApp BKK bawaan, dipakai jika link lamaran kosong.
-     */
-    public const DEFAULT_WHATSAPP = '6282241356668';
 
     protected $attributes = [
         'status' => 'open',
@@ -119,9 +115,8 @@ class JobVacancy extends Model
                 return $this->apply_url;
             }
 
-            $message = "Halo BKK SMK MUHI, saya tertarik melamar {$this->position}";
-
-            return 'https://wa.me/'.self::DEFAULT_WHATSAPP.'?text='.rawurlencode($message);
+            // Nomor WhatsApp BKK dari halaman Pengaturan.
+            return app(SiteSettings::class)->whatsappLink('bkk', "Halo BKK SMK MUHI, saya tertarik melamar {$this->position}");
         });
     }
 }

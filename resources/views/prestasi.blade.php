@@ -15,16 +15,16 @@
             <!-- Stats Bar: Homogenized Number + Label -->
             <div class="awards-stats-grid">
                 <div class="award-stat-card">
-                    <div class="stat-number">48+</div>
+                    <div class="stat-number">{{ $site->get('trophy_count') }}+</div>
                     <div class="stat-title">Piala Kejuaraan Tingkat Daerah & Jatim</div>
                 </div>
                 <div class="award-stat-card">
-                    <div class="stat-number">100%</div>
+                    <div class="stat-number">{{ $site->percent('bnsp_rate') }}%</div>
                     <div class="stat-title">Kelulusan Bersertifikasi BNSP</div>
                 </div>
                 <div class="award-stat-card">
-                    <div class="stat-number">58 Th</div>
-                    <div class="stat-title">Pengabdian Vokasi Sejak 1968</div>
+                    <div class="stat-number">{{ $site->yearsServing() }} Th</div>
+                    <div class="stat-title">Pengabdian Vokasi Sejak {{ $site->get('founded_year') }}</div>
                 </div>
             </div>
         </div>

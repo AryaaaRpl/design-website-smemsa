@@ -41,7 +41,7 @@
         </p>
 
         <div class="hero-actions">
-          <a href="/spmb" class="btn btn-primary">Daftar SPMB 2026 &rarr;</a>
+          <a href="/spmb" class="btn btn-primary">Daftar SPMB {{ $site->spmbYear() }} &rarr;</a>
           <a href="#jurusan" class="btn btn-outline">Jelajahi {{ trim(($majors->count() ?: '') . ' Konsentrasi Keahlian') }} &rarr;</a>
         </div>
       </div>
@@ -60,15 +60,15 @@
           <!-- Kartu Bukti Melayang -->
           <div class="hero-proof-bar-bottom">
             <div class="proof-col">
-              <div class="proof-number">92,4%</div>
+              <div class="proof-number">{{ $site->percent('employment_rate', ',') }}%</div>
               <div class="proof-label">Terserap Kerja</div>
             </div>
             <div class="proof-col">
-              <div class="proof-number">1135</div>
+              <div class="proof-number">{{ $site->get('student_count') }}</div>
               <div class="proof-label">Jumlah Siswa</div>
             </div>
             <div class="proof-col">
-              <div class="proof-number">1000</div>
+              <div class="proof-number">{{ $site->get('achievement_count') }}</div>
               <div class="proof-label">Jumlah Prestasi</div>
             </div>
           </div>
@@ -155,21 +155,21 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-num counter-value" data-target="1968">0</div>
+        <div class="stat-num counter-value" data-target="{{ $site->get('founded_year') }}">0</div>
         <div class="stat-label">Tahun Berdiri</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num counter-value" data-target="24">0</div>
+        <div class="stat-num counter-value" data-target="{{ $stats['partners'] }}">0</div>
         <div class="stat-label">Jumlah Mitra</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">
-          <span class="counter-value" data-target="18">0</span>+
+          <span class="counter-value" data-target="{{ $stats['extracurriculars'] }}">0</span>+
         </div>
         <div class="stat-label">Ekstrakurikuler & Pembinaan Bakat</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num" style="color: #ffffff">A (Unggul)</div>
+        <div class="stat-num" style="color: #ffffff">{{ $site->get('accreditation') }} ({{ $site->get('accreditation_predicate') }})</div>
         <div class="stat-label">Akreditasi BAN-S/M Kemendikdasmen</div>
       </div>
     </div>
@@ -1013,7 +1013,7 @@
   <div class="container">
     <div class="spmb-cta-band">
       <div class="spmb-cta-main">
-        <span class="spmb-cta-badge">Tahun Ajaran 2026/2027</span>
+        <span class="spmb-cta-badge">Tahun Ajaran {{ $site->get('spmb_academic_year') }}</span>
         <h2 class="spmb-cta-title">Bergabung Bersama SMEMSA.</h2>
         <p class="spmb-cta-desc">
           Mulai langkah menuju karier vokasi bersama sekolah pusat keunggulan

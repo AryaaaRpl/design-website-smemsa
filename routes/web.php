@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\JobVacancyController;
 use App\Http\Controllers\Admin\MajorController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeacherController as AdminTeacherController;
 use App\Http\Controllers\BkkController;
 use App\Http\Controllers\ExtracurricularController;
@@ -75,6 +76,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('teachers', AdminTeacherController::class)->except('show');
         Route::resource('facilities', AdminFacilityController::class)->except('show');
         Route::resource('partners', PartnerController::class)->except('show');
+        Route::get('settings/{group?}', [SettingController::class, 'edit'])->name('settings.edit');
+        Route::put('settings/{group}', [SettingController::class, 'update'])->name('settings.update');
+
         Route::resource('vacancies', JobVacancyController::class)
             ->parameters(['vacancies' => 'vacancy'])
             ->except('show');

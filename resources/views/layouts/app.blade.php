@@ -7,6 +7,7 @@
   <title>
     SMKS Muhammadiyah 1 Genteng - Pusat Keunggulan Vokasi & Karakter Islami
   </title>
+  <link rel="icon" href="{{ asset('assets/logo.webp') }}">
   <meta name="description"
     content="Website Resmi SMKS Muhammadiyah 1 Genteng (SMEMSA / SMEMSA Genteng) Banyuwangi. SMK Pusat Keunggulan, Akreditasi A BAN-S/M, Berlisensi LSP-P1 BNSP, dengan {{ $majorCountLabel }} Industri." />
 
@@ -31,14 +32,14 @@
         "description": "Sekolah Menengah Kejuruan Pusat Keunggulan di Genteng Banyuwangi dengan {{ $majorCountLabel }} Industri dan Lisensi LSP-P1 BNSP.",
         "address": {
           "@@type": "PostalAddress",
-          "streetAddress": "Jl. KH Imam Bahri No.10, Dusun Krajan, Genteng Wetan",
+          "streetAddress": "{{ $site->get('address') }}",
           "addressLocality": "Genteng, Banyuwangi",
           "addressRegion": "Jawa Timur",
           "postalCode": "68465",
           "addressCountry": "ID"
         },
-        "telephone": "+62-333-845605",
-        "email": "smkmuhi.genteng1968@gmail.com"
+        "telephone": "{{ $site->phoneInternational() }}",
+        "email": "{{ $site->get('email') }}"
       }
     </script>
 
@@ -737,7 +738,7 @@
 
     function chatMajorsAnswer() {
       if (chatMajors.length === 0) {
-        return "Informasi konsentrasi keahlian sedang disiapkan. Silakan hubungi Panitia via WA di 0822-4135-6668.";
+        return "Informasi konsentrasi keahlian sedang disiapkan. Silakan hubungi Panitia via WA di {{ $site->whatsappDisplay('spmb') }}.";
       }
 
       const list = chatMajors.map((m, i) => `${i + 1}. ${m.code} (${m.name})`).join("\n");
@@ -760,7 +761,7 @@
         text.includes("alur") ||
         text.includes("jadwal")
       ) {
-        return "Alur Pendaftaran SPMB SMEMSA TA 2026/2027:\n\n🌐 ALUR ONLINE (Praktis & Cepat):\n1. Akses halaman Pendaftaran di website/menu SPMB.\n2. Isi data diri & pilih konsentrasi keahlian impian.\n3. Upload berkas (Rapor/SKL, KK, Akta).\n4. Cetak Kartu Pendaftaran & konfirmasi via WA Panitia.\n\n🏫 ALUR OFFLINE (Langsung di Sekolah):\n1. Datang ke Sekretariat SPMB SMEMSA Genteng (Jl. KH Imam Bahri No.10).\n2. Dampingi oleh Tim Admin pendaftaran untuk pengisian form.\n3. Verifikasi berkas cetak & pengukuran seragam di tempat.\n4. Menerima bukti pendaftaran resmi & informasi orientasi.";
+        return "Alur Pendaftaran SPMB SMEMSA TA {{ $site->get('spmb_academic_year') }}:\n\n🌐 ALUR ONLINE (Praktis & Cepat):\n1. Akses halaman Pendaftaran di website/menu SPMB.\n2. Isi data diri & pilih konsentrasi keahlian impian.\n3. Upload berkas (Rapor/SKL, KK, Akta).\n4. Cetak Kartu Pendaftaran & konfirmasi via WA Panitia.\n\n🏫 ALUR OFFLINE (Langsung di Sekolah):\n1. Datang ke Sekretariat SPMB SMEMSA Genteng ({{ $site->get('address') }}).\n2. Dampingi oleh Tim Admin pendaftaran untuk pengisian form.\n3. Verifikasi berkas cetak & pengukuran seragam di tempat.\n4. Menerima bukti pendaftaran resmi & informasi orientasi.";
       } else if (
         text.includes("loker") ||
         text.includes("bkk") ||
@@ -780,7 +781,7 @@
       } else if (text.includes("fasilitas") || text.includes("lab")) {
         return "Fasilitas unggulan meliputi Lab iMac PPLG, TEFA NOC & Fiber Optic TJKT, Studio Creative DKV, Live E-Commerce Hub BD, Bank Mini Syariah AKL, Executive Office MPLB, dan Edutel Hotel PH.";
       } else {
-        return "Terima kasih atas pertanyaannya! Silakan tanya mengenai Info Jurusan, Alur SPMB (Online/Offline), Lowongan Kerja BKK, atau Sertifikasi LSP-P1 BNSP. Anda juga bisa menghubungi Panitia via WA di 0822-4135-6668.";
+        return "Terima kasih atas pertanyaannya! Silakan tanya mengenai Info Jurusan, Alur SPMB (Online/Offline), Lowongan Kerja BKK, atau Sertifikasi LSP-P1 BNSP. Anda juga bisa menghubungi Panitia via WA di {{ $site->whatsappDisplay('spmb') }}.";
       }
     }
 

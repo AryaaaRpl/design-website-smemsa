@@ -19,6 +19,9 @@ class BkkController extends Controller
 
         $partners = Partner::active()->ordered()->get();
 
-        return view('bkk', compact('vacancies', 'partners'));
+        // Jumlah seluruh mitra DUDI (termasuk yang logonya tidak ditampilkan).
+        $partnerCount = Partner::count();
+
+        return view('bkk', compact('vacancies', 'partners', 'partnerCount'));
     }
 }

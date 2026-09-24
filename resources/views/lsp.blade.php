@@ -101,7 +101,7 @@
             </div>
             <div class="id-row">
               <dt>NPSN</dt>
-              <dd>20525597</dd>
+              <dd>{{ $site->get('npsn') }}</dd>
             </div>
           </dl>
         </aside>

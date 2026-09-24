@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * Key-value site settings (kontak, sosmed, statistik serapan kerja, link SPMB, dll).
+ * Key-value pengaturan situs (identitas, kontak, sosmed, statistik, SPMB).
+ * Daftar kunci & nilai bawaan ada di App\Support\SiteSettings.
  */
 #[Fillable(['key', 'value'])]
 class Setting extends Model
@@ -20,11 +21,19 @@ class Setting extends Model
         static::deleted(fn () => Cache::forget(self::CACHE_KEY));
     }
 
+    /**
+     * Semua pengaturan tersimpan (key => value), di-cache sampai ada perubahan.
+     *
+     * @return array<string, string|null>
+     */
+    public static function allValues(): array
+    {
+        return Cache::rememberForever(self::CACHE_KEY, fn () => static::query()->pluck('value', 'key')->all());
+    }
+
     public static function getValue(string $key, mixed $default = null): mixed
     {
-        $settings = Cache::rememberForever(self::CACHE_KEY, fn () => static::query()->pluck('value', 'key')->all());
-
-        return $settings[$key] ?? $default;
+        return static::allValues()[$key] ?? $default;
     }
 
     public static function setValue(string $key, mixed $value): void

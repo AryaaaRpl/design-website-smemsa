@@ -134,7 +134,7 @@
           " />
       <div>
         <strong style="color: var(--primary); font-size: 1.1rem; display: block">SMEMSA GENTENG</strong>
-        <small style="color: var(--text-muted); font-size: 0.75rem">NPSN 20525597 &bull; Akreditasi A</small>
+        <small style="color: var(--text-muted); font-size: 0.75rem">NPSN {{ $site->get('npsn') }} &bull; Akreditasi {{ $site->get('accreditation') }}</small>
       </div>
     </div>
 
@@ -158,7 +158,7 @@
 
       <div style="margin-top: 1.5rem">
         <a href="{{ url('/spmb') }}" class="btn btn-primary"
-          style="width: 100%; text-align: center; justify-content: center">Daftar SPMB 2026</a>
+          style="width: 100%; text-align: center; justify-content: center">Daftar SPMB {{ $site->spmbYear() }}</a>
       </div>
     </div>
   </div>
