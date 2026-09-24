@@ -46,6 +46,7 @@ class MajorRequest extends FormRequest
         return [
             'code' => ['required', 'string', 'max:20', Rule::unique('majors')->ignore($major)],
             'name' => ['required', 'string', 'max:255'],
+            'short_name' => ['nullable', 'string', 'max:50'],
             'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('majors')->ignore($major)],
             'description' => ['nullable', 'string', 'max:1000'],
             'logo' => ['nullable', 'image', 'max:2048'],
@@ -76,6 +77,7 @@ class MajorRequest extends FormRequest
         return [
             'code' => 'kode',
             'name' => 'nama jurusan',
+            'short_name' => 'nama pendek',
             'slug' => 'slug',
             'description' => 'deskripsi',
             'logo' => 'logo',

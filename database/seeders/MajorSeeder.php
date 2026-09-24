@@ -17,6 +17,7 @@ class MajorSeeder extends Seeder
             [
                 'slug' => 'rpl',
                 'code' => 'PPLG',
+                'short_name' => 'PPLG',
                 'name' => 'Pengembang Perangkat Lunak & Gim',
                 'tefa_name' => 'Software House TEFA SMEMSA & Lab iMac Cloud',
                 'certification_summary' => 'LSP-P1 BNSP Junior Web Developer & Cloud Database',
@@ -47,6 +48,7 @@ class MajorSeeder extends Seeder
             [
                 'slug' => 'tkj',
                 'code' => 'TJKT',
+                'short_name' => 'TJKT',
                 'name' => 'Teknik Jaringan Komputer & Telekomunikasi',
                 'tefa_name' => 'ISP & Network Operations Center (NOC) TEFA',
                 'certification_summary' => 'LSP-P1 BNSP Network Administrator & MikroTik MTCNA',
@@ -77,6 +79,7 @@ class MajorSeeder extends Seeder
             [
                 'slug' => 'dkv',
                 'code' => 'DKV',
+                'short_name' => 'DKV',
                 'name' => 'Desain Komunikasi Visual',
                 'tefa_name' => 'Studio Creative Agency & Multimedia Lab',
                 'certification_summary' => 'LSP-P1 BNSP Desainer Grafis & Adobe Certified Pro',
@@ -107,6 +110,7 @@ class MajorSeeder extends Seeder
             [
                 'slug' => 'bd',
                 'code' => 'BD',
+                'short_name' => 'Bisnis Digital',
                 'name' => 'Bisnis Digital',
                 'tefa_name' => 'SMEMSA E-Commerce Hub & Live Studio TEFA',
                 'certification_summary' => 'LSP-P1 BNSP Toko Daring & Meta Certified Marketing',
@@ -137,6 +141,7 @@ class MajorSeeder extends Seeder
             [
                 'slug' => 'akl',
                 'code' => 'AKL',
+                'short_name' => 'Akuntansi',
                 'name' => 'Akuntansi & Keuangan Lembaga',
                 'tefa_name' => 'Bank Mini Syariah SMEMSA & Tax Center TEFA',
                 'certification_summary' => 'LSP-P1 BNSP Teknisi Akuntansi & Accurate Professional',
@@ -167,6 +172,7 @@ class MajorSeeder extends Seeder
             [
                 'slug' => 'mplb',
                 'code' => 'MPLB',
+                'short_name' => 'Perkantoran',
                 'name' => 'Manajemen Perkantoran',
                 'tefa_name' => 'SMEMSA Office Service & Executive Meeting Room',
                 'certification_summary' => 'LSP-P1 BNSP Administrative Assistant & Digital Office',
@@ -197,6 +203,7 @@ class MajorSeeder extends Seeder
             [
                 'slug' => 'ph',
                 'code' => 'PH',
+                'short_name' => 'Perhotelan',
                 'name' => 'Perhotelan',
                 'tefa_name' => 'Edutel Hotel SMEMSA & Mockup Suite Room TEFA',
                 'certification_summary' => 'LSP-P1 BNSP Front Office Receptionist & CHSE',

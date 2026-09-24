@@ -8,14 +8,14 @@
     SMKS Muhammadiyah 1 Genteng - Pusat Keunggulan Vokasi & Karakter Islami
   </title>
   <meta name="description"
-    content="Website Resmi SMKS Muhammadiyah 1 Genteng (SMEMSA / SMEMSA Genteng) Banyuwangi. SMK Pusat Keunggulan, Akreditasi A BAN-S/M, Berlisensi LSP-P1 BNSP, dengan 7 Konsentrasi Keahlian Industri." />
+    content="Website Resmi SMKS Muhammadiyah 1 Genteng (SMEMSA / SMEMSA Genteng) Banyuwangi. SMK Pusat Keunggulan, Akreditasi A BAN-S/M, Berlisensi LSP-P1 BNSP, dengan {{ $majorCountLabel }} Industri." />
 
   <!-- Open Graph / WhatsApp Preview Meta Tags -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://smksmuh1gtg.com/" />
   <meta property="og:title" content="SMKS Muhammadiyah 1 Genteng - Good Skill, Good Attitude" />
   <meta property="og:description"
-    content="SMK Pusat Keunggulan di Genteng Banyuwangi. Terakreditasi A, LSP-P1 BNSP, Kelas Industri Dudika, dan 7 Konsentrasi Keahlian Unggulan." />
+    content="SMK Pusat Keunggulan di Genteng Banyuwangi. Terakreditasi A, LSP-P1 BNSP, Kelas Industri Dudika, dan {{ $majorCountLabel }} Unggulan." />
   <meta property="og:image" content="assets/logo.png" />
 
   <!-- Structured Data (JSON-LD) for School -->
@@ -28,7 +28,7 @@
         "url": "https://smksmuh1gtg.com",
         "logo": "assets/logo.png",
         "image": "assets/logo.png",
-        "description": "Sekolah Menengah Kejuruan Pusat Keunggulan di Genteng Banyuwangi dengan 7 Konsentrasi Keahlian Industri dan Lisensi LSP-P1 BNSP.",
+        "description": "Sekolah Menengah Kejuruan Pusat Keunggulan di Genteng Banyuwangi dengan {{ $majorCountLabel }} Industri dan Lisensi LSP-P1 BNSP.",
         "address": {
           "@@type": "PostalAddress",
           "streetAddress": "Jl. KH Imam Bahri No.10, Dusun Krajan, Genteng Wetan",
@@ -111,13 +111,13 @@
     <div class="chat-body" id="chat-body" data-lenis-prevent>
       <div class="chat-msg bot">
         Assalamu'alaikum! Saya asisten AI resmi SMKS Muhammadiyah 1 Genteng.
-        Ada yang bisa saya bantu terkait info 7 jurusan, alur pendaftaran SPMB,
+        Ada yang bisa saya bantu terkait info {{ $navMajors->isNotEmpty() ? $navMajors->count() . ' ' : '' }}jurusan, alur pendaftaran SPMB,
         sertifikasi LSP-P1 BNSP, fasilitas, atau loker BKK?
       </div>
     </div>
     <div class="chat-quick-pills">
-      <button class="chat-pill" onclick="sendQuickMsg('Info 7 Jurusan')">
-        Info 7 Jurusan
+      <button class="chat-pill" onclick="sendQuickMsg('Info Jurusan')">
+        Info {{ $navMajors->isNotEmpty() ? $navMajors->count() . ' ' : '' }}Jurusan
       </button>
       <button class="chat-pill" onclick="sendQuickMsg('Alur Pendaftaran SPMB')">
         Alur SPMB
@@ -654,32 +654,30 @@
         if (tefaNameEl) tefaNameEl.textContent = major.tefa;
         if (certNameEl) certNameEl.textContent = major.certSummary;
 
-        // Alur 4 Tahap
-        if (stage1El) {
-          stage1El.innerHTML = major.kompetensi
-            .map((c) => `<li>${c}</li>`)
+        // Alur 4 Tahap (data dari admin: teks di-escape, daftar kosong diberi keterangan)
+        const renderStepList = (items) => {
+          if (!items || items.length === 0) {
+            return "<li>Informasi segera tersedia</li>";
+          }
+          return items
+            .map((item) => {
+              const li = document.createElement("li");
+              li.textContent = item;
+              return li.outerHTML;
+            })
             .join("");
-        }
-        if (stage2El) {
-          stage2El.innerHTML = major.tempatPraktik.items
-            .map((t) => `<li>${t}</li>`)
-            .join("");
-        }
-        if (stage2Box) stage2Box.textContent = major.tempatPraktik.box;
+        };
 
-        if (stage3El) {
-          stage3El.innerHTML = major.sertifikasi.items
-            .map((s) => `<li>${s}</li>`)
-            .join("");
-        }
-        if (stage3Box) stage3Box.textContent = major.sertifikasi.box;
+        if (stage1El) stage1El.innerHTML = renderStepList(major.kompetensi);
 
-        if (stage4El) {
-          stage4El.innerHTML = major.setelahLulus.items
-            .map((l) => `<li>${l}</li>`)
-            .join("");
-        }
-        if (stage4Box) stage4Box.textContent = major.setelahLulus.box;
+        if (stage2El) stage2El.innerHTML = renderStepList(major.tempatPraktik.items);
+        if (stage2Box) stage2Box.textContent = major.tempatPraktik.box || "Teaching Factory";
+
+        if (stage3El) stage3El.innerHTML = renderStepList(major.sertifikasi.items);
+        if (stage3Box) stage3Box.textContent = major.sertifikasi.box || "LSP-P1 BNSP";
+
+        if (stage4El) stage4El.innerHTML = renderStepList(major.setelahLulus.items);
+        if (stage4Box) stage4Box.textContent = major.setelahLulus.box || "Mitra Industri & Karir";
 
         pathwayView.classList.remove("anim-switching");
 
@@ -734,6 +732,18 @@
       chatBody.scrollTop = chatBody.scrollHeight;
     }
 
+    // Daftar jurusan untuk jawaban chatbot, dari database.
+    const chatMajors = {{ Js::from($navMajors->map(fn ($m) => ['code' => $m->code, 'name' => $m->name])->values()) }};
+
+    function chatMajorsAnswer() {
+      if (chatMajors.length === 0) {
+        return "Informasi konsentrasi keahlian sedang disiapkan. Silakan hubungi Panitia via WA di 0822-4135-6668.";
+      }
+
+      const list = chatMajors.map((m, i) => `${i + 1}. ${m.code} (${m.name})`).join("\n");
+      return `SMEMSA Genteng memiliki ${chatMajors.length} Konsentrasi Keahlian Unggulan Industri:\n${list}`;
+    }
+
     function getBotResponse(input) {
       const text = input.toLowerCase();
       if (
@@ -741,7 +751,7 @@
         text.includes("prodi") ||
         text.includes("keahlian")
       ) {
-        return "SMEMSA Genteng memiliki 7 Konsentrasi Keahlian Unggulan Industri:\n1. PPLG (Pengembang Perangkat Lunak & Gim)\n2. TJKT (Teknik Jaringan Komputer & Telekomunikasi)\n3. DKV (Desain Komunikasi Visual)\n4. BD (Bisnis Digital)\n5. AKL (Akuntansi & Keuangan Lembaga)\n6. MPLB (Manajemen Perkantoran)\n7. PH (Perhotelan)";
+        return chatMajorsAnswer();
       } else if (
         text.includes("spmb") ||
         text.includes("daftar") ||
@@ -770,7 +780,7 @@
       } else if (text.includes("fasilitas") || text.includes("lab")) {
         return "Fasilitas unggulan meliputi Lab iMac PPLG, TEFA NOC & Fiber Optic TJKT, Studio Creative DKV, Live E-Commerce Hub BD, Bank Mini Syariah AKL, Executive Office MPLB, dan Edutel Hotel PH.";
       } else {
-        return "Terima kasih atas pertanyaannya! Silakan tanya mengenai Info 7 Jurusan, Alur SPMB (Online/Offline), Lowongan Kerja BKK, atau Sertifikasi LSP-P1 BNSP. Anda juga bisa menghubungi Panitia via WA di 0822-4135-6668.";
+        return "Terima kasih atas pertanyaannya! Silakan tanya mengenai Info Jurusan, Alur SPMB (Online/Offline), Lowongan Kerja BKK, atau Sertifikasi LSP-P1 BNSP. Anda juga bisa menghubungi Panitia via WA di 0822-4135-6668.";
       }
     }
 

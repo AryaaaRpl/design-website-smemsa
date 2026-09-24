@@ -134,46 +134,24 @@
           </nav>
         </div>
 
-        <!-- Kolom 3: 7 Konsentrasi Keahlian -->
+        <!-- Kolom 3: Konsentrasi Keahlian (dari database) -->
         <div class="footer-col">
-          <h4>7 Konsentrasi</h4>
-          <nav class="footer-nav" aria-label="Navigasi 7 Konsentrasi Keahlian">
+          <h4>{{ trim(($navMajors->count() ?: '') . ' Konsentrasi') }}</h4>
+          <nav class="footer-nav" aria-label="Navigasi {{ $majorCountLabel }}">
             <ul class="footer-links">
+              @forelse ($navMajors as $major)
               <li>
-                <a href="#jurusan" onclick="jumpToMajor('rpl')"><span class="footer-chevron"
+                {{-- Di beranda: gulir ke panel jurusan. Di halaman lain: buka beranda bagian jurusan. --}}
+                <a href="{{ url('/') }}#jurusan" onclick="if (document.getElementById('jurusan')) { event.preventDefault(); jumpToMajor('{{ $major->slug }}'); }"><span class="footer-chevron"
                     aria-hidden="true">&rsaquo;</span>
-                  Pengembang Perangkat Lunak & Gim</a>
+                  {{ $major->name }}</a>
               </li>
+              @empty
               <li>
-                <a href="#jurusan" onclick="jumpToMajor('tkj')"><span class="footer-chevron"
-                    aria-hidden="true">&rsaquo;</span>
-                  Teknik Jaringan Komputer &amp; Telekomunikasi</a>
+                <a href="{{ url('/') }}#jurusan"><span class="footer-chevron" aria-hidden="true">&rsaquo;</span>
+                  Informasi segera tersedia</a>
               </li>
-              <li>
-                <a href="#jurusan" onclick="jumpToMajor('dkv')"><span class="footer-chevron"
-                    aria-hidden="true">&rsaquo;</span>
-                  Desain Komunikasi Visual</a>
-              </li>
-              <li>
-                <a href="#jurusan" onclick="jumpToMajor('bd')"><span class="footer-chevron"
-                    aria-hidden="true">&rsaquo;</span>
-                  Bisnis Digital</a>
-              </li>
-              <li>
-                <a href="#jurusan" onclick="jumpToMajor('akl')"><span class="footer-chevron"
-                    aria-hidden="true">&rsaquo;</span>
-                  Akuntansi &amp; Keuangan Lembaga</a>
-              </li>
-              <li>
-                <a href="#jurusan" onclick="jumpToMajor('mplb')"><span class="footer-chevron"
-                    aria-hidden="true">&rsaquo;</span>
-                  Manajemen Perkantoran</a>
-              </li>
-              <li>
-                <a href="#jurusan" onclick="jumpToMajor('ph')"><span class="footer-chevron"
-                    aria-hidden="true">&rsaquo;</span>
-                  Perhotelan</a>
-              </li>
+              @endforelse
             </ul>
           </nav>
         </div>

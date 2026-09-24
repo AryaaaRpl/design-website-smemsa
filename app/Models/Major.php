@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * Konsentrasi Keahlian (jurusan).
  */
 #[Fillable([
-    'code', 'name', 'slug', 'description', 'logo', 'student_photo',
+    'code', 'name', 'short_name', 'slug', 'description', 'logo', 'student_photo',
     'tefa_name', 'certification_summary', 'competencies',
     'practice_items', 'practice_note',
     'certification_items', 'certification_note',
@@ -76,6 +76,14 @@ class Major extends Model
         $query->orderBy('sort_order')->orderBy('name');
     }
 
+    /**
+     * Nama pendek untuk tombol pintasan. Jika kosong, pakai kode jurusan.
+     */
+    protected function chipLabel(): Attribute
+    {
+        return Attribute::get(fn () => $this->short_name ?: $this->code);
+    }
+
     protected function logoUrl(): Attribute
     {
         return Attribute::get(fn () => $this->mediaUrl($this->logo));
@@ -84,6 +92,26 @@ class Major extends Model
     protected function studentPhotoUrl(): Attribute
     {
         return Attribute::get(fn () => $this->mediaUrl($this->student_photo));
+    }
+
+    /**
+     * Data untuk modal jurusan di halaman visi-misi (dipakai oleh JavaScript).
+     */
+    public function toProfileArray(): array
+    {
+        // Karir: ambil baris "Karir: ..." dari daftar Setelah Lulus, jika tidak ada gabungkan semua.
+        $careerItems = collect($this->career_items ?? []);
+        $career = $careerItems->first(fn (string $item) => str_starts_with($item, 'Karir:'));
+        $career = $career ? trim(substr($career, strlen('Karir:'))) : $careerItems->implode(' ');
+
+        return [
+            'title' => "{$this->name} ({$this->code})",
+            'tag' => $this->tefa_name ?: $this->code,
+            'icon' => $this->logo_url,
+            'desc' => (string) $this->description,
+            'skills' => $this->competencies ?? [],
+            'career' => $career ?: '-',
+        ];
     }
 
     /**
@@ -96,11 +124,11 @@ class Major extends Model
             'code' => $this->code,
             'num' => str_pad((string) $number, 2, '0', STR_PAD_LEFT),
             'title' => $this->name,
-            'tefa' => $this->tefa_name,
-            'certSummary' => $this->certification_summary,
+            'tefa' => $this->tefa_name ?: '-',
+            'certSummary' => $this->certification_summary ?: '-',
             'logo' => $this->logo_url,
             'foto' => $this->student_photo_url,
-            'desc' => $this->description,
+            'desc' => (string) $this->description,
             'kompetensi' => $this->competencies ?? [],
             'tempatPraktik' => ['items' => $this->practice_items ?? [], 'box' => $this->practice_note],
             'sertifikasi' => ['items' => $this->certification_items ?? [], 'box' => $this->certification_note],

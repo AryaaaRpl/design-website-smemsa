@@ -25,6 +25,14 @@
         </div>
 
         <div class="form-group">
+            <label for="short_name" class="form-label">Nama Pendek</label>
+            <input type="text" id="short_name" name="short_name" class="form-input"
+                value="{{ old('short_name', $major->short_name) }}" placeholder="Akuntansi">
+            <div class="form-help">Tampil di tombol pintasan jurusan di beranda. Kosongkan untuk memakai kode.</div>
+            @error('short_name') <div class="form-error">{{ $message }}</div> @enderror
+        </div>
+
+        <div class="form-group">
             <label for="slug" class="form-label">Slug</label>
             <input type="text" id="slug" name="slug" class="form-input" value="{{ old('slug', $major->slug) }}"
                 placeholder="rpl">

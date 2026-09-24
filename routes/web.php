@@ -14,6 +14,7 @@ use App\Http\Controllers\BkkController;
 use App\Http\Controllers\ExtracurricularController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\VisionMissionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -22,9 +23,7 @@ Route::get('/peta-kampus', function () {
     return view('peta-kampus');
 });
 
-Route::get('/visi-misi', function () {
-    return view('visi-misi');
-});
+Route::get('/visi-misi', VisionMissionController::class)->name('visi-misi');
 
 Route::get('/lsp', function () {
     return view('lsp');

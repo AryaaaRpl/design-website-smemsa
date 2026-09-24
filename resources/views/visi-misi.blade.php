@@ -414,48 +414,20 @@
       </p>
     </div>
     <div class="majors-grid reveal" style="justify-content: center">
-      <button class="major-chip" onclick="openMajorModal('rpl')">
+      @forelse ($majors as $major)
+      <button class="major-chip" onclick="openMajorModal('{{ $major->slug }}')">
         <div class="major-chip-img-wrapper">
-          <img alt="PPLG Logo" class="major-chip-img" src="{{ asset('assets/major/PPLG-removebg-preview.png') }}" />
+          <img alt="{{ $major->code }} Logo" class="major-chip-img" src="{{ $major->logo_url }}" />
         </div>
-        <span>Pengembang Perangkat Lunak & Gim</span>
+        <span>{{ $major->name }}</span>
       </button>
-      <button class="major-chip" onclick="openMajorModal('tkj')">
-        <div class="major-chip-img-wrapper">
-          <img alt="TJKT Logo" class="major-chip-img" src="{{ asset('assets/major/TJKT-removebg-preview.png') }}" />
-        </div>
-        <span>Teknik Komputer dan Jaringan</span>
-      </button>
-      <button class="major-chip" onclick="openMajorModal('bd')">
-        <div class="major-chip-img-wrapper">
-          <img alt="Bisnis Digital Logo" class="major-chip-img" src="{{ asset('assets/major/logo bdp.png') }}" />
-        </div>
-        <span>Bisnis Digital</span>
-      </button>
-      <button class="major-chip" onclick="openMajorModal('mplb')">
-        <div class="major-chip-img-wrapper">
-          <img alt="MPLB Logo" class="major-chip-img" src="{{ asset('assets/major/mp.jpeg') }}" />
-        </div>
-        <span>Manajemen Perkantoran</span>
-      </button>
-      <button class="major-chip" onclick="openMajorModal('akl')">
-        <div class="major-chip-img-wrapper">
-          <img alt="AKL Logo" class="major-chip-img" src="{{ asset('assets/major/logo AKL.png') }}" />
-        </div>
-        <span>Akuntansi</span>
-      </button>
-      <button class="major-chip" onclick="openMajorModal('hotel')">
-        <div class="major-chip-img-wrapper">
-          <img alt="Perhotelan Logo" class="major-chip-img" src="{{ asset('assets/major/PH.png') }}" />
-        </div>
-        <span>Perhotelan</span>
-      </button>
-      <button class="major-chip" onclick="openMajorModal('dkv')">
-        <div class="major-chip-img-wrapper">
-          <img alt="DKV Logo" class="major-chip-img" src="{{ asset('assets/major/dkv.png') }}" />
-        </div>
-        <span>Desain Komunikasi Visual</span>
-      </button>
+      @empty
+      <!-- Tampilan saat belum ada data jurusan -->
+      <div class="content-empty">
+        <h3 class="content-empty-title">Data jurusan belum tersedia</h3>
+        <p class="content-empty-desc">Informasi konsentrasi keahlian sedang disiapkan. Silakan kembali lagi nanti.</p>
+      </div>
+      @endforelse
     </div>
   </section>
   <!-- INTERACTIVE DETAIL MODAL -->
@@ -593,155 +565,21 @@
     })();
 
     // ==========================================
-    // DATA KONSENTRASI KEAHLIAN & MODAL LOGIC
+    // DATA KONSENTRASI KEAHLIAN (dari database) & MODAL LOGIC
     // ==========================================
-    const visiMisiMajorsData = {
-      rpl: {
-        title: "Pengembang Perangkat Lunak & Gim (PPLG)",
-        tag: "PPLG / Software Engineering",
-        icon: "/assets/major/PPLG-removebg-preview.png",
-        gradient: "linear-gradient(135deg, #064e3b 0%, #0d7056 100%)",
-        desc: "Konsentrasi keahlian yang berfokus pada analisis kebutuhan, desain arsitektur perangkat lunak, pemrograman web dan mobile modern, manajemen basis data, serta pengujian sistem. Siswa dilatih langsung mengerjakan proyek riil sesuai standar industri software house.",
-        skills: [
-          "Fullstack Web Development",
-          "Mobile App (Flutter/Android)",
-          "Database SQL & NoSQL",
-          "API Integration",
-          "Git & Github Workflow",
-          "Clean Architecture",
-        ],
-        career:
-          "Software Engineer, Web Developer, Frontend/Backend Developer, Mobile Developer, Database Administrator, QA System Tester.",
-      },
-      tkj: {
-        title: "Teknik Jaringan Komputer & Telekomunikasi (TJKT)",
-        tag: "TJKT / Network & Cloud Infrastructure",
-        icon: "/assets/major/TJKT-removebg-preview.png",
-        gradient: "linear-gradient(135deg, #064e3b 0%, #0369a1 100%)",
-        desc: "Mempelajari perancangan, instalasi, dan pemeliharaan infrastruktur jaringan komputer enterprise, fiber optik, administrasi Cloud & Linux server, serta sistem keamanan siber (cybersecurity) untuk mendukung transformasi digital industri.",
-        skills: [
-          "Routing & Switching (MikroTik MTCNA / Cisco)",
-          "Linux Enterprise & Cloud Server",
-          "Fiber Optic Splicing & OTDR",
-          "Network Security & Firewall",
-          "Wireless Network Deployment",
-        ],
-        career:
-          "Network Administrator, Cloud Infrastructure Engineer, Fiber Optic Specialist, IT Support Specialist, System Administrator.",
-      },
-      bd: {
-        title: "Bisnis Digital",
-        tag: "Digital Commerce & Marketing Strategy",
-        icon: "/assets/major/logo bdp.png",
-        gradient: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
-        desc: "Mempersiapkan wirausahawan digital dan praktisi e-commerce yang menguasai marketplace optimization, riset pasar digital, social media marketing, strategi SEO/SEM, copywriting promosi, serta pengelolaan toko daring modern.",
-        skills: [
-          "E-Commerce & Marketplace Management",
-          "Social Media Advertising (Meta/Tiktok Ads)",
-          "SEO & Content Marketing",
-          "Digital Analytics",
-          "Copywriting & Branding",
-        ],
-        career:
-          "Digital Marketer, E-Commerce Specialist, Social Media Strategist, Digital Business Consultant, Marketplace Operations Lead.",
-      },
-      mplb: {
-        title: "Manajemen Perkantoran & Layanan Bisnis (MPLB)",
-        tag: "Corporate Management & Digital Administration",
-        icon: "/assets/major/mp.jpeg",
-        gradient: "linear-gradient(135deg, #064e3b 0%, #0f766e 100%)",
-        desc: "Membekali siswa keterampilan administrasi perkantoran modern, digital document archiving, korespondensi bisnis formal, manajemen rapat, tata kelola kehumasan, serta kemampuan komunikasi profesional berstandar internasional.",
-        skills: [
-          "Digital Office Administration",
-          "Digital Archiving & Cloud Storage",
-          "Business Correspondence",
-          "Public Relations & Event Handling",
-          "Customer Relationship Management",
-        ],
-        career:
-          "Administrative Officer, Executive Secretary, Public Relations Staff, Customer Service Specialist, HR Administration Staff.",
-      },
-      akl: {
-        title: "Akuntansi & Keuangan Lembaga (AKL)",
-        tag: "Financial Accounting & Islamic Banking",
-        icon: "/assets/major/logo AKL.png",
-        gradient: "linear-gradient(135deg, #064e3b 0%, #15803d 100%)",
-        desc: "Fokus pada penguasaan pembukuan keuangan, perpajakan, audit laporan keuangan, komputer akuntansi (MYOB/Accurate), serta dasar-dasar operasional perbankan syariah yang presisi dan transparan.",
-        skills: [
-          "Komputer Akuntansi (MYOB/Accurate)",
-          "Laporan Keuangan & Audit",
-          "Perpajakan (PPh & PPN)",
-          "Operasional Perbankan Syariah",
-          "Spreadsheet Analytics",
-        ],
-        career:
-          "Junior Accountant, Tax Staff, Bank Teller & Customer Service, Financial Analyst Assistant, Bookkeeper.",
-      },
-      hotel: {
-        title: "Perhotelan",
-        tag: "Tourism & Hotel Hospitality Industry",
-        icon: "/assets/major/PH.png",
-        gradient: "linear-gradient(135deg, #b45309 0%, #d97706 100%)",
-        desc: "Mengasah keahlian pelayanan prima berstandar bintang lima, tata kelola front office, tata graha (housekeeping), pelayanan makanan & minuman (food & beverage), serta etika keramahtamahan internasional.",
-        skills: [
-          "Front Office Operations",
-          "Housekeeping & Room Service",
-          "Food & Beverage Service",
-          "Hospitality Ethics & Communication",
-          "Hotel Property Management System",
-        ],
-        career:
-          "Front Desk Agent, Guest Relation Officer, Housekeeping Supervisor, F&B Service Specialist, Hotel Event Coordinator.",
-      },
-      dkv: {
-        title: "Desain Komunikasi Visual (DKV)",
-        tag: "Creative Media & Visual Communication",
-        icon: "/assets/major/dkv.png",
-        gradient: "linear-gradient(135deg, #7c2d12 0%, #ea580c 100%)",
-        desc: "Eksplorasi kreativitas visual tanpa batas meliputi desain grafis profesional, ilustrasi digital, videografi sinematik, animasi 2D/3D, motion graphics, audio production, dan konten promosi multimedia komersial.",
-        skills: [
-          "Adobe Illustrator & Photoshop",
-          "Premiere Pro & After Effects",
-          "Motion Graphics 2D/3D",
-          "Cinematography & Lighting",
-          "Brand Identity Design",
-        ],
-        career:
-          "Graphic Designer, Video Editor, Motion Graphic Artist, Videographer/Cinematographer, UI/UX Designer, Creative Director.",
-      },
-      boga: {
-        title: "Tata Boga / Kuliner",
-        tag: "Culinary Arts & Bakery Production",
-        icon: "/assets/major/SMEMSA Chibi-chibi.png",
-        gradient: "linear-gradient(135deg, #d97706 0%, #ca8a04 100%)",
-        desc: "Mempelajari seni pengolahan masakan nusantara dan internasional (kontinental), bakery & pastry, pengolahan makanan sehat, hygiene sanitasi halal, serta manajemen usaha katering komersial berstandar industri.",
-        skills: [
-          "Bakery & Pastry Production",
-          "Indonesian & Continental Cuisine",
-          "Food Plating & Presentation",
-          "Hygiene & Halal Food Sanitation",
-          "Catering Business Management",
-        ],
-        career:
-          "Pastry Chef, Commis Chef, Baker, Food Stylist, Restaurant/Catering Entrepreneur, F&B Supervisor.",
-      },
-      tbsm: {
-        title: "Teknik & Bisnis Sepeda Motor (TBSM)",
-        tag: "Automotive Engineering & Workshop Management",
-        icon: "/assets/major/SMEMSA Chibi-chibi.png",
-        gradient: "linear-gradient(135deg, #1c1917 0%, #064e3b 100%)",
-        desc: "Mencetak teknisi otomotif roda dua profesional dengan keahlian perawatan mesin injeksi, kelistrikan kendaraan, sistem transmisi otomatis/manual, serta manajemen bengkel berstandar resmi Astra Honda Authorized Service Station (AHASS).",
-        skills: [
-          "EFI & Injection Diagnostic Tools",
-          "Engine Overhaul & Tune-Up",
-          "Motorcycle Electrical Systems",
-          "Brake & Suspension Maintenance",
-          "Workshop Management",
-        ],
-        career:
-          "Automotive Technician, Service Advisor Bengkel Resmi, Diagnostic Specialist, Sparepart Officer, Wirausaha Bengkel Motor Mandiri.",
-      },
+    const visiMisiMajorsData = {{ Js::from($majorsProfile) }};
+
+    // Warna banner modal per jurusan (elemen desain). Jurusan baru memakai warna bawaan.
+    const majorGradients = {
+      rpl: "linear-gradient(135deg, #064e3b 0%, #0d7056 100%)",
+      tkj: "linear-gradient(135deg, #064e3b 0%, #0369a1 100%)",
+      bd: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
+      mplb: "linear-gradient(135deg, #064e3b 0%, #0f766e 100%)",
+      akl: "linear-gradient(135deg, #064e3b 0%, #15803d 100%)",
+      ph: "linear-gradient(135deg, #b45309 0%, #d97706 100%)",
+      dkv: "linear-gradient(135deg, #7c2d12 0%, #ea580c 100%)",
     };
+    const defaultMajorGradient = "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%)";
 
     function openMajorModal(majorKey) {
       const data = visiMisiMajorsData[majorKey];
@@ -758,13 +596,14 @@
       }
 
       document.getElementById("modal-banner").style.background =
-        data.gradient;
+        majorGradients[majorKey] || defaultMajorGradient;
       document.getElementById("modal-career").innerText = data.career;
 
-      // Populate skills
+      // Populate skills (jika kosong, tampilkan keterangan)
       const skillsContainer = document.getElementById("modal-skills");
       skillsContainer.innerHTML = "";
-      data.skills.forEach((skill) => {
+      const skills = data.skills.length > 0 ? data.skills : ["Informasi segera tersedia"];
+      skills.forEach((skill) => {
         const chip = document.createElement("span");
         chip.className = "modal-skill-chip";
         chip.innerText = skill;

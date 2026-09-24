@@ -42,7 +42,7 @@
 
         <div class="hero-actions">
           <a href="/spmb" class="btn btn-primary">Daftar SPMB 2026 &rarr;</a>
-          <a href="#jurusan" class="btn btn-outline">Jelajahi 7 Konsentrasi Keahlian &rarr;</a>
+          <a href="#jurusan" class="btn btn-outline">Jelajahi {{ trim(($majors->count() ?: '') . ' Konsentrasi Keahlian') }} &rarr;</a>
         </div>
       </div>
 
@@ -103,7 +103,8 @@
 </section>
 @endif
 
-<!-- 7 Major Quick Jump Chips (A.1) - Moved outside hero -->
+<!-- Major Quick Jump Chips (A.1) - disembunyikan jika belum ada jurusan -->
+@if ($majors->isNotEmpty())
 <section class="major-quick-chips-section" style="
         background-color: var(--bg-alt);
         padding: 1.5rem 0;
@@ -125,73 +126,22 @@
               display: flex;
               gap: 0.75rem;
             ">
-        <button class="major-chip-btn" onclick="jumpToMajor('rpl')">
-          <img src="{{ asset('assets/major/PPLG-removebg-preview.png') }}" alt="PPLG" class="major-chip-icon" onerror="
+        @foreach ($majors as $major)
+        <button class="major-chip-btn" onclick="jumpToMajor('{{ $major->slug }}')">
+          <img src="{{ $major->logo_url }}" alt="{{ $major->chip_label }}" class="major-chip-icon" onerror="
                   this.closest('.card')
                     ? this.closest('.card').classList.add('no-image')
                     : null;
                   this.remove();
                 " />
-          PPLG
+          {{ $major->chip_label }}
         </button>
-        <button class="major-chip-btn" onclick="jumpToMajor('tkj')">
-          <img src="{{ asset('assets/major/TJKT-removebg-preview.png') }}" alt="TJKT" class="major-chip-icon" onerror="
-                  this.closest('.card')
-                    ? this.closest('.card').classList.add('no-image')
-                    : null;
-                  this.remove();
-                " />
-          TJKT
-        </button>
-        <button class="major-chip-btn" onclick="jumpToMajor('dkv')">
-          <img src="{{ asset('assets/major/dkv.png') }}" alt="DKV" class="major-chip-icon" onerror="
-                  this.closest('.card')
-                    ? this.closest('.card').classList.add('no-image')
-                    : null;
-                  this.remove();
-                " />
-          DKV
-        </button>
-        <button class="major-chip-btn" onclick="jumpToMajor('bd')">
-          <img src="{{ asset('assets/major/logo bdp.png') }}" alt="Bisnis Digital" class="major-chip-icon" onerror="
-                  this.closest('.card')
-                    ? this.closest('.card').classList.add('no-image')
-                    : null;
-                  this.remove();
-                " />
-          Bisnis Digital
-        </button>
-        <button class="major-chip-btn" onclick="jumpToMajor('akl')">
-          <img src="{{ asset('assets/major/logo AKL.png') }}" alt="Akuntansi" class="major-chip-icon" onerror="
-                  this.closest('.card')
-                    ? this.closest('.card').classList.add('no-image')
-                    : null;
-                  this.remove();
-                " />
-          Akuntansi
-        </button>
-        <button class="major-chip-btn" onclick="jumpToMajor('mplb')">
-          <img src="{{ asset('assets/major/mp.jpeg') }}" alt="Perkantoran" class="major-chip-icon" onerror="
-                  this.closest('.card')
-                    ? this.closest('.card').classList.add('no-image')
-                    : null;
-                  this.remove();
-                " />
-          Perkantoran
-        </button>
-        <button class="major-chip-btn" onclick="jumpToMajor('ph')">
-          <img src="{{ asset('assets/major/PH.png') }}" alt="Perhotelan" class="major-chip-icon" onerror="
-                  this.closest('.card')
-                    ? this.closest('.card').classList.add('no-image')
-                    : null;
-                  this.remove();
-                " />
-          Perhotelan
-        </button>
+        @endforeach
       </div>
     </div>
   </div>
 </section>
+@endif
 
 <!-- 4. COUNTER STATS STRIP (Section 2 in Flow: Hero -> Statistik) -->
 <section class="stats-section" id="statistik" aria-label="Statistik Lembaga">
@@ -451,10 +401,18 @@
         </svg>
 
         <!-- B. CINCIN DALAM (Radius 210px, 4 logo pertama) -->
+        @php
+          // Cincin dalam: maks. 4 logo, disebar rata (4 logo = tiap 90deg sesuai desain).
+          $innerMajors = $majors->take(4);
+          $innerStep = 360 / max($innerMajors->count(), 1);
+          // Cincin luar: sisa logo, 4 slot tiap 90deg (offset 45deg); lebih dari 4 disebar rata.
+          $outerMajors = $majors->slice(4)->values();
+          $outerStep = 360 / max($outerMajors->count(), 4);
+        @endphp
         <div class="orbit-ring-inner" aria-hidden="true">
-          @foreach ($majors->take(4) as $major)
-          <!-- {{ $major->code }} ({{ $loop->index * 90 }} deg, 56x56) -->
-          <div class="orbit-slot" style="--a: {{ $loop->index * 90 }}deg; --r: 210px">
+          @foreach ($innerMajors as $major)
+          <!-- {{ $major->code }} ({{ $loop->index * $innerStep }} deg, 56x56) -->
+          <div class="orbit-slot" style="--a: {{ $loop->index * $innerStep }}deg; --r: 210px">
             <div class="orbit-center">
               <div class="orbit-icon">
                 <img src="{{ $major->logo_url }}" alt="" loading="lazy" onerror="
@@ -471,9 +429,9 @@
 
         <!-- B. CINCIN LUAR (Radius 300px, logo sisanya, Offset 45deg) -->
         <div class="orbit-ring-outer" aria-hidden="true">
-          @foreach ($majors->slice(4)->values() as $major)
-          <!-- {{ $major->code }} ({{ 45 + $loop->index * 90 }} deg, 48x48) -->
-          <div class="orbit-slot" style="--a: {{ 45 + $loop->index * 90 }}deg; --r: 300px">
+          @foreach ($outerMajors as $major)
+          <!-- {{ $major->code }} ({{ 45 + $loop->index * $outerStep }} deg, 48x48) -->
+          <div class="orbit-slot" style="--a: {{ 45 + $loop->index * $outerStep }}deg; --r: 300px">
             <div class="orbit-center">
               <div class="orbit-icon">
                 <img src="{{ $major->logo_url }}" alt="" onerror="
@@ -513,9 +471,9 @@
     </div>
     @else
     <div class="majors-split-grid">
-      <!-- KOLOM KIRI — DAFTAR 8 JURUSAN -->
+      <!-- KOLOM KIRI — DAFTAR JURUSAN (dari database) -->
       <div class="majors-list-col" id="major-tablist-container" role="tablist"
-        aria-label="Daftar 8 Program Keahlian Vokasi">
+        aria-label="Daftar {{ $majors->count() }} Program Keahlian Vokasi">
         <!-- Baris dirender secara dinamis oleh JavaScript -->
       </div>
 
@@ -1074,10 +1032,12 @@
           <span class="spmb-point-num">4</span>
           <span class="spmb-point-label">Langkah Pendaftaran</span>
         </li>
+        @if ($majors->isNotEmpty())
         <li>
-          <span class="spmb-point-num">7</span>
+          <span class="spmb-point-num">{{ $majors->count() }}</span>
           <span class="spmb-point-label">Konsentrasi Keahlian</span>
         </li>
+        @endif
         <li>
           <span class="spmb-point-num">100%</span>
           <span class="spmb-point-label">Pendaftaran Online</span>

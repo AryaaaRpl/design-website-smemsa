@@ -388,7 +388,8 @@ a {
 
 /* 2. PAGE HEADER WITH RESPONSIVE BACKGROUND IMAGE */
 .page-header {
-  padding: 9.5rem 0 5.5rem;
+  padding: 8rem 0 4rem;
+  height: 100vh;
   text-align: center;
   position: relative;
   background: radial-gradient(circle at 50% 30%, rgba(30, 64, 175, 0.45) 0%, rgba(15, 23, 42, 0.95) 75%), #0f172a;
