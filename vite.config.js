@@ -16,7 +16,7 @@ export default defineConfig({
                 'resources/css/pages/fasilitas.css',
                 'resources/css/pages/guru.css',
                 'resources/css/pages/lsp.css',
-                'resources/css/pages/peta-kampus.css',
+                'resources/css/pages/peta-sekolah.css',
                 'resources/css/pages/prestasi.css',
                 'resources/css/pages/spmb.css',
                 'resources/css/pages/jurusan.css',

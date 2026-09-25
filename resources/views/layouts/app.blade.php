@@ -755,6 +755,26 @@
       return `SMEMSA Genteng memiliki ${chatMajors.length} Konsentrasi Keahlian Unggulan Industri:\n${list}`;
     }
 
+    // Lowongan BKK yang sedang dibuka, untuk jawaban chatbot (dari database).
+    const chatVacancies = {{ Js::from($chatVacancies->map(fn ($v) => [
+      'position' => $v->position,
+      'company' => $v->partner?->name,
+      'location' => $v->location,
+      'type' => $v->employment_type->label(),
+    ])->values()) }};
+
+    function chatVacanciesAnswer() {
+      if (chatVacancies.length === 0) {
+        return "Saat ini belum ada lowongan kerja yang dibuka di BKK SMEMSA. Pantau terus halaman BKK untuk info lowongan terbaru!";
+      }
+
+      const list = chatVacancies
+        .map((v, i) => `${i + 1}. ${v.position} - ${v.company}${v.location ? ` (${v.location})` : ""}\n   • Tipe: ${v.type}`)
+        .join("\n\n");
+
+      return `🔥 Lowongan Kerja Terbaru Bursa Kerja Khusus (BKK) SMEMSA:\n\n${list}\n\nInfo lengkap & cara melamar ada di halaman BKK SMEMSA.`;
+    }
+
     function getBotResponse(input) {
       const text = input.toLowerCase();
       if (
@@ -779,7 +799,7 @@
         text.includes("magang") ||
         text.includes("lowongan")
       ) {
-        return "🔥 Lowongan Kerja Terbaru Bursa Kerja Khusus (BKK) SMEMSA:\n\n1. Web & Mobile Developer - PT Digital Kreatif Nusantara (Malang)\n   • Gaji: Rp 4.200.000 - Rp 6.000.000 / bln\n   • Kualifikasi: Lulusan PPLG, paham JS/Laravel/Flutter.\n\n2. Junior Network & Cloud Support - PT Telkomsel Infrastructure (Surabaya)\n   • Gaji: Rp 4.500.000 - Rp 5.800.000 / bln\n   • Kualifikasi: Lulusan TJKT, menguasai MikroTik / Fiber Optic.\n\n3. Graphic & Motion Designer - Studio Visual Kinetik (Banyuwangi)\n   • Gaji: Rp 3.200.000 - Rp 4.500.000 / bln\n   • Kualifikasi: Lulusan DKV, mahir Adobe Ps/Ai/Pr.\n\n4. E-Commerce & Social Media Host - PT Astra Digital Commerce (Surabaya)\n   • Gaji: Rp 3.800.000 - Rp 5.000.000 / bln\n   • Kualifikasi: Lulusan BD/MPLB, komunikatif & mahir Live Streaming.\n\n5. Front Office & Hospitality Staff - Hotel Ketapang Indah / Dialoog Resort\n   • Gaji: Rp 3.500.000 - Rp 4.800.000 / bln\n   • Kualifikasi: Lulusan PH, penampilan menarik, bahasa Inggris aktif.\n\n Pendaftaran & penyerahan berkas langsung melalui Kantor BKK SMEMSA!";
+        return chatVacanciesAnswer();
       } else if (
         text.includes("lsp") ||
         text.includes("bnsp") ||
@@ -787,7 +807,7 @@
       ) {
         return "SMEMSA memiliki Lembaga Sertifikasi Profesi Pihak Kesatu (LSP-P1) berlisensi resmi BNSP. Setiap lulusan dibekali Ijazah + Sertifikat Kompetensi Garuda Emas berstandar nasional.";
       } else if (text.includes("kepala") || text.includes("wahid")) {
-        return "Kepala Sekolah SMKS Muhammadiyah 1 Genteng adalah Bapak Wahid Wahyudi, S.E., M.M.";
+        return {{ Js::from('Kepala Sekolah SMKS Muhammadiyah 1 Genteng adalah Bapak ' . ($principal?->name ?: 'Wahid Wahyudi, S.E., M.M.') . '.') }};
       } else if (text.includes("fasilitas") || text.includes("lab")) {
         return "Fasilitas unggulan meliputi Lab iMac PPLG, TEFA NOC & Fiber Optic TJKT, Studio Creative DKV, Live E-Commerce Hub BD, Bank Mini Syariah AKL, Executive Office MPLB, dan Edutel Hotel PH.";
       } else {

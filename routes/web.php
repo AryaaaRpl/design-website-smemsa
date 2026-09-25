@@ -26,8 +26,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::get('/peta-kampus', function () {
-    return view('peta-kampus');
+Route::get('/peta-sekolah', function () {
+    return view('peta-sekolah');
 });
 
 Route::get('/visi-misi', VisionMissionController::class)->name('visi-misi');

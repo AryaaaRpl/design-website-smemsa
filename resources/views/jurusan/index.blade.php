@@ -63,7 +63,6 @@
           @foreach ($majors as $major)
             <a href="{{ route('jurusan.show', $major) }}" class="jr-card" aria-label="Lihat detail jurusan {{ $major->name }}">
               <div class="jr-card-visual">
-                <span class="jr-card-num">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                 @if ($major->logo_url)
                   <span class="jr-card-logo"><img src="{{ $major->logo_url }}" alt="Logo {{ $major->code }}" loading="lazy"></span>
                 @endif

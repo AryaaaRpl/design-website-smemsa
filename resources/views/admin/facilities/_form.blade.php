@@ -85,8 +85,8 @@
                 </p>
 
                 <div class="map-picker" data-map-picker>
-                    <svg class="campus-svg" viewBox="0 0 1000 800" role="img" aria-label="Denah sekolah untuk memilih titik">
-                        @include('partials.campus-map')
+                    <svg class="school-svg" viewBox="0 0 1000 800" role="img" aria-label="Denah sekolah untuk memilih titik">
+                        @include('partials.school-map')
                         @foreach ($otherPoints as $point)
                             <circle class="picker-other" cx="{{ $point->map_x }}" cy="{{ $point->map_y }}" r="10">
                                 <title>{{ $point->name }}</title>

@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Enums\TeacherCategory;
+use App\Models\JobVacancy;
 use App\Models\Major;
+use App\Models\Teacher;
 use App\Support\SiteSettings;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -19,6 +22,17 @@ class AppServiceProvider extends ServiceProvider
 
         // Pengaturan situs (kontak, sosmed, statistik, SPMB), dibaca sekali per request.
         $this->app->scoped(SiteSettings::class);
+
+        // Kepala Sekolah (modul Guru) untuk sambutan beranda & chatbot.
+        $this->app->scoped('site.principal', fn () => Teacher::active()->ofCategory(TeacherCategory::Principal)->first());
+
+        // Lowongan yang sedang dibuka untuk jawaban chatbot.
+        $this->app->scoped('site.chatVacancies', fn () => JobVacancy::open()
+            ->with('partner')
+            ->orderByRaw('closes_at is null')
+            ->orderBy('closes_at')
+            ->take(5)
+            ->get());
     }
 
     /**
@@ -38,5 +52,8 @@ class AppServiceProvider extends ServiceProvider
                 'majorCountLabel' => trim(($majors->count() ?: '').' Konsentrasi Keahlian'),
             ]);
         });
+
+        View::composer(['layouts.app', 'index'], fn ($view) => $view->with('principal', app('site.principal')));
+        View::composer('layouts.app', fn ($view) => $view->with('chatVacancies', app('site.chatVacancies')));
     }
 }

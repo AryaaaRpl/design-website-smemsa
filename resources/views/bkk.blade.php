@@ -164,7 +164,7 @@
           <div class="service-card">
             <h3>Penyaluran Kerja Direct</h3>
             <p>
-              Rekrutmen sekolah langsung (Campus Recruitment) bekerjasama
+              Rekrutmen sekolah langsung (School Recruitment) bekerjasama
               dengan puluhan perusahan DUDI terkemuka nasional.
             </p>
           </div>

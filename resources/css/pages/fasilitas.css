@@ -1045,14 +1045,14 @@
       box-shadow: 0 18px 40px -22px rgba(30, 64, 175, 0.3);
     }
 
-    .campus-svg {
+    .school-svg {
       width: 100%;
       height: auto;
       display: block;
     }
 
     /* ---- Elemen denah ---- */
-    .campus-outline {
+    .school-outline {
       fill: none;
       stroke: var(--primary);
       stroke-width: 3;
@@ -1513,7 +1513,7 @@
 
       /* Hide small room labels on mobile, keep large blocks */
       .lbl-sm,
-      .campus-svg text.lbl:not(.lbl-zone) {
+      .school-svg text.lbl:not(.lbl-zone) {
         font-size: 8px !important;
         opacity: 0.85;
       }

@@ -1,7 +1,7 @@
 {{-- Gambar denah sekolah (tanpa titik). Dipakai di halaman fasilitas & form admin fasilitas. --}}
   <rect x="0" y="0" width="1000" height="800" fill="#fdfdfe" rx="12" />
   <!-- ============ SEKOLAH UTARA ============ -->
-  <rect class="campus-outline" x="30" y="40" width="935" height="500" rx="6" />
+  <rect class="school-outline" x="30" y="40" width="935" height="500" rx="6" />
   <!-- Kolom barat: Ruang 07/12, 06/13, 05/14 -->
   <rect class="blk-room" x="55" y="70" width="58" height="52" rx="3" />
   <text class="lbl" x="84" y="96">07</text>
@@ -154,7 +154,7 @@
   <rect class="road" x="0" y="566" width="1000" height="40" />
   <line class="road-dash" x1="0" y1="586" x2="1000" y2="586" />
   <!-- ============ SEKOLAH SELATAN ============ -->
-  <rect class="campus-outline" x="255" y="630" width="530" height="150" rx="6" />
+  <rect class="school-outline" x="255" y="630" width="530" height="150" rx="6" />
   <rect class="blk" x="278" y="646" width="94" height="24" rx="3" />
   <text class="lbl lbl-sm" x="325" y="658">BALAI BALAI</text>
   <rect class="blk" x="278" y="678" width="68" height="38" rx="3" />

@@ -710,14 +710,14 @@ textarea.form-input {
     cursor: crosshair;
 }
 
-.map-picker .campus-svg {
+.map-picker .school-svg {
     display: block;
     width: 100%;
     height: auto;
 }
 
 /* Warna denah mengikuti halaman fasilitas */
-.map-picker .campus-outline { fill: none; stroke: var(--blue); stroke-width: 3; }
+.map-picker .school-outline { fill: none; stroke: var(--blue); stroke-width: 3; }
 .map-picker .blk { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1.2; }
 .map-picker .blk-room { fill: #e8f0fe; stroke: #c7d7f5; stroke-width: 1.2; }
 .map-picker .field { fill: #eff6ff; stroke: #dbeafe; stroke-width: 1.2; }

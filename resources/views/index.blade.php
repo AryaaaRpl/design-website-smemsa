@@ -137,10 +137,16 @@
 </section>
 
 <section class="sambutan-section" id="sambutan" aria-label="Sambutan Pimpinan Lembaga">
+  @php
+    // Data Kepala Sekolah dari modul Guru. Jika belum ada, pakai data bawaan.
+    $principalName = $principal?->name ?: 'Wahid Wahyudi, S.E., M.M.';
+    $principalPhoto = $principal?->photo_url ?: asset('assets/PAK-WAHID-AI-e1781064934191.png');
+    $principalQuote = $principal?->quote ?: 'Sekolah yang baik adalah sekolah yang mengantar siswanya sampai ke tujuan, bukan hanya sampai ke ijazah.';
+  @endphp
   <div class="container">
     <div class="executive-card" style="text-align: left">
       <div class="executive-photo-frame">
-        <img src="{{ asset('assets/PAK-WAHID-AI-e1781064934191.png') }}" alt="Kepala Sekolah SMEMSA Wahid Wahyudi S.E. M.M."
+        <img src="{{ $principalPhoto }}" alt="Kepala Sekolah SMEMSA {{ $principalName }}"
           width="480" height="580" loading="lazy" onerror="
                 this.closest('.card')
                   ? this.closest('.card').classList.add('no-image')
@@ -152,7 +158,7 @@
                   display: block;
                   color: var(--primary);
                   font-size: 1.05rem;
-                ">Wahid Wahyudi, S.E., M.M.</strong>
+                ">{{ $principalName }}</strong>
           <span style="font-size: 0.85rem; color: var(--text-muted)">Kepala Sekolah SMKS Muhammadiyah 1 Genteng</span>
         </div>
       </div>
@@ -162,8 +168,7 @@
           Pesan Pimpinan Lembaga
         </div>
         <h3 class="executive-quote">
-          "Sekolah yang baik adalah sekolah yang mengantar siswanya sampai
-          ke tujuan, bukan hanya sampai ke ijazah."
+          "{{ $principalQuote }}"
         </h3>
         <p class="executive-bio-text">
           Kami berkomitmen mencetak generasi unggul yang tidak hanya cakap

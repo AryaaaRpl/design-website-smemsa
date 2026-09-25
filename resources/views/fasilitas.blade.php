@@ -43,9 +43,9 @@
     <div class="map-layout">
       <!-- ============ PETA ============ -->
       <div class="map-stage">
-        <svg class="campus-svg" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid meet" role="img"
+        <svg class="school-svg" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid meet" role="img"
           aria-label="Denah sekolah SMKS Muhammadiyah 1 Genteng, terdiri dari sekolah utara dan sekolah selatan yang dipisah Jalan KH Ahmad Dahlan">
-          @include('partials.campus-map')
+          @include('partials.school-map')
           <!-- ===== HOTSPOT ===== -->
           <g id="hotspot-layer"></g>
         </svg>

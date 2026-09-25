@@ -169,7 +169,7 @@
 
       <div class="footer-bottom">
         <div>
-          &copy; 2026 SMKS Muhammadiyah 1 Genteng. Seluruh hak cipta
+          &copy; {{ now()->year }} SMKS Muhammadiyah 1 Genteng. Seluruh hak cipta
           dilindungi.
         </div>
         <div>Dibuat oleh RPL SMEMSA &bull; SMKS MUHAMMADIYAH 1 GENTENG</div>
