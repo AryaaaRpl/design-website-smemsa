@@ -169,7 +169,6 @@
             </p>
           </div>
           <div class="service-card">
-            <div class="service-icon">📝</div>
             <h3>Bimbingan Karir & CV Workshop</h3>
             <p>
               Pelatihan pembuatan CV profesional, portofolio digital, dan
@@ -177,7 +176,6 @@
             </p>
           </div>
           <div class="service-card">
-            <div class="service-icon">🎙️</div>
             <h3>Simulasi Interview Kerja</h3>
             <p>
               Sesi wawancara kerja tiruan dengan instruktur industri agar
@@ -185,7 +183,6 @@
             </p>
           </div>
           <div class="service-card">
-            <div class="service-icon">🏢</div>
             <h3>Program Praktik Kerja Lapangan (PKL)</h3>
             <p>
               Penempatan magang terstruktur di Teaching Factory dan industri

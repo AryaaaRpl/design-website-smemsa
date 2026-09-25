@@ -348,7 +348,7 @@
       setTimeout(function () {
         if (loaderEl && loaderEl.parentNode) {
           loaderEl.style.display = 'none';
-          document.body.style.overflow = 'none';
+          document.body.style.overflow = '';
         }
       }, 550);
     }

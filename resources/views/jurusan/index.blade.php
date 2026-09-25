@@ -112,7 +112,7 @@
           <p>Konsultasikan minat dan bakatmu bersama Panitia SPMB {{ $site->get('spmb_academic_year') }}.</p>
         </div>
         <div class="jr-cta-actions">
-          <a href="{{ url('/spmb') }}" class="btn btn-primary">Daftar SPMB {{ $site->spmbYear() }} &rarr;</a>
+          <a href="{{ url('/spmb') }}" class="btn btn-secondary">Daftar SPMB {{ $site->spmbYear() }} &rarr;</a>
           <a href="{{ $site->whatsappLink('spmb', 'Halo Panitia SPMB, saya ingin konsultasi memilih jurusan') }}"
             target="_blank" rel="noopener noreferrer" class="btn jr-btn-light">Konsultasi via WhatsApp</a>
         </div>

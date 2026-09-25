@@ -817,18 +817,6 @@ a {
   margin-bottom: 1.2rem;
 }
 
-.guru-pimpinan-card {
-  background: #fff;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 38% 62%;
-  box-shadow: var(--shadow-card);
-  margin-bottom: 2rem;
-  align-items: stretch;
-  border-left: 4px solid var(--secondary);
-}
-
 .guru-card:hover .guru-img {
   transform: scale(1.05);
 }
@@ -871,28 +859,6 @@ a {
   transition: all;
 }
 
-.headmaster-quote {
-  font-style: italic;
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  line-height: 1.7;
-  padding-left: 1.2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.headmaster-quote::after {
-  content: '"';
-  position: absolute;
-  top: -15px;
-  left: -5px;
-  font-family: Georgia, serif;
-  font-size: 5rem;
-  color: var(--secondary-surface);
-  z-index: -1;
-  opacity: 0.6;
-}
-
 .sticky-nav-container {
   position: sticky;
   top: 90px;
@@ -933,66 +899,11 @@ a {
   box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
 }
 
-
-@media (max-width: 900px) {
-  .guru-pimpinan-card {
-    grid-template-columns: 1fr;
-  }
-
-  .guru-pimpinan-img-wrap {
-    min-height: 400px;
-    max-height: 500px;
-  }
-}
-
 /* RESPONSIVE GURU GRID */
-@media (max-width: 1024px) {
-
-  .guru-grid,
-  .guru-wakasek-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .tendik-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .guru-pimpinan-img-wrap {
-    min-height: 400px;
-    max-height: 500px;
-  }
-
-  .guru-pimpinan-body {
-    padding: 2.5rem;
-  }
-}
 
 @media (max-width: 768px) {
   .nav-menu {
     display: none;
-  }
-}
-
-@media (max-width: 560px) {
-
-  .guru-grid,
-  .guru-wakasek-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  .tendik-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .guru-pimpinan-body {
-    padding: 1.5rem;
-  }
-
-  .guru-pimpinan-img-wrap {
-    min-height: 350px;
   }
 }
 
@@ -1057,34 +968,16 @@ a {
   }
 
   /* Grid collapse to single column */
-  .facility-grid,
   .ekskul-grid,
   .news-grid,
-  .news-cards-grid,
-  .visi-grid,
-  .misi-grid,
-  .org-grid,
-  .article-grid {
+  .news-cards-grid {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
   }
 
   /* Magazine & Card Descriptions permanently visible on mobile */
-  .magazine-desc,
-  .facility-card-desc,
-  .ekskul-overlay-desc {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-    position: relative !important;
-    inset: auto !important;
-  }
 
   /* Visi quote line clamp */
-  .visi-quote {
-    font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
-    line-height: 1.5 !important;
-  }
 
   .btn {
     min-height: 44px;

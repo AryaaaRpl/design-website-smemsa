@@ -96,12 +96,6 @@
       letter-spacing: -0.035em;
     }
 
-    .font-mono {
-      font-family: var(--font-mono);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     a {
       text-decoration: none;
       color: inherit;
@@ -144,20 +138,6 @@
       color: var(--primary);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .badge-level-national {
-      background: var(--secondary-surface);
-      color: #b45309;
-      border: 1px solid rgba(234, 179, 8, 0.4);
-      font-weight: 800;
-    }
-
-    .badge-level-regional {
-      background: var(--primary-surface);
-      color: var(--primary);
-      border: 1px solid rgba(30, 64, 175, 0.2);
-      font-weight: 700;
     }
 
     /* Buttons */
@@ -1182,12 +1162,6 @@
           var(--primary-light) 100%);
     }
 
-    .modal-banner-emoji {
-      font-size: 5.5rem;
-      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-      animation: modalFloat 3s ease-in-out infinite;
-    }
-
     @keyframes modalFloat {
 
       0%,
@@ -1292,16 +1266,6 @@
       .awards-stats-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .award-col-6,
-      .award-col-4,
-      .award-col-8 {
-        grid-column: span 12;
-      }
-
-      .award-col-8 {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 768px) {
@@ -1316,10 +1280,6 @@
       .pinnacle-meta-grid {
         grid-template-columns: 1fr;
         gap: 0.8rem;
-      }
-
-      .award-body {
-        padding: 1.8rem;
       }
 
       .modal-body {
@@ -1346,31 +1306,6 @@
 
       .pinnacle-title {
         font-size: clamp(1.4rem, 6vw, 2rem) !important;
-      }
-
-      .timeline-track-grid,
-      .achievements-grid,
-      .editorial-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-      }
-
-      .filter-chips-row {
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        flex-wrap: nowrap !important;
-        padding-bottom: 0.5rem;
-      }
-
-      .filter-chips-row::-webkit-scrollbar {
-        display: none;
-      }
-
-      .filter-chip-btn {
-        white-space: nowrap !important;
-        flex-shrink: 0 !important;
-        min-height: 44px;
       }
 
       .btn {
@@ -1452,9 +1387,6 @@
     }
 
     @media (max-width: 768px) {
-      .container {
-        padding: 0 20px !important;
-      }
 
       html,
       body {
@@ -1844,10 +1776,6 @@
 
       .nav-island {
         padding: 0.6rem 1rem !important;
-      }
-
-      .nav-menu {
-        display: none !important;
       }
 
       .nav-mobile-cta {

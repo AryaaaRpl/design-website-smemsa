@@ -67,16 +67,6 @@
     }
 
     /* Hero Proof Strip */
-    .hero-proof-strip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      margin-top: 2rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid rgba(30, 64, 175, 0.12);
-    }
 
     .hero-lead {
       color: var(--text-muted);
@@ -88,78 +78,7 @@
       margin-top: 1.5rem;
     }
 
-    .hero-proof-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--primary-dark);
-      font-family: var(--font-head);
-      font-weight: 700;
-    }
-
-    .hero-proof-dot {
-      color: #d97706;
-      font-size: 1.1rem;
-      line-height: 1;
-    }
-
     /* Quick Major Chips Bar */
-    .major-quick-chips-wrapper {
-      margin: 2.2rem auto 0;
-      max-width: 900px;
-      text-align: center;
-    }
-
-    .major-chips-label {
-      font-size: 0.82rem;
-      font-family: var(--font-head);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      margin-bottom: 0.8rem;
-    }
-
-    .major-chips-list {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .major-chip-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      padding: 0.45rem 0.9rem;
-      border-radius: var(--radius-full);
-      font-family: var(--font-head);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-      cursor: pointer;
-      transition: var(--transition-fast);
-      min-height: 44px;
-      min-width: 44px;
-    }
-
-    .major-chip-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: var(--primary-surface);
-      transform: translateY(-2px);
-    }
-
-    .major-chip-icon {
-      width: 18px;
-      height: 18px;
-      object-fit: contain;
-      display: inline-block;
-    }
 
     /* BKK Summary Banner */
     .bkk-summary-banner {
@@ -204,48 +123,6 @@
     }
 
     /* SPMB Quota Progress Bars */
-    .spmb-quota-card {
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 1.6rem;
-      margin-top: 1.5rem;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .quota-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .quota-item {
-      margin-bottom: 0.85rem;
-    }
-
-    .quota-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.82rem;
-      font-family: var(--font-head);
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
-
-    .quota-bar-track {
-      width: 100%;
-      height: 7px;
-      background: #e2e8f0;
-      border-radius: var(--radius-full);
-      overflow: hidden;
-    }
-
-    .quota-bar-fill {
-      height: 100%;
-      border-radius: var(--radius-full);
-      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
-    }
 
     /* BLUD Learner Managed Tag */
     .blud-learner-tag {
@@ -324,15 +201,7 @@
       letter-spacing: -0.035em;
     }
 
-    .font-mono {
-      font-family: var(--font-mono);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     .badge,
-    .step-badge-tag,
-    .major-code-pill,
     .skill-tag {
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -374,10 +243,6 @@
 
     .justify-between {
       justify-content: space-between;
-    }
-
-    .justify-center {
-      justify-content: center;
     }
 
     .flex-wrap {
@@ -423,21 +288,6 @@
     .badge-amber {
       background: var(--secondary-surface);
       color: #a16207;
-    }
-
-    .badge-dark {
-      background: rgba(255, 255, 255, 0.08);
-      color: #f5f5f4;
-      border-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .badge-pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent-yellow);
-      box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7);
-      animation: pulseYellow 2s infinite;
     }
 
     @keyframes pulseYellow {
@@ -655,19 +505,6 @@
       background: var(--primary-surface);
     }
 
-    .btn-outline-light {
-      transition: var(--transition);
-      background: transparent;
-      color: #ffffff;
-      border: 1.5px solid rgba(255, 255, 255, 0.35);
-    }
-
-    .btn-outline-light:hover {
-      background: #ffffff;
-      color: var(--bg-dark);
-      border-color: #ffffff;
-    }
-
     /* Section Headers */
     .section-header {
       margin-bottom: 3.5rem;
@@ -690,34 +527,6 @@
     }
 
     /* Hyper-Bento Glass Container */
-    .bento-card {
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 2.2rem;
-      box-shadow: var(--shadow-card);
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition);
-    }
-
-    .bento-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-card-hover);
-      border-color: rgba(30, 58, 138, 0.25);
-    }
-
-    .bento-card-dark {
-      transition: var(--transition);
-      background: var(--bg-dark-card);
-      border: 1px solid var(--border-dark);
-      color: var(--text-light);
-      box-shadow: var(--shadow-dark);
-    }
-
-    .bento-card-dark:hover {
-      border-color: rgba(234, 179, 8, 0.4);
-    }
 
     /* ==========================================================================
            3. FLOATING ISLAND NAVBAR WITH GLASSMORPHISM 2.0
@@ -770,24 +579,6 @@
     .brand-logo:hover {
       transform: translateY(-2px);
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
-    }
-
-    .brand-text-main {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--primary);
-      letter-spacing: -0.03em;
-      line-height: 1;
-    }
-
-    .brand-text-sub {
-      font-size: 0.72rem;
-      color: var(--secondary);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-top: 3px;
     }
 
     .nav-menu {
@@ -973,11 +764,6 @@
       align-items: center;
     }
 
-    .hero-glow-1,
-    .hero-glow-2 {
-      display: none;
-    }
-
     .hero-grid {
       display: grid;
       grid-template-columns: 52% 48%;
@@ -1124,10 +910,8 @@
       .btn-amber,
       .btn-primary,
       .btn-outline,
-      .nav-cta,
       .major-chip,
       .filter-btn,
-      .news-filter-item,
       .spmb-cta-btn,
       .mobile-drawer a {
         min-height: 44px;
@@ -1137,36 +921,12 @@
       }
 
       /* Jarak antar target sentuh agar tidak salah ketuk */
-      .hero-cta-row,
-      .hero-chip-row {
-        gap: 0.75rem;
-      }
     }
 
     /* Tombol hero: 44px cukup, jangan lebih besar dari itu di layar kecil */
     @media (max-width: 560px) {
 
-      .hero-cta-row .btn,
-      .hero-cta-row .btn-amber,
-      .hero-cta-row .btn-primary,
-      .hero-cta-row .btn-outline {
-        min-height: 44px;
-        padding: 0.7rem 1.1rem;
-        font-size: 0.86rem;
-        letter-spacing: -0.01em;
-        white-space: nowrap;
-      }
-
       /* Dua tombol berdampingan agar tidak memakan tinggi layar */
-      .hero-cta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-      }
-
-      .hero-cta-row>* {
-        flex: 1 1 auto;
-      }
 
       /* Cegah scroll horizontal di seluruh halaman */
       html,
@@ -1210,54 +970,6 @@
     }
 
     /* Hero Quick Jurusan Search Pill */
-    .hero-search-pill {
-      display: flex;
-      align-items: center;
-      background: #ffffff;
-      border: 1.5px solid var(--border-card);
-      border-radius: var(--radius-full);
-      padding: 0.4rem 0.5rem 0.4rem 1.4rem;
-      box-shadow: 0 12px 30px -6px rgba(30, 58, 138, 0.1);
-      max-width: 540px;
-      margin-bottom: 2rem;
-      transition: var(--transition);
-    }
-
-    .hero-search-pill:focus-within {
-      border-color: var(--primary);
-      box-shadow: 0 16px 36px -6px rgba(30, 58, 138, 0.2);
-      transform: translateY(-2px);
-    }
-
-    .hero-search-pill input {
-      flex: 1;
-      border: none;
-      outline: none;
-      background: transparent;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      color: var(--text-dark);
-    }
-
-    .hero-search-pill button {
-      background: var(--primary);
-      color: #ffffff;
-      border: none;
-      padding: 0.75rem 1.4rem;
-      border-radius: var(--radius-full);
-      font-family: var(--font-head);
-      font-size: 0.88rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition-fast);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hero-search-pill button:hover {
-      background: var(--primary-light);
-    }
 
     .hero-actions {
       display: flex;
@@ -1267,67 +979,6 @@
     }
 
     /* Hero Hub Dashboard (Terminal / Card 3D-inspired) */
-    .hero-hub-card {
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-xl);
-      padding: 2rem;
-      box-shadow: var(--shadow-card);
-      position: relative;
-    }
-
-    .hub-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid var(--border-card);
-      margin-bottom: 1.5rem;
-    }
-
-    .hub-mac-dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .hub-mac-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .hub-mac-dot.red {
-      background: #ef4444;
-    }
-
-    .hub-mac-dot.amber {
-      background: #facc15;
-    }
-
-    .hub-mac-dot.emerald {
-      background: #facc15;
-    }
-
-    .hub-live-badge {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      background: var(--primary-surface);
-      color: var(--primary);
-      padding: 0.25rem 0.7rem;
-      border-radius: var(--radius-full);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hub-nav-tabs {
-      display: flex;
-      background: var(--bg-alt);
-      padding: 4px;
-      border-radius: var(--radius-sm);
-      margin-bottom: 1.5rem;
-    }
 
     .hub-nav-tab {
       flex: 1;
@@ -1371,61 +1022,7 @@
       }
     }
 
-    .hub-feature-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1rem;
-      border-radius: var(--radius);
-      background: var(--bg-main);
-      border: 1px solid var(--border-card);
-      margin-bottom: 0.85rem;
-      transition: var(--transition-fast);
-    }
-
-    .hub-feature-row:hover {
-      border-color: rgba(30, 58, 138, 0.3);
-      background: #ffffff;
-      transform: translateX(4px);
-      box-shadow: 0 8px 20px rgba(30, 58, 138, 0.06);
-    }
-
-    .hub-icon-wrap {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-    }
-
     /* Floating Achievement Badges around Hero Hub */
-    .floating-badge {
-      position: absolute;
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius);
-      padding: 0.75rem 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      box-shadow: var(--shadow-card-hover);
-      z-index: 10;
-      animation: floatHeroBadge 4s ease-in-out infinite;
-    }
-
-    .floating-badge-1 {
-      top: -24px;
-      right: -20px;
-    }
-
-    .floating-badge-2 {
-      bottom: -22px;
-      left: -20px;
-      animation-delay: 2s;
-    }
 
     @keyframes floatHeroBadge {
 
@@ -1461,69 +1058,6 @@
       border-bottom: 1px solid var(--border-dark);
     }
 
-    .sinergi-stage-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      min-height: 70vh;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .synergy-svg-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .pillar-line {
-      stroke: var(--secondary-light);
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      fill: none;
-      stroke-dasharray: 400;
-      stroke-dashoffset: 400;
-    }
-
-    .pillar-node-group {
-      transform-origin: center;
-    }
-
-    .pillar-node-ring {
-      fill: none;
-      stroke: var(--secondary);
-      stroke-width: 1.5;
-      opacity: 0.35;
-    }
-
-    .pillar-node-core {
-      fill: var(--secondary-light);
-    }
-
-    .pillar-node-label {
-      font-family: var(--font-display);
-      font-size: 14px;
-      font-weight: 800;
-      fill: var(--text-light);
-      text-anchor: middle;
-      letter-spacing: -0.01em;
-    }
-
-    .pillar-node-sub {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 500;
-      fill: var(--text-subtle);
-      text-anchor: middle;
-    }
-
     /* Star & Aura in Center */
     .synergy-star-aura {
       fill: url(#starAuraGrad);
@@ -1540,18 +1074,6 @@
     }
 
     /* Synergy Text Content - Layered Over SVG */
-    .synergy-text-container {
-      position: relative;
-      z-index: 3;
-      max-width: 860px;
-      width: 100%;
-      min-height: 70vh;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
 
     .synergy-kicker {
       font-family: var(--font-head);
@@ -1563,21 +1085,6 @@
       margin-bottom: 1rem;
       opacity: 0;
       transform: translateY(12px);
-    }
-
-    .signature-text {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 2.7vw, 2.25rem);
-      font-weight: 800;
-      color: var(--text-light);
-      max-width: 840px;
-      margin: 0 auto 1.2rem;
-      line-height: 1.38;
-      letter-spacing: -0.025em;
-    }
-
-    .synergy-highlight {
-      color: var(--secondary-light);
     }
 
     .synergy-closing {
@@ -1598,15 +1105,6 @@
     }
 
     /* Scroll Progress Rail */
-    .synergy-progress-rail {
-      width: 120px;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: var(--radius-full);
-      margin: 2.2rem auto 0;
-      overflow: hidden;
-      position: relative;
-    }
 
     .synergy-progress-bar {
       width: 0%;
@@ -1616,12 +1114,6 @@
           var(--secondary-light) 100%);
       border-radius: var(--radius-full);
       box-shadow: 0 0 8px var(--secondary-glow);
-    }
-
-    @media (max-width: 640px) {
-      .pillar-node-sub {
-        display: none;
-      }
     }
 
     /* ---- Text Scroll Reveal (skiper31-style, word by word) ---- */
@@ -1718,8 +1210,7 @@
 
     .hero-section,
     .majors-section,
-    .blud-section,
-    .bkk-section {
+    .blud-section {
       position: relative;
       overflow: hidden;
     }
@@ -1727,8 +1218,7 @@
     .hero-grid,
     .majors-section .container,
     .blud-section .container,
-    .stats-section .container,
-    .bkk-section .container {
+    .stats-section .container {
       position: relative;
       z-index: 2;
     }
@@ -2154,11 +1644,6 @@
       display: block;
     }
 
-    .orbit-icon .orbit-node-emoji {
-      font-size: 1.35rem;
-      line-height: 1;
-    }
-
     /* ═══ A. PUSAT ORBIT DENGAN ZONA AMAN (MAX-WIDTH 560PX & RADIAL GRADIENT) ═══ */
     .orbit-hero-center {
       position: relative;
@@ -2357,20 +1842,6 @@
       border-radius: var(--radius-xs);
     }
 
-    .major-nav-tefa {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .major-nav-item.active .major-nav-tefa {
-      color: #475569;
-      font-weight: 500;
-    }
-
     .major-nav-chevron {
       color: var(--text-subtle);
       font-size: 1.1rem;
@@ -2567,137 +2038,12 @@
       line-height: 1.4;
     }
 
-    .major-info-icon {
-      color: var(--primary);
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-
     .major-info-label {
       font-weight: 700;
       color: var(--primary-dark);
     }
 
     /* ═══ C. ALUR 4 TAHAP DI BAWAH KEPALA PANEL (D. TEKS TIDAK TERPOTONG) ═══ */
-    .major-flow-section {
-      padding: 1.5rem 1.6rem 1.6rem;
-      background: #ffffff;
-    }
-
-    .major-steps-track {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.8rem;
-      align-items: stretch;
-      position: relative;
-    }
-
-    .major-step-box {
-      background: var(--bg-alt);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius);
-      padding: 1rem 0.85rem;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: visible;
-      height: auto;
-      min-height: 100%;
-      transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-    }
-
-    .major-step-box:hover {
-      border-color: var(--primary);
-      background: #ffffff;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(30, 64, 175, 0.08);
-    }
-
-    .major-step-header {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      margin-bottom: 0.6rem;
-      flex-shrink: 0;
-    }
-
-    .major-step-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #ffffff;
-      font-family: var(--font-head);
-      font-size: 0.72rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .major-step-box:nth-child(4) .major-step-num {
-      background: var(--secondary);
-      color: var(--text-dark);
-    }
-
-    .major-step-title {
-      font-family: var(--font-head);
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--text-dark);
-      line-height: 1.2;
-    }
-
-    .major-step-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 0.75rem 0;
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-      flex: 1 0 auto;
-    }
-
-    .major-step-list li {
-      position: relative;
-      padding-left: 0.85rem;
-      margin-bottom: 0.32rem;
-    }
-
-    .major-step-list li:last-child {
-      margin-bottom: 0;
-    }
-
-    .major-step-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    .major-step-tag {
-      font-size: 0.73rem;
-      font-weight: 600;
-      padding: 0.45rem 0.6rem;
-      border-radius: var(--radius-xs);
-      background: var(--primary-surface);
-      color: var(--primary-dark);
-      border-left: 2.5px solid var(--primary);
-      line-height: 1.35;
-      margin-top: auto;
-      flex-shrink: 0;
-    }
-
-    .major-step-box:nth-child(4) .major-step-tag {
-      background: var(--secondary-surface);
-      color: #854d0e;
-      border-left-color: var(--secondary);
-    }
 
     /* ═══ E. RESPONSIF ═══ */
     @media (max-width: 1100px) {
@@ -2830,11 +2176,6 @@
       .major-figure-wrapper {
         max-width: 240px;
         margin: 0 auto;
-      }
-
-      .major-steps-track {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
       }
     }
 
@@ -3047,19 +2388,6 @@
       background: var(--bg-alt);
     }
 
-    .spmb-wrapper {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-
-    .stepper-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
     .step-card {
       background: #ffffff;
       border: 1px solid var(--border-card);
@@ -3076,62 +2404,6 @@
       border-color: var(--primary);
       transform: translateX(6px);
       box-shadow: var(--shadow-card);
-    }
-
-    .step-number-box {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #ffffff;
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .spmb-live-card {
-      background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 100%);
-      color: #ffffff;
-      border-radius: var(--radius-xl);
-      padding: 3rem 2.5rem;
-      box-shadow: var(--shadow-card);
-      text-align: center;
-    }
-
-    .countdown-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.8rem;
-      margin: 2rem 0;
-    }
-
-    .countdown-box {
-      background: rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(8px);
-      padding: 1rem 0.5rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .countdown-val {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 800;
-      display: block;
-      line-height: 1;
-    }
-
-    .countdown-lbl {
-      font-size: 0.75rem;
-      opacity: 0.85;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-top: 4px;
-      display: block;
     }
 
     /* ==========================================================================
@@ -3165,19 +2437,6 @@
     .product-bento:hover {
       transform: translateY(-4px);
       border-color: var(--secondary);
-    }
-
-    .p-icon-hero {
-      font-size: 3.5rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .p-price-tag {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--secondary-light);
-      margin-top: 1.5rem;
     }
 
     /* BLUD MODAL COMPONENT (Matching Visi-Misi Modal Style) */
@@ -3408,11 +2667,6 @@
       }
     }
 
-    .bkk-section {
-      padding: 7.5rem 0;
-      background: var(--bg-main);
-    }
-
     .bkk-table-card {
       background: #ffffff;
       border: 1px solid var(--border-card);
@@ -3552,9 +2806,7 @@
 
       .hero-grid,
       .executive-card,
-      .major-spotlight-card,
       .achieve-grid,
-      .spmb-wrapper,
       .news-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -3562,16 +2814,6 @@
 
       .why-bento-grid {
         grid-template-columns: 1fr;
-      }
-
-      .why-col-8,
-      .why-col-4,
-      .why-col-6 {
-        grid-column: span 1;
-      }
-
-      .majors-sub-grid {
-        grid-template-columns: repeat(2, 1fr);
       }
 
       .blud-grid {
@@ -3606,24 +2848,12 @@
         grid-template-columns: 1fr !important;
       }
 
-      .majors-sub-grid {
-        grid-template-columns: 1fr;
-      }
-
       .news-cards-grid {
         grid-template-columns: 1fr;
       }
 
       .executive-card {
         padding: 2rem 1.5rem;
-      }
-
-      .major-spotlight-card {
-        padding: 2rem 1.5rem;
-      }
-
-      .countdown-row {
-        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -3651,17 +2881,6 @@
       }
 
       /* Responsive Navbar (B) */
-      .header-wrapper {
-        position: fixed;
-        border-radius: 50px;
-        top: 1rem;
-        left: 50%;
-        transform: translate(-50%, 0);
-        width: 90%;
-        z-index: 1000;
-        background: #ffffff;
-        border-bottom: 1px solid var(--border-card);
-      }
 
       .nav-island {
         max-width: 1320px;
@@ -3676,12 +2895,6 @@
       .nav-island.scrolled {
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
-      }
-
-      .brand-box {
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
       }
 
       .brand-logo {
@@ -3701,50 +2914,10 @@
         filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
       }
 
-      .brand-text-main {
-        font-family: var(--font-display);
-        font-weight: 800;
-        font-size: 1.15rem;
-        color: var(--primary);
-        letter-spacing: -0.03em;
-        line-height: 1;
-      }
-
-      .brand-text-sub {
-        font-size: 0.72rem;
-        color: var(--secondary);
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        margin-top: 3px;
-      }
-
       .nav-menu {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-      }
-
-      .nav-item {
-        position: relative;
-      }
-
-      .nav-link {
-        font-family: var(--font-head);
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--text-dark);
-        padding: 0.55rem 0.95rem;
-        border-radius: var(--radius-full);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        transition: var(--transition-fast);
-      }
-
-      .nav-link:hover {
-        color: var(--primary);
-        background: var(--primary-surface);
       }
 
       .nav-link.active {
@@ -3779,34 +2952,11 @@
         transform: translateY(0) scale(1);
       }
 
-      .dropdown-item {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        padding: 0.65rem 0.9rem;
-        border-radius: var(--radius-sm);
-        font-size: 0.88rem;
-        font-weight: 600;
-        color: var(--text-dark);
-        transition: var(--transition-fast);
-      }
-
       .dropdown-item:hover,
       .dropdown-item.active {
         background: var(--primary-surface);
         color: var(--primary);
         transform: translateX(4px);
-      }
-
-      .dropdown-icon {
-        font-size: 1.1rem;
-        width: 28px;
-        height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(30, 58, 138, 0.06);
-        border-radius: var(--radius-xs);
       }
 
       .hamburger {
@@ -3820,21 +2970,6 @@
       }
 
       /* Mobile Drawer */
-      .mobile-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(20, 18, 16, 0.6);
-        backdrop-filter: blur(8px);
-        z-index: 1050;
-        opacity: 0;
-        visibility: hidden;
-        transition: var(--transition);
-      }
-
-      .mobile-overlay.active {
-        opacity: 1;
-        visibility: visible;
-      }
 
       .mobile-drawer {
         position: fixed;
@@ -3856,17 +2991,6 @@
         transform: translateX(0);
       }
 
-      .drawer-close {
-        background: var(--bg-alt);
-        border: none;
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        font-size: 1.1rem;
-        cursor: pointer;
-        margin-bottom: 1.5rem;
-      }
-
       .drawer-links a {
         transition: var(--transition);
         display: flex;
@@ -3886,15 +3010,6 @@
         color: var(--primary);
       }
 
-      .drawer-section-title {
-        font-size: 0.72rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--text-subtle);
-        font-weight: 800;
-        margin: 1.2rem 0 0.5rem 0.8rem;
-      }
-
       /* ==========================================================================
            4. HERO SECTION - ULTRA-MODERN ASYMMETRICAL TECH-EDITORIAL
            ========================================================================== */
@@ -3903,11 +3018,6 @@
         position: relative;
         display: flex;
         align-items: center;
-      }
-
-      .hero-glow-1,
-      .hero-glow-2 {
-        display: none;
       }
 
       .hero-grid {
@@ -3933,33 +3043,6 @@
         justify-content: center;
         align-items: flex-end;
         min-height: 480px;
-      }
-
-      .hero-img-wrapper {
-        border-radius: 24px;
-        position: relative;
-        z-index: 10;
-      }
-
-      .hero-students-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-      }
-
-      .hero-fade-gradient {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 15%;
-        background: linear-gradient(to top,
-            var(--bg-main) 0%,
-            rgba(255, 255, 255, 0) 100%);
-        pointer-events: none;
-        z-index: 15;
       }
 
       .hero-proof-bar-bottom {
@@ -4001,14 +3084,6 @@
         margin-bottom: 0.1rem;
       }
 
-      .hero-proof-bar-bottom .proof-label {
-        font-size: 0.72rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-weight: 700;
-      }
-
       @media (max-width: 900px) {
         .hero-proof-bar-bottom {
           position: static;
@@ -4046,174 +3121,14 @@
         }
       }
 
-      .mobile-only {
-        display: none;
-      }
-
-      .hero-headline {
-        font-family: var(--font-display);
-        font-size: clamp(2.6rem, 4.8vw, 4.4rem);
-        font-weight: 800;
-        line-height: 1.08;
-        color: var(--primary-dark);
-        letter-spacing: -0.04em;
-        margin: 1.2rem 0 1.2rem;
-      }
-
-      .hero-headline .highlight-amber {
-        background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
       /* Hero Quick Jurusan Search Pill */
-      .hero-search-pill {
-        display: flex;
-        align-items: center;
-        background: #ffffff;
-        border: 1.5px solid var(--border-card);
-        border-radius: var(--radius-full);
-        padding: 0.4rem 0.5rem 0.4rem 1.4rem;
-        box-shadow: 0 12px 30px -6px rgba(30, 58, 138, 0.1);
-        max-width: 540px;
-        margin-bottom: 2rem;
-        transition: var(--transition);
-      }
-
-      .hero-search-pill:focus-within {
-        border-color: var(--primary);
-        box-shadow: 0 16px 36px -6px rgba(30, 58, 138, 0.2);
-        transform: translateY(-2px);
-      }
-
-      .hero-search-pill input {
-        flex: 1;
-        border: none;
-        outline: none;
-        background: transparent;
-        font-family: var(--font-body);
-        font-size: 0.95rem;
-        color: var(--text-dark);
-      }
-
-      .hero-search-pill button {
-        background: var(--primary);
-        color: #ffffff;
-        border: none;
-        padding: 0.75rem 1.4rem;
-        border-radius: var(--radius-full);
-        font-family: var(--font-head);
-        font-size: 0.88rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: var(--transition-fast);
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-
-      .hero-search-pill button:hover {
-        background: var(--primary-light);
-      }
-
-      .hero-actions {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 1.2rem;
-      }
 
       /* Hero Hub Dashboard (Terminal / Card 3D-inspired) */
-      .hero-hub-card {
-        background: #ffffff;
-        border: 1px solid var(--border-card);
-        border-radius: var(--radius-xl);
-        padding: 2rem;
-        box-shadow: var(--shadow-card);
-        position: relative;
-      }
-
-      .hub-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 1.2rem;
-        border-bottom: 1px solid var(--border-card);
-        margin-bottom: 1.5rem;
-      }
-
-      .hub-mac-dots {
-        display: flex;
-        gap: 6px;
-      }
-
-      .hub-mac-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-      }
-
-      .hub-mac-dot.red {
-        background: #ef4444;
-      }
-
-      .hub-mac-dot.amber {
-        background: #facc15;
-      }
-
-      .hub-mac-dot.emerald {
-        background: #facc15;
-      }
-
-      .hub-live-badge {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        font-weight: 700;
-        background: var(--primary-surface);
-        color: var(--primary);
-        padding: 0.25rem 0.7rem;
-        border-radius: var(--radius-full);
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-
-      .hub-nav-tabs {
-        display: flex;
-        background: var(--bg-alt);
-        padding: 4px;
-        border-radius: var(--radius-sm);
-        margin-bottom: 1.5rem;
-      }
-
-      .hub-nav-tab {
-        flex: 1;
-        padding: 0.6rem 0.8rem;
-        border: none;
-        background: transparent;
-        font-family: var(--font-head);
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: var(--text-muted);
-        border-radius: var(--radius-xs);
-        cursor: pointer;
-        transition: var(--transition-fast);
-        text-align: center;
-      }
 
       .hub-nav-tab.active {
         background: #ffffff;
         color: var(--primary);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      }
-
-      .hub-tab-panel {
-        display: none;
-        animation: fadeInHub 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-
-      .hub-tab-panel.active {
-        display: block;
       }
 
       @keyframes fadeInHub {
@@ -4228,61 +3143,7 @@
         }
       }
 
-      .hub-feature-row {
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        padding: 1rem;
-        border-radius: var(--radius);
-        background: var(--bg-main);
-        border: 1px solid var(--border-card);
-        margin-bottom: 0.85rem;
-        transition: var(--transition-fast);
-      }
-
-      .hub-feature-row:hover {
-        border-color: rgba(30, 58, 138, 0.3);
-        background: #ffffff;
-        transform: translateX(4px);
-        box-shadow: 0 8px 20px rgba(30, 58, 138, 0.06);
-      }
-
-      .hub-icon-wrap {
-        width: 44px;
-        height: 44px;
-        border-radius: var(--radius-sm);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.3rem;
-        flex-shrink: 0;
-      }
-
       /* Floating Achievement Badges around Hero Hub */
-      .floating-badge {
-        position: absolute;
-        background: #ffffff;
-        border: 1px solid var(--border-card);
-        border-radius: var(--radius);
-        padding: 0.75rem 1.2rem;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        box-shadow: var(--shadow-card-hover);
-        z-index: 10;
-        animation: floatHeroBadge 4s ease-in-out infinite;
-      }
-
-      .floating-badge-1 {
-        top: -24px;
-        right: -20px;
-      }
-
-      .floating-badge-2 {
-        bottom: -22px;
-        left: -20px;
-        animation-delay: 2s;
-      }
 
       @keyframes floatHeroBadge {
 
@@ -4299,13 +3160,6 @@
       /* ==========================================================================
            5. SAMBUTAN SECTION (UNPINNED) & SINERGI TIGA PILAR (PINNED)
            ========================================================================== */
-      .sambutan-section {
-        padding: 7.5rem 0 8.5rem;
-        background: var(--bg-alt);
-        position: relative;
-        border-top: 1px solid var(--border-card);
-        border-bottom: 1px solid var(--border-card);
-      }
 
       .sinergi-section {
         min-height: 100dvh;
@@ -4320,177 +3174,13 @@
         padding: 4rem 0;
       }
 
-      .sinergi-stage-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 900px;
-        min-height: 70vh;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .synergy-svg-canvas {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        overflow: visible;
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      .pillar-line {
-        stroke: var(--secondary-light);
-        stroke-width: 2.5;
-        stroke-linecap: round;
-        fill: none;
-        stroke-dasharray: 400;
-        stroke-dashoffset: 400;
-      }
-
-      .pillar-node-group {
-        transform-origin: center;
-      }
-
-      .pillar-node-ring {
-        fill: none;
-        stroke: var(--secondary);
-        stroke-width: 1.5;
-        opacity: 0.35;
-      }
-
-      .pillar-node-core {
-        fill: var(--secondary-light);
-      }
-
-      .pillar-node-label {
-        font-family: var(--font-display);
-        font-size: 14px;
-        font-weight: 800;
-        fill: var(--text-light);
-        text-anchor: middle;
-        letter-spacing: -0.01em;
-      }
-
-      .pillar-node-sub {
-        font-family: var(--font-body);
-        font-size: 11px;
-        font-weight: 500;
-        fill: var(--text-subtle);
-        text-anchor: middle;
-      }
-
       /* Star & Aura in Center */
-      .synergy-star-aura {
-        fill: url(#starAuraGrad);
-        opacity: 0;
-      }
-
-      .synergy-center-star {
-        fill: var(--secondary-surface);
-        stroke: var(--secondary-light);
-        stroke-width: 2.5;
-        stroke-linejoin: round;
-        opacity: 0;
-        transform: scale(0);
-      }
 
       /* Synergy Text Content - Layered Over SVG */
-      .synergy-text-container {
-        position: relative;
-        z-index: 3;
-        max-width: 860px;
-        width: 100%;
-        min-height: 70vh;
-        padding: 2rem 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .synergy-kicker {
-        font-family: var(--font-head);
-        font-size: 0.88rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--secondary-light);
-        margin-bottom: 1rem;
-        opacity: 0;
-        transform: translateY(12px);
-      }
-
-      .signature-text {
-        font-family: var(--font-display);
-        font-size: clamp(1.4rem, 2.7vw, 2.25rem);
-        font-weight: 800;
-        color: var(--text-light);
-        max-width: 840px;
-        margin: 0 auto 1.2rem;
-        line-height: 1.38;
-        letter-spacing: -0.025em;
-      }
-
-      .synergy-highlight {
-        color: var(--secondary-light);
-      }
-
-      .synergy-closing {
-        font-family: var(--font-body);
-        font-size: 1.02rem;
-        color: var(--text-subtle);
-        max-width: 620px;
-        margin: 0 auto 1.8rem;
-        line-height: 1.6;
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      .synergy-action-btn {
-        opacity: 0;
-        transform: translateY(10px);
-        margin-top: 0.5rem;
-      }
 
       /* Scroll Progress Rail */
-      .synergy-progress-rail {
-        width: 120px;
-        height: 3px;
-        background: rgba(255, 255, 255, 0.12);
-        border-radius: var(--radius-full);
-        margin: 2.2rem auto 0;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .synergy-progress-bar {
-        width: 0%;
-        height: 100%;
-        background: linear-gradient(90deg,
-            var(--secondary) 0%,
-            var(--secondary-light) 100%);
-        border-radius: var(--radius-full);
-        box-shadow: 0 0 8px var(--secondary-glow);
-      }
-
-      @media (max-width: 640px) {
-        .pillar-node-sub {
-          display: none;
-        }
-      }
 
       /* ---- Text Scroll Reveal (skiper31-style, word by word) ---- */
-      .sr-word {
-        display: inline-block;
-        opacity: 0.18;
-        filter: blur(2px);
-        transform: translateY(0.12em);
-        will-change: opacity, filter, transform;
-      }
 
       @media (prefers-reduced-motion: reduce) {
         .sr-word {
@@ -4509,87 +3199,12 @@
       }
 
       /* ---- Parallax Layers ---- */
-      [data-parallax] {
-        will-change: transform;
-      }
-
-      .px-stage {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 0;
-      }
 
       .px-orb {
         position: absolute;
         border-radius: 50%;
         filter: blur(70px);
         opacity: 0.5;
-      }
-
-      .px-orb-blue {
-        background: radial-gradient(circle,
-            rgba(37, 99, 235, 0.5) 0%,
-            rgba(37, 99, 235, 0) 70%);
-      }
-
-      .px-orb-amber {
-        background: radial-gradient(circle,
-            rgba(234, 179, 8, 0.42) 0%,
-            rgba(234, 179, 8, 0) 70%);
-      }
-
-      .px-grid {
-        position: absolute;
-        inset: -20% -10%;
-        background-image:
-          linear-gradient(to right,
-            rgba(255, 255, 255, 0.05) 1px,
-            transparent 1px),
-          linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.05) 1px,
-            transparent 1px);
-        background-size: 64px 64px;
-        mask-image: radial-gradient(ellipse at center,
-            #000 20%,
-            transparent 72%);
-        -webkit-mask-image: radial-gradient(ellipse at center,
-            #000 20%,
-            transparent 72%);
-      }
-
-      .px-grid-dark {
-        background-image:
-          linear-gradient(to right,
-            rgba(30, 64, 175, 0.07) 1px,
-            transparent 1px),
-          linear-gradient(to bottom,
-            rgba(30, 64, 175, 0.07) 1px,
-            transparent 1px);
-      }
-
-      .px-ring {
-        position: absolute;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.07);
-      }
-
-      .hero-section,
-      .majors-section,
-      .blud-section,
-      .bkk-section {
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero-grid,
-      .majors-section .container,
-      .blud-section .container,
-      .stats-section .container,
-      .bkk-section .container {
-        position: relative;
-        z-index: 2;
       }
 
       @media (max-width: 900px) {
@@ -4616,37 +3231,6 @@
         border-bottom: 1px solid var(--border-card);
       }
 
-      .marquee-track {
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-        width: max-content;
-      }
-
-      .marquee-group {
-        display: flex;
-        align-items: center;
-        gap: 4rem;
-        padding-right: 4rem;
-      }
-
-      .mitra-item {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        font-family: var(--font-head);
-        font-weight: 700;
-        font-size: 1.05rem;
-        color: var(--text-muted);
-        letter-spacing: -0.01em;
-        transition: var(--transition-fast);
-      }
-
-      .mitra-item:hover {
-        color: var(--primary);
-        transform: scale(1.05);
-      }
-
       .mitra-item img {
         height: 60px;
         width: auto;
@@ -4664,10 +3248,6 @@
       /* ==========================================================================
            6. EXECUTIVE CARD - SAMBUTAN KEPALA SEKOLAH (PAK WAHID)
            ========================================================================== */
-      .executive-section {
-        padding: 7.5rem 0;
-        position: relative;
-      }
 
       .executive-card {
         background: #ffffff;
@@ -4683,35 +3263,12 @@
         overflow: hidden;
       }
 
-      .executive-photo-frame {
-        position: relative;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow-card);
-      }
-
       .executive-photo-frame img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: var(--transition);
         margin-bottom: 50px;
-      }
-
-      .executive-photo-frame:hover img {
-        transform: scale(1.03);
-      }
-
-      .executive-photo-badge {
-        position: absolute;
-        bottom: 1.5rem;
-        left: 1.5rem;
-        right: 1.5rem;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(12px);
-        border-radius: var(--radius);
-        padding: 1rem 1.4rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       }
 
       .executive-quote {
@@ -4755,31 +3312,6 @@
         transform: translateY(-5px) !important;
       }
 
-      .why-col-8 {
-        transition: var(--transition);
-        grid-column: span 8;
-        background: linear-gradient(135deg,
-            var(--primary) 0%,
-            var(--primary-dark) 100%);
-        color: #ffffff;
-        border: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .why-col-8:hover {
-        border: none;
-      }
-
-      .why-col-4 {
-        grid-column: span 4;
-      }
-
-      .why-col-6 {
-        grid-column: span 6;
-      }
-
       .why-icon-box {
         width: 52px;
         height: 52px;
@@ -4796,15 +3328,6 @@
       /* ==========================================================================
            7. COUNTER STATS STRIP
            ========================================================================== */
-      .stats-section {
-        padding: 4.5rem 0;
-        background: linear-gradient(135deg,
-            var(--primary-dark) 0%,
-            #1e3a8a 100%);
-        color: #ffffff;
-        position: relative;
-        overflow: hidden;
-      }
 
       .stats-grid {
         display: grid;
@@ -4813,43 +3336,9 @@
         text-align: center;
       }
 
-      .stat-card {
-        padding: 1.5rem;
-        border-right: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .stat-card:last-child {
-        border-right: none;
-      }
-
-      .stat-num {
-        font-family: var(--font-display);
-        font-size: clamp(2.5rem, 4vw, 3.8rem);
-        font-weight: 800;
-        color: var(--secondary-light);
-        line-height: 1;
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.03em;
-      }
-
-      .stat-label {
-        font-size: 0.95rem;
-        font-weight: 600;
-        opacity: 0.9;
-        letter-spacing: -0.01em;
-      }
-
       /* ==========================================================================
            8. KONSENTRASI KEAHLIAN: ORBIT DUAL-RING (CINCIN DALAM & LUAR) + 2 KOLOM
            ========================================================================== */
-      .majors-section {
-        padding: 5.5rem 0 7.5rem;
-        background: var(--bg-alt);
-        position: relative;
-        overflow: hidden;
-        border-top: 1px solid var(--border-card);
-        border-bottom: 1px solid var(--border-card);
-      }
 
       /* ═══ A. AREA ORBIT MELEBAR PENUH: TINGGI 520PX & ZONA AMAN ═══ */
       .majors-hero-orbit {
@@ -4883,21 +3372,6 @@
         transform: translate(-50%, -50%);
         pointer-events: none;
         overflow: visible;
-      }
-
-      .orbit-guide-ring {
-        fill: none;
-        stroke: var(--border-light, rgba(30, 64, 175, 0.14));
-        stroke-width: 1px;
-      }
-
-      .orbit-guide-ring-dashed {
-        stroke-dasharray: 6 6;
-      }
-
-      .orbit-guide-dot {
-        fill: var(--primary-light);
-        opacity: 0.35;
       }
 
       /* ═══ B. LINTASAN MELINGKAR PRESISI: PEMISAHAN TRANSLATE & ROTATE ═══ */
@@ -4937,47 +3411,10 @@
       }
 
       /* Lapisan 2: .orbit-slot — titik sudut + radius, transform-origin: center center */
-      .orbit-slot {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 0;
-        height: 0;
-        transform-origin: center center;
-        transform: rotate(var(--a)) translateY(calc(var(--r) * -1));
-        pointer-events: none;
-      }
 
       /* Lapisan 3: .orbit-center — HANYA translate(-50%, -50%), statis, TIDAK dianimasikan */
-      .orbit-center {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 0;
-        height: 0;
-        /* translate + koreksi statis sudut slot agar kartu berbentuk persegi tegak (bukan ketupat) */
-        transform: translate(-50%, -50%) rotate(calc(var(--a) * -1));
-        transform-origin: center center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: none;
-      }
 
       /* Lapisan 4: .orbit-icon — HANYA counter-rotate (90s, linear, infinite) */
-      .orbit-icon {
-        background: #ffffff;
-        border-radius: 14px;
-        border: 1px solid var(--border-light, rgba(30, 64, 175, 0.12));
-        box-shadow: 0 6px 18px -8px rgba(30, 64, 175, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 8px;
-        pointer-events: none;
-        transform-origin: center center;
-        flex-shrink: 0;
-      }
 
       /* Counter-Rotation Cincin Dalam (berlawanan dari rotate(0deg) -> rotate(360deg)) */
       .orbit-ring-inner .orbit-icon {
@@ -5011,11 +3448,6 @@
         display: block;
       }
 
-      .orbit-icon .orbit-node-emoji {
-        font-size: 1.35rem;
-        line-height: 1;
-      }
-
       /* ═══ A. PUSAT ORBIT DENGAN ZONA AMAN (MAX-WIDTH 560PX & RADIAL GRADIENT) ═══ */
       .orbit-hero-center {
         position: relative;
@@ -5031,22 +3463,6 @@
         pointer-events: auto;
       }
 
-      .orbit-hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.35rem 1rem;
-        border-radius: var(--radius-full);
-        font-family: var(--font-head);
-        font-weight: 700;
-        font-size: 0.82rem;
-        color: var(--primary);
-        background: var(--primary-surface);
-        margin-bottom: 0.85rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
-
       .orbit-hero-title {
         font-family: var(--font-display);
         font-size: clamp(2rem, 3.5vw, 2.85rem);
@@ -5055,14 +3471,6 @@
         letter-spacing: -0.035em;
         line-height: 1.16;
         margin-bottom: 0.75rem;
-      }
-
-      .orbit-hero-desc {
-        font-size: 0.98rem;
-        color: var(--text-muted);
-        line-height: 1.62;
-        margin: 0 auto;
-        max-width: 480px;
       }
 
       /* ═══ BAGIAN BAWAH — DUA KOLOM (Kiri 38%, Kanan 62%) ═══ */
@@ -5075,13 +3483,6 @@
       }
 
       /* KOLOM KIRI — DAFTAR 8 JURUSAN */
-      .majors-list-col {
-        background: #ffffff;
-        border-radius: var(--radius-xl);
-        border: 1px solid var(--border-card);
-        box-shadow: var(--shadow-card);
-        overflow: hidden;
-      }
 
       .major-nav-item {
         display: flex;
@@ -5139,85 +3540,6 @@
         z-index: 2;
       }
 
-      .major-nav-num {
-        font-family: var(--font-display);
-        font-size: 1.05rem;
-        font-weight: 800;
-        color: var(--text-subtle);
-        width: 26px;
-        flex-shrink: 0;
-        transition: color 0.25s;
-      }
-
-      .major-nav-item.active .major-nav-num {
-        color: var(--primary);
-      }
-
-      .major-nav-content {
-        flex: 1;
-        min-width: 0;
-      }
-
-      .major-nav-top {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.15rem;
-      }
-
-      .major-nav-name {
-        font-family: var(--font-head);
-        font-size: 1.02rem;
-        font-weight: 800;
-        color: var(--text-dark);
-        letter-spacing: -0.02em;
-        margin: 0;
-        transition: color 0.25s;
-      }
-
-      .major-nav-item.active .major-nav-name {
-        color: var(--primary);
-      }
-
-      .major-nav-code {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        font-weight: 700;
-        color: var(--primary);
-        background: rgba(30, 64, 175, 0.08);
-        padding: 0.12rem 0.45rem;
-        border-radius: var(--radius-xs);
-      }
-
-      .major-nav-tefa {
-        font-size: 0.82rem;
-        color: var(--text-muted);
-        margin: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .major-nav-item.active .major-nav-tefa {
-        color: #475569;
-        font-weight: 500;
-      }
-
-      .major-nav-chevron {
-        color: var(--text-subtle);
-        font-size: 1.1rem;
-        flex-shrink: 0;
-        transition:
-          transform 0.25s,
-          color 0.25s;
-      }
-
-      .major-nav-item:hover .major-nav-chevron,
-      .major-nav-item.active .major-nav-chevron {
-        color: var(--primary);
-        transform: translateX(4px);
-      }
-
       /* KOLOM KANAN — ALUR PENDIDIKAN (STICKY, TOP 6REM) */
       .majors-detail-col {
         position: sticky;
@@ -5230,18 +3552,6 @@
       }
 
       /* Container Transisi Halus (Crossfade + Geser 12px, Max 250ms) */
-      .major-pathway-view {
-        transition:
-          opacity 250ms cubic-bezier(0.16, 1, 0.3, 1),
-          transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .major-pathway-view.anim-switching {
-        opacity: 0;
-        transform: translateY(12px);
-      }
 
       /* ═══ KEPALA PANEL DUA KOLOM: KIRI 38% (FIGUR SISWA) + KANAN 62% (IDENTITAS) ═══ */
       .major-panel-head-grid {
@@ -5255,78 +3565,14 @@
       }
 
       /* KIRI: AREA FIGUR SISWA (Aspect-Ratio 3:4, Potret Utuh) */
-      .major-figure-wrapper {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 3 / 4;
-        border-radius: 14px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-      }
 
       /* Alas Bayangan Lembut di Dasar Figur */
-      .major-figure-shadow {
-        position: absolute;
-        bottom: 6px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 75%;
-        height: 14px;
-        background: radial-gradient(ellipse at center,
-            rgba(0, 0, 0, 0.5) 0%,
-            rgba(0, 0, 0, 0) 72%);
-        border-radius: 50%;
-        z-index: 1;
-        pointer-events: none;
-      }
 
       /* Foto Potret Cutout Siswa (object-fit: contain, menempel di dasar) */
-      .major-figure-img {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        height: 100%;
-        margin-bottom: 15px;
-        object-fit: contain !important;
-        object-position: center bottom !important;
-        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.27));
-        transition: transform 0.35s ease;
-      }
 
       /* Fallback Placeholder jika foto tidak ada */
-      .major-figure-fallback {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: #ffffff;
-        font-family: var(--font-display);
-        font-size: 2.2rem;
-        font-weight: 800;
-        letter-spacing: 0.05em;
-        z-index: 1;
-      }
 
       /* Logo Jurusan Kecil di Pojok Kanan Atas Area Figur */
-      .major-figure-corner-logo {
-        position: absolute;
-        top: 0.75rem;
-        right: 0.75rem;
-        width: 38px;
-        height: 38px;
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(4px);
-        border-radius: 10px;
-        padding: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 4;
-      }
 
       .major-figure-corner-logo img {
         width: 100%;
@@ -5334,202 +3580,9 @@
         object-fit: contain;
       }
 
-      .major-figure-corner-logo .corner-emoji {
-        font-size: 1.2rem;
-        line-height: 1;
-      }
-
       /* KANAN: IDENTITAS JURUSAN */
-      .major-identity-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0.4rem 0.2rem;
-      }
-
-      .major-id-badge {
-        display: inline-flex;
-        align-items: center;
-        background: var(--secondary);
-        color: var(--text-dark);
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        font-weight: 800;
-        padding: 0.25rem 0.7rem;
-        border-radius: var(--radius-full);
-        letter-spacing: 0.06em;
-        width: fit-content;
-        margin-bottom: 0.6rem;
-        box-shadow: 0 2px 6px rgba(234, 179, 8, 0.35);
-      }
-
-      .major-id-title {
-        font-family: var(--font-display);
-        font-size: clamp(1.35rem, 2vw, 1.75rem);
-        font-weight: 800;
-        color: var(--primary-dark);
-        letter-spacing: -0.03em;
-        line-height: 1.22;
-        margin: 0 0 0.55rem 0;
-      }
-
-      .major-id-desc {
-        font-size: 0.88rem;
-        color: var(--text-muted);
-        line-height: 1.55;
-        margin: 0 0 1rem 0;
-      }
-
-      .major-id-info-row {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-        padding: 0.75rem 0.9rem;
-        background: var(--bg-alt);
-        border-radius: var(--radius-sm);
-        border: 1px solid var(--border-card);
-      }
-
-      .major-info-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.8rem;
-        color: var(--text-dark);
-        line-height: 1.4;
-      }
-
-      .major-info-icon {
-        color: var(--primary);
-        font-size: 0.9rem;
-        flex-shrink: 0;
-      }
-
-      .major-info-label {
-        font-weight: 700;
-        color: var(--primary-dark);
-      }
 
       /* ═══ C. ALUR 4 TAHAP DI BAWAH KEPALA PANEL (D. TEKS TIDAK TERPOTONG) ═══ */
-      .major-flow-section {
-        padding: 1.5rem 1.6rem 1.6rem;
-        background: #ffffff;
-      }
-
-      .major-steps-track {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.8rem;
-        align-items: stretch;
-        position: relative;
-      }
-
-      .major-step-box {
-        background: var(--bg-alt);
-        border: 1px solid var(--border-card);
-        border-radius: var(--radius);
-        padding: 1rem 0.85rem;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        overflow: visible;
-        height: auto;
-        min-height: 100%;
-        transition:
-          transform 0.25s ease,
-          border-color 0.25s ease,
-          box-shadow 0.25s ease;
-      }
-
-      .major-step-box:hover {
-        border-color: var(--primary);
-        background: #ffffff;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 16px rgba(30, 64, 175, 0.08);
-      }
-
-      .major-step-header {
-        display: flex;
-        align-items: center;
-        gap: 0.45rem;
-        margin-bottom: 0.6rem;
-        flex-shrink: 0;
-      }
-
-      .major-step-num {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: var(--primary);
-        color: #ffffff;
-        font-family: var(--font-head);
-        font-size: 0.72rem;
-        font-weight: 800;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-
-      .major-step-box:nth-child(4) .major-step-num {
-        background: var(--secondary);
-        color: var(--text-dark);
-      }
-
-      .major-step-title {
-        font-family: var(--font-head);
-        font-size: 0.82rem;
-        font-weight: 800;
-        color: var(--text-dark);
-        line-height: 1.2;
-      }
-
-      .major-step-list {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 0.75rem 0;
-        font-size: 0.76rem;
-        color: var(--text-muted);
-        line-height: 1.45;
-        flex: 1 0 auto;
-      }
-
-      .major-step-list li {
-        position: relative;
-        padding-left: 0.85rem;
-        margin-bottom: 0.32rem;
-      }
-
-      .major-step-list li:last-child {
-        margin-bottom: 0;
-      }
-
-      .major-step-list li::before {
-        content: "•";
-        position: absolute;
-        left: 0;
-        color: var(--primary);
-        font-weight: bold;
-      }
-
-      .major-step-tag {
-        font-size: 0.73rem;
-        font-weight: 600;
-        padding: 0.45rem 0.6rem;
-        border-radius: var(--radius-xs);
-        background: var(--primary-surface);
-        color: var(--primary-dark);
-        border-left: 2.5px solid var(--primary);
-        line-height: 1.35;
-        margin-top: auto;
-        flex-shrink: 0;
-      }
-
-      .major-step-box:nth-child(4) .major-step-tag {
-        background: var(--secondary-surface);
-        color: #854d0e;
-        border-left-color: var(--secondary);
-      }
 
       /* ═══ E. RESPONSIF ═══ */
       @media (max-width: 1100px) {
@@ -5659,11 +3712,6 @@
           max-width: 240px;
           margin: 0 auto;
         }
-
-        .major-steps-track {
-          grid-template-columns: 1fr;
-          gap: 0.8rem;
-        }
       }
 
       @media (max-width: 560px) {
@@ -5708,25 +3756,6 @@
       /* ==========================================================================
            9. PRESTASI & TESTIMONI STRIP - PARALLAX & SCROLLTRIGGER
            ========================================================================== */
-      .achievements-section {
-        padding: 8rem 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .achieve-glow-bg {
-        position: absolute;
-        top: 20%;
-        right: -10%;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle,
-            rgba(234, 179, 8, 0.08) 0%,
-            transparent 70%);
-        filter: blur(50px);
-        pointer-events: none;
-        z-index: 1;
-      }
 
       .achieve-grid {
         display: grid;
@@ -5735,34 +3764,6 @@
         position: relative;
         z-index: 2;
         align-items: center;
-      }
-
-      .timeline-box {
-        position: relative;
-        padding-left: 2.2rem;
-        margin-top: 1.5rem;
-      }
-
-      .timeline-progress-line {
-        position: absolute;
-        left: 6px;
-        top: 12px;
-        bottom: 12px;
-        width: 3px;
-        background: rgba(30, 58, 138, 0.12);
-        border-radius: 4px;
-        overflow: hidden;
-      }
-
-      .timeline-progress-bar {
-        width: 100%;
-        height: 0%;
-        background: linear-gradient(to bottom,
-            var(--secondary) 0%,
-            var(--primary) 100%);
-        border-radius: 4px;
-        box-shadow: 0 0 10px rgba(234, 179, 8, 0.5);
-        transition: height 0.1s linear;
       }
 
       .timeline-card {
@@ -5804,11 +3805,6 @@
         box-shadow: 0 0 0 6px rgba(234, 179, 8, 0.35);
       }
 
-      .testi-parallax-wrapper {
-        position: relative;
-        perspective: 1000px;
-      }
-
       .testi-card {
         background: linear-gradient(135deg,
             var(--primary-dark) 0%,
@@ -5841,184 +3837,18 @@
         pointer-events: none;
       }
 
-      .testi-quote-mark {
-        font-family: var(--font-display);
-        font-size: 4.5rem;
-        line-height: 0.8;
-        color: var(--secondary-light);
-        margin-bottom: 1.5rem;
-        display: block;
-      }
-
-      .testi-badge-float {
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        background: rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: var(--radius-full);
-        padding: 0.35rem 0.9rem;
-        font-size: 0.78rem;
-        font-weight: 700;
-        color: var(--secondary-light);
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-
       /* ==========================================================================
            10. SPMB 2026/2027 INTERACTIVE STEPPER & COUNTDOWN
            ========================================================================== */
-      .spmb-section {
-        padding: 7.5rem 0;
-        background: var(--bg-alt);
-      }
-
-      .spmb-wrapper {
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 3.5rem;
-        align-items: center;
-      }
-
-      .stepper-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .step-card {
-        background: #ffffff;
-        border: 1px solid var(--border-card);
-        border-radius: var(--radius);
-        padding: 1.6rem 2rem;
-        box-shadow: var(--shadow-subtle);
-        display: flex;
-        align-items: flex-start;
-        gap: 1.4rem;
-        transition: var(--transition-fast);
-      }
-
-      .step-card:hover {
-        border-color: var(--primary);
-        transform: translateX(6px);
-        box-shadow: var(--shadow-card);
-      }
-
-      .step-number-box {
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        background: var(--primary);
-        color: #ffffff;
-        font-family: var(--font-display);
-        font-weight: 800;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-
-      .spmb-live-card {
-        background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 100%);
-        color: #ffffff;
-        border-radius: var(--radius-xl);
-        padding: 3rem 2.5rem;
-        box-shadow: var(--shadow-card);
-        text-align: center;
-      }
-
-      .countdown-row {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.8rem;
-        margin: 2rem 0;
-      }
-
-      .countdown-box {
-        background: rgba(0, 0, 0, 0.25);
-        backdrop-filter: blur(8px);
-        padding: 1rem 0.5rem;
-        border-radius: var(--radius-sm);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-      }
-
-      .countdown-val {
-        font-family: var(--font-display);
-        font-size: 1.8rem;
-        font-weight: 800;
-        display: block;
-        line-height: 1;
-      }
-
-      .countdown-lbl {
-        font-size: 0.75rem;
-        opacity: 0.85;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-top: 4px;
-        display: block;
-      }
 
       /* ==========================================================================
            11. BLUD PRODUCTS & BKK JOBS PORTAL
            ========================================================================== */
-      .blud-section {
-        padding: 7.5rem 0;
-        background: var(--bg-dark);
-        color: var(--text-light);
-        position: relative;
-      }
 
       .blud-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 2rem;
-      }
-
-      .product-bento {
-        background: var(--bg-dark-card);
-        border: 1px solid var(--border-dark);
-        border-radius: var(--radius-lg);
-        padding: 2.2rem;
-        box-shadow: var(--shadow-dark);
-        transition: var(--transition);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .product-bento:hover {
-        transform: translateY(-4px);
-        border-color: var(--secondary);
-      }
-
-      .p-icon-hero {
-        font-size: 3.5rem;
-        margin-bottom: 1.2rem;
-      }
-
-      .p-price-tag {
-        font-family: var(--font-display);
-        font-size: 1.3rem;
-        font-weight: 800;
-        color: var(--secondary-light);
-        margin-top: 1.5rem;
-      }
-
-      .bkk-section {
-        padding: 7.5rem 0;
-        background: var(--bg-main);
-      }
-
-      .bkk-table-card {
-        background: #ffffff;
-        border: 1px solid var(--border-card);
-        border-radius: var(--radius-xl);
-        overflow: hidden;
-        box-shadow: var(--shadow-card);
       }
 
       .bkk-table-header {
@@ -6046,17 +3876,9 @@
         border-bottom: none;
       }
 
-      .bkk-table-row:hover {
-        background: var(--primary-surface);
-      }
-
       /* ==========================================================================
            12. NEWS & EDITORIAL JOURNAL
            ========================================================================== */
-      .news-section {
-        padding: 7.5rem 0;
-        background: var(--bg-alt);
-      }
 
       .news-grid {
         display: grid;
@@ -6100,23 +3922,6 @@
         gap: 1.8rem;
       }
 
-      .article-card {
-        background: #ffffff;
-        border: 1px solid var(--border-card);
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow-subtle);
-        transition: var(--transition);
-        display: flex;
-        flex-direction: column;
-      }
-
-      .article-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--primary);
-        box-shadow: var(--shadow-card);
-      }
-
       .article-thumb {
         height: 140px;
         background: linear-gradient(135deg,
@@ -6126,14 +3931,6 @@
         align-items: center;
         justify-content: center;
         font-size: 3rem;
-      }
-
-      .article-body {
-        padding: 1.8rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        flex: 1;
       }
 
       /* A. Baris Kontak dengan Inline SVG Stroke Sederhana (16x16, var(--text-subtle)) */
@@ -6149,9 +3946,7 @@
 
         .hero-grid,
         .executive-card,
-        .major-spotlight-card,
         .achieve-grid,
-        .spmb-wrapper,
         .news-grid {
           grid-template-columns: 1fr;
           gap: 2.5rem;
@@ -6159,16 +3954,6 @@
 
         .why-bento-grid {
           grid-template-columns: 1fr;
-        }
-
-        .why-col-8,
-        .why-col-4,
-        .why-col-6 {
-          grid-column: span 1;
-        }
-
-        .majors-sub-grid {
-          grid-template-columns: repeat(2, 1fr);
         }
 
         .blud-grid {
@@ -6235,24 +4020,12 @@
           grid-template-columns: 1fr !important;
         }
 
-        .majors-sub-grid {
-          grid-template-columns: 1fr;
-        }
-
         .news-cards-grid {
           grid-template-columns: 1fr;
         }
 
         .executive-card {
           padding: 2rem 1.5rem;
-        }
-
-        .major-spotlight-card {
-          padding: 2rem 1.5rem;
-        }
-
-        .countdown-row {
-          grid-template-columns: repeat(2, 1fr);
         }
       }
 
@@ -6361,10 +4134,6 @@
           justify-content: center;
         }
 
-        .hero-proof-strip {
-          justify-content: center;
-        }
-
         .hero-students-img {
           max-height: 320px;
         }
@@ -6378,29 +4147,6 @@
           font-size: clamp(1.75rem, 7.5vw, 2.4rem) !important;
           line-height: 1.2 !important;
           letter-spacing: -0.03em;
-        }
-
-        .hero-cta-group {
-          flex-direction: column !important;
-          width: 100%;
-          gap: 0.75rem !important;
-        }
-
-        .hero-cta-group .btn {
-          width: 100% !important;
-          min-height: 46px;
-          font-size: 16px;
-        }
-
-        .hero-stats-strip {
-          display: grid !important;
-          grid-template-columns: repeat(2, 1fr) !important;
-          gap: 0.75rem !important;
-        }
-
-        .hero-strip-item {
-          padding: 0.75rem 0.5rem;
-          text-align: center;
         }
 
         /* KONSENTRASI KEAHLIAN (D) */
@@ -6477,29 +4223,6 @@
           aspect-ratio: 3 / 4 !important;
         }
 
-        .major-steps-track {
-          grid-template-columns: 1fr !important;
-          gap: 0.85rem !important;
-        }
-
-        .major-step-box {
-          padding: 0.9rem !important;
-          border-left: 3px solid var(--primary) !important;
-        }
-
-        .major-step-box:nth-child(4) {
-          border-left-color: var(--secondary) !important;
-        }
-
-        .major-step-header {
-          margin-bottom: 0.4rem;
-        }
-
-        .major-step-list {
-          font-size: 0.84rem !important;
-          line-height: 1.5 !important;
-        }
-
         /* BKK SECTION & TABLE (G) */
         .bkk-table-header {
           display: none !important;
@@ -6543,10 +4266,6 @@
           padding: 0.8rem 0.5rem !important;
         }
 
-        .hero-stats-strip {
-          grid-template-columns: 1fr !important;
-        }
-
         .desktop-only {
           display: none;
         }
@@ -6561,21 +4280,6 @@
           margin: 0 auto;
           display: block;
           object-fit: contain;
-        }
-
-
-
-        .p-icon-hero {
-          font-size: 2.5rem !important;
-        }
-
-        .countdown-row {
-          grid-template-columns: repeat(2, 1fr) !important;
-          gap: 0.5rem !important;
-        }
-
-        .countdown-val {
-          font-size: 1.4rem !important;
         }
       }
 

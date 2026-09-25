@@ -177,24 +177,6 @@
         filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
       }
 
-      .brand-text-main {
-        font-family: var(--font-display);
-        font-weight: 800;
-        font-size: 1.15rem;
-        color: var(--primary);
-        letter-spacing: -0.03em;
-        line-height: 1;
-      }
-
-      .brand-text-sub {
-        font-size: 0.72rem;
-        color: var(--secondary);
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        margin-top: 3px;
-      }
-
       .nav-menu {
         display: flex;
         align-items: center;
@@ -985,18 +967,6 @@
       }
 
       /* ============ PLACEHOLDER MARKER ============ */
-      .todo {
-        display: inline-block;
-        margin-left: 0.5rem;
-        padding: 0.12rem 0.5rem;
-        border-radius: 4px;
-        background: var(--secondary-surface);
-        color: #92400e;
-        font-size: 0.64rem;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        vertical-align: middle;
-      }
 
       /* ============ RESPONSIF ============ */
 
@@ -1034,11 +1004,6 @@
           grid-template-columns: 1fr;
         }
 
-        .unit-list {
-          max-height: 250px;
-          overflow-y: auto;
-        }
-
         .scheme-body-grid {
           grid-template-columns: 1fr;
           gap: 1.4rem;
@@ -1046,9 +1011,6 @@
       }
 
       @media (max-width: 900px) {
-        .nav-links {
-          display: none;
-        }
 
         .hamburger {
           display: flex;

@@ -144,8 +144,7 @@
 }
 
 /* Kolom Footer */
-.footer-col h4,
-.footer-brand-title {
+.footer-col h4 {
   font-family: var(--font-head, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.78rem;
   font-weight: 800;

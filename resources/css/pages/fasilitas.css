@@ -913,34 +913,16 @@
       }
 
       /* Grid collapse to single column */
-      .facility-grid,
       .ekskul-grid,
       .news-grid,
-      .news-cards-grid,
-      .visi-grid,
-      .misi-grid,
-      .org-grid,
-      .article-grid {
+      .news-cards-grid {
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
       }
 
       /* Magazine & Card Descriptions permanently visible on mobile */
-      .magazine-desc,
-      .facility-card-desc,
-      .ekskul-overlay-desc {
-        opacity: 1 !important;
-        transform: none !important;
-        visibility: visible !important;
-        position: relative !important;
-        inset: auto !important;
-      }
 
       /* Visi quote line clamp */
-      .visi-quote {
-        font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
-        line-height: 1.5 !important;
-      }
 
       .btn {
         min-height: 44px;
@@ -1498,9 +1480,6 @@
     }
 
     @media (max-width: 768px) {
-      .container {
-        padding: 0 20px !important;
-      }
 
       .map-layout {
         grid-template-columns: 1fr !important;

@@ -147,58 +147,6 @@
       gap: 0.4rem;
     }
 
-    .badge-status-upcoming {
-      background: var(--secondary-surface);
-      border: 1px solid rgba(234, 179, 8, 0.4);
-      color: #a16207;
-      font-weight: 800;
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-full);
-      font-size: 0.76rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .badge-status-closed {
-      background: rgba(148, 163, 184, 0.15);
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      color: #64748b;
-      font-weight: 800;
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-full);
-      font-size: 0.76rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .badge-quota-available {
-      background: rgba(30, 64, 175, 0.08);
-      border: 1px solid rgba(30, 64, 175, 0.2);
-      color: var(--primary);
-      font-weight: 800;
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-full);
-      font-size: 0.76rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .badge-quota-limited {
-      background: var(--secondary-surface);
-      border: 1px solid rgba(234, 179, 8, 0.4);
-      color: #a16207;
-      font-weight: 800;
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-full);
-      font-size: 0.76rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
     /* Buttons */
     .btn {
       display: inline-flex;
@@ -245,20 +193,6 @@
     .btn-outline:hover {
       border-color: var(--primary);
       background: var(--primary-surface);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline-white {
-      background: rgba(255, 255, 255, 0.12);
-      color: #ffffff;
-      border: 1.5px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(8px);
-    }
-
-    .btn-outline-white:hover {
-      background: #ffffff;
-      color: var(--primary);
-      border-color: #ffffff;
       transform: translateY(-2px);
     }
 
@@ -579,22 +513,6 @@
       box-shadow: 0 6px 20px -2px rgba(30, 64, 175, 0.35);
     }
 
-    .alur-badge-pill {
-      font-size: 0.72rem;
-      padding: 0.2rem 0.65rem;
-      border-radius: var(--radius-full);
-      background: rgba(30, 64, 175, 0.08);
-      color: var(--primary);
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      transition: all 0.3s ease;
-    }
-
-    .alur-switch-btn.active .alur-badge-pill {
-      background: rgba(255, 255, 255, 0.22);
-      color: #ffffff;
-    }
-
     .alur-timeline-panel {
       display: none;
       animation: fadeInAlur 0.35s ease forwards;
@@ -801,114 +719,10 @@
     /* ==========================================================================
        6. JADWAL GELOMBANG
        ========================================================================== */
-    .schedule-card-wrapper {
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .schedule-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    .schedule-table th {
-      background: var(--bg-alt);
-      padding: 1.2rem 1.6rem;
-      font-family: var(--font-head);
-      font-size: 0.85rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border-card);
-    }
-
-    .schedule-table td {
-      padding: 1.4rem 1.6rem;
-      border-bottom: 1px solid var(--border-card);
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      vertical-align: middle;
-    }
-
-    .schedule-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .schedule-table tr:hover td {
-      background: var(--primary-surface);
-    }
-
-    .schedule-empty-banner {
-      background: var(--bg-alt);
-      border: 1.5px dashed var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      text-align: center;
-      color: var(--text-muted);
-    }
 
     /* ==========================================================================
        7. KUOTA KONSENTRASI KEAHLIAN (KUALITATIF)
        ========================================================================== */
-    .quota-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-    }
-
-    .quota-item-card {
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 1.6rem;
-      box-shadow: var(--shadow-subtle);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: var(--transition);
-    }
-
-    .quota-item-card:hover {
-      border-color: var(--primary-light);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    .quota-item-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-    }
-
-    .quota-code-badge {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--primary);
-      background: var(--primary-surface);
-      padding: 0.25rem 0.65rem;
-      border-radius: var(--radius-xs);
-    }
-
-    .quota-major-name {
-      font-size: 1.05rem;
-      color: var(--text-dark);
-      margin-bottom: 0.6rem;
-      font-family: var(--font-head);
-    }
-
-    .quota-major-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 1.2rem;
-    }
 
     /* ==========================================================================
        8. BIAYA PENDIDIKAN
@@ -980,10 +794,6 @@
       right: 0;
       height: 4px;
       background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
-    }
-
-    .fee-seragam-card.female::before {
-      background: linear-gradient(90deg, #ec4899 0%, var(--secondary) 100%);
     }
 
     .fee-card-top {
@@ -1142,11 +952,6 @@
     }
 
     /* Beasiswa Section */
-    .beasiswa-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
 
     .beasiswa-table-wrapper {
       background: #ffffff;
@@ -1338,73 +1143,6 @@
       gap: 0.4rem;
     }
 
-    .beasiswa-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.4rem;
-    }
-
-    .beasiswa-card {
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 1.6rem;
-      box-shadow: var(--shadow-subtle);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .beasiswa-card:hover {
-      border-color: var(--secondary);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    .beasiswa-card.highlight {
-      border-color: rgba(234, 179, 8, 0.4);
-      background: linear-gradient(180deg, rgba(234, 179, 8, 0.04) 0%, #ffffff 100%);
-    }
-
-    .beasiswa-card.full-free {
-      border-color: rgba(34, 197, 94, 0.4);
-      background: linear-gradient(180deg, rgba(34, 197, 94, 0.05) 0%, #ffffff 100%);
-    }
-
-    .beasiswa-num {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--bg-alt);
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 0.75rem;
-    }
-
-    .beasiswa-card.full-free .beasiswa-num {
-      background: rgba(34, 197, 94, 0.15);
-      color: #15803d;
-    }
-
-    .beasiswa-title {
-      font-size: 1.1rem;
-      color: var(--primary-dark);
-      margin-bottom: 0.35rem;
-    }
-
-    .beasiswa-kriteria {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 1.2rem;
-    }
-
     .beasiswa-amount-badge {
       display: inline-flex;
       align-items: center;
@@ -1466,16 +1204,14 @@
     /* Responsive adjustments */
     @media (max-width: 1024px) {
       .fee-seragam-grid,
-      .fee-grade-grid,
-      .beasiswa-grid {
+      .fee-grade-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 768px) {
       .fee-seragam-grid,
-      .fee-grade-grid,
-      .beasiswa-grid {
+      .fee-grade-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1642,16 +1378,6 @@
         grid-template-columns: 1fr;
       }
 
-      .quota-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .fee-container-card {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 2rem;
-      }
-
       .contact-panitia-grid {
         grid-template-columns: 1fr;
       }
@@ -1714,19 +1440,6 @@
       .timeline-step-card-v2::before {
         left: -2.65rem;
         top: 1.6rem;
-      }
-
-      .quota-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .schedule-card-wrapper {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .schedule-table {
-        min-width: 580px;
       }
     }
 

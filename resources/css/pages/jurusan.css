@@ -174,16 +174,6 @@
   color: var(--secondary-light);
 }
 
-.jr-card-num {
-  position: absolute;
-  top: 1rem;
-  left: 1.2rem;
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.35);
-}
-
 .jr-card-logo {
   position: absolute;
   top: 1rem;

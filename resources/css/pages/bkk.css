@@ -208,24 +208,6 @@
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
     }
 
-    .brand-text-main {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--primary);
-      letter-spacing: -0.03em;
-      line-height: 1;
-    }
-
-    .brand-text-sub {
-      font-size: 0.72rem;
-      color: var(--secondary);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-top: 3px;
-    }
-
     .nav-menu {
       display: flex;
       align-items: center;
@@ -574,11 +556,6 @@
       transform: translateY(-4px);
       box-shadow: var(--shadow-card-hover);
       border-color: var(--primary-glow);
-    }
-
-    .stat-icon {
-      font-size: 2.2rem;
-      margin-bottom: 0.75rem;
     }
 
     .stat-value {
