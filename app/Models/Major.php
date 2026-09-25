@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TeacherCategory;
 use App\Models\Concerns\HasMediaUrl;
 use App\Models\Concerns\HasSlug;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -52,6 +53,14 @@ class Major extends Model
     public function achievements(): HasMany
     {
         return $this->hasMany(Achievement::class);
+    }
+
+    /**
+     * Kepala Konsentrasi Keahlian jurusan ini (dari modul Guru, kategori K3).
+     */
+    public function headTeachers(): HasMany
+    {
+        return $this->teachers()->where('category', TeacherCategory::HeadOfMajor)->where('is_active', true);
     }
 
     public function testimonials(): HasMany
@@ -121,6 +130,7 @@ class Major extends Model
     {
         return [
             'key' => $this->slug,
+            'url' => route('jurusan.show', $this),
             'code' => $this->code,
             'num' => str_pad((string) $number, 2, '0', STR_PAD_LEFT),
             'title' => $this->name,

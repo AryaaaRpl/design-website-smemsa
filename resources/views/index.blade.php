@@ -493,6 +493,9 @@
                   </div>
                 </div>
               </div>
+              <a href="{{ $firstMajor ? route('jurusan.show', $firstMajor) : url('/jurusan') }}" class="major-detail-link" id="panel-detail-link">
+                Lihat Detail Jurusan &rarr;
+              </a>
             </div>
           </div>
 

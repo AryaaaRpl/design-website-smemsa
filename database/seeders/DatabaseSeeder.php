@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             AchievementSeeder::class,
             BkkSeeder::class,
+            MajorPartnerSeeder::class,
             ExtracurricularSeeder::class,
         ]);
     }

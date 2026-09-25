@@ -98,7 +98,7 @@
           </div>
         </div>
 
-        <a href="{{ url('/#jurusan') }}" class="nav-link">Konsentrasi Keahlian</a>
+        <a href="{{ url('/jurusan') }}" class="nav-link {{ request()->is('jurusan*') ? 'active' : '' }}">Konsentrasi Keahlian</a>
 
         <a href="{{ url('/lsp') }}" class="nav-link {{ request()->is('lsp*') ? 'active' : '' }}">LSP</a>
 
@@ -152,7 +152,7 @@
 
       <div class="drawer-section-title">Navigasi Halaman Utama</div>
       <a href="{{ url('/#sambutan') }}">👤 Sambutan Kepala Sekolah</a>
-      <a href="{{ url('/#jurusan') }}">💻 7 Program Keahlian</a>
+      <a href="{{ url('/jurusan') }}" class="{{ request()->is('jurusan*') ? 'active' : '' }}">💻 {{ trim(($navMajors->count() ?: '') . ' Program Keahlian') }}</a>
       <a href="{{ url('/lsp') }}" class="{{ request()->is('lsp*') ? 'active' : '' }}">📜 LSP-P1</a>
       <a href="{{ url('/#blud') }}">🏬 Unit Produksi BLUD</a>
 

@@ -19,6 +19,7 @@ export default defineConfig({
                 'resources/css/pages/peta-kampus.css',
                 'resources/css/pages/prestasi.css',
                 'resources/css/pages/spmb.css',
+                'resources/css/pages/jurusan.css',
                 'resources/js/app.js',
                 'resources/js/pages/fasilitas.js',
                 'resources/js/pages/ekstrakurikuler.js',

@@ -18,6 +18,7 @@ use App\Http\Controllers\BkkController;
 use App\Http\Controllers\ExtracurricularController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MajorPageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\VisionMissionController;
@@ -30,6 +31,9 @@ Route::get('/peta-kampus', function () {
 });
 
 Route::get('/visi-misi', VisionMissionController::class)->name('visi-misi');
+
+Route::get('/jurusan', [MajorPageController::class, 'index'])->name('jurusan.index');
+Route::get('/jurusan/{major}', [MajorPageController::class, 'show'])->name('jurusan.show');
 
 Route::get('/lsp', function () {
     return view('lsp');

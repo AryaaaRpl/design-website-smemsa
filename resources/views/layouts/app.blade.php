@@ -55,7 +55,8 @@
     if (empty($path) || $path === '/') {
         $pageName = 'index';
     } else {
-        $pageName = str_replace('/', '-', $path);
+        // Segmen pertama URL: /jurusan & /jurusan/rpl sama-sama memakai jurusan.css
+        $pageName = explode('/', $path)[0];
     }
 
     $pageAssets = ['resources/css/app.css'];
@@ -505,8 +506,15 @@
       }, 200);
     });
 
+    // Laptop: klik membuka halaman detail jurusan (hover tetap mengganti panel).
+    // HP/tablet: tap pertama membuka panel; di panel ada tombol "Lihat Detail Jurusan".
     function handleMajorClick(majorKey) {
       clearTimeout(hoverDebounceTimer);
+      const major = majorsData.find((m) => m.key === majorKey);
+      if (window.innerWidth > 900 && major && major.url) {
+        window.location.href = major.url;
+        return;
+      }
       selectMajorPathway(majorKey);
     }
 
@@ -654,6 +662,8 @@
         if (descEl) descEl.textContent = major.desc;
         if (tefaNameEl) tefaNameEl.textContent = major.tefa;
         if (certNameEl) certNameEl.textContent = major.certSummary;
+        const detailLinkEl = document.getElementById("panel-detail-link");
+        if (detailLinkEl && major.url) detailLinkEl.href = major.url;
 
         // Alur 4 Tahap (data dari admin: teks di-escape, daftar kosong diberi keterangan)
         const renderStepList = (items) => {
