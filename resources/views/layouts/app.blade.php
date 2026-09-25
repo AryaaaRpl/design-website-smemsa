@@ -466,7 +466,7 @@
                             <h4 class="major-nav-name">${m.title}</h4>
                             <span class="major-nav-code">${m.code}</span>
                         </div>
-                        <p class="major-nav-tefa">TEFA: ${m.tefa}</p>
+                        
                     </div>
                     <span class="major-nav-chevron">&rarr;</span>
                 </button>

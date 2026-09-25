@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeacherController as AdminTeacherController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\BkkController;
 use App\Http\Controllers\ExtracurricularController;
 use App\Http\Controllers\FacilityController;
@@ -75,6 +76,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('extracurriculars', AdminExtracurricularController::class)->except('show');
         Route::resource('teachers', AdminTeacherController::class)->except('show');
         Route::resource('facilities', AdminFacilityController::class)->except('show');
+        Route::resource('testimonials', TestimonialController::class)->except('show');
         Route::resource('partners', PartnerController::class)->except('show');
         Route::get('settings/{group?}', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings/{group}', [SettingController::class, 'update'])->name('settings.update');

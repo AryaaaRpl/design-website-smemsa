@@ -24,6 +24,7 @@ export default defineConfig({
                 'resources/js/pages/ekstrakurikuler.js',
                 'resources/js/pages/prestasi.js',
                 'resources/js/pages/berita.js',
+                'resources/js/pages/index.js',
                 'resources/css/admin.css',
                 'resources/js/admin.js',
             ],

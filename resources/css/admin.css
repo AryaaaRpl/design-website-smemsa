@@ -785,3 +785,19 @@ textarea.form-input {
     display: inline-block;
     margin-left: 6px;
 }
+
+/* ---------- Foto profil bulat (testimoni) ---------- */
+
+.thumb-avatar {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.thumb-initials {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+}

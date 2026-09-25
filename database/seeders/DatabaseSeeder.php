@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             MajorSeeder::class,
             TeacherSeeder::class,
             FacilitySeeder::class,
+            TestimonialSeeder::class,
             CategorySeeder::class,
             PostSeeder::class,
             AchievementSeeder::class,

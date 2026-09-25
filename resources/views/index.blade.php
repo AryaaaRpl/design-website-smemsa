@@ -103,46 +103,6 @@
 </section>
 @endif
 
-<!-- Major Quick Jump Chips (A.1) - disembunyikan jika belum ada jurusan -->
-@if ($majors->isNotEmpty())
-<section class="major-quick-chips-section" style="
-        background-color: var(--bg-alt);
-        padding: 1.5rem 0;
-        border-bottom: 1px solid var(--border-card);
-      ">
-  <div class="container">
-    <div class="major-quick-chips-wrapper">
-      <div class="major-chips-label" style="
-              text-align: center;
-              margin-bottom: 1rem;
-              font-weight: 600;
-              color: var(--text-muted);
-            ">
-        Pilih & Lompat ke Program Keahlian:
-      </div>
-      <div class="major-chips-list" role="navigation" aria-label="Daftar Cepat Jurusan" style="
-              justify-content: center;
-              flex-wrap: wrap;
-              display: flex;
-              gap: 0.75rem;
-            ">
-        @foreach ($majors as $major)
-        <button class="major-chip-btn" onclick="jumpToMajor('{{ $major->slug }}')">
-          <img src="{{ $major->logo_url }}" alt="{{ $major->chip_label }}" class="major-chip-icon" onerror="
-                  this.closest('.card')
-                    ? this.closest('.card').classList.add('no-image')
-                    : null;
-                  this.remove();
-                " />
-          {{ $major->chip_label }}
-        </button>
-        @endforeach
-      </div>
-    </div>
-  </div>
-</section>
-@endif
-
 <!-- 4. COUNTER STATS STRIP (Section 2 in Flow: Hero -> Statistik) -->
 <section class="stats-section" id="statistik" aria-label="Statistik Lembaga">
   <div class="px-stage" aria-hidden="true">
@@ -521,14 +481,12 @@
               </p>
               <div class="major-id-info-row">
                 <div class="major-info-item">
-                  <span class="major-info-icon">🏬</span>
                   <div>
                     <span class="major-info-label">TEFA:</span>
                     <span id="panel-tefa-name">{{ $firstMajor?->tefa_name }}</span>
                   </div>
                 </div>
                 <div class="major-info-item">
-                  <span class="major-info-icon">📜</span>
                   <div>
                     <span class="major-info-label">Sertifikasi:</span>
                     <span id="panel-cert-name">{{ $firstMajor?->certification_summary }}</span>
@@ -538,56 +496,6 @@
             </div>
           </div>
 
-          <!-- ═══ ALUR 4 TAHAP HORIZONTAL MELEBAR PENUH ═══ -->
-          <div class="major-flow-section">
-            <div class="major-steps-track">
-              <!-- Tahap 1: Yang Dipelajari -->
-              <div class="major-step-box">
-                <div class="major-step-header">
-                  <div class="major-step-num">1</div>
-                  <div class="major-step-title">Yang Dipelajari</div>
-                </div>
-                <ul class="major-step-list" id="panel-flow-stage1"></ul>
-                <div class="major-step-tag">Kompetensi Inti</div>
-              </div>
-
-              <!-- Tahap 2: Tempat Praktik -->
-              <div class="major-step-box">
-                <div class="major-step-header">
-                  <div class="major-step-num">2</div>
-                  <div class="major-step-title">Tempat Praktik</div>
-                </div>
-                <ul class="major-step-list" id="panel-flow-stage2"></ul>
-                <div class="major-step-tag" id="panel-flow-stage2-box">
-                  Teaching Factory
-                </div>
-              </div>
-
-              <!-- Tahap 3: Sertifikasi -->
-              <div class="major-step-box">
-                <div class="major-step-header">
-                  <div class="major-step-num">3</div>
-                  <div class="major-step-title">Sertifikasi</div>
-                </div>
-                <ul class="major-step-list" id="panel-flow-stage3"></ul>
-                <div class="major-step-tag" id="panel-flow-stage3-box">
-                  LSP-P1 BNSP
-                </div>
-              </div>
-
-              <!-- Tahap 4: Setelah Lulus -->
-              <div class="major-step-box">
-                <div class="major-step-header">
-                  <div class="major-step-num">4</div>
-                  <div class="major-step-title">Setelah Lulus</div>
-                </div>
-                <ul class="major-step-list" id="panel-flow-stage4"></ul>
-                <div class="major-step-tag" id="panel-flow-stage4-box">
-                  Mitra Industri & Karir
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -757,45 +665,35 @@
             <div class="timeline-progress-bar" id="timeline-bar"></div>
           </div>
 
+          @forelse ($latestAchievements as $achievement)
           <div class="timeline-card prestasi-item">
-            <span class="badge badge-primary mb-2" style="font-size: 0.75rem">Juli 2026</span>
+            <span class="badge badge-primary mb-2" style="font-size: 0.75rem">{{ $achievement->achieved_label }}</span>
             <h3 class="font-head" style="
                     font-size: 1.2rem;
                     color: var(--primary);
                     margin: 0.3rem 0;
                   ">
-              Juara Umum ME Awards 2026
+              {{ $achievement->title }}
             </h3>
             <p style="font-size: 0.9rem; color: var(--text-muted)">
-              Tingkat Nasional (Muhammadiyah Education Awards)
+              Tingkat {{ $achievement->level?->label() }}@if ($achievement->location) ({{ $achievement->location }})@endif
             </p>
           </div>
+          @empty
+          <!-- Tampilan saat belum ada data prestasi -->
           <div class="timeline-card prestasi-item">
-            <span class="badge badge-primary mb-2" style="font-size: 0.75rem">Juni 2026</span>
             <h3 class="font-head" style="
                     font-size: 1.2rem;
                     color: var(--primary);
                     margin: 0.3rem 0;
                   ">
-              Juara 3 Taekwondo Kejurprov Pelajar
+              Prestasi terbaru segera hadir
             </h3>
             <p style="font-size: 0.9rem; color: var(--text-muted)">
-              Tingkat Provinsi Jawa Timur (Malang)
+              Rekam jejak kejuaraan siswa sedang disiapkan.
             </p>
           </div>
-          <div class="timeline-card prestasi-item">
-            <span class="badge badge-primary mb-2" style="font-size: 0.75rem">Mei 2026</span>
-            <h3 class="font-head" style="
-                    font-size: 1.2rem;
-                    color: var(--primary);
-                    margin: 0.3rem 0;
-                  ">
-              Perwakilan Lomba Inovasi Digital Nasional
-            </h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted)">
-              Aplikasi Manajemen Vokasi Terpadu (Tim PPLG)
-            </p>
-          </div>
+          @endforelse
         </div>
 
         <a href="/prestasi" class="btn btn-outline" style="margin-top: 1.5rem">Lihat Galeri Prestasi Lengkap
@@ -806,47 +704,60 @@
       <div class="testi-parallax-wrapper">
         <div class="testi-card" id="testi-parallax-card">
           <div class="testi-badge-float">
-            <span>⭐</span> Cerita Sukses Alumni
+            Cerita Sukses Alumni
           </div>
 
-          <div>
+          @if ($testimonials->isEmpty())
+          <!-- Tampilan saat belum ada testimoni -->
+          <div class="testi-empty">
             <div class="testi-quote-mark">“</div>
-            <p style="
-                    font-size: 1.28rem;
-                    font-style: italic;
-                    line-height: 1.75;
-                    opacity: 0.95;
-                    font-weight: 400;
-                  ">
-              "Magang di jurusan PPLG membuat saya langsung diterima kerja
-              sebagai junior developer di software house mitra sekolah, dua
-              minggu setelah kelulusan!"
-            </p>
+            <p class="testi-quote">Cerita alumni segera hadir.</p>
+            <p class="testi-empty-desc">Kisah sukses alumni SMEMSA di dunia kerja dan wirausaha akan tampil di sini.</p>
+          </div>
+          @else
+          <!-- Slider vertikal: slide lama turun ke bawah, slide baru masuk dari atas -->
+          <div class="testi-slider" id="testi-slider" data-interval="5000" aria-roledescription="carousel"
+            aria-label="Cerita sukses alumni">
+            @foreach ($testimonials as $testimonial)
+            <article class="testi-slide {{ $loop->first ? 'is-active' : '' }}" aria-roledescription="slide"
+              aria-label="{{ $loop->iteration }} dari {{ $loop->count }}" @unless ($loop->first) aria-hidden="true" @endunless>
+              <div>
+                <div class="testi-quote-mark">“</div>
+                <p class="testi-quote">"{{ $testimonial->quote }}"</p>
+              </div>
+
+              <div class="testi-author">
+                <div class="testi-avatar">
+                  @if ($testimonial->photo_url)
+                  <img src="{{ $testimonial->photo_url }}" alt="Foto {{ $testimonial->name }}" loading="lazy" decoding="async">
+                  @else
+                  <span>{{ $testimonial->initials }}</span>
+                  @endif
+                </div>
+                <div class="testi-author-info">
+                  <strong class="testi-name">{{ $testimonial->name }}</strong>
+                  @if ($testimonial->major)
+                  <span class="testi-major">{{ $testimonial->major->code }}@if ($testimonial->graduation_year) &bull; Lulus {{ $testimonial->graduation_year }}@endif</span>
+                  @endif
+                  @if ($testimonial->job_title)
+                  <span class="testi-job">{{ $testimonial->job_title }}</span>
+                  @endif
+                </div>
+              </div>
+            </article>
+            @endforeach
           </div>
 
-          <div class="flex items-center" style="gap: 1.2rem; margin-top: 2.8rem">
-            <div style="
-                    width: 56px;
-                    height: 56px;
-                    background: rgba(255, 255, 255, 0.18);
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-weight: 800;
-                    font-size: 1.15rem;
-                    border: 2px solid rgba(255, 255, 255, 0.4);
-                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                  ">
-              PPLG
-            </div>
-            <div>
-              <strong style="display: block; font-size: 1.1rem; color: #ffffff">Ahmad Rizqi Pratama</strong>
-              <span style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.85)">Junior Web Developer &bull; PT
-                Digital Kreatif
-                Nusantara</span>
-            </div>
+          @if ($testimonials->count() > 1)
+          <!-- Indikator vertikal: klik untuk lompat ke testimoni tertentu -->
+          <div class="testi-dots" role="tablist" aria-label="Pilih cerita alumni">
+            @foreach ($testimonials as $testimonial)
+            <button type="button" class="testi-dot {{ $loop->first ? 'is-active' : '' }}" data-index="{{ $loop->index }}"
+              aria-label="Tampilkan cerita {{ $testimonial->name }}"></button>
+            @endforeach
           </div>
+          @endif
+          @endif
         </div>
       </div>
     </div>

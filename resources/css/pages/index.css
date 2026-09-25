@@ -1849,7 +1849,8 @@
     }
 
     .executive-quote {
-      font-family: var(--font-display);
+      font-family: italic;
+      font-style: italic;
       font-size: clamp(1.4rem, 2.2vw, 1.85rem);
       font-weight: 700;
       color: var(--primary);
@@ -1859,6 +1860,7 @@
     }
 
     .executive-bio-text {
+      text-align: justify !important;
       font-size: 1.05rem;
       color: var(--text-muted);
       line-height: 1.8;
@@ -2233,9 +2235,10 @@
     /* ═══ BAGIAN BAWAH — DUA KOLOM (Kiri 38%, Kanan 62%) ═══ */
     .majors-split-grid {
       display: grid;
+      /* grid-template-columns: 38% 62%; */
       grid-template-columns: 38% 62%;
       gap: 2.5rem;
-      align-items: start;
+      align-items: center;
       position: relative;
     }
 
@@ -2412,7 +2415,6 @@
     .major-panel-head-grid {
       display: grid;
       grid-template-columns: 38% 62%;
-      gap: 1.5rem;
       padding: 1.6rem;
       background: #ffffff;
       border-bottom: 1px solid var(--border-card);
@@ -6739,4 +6741,187 @@
           display: flex !important;
         }
       }
+}
+/* ==========================================================================
+   TESTIMONI ALUMNI — KARTU & SLIDER VERTIKAL (section Jejak Prestasi)
+   ========================================================================== */
+
+/* Semua slide ditumpuk di satu sel grid: tinggi kartu = testimoni terpanjang,
+   jadi kartu tidak "melompat" saat slide berganti. */
+.testi-slider {
+  display: grid;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.testi-card:has(.testi-dots) .testi-slider {
+  padding-right: 1.6rem;
+}
+
+/* Posisi awal slide: di atas (akan masuk dari atas) */
+.testi-slide {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.4rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition:
+    transform 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.8s ease,
+    visibility 0s linear 0.8s;
+}
+
+/* Slide yang sedang tampil */
+.testi-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    transform 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.8s ease,
+    visibility 0s;
+}
+
+/* Slide lama bergeser turun lalu menghilang */
+.testi-slide.is-leaving {
+  opacity: 0;
+  visibility: visible;
+  transform: translateY(100%);
+}
+
+/* Slide yang direset ke atas tanpa animasi (tidak terlihat) */
+.testi-slide.no-transition {
+  transition: none;
+}
+
+.testi-quote {
+  font-size: 1.22rem;
+  font-style: italic;
+  line-height: 1.75;
+  opacity: 0.95;
+  font-weight: 400;
+  margin: 0;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.testi-avatar {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  border: 3px solid var(--secondary-light);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.testi-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.testi-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.testi-name {
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.testi-major {
+  align-self: flex-start;
+  padding: 0.15rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: rgba(234, 179, 8, 0.22);
+  color: var(--secondary-light);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.testi-job {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Indikator vertikal di sisi kanan kartu */
+.testi-dots {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.testi-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+.testi-dot.is-active {
+  height: 24px;
+  background: var(--secondary-light);
+}
+
+.testi-dot:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Kartu kosong */
+.testi-empty {
+  margin-top: 1rem;
+}
+
+.testi-empty-desc {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+  .testi-quote {
+    font-size: 1.05rem;
+  }
+
+  .testi-avatar {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+/* Pengguna yang memilih "kurangi animasi": slide hanya memudar */
+@media (prefers-reduced-motion: reduce) {
+  .testi-slide,
+  .testi-slide.is-leaving {
+    transform: none;
+  }
 }
