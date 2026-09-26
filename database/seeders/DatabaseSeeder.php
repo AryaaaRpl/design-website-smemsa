@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             BkkSeeder::class,
             MajorPartnerSeeder::class,
             ExtracurricularSeeder::class,
+            BludSeeder::class,
         ]);
     }
 }

@@ -73,6 +73,14 @@ class Major extends Model
         return $this->belongsToMany(Partner::class);
     }
 
+    /**
+     * Unit usaha BLUD yang dikelola siswa jurusan ini.
+     */
+    public function businessUnits(): BelongsToMany
+    {
+        return $this->belongsToMany(BusinessUnit::class);
+    }
+
     #[Scope]
     protected function active(Builder $query): void
     {

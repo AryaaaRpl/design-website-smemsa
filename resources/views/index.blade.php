@@ -535,117 +535,47 @@
           sesungguhnya.
         </p>
       </div>
-      <a href="#jurusan" class="btn btn-amber">Lihat Unit Praktek Jurusan &rarr;</a>
+      <a href="{{ route('blud.index') }}" class="btn btn-amber">Lihat Unit Praktek Jurusan &rarr;</a>
     </div>
 
+    @if ($bludProducts->isEmpty())
+    <!-- Tampilan saat belum ada produk unggulan -->
+    <p style="opacity: 0.85">Produk BLUD unggulan segera hadir.</p>
+    @else
     <div class="blud-grid" id="blud-container">
-      <!-- Data produk akan dirender oleh JavaScript -->
+      @foreach ($bludProducts as $product)
+      <a href="{{ route('blud.show', $product) }}" class="product-bento"
+        style="padding: 1.5rem; justify-content: space-between; text-decoration: none;">
+        <div>
+          @if ($product->image_url)
+          <div style="position: relative; overflow: hidden; border-radius: var(--radius-sm); margin-bottom: 1.2rem;">
+            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" width="400" height="300" loading="lazy"
+              style="width: 100%; height: 220px; object-fit: cover; border-radius: var(--radius-sm); transition: transform 0.4s ease;">
+          </div>
+          @else
+          <!-- Tampilan saat produk belum punya foto -->
+          <div style="width: 100%; height: 220px; border-radius: var(--radius-sm); background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; color: #94a3b8; font-size: 0.9rem;">
+            Belum ada gambar
+          </div>
+          @endif
+          <div class="blud-learner-tag">{{ $product->businessUnit->manager_label }}</div>
+          <h3 class="font-head" style="font-size:1.25rem; color:#ffffff; margin: 0.4rem 0 0.6rem; line-height: 1.3;">{{ $product->name }}</h3>
+          @if ($product->summary)
+          <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0.6rem; line-height: 1.5;">{{ $product->summary }}</p>
+          @endif
+          @if (! empty($product->specs))
+          <span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;"><strong>{{ $product->specs[0]['label'] }}:</strong> {{ $product->specs[0]['value'] }}</span>
+          @endif
+          @if (! empty($product->variants))
+          <span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;"><strong>Varian:</strong> {{ implode(', ', $product->variants) }}</span>
+          @endif
+        </div>
+      </a>
+      @endforeach
     </div>
+    @endif
   </div>
 </section>
-
-<!-- BLUD PRODUCT DETAIL MODAL (Matching Visi-Misi Modal) -->
-<div class="blud-modal-overlay" id="blud-modal-overlay" onclick="closeBludModalOnOverlay(event)" data-lenis-prevent>
-  <div class="blud-modal-card" id="blud-modal-card" data-lenis-prevent>
-    <div class="blud-modal-banner" id="blud-modal-banner">
-      <img src="" alt="" id="blud-modal-bg-img" class="bg-cover" style="display: none;" />
-      <div class="blud-modal-banner-icon" id="blud-modal-icon-box">
-        <span id="blud-modal-icon-emoji" style="font-size: 2.5rem;"></span>
-        <img id="blud-modal-icon-img" src="" alt=""
-          style="display: none; width: 100%; height: 100%; object-fit: cover; border-radius: 12px;" />
-      </div>
-      <button aria-label="Tutup Detail Produk BLUD" class="blud-modal-close-btn" onclick="closeBludModal()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
-      </button>
-    </div>
-    <div class="blud-modal-body">
-      <span class="blud-modal-tag" id="blud-modal-tag">Dikelola Siswa BLUD</span>
-      <h3 class="blud-modal-title" id="blud-modal-title">Nama Produk BLUD</h3>
-      <p class="blud-modal-desc" id="blud-modal-desc">Deskripsi lengkap produk...</p>
-
-      <div class="blud-modal-specs-box">
-        <div class="blud-modal-section-title">
-          Spesifikasi &amp; Informasi Detail:
-        </div>
-        <div class="blud-modal-chips-row" id="blud-modal-chips">
-          <!-- Chips dirender oleh JS -->
-        </div>
-      </div>
-
-      <div class="blud-modal-highlight-box">
-        <div class="blud-modal-section-title" style="color: #064e3b; margin-bottom: 0.4rem;">
-          Nilai Praktik Vokasi &amp; Pembelajaran BLUD:
-        </div>
-        <div class="blud-modal-highlight-text" id="blud-modal-highlight">
-          Highlight praktik...
-        </div>
-      </div>
-
-      <div class="blud-modal-footer-cta">
-        <div style="font-size: 0.85rem; color: #64748b;">
-          <strong style="color: #0f172a;">Unit Usaha BLUD SMEMSA</strong> • Berlisensi &amp; Didampingi Guru Industri
-        </div>
-        <button class="btn btn-primary" onclick="closeBludModal()" style="padding: 0.6rem 1.4rem; font-size: 0.9rem;">
-          Tutup Detail
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- UNIT USAHA SEKOLAH DETAIL MODAL -->
-<div class="blud-modal-overlay" id="unit-usaha-modal-overlay" onclick="closeUnitUsahaModalOnOverlay(event)"
-  data-lenis-prevent>
-  <div class="blud-modal-card" id="unit-usaha-modal-card" data-lenis-prevent>
-    <div class="blud-modal-banner" id="unit-usaha-modal-banner">
-      <div class="blud-modal-banner-icon" id="unit-usaha-modal-icon-box">
-        <span id="unit-usaha-modal-icon-emoji" style="font-size: 2.5rem;">🏢</span>
-      </div>
-      <button aria-label="Tutup Detail Unit Usaha" class="blud-modal-close-btn" onclick="closeUnitUsahaModal()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
-      </button>
-    </div>
-    <div class="blud-modal-body">
-      <span class="blud-modal-tag" id="unit-usaha-modal-tag">🏢 Unit Usaha Sekolah (TEFA &amp; BLUD)</span>
-      <h3 class="blud-modal-title" id="unit-usaha-modal-title">Nama Unit Usaha</h3>
-      <p class="blud-modal-desc" id="unit-usaha-modal-desc">Deskripsi lengkap unit usaha...</p>
-
-      <div class="blud-modal-specs-box">
-        <div class="blud-modal-section-title">
-          Layanan &amp; Keunggulan Utama:
-        </div>
-        <div class="blud-modal-chips-row" id="unit-usaha-modal-chips">
-          <!-- Chips dirender oleh JS -->
-        </div>
-      </div>
-
-      <div class="blud-modal-highlight-box">
-        <div class="blud-modal-section-title" style="color: #064e3b; margin-bottom: 0.4rem;">
-          Nilai Ekosistem Vokasi &amp; Praktik Industri:
-        </div>
-        <div class="blud-modal-highlight-text" id="unit-usaha-modal-highlight">
-          Highlight unit usaha...
-        </div>
-      </div>
-
-      <div class="blud-modal-footer-cta">
-        <div style="font-size: 0.85rem; color: #64748b;">
-          <strong style="color: #0f172a;">Ekosistem TEFA &amp; BLUD SMEMSA</strong> • Berstandar DUDIKA
-        </div>
-        <button class="btn btn-primary" onclick="closeUnitUsahaModal()"
-          style="padding: 0.6rem 1.4rem; font-size: 0.9rem;">
-          Tutup Detail
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- 9. PRESTASI & TESTIMONI STRIP (Section 7 in Flow: BKK -> Prestasi) -->
 <section class="achievements-section" id="prestasi">
@@ -798,131 +728,47 @@
       <a href="#blud" class="btn btn-amber">Lihat Produk BLUD Siswa &rarr;</a>
     </div>
 
+    @if ($businessUnits->isEmpty())
+    <!-- Tampilan saat belum ada unit usaha -->
+    <p style="opacity: 0.85; color: #cbd5e1;">Informasi unit usaha sekolah segera hadir.</p>
+    @else
     <div class="blud-grid">
-      <!-- Card Unit Usaha 1 -->
-      <div class="product-bento" style="padding: 1.8rem; justify-content: space-between; cursor: pointer;"
-        onclick="openUnitUsahaModal(0)">
+      @foreach ($businessUnits as $unit)
+      <a href="{{ route('blud.unit', $unit) }}" class="product-bento"
+        style="padding: 1.8rem; justify-content: space-between; text-decoration: none;">
         <div>
-          <div
-            style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);">
-            <span style="font-size: 3rem; margin-bottom: 0.4rem;">🖨️</span>
-            <h4
-              style="color: #fff; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.3; font-weight: 800;">
-              SMEMSA Print Studio</h4>
+          @if ($unit->image_url)
+          <div style="overflow: hidden; border-radius: var(--radius-sm); margin-bottom: 1.2rem;">
+            <img src="{{ $unit->image_url }}" alt="{{ $unit->name }}" width="400" height="300" loading="lazy"
+              style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-sm);">
           </div>
-          <div class="blud-learner-tag">DKV &amp; Bisnis Digital</div>
+          @else
+          <!-- Tampilan saat unit usaha belum punya foto -->
+          <div style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; color: #94a3b8; font-size: 0.9rem;">
+            Belum ada gambar
+          </div>
+          @endif
+          <div class="blud-learner-tag">{{ $unit->majors_label ?: $unit->managed_by->label() }}</div>
           <h3 class="font-head" style="font-size:1.25rem; color:#ffffff; margin: 0.4rem 0 0.6rem; line-height: 1.3;">
-            Percetakan &amp; Merchandise</h3>
+            {{ $unit->name }}</h3>
+          @if ($unit->summary)
           <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0.8rem; line-height: 1.5;">
-            Layanan cetak banner, sablon kaos, mug merchandise, ID card, dan suvenir komersial berstandar industri.
+            {{ $unit->summary }}
           </p>
+          @endif
+          @if (! empty($unit->features))
           <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
+            @foreach ($unit->features as $feature)
             <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Cetak
-              Satuan</span>
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Hasil
-              Presisi</span>
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Order
-              Digital</span>
+              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">{{ $feature }}</span>
+            @endforeach
           </div>
+          @endif
         </div>
-      </div>
-
-      <!-- Card Unit Usaha 2 -->
-      <div class="product-bento" style="padding: 1.8rem; justify-content: space-between; cursor: pointer;"
-        onclick="openUnitUsahaModal(1)">
-        <div>
-          <div
-            style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);">
-            <span style="font-size: 3rem; margin-bottom: 0.4rem;">🔧</span>
-            <h4
-              style="color: #fff; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.3; font-weight: 800;">
-              SMEMSA Tech Solutions</h4>
-          </div>
-          <div class="blud-learner-tag">TJKT &amp; PPLG</div>
-          <h3 class="font-head" style="font-size:1.25rem; color:#ffffff; margin: 0.4rem 0 0.6rem; line-height: 1.3;">
-            Service Center &amp; Software</h3>
-          <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0.8rem; line-height: 1.5;">
-            Jasa perbaikan komputer/laptop, instalasi jaringan Wi-Fi/LAN, serta pembuatan website &amp; aplikasi UMKM.
-          </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Teknisi
-              BNSP</span>
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Garansi
-              Service</span>
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">NOC
-              Center</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card Unit Usaha 3 -->
-      <div class="product-bento" style="padding: 1.8rem; justify-content: space-between; cursor: pointer;"
-        onclick="openUnitUsahaModal(2)">
-        <div>
-          <div
-            style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);">
-            <span style="font-size: 3rem; margin-bottom: 0.4rem;">🏨</span>
-            <h4
-              style="color: #fff; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.3; font-weight: 800;">
-              SMEMSA Hospitality Hub</h4>
-          </div>
-          <div class="blud-learner-tag">Perhotelan &amp; MPLB</div>
-          <h3 class="font-head" style="font-size:1.25rem; color:#ffffff; margin: 0.4rem 0 0.6rem; line-height: 1.3;">
-            Edutel &amp; Laundry Center</h3>
-          <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0.8rem; line-height: 1.5;">
-            Pengelolaan Mini Hotel (Edutel), jasa laundry wangi berkualitas, dan ruang rapat/meeting room komersial.
-          </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Standar
-              Hotel</span>
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Laundry
-              Express</span>
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Ruang
-              Rapat</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card Unit Usaha 4 -->
-      <div class="product-bento" style="padding: 1.8rem; justify-content: space-between; cursor: pointer;"
-        onclick="openUnitUsahaModal(3)">
-        <div>
-          <div
-            style="width: 100%; height: 180px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; text-align: center; margin-bottom: 1.2rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);">
-            <span style="font-size: 3rem; margin-bottom: 0.4rem;">🛍️</span>
-            <h4
-              style="color: #fff; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.3; font-weight: 800;">
-              SMEMSA Mart &amp; Business</h4>
-          </div>
-          <div class="blud-learner-tag">Bisnis Digital &amp; AKL</div>
-          <h3 class="font-head" style="font-size:1.25rem; color:#ffffff; margin: 0.4rem 0 0.6rem; line-height: 1.3;">
-            Ritel &amp; Mini Market Siswa</h3>
-          <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0.8rem; line-height: 1.5;">
-            Pusat perbelanjaan perlengkapan sekolah, makanan/minuman produk siswa, dan minimarket berbasis POS Kasir.
-          </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Produk
-              Lokal</span>
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Sistem
-              POS</span>
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">Lengkap
-              &amp; Murah</span>
-          </div>
-        </div>
-      </div>
+      </a>
+      @endforeach
     </div>
+    @endif
   </div>
 </section>
 

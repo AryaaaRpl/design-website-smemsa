@@ -105,7 +105,7 @@
         <a href="{{ url('/bkk') }}" class="nav-link {{ request()->is('bkk*') ? 'active' : '' }}">BKK</a>
 
         <!-- Layanan Siswa (BLUD) -->
-        <a href="{{ url('/#blud') }}" class="nav-link">BLUD</a>
+        <a href="{{ route('blud.index') }}" class="nav-link {{ request()->is('blud*') ? 'active' : '' }}">BLUD</a>
 
         <a href="{{ url('/berita') }}" class="nav-link {{ request()->is('berita*') ? 'active' : '' }}">Berita</a>
         <a href="{{ url('/spmb') }}" class="btn btn-primary {{ request()->is('spmb*') ? 'active' : '' }}" style="padding: 0.55rem 1.4rem; font-size: 0.88rem">Daftar SPMB</a>
@@ -154,7 +154,7 @@
       <a href="{{ url('/#sambutan') }}">👤 Sambutan Kepala Sekolah</a>
       <a href="{{ url('/jurusan') }}" class="{{ request()->is('jurusan*') ? 'active' : '' }}">💻 {{ trim(($navMajors->count() ?: '') . ' Program Keahlian') }}</a>
       <a href="{{ url('/lsp') }}" class="{{ request()->is('lsp*') ? 'active' : '' }}">📜 LSP-P1</a>
-      <a href="{{ url('/#blud') }}">🏬 Unit Produksi BLUD</a>
+      <a href="{{ route('blud.index') }}" class="{{ request()->is('blud*') ? 'active' : '' }}">🏬 Unit Produksi BLUD</a>
 
       <div style="margin-top: 1.5rem">
         <a href="{{ url('/spmb') }}" class="btn btn-primary"

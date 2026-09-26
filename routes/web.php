@@ -3,18 +3,22 @@
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\Admin\AchievementController as AdminAchievementController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\BusinessUnitController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExtracurricularController as AdminExtracurricularController;
 use App\Http\Controllers\Admin\FacilityController as AdminFacilityController;
 use App\Http\Controllers\Admin\JobVacancyController;
 use App\Http\Controllers\Admin\MajorController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeacherController as AdminTeacherController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\BkkController;
+use App\Http\Controllers\BludController;
 use App\Http\Controllers\ExtracurricularController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\HomeController;
@@ -34,6 +38,13 @@ Route::get('/visi-misi', VisionMissionController::class)->name('visi-misi');
 
 Route::get('/jurusan', [MajorPageController::class, 'index'])->name('jurusan.index');
 Route::get('/jurusan/{major}', [MajorPageController::class, 'show'])->name('jurusan.show');
+
+Route::get('/blud', [BludController::class, 'index'])->name('blud.index');
+Route::get('/blud/unit/{businessUnit}', [BludController::class, 'unit'])->name('blud.unit');
+Route::get('/blud/{product}', [BludController::class, 'show'])->name('blud.show');
+Route::post('/blud/{product}/pesan', [BludController::class, 'order'])
+    ->middleware('throttle:5,1')
+    ->name('blud.order');
 
 Route::get('/lsp', function () {
     return view('lsp');
@@ -82,6 +93,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('facilities', AdminFacilityController::class)->except('show');
         Route::resource('testimonials', TestimonialController::class)->except('show');
         Route::resource('partners', PartnerController::class)->except('show');
+        Route::resource('business-units', BusinessUnitController::class)->except('show');
+        Route::resource('products', ProductController::class)->except('show');
+        Route::resource('orders', OrderController::class)->only(['index', 'update', 'destroy']);
         Route::get('settings/{group?}', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings/{group}', [SettingController::class, 'update'])->name('settings.update');
 

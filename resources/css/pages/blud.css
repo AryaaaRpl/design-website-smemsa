@@ -1,0 +1,307 @@
+/* ==========================================================================
+   HALAMAN BLUD (/blud, /blud/unit/{slug}, /blud/{produk})
+   Dasar tampilan (header, breadcrumb, kartu fakta, CTA) memakai gaya halaman
+   jurusan agar konsisten. Semua class baru memakai awalan "bl-".
+   Kartu produk (.bl-card) ada di jurusan.css karena dipakai juga di detail jurusan.
+   ========================================================================== */
+@import './jurusan.css';
+
+/* ---------- Kartu unit usaha ---------- */
+.bl-unit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.2rem;
+}
+
+.bl-unit {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.3rem;
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.bl-unit:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-light);
+}
+
+.bl-unit strong {
+  display: block;
+  font-family: var(--font-display);
+  color: var(--primary-dark);
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.bl-unit span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.bl-unit small {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #a16207;
+}
+
+/* ---------- Filter katalog ---------- */
+.bl-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.bl-filter a {
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-card);
+  background: #ffffff;
+  color: var(--text-dark);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.bl-filter a:hover {
+  border-color: var(--primary);
+}
+
+.bl-filter a.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+/* Pembungkus kartu di katalog (untuk filter). Kartu tetap setinggi baris grid. */
+.bl-item {
+  display: flex;
+}
+
+.bl-item > .bl-card {
+  flex: 1;
+}
+
+.bl-item[hidden],
+.content-empty[hidden] {
+  display: none;
+}
+
+/* ---------- Detail produk ---------- */
+.page-header.bl-product-header {
+  height: auto;
+  min-height: 0;
+  padding: 9rem 0 3rem;
+  text-align: left;
+}
+
+.bl-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.bl-detail-photo {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--primary-surface);
+  display: grid;
+  place-items: center;
+}
+
+.bl-detail-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bl-block {
+  margin-top: 2rem;
+}
+
+.bl-block h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.8rem;
+}
+
+.bl-prose p {
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 0.9rem;
+}
+
+.bl-specs {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.bl-specs div {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.92rem;
+}
+
+.bl-specs div + div {
+  border-top: 1px solid var(--border-card);
+}
+
+.bl-specs dt {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.bl-specs dd {
+  color: var(--text-muted);
+}
+
+/* ---------- Kartu pesan ---------- */
+.bl-order {
+  position: sticky;
+  top: 100px;
+  padding: 1.6rem;
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.bl-price {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.bl-stock {
+  display: inline-block;
+  margin: 0.6rem 0 1.2rem;
+  padding: 0.25rem 0.8rem;
+  border-radius: var(--radius-full);
+  background: var(--primary-surface);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.bl-stock.is-empty {
+  background: var(--secondary-surface);
+  color: #a16207;
+}
+
+.bl-field {
+  margin-bottom: 1rem;
+}
+
+.bl-field label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.bl-field input,
+.bl-field select,
+.bl-field textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: var(--text-dark);
+  font: inherit;
+  font-size: 0.92rem;
+}
+
+.bl-field input:focus,
+.bl-field select:focus,
+.bl-field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.bl-field-error {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: #b91c1c;
+}
+
+.bl-order .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.bl-order .btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bl-order-note {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.bl-seller {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-card);
+  color: inherit;
+  text-decoration: none;
+}
+
+.bl-seller strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--primary-dark);
+}
+
+.bl-seller span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 992px) {
+  .bl-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .bl-order {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .bl-specs div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}

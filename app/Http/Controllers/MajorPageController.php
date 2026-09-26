@@ -8,6 +8,7 @@ use App\Models\Facility;
 use App\Models\JobVacancy;
 use App\Models\Major;
 use App\Models\Partner;
+use App\Models\Product;
 use Illuminate\View\View;
 
 /**
@@ -54,8 +55,16 @@ class MajorPageController extends Controller
             ->take(5)
             ->get();
 
+        // Produk BLUD dari unit usaha yang dikelola siswa jurusan ini.
+        $products = Product::visible()
+            ->with('businessUnit')
+            ->whereHas('businessUnit.majors', fn ($query) => $query->whereKey($major->id))
+            ->ordered()
+            ->take(8)
+            ->get();
+
         $otherMajors = Major::active()->ordered()->whereKeyNot($major->id)->get();
 
-        return view('jurusan.show', compact('major', 'achievements', 'vacancies', 'otherMajors'));
+        return view('jurusan.show', compact('major', 'achievements', 'vacancies', 'products', 'otherMajors'));
     }
 }

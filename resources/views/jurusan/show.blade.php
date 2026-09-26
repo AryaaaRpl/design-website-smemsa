@@ -178,6 +178,27 @@
     </section>
   @endif
 
+  <!-- 6b. PRODUK BLUD JURUSAN -->
+  @if ($products->isNotEmpty())
+    <section class="section-padding"{!! $major->facilities->isNotEmpty() ? ' style="padding-top: 0"' : '' !!}>
+      <div class="container">
+        <div class="jr-heading">
+          <span class="badge badge-primary mb-2">Karya Siswa</span>
+          <h2 class="font-head jr-section-title">Produk BLUD {{ $major->code }}</h2>
+          <p class="jr-section-desc">Barang dan jasa dari unit usaha yang dikelola siswa {{ $major->code }}. Bisa dipesan langsung.</p>
+        </div>
+        <div class="bl-grid">
+          @foreach ($products as $product)
+            @include('blud._product-card')
+          @endforeach
+        </div>
+        <div class="text-center" style="margin-top: 2rem">
+          <a href="{{ route('blud.index') }}" class="btn btn-outline">Lihat Semua Produk BLUD &rarr;</a>
+        </div>
+      </div>
+    </section>
+  @endif
+
   <!-- 7. PRESTASI -->
   @if ($achievements->isNotEmpty())
     <section class="jr-band">
