@@ -353,11 +353,13 @@
       }, 550);
     }
 
-    // Hilangkan loading saat seluruh window & aset selesai dimuat
-    if (document.readyState === 'complete') {
+    // Hilangkan loading begitu kerangka halaman (HTML, CSS, script) siap.
+    // Tidak menunggu semua gambar: gambar di bawah layar dimuat bertahap (lazy),
+    // jadi pengunjung bisa langsung melihat & memakai halaman.
+    if (document.readyState !== 'loading') {
       setTimeout(hidePageLoader, 200);
     } else {
-      window.addEventListener('load', function () {
+      document.addEventListener('DOMContentLoaded', function () {
         setTimeout(hidePageLoader, 200);
       });
     }

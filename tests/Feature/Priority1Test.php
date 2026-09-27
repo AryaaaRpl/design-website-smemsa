@@ -42,7 +42,8 @@ class Priority1Test extends TestCase
     {
         $this->get(route('home'))
             ->assertSee('Wahid Wahyudi, S.E., M.M.')
-            ->assertSee('PAK-WAHID-AI-e1781064934191.png', false);
+            // Foto bawaan dikirim dalam versi WebP (lihat App\Support\Media).
+            ->assertSee('PAK-WAHID-AI-e1781064934191.webp', false);
     }
 
     public function test_copyright_year_is_current_year(): void

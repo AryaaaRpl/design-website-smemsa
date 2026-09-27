@@ -2,6 +2,7 @@
 
 namespace App\Models\Concerns;
 
+use App\Support\Media;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -17,7 +18,7 @@ trait HasMediaUrl
         }
 
         return str_starts_with($path, 'assets/')
-            ? asset($path)
+            ? Media::asset($path)
             : Storage::disk('public')->url($path);
     }
 }

@@ -1,7 +1,8 @@
+@use('App\Support\Media')
   <header class="header-wrapper">
     <nav class="nav-island" id="main-nav">
       <a href="{{ url('/') }}" class="brand-box">
-        <img src="{{ request()->is('lsp*') ? asset('assets/LSP.png') : (request()->is('bkk*') ? asset('assets/bkk.png') : asset('assets/logo.png')) }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMKS Muhammadiyah 1 Genteng' : (request()->is('bkk*') ? 'Logo BKK SMKS Muhammadiyah 1 Genteng' : 'Logo SMKS Muhammadiyah 1 Genteng') }}" class="brand-logo" onerror="
+        <img src="{{ request()->is('lsp*') ? Media::asset('assets/LSP.png') : (request()->is('bkk*') ? Media::asset('assets/bkk.png') : Media::asset('assets/logo.png')) }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMKS Muhammadiyah 1 Genteng' : (request()->is('bkk*') ? 'Logo BKK SMKS Muhammadiyah 1 Genteng' : 'Logo SMKS Muhammadiyah 1 Genteng') }}" class="brand-logo" onerror="
               this.closest('.card')
                 ? this.closest('.card').classList.add('no-image')
                 : null;
@@ -125,7 +126,7 @@
         <path d="m6 6 12 12" />
       </svg></button>
     <div class="brand-box" style="margin-bottom: 2rem">
-      <img src="{{ request()->is('lsp*') ? asset('assets/LSP.png') : (request()->is('bkk*') ? asset('assets/bkk.png') : asset('assets/logo.webp')) }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMEMSA' : (request()->is('bkk*') ? 'Logo BKK SMEMSA' : 'Logo SMEMSA') }}" class="brand-logo" onerror="
+      <img src="{{ request()->is('lsp*') ? Media::asset('assets/LSP.png') : (request()->is('bkk*') ? Media::asset('assets/bkk.png') : Media::asset('assets/logo.webp')) }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMEMSA' : (request()->is('bkk*') ? 'Logo BKK SMEMSA' : 'Logo SMEMSA') }}" class="brand-logo" onerror="
             this.closest('.card')
               ? this.closest('.card').classList.add('no-image')
               : null;
@@ -150,10 +151,10 @@
       <a href="{{ url('/berita') }}" class="{{ request()->is('berita*') ? 'active' : '' }}">Jurnal & Kabar Sekolah</a>
 
       <div class="drawer-section-title">Navigasi Halaman Utama</div>
-      <a href="{{ url('/#sambutan') }}">👤 Sambutan Kepala Sekolah</a>
-      <a href="{{ url('/jurusan') }}" class="{{ request()->is('jurusan*') ? 'active' : '' }}">💻 {{ trim(($navMajors->count() ?: '') . ' Program Keahlian') }}</a>
-      <a href="{{ url('/lsp') }}" class="{{ request()->is('lsp*') ? 'active' : '' }}">📜 LSP-P1</a>
-      <a href="{{ route('blud.index') }}" class="{{ request()->is('blud*') ? 'active' : '' }}">🏬 Unit Produksi BLUD</a>
+      <a href="{{ url('/#sambutan') }}">Sambutan Kepala Sekolah</a>
+      <a href="{{ url('/jurusan') }}" class="{{ request()->is('jurusan*') ? 'active' : '' }}">{{ trim(($navMajors->count() ?: '') . ' Program Keahlian') }}</a>
+      <a href="{{ url('/lsp') }}" class="{{ request()->is('lsp*') ? 'active' : '' }}">LSP-P1</a>
+      <a href="{{ route('blud.index') }}" class="{{ request()->is('blud*') ? 'active' : '' }}">Unit Produksi BLUD</a>
 
       <div style="margin-top: 1.5rem">
         <a href="{{ url('/spmb') }}" class="btn btn-primary"

@@ -1,3 +1,4 @@
+@use('App\Support\Media')
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -9,7 +10,7 @@
                 gap: 0.9rem;
                 margin-bottom: 1.2rem;
               ">
-            <img src="{{ request()->is('lsp*') ? asset('assets/icon/LSP.png') : (request()->is('bkk*') ? asset('assets/bkk.png') : asset('assets/logo.webp')) }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMKS Muhammadiyah 1 Genteng' : (request()->is('bkk*') ? 'Logo BKK SMKS Muhammadiyah 1 Genteng' : 'Logo SMKS Muhammadiyah 1 Genteng') }}" class="brand-logo"
+            <img src="{{ request()->is('lsp*') ? Media::asset('assets/icon/LSP.png') : (request()->is('bkk*') ? Media::asset('assets/bkk.png') : Media::asset('assets/logo.webp')) }}" alt="{{ request()->is('lsp*') ? 'Logo LSP SMKS Muhammadiyah 1 Genteng' : (request()->is('bkk*') ? 'Logo BKK SMKS Muhammadiyah 1 Genteng' : 'Logo SMKS Muhammadiyah 1 Genteng') }}" class="brand-logo"
               style="max-height: 52px; width: auto; object-fit: contain" width="52" height="52" onerror="
                   this.closest('.card')
                     ? this.closest('.card').classList.add('no-image')
@@ -161,7 +162,7 @@
             <div><strong>NPSN:</strong> {{ $site->get('npsn') }}</div>
             <div><strong>Akreditasi:</strong> {{ $site->get('accreditation') }} ({{ $site->get('accreditation_predicate') }} BAN-S/M)</div>
             <div><strong>Lembaga Sertifikasi:</strong> LSP-P1 BNSP</div>
-            <div><strong>Status Sekolah:</strong> SMK Pusat Keunggulan</div>
+            <div><strong>Status Sekolah:</strong> SMK Pusat Keunggulan (Exelent School)</div>
             <div><strong>Domain Resmi:</strong> smksmuh1gtg.com</div>
           </div>
         </div>

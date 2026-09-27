@@ -43,12 +43,16 @@
       }
     </script>
 
-  <!-- Typography: Plus Jakarta Sans with display=swap -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
-    rel="stylesheet" />
+  <!-- Typography: Plus Jakarta Sans di-host sendiri (lihat partials/fonts).
+       Subset latin (huruf yang dipakai hampir semua teks) diunduh paling awal. -->
+  <link rel="preload" href="{{ asset('fonts/plus-jakarta-sans/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2') }}"
+    as="font" type="font/woff2" crossorigin />
+  @include('partials.fonts')
+
+  <!-- Library animasi (di-host sendiri, dipakai di akhir body): mulai diunduh sejak awal. -->
+  <link rel="preload" href="{{ asset('vendor/gsap-3.12.5.min.js') }}" as="script" />
+  <link rel="preload" href="{{ asset('vendor/ScrollTrigger-3.12.5.min.js') }}" as="script" />
+  <link rel="preload" href="{{ asset('vendor/lenis-1.1.20.min.js') }}" as="script" />
 
     @php
     $path = trim(request()->path(), '/');
@@ -138,8 +142,8 @@
   </div>
 
   <!-- GSAP, ScrollTrigger & Lenis Smooth Scroll -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="{{ asset('vendor/gsap-3.12.5.min.js') }}"></script>
+  <script src="{{ asset('vendor/ScrollTrigger-3.12.5.min.js') }}"></script>
 
   <!-- STANDARDIZED ACCESSIBLE NAVBAR & DRAWER SCRIPT (INITIALIZED FIRST) -->
   <script>
@@ -235,7 +239,7 @@
     })();
   </script>
 
-  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="{{ asset('vendor/lenis-1.1.20.min.js') }}"></script>
 
   <script>
     // 1. Initialize Lenis Smooth Scroll
@@ -779,7 +783,13 @@
     }
 
     // Inisialisasi awal saat load
-    preloadMajorImages();
+    // Foto jurusan di-preload setelah halaman selesai dimuat agar tidak berebut
+    // bandwidth dengan gambar hero (konten pertama yang dilihat pengunjung).
+    if (document.readyState === "complete") {
+      preloadMajorImages();
+    } else {
+      window.addEventListener("load", preloadMajorImages, { once: true });
+    }
     renderMajorTabList();
     if (isMajorsMobile()) {
       collapseMajorPanel();
@@ -906,9 +916,21 @@
     // 8. GSAP ScrollTrigger Animations
     gsap.registerPlugin(ScrollTrigger);
 
+    /* ANTREAN ANIMASI (performa): pembuatan animasi di bawah layar dijalankan
+       berurutan dalam potongan kecil (maks. ~40ms), lalu browser diberi jeda
+       untuk merespons. Urutan & hasil akhirnya sama; HP tidak "macet" saat memuat. */
+    const animationQueue = [];
+    const queueAnimation = (job) => animationQueue.push(job);
+    function flushAnimationQueue() {
+      const startedAt = performance.now();
+      while (animationQueue.length && performance.now() - startedAt < 40) {
+        animationQueue.shift()();
+      }
+      if (animationQueue.length) setTimeout(flushAnimationQueue, 0);
+    }
+
     // Counter Numbers Animation
-    const counters = document.querySelectorAll(".counter-value");
-    counters.forEach((counter) => {
+    queueAnimation(() => document.querySelectorAll(".counter-value").forEach((counter) => {
       const target = parseInt(counter.getAttribute("data-target"));
       ScrollTrigger.create({
         trigger: counter,
@@ -926,7 +948,7 @@
           });
         },
       });
-    });
+    }));
 
     /* =====================================================================
            TEXT SCROLL ANIMATION (skiper31-style)
@@ -957,7 +979,7 @@
     }
 
     // Reveal mandiri (elemen yang tidak berada di dalam section ter-pin)
-    document.querySelectorAll("[data-scroll-reveal]").forEach((el) => {
+    document.querySelectorAll("[data-scroll-reveal]").forEach((el) => queueAnimation(() => {
       if (el.closest(".sinergi-section") || el.closest("#sinergi")) return; // ditangani timeline pinned di bawah
       const words = splitIntoWords(el);
       if (prefersReducedMotion) return;
@@ -976,7 +998,7 @@
           scrub: 0.8,
         },
       });
-    });
+    }));
 
     /* =====================================================================
            HERO SECTION ANIMATIONS
@@ -1024,7 +1046,9 @@
         const speed = parseFloat(layer.dataset.parallax) || 0;
         const section = layer.closest("section") || layer.parentElement;
 
-        gsap.fromTo(
+        // Lapisan di hero (terlihat saat halaman dibuka) dibuat langsung;
+        // lapisan di section lain masuk antrean.
+        const create = () => gsap.fromTo(
           layer,
           { yPercent: -speed * 50 },
           {
@@ -1038,6 +1062,9 @@
             },
           },
         );
+
+        if (section.getBoundingClientRect().top < window.innerHeight) create();
+        else queueAnimation(create);
       });
     }
     initParallax();
@@ -1050,7 +1077,7 @@
       ".product-bento",
       ".article-card",
       ".stat-card",
-    ].forEach((sel) => {
+    ].forEach((sel) => queueAnimation(() => {
       const items = document.querySelectorAll(sel);
       if (!items.length || prefersReducedMotion) return;
 
@@ -1072,9 +1099,10 @@
             },
           ),
       });
-    });
+    }));
 
     // 8. TIGA PILAR SINERGI VOKASI - GSAP PINNED SCROLLTRIGGER ANIMATION
+    queueAnimation(() => {
     const synergyStage = document.getElementById("synergy-stage");
     if (synergyStage && !prefersReducedMotion) {
       // Split quote text into word spans using existing splitIntoWords()
@@ -1305,8 +1333,10 @@
       const bar = document.getElementById("synergy-progress-bar");
       if (bar) bar.style.width = "100%";
     }
+    });
 
     // 9. Prestasi Section GSAP ScrollTrigger & Parallax
+    queueAnimation(() => {
     const timelineBar = document.getElementById("timeline-bar");
     if (timelineBar) {
       gsap.to(timelineBar, {
@@ -1359,6 +1389,7 @@
         },
       );
     }
+    });
 
     // Infinite Partner Marquee
     // Refresh posisi ScrollTrigger setelah font & gambar selesai dimuat,
@@ -1374,6 +1405,9 @@
       duration: 50,
       repeat: -1,
     });
+
+    // Jalankan antrean animasi (lihat ANTREAN ANIMASI di atas).
+    flushAnimationQueue();
 
     function filterIndexNews(category, element) {
       const filterLinks = document.querySelectorAll(".news-filter-link");

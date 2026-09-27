@@ -32,7 +32,7 @@ class TeacherSeeder extends Seeder
             ['Wuri Handayani, S.E', 'BENDAHARA SEKOLAH', TeacherCategory::Leadership, 'assets/guru/kategori-pimpinan/BENDAHARA SEKOLAH - Wuri Handayani, S.E.webp', null],
             ['Misrok, A.Md', 'KEPALA TU', TeacherCategory::Leadership, 'assets/guru/kategori-pimpinan/KEPALA TU - Misrok, A.Md.webp', null],
             ['Nur Rohman, M.Pd', 'MUTU', TeacherCategory::Leadership, 'assets/guru/kategori-pimpinan/MUTU - Nur Rohman, M.Pd.webp', null],
-            ['Wahid Wahyudi, S.Ag., M.Pd', 'PEMBINA UTAMA (PU)', TeacherCategory::Principal, 'assets/PAK-WAHID-AI-e1781064934191.png', null],
+            ['Wahid wahyudi, S.E., M.M', 'PEMBINA UTAMA (PU)', TeacherCategory::Principal, 'assets/PAK-WAHID-AI-e1781064934191.png', null],
             ['Drei herba Ta\'abudi. M.Hum', 'WAKA HUMAS', TeacherCategory::Leadership, 'assets/guru/kategori-pimpinan/WAKA HUMAS - Drei herba Ta\'abudi. M.Hum.webp', null],
             ['Siti Muawanah, S.Pd.', 'WAKA ISMUBA', TeacherCategory::Leadership, 'assets/guru/kategori-pimpinan/WAKA ISMUBA - Siti Muawanah, S.Pd..webp', null],
             ['Muh. Najib Rosi, S.Pd', 'WAKA KESISWAAN', TeacherCategory::Leadership, 'assets/guru/kategori-pimpinan/WAKA KESISWAAN - Muh. Najib Rosi, S.Pd.webp', null],

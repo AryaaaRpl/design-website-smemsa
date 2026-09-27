@@ -1,4 +1,10 @@
 @extends('layouts.app')
+@use('App\Support\Media')
+
+@push('styles')
+  {{-- Gambar hero adalah konten terbesar di layar pertama: unduh paling awal. --}}
+  <link rel="preload" as="image" href="{{ Media::asset('assets/background/3orang.png') }}" fetchpriority="high">
+@endpush
 
 @section('content')
 
@@ -50,7 +56,7 @@
         <div class="hero-img-wrapper">
           <!-- SATU gambar untuk semua ukuran layar. Kelas desktop-only /
                  mobile-only dihapus agar tidak pernah tampil ganda. -->
-          <img src="{{ asset('assets/background/3orang.png') }}" class="hero-students-img"
+          <img src="{{ Media::asset('assets/background/3orang.png') }}" class="hero-students-img" fetchpriority="high"
             alt="Tiga siswa SMKS Muhammadiyah 1 Genteng mengenakan seragam jurusan" width="1200" height="900" />
 
 
@@ -89,7 +95,7 @@
     <div class="marquee-group" @if ($isDuplicate) aria-hidden="true" @endif>
       @foreach ($partners as $partner)
       <div class="mitra-item">
-        <img src="{{ $partner->logo_url }}" alt="{{ $partner->name }}" onerror="
+        <img loading="lazy" decoding="async" src="{{ $partner->logo_url }}" alt="{{ $partner->name }}" onerror="
                 this.closest('.card')
                   ? this.closest('.card').classList.add('no-image')
                   : null;
@@ -140,13 +146,13 @@
   @php
     // Data Kepala Sekolah dari modul Guru. Jika belum ada, pakai data bawaan.
     $principalName = $principal?->name ?: 'Wahid Wahyudi, S.E., M.M.';
-    $principalPhoto = $principal?->photo_url ?: asset('assets/PAK-WAHID-AI-e1781064934191.png');
+    $principalPhoto = $principal?->photo_url ?: Media::asset('assets/PAK-WAHID-AI-e1781064934191.png');
     $principalQuote = $principal?->quote ?: 'Sekolah yang baik adalah sekolah yang mengantar siswanya sampai ke tujuan, bukan hanya sampai ke ijazah.';
   @endphp
   <div class="container">
     <div class="executive-card" style="text-align: left">
       <div class="executive-photo-frame">
-        <img src="{{ $principalPhoto }}" alt="Kepala Sekolah SMEMSA {{ $principalName }}"
+        <img loading="lazy" decoding="async" src="{{ $principalPhoto }}" alt="Kepala Sekolah SMEMSA {{ $principalName }}"
           width="480" height="580" loading="lazy" onerror="
                 this.closest('.card')
                   ? this.closest('.card').classList.add('no-image')
@@ -399,7 +405,7 @@
           <div class="orbit-slot" style="--a: {{ 45 + $loop->index * $outerStep }}deg; --r: 300px">
             <div class="orbit-center">
               <div class="orbit-icon">
-                <img src="{{ $major->logo_url }}" alt="" onerror="
+                <img loading="lazy" decoding="async" src="{{ $major->logo_url }}" alt="" onerror="
                         this.closest('.card')
                           ? this.closest('.card').classList.add('no-image')
                           : null;
@@ -452,7 +458,7 @@
             <div class="major-figure-wrapper">
               <!-- Logo Jurusan Kecil di Pojok Kanan Atas -->
               <div class="major-figure-corner-logo" id="panel-figure-logo" title="Logo Program Keahlian">
-                <img src="{{ $firstMajor?->logo_url }}" alt="Logo Jurusan" width="28" height="28" onerror="
+                <img loading="lazy" decoding="async" src="{{ $firstMajor?->logo_url }}" alt="Logo Jurusan" width="28" height="28" onerror="
                         this.closest('.card')
                           ? this.closest('.card').classList.add('no-image')
                           : null;
@@ -462,7 +468,7 @@
               <!-- Bayangan Lembut di Dasar Figur -->
               <div class="major-figure-shadow"></div>
               <!-- Foto Siswa (object-fit: contain, menempel di dasar bingkai) -->
-              <img id="panel-student-photo" class="major-figure-img" src="{{ $firstMajor?->student_photo_url }}"
+              <img loading="lazy" decoding="async" id="panel-student-photo" class="major-figure-img" src="{{ $firstMajor?->student_photo_url }}"
                 alt="Siswa Berseragam {{ $firstMajor?->name }}" width="300" height="400" onerror="
                       this.closest('.card')
                         ? this.closest('.card').classList.add('no-image')
@@ -779,7 +785,7 @@
     <div class="spmb-cta-band">
       <div class="spmb-cta-main">
         <span class="spmb-cta-badge">Tahun Ajaran {{ $site->get('spmb_academic_year') }}</span>
-        <h2 class="spmb-cta-title">Bergabung Bersama SMEMSA.</h2>
+        <h2 class="spmb-cta-title">Ayo Sekolah SMEMSA.</h2>
         <p class="spmb-cta-desc">
           Mulai langkah menuju karier vokasi bersama sekolah pusat keunggulan
           dengan Teaching Factory, sertifikasi BNSP, dan penyaluran kerja.
@@ -851,7 +857,7 @@
         @forelse ($latestPosts as $post)
         <!-- Article {{ $loop->iteration }} -->
         <a href="{{ route('berita.show', $post) }}" class="article-card" data-category="{{ $post->category?->slug }}">
-          <div class="article-thumb"><img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}"
+          <div class="article-thumb"><img loading="lazy" decoding="async" src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}"
               style="width: 100%; height: 100%; object-fit: cover;"></div>
           <div class="article-body">
             <div>
