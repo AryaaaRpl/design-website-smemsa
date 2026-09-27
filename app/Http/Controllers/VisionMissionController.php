@@ -9,11 +9,9 @@ class VisionMissionController extends Controller
 {
     public function __invoke(): View
     {
+        // Tombol jurusan langsung menuju halaman detail jurusan (/jurusan/{slug}).
         $majors = Major::active()->ordered()->get();
 
-        // Data modal detail jurusan, dikunci dengan slug.
-        $majorsProfile = $majors->mapWithKeys(fn (Major $major) => [$major->slug => $major->toProfileArray()]);
-
-        return view('visi-misi', compact('majors', 'majorsProfile'));
+        return view('visi-misi', compact('majors'));
     }
 }

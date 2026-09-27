@@ -415,12 +415,12 @@
     </div>
     <div class="majors-grid reveal" style="justify-content: center">
       @forelse ($majors as $major)
-      <button class="major-chip" onclick="openMajorModal('{{ $major->slug }}')">
+      <a href="{{ route('jurusan.show', $major) }}" class="major-chip">
         <div class="major-chip-img-wrapper">
           <img alt="{{ $major->code }} Logo" class="major-chip-img" src="{{ $major->logo_url }}" />
         </div>
         <span>{{ $major->name }}</span>
-      </button>
+      </a>
       @empty
       <!-- Tampilan saat belum ada data jurusan -->
       <div class="content-empty">
@@ -430,71 +430,6 @@
       @endforelse
     </div>
   </section>
-  <!-- INTERACTIVE DETAIL MODAL -->
-  <div class="modal-overlay" id="major-modal-overlay" onclick="closeMajorModalOnOverlay(event)" data-lenis-prevent>
-    <div class="major-modal-card" id="major-modal-card" data-lenis-prevent>
-      <!-- Modal Header Banner with Animated Icon -->
-      <div class="modal-banner" id="modal-banner">
-        <div class="modal-banner-icon" id="modal-icon">
-          <img alt="Major Logo" id="modal-icon-img" src="{{ asset('assets/major/PPLG-removebg-preview.png') }}" />
-        </div>
-        <button aria-label="Tutup Detail Jurusan" class="modal-close-btn" onclick="closeMajorModal()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
-            <path d="M18 6 6 18" />
-            <path d="m6 6 12 12" />
-          </svg>
-        </button>
-      </div>
-      <!-- Modal Content Body -->
-      <div class="modal-body">
-        <span class="modal-tag" id="modal-tag">PPLG / Software Engineering</span>
-        <h3 class="modal-title" id="modal-title">
-          Pengembang Perangkat Lunak & Gim (PPLG)
-        </h3>
-        <p class="modal-desc" id="modal-desc">
-          Fokus pada pengembangan aplikasi web modern, mobile apps, database
-          arsitektur, dan logika komputasi. Siswa dibekali kemampuan membangun
-          solusi software siap pakai untuk ekosistem industri digital.
-        </p>
-        <div class="modal-skills-box">
-          <div class="modal-section-title">
-            Kompetensi &amp; Tools Unggulan:
-          </div>
-          <div class="modal-chips-row" id="modal-skills">
-            <span class="modal-skill-chip">Web &amp; Mobile Dev</span>
-            <span class="modal-skill-chip">SQL &amp; NoSQL Database</span>
-            <span class="modal-skill-chip">API Integration</span>
-            <span class="modal-skill-chip">Git &amp; Version Control</span>
-          </div>
-        </div>
-        <div class="modal-career-box">
-          <div class="modal-section-title" style="color: var(--primary); margin-bottom: 0.4rem">
-            Peluang &amp; Prospek Karir:
-          </div>
-          <div class="modal-career-text" id="modal-career">
-            Software Engineer, Web Developer, Mobile App Developer, Database
-            Administrator, QA Tester.
-          </div>
-        </div>
-        <div class="modal-footer-cta">
-          <span style="font-size: 0.85rem; color: var(--text-muted)">Terlisensi <strong>LSP BNSP</strong> • Kelas
-            Industri</span>
-          <a href="/spmb" style="
-                background: var(--primary);
-                color: #ffffff;
-                padding: 0.65rem 1.4rem;
-                border-radius: 50px;
-                font-family: var(--font-head);
-                font-weight: 700;
-                font-size: 0.9rem;
-                text-decoration: none;
-              ">
-            Daftar SPMB Jurusan Ini →
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
   <!-- FOOTER -->
 
 @push('scripts')
@@ -563,78 +498,6 @@
         initVisiMisi();
       }
     })();
-
-    // ==========================================
-    // DATA KONSENTRASI KEAHLIAN (dari database) & MODAL LOGIC
-    // ==========================================
-    const visiMisiMajorsData = {{ Js::from($majorsProfile) }};
-
-    // Warna banner modal per jurusan (elemen desain). Jurusan baru memakai warna bawaan.
-    const majorGradients = {
-      rpl: "linear-gradient(135deg, #064e3b 0%, #0d7056 100%)",
-      tkj: "linear-gradient(135deg, #064e3b 0%, #0369a1 100%)",
-      bd: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
-      mplb: "linear-gradient(135deg, #064e3b 0%, #0f766e 100%)",
-      akl: "linear-gradient(135deg, #064e3b 0%, #15803d 100%)",
-      ph: "linear-gradient(135deg, #b45309 0%, #d97706 100%)",
-      dkv: "linear-gradient(135deg, #7c2d12 0%, #ea580c 100%)",
-    };
-    const defaultMajorGradient = "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%)";
-
-    function openMajorModal(majorKey) {
-      const data = visiMisiMajorsData[majorKey];
-      if (!data) return;
-
-      document.getElementById("modal-tag").innerText = data.tag;
-      document.getElementById("modal-title").innerText = data.title;
-      document.getElementById("modal-desc").innerText = data.desc;
-
-      const modalIconImg = document.getElementById("modal-icon-img");
-      if (modalIconImg) {
-        modalIconImg.src = data.icon;
-        modalIconImg.alt = data.title + " Logo";
-      }
-
-      document.getElementById("modal-banner").style.background =
-        majorGradients[majorKey] || defaultMajorGradient;
-      document.getElementById("modal-career").innerText = data.career;
-
-      // Populate skills (jika kosong, tampilkan keterangan)
-      const skillsContainer = document.getElementById("modal-skills");
-      skillsContainer.innerHTML = "";
-      const skills = data.skills.length > 0 ? data.skills : ["Informasi segera tersedia"];
-      skills.forEach((skill) => {
-        const chip = document.createElement("span");
-        chip.className = "modal-skill-chip";
-        chip.innerText = skill;
-        skillsContainer.appendChild(chip);
-      });
-
-      const modalOverlay = document.getElementById("major-modal-overlay");
-      modalOverlay.classList.add("active");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeMajorModal() {
-      const modalOverlay = document.getElementById("major-modal-overlay");
-      if (modalOverlay) modalOverlay.classList.remove("active");
-      document.body.style.overflow = "";
-    }
-
-    function closeMajorModalOnOverlay(e) {
-      if (e.target.id === "major-modal-overlay") {
-        closeMajorModal();
-      }
-    }
-
-    // Close modal on Escape key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeMajorModal();
-        if (typeof closeMobileDrawer === "function") closeMobileDrawer();
-      }
-    });
-
   </script>
 @endpush
 @endsection

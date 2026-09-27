@@ -112,26 +112,6 @@ class Major extends Model
     }
 
     /**
-     * Data untuk modal jurusan di halaman visi-misi (dipakai oleh JavaScript).
-     */
-    public function toProfileArray(): array
-    {
-        // Karir: ambil baris "Karir: ..." dari daftar Setelah Lulus, jika tidak ada gabungkan semua.
-        $careerItems = collect($this->career_items ?? []);
-        $career = $careerItems->first(fn (string $item) => str_starts_with($item, 'Karir:'));
-        $career = $career ? trim(substr($career, strlen('Karir:'))) : $careerItems->implode(' ');
-
-        return [
-            'title' => "{$this->name} ({$this->code})",
-            'tag' => $this->tefa_name ?: $this->code,
-            'icon' => $this->logo_url,
-            'desc' => (string) $this->description,
-            'skills' => $this->competencies ?? [],
-            'career' => $career ?: '-',
-        ];
-    }
-
-    /**
      * Data untuk panel jurusan di beranda (dipakai oleh JavaScript).
      */
     public function toLandingArray(int $number): array
