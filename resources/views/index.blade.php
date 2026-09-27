@@ -15,11 +15,11 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text-col">
-        <div class="badge badge-primary">
+        <div class="badge badge-primary hero-badge-welcome">
           <p>Selamat datang di <span>SMKS Muhammadiyah 1 Genteng</span></p>
         </div>
 
-        <div class="badge" style="
+        <div class="badge hero-badge-excellence" style="
                 background: var(--secondary-surface);
                 color: var(--secondary);
                 text-transform: uppercase;
@@ -443,7 +443,7 @@
       </div>
 
       <!-- KOLOM KANAN — PANEL ALUR PENDIDIKAN (STICKY, TOP 6REM) -->
-      <div class="majors-detail-col" id="major-tabpanel-container" role="tabpanel" aria-live="polite"
+      <div class="majors-detail-col is-collapsed" id="major-tabpanel-container" role="tabpanel" aria-live="polite"
         aria-labelledby="tab-btn-{{ $firstMajor?->slug }}">
         <div class="major-pathway-view" id="major-pathway-view">
           <!-- ═══ KEPALA PANEL: KIRI (FIGUR SISWA 3:4) + KANAN (IDENTITAS JURUSAN) ═══ -->
@@ -836,11 +836,11 @@
         </h3>
         <ul class="news-filter-list">
           <li>
-            <a href="javascript:void(0)" class="news-filter-link active" onclick="filterIndexNews('all', this)">Semua Berita <span>({{ $latestPosts->count() }})</span></a>
+            <a href="javascript:void(0)" class="news-filter-link active" onclick="filterIndexNews('all', this)">Semua Berita</a>
           </li>
           @foreach ($postCategories as $category)
           <li>
-            <a href="javascript:void(0)" class="news-filter-link" onclick="filterIndexNews('{{ $category->slug }}', this)">{{ $category->name }} <span>({{ $latestPosts->where('category_id', $category->id)->count() }})</span></a>
+            <a href="javascript:void(0)" class="news-filter-link" onclick="filterIndexNews('{{ $category->slug }}', this)">{{ $category->name }}</a>
           </li>
           @endforeach
         </ul>
@@ -888,6 +888,15 @@
           <p class="news-empty-desc">Liputan dan kabar terbaru sekolah akan tampil di sini. Silakan kembali lagi nanti.</p>
         </div>
         @endforelse
+
+        @if ($latestPosts->isNotEmpty())
+        <!-- Tampilan saat kategori yang dipilih tidak punya berita terbaru -->
+        <div class="news-empty home-news-empty" id="home-news-empty" hidden>
+          <h3 class="news-empty-title">Belum ada berita terbaru di kategori ini</h3>
+          <p class="news-empty-desc">Lihat semua liputan dan kabar sekolah di halaman Berita.</p>
+          <a href="{{ route('berita') }}" class="btn btn-primary" style="margin-top: 1rem">Lihat Semua Berita &rarr;</a>
+        </div>
+        @endif
       </div>
     </div>
   </div>

@@ -4229,11 +4229,7 @@
   display: grid;
   overflow: hidden;
   margin-top: 1rem;
-}
-
-.testi-card:has(.testi-dots) .testi-slider {
-  padding-right: 1.6rem;
-}
+} 
 
 /* Posisi awal slide: di atas (akan masuk dari atas) */
 .testi-slide {
@@ -4424,4 +4420,147 @@
 .major-detail-link:hover {
   background: var(--primary-dark);
   transform: translateX(2px);
+}
+
+/* ==========================================================================
+   HERO MOBILE: urutan badge selamat datang -> badge keunggulan -> gambar ->
+   headline -> lead -> 2 tombol (atas-bawah, lebar penuh).
+   Kolom teks "dilebur" (display: contents) agar isinya bisa diurutkan bersama gambar.
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .hero-text-col {
+    display: contents;
+  }
+
+  .hero-badge-welcome {
+    order: 1;
+    align-self: center;
+  }
+
+  .hero-badge-excellence {
+    order: 2;
+    align-self: center;
+  }
+
+  /* Kartu statistik sudah mengalir di bawah gambar, jadi tinggi minimum kolom tidak diperlukan. */
+  .hero-image-col {
+    order: 3;
+    min-height: 0;
+    margin: 0.5rem 0 1.5rem;
+  }
+
+  .hero-headline {
+    order: 4;
+    text-align: center;
+  }
+
+  .hero-lead {
+    order: 5;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    order: 6;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   JURUSAN BERANDA DI HP/TABLET (<= 900px): dropdown (akordeon).
+   Panel tertutup sampai jurusan diketuk; panah menunjuk ke bawah saat terbuka.
+   ========================================================================== */
+@media (max-width: 900px) {
+  #major-tabpanel-container.is-collapsed {
+    display: none;
+  }
+
+  .major-nav-item.active .major-nav-chevron {
+    transform: rotate(90deg);
+  }
+}
+
+/* ==========================================================================
+   KABAR & BERITA BERANDA
+   - Keterangan kosong per kategori selebar grid kartu.
+   - HP/tablet (<= 1024px): kategori menjadi satu baris tombol yang bisa digeser
+     ke samping (tanpa sticky), agar berita langsung terlihat.
+   ========================================================================== */
+.home-news-empty {
+  grid-column: 1 / -1;
+  align-self: start;
+}
+
+.home-news-empty[hidden] {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .news-grid {
+    gap: 1.5rem;
+  }
+
+  /* Baris tombol yang digeser tidak boleh ikut melebarkan kolom grid (kartu jadi terpotong). */
+  .news-grid > * {
+    min-width: 0;
+  }
+
+  .news-filter-card {
+    position: static;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .news-filter-card h3 {
+    display: none;
+  }
+
+  .news-filter-list {
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .news-filter-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .news-filter-list li {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .news-filter-list a {
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-card);
+    background: #ffffff;
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  .news-filter-list a.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+  }
 }

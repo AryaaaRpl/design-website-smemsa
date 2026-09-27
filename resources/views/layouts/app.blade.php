@@ -488,6 +488,22 @@
       clearTimeout(hoverDebounceTimer);
     }
 
+    // HP/tablet (<= 900px): daftar jurusan bekerja sebagai dropdown (akordeon).
+    // Awalnya semua tertutup; panel hanya muncul setelah jurusan diketuk.
+    const isMajorsMobile = () => window.innerWidth <= 900;
+
+    function collapseMajorPanel() {
+      document.getElementById("major-tabpanel-container")?.classList.add("is-collapsed");
+      document.querySelectorAll(".major-nav-item").forEach((btn) => {
+        btn.classList.remove("active");
+        btn.setAttribute("aria-selected", "false");
+      });
+    }
+
+    function isMajorPanelOpen() {
+      return !document.getElementById("major-tabpanel-container")?.classList.contains("is-collapsed");
+    }
+
     // Klik & Focus mengganti SEKETIKA tanpa jeda debounce
     /* Kembalikan panel ke kolom aslinya saat layar melebar ke desktop */
     let majorLayoutTimer;
@@ -501,16 +517,25 @@
         if (window.innerWidth > 900 && panel.parentNode !== grid) {
           grid.appendChild(panel);
         }
+        // Desktop selalu menampilkan panel jurusan yang aktif.
+        if (window.innerWidth > 900 && !isMajorPanelOpen()) {
+          panel.classList.remove("is-collapsed");
+          selectMajorPathway(activeMajorKey);
+        }
       }, 200);
     });
 
     // Laptop: klik membuka halaman detail jurusan (hover tetap mengganti panel).
-    // HP/tablet: tap pertama membuka panel; di panel ada tombol "Lihat Detail Jurusan".
+    // HP/tablet: ketuk membuka panel di bawah jurusan; ketuk lagi untuk menutup.
     function handleMajorClick(majorKey) {
       clearTimeout(hoverDebounceTimer);
       const major = majorsData.find((m) => m.key === majorKey);
-      if (window.innerWidth > 900 && major && major.url) {
+      if (!isMajorsMobile() && major && major.url) {
         window.location.href = major.url;
+        return;
+      }
+      if (isMajorsMobile() && majorKey === activeMajorKey && isMajorPanelOpen()) {
+        collapseMajorPanel();
         return;
       }
       selectMajorPathway(majorKey);
@@ -518,6 +543,8 @@
 
     function handleMajorFocus(majorKey) {
       clearTimeout(hoverDebounceTimer);
+      // Di HP, fokus (termasuk dari ketukan) tidak membuka panel; hanya klik yang membuka.
+      if (isMajorsMobile()) return;
       if (majorKey !== activeMajorKey) {
         selectMajorPathway(majorKey);
       }
@@ -701,6 +728,8 @@
               if (item.nextElementSibling !== panel) {
                 item.parentNode.insertBefore(panel, item.nextElementSibling);
               }
+              // Tampilkan panel setelah berada tepat di bawah jurusan yang diketuk.
+              panel.classList.remove("is-collapsed");
               // Gulir hanya sedikit, cukup agar panel terlihat
               const rect = panel.getBoundingClientRect();
               if (rect.top < 0 || rect.top > window.innerHeight * 0.6) {
@@ -719,7 +748,12 @@
     // Inisialisasi awal saat load
     preloadMajorImages();
     renderMajorTabList();
-    selectMajorPathway(activeMajorKey);
+    if (isMajorsMobile()) {
+      collapseMajorPanel();
+    } else {
+      document.getElementById("major-tabpanel-container")?.classList.remove("is-collapsed");
+      selectMajorPathway(activeMajorKey);
+    }
 
     // 7. AI Chatbot Logic
     const chatbotToggle = document.getElementById("chatbot-toggle");
@@ -1316,14 +1350,20 @@
       }
 
       const articles = document.querySelectorAll(".news-cards-grid .article-card");
+      let visibleCount = 0;
       articles.forEach(article => {
         const itemCat = article.getAttribute("data-category");
         if (category === "all" || itemCat === category) {
           article.style.display = "flex";
+          visibleCount++;
         } else {
           article.style.display = "none";
         }
       });
+
+      // Keterangan jika kategori ini tidak punya berita di antara berita terbaru.
+      const emptyState = document.getElementById("home-news-empty");
+      if (emptyState) emptyState.hidden = visibleCount > 0;
     }
 
     // Global Back to Top Button
