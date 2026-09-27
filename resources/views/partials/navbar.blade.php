@@ -111,7 +111,6 @@
         <a href="{{ url('/spmb') }}" class="btn btn-primary {{ request()->is('spmb*') ? 'active' : '' }}" style="padding: 0.55rem 1.4rem; font-size: 0.88rem">Daftar SPMB</a>
       </div>
 
-      <a href="{{ url('/spmb') }}" class="btn btn-primary nav-mobile-cta" style="display: none">Daftar SPMB</a>
       <button class="hamburger" id="hamburger-btn" aria-label="Buka Menu Navigasi">
         ☰
       </button>

@@ -1,6 +1,6 @@
 /* ==========================================================================
    BERANDA - SLIDER VERTIKAL TESTIMONI ALUMNI
-   Slide lama bergeser turun, slide berikutnya masuk dari atas.
+   Slide lama bergeser naik, slide berikutnya masuk dari bawah.
    Berhenti saat kursor/fokus di kartu & saat kartu tidak terlihat di layar.
    ========================================================================== */
 
@@ -28,16 +28,16 @@
     const leaving = slides[current];
     const entering = slides[next];
 
-    // Slide lama turun ke bawah.
+    // Slide lama naik ke atas.
     leaving.classList.remove("is-active");
     leaving.classList.add("is-leaving");
     leaving.setAttribute("aria-hidden", "true");
 
-    // Slide baru masuk dari atas.
+    // Slide baru masuk dari bawah.
     entering.classList.add("is-active");
     entering.removeAttribute("aria-hidden");
 
-    // Setelah transisi selesai, slide lama dikembalikan ke atas tanpa animasi.
+    // Setelah transisi selesai, slide lama dikembalikan ke bawah tanpa animasi.
     setTimeout(function () {
       leaving.classList.add("no-transition");
       leaving.classList.remove("is-leaving");

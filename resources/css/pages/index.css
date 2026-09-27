@@ -1040,7 +1040,7 @@
            5. SAMBUTAN SECTION (UNPINNED) & SINERGI TIGA PILAR (PINNED)
            ========================================================================== */
     .sambutan-section {
-      padding: 7.5rem 0 8.5rem;
+      padding: 4.5rem 0 8.5rem;
       background: var(--bg-alt);
       position: relative;
       border-top: 1px solid var(--border-card);
@@ -1049,7 +1049,7 @@
 
     .sinergi-section,
     .unit-usaha-section {
-      padding: 7.5rem 0;
+      padding: 4.5rem 0;
       background: var(--bg-dark);
       color: var(--text-light);
       position: relative;
@@ -1289,7 +1289,7 @@
            6. EXECUTIVE CARD - SAMBUTAN KEPALA SEKOLAH (PAK WAHID)
            ========================================================================== */
     .executive-section {
-      padding: 7.5rem 0;
+      padding: 4.5rem 0;
       position: relative;
     }
 
@@ -1297,7 +1297,7 @@
       background: #ffffff;
       border: 1px solid var(--border-card);
       border-radius: var(--radius-xl);
-      padding: 3.5rem;
+      padding: 3.5rem 0;
       box-shadow: var(--shadow-card);
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -1792,6 +1792,11 @@
       z-index: 2;
     }
 
+    .major-nav-item img {
+      height: 20px;
+      width: 20px;
+    }
+
     .major-nav-num {
       font-family: var(--font-display);
       font-size: 1.05rem;
@@ -2222,7 +2227,7 @@
            9. PRESTASI & TESTIMONI STRIP - PARALLAX & SCROLLTRIGGER
            ========================================================================== */
     .achievements-section {
-      padding: 8rem 0;
+      padding: 4.5rem 0;
       position: relative;
       overflow: hidden;
     }
@@ -2384,7 +2389,7 @@
            10. SPMB 2026/2027 INTERACTIVE STEPPER & COUNTDOWN
            ========================================================================== */
     .spmb-section {
-      padding: 7.5rem 0;
+      padding: 4.5rem 0;
       background: var(--bg-alt);
     }
 
@@ -2410,7 +2415,7 @@
            11. BLUD PRODUCTS & BKK JOBS PORTAL
            ========================================================================== */
     .blud-section {
-      padding: 7.5rem 0;
+      padding: 4.5rem 0;
       background: var(--bg-dark);
       color: var(--text-light);
       position: relative;
@@ -2480,7 +2485,7 @@
            12. NEWS & EDITORIAL JOURNAL
            ========================================================================== */
     .news-section {
-      padding: 7.5rem 0;
+      padding: 4.5rem 0;
       background: var(--bg-alt);
     }
 
@@ -3007,13 +3012,10 @@
         height: 60px;
         width: auto;
         object-fit: contain;
-        filter: grayscale(100%);
-        opacity: 0.7;
         transition: var(--transition-fast);
       }
 
       .mitra-item:hover img {
-        filter: grayscale(0%);
         opacity: 1;
       }
 
@@ -3529,14 +3531,14 @@
            9. PRESTASI & TESTIMONI STRIP - PARALLAX & SCROLLTRIGGER
            ========================================================================== */
 
-      .achieve-grid {
+      /* .achieve-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 3.5rem;
         position: relative;
         z-index: 2;
         align-items: center;
-      }
+      } */
 
       .timeline-card {
         position: relative;
@@ -4016,7 +4018,7 @@
         /* PRESTASI & TESTIMONI */
         .achieve-grid {
           grid-template-columns: 1fr !important;
-          gap: 2.5rem !important;
+          gap: 3.5rem !important;
         }
 
         .timeline-card {
@@ -4231,7 +4233,7 @@
   margin-top: 1rem;
 } 
 
-/* Posisi awal slide: di atas (akan masuk dari atas) */
+/* Posisi awal slide: di bawah (akan masuk dari bawah) */
 .testi-slide {
   grid-area: 1 / 1;
   display: flex;
@@ -4240,7 +4242,7 @@
   gap: 2.4rem;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-100%);
+  transform: translateY(100%);
   transition:
     transform 0.8s cubic-bezier(0.65, 0, 0.35, 1),
     opacity 0.8s ease,
@@ -4258,14 +4260,14 @@
     visibility 0s;
 }
 
-/* Slide lama bergeser turun lalu menghilang */
+/* Slide lama bergeser naik lalu menghilang */
 .testi-slide.is-leaving {
   opacity: 0;
   visibility: visible;
-  transform: translateY(100%);
+  transform: translateY(-100%);
 }
 
-/* Slide yang direset ke atas tanpa animasi (tidak terlihat) */
+/* Slide yang direset ke bawah tanpa animasi (tidak terlihat) */
 .testi-slide.no-transition {
   transition: none;
 }
@@ -4596,4 +4598,11 @@
     border-color: var(--primary);
     color: #ffffff;
   }
+}
+
+/* Logo jurusan (dari database) di daftar jurusan beranda.
+   Ukurannya diatur oleh ".major-nav-item img"; di sini hanya agar logo tidak gepeng. */
+.major-nav-logo {
+  object-fit: contain;
+  flex-shrink: 0;
 }

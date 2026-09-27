@@ -524,7 +524,7 @@
     <div class="flex justify-between items-center flex-wrap" style="margin-bottom: 3.5rem; gap: 1.5rem">
       <div>
         <div class="badge badge-amber mb-2">
-          Teaching Factory & Kewirausahaan Nyata
+          Kewirausahaan Nyata
         </div>
         <h2 class="section-title" style="color: #ffffff; margin: 0.5rem 0">
           Karya & Unit Usaha Dikelola Siswa (BLUD)
