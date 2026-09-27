@@ -20,6 +20,9 @@
           <a href="{{ $site->whatsappLink('spmb') }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             Hubungi Panitia (WhatsApp)
           </a>
+          <a href="{{ route('spmb.status') }}" class="btn btn-outline">
+            Cek Status Pendaftaran
+          </a>
         </div>
       </div>
     </header>

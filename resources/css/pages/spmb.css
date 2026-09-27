@@ -1452,3 +1452,222 @@
         width: 100%;
       }
     }
+    /* ==========================================================================
+       CEK STATUS PENDAFTARAN (/spmb/cek-status)
+       ========================================================================== */
+    .status-wrap {
+      max-width: 720px;
+    }
+
+    .status-form {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr auto;
+      gap: 1rem;
+      align-items: end;
+      padding: 1.5rem;
+      background: var(--bg-surface-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+    }
+
+    .status-field label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .status-field input {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      font: inherit;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      background: var(--bg-main);
+    }
+
+    .status-field input:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+
+    #registration_number {
+      text-transform: uppercase;
+    }
+
+    .status-error {
+      margin-top: 0.35rem;
+      font-size: 0.8rem;
+      color: #b91c1c;
+    }
+
+    .status-submit {
+      height: 46px;
+      justify-content: center;
+    }
+
+    .status-card {
+      margin-top: 1.5rem;
+      padding: 1.75rem;
+      background: var(--bg-surface-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+    }
+
+    .status-card h2 {
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+    }
+
+    .status-card-empty p {
+      margin: 0.6rem 0 1.2rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .status-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .status-number {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .status-badge {
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+    }
+
+    .status-badge-info { color: var(--primary); background: var(--primary-surface); }
+    .status-badge-warning { color: #a16207; background: #fef9c3; }
+    .status-badge-success { color: #15803d; background: #dcfce7; }
+    .status-badge-danger { color: #b91c1c; background: #fee2e2; }
+
+    .status-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin: 1.5rem 0 1.25rem;
+      list-style: none;
+    }
+
+    .status-steps li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      position: relative;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      color: var(--text-subtle);
+    }
+
+    /* Garis penghubung antar tahap */
+    .status-steps li:not(:first-child)::before {
+      content: "";
+      position: absolute;
+      top: 16px;
+      right: 50%;
+      width: 100%;
+      height: 2px;
+      background: var(--border-card);
+      z-index: 0;
+    }
+
+    .status-steps li.is-done::before,
+    .status-steps li.is-rejected::before {
+      background: var(--primary);
+    }
+
+    .status-step-dot {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg-alt);
+      border: 2px solid var(--border-card);
+    }
+
+    .status-steps li.is-done { color: var(--primary-dark); }
+    .status-steps li.is-done .status-step-dot { color: #fff; background: var(--primary); border-color: var(--primary); }
+    .status-steps li.is-rejected { color: #b91c1c; }
+    .status-steps li.is-rejected .status-step-dot { color: #fff; background: #dc2626; border-color: #dc2626; }
+
+    .status-desc {
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .status-note {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      background: var(--secondary-surface);
+      border-left: 3px solid var(--secondary);
+      border-radius: var(--radius-sm);
+    }
+
+    .status-note p {
+      margin-top: 0.3rem;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    .status-detail {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-card);
+    }
+
+    .status-detail dt {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .status-detail dd {
+      margin-top: 0.15rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .status-back {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .status-back a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .status-form,
+      .status-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .status-card {
+        padding: 1.25rem;
+      }
+    }

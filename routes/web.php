@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeacherController as AdminTeacherController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MajorPageController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\RegistrationStatusController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\VisionMissionController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +57,10 @@ Route::get('/bkk', BkkController::class)->name('bkk');
 Route::get('/spmb', function () {
     return view('spmb');
 });
+Route::get('/spmb/cek-status', [RegistrationStatusController::class, 'show'])->name('spmb.status');
+Route::post('/spmb/cek-status', [RegistrationStatusController::class, 'check'])
+    ->middleware('throttle:10,1')
+    ->name('spmb.status.check');
 
 Route::get('/ekstrakurikuler', ExtracurricularController::class)->name('ekstrakurikuler');
 
@@ -97,6 +103,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('business-units', BusinessUnitController::class)->except('show');
         Route::resource('products', ProductController::class)->except('show');
         Route::resource('orders', OrderController::class)->only(['index', 'update', 'destroy']);
+        Route::resource('registrations', RegistrationController::class)->except('show');
         Route::get('settings/{group?}', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings/{group}', [SettingController::class, 'update'])->name('settings.update');
 
