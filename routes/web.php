@@ -60,7 +60,8 @@ Route::get('/ekstrakurikuler', ExtracurricularController::class)->name('ekstraku
 
 Route::get('/prestasi', AchievementController::class)->name('prestasi');
 
-Route::get('/berita', NewsController::class)->name('berita');
+Route::get('/berita', [NewsController::class, 'index'])->name('berita');
+Route::get('/berita/{post}', [NewsController::class, 'show'])->name('berita.show');
 
 Route::get('/guru', TeacherController::class)->name('guru');
 

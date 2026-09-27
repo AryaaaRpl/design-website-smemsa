@@ -850,7 +850,7 @@
       <div class="news-cards-grid">
         @forelse ($latestPosts as $post)
         <!-- Article {{ $loop->iteration }} -->
-        <div class="article-card" data-category="{{ $post->category?->slug }}">
+        <a href="{{ route('berita.show', $post) }}" class="article-card" data-category="{{ $post->category?->slug }}">
           <div class="article-thumb"><img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}"
               style="width: 100%; height: 100%; object-fit: cover;"></div>
           <div class="article-body">
@@ -873,13 +873,13 @@
                 {{ $post->excerpt }}
               </p>
             </div>
-            <a href="{{ route('berita') }}#{{ $post->id }}" style="
+            <span style="
                     color: var(--secondary);
                     font-weight: 700;
                     font-size: 0.92rem;
-                  ">Baca selengkapnya &rarr;</a>
+                  ">Baca selengkapnya &rarr;</span>
           </div>
-        </div>
+        </a>
 
         @empty
         <!-- Tampilan saat belum ada berita -->

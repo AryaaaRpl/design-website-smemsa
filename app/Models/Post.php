@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Berita & artikel.
  */
-#[Fillable(['user_id', 'category_id', 'title', 'slug', 'excerpt', 'body', 'thumbnail', 'location', 'byline', 'status', 'is_featured', 'published_at'])]
+#[Fillable(['user_id', 'category_id', 'title', 'slug', 'excerpt', 'body', 'thumbnail', 'location', 'byline', 'status', 'published_at'])]
 class Post extends Model
 {
     use HasMediaUrl, HasParagraphText, HasSlug, SoftDeletes;
@@ -30,7 +30,6 @@ class Post extends Model
     {
         return [
             'status' => PostStatus::class,
-            'is_featured' => 'boolean',
             'published_at' => 'datetime',
         ];
     }
@@ -55,15 +54,6 @@ class Post extends Model
     {
         $query->where('status', PostStatus::Published)
             ->where('published_at', '<=', now());
-    }
-
-    /**
-     * Berita yang ditandai sebagai headline utama (maksimal satu).
-     */
-    #[Scope]
-    protected function headline(Builder $query): void
-    {
-        $query->where('is_featured', true);
     }
 
     #[Scope]
@@ -92,19 +82,5 @@ class Post extends Model
     protected function bodyHtml(): Attribute
     {
         return Attribute::get(fn () => $this->paragraphsToHtml($this->body));
-    }
-
-    /**
-     * Data untuk modal detail berita (dipakai oleh JavaScript).
-     */
-    public function toModalArray(): array
-    {
-        return [
-            'category' => mb_strtoupper($this->category?->name ?? 'Berita'),
-            'date' => collect([$this->published_date, $this->byline])->filter()->implode(' • '),
-            'img' => $this->thumbnail_url,
-            'title' => $this->title,
-            'body' => $this->body_html,
-        ];
     }
 }

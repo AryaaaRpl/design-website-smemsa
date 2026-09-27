@@ -9,18 +9,32 @@ use Illuminate\View\View;
 
 class NewsController extends Controller
 {
-    public function __invoke(): View
+    public function index(): View
     {
+        // Semua berita dikirim sekaligus; pencarian & filter kategori berjalan di browser tanpa memuat ulang.
         $posts = Post::published()->with('category')->latestPublished()->get();
-
-        // Headline: berita unggulan terbaru, jika tidak ada pakai berita terbaru.
-        $featured = $posts->firstWhere('is_featured', true) ?? $posts->first();
 
         $categories = Category::ofType(CategoryType::Post)->orderBy('name')->get();
 
-        // Data modal detail, dikunci dengan slug berita.
-        $newsData = $posts->mapWithKeys(fn (Post $post) => [$post->slug => $post->toModalArray()]);
+        return view('berita', compact('posts', 'categories'));
+    }
 
-        return view('berita', compact('posts', 'featured', 'categories', 'newsData'));
+    public function show(Post $post): View
+    {
+        // Draf atau berita terjadwal belum boleh dibuka dari website.
+        abort_unless(Post::published()->whereKey($post->id)->exists(), 404);
+
+        $post->load('category');
+
+        // Berita lain dari kategori yang sama, dilengkapi berita terbaru jika kurang.
+        $relatedPosts = Post::published()
+            ->with('category')
+            ->whereKeyNot($post->id)
+            ->orderByRaw('category_id = ? desc', [$post->category_id ?? 0])
+            ->latestPublished()
+            ->take(3)
+            ->get();
+
+        return view('berita.show', compact('post', 'relatedPosts'));
     }
 }

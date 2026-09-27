@@ -107,48 +107,6 @@ class PostTest extends TestCase
         $this->assertSoftDeleted($post);
     }
 
-    public function test_new_headline_replaces_previous_headline(): void
-    {
-        $old = Post::create(['title' => 'Headline Lama', 'slug' => 'headline-lama', 'body' => 'x', 'status' => PostStatus::Published, 'published_at' => now(), 'is_featured' => true]);
-
-        $this->actingAs($this->admin)
-            ->post(route('admin.posts.store'), $this->validData(['is_featured' => '1']))
-            ->assertRedirect(route('admin.posts.index'))
-            ->assertSessionHas('success', fn (string $message) => str_contains($message, 'Headline Lama'));
-
-        $this->assertFalse($old->fresh()->is_featured);
-        $this->assertSame(1, Post::headline()->count());
-        $this->assertTrue(Post::firstWhere('slug', 'kunjungan-industri-ke-pt-telkom')->is_featured);
-    }
-
-    public function test_updating_current_headline_keeps_it_without_warning(): void
-    {
-        $post = Post::create(['title' => 'Headline', 'slug' => 'headline', 'body' => 'x', 'status' => PostStatus::Published, 'published_at' => now(), 'is_featured' => true]);
-
-        $this->actingAs($this->admin)
-            ->put(route('admin.posts.update', $post), $this->validData(['slug' => 'headline', 'is_featured' => '1']))
-            ->assertSessionHas('success', 'Berita berhasil diperbarui.');
-
-        $this->assertTrue($post->fresh()->is_featured);
-    }
-
-    public function test_only_published_post_can_be_headline(): void
-    {
-        $this->actingAs($this->admin)
-            ->post(route('admin.posts.store'), $this->validData(['status' => 'draft', 'is_featured' => '1']))
-            ->assertSessionHasErrors(['is_featured' => 'Hanya berita berstatus Terbit yang bisa dijadikan headline utama.']);
-    }
-
-    public function test_form_shows_current_headline_warning(): void
-    {
-        Post::create(['title' => 'Headline Sekarang', 'slug' => 'headline-sekarang', 'body' => 'x', 'status' => PostStatus::Published, 'published_at' => now(), 'is_featured' => true]);
-
-        $this->actingAs($this->admin)
-            ->get(route('admin.posts.create'))
-            ->assertSee('Headline saat ini:', false)
-            ->assertSee('Headline Sekarang');
-    }
-
     public function test_body_html_escapes_content_and_splits_paragraphs(): void
     {
         $post = new Post(['body' => "Satu <script>alert(1)</script>\n\nDua"]);
@@ -171,6 +129,65 @@ class PostTest extends TestCase
         }
 
         $this->get(route('berita'))->assertSee('Kerja Sama Industri')->assertSee('18 Juni 2026');
+    }
+
+    public function test_news_cards_link_to_detail_page_instead_of_modal(): void
+    {
+        $post = Post::create([
+            'title' => 'Kunjungan Industri', 'slug' => 'kunjungan-industri', 'body' => "Paragraf satu.\n\nParagraf dua.",
+            'status' => PostStatus::Published, 'published_at' => now()->subDay(),
+        ]);
+
+        foreach ([route('home'), route('berita')] as $url) {
+            $this->get($url)
+                ->assertSee(route('berita.show', $post), false)
+                ->assertDontSee('openNewsModal')
+                ->assertDontSee('news-modal-overlay');
+        }
+
+        $this->get(route('berita.show', $post))
+            ->assertOk()
+            ->assertSee('Kunjungan Industri')
+            ->assertSee('<p>Paragraf dua.</p>', false)
+            ->assertSee('Belum ada gambar');
+    }
+
+    public function test_news_page_lists_all_posts_equally_with_search_and_filter(): void
+    {
+        $category = Category::create(['name' => 'Prestasi', 'slug' => 'prestasi', 'type' => CategoryType::Post]);
+        Post::create([
+            'title' => 'Juara Robotik', 'slug' => 'juara-robotik', 'body' => 'x', 'location' => 'Surabaya',
+            'category_id' => $category->id, 'status' => PostStatus::Published, 'published_at' => now()->subDay(),
+        ]);
+
+        $this->get(route('berita'))
+            ->assertOk()
+            ->assertDontSee('HEADLINE UTAMA')
+            ->assertDontSee('featured-news-card')
+            ->assertSee('id="news-search-input"', false)
+            ->assertSee('data-category="prestasi"', false)
+            // Teks pencarian disiapkan server dalam huruf kecil.
+            ->assertSee('data-search="juara robotik surabaya prestasi"', false);
+    }
+
+    public function test_admin_post_form_has_no_headline_option(): void
+    {
+        $this->actingAs($this->admin)
+            ->get(route('admin.posts.create'))
+            ->assertOk()
+            ->assertDontSee('headline', false);
+    }
+
+    public function test_detail_page_hides_draft_and_scheduled_posts(): void
+    {
+        $draft = Post::create(['title' => 'Draf', 'slug' => 'draf', 'body' => 'x']);
+        $scheduled = Post::create([
+            'title' => 'Besok', 'slug' => 'besok', 'body' => 'x',
+            'status' => PostStatus::Published, 'published_at' => now()->addDay(),
+        ]);
+
+        $this->get(route('berita.show', $draft))->assertNotFound();
+        $this->get(route('berita.show', $scheduled))->assertNotFound();
     }
 
     public function test_public_pages_show_empty_state_without_posts(): void

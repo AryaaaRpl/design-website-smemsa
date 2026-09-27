@@ -11,47 +11,32 @@
             Ikuti liputan kegiatan belajar mengajar, kerja sama industri nasional, pengabdian masyarakat, dan
             prestasi mutakhir civitas akademika SMKS Muhammadiyah 1 Genteng.
         </p>
-
-        <!-- Filter Pills -->
-        <div class="filter-container">
-            <button class="filter-btn active" onclick="filterCategory('all', this)">Semua Berita</button>
-            @foreach ($categories as $category)
-            <button class="filter-btn" onclick="filterCategory('{{ $category->slug }}', this)">{{ $category->name }}</button>
-            @endforeach
-        </div>
     </div>
 </header>
 
-<!-- 3. FEATURED HEADLINE ARTICLE -->
-@if ($featured)
-<section class="featured-news-section container">
-    <article class="featured-news-card" onclick="openNewsModal('{{ $featured->slug }}')">
-        <div class="featured-news-img-wrap">
-            <img src="{{ $featured->thumbnail_url }}" alt="{{ $featured->title }}" class="featured-news-img"
-                onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
+<!-- Pembungkus sticky: bilah pencarian hanya menempel selama daftar berita terlihat, berhenti sebelum footer. -->
+<div class="sticky-scope">
+@if ($posts->isNotEmpty())
+<!-- STICKY PENCARIAN & FILTER KATEGORI (resources/js/pages/berita.js) -->
+<div class="news-sticky-bar">
+    <div class="container">
+        <div class="filter-container" id="news-filter">
+            <button type="button" class="filter-btn active" data-category="all">Semua Berita</button>
+            @foreach ($categories as $category)
+            <button type="button" class="filter-btn" data-category="{{ $category->slug }}">{{ $category->name }}</button>
+            @endforeach
         </div>
-        <div class="featured-news-body">
-            <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:1rem;">
-                <span class="badge-gold" style="font-size:0.75rem;">HEADLINE UTAMA</span>
-                <span style="font-size:0.85rem; color:var(--text-subtle); font-weight:600;">{{ $featured->published_date }}@if ($featured->byline) &bull; {{ $featured->byline }}@endif</span>
-            </div>
-            <h2 class="font-display"
-                style="font-size: clamp(1.6rem, 2.5vw, 2.2rem); color: var(--primary-dark); margin-bottom: 1rem; line-height: 1.25;">
-                {{ $featured->title }}
-            </h2>
-            <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 1.8rem;">
-                {{ $featured->excerpt }}
-            </p>
-            <div
-                style="display:flex; align-items:center; gap:0.5rem; color:var(--primary); font-family:var(--font-head); font-weight:700; font-size:0.92rem;">
-                Baca Liputan Lengkap &rarr;
-            </div>
+
+        <div class="news-search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+            <input type="search" id="news-search-input" placeholder="Cari judul, ringkasan, atau lokasi..."
+                aria-label="Cari berita" autocomplete="off">
         </div>
-    </article>
-</section>
+    </div>
+</div>
 @endif
 
-<!-- 4. NEWS CARDS GRID -->
+<!-- 3. NEWS CARDS GRID -->
 <section id="news-card" class="container">
     @if ($posts->isEmpty())
     <!-- Tampilan saat belum ada berita -->
@@ -60,13 +45,16 @@
         <p class="news-empty-desc">Liputan dan kabar terbaru sekolah akan tampil di sini. Silakan kembali lagi nanti.</p>
     </div>
     @else
-    <div class="news-grid">
+    <div class="news-grid" id="news-grid">
 
         @foreach ($posts as $post)
         <!-- Card {{ $loop->iteration }}: {{ $post->title }} -->
-        <article id="{{ $post->id }}" class="news-card" data-category="{{ $post->category?->slug }}" onclick="openNewsModal('{{ $post->slug }}')">
+        <a href="{{ route('berita.show', $post) }}" id="{{ $post->id }}" class="news-card"
+            data-category="{{ $post->category?->slug }}"
+            data-search="{{ mb_strtolower(implode(' ', array_filter([$post->title, $post->excerpt, $post->location, $post->category?->name]))) }}">
             <div class="news-card-img-wrap">
                 <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}" class="news-card-img"
+                    loading="{{ $loop->index < 3 ? 'eager' : 'lazy' }}"
                     onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
             </div>
             <div class="news-card-body">
@@ -85,61 +73,19 @@
                     <span>Baca Warta &rarr;</span>
                 </div>
             </div>
-        </article>
+        </a>
 
         @endforeach
     </div>
+
+    <!-- Tampilan saat pencarian/filter tidak menemukan berita -->
+    <div class="news-empty" id="news-no-result" hidden>
+        <h3 class="news-empty-title">Berita tidak ditemukan</h3>
+        <p class="news-empty-desc">Coba kata kunci lain atau pilih kategori "Semua Berita".</p>
+    </div>
     @endif
 </section>
-
-<!-- 5. INTERACTIVE NEWS DETAIL MODAL -->
-<div class="modal-overlay" id="news-modal-overlay" onclick="closeNewsModalOnOverlay(event)">
-    <div class="news-modal-card" id="news-modal-card" data-lenis-prevent>
-        <!-- Modal Hero Header -->
-        <div class="modal-news-hero">
-            <img src="{{ $featured?->thumbnail_url }}" alt="Header Berita" id="modal-news-img"
-                onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
-            <button class="modal-close-btn" onclick="closeNewsModal()" aria-label="Tutup Berita">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
-                    <path d="M18 6 6 18" />
-                    <path d="m6 6 12 12" />
-                </svg>
-            </button>
-        </div>
-
-        <!-- Modal Content Body -->
-        <div class="modal-body">
-            <div style="display:flex; align-items:center; gap:0.8rem;">
-                <span class="badge-gold" id="modal-news-category" style="font-size:0.75rem;">KATEGORI</span>
-                <span id="modal-news-date"
-                    style="font-size:0.85rem; color:var(--text-subtle); font-weight:600;">Tanggal</span>
-            </div>
-
-            <h2 class="modal-headline" id="modal-news-title">Judul Berita Lengkap</h2>
-
-            <div class="modal-full-text" id="modal-news-body">
-                <!-- Dynamic Full Text Paragraphs -->
-            </div>
-
-            <div
-                style="border-top:1px solid var(--border-card); padding-top:1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
-                <span style="font-size:0.88rem; color:var(--text-muted);">Bagikan warta ini ke civitas & alumni
-                    &bull; <strong>SMKS MUHI</strong></span>
-                <a href="index.html#ppdb" class="btn btn-primary" style="padding:0.5rem 1.4rem; font-size:0.88rem;">
-                    Gabung Bersama SMKS MUHI &rarr;
-                </a>
-            </div>
-        </div>
-    </div>
 </div>
-
-<!-- FOOTER -->
+<!-- /STICKY SCOPE -->
 
 @endsection
-
-@push('scripts')
-<script>
-    // Data detail berita dari database (dipakai oleh resources/js/pages/berita.js)
-    window.newsDatabase = {{ Js::from($newsData) }};
-</script>
-@endpush

@@ -86,6 +86,8 @@
       </div>
     </div>
   </header>
+  <!-- Pembungkus sticky: bilah filter hanya menempel selama daftar guru terlihat, berhenti sebelum footer. -->
+  <div class="sticky-scope">
   <!-- STICKY NAV & SEARCH -->
   <div class="sticky-nav-container">
     <div class="container">
@@ -235,6 +237,8 @@
       <div class="struktur2-scroll-container" id="tendik-container"></div>
     </div>
   </section>
+  </div>
+  <!-- /STICKY SCOPE -->
   <noscript>
     <div class="container" style="
           padding: 2rem;

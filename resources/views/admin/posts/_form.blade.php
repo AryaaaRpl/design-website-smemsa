@@ -62,26 +62,6 @@
                     <div class="form-help">Kosongkan untuk memakai waktu saat diterbitkan.</div>
                     @error('published_at') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
-
-                <div class="form-group">
-                    <label class="form-check">
-                        <input type="checkbox" name="is_featured" value="1" @checked(old('is_featured', $post->is_featured))
-                            @if ($currentHeadline) data-toggle-target="headline-warning" @endif>
-                        Jadikan headline utama
-                    </label>
-                    <div class="form-help">
-                        Hanya untuk berita berstatus Terbit.
-                        @if ($currentHeadline)
-                            Headline saat ini: <strong>{{ $currentHeadline->title }}</strong>
-                        @endif
-                    </div>
-                    @if ($currentHeadline)
-                        <div class="alert alert-inline" id="headline-warning" @unless (old('is_featured', $post->is_featured)) hidden @endunless>
-                            Berita "{{ $currentHeadline->title }}" tidak lagi menjadi headline utama setelah berita ini disimpan.
-                        </div>
-                    @endif
-                    @error('is_featured') <div class="form-error">{{ $message }}</div> @enderror
-                </div>
             </div>
         </div>
 

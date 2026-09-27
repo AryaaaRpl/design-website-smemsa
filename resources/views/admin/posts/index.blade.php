@@ -62,9 +62,6 @@
                                 </td>
                                 <td>
                                     <strong>{{ $post->title }}</strong>
-                                    @if ($post->is_featured)
-                                        <span class="badge-soon">Headline</span>
-                                    @endif
                                 </td>
                                 <td>{{ $post->category?->name ?? '-' }}</td>
                                 <td>

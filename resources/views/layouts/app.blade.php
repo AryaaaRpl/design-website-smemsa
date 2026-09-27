@@ -221,7 +221,6 @@
           if (e.key === "Escape") {
             closeDrawer();
             if (typeof closeItemModal === "function") closeItemModal();
-            if (typeof closeNewsModal === "function") closeNewsModal();
             if (typeof closeAwardModal === "function") closeAwardModal();
             if (typeof closeMajorModal === "function") closeMajorModal();
           }

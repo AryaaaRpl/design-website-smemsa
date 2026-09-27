@@ -30,7 +30,6 @@ class PostSeeder extends Seeder
                 'thumbnail' => 'assets/juara-me-awards.jpg',
                 'location' => 'Surabaya',
                 'byline' => 'Tim Jurnalistik',
-                'is_featured' => true,
                 'published_at' => '2026-06-18 08:00:00',
             ],
             [
@@ -92,7 +91,6 @@ class PostSeeder extends Seeder
                 $post + [
                     'category_id' => $categoryIds[$category] ?? null,
                     'status' => PostStatus::Published,
-                    'is_featured' => $post['is_featured'] ?? false,
                 ],
             );
         }

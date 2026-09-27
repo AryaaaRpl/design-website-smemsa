@@ -4,7 +4,6 @@ namespace App\Http\Requests\Admin;
 
 use App\Enums\CategoryType;
 use App\Enums\PostStatus;
-use Closure;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -20,7 +19,6 @@ class PostRequest extends FormRequest
     {
         $this->merge([
             'slug' => Str::slug($this->input('slug') ?: $this->input('title')),
-            'is_featured' => $this->boolean('is_featured'),
         ]);
     }
 
@@ -43,14 +41,6 @@ class PostRequest extends FormRequest
             'byline' => ['nullable', 'string', 'max:100'],
             'status' => ['required', Rule::enum(PostStatus::class)],
             'published_at' => ['nullable', 'date'],
-            'is_featured' => [
-                'boolean',
-                function (string $attribute, mixed $value, Closure $fail) {
-                    if ($value && $this->input('status') !== PostStatus::Published->value) {
-                        $fail('Hanya berita berstatus Terbit yang bisa dijadikan headline utama.');
-                    }
-                },
-            ],
         ];
     }
 

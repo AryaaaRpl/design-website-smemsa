@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\CategoryType;
 use App\Enums\PostStatus;
 use App\Http\Controllers\Concerns\HandlesUploads;
-use App\Http\Controllers\Concerns\SavesWithHeadline;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostRequest;
 use App\Models\Category;
@@ -16,7 +15,7 @@ use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    use HandlesUploads, SavesWithHeadline;
+    use HandlesUploads;
 
     public function index(Request $request): View
     {
@@ -51,10 +50,9 @@ class PostController extends Controller
         $data['user_id'] = $request->user()->id;
         $data['thumbnail'] = $this->storeUpload($request->file('thumbnail'), 'posts');
 
-        $previousHeadline = $this->saveWithHeadline(new Post, $data);
+        Post::create($data);
 
-        return redirect()->route('admin.posts.index')
-            ->with('success', $this->headlineMessage('Berita berhasil ditambahkan.', $previousHeadline, 'headline utama'));
+        return redirect()->route('admin.posts.index')->with('success', 'Berita berhasil ditambahkan.');
     }
 
     public function edit(Post $post): View
@@ -71,10 +69,9 @@ class PostController extends Controller
             $data['thumbnail'] = $this->storeUpload($request->file('thumbnail'), 'posts');
         }
 
-        $previousHeadline = $this->saveWithHeadline($post, $data);
+        $post->update($data);
 
-        return redirect()->route('admin.posts.index')
-            ->with('success', $this->headlineMessage('Berita berhasil diperbarui.', $previousHeadline, 'headline utama'));
+        return redirect()->route('admin.posts.index')->with('success', 'Berita berhasil diperbarui.');
     }
 
     public function destroy(Post $post): RedirectResponse
@@ -91,10 +88,6 @@ class PostController extends Controller
             'post' => $post,
             'categories' => Category::ofType(CategoryType::Post)->orderBy('name')->get(),
             'statuses' => PostStatus::cases(),
-            // Headline yang sedang aktif (selain berita ini), untuk peringatan di form.
-            'currentHeadline' => Post::headline()
-                ->when($post->exists, fn ($query) => $query->whereKeyNot($post->id))
-                ->first(),
         ]);
     }
 

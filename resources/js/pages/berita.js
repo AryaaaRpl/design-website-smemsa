@@ -1,54 +1,68 @@
 /* ==========================================================================
-   BERITA - FILTER KATEGORI & MODAL DETAIL
-   Data berita dikirim dari database lewat window.newsDatabase.
+   BERITA - PENCARIAN & FILTER KATEGORI
+   Semua kartu sudah ada di halaman, jadi pencarian dan filter berjalan
+   langsung di browser tanpa memuat ulang. Teks pencarian tiap kartu sudah
+   disiapkan server di atribut data-search (huruf kecil) agar pencocokan cepat.
+   Detail berita dibuka di halaman sendiri (/berita/{slug}).
    ========================================================================== */
 
 (function () {
-  const overlay = document.getElementById('news-modal-overlay');
+  const grid = document.getElementById('news-grid');
+  const input = document.getElementById('news-search-input');
+  const filter = document.getElementById('news-filter');
+  if (!grid || !input || !filter) return;
 
-  window.openNewsModal = function (newsKey) {
-    const data = (window.newsDatabase || {})[newsKey];
-    if (!data || !overlay) return;
+  const noResult = document.getElementById('news-no-result');
+  const cards = Array.from(grid.querySelectorAll('.news-card')).map((el) => ({
+    el,
+    category: el.dataset.category,
+    text: el.dataset.search,
+  }));
 
-    const img = document.getElementById('modal-news-img');
-    if (img) {
-      img.src = data.img || '';
-      img.alt = data.title;
+  let activeCategory = 'all';
+  let frame = 0;
+
+  function apply() {
+    frame = 0;
+    const query = input.value.trim().toLowerCase();
+    let visible = 0;
+
+    for (const card of cards) {
+      const match = (activeCategory === 'all' || card.category === activeCategory)
+        && (query === '' || card.text.includes(query));
+      // Hanya ubah DOM jika status tampil berubah.
+      if (card.el.hidden === match) card.el.hidden = !match;
+      if (match) visible++;
     }
 
-    document.getElementById('modal-news-category').innerText = data.category;
-    document.getElementById('modal-news-date').innerText = data.date;
-    document.getElementById('modal-news-title').innerText = data.title;
-    // Body sudah di-escape di server (Post::bodyHtml), aman dipasang sebagai HTML.
-    document.getElementById('modal-news-body').innerHTML = data.body;
+    noResult.hidden = visible > 0;
+    scrollToResults();
+  }
 
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  };
+  // Jika bilah sticky sedang menempel (daftar sudah tergulir), kembalikan ke awal hasil.
+  const bar = document.querySelector('.news-sticky-bar');
+  function scrollToResults() {
+    const barBottom = bar.getBoundingClientRect().bottom;
+    const gridTop = grid.getBoundingClientRect().top;
+    if (gridTop >= barBottom) return;
 
-  window.closeNewsModal = function () {
-    if (!overlay) return;
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-  };
+    const offset = -(barBottom + 16);
+    if (window.lenis) window.lenis.scrollTo(grid, { offset, immediate: true });
+    else window.scrollTo({ top: window.scrollY + gridTop + offset });
+  }
 
-  window.closeNewsModalOnOverlay = function (event) {
-    if (event.target.id === 'news-modal-overlay') {
-      window.closeNewsModal();
-    }
-  };
+  // Satu kali proses per frame layar, walau pengguna mengetik cepat.
+  input.addEventListener('input', () => {
+    if (!frame) frame = requestAnimationFrame(apply);
+  });
 
-  window.filterCategory = function (category, button) {
-    document.querySelectorAll('.filter-btn').forEach((btn) => btn.classList.remove('active'));
-    if (button) button.classList.add('active');
+  filter.addEventListener('click', (event) => {
+    const button = event.target.closest('.filter-btn');
+    if (!button) return;
 
-    document.querySelectorAll('.news-card').forEach((card) => {
-      const match = category === 'all' || card.getAttribute('data-category') === category;
-      card.style.display = match ? 'flex' : 'none';
-    });
-  };
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') window.closeNewsModal();
+    filter.querySelector('.filter-btn.active')?.classList.remove('active');
+    button.classList.add('active');
+    activeCategory = button.dataset.category;
+    apply();
   });
 })();
