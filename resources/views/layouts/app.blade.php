@@ -459,7 +459,6 @@
                         onkeydown="handleMajorTabKey(event, ${index})"
                         onmouseenter="handleMajorMouseEnter('${m.key}')"
                         onmouseleave="handleMajorMouseLeave()">
-                    <span class="major-nav-num">${m.num}</span>
                     <div class="major-nav-content">
                         <div class="major-nav-top">
                             <h4 class="major-nav-name">${m.title}</h4>
@@ -628,9 +627,8 @@
         gsap.killTweensOf(pathwayView);
       }
 
-      pathwayView.classList.add("anim-switching");
-
-      pathwaySwitchTimeout = setTimeout(() => {
+      // Isi panel dengan data jurusan terpilih.
+      const applyMajorContent = () => {
         const photoEl = document.getElementById("panel-student-photo");
         const cornerLogoEl = document.getElementById("panel-figure-logo");
         const fallbackEl = document.getElementById("panel-figure-fallback");
@@ -714,35 +712,70 @@
 
         if (stage4El) stage4El.innerHTML = renderStepList(major.setelahLulus.items);
         if (stage4Box) stage4Box.textContent = major.setelahLulus.box || "Mitra Industri & Karir";
+      };
 
+      // HP: isi diganti dulu selagi tersembunyi, panel dipindah di bawah jurusan,
+      // lalu muncul dengan SATU animasi masuk (tanpa pudar-keluar lebih dulu).
+      if (isMajorsMobile()) {
         pathwayView.classList.remove("anim-switching");
+        applyMajorContent();
+        openMajorPanelUnder(majorKey);
+        playMajorPanelEnter(pathwayView);
+        return;
+      }
 
-        /* MOBILE: panel dipindahkan tepat DI BAWAH baris jurusan yang
-           diketuk, sehingga bekerja seperti akordeon. Pengguna tidak
-           perlu menggulir naik-turun untuk berpindah jurusan. */
-        if (window.innerWidth <= 900) {
-          setTimeout(() => {
-            const panel = document.getElementById("major-tabpanel-container");
-            const item = document.getElementById("tab-btn-" + majorKey);
-            if (panel && item && item.parentNode) {
-              if (item.nextElementSibling !== panel) {
-                item.parentNode.insertBefore(panel, item.nextElementSibling);
-              }
-              // Tampilkan panel setelah berada tepat di bawah jurusan yang diketuk.
-              panel.classList.remove("is-collapsed");
-              // Gulir hanya sedikit, cukup agar panel terlihat
-              const rect = panel.getBoundingClientRect();
-              if (rect.top < 0 || rect.top > window.innerHeight * 0.6) {
-                if (typeof lenis !== "undefined" && lenis) {
-                  lenis.scrollTo(item, { offset: -90, duration: 0.6 });
-                } else {
-                  item.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-              }
-            }
-          }, 50);
-        }
+      // Desktop: pudar-keluar, ganti isi, lalu pudar-masuk (tidak berubah).
+      pathwayView.classList.add("anim-switching");
+
+      pathwaySwitchTimeout = setTimeout(() => {
+        applyMajorContent();
+        pathwayView.classList.remove("anim-switching");
       }, 125);
+    }
+
+    // Putar ulang animasi masuk panel di HP (lihat .mobile-enter di index.css).
+    function playMajorPanelEnter(view) {
+      view.classList.remove("mobile-enter");
+      void view.offsetWidth; // paksa browser mengulang animasi dari awal
+      view.classList.add("mobile-enter");
+    }
+
+    /* MOBILE: panel dipindahkan SEKETIKA tepat di bawah jurusan yang diketuk (akordeon).
+       Jurusan yang diketuk "dikunci" di posisi layarnya: jika panel lama di atasnya
+       hilang, posisi gulir dikoreksi instan sehingga tidak ada lompatan dan panel
+       langsung terlihat di bawah jari pengguna. */
+    const MAJOR_NAV_OFFSET = 90; // tinggi navbar mengambang + sedikit jarak
+
+    function scrollPageTo(top, smooth) {
+      if (typeof lenis !== "undefined" && lenis) {
+        lenis.scrollTo(top, smooth ? { duration: 0.5 } : { immediate: true, force: true });
+      } else {
+        window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
+      }
+    }
+
+    function openMajorPanelUnder(majorKey) {
+      const panel = document.getElementById("major-tabpanel-container");
+      const item = document.getElementById("tab-btn-" + majorKey);
+      if (!panel || !item) return;
+
+      const topBefore = item.getBoundingClientRect().top;
+
+      if (item.nextElementSibling !== panel) {
+        item.parentNode.insertBefore(panel, item.nextElementSibling);
+      }
+      panel.classList.remove("is-collapsed");
+
+      // 1. Kunci posisi: kembalikan jurusan yang diketuk ke titik layar semula.
+      const shift = item.getBoundingClientRect().top - topBefore;
+      if (shift !== 0) scrollPageTo(window.scrollY + shift, false);
+
+      // 2. Jika jurusan terlalu ke bawah (panel tidak akan terlihat) atau tertutup navbar,
+      //    geser halus sampai jurusan tepat di bawah navbar.
+      const top = item.getBoundingClientRect().top;
+      if (top < MAJOR_NAV_OFFSET || top > window.innerHeight * 0.45) {
+        scrollPageTo(window.scrollY + top - MAJOR_NAV_OFFSET, true);
+      }
     }
 
     // Inisialisasi awal saat load
