@@ -1077,3 +1077,53 @@
           scroll-behavior: auto;
         }
       }
+/* ==========================================================================
+   NAVBAR HP (<= 900px): sembunyikan menu desktop, tampilkan tombol SPMB ringkas
+   dan tombol menu, sama seperti halaman lain.
+   ========================================================================== */
+@media (max-width: 900px) {
+  .header-wrapper {
+    top: 0.5rem !important;
+    width: calc(100% - 20px) !important;
+    border-radius: 20px !important;
+  }
+
+  .nav-island {
+    padding: 0.6rem 1rem !important;
+  }
+
+  .nav-menu {
+    display: none !important;
+  }
+
+  /* Logo LSP lebih lebar dari logo biasa; dibatasi agar tombol SPMB tetap satu baris. */
+  .brand-logo {
+    max-height: 40px;
+    max-width: 150px;
+    object-fit: contain;
+  }
+
+  .nav-mobile-cta {
+    display: inline-flex !important;
+    align-items: center;
+    white-space: nowrap;
+    margin-left: auto;
+    margin-right: 0.6rem;
+    padding: 0.45rem 1rem !important;
+    font-size: 0.82rem !important;
+    min-height: 40px !important;
+  }
+
+  .hamburger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--primary-surface);
+    color: var(--primary);
+    font-size: 1.4rem;
+    padding: 0;
+  }
+}
