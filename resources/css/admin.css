@@ -500,6 +500,27 @@ h3 {
     background: var(--yellow-soft);
 }
 
+/* Status pendaftar SPMB */
+.status-info {
+    color: var(--blue);
+    background: var(--blue-soft);
+}
+
+.status-warning {
+    color: #a16207;
+    background: #fef9c3;
+}
+
+.status-success {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.status-danger {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
 .form-card {
     margin-bottom: 20px;
 }
