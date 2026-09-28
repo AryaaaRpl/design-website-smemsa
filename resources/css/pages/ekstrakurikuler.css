@@ -459,190 +459,6 @@
       transform: translateX(3px);
     }
 
-    /* ==========================================================================
-           MODAL EKSTRAKURIKULER
-           ========================================================================== */
-    .ekskul-modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 100000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      padding: 1.5rem;
-    }
-
-    .ekskul-modal-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .ekskul-modal-content {
-      background: #ffffff;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 800px;
-      max-height: 85dvh;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    }
-
-    .ekskul-modal-overlay.active .ekskul-modal-content {
-      transform: translateY(0);
-    }
-
-    .ekskul-modal-close {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 44px;
-      height: 44px;
-      background: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: background 0.2s;
-    }
-
-    .ekskul-modal-close:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    .ekskul-modal-hero {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-    }
-
-    .ekskul-modal-body {
-      padding: 2.5rem;
-    }
-
-    .ekskul-modal-badge {
-      display: inline-block;
-      padding: 0.35rem 0.9rem;
-      background: var(--primary-surface);
-      color: var(--primary-dark);
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .ekskul-modal-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3vw, 2.2rem);
-      color: var(--primary-dark);
-      margin-bottom: 1.2rem;
-      line-height: 1.2;
-    }
-
-    .ekskul-modal-desc {
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-
-    .ekskul-modal-desc p {
-      margin-bottom: 1rem;
-    }
-
-    .ekskul-modal-info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      background: var(--bg-alt);
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-    }
-
-    .info-grid-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-
-    .info-grid-label {
-      font-size: 0.8rem;
-      color: var(--text-subtle);
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .info-grid-value {
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      font-weight: 600;
-    }
-
-    .ekskul-modal-achievements {
-      margin-bottom: 1rem;
-    }
-
-    .ekskul-modal-achievements h4 {
-      font-family: var(--font-head);
-      font-size: 1.2rem;
-      color: var(--primary-dark);
-      margin-bottom: 1rem;
-    }
-
-    .ekskul-modal-achievements ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .ekskul-modal-achievements li {
-      position: relative;
-      padding-left: 1.5rem;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    .ekskul-modal-achievements li::before {
-      content: '🏆';
-      position: absolute;
-      left: 0;
-      top: 0.1rem;
-      font-size: 1rem;
-    }
-
-    @media (max-width: 560px) {
-      .ekskul-modal-body {
-        padding: 1.5rem;
-      }
-
-      .ekskul-modal-info-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     /* GSAP Initial State untuk Card Wrapper */
     .reveal-item {
       opacity: 0;
@@ -917,5 +733,273 @@
 
   .ekskul-grid {
     gap: 1.25rem;
+  }
+}
+
+/* ==========================================================================
+   HALAMAN DETAIL EKSTRAKURIKULER (/ekstrakurikuler/{slug})
+   Pengganti modal detail: data sama, tampil sebagai halaman sendiri.
+   ========================================================================== */
+.ek-narrow {
+  max-width: 1040px;
+}
+
+.page-header.ek-detail-header {
+  height: auto;
+  padding: 9rem 0 3rem;
+}
+
+.ek-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+}
+
+.ek-breadcrumb a:hover,
+.ek-breadcrumb [aria-current] {
+  color: var(--primary);
+}
+
+.page-title.ek-detail-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 1rem 0 0.8rem;
+}
+
+.ek-detail {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+.ek-detail-cover {
+  aspect-ratio: 16 / 7;
+  margin: 0 0 2.5rem;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-card);
+  display: grid;
+  place-items: center;
+}
+
+.ek-detail-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ek-noimg {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+}
+
+.ek-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.ek-subtitle {
+  font-family: var(--font-head);
+  font-size: 1.35rem;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+}
+
+.ek-prose p {
+  color: var(--text-dark);
+  line-height: 1.8;
+  margin-bottom: 1.1rem;
+}
+
+.ek-achievements {
+  margin-top: 2rem;
+}
+
+.ek-achievements ul {
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.ek-achievements li {
+  position: relative;
+  padding: 0.85rem 1rem 0.85rem 2.6rem;
+  background: var(--secondary-surface);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  border-radius: var(--radius);
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.ek-achievements li::before {
+  content: "\2605";
+  position: absolute;
+  left: 1rem;
+  top: 0.85rem;
+  color: var(--secondary);
+}
+
+.ek-info-card {
+  position: sticky;
+  top: 110px;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.ek-info-card dl {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.ek-info-card dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.ek-info-card dd {
+  margin-top: 0.2rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.ek-back-link {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.ek-others {
+  padding: 3.5rem 0 4.5rem;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border-card);
+}
+
+.ek-others-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.ek-other {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+}
+
+.ek-other:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-light);
+}
+
+.ek-other-photo {
+  aspect-ratio: 16 / 10;
+  background: var(--bg-dark);
+}
+
+.ek-other-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ek-other-body {
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.ek-other-body small {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #a16207;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ek-other-body strong {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--font-head);
+  color: var(--primary-dark);
+}
+
+/* Detail di HP (<= 768px) */
+@media (max-width: 768px) {
+  .page-header.ek-detail-header {
+    padding: 7.5rem 0 2.25rem;
+  }
+
+  .ek-detail {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .ek-detail-cover {
+    aspect-ratio: 4 / 3;
+    margin-bottom: 1.75rem;
+  }
+
+  .ek-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  /* Info latihan tampil lebih dulu di HP agar langsung terlihat */
+  .ek-info-card {
+    position: static;
+    order: -1;
+    padding: 1.25rem;
+  }
+
+  .ek-info-card dl {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ek-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .ek-others {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .ek-others-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .ek-other {
+    flex-direction: row;
+  }
+
+  .ek-other-photo {
+    width: 110px;
+    flex-shrink: 0;
+    aspect-ratio: auto;
+  }
+
+  .ek-other-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }

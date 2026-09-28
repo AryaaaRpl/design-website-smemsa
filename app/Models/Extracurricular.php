@@ -62,7 +62,7 @@ class Extracurricular extends Model
     }
 
     /**
-     * Foto di modal detail. Jika kosong, pakai foto kartu.
+     * Foto utama di halaman detail (kolom modal_image). Jika kosong, pakai foto kartu.
      */
     protected function modalImageUrl(): Attribute
     {
@@ -70,20 +70,10 @@ class Extracurricular extends Model
     }
 
     /**
-     * Data untuk modal detail (dipakai oleh JavaScript).
+     * Deskripsi lengkap sebagai paragraf HTML yang aman (untuk halaman detail).
      */
-    public function toModalArray(): array
+    protected function descriptionHtml(): Attribute
     {
-        return [
-            'img' => $this->modal_image_url,
-            'badge' => $this->tag,
-            'title' => $this->name,
-            'desc' => $this->paragraphsToHtml($this->description),
-            'jadwal' => $this->schedule,
-            'pembina' => $this->coach_name,
-            'tempat' => $this->location,
-            'kelas' => $this->audience,
-            'prestasi' => $this->achievements ?? [],
-        ];
+        return Attribute::get(fn () => $this->paragraphsToHtml($this->description));
     }
 }

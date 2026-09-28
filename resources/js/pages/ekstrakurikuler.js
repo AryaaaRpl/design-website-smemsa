@@ -1,86 +1,8 @@
 /* ==========================================================================
-   EKSTRAKURIKULER - DATA, MODAL & SCROLL ANIMATIONS
+   EKSTRAKURIKULER - ANIMASI KARTU (detail program di /ekstrakurikuler/{slug})
    ========================================================================== */
 
 (function () {
-  // Data ekstrakurikuler dari database (dikirim oleh ExtracurricularController)
-  const EKSKUL_DATA = window.ekskulData || {};
-
-  // Escape teks sebelum dimasukkan ke HTML (data berasal dari input admin).
-  function escapeHtml(value) {
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
-
-  window.openEkskulModal = function (id) {
-    const data = EKSKUL_DATA[id];
-    if (!data) return;
-
-    const modalHero = document.getElementById("modal-hero");
-    const modalBadge = document.getElementById("modal-badge");
-    const modalTitle = document.getElementById("modal-title");
-    const modalDesc = document.getElementById("modal-desc");
-    const infoGrid = document.getElementById("modal-info-grid");
-    const achvDiv = document.getElementById("modal-achievements");
-    const achvList = document.getElementById("modal-achievements-list");
-    const modal = document.getElementById("ekskul-modal");
-
-    if (modalHero) modalHero.src = data.img;
-    if (modalBadge) modalBadge.textContent = data.badge;
-    if (modalTitle) modalTitle.textContent = data.title;
-    if (modalDesc) modalDesc.innerHTML = data.desc;
-
-    if (infoGrid) {
-      infoGrid.innerHTML = "";
-      const addInfo = (label, value) => {
-        if (!value) return;
-        const div = document.createElement("div");
-        div.className = "info-grid-item";
-        div.innerHTML = `<span class="info-grid-label">${label}</span><span class="info-grid-value">${escapeHtml(value)}</span>`;
-        infoGrid.appendChild(div);
-      };
-
-      addInfo("Jadwal Latihan", data.jadwal);
-      addInfo("Pembina", data.pembina);
-      addInfo("Tempat Latihan", data.tempat);
-      addInfo("Terbuka Untuk", data.kelas);
-    }
-
-    if (achvDiv && achvList) {
-      if (data.prestasi && data.prestasi.length > 0) {
-        achvDiv.style.display = "block";
-        achvList.innerHTML = data.prestasi.map((p) => `<li>${escapeHtml(p)}</li>`).join("");
-      } else {
-        achvDiv.style.display = "none";
-        achvList.innerHTML = "";
-      }
-    }
-
-    document.body.style.overflow = "hidden";
-    if (window.lenis) window.lenis.stop();
-    if (modal) modal.classList.add("active");
-  };
-
-  window.closeEkskulModal = function () {
-    const modal = document.getElementById("ekskul-modal");
-    if (modal) modal.classList.remove("active");
-    document.body.style.overflow = "";
-    if (window.lenis) window.lenis.start();
-  };
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      const modal = document.getElementById("ekskul-modal");
-      if (modal && modal.classList.contains("active")) {
-        window.closeEkskulModal();
-      }
-    }
-  });
-
   function initEkskulAnimations() {
     if (typeof gsap !== "undefined") {
       // 1. Header Reveal

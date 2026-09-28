@@ -88,6 +88,48 @@ class ExtracurricularTest extends TestCase
             ->assertDontSee('PMR Wira Unit SMEMSA');
     }
 
+    public function test_cards_link_to_detail_page_instead_of_modal(): void
+    {
+        $this->seed(ExtracurricularSeeder::class);
+
+        $this->get(route('ekstrakurikuler'))
+            ->assertOk()
+            ->assertSee('href="'.route('ekstrakurikuler.show', 'hw').'"', false)
+            ->assertDontSee('openEkskulModal')
+            ->assertDontSee('ekskul-modal');
+    }
+
+    public function test_detail_page_shows_program_information(): void
+    {
+        $ekskul = Extracurricular::create([
+            'name' => 'Robotik Club', 'slug' => 'robotik', 'tag' => 'Sains & Teknologi',
+            'short_description' => 'Ringkasan robotik.', 'description' => "Paragraf satu.\n\nParagraf dua.",
+            'schedule' => 'Sabtu, 08:00', 'coach_name' => 'Pak Budi', 'location' => 'Lab RPL', 'audience' => 'Kelas X',
+            'achievements' => ['Juara 1 Robotik Nasional'],
+        ]);
+        Extracurricular::create(['name' => 'Futsal', 'slug' => 'futsal']);
+
+        $this->get(route('ekstrakurikuler.show', $ekskul))
+            ->assertOk()
+            ->assertSee('Robotik Club')
+            ->assertSee('Sains &amp; Teknologi', false)
+            ->assertSee('<p>Paragraf dua.</p>', false)
+            ->assertSee('Sabtu, 08:00')
+            ->assertSee('Pak Budi')
+            ->assertSee('Lab RPL')
+            ->assertSee('Kelas X')
+            ->assertSee('Juara 1 Robotik Nasional')
+            ->assertSee('Ekstrakurikuler Lainnya')
+            ->assertSee('Futsal');
+    }
+
+    public function test_inactive_extracurricular_detail_returns_404(): void
+    {
+        $ekskul = Extracurricular::create(['name' => 'Arsip', 'slug' => 'arsip', 'is_active' => false]);
+
+        $this->get(route('ekstrakurikuler.show', $ekskul))->assertNotFound();
+    }
+
     public function test_public_page_shows_empty_state(): void
     {
         $this->get(route('ekstrakurikuler'))

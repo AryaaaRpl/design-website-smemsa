@@ -7,13 +7,24 @@ use Illuminate\View\View;
 
 class ExtracurricularController extends Controller
 {
-    public function __invoke(): View
+    public function index(): View
     {
         $extracurriculars = Extracurricular::active()->ordered()->get();
 
-        // Data modal detail, dikunci dengan slug.
-        $ekskulData = $extracurriculars->mapWithKeys(fn (Extracurricular $item) => [$item->slug => $item->toModalArray()]);
+        return view('ekstrakurikuler', compact('extracurriculars'));
+    }
 
-        return view('ekstrakurikuler', compact('extracurriculars', 'ekskulData'));
+    public function show(Extracurricular $extracurricular): View
+    {
+        // Ekstrakurikuler nonaktif tidak bisa dibuka dari website.
+        abort_unless($extracurricular->is_active, 404);
+
+        $others = Extracurricular::active()
+            ->ordered()
+            ->whereKeyNot($extracurricular->id)
+            ->take(3)
+            ->get();
+
+        return view('ekstrakurikuler.show', ['ekskul' => $extracurricular, 'others' => $others]);
     }
 }

@@ -62,7 +62,8 @@ Route::post('/spmb/cek-status', [RegistrationStatusController::class, 'check'])
     ->middleware('throttle:10,1')
     ->name('spmb.status.check');
 
-Route::get('/ekstrakurikuler', ExtracurricularController::class)->name('ekstrakurikuler');
+Route::get('/ekstrakurikuler', [ExtracurricularController::class, 'index'])->name('ekstrakurikuler');
+Route::get('/ekstrakurikuler/{extracurricular}', [ExtracurricularController::class, 'show'])->name('ekstrakurikuler.show');
 
 Route::get('/prestasi', AchievementController::class)->name('prestasi');
 
