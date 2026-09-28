@@ -78,8 +78,6 @@
       margin-top: 1.5rem;
     }
 
-    /* Quick Major Chips Bar */
-
     /* BKK Summary Banner */
     .bkk-summary-banner {
       background: linear-gradient(135deg,
@@ -122,8 +120,6 @@
       margin: 0;
     }
 
-    /* SPMB Quota Progress Bars */
-
     /* BLUD Learner Managed Tag */
     .blud-learner-tag {
       display: inline-flex;
@@ -142,11 +138,6 @@
     }
 
     /* Base Resets & Lenis Compatibility */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
 
     html.lenis,
     html.lenis body {
@@ -261,18 +252,16 @@
       position: relative;
     }
 
-    /* Modern Glowing Pill Badges */
+    /* Modern Section & Category Eyebrows (No Badge Box) */
     .badge {
       display: inline-flex;
       align-items: center;
       margin-top: 10px;
       gap: 0.5rem;
-      padding: 0.4rem 1rem;
-      border-radius: var(--radius-full);
+      padding: 0;
       font-weight: 700;
       font-size: 0.85rem;
       color: var(--primary);
-      background: var(--primary-surface);
       transition: var(--transition);
     }
 
@@ -282,12 +271,16 @@
     }
 
     .badge-primary {
-      background: var(--primary-surface);
+      color: var(--primary);
     }
 
     .badge-amber {
-      background: var(--secondary-surface);
       color: #a16207;
+    }
+
+    .blud-section .badge-amber,
+    .unit-usaha-section .badge-amber {
+      color: var(--secondary-light);
     }
 
     @keyframes pulseYellow {
@@ -362,15 +355,13 @@
 
     .spmb-cta-badge {
       display: inline-block;
-      padding: 0.35rem 0.9rem;
-      border-radius: 50px;
-      background: rgba(255, 255, 255, 0.14);
+      padding: 0;
       color: var(--secondary-light);
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .spmb-cta-title {
@@ -526,8 +517,6 @@
       line-height: 1.7;
     }
 
-    /* Hyper-Bento Glass Container */
-
     /* ==========================================================================
            3. FLOATING ISLAND NAVBAR WITH GLASSMORPHISM 2.0
            ========================================================================== */
@@ -558,12 +547,6 @@
       padding-bottom: 0.75rem;
     }
 
-    .brand-box {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-
     .brand-logo {
       width: auto;
       max-width: 180px;
@@ -585,10 +568,6 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-    }
-
-    .nav-item {
-      position: relative;
     }
 
     .nav-link {
@@ -737,12 +716,6 @@
       border-radius: var(--radius-sm);
       color: var(--text-dark);
       margin-bottom: 0.3rem;
-    }
-
-    .drawer-links a:hover,
-    .drawer-links a.active {
-      background: var(--primary-surface);
-      color: var(--primary);
     }
 
     .drawer-section-title {
@@ -919,14 +892,10 @@
         align-items: center;
         justify-content: center;
       }
-
-      /* Jarak antar target sentuh agar tidak salah ketuk */
     }
 
     /* Tombol hero: 44px cukup, jangan lebih besar dari itu di layar kecil */
     @media (max-width: 560px) {
-
-      /* Dua tombol berdampingan agar tidak memakan tinggi layar */
 
       /* Cegah scroll horizontal di seluruh halaman */
       html,
@@ -1663,13 +1632,11 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.35rem 1rem;
-      border-radius: var(--radius-full);
+      padding: 0;
       font-family: var(--font-head);
       font-weight: 700;
       font-size: 0.82rem;
       color: var(--primary);
-      background: var(--primary-surface);
       margin-bottom: 0.85rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -1795,20 +1762,6 @@
     .major-nav-item img {
       height: 20px;
       width: 20px;
-    }
-
-    .major-nav-num {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text-subtle);
-      width: 26px;
-      flex-shrink: 0;
-      transition: color 0.25s;
-    }
-
-    .major-nav-item.active .major-nav-num {
-      color: var(--primary);
     }
 
     .major-nav-content {
@@ -2098,89 +2051,11 @@
     }
 
     @media (max-width: 768px) {
-      .majors-hero-orbit {
-        height: 320px;
-        margin-bottom: 2rem;
-      }
-
-      .orbit-hero-stage {
-        height: 320px;
-      }
-
-      .orbit-hero-svg {
-        width: 380px;
-        height: 380px;
-      }
-
-      .orbit-hero-svg circle:nth-child(1) {
-        r: 185px;
-      }
-
-      .orbit-hero-svg circle:nth-child(2) {
-        r: 130px;
-      }
-
-      .orbit-ring-inner {
-        width: 260px;
-        height: 260px;
-      }
-
-      .orbit-ring-inner .orbit-slot {
-        transform: rotate(var(--a)) translateY(-130px);
-      }
-
-      .orbit-ring-inner .orbit-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
-      }
-
-      .orbit-ring-outer {
-        width: 370px;
-        height: 370px;
-      }
-
-      .orbit-ring-outer .orbit-slot {
-        transform: rotate(var(--a)) translateY(-185px);
-      }
-
-      .orbit-ring-outer .orbit-icon {
-        width: 38px;
-        height: 38px;
-        border-radius: 9px;
-      }
-
-      .orbit-hero-center {
-        max-width: 340px;
-        padding: 1.2rem 1.4rem;
-      }
-
-      .orbit-hero-title {
-        font-size: 1.65rem;
-      }
-
-      .majors-split-grid {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-      }
 
       .majors-detail-col {
-        position: relative;
-        top: 0;
         /* Mode akordeon: panel menempel pada baris jurusan di atasnya */
         margin: 0 0 1rem 0;
         border-top: 2px solid var(--secondary);
-        border-radius: 0 0 14px 14px;
-      }
-
-      .major-panel-head-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-      }
-
-      .major-figure-wrapper {
-        max-width: 240px;
-        margin: 0 auto;
       }
     }
 
@@ -2372,17 +2247,14 @@
       position: absolute;
       top: 2rem;
       right: 2rem;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: var(--radius-full);
-      padding: 0.35rem 0.9rem;
       font-size: 0.78rem;
       font-weight: 700;
       color: var(--secondary-light);
       display: flex;
       align-items: center;
       gap: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     /* ==========================================================================
@@ -2574,8 +2446,6 @@
 
     /* C. Media Sosial Monokrom (Tombol Lingkaran 36px, SVG 18x18) */
 
-    /* Kartu Identitas Lembaga */
-
     /* ==========================================================================
            14. RESPONSIVE BREAKPOINTS
            ========================================================================== */
@@ -2608,64 +2478,19 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .nav-menu {
-        display: none;
-      }
-
-      .hamburger {
-        display: block;
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .blud-grid {
-        grid-template-columns: 1fr !important;
-      }
-
-      .news-cards-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .executive-card {
-        padding: 2rem 1.5rem;
-      }
-    }
-
     /* ==========================================================================
            15. COMPREHENSIVE MOBILE ULTRA-OPTIMIZATION (360px, 390px, 768px)
            ========================================================================== */
     /* Tap Target & Global Padding Standard */
     @media (max-width: 768px) {
-      .container {
-        padding: 0 20px !important;
-      }
-
-      html,
-      body {
-        overflow-x: hidden !important;
-        max-width: 100vw !important;
-      }
 
       /* Disable heavy effects for silky smooth mobile scroll (I) */
-      .px-stage,
-      .px-orb,
-      .px-grid,
-      .achieve-glow-bg {
-        display: none !important;
-      }
 
       /* Responsive Navbar (B) */
 
       .nav-island {
         max-width: 1320px;
         margin: 0 auto;
-        padding: 1rem 5%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         transition: var(--transition);
       }
 
@@ -2676,9 +2501,7 @@
 
       .brand-logo {
         width: auto;
-        max-width: 180px;
         height: auto;
-        max-height: 60px;
         object-fit: contain;
         filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06));
         transition:
@@ -2692,7 +2515,6 @@
       }
 
       .nav-menu {
-        display: flex;
         align-items: center;
         gap: 0.5rem;
       }
@@ -2737,45 +2559,17 @@
       }
 
       .hamburger {
-        display: none;
-        background: transparent;
         border: none;
-        font-size: 1.6rem;
-        color: var(--primary);
-        cursor: pointer;
-        padding: 0.3rem;
       }
 
       /* Mobile Drawer */
 
-      .mobile-drawer {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 320px;
-        max-width: 85vw;
-        background: #ffffff;
-        z-index: 1100;
-        padding: 2rem 1.5rem;
-        transform: translateX(100%);
-        transition: var(--transition);
-        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
-        overflow-y: auto;
-      }
-
-      .mobile-drawer.active {
-        transform: translateX(0);
-      }
-
       .drawer-links a {
-        transition: var(--transition);
         display: flex;
         align-items: center;
         gap: 0.8rem;
         padding: 0.8rem 1rem;
         font-weight: 600;
-        font-size: 0.95rem;
         border-radius: var(--radius-sm);
         color: var(--text-dark);
         margin-bottom: 0.3rem;
@@ -2791,52 +2585,15 @@
            4. HERO SECTION - ULTRA-MODERN ASYMMETRICAL TECH-EDITORIAL
            ========================================================================== */
       .hero-section {
-        padding: 8rem 0rem;
-        position: relative;
         display: flex;
         align-items: center;
       }
 
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 52% 48%;
-        gap: 3rem;
-        align-items: end;
-        position: relative;
-        z-index: 2;
-      }
-
-      .hero-text-col {
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
       .hero-image-col {
-        position: relative;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        min-height: 480px;
-      }
-
-      .hero-proof-bar-bottom {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 88%;
-        height: 88px;
-        background: #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 20px 45px -22px rgba(30, 64, 175, 0.35);
-        z-index: 20;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        border-top: 3px solid var(--secondary);
       }
 
       .hero-proof-bar-bottom .proof-col {
@@ -2860,9 +2617,17 @@
         line-height: 1;
         margin-bottom: 0.1rem;
       }
-
-      @media (max-width: 900px) {
         .hero-proof-bar-bottom {
+        border-top: 3px solid var(--secondary);
+        justify-content: space-evenly;
+        align-items: center;
+        display: flex;
+        z-index: 20;
+        box-shadow: 0 20px 45px -22px rgba(30, 64, 175, 0.35);
+        border-radius: 16px;
+        background: #ffffff;
+        left: 50%;
+        bottom: 0;
           position: static;
           transform: none;
           width: 100%;
@@ -2870,7 +2635,6 @@
           height: auto;
           padding: 1rem 0;
         }
-      }
 
       @media (max-width: 560px) {
         .hero-proof-bar-bottom {
@@ -2898,8 +2662,6 @@
         }
       }
 
-      /* Hero Quick Jurusan Search Pill */
-
       /* Hero Hub Dashboard (Terminal / Card 3D-inspired) */
 
       .hub-nav-tab.active {
@@ -2908,31 +2670,7 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       }
 
-      @keyframes fadeInHub {
-        from {
-          opacity: 0;
-          transform: translateY(8px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
       /* Floating Achievement Badges around Hero Hub */
-
-      @keyframes floatHeroBadge {
-
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-
-        50% {
-          transform: translateY(-8px);
-        }
-      }
 
       /* ==========================================================================
            5. SAMBUTAN SECTION (UNPINNED) & SINERGI TIGA PILAR (PINNED)
@@ -2950,12 +2688,6 @@
         border-bottom: 1px solid var(--border-dark);
         padding: 4rem 0;
       }
-
-      /* Star & Aura in Center */
-
-      /* Synergy Text Content - Layered Over SVG */
-
-      /* Scroll Progress Rail */
 
       /* ---- Text Scroll Reveal (skiper31-style, word by word) ---- */
 
@@ -2976,23 +2708,16 @@
       }
 
       /* ---- Parallax Layers ---- */
-
-      .px-orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(70px);
-        opacity: 0.5;
-      }
-
-      @media (max-width: 900px) {
         .px-orb {
+        filter: blur(70px);
+        border-radius: 50%;
+        position: absolute;
           opacity: 0.3;
         }
 
         .px-ring {
           display: none;
         }
-      }
 
       @media (prefers-reduced-motion: reduce) {
         .px-stage {
@@ -3027,14 +2752,10 @@
         background: #ffffff;
         border: 1px solid var(--border-card);
         border-radius: var(--radius-xl);
-        padding: 3.5rem;
-        box-shadow: var(--shadow-card);
         display: grid;
         grid-template-columns: 0.9fr 1.1fr;
         gap: 3.5rem;
         align-items: center;
-        position: relative;
-        overflow: hidden;
       }
 
       .executive-photo-frame img {
@@ -3065,8 +2786,6 @@
       /* Why Choose SMEMSA Bento Cards */
       .why-bento-grid {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 1.5rem;
         margin-top: 4rem;
       }
 
@@ -3105,9 +2824,6 @@
 
       .stats-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-        text-align: center;
       }
 
       /* ==========================================================================
@@ -3116,103 +2832,43 @@
 
       /* ═══ A. AREA ORBIT MELEBAR PENUH: TINGGI 520PX & ZONA AMAN ═══ */
       .majors-hero-orbit {
-        position: relative;
         width: 100%;
-        height: 520px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 3.5rem;
         overflow: visible;
       }
 
       .orbit-hero-stage {
-        position: relative;
         width: 100%;
         max-width: 1100px;
-        height: 520px;
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
       /* ═══ D. CINCIN PANDUAN TIPIS (SVG PADA R=210PX & R=300PX) ═══ */
-      .orbit-hero-svg {
-        position: absolute;
-        width: 640px;
-        height: 640px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        overflow: visible;
-      }
 
       /* ═══ B. LINTASAN MELINGKAR PRESISI: PEMISAHAN TRANSLATE & ROTATE ═══ */
       /* Lapisan 1: .orbit-ring — HANYA elemen ini yang berputar 360deg, 90s, linear, infinite */
       .orbit-ring-inner {
-        position: absolute;
-        inset: 0;
         margin: auto;
-        width: 420px;
-        height: 420px;
         border-radius: 50%;
-        transform-origin: center center;
         animation: orbitSpin 90s linear infinite;
-        pointer-events: none;
       }
 
       .orbit-ring-outer {
-        position: absolute;
-        inset: 0;
         margin: auto;
-        width: 600px;
-        height: 600px;
         border-radius: 50%;
-        transform-origin: center center;
         animation: orbitSpin 90s linear infinite reverse;
-        pointer-events: none;
       }
-
-      @keyframes orbitSpin {
-        from {
-          transform: rotate(0deg);
-        }
-
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* Lapisan 2: .orbit-slot — titik sudut + radius, transform-origin: center center */
-
-      /* Lapisan 3: .orbit-center — HANYA translate(-50%, -50%), statis, TIDAK dianimasikan */
-
-      /* Lapisan 4: .orbit-icon — HANYA counter-rotate (90s, linear, infinite) */
 
       /* Counter-Rotation Cincin Dalam (berlawanan dari rotate(0deg) -> rotate(360deg)) */
       .orbit-ring-inner .orbit-icon {
-        width: 56px;
-        height: 56px;
         animation: orbitCounter 90s linear infinite;
       }
 
       /* Counter-Rotation Cincin Luar (reverse cincin outer berlawanan dengan reverse counter) */
-      .orbit-ring-outer .orbit-icon {
-        width: 48px;
-        height: 48px;
-        animation: orbitCounter 90s linear infinite reverse;
-      }
-
-      @keyframes orbitCounter {
-        from {
-          transform: rotate(0deg);
-        }
-
-        to {
-          transform: rotate(-360deg);
-        }
-      }
 
       /* Logo di dalam kartu: 60% x 60%, object-fit: contain */
       .orbit-icon img {
@@ -3224,36 +2880,23 @@
 
       /* ═══ A. PUSAT ORBIT DENGAN ZONA AMAN (MAX-WIDTH 560PX & RADIAL GRADIENT) ═══ */
       .orbit-hero-center {
-        position: relative;
-        z-index: 5;
-        max-width: 560px;
-        text-align: center;
-        padding: 2.2rem 2.5rem;
         border-radius: 32px;
         background: radial-gradient(ellipse 520px 260px at center,
             var(--bg-alt) 55%,
             transparent 100%);
-        backdrop-filter: blur(3px);
-        pointer-events: auto;
       }
 
       .orbit-hero-title {
         font-family: var(--font-display);
-        font-size: clamp(2rem, 3.5vw, 2.85rem);
         font-weight: 800;
         color: var(--primary-dark);
-        letter-spacing: -0.035em;
-        line-height: 1.16;
         margin-bottom: 0.75rem;
       }
 
       /* ═══ BAGIAN BAWAH — DUA KOLOM (Kiri 38%, Kanan 62%) ═══ */
       .majors-split-grid {
         display: grid;
-        grid-template-columns: 38% 62%;
-        gap: 2.5rem;
         align-items: start;
-        position: relative;
       }
 
       /* KOLOM KIRI — DAFTAR 8 JURUSAN */
@@ -3261,14 +2904,10 @@
       .major-nav-item {
         display: flex;
         align-items: center;
-        gap: 1.1rem;
         width: 100%;
-        padding: 1.15rem 1.4rem;
         background: #ffffff;
         border: none;
         border-bottom: 1px solid var(--border-card);
-        text-align: left;
-        cursor: pointer;
         position: relative;
         transition:
           background-color 0.2s ease,
@@ -3316,35 +2955,19 @@
 
       /* KOLOM KANAN — ALUR PENDIDIKAN (STICKY, TOP 6REM) */
       .majors-detail-col {
-        position: sticky;
-        top: 6rem;
         background: #ffffff;
         border-radius: var(--radius-xl);
         border: 1px solid var(--border-card);
-        box-shadow: var(--shadow-card);
         overflow: hidden;
       }
-
-      /* Container Transisi Halus (Crossfade + Geser 12px, Max 250ms) */
 
       /* ═══ KEPALA PANEL DUA KOLOM: KIRI 38% (FIGUR SISWA) + KANAN 62% (IDENTITAS) ═══ */
       .major-panel-head-grid {
         display: grid;
-        grid-template-columns: 38% 62%;
-        gap: 1.5rem;
-        padding: 1.6rem;
         background: #ffffff;
         border-bottom: 1px solid var(--border-card);
         align-items: stretch;
       }
-
-      /* KIRI: AREA FIGUR SISWA (Aspect-Ratio 3:4, Potret Utuh) */
-
-      /* Alas Bayangan Lembut di Dasar Figur */
-
-      /* Foto Potret Cutout Siswa (object-fit: contain, menempel di dasar) */
-
-      /* Fallback Placeholder jika foto tidak ada */
 
       /* Logo Jurusan Kecil di Pojok Kanan Atas Area Figur */
 
@@ -3354,68 +2977,17 @@
         object-fit: contain;
       }
 
-      /* KANAN: IDENTITAS JURUSAN */
-
       /* ═══ C. ALUR 4 TAHAP DI BAWAH KEPALA PANEL (D. TEKS TIDAK TERPOTONG) ═══ */
 
       /* ═══ E. RESPONSIF ═══ */
-      @media (max-width: 1100px) {
-        .majors-hero-orbit {
-          height: 420px;
-        }
-
-        .orbit-hero-stage {
-          height: 420px;
-        }
 
         .orbit-hero-svg {
-          width: 520px;
-          height: 520px;
-        }
-
-        .orbit-hero-svg circle:nth-child(1) {
-          r: 240px;
-        }
-
-        .orbit-hero-svg circle:nth-child(2) {
-          r: 170px;
-        }
-
-        .orbit-ring-inner {
-          width: 340px;
-          height: 340px;
-        }
-
-        .orbit-ring-inner .orbit-slot {
-          transform: rotate(var(--a)) translateY(-170px);
-        }
-
-        .orbit-ring-outer {
-          width: 480px;
-          height: 480px;
-        }
-
-        .orbit-ring-outer .orbit-slot {
-          transform: rotate(var(--a)) translateY(-240px);
-        }
-
-        .orbit-hero-center {
-          max-width: 480px;
-          padding: 1.8rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .majors-hero-orbit {
-          height: 320px;
-          margin-bottom: 2rem;
-        }
-
-        .orbit-hero-stage {
-          height: 320px;
-        }
-
-        .orbit-hero-svg {
+        overflow: visible;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        position: absolute;
           width: 380px;
           height: 380px;
         }
@@ -3428,24 +3000,8 @@
           r: 130px;
         }
 
-        .orbit-ring-inner {
-          width: 260px;
-          height: 260px;
-        }
-
-        .orbit-ring-inner .orbit-slot {
-          transform: rotate(var(--a)) translateY(-130px);
-        }
-
         .orbit-ring-inner .orbit-icon {
-          width: 44px;
-          height: 44px;
           border-radius: 10px;
-        }
-
-        .orbit-ring-outer {
-          width: 370px;
-          height: 370px;
         }
 
         .orbit-ring-outer .orbit-slot {
@@ -3453,40 +3009,12 @@
         }
 
         .orbit-ring-outer .orbit-icon {
+        animation: orbitCounter 90s linear infinite reverse;
           width: 38px;
           height: 38px;
           border-radius: 9px;
         }
 
-        .orbit-hero-center {
-          max-width: 340px;
-          padding: 1.2rem 1.4rem;
-        }
-
-        .orbit-hero-title {
-          font-size: 1.65rem;
-        }
-
-        .majors-split-grid {
-          grid-template-columns: 1fr;
-          gap: 1.8rem;
-        }
-
-        .majors-detail-col {
-          position: relative;
-          top: 0;
-        }
-
-        .major-panel-head-grid {
-          grid-template-columns: 1fr;
-          gap: 1.2rem;
-        }
-
-        .major-figure-wrapper {
-          max-width: 240px;
-          margin: 0 auto;
-        }
-      }
 
       @media (max-width: 560px) {
 
@@ -3502,11 +3030,6 @@
 
         .orbit-ring-inner .orbit-slot {
           transform: rotate(var(--a)) translateY(-120px);
-        }
-
-        .orbit-hero-center {
-          padding: 1rem;
-          max-width: 280px;
         }
 
         .orbit-hero-title {
@@ -3542,11 +3065,9 @@
 
       .timeline-card {
         position: relative;
-        margin-bottom: 2rem;
         background: #ffffff;
         border: 1px solid var(--border-card);
         border-radius: var(--radius);
-        padding: 1.6rem 1.8rem;
         box-shadow: var(--shadow-subtle);
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         transform-origin: left center;
@@ -3621,13 +3142,9 @@
 
       .blud-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
       }
 
       .bkk-table-header {
-        display: grid;
-        grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
         padding: 1.2rem 2rem;
         background: var(--bg-alt);
         font-family: var(--font-head);
@@ -3638,16 +3155,7 @@
       }
 
       .bkk-table-row {
-        display: grid;
-        grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
-        align-items: center;
-        padding: 1.4rem 2rem;
-        border-bottom: 1px solid var(--border-card);
         transition: var(--transition-fast);
-      }
-
-      .bkk-table-row:last-child {
-        border-bottom: none;
       }
 
       /* ==========================================================================
@@ -3690,12 +3198,6 @@
         color: var(--primary);
       }
 
-      .news-cards-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.8rem;
-      }
-
       .article-thumb {
         height: 140px;
         background: linear-gradient(135deg,
@@ -3711,12 +3213,9 @@
 
       /* C. Media Sosial Monokrom (Tombol Lingkaran 36px, SVG 18x18) */
 
-      /* Kartu Identitas Lembaga */
-
       /* ==========================================================================
            14. RESPONSIVE BREAKPOINTS
            ========================================================================== */
-      @media (max-width: 1024px) {
 
         .hero-grid,
         .executive-card,
@@ -3727,34 +3226,12 @@
         }
 
         .why-bento-grid {
+        gap: 1.5rem;
           grid-template-columns: 1fr;
-        }
-
-        .blud-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .bkk-table-header {
-          display: none;
-        }
-
-        .bkk-table-row {
-          grid-template-columns: 1fr;
-          gap: 0.6rem;
-          padding: 1.2rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .nav-menu {
-          display: none;
-        }
-
-        .hamburger {
-          display: block;
         }
 
         .stats-grid {
+        text-align: center;
           grid-template-columns: repeat(2, 1fr);
           gap: 0;
         }
@@ -3791,23 +3268,27 @@
         }
 
         .blud-grid {
+        gap: 2rem;
           grid-template-columns: 1fr !important;
         }
 
         .news-cards-grid {
+        gap: 1.8rem;
+        display: grid;
           grid-template-columns: 1fr;
         }
 
         .executive-card {
+        overflow: hidden;
+        position: relative;
+        box-shadow: var(--shadow-card);
           padding: 2rem 1.5rem;
         }
-      }
 
       /* ==========================================================================
            15. COMPREHENSIVE MOBILE ULTRA-OPTIMIZATION (360px, 390px, 768px)
            ========================================================================== */
       /* Tap Target & Global Padding Standard */
-      @media (max-width: 768px) {
         .container {
           padding: 0 20px !important;
         }
@@ -3827,35 +3308,14 @@
         }
 
         /* Responsive Navbar (B) */
-        .header-wrapper {
-          top: 0.5rem;
-          width: calc(100% - 20px);
-          border-radius: 20px;
-        }
-
-        .nav-island {
-          padding: 0.6rem 1rem !important;
-        }
 
         .brand-logo {
           max-height: 42px;
           max-width: 130px;
         }
 
-        .nav-menu {
-          display: none !important;
-        }
-
-        .nav-mobile-cta {
-          display: inline-flex !important;
-          margin-left: auto;
-          margin-right: 0.5rem;
-          padding: 0.45rem 0.9rem !important;
-          font-size: 0.8rem !important;
-          min-height: 38px;
-        }
-
         .hamburger {
+        cursor: pointer;
           display: flex !important;
           align-items: center;
           justify-content: center;
@@ -3870,42 +3330,11 @@
           padding: 0;
         }
 
-        .mobile-drawer {
-          width: 85vw;
-          max-width: 340px;
-          background: #ffffff !important;
-        }
-
-        .drawer-close {
-          width: 44px;
-          height: 44px;
-          min-width: 44px;
-          min-height: 44px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
         .drawer-links a {
           transition: var(--transition);
           min-height: 44px;
           font-size: 16px;
           /* Prevents iOS auto zoom */
-        }
-
-        .hero-grid {
-          grid-template-columns: 1fr;
-          text-align: center;
-          gap: 2rem;
-        }
-
-        .hero-text-col {
-          align-items: center;
-          text-align: center;
-        }
-
-        .hero-actions {
-          justify-content: center;
         }
 
         .hero-students-img {
@@ -3914,30 +3343,37 @@
 
         /* HERO SECTION (C) */
         .hero-section {
+        position: relative;
           padding: 5.5rem 0 3.5rem !important;
-        }
-
-        .hero-headline {
-          font-size: clamp(1.75rem, 7.5vw, 2.4rem) !important;
-          line-height: 1.2 !important;
-          letter-spacing: -0.03em;
         }
 
         /* KONSENTRASI KEAHLIAN (D) */
         .majors-hero-orbit {
+        position: relative;
           height: 280px !important;
           margin-bottom: 2rem !important;
         }
 
         .orbit-hero-stage {
+        position: relative;
           height: 280px !important;
         }
 
         .orbit-ring-outer {
+          height: 370px;
+          width: 370px;
+        pointer-events: none;
+        transform-origin: center center;
+        inset: 0;
+        position: absolute;
           display: none !important;
         }
 
         .orbit-ring-inner {
+        pointer-events: none;
+        transform-origin: center center;
+        inset: 0;
+        position: absolute;
           width: 240px !important;
           height: 240px !important;
         }
@@ -3952,11 +3388,17 @@
         }
 
         .orbit-hero-center {
+        pointer-events: auto;
+        backdrop-filter: blur(3px);
+        text-align: center;
+        z-index: 5;
+        position: relative;
           max-width: 290px !important;
           padding: 1rem !important;
         }
 
         .orbit-hero-title {
+        letter-spacing: -0.035em;
           font-size: clamp(1.4rem, 5.5vw, 1.85rem) !important;
           line-height: 1.25 !important;
         }
@@ -3967,11 +3409,15 @@
         }
 
         .majors-split-grid {
+        position: relative;
           grid-template-columns: 1fr !important;
           gap: 1.5rem !important;
         }
 
         .major-nav-item {
+        cursor: pointer;
+        text-align: left;
+        gap: 1.1rem;
           min-height: 64px !important;
           padding: 0.9rem 1.1rem !important;
         }
@@ -3981,6 +3427,7 @@
         }
 
         .majors-detail-col {
+        box-shadow: var(--shadow-card);
           position: static !important;
           top: auto !important;
         }
@@ -3999,10 +3446,12 @@
 
         /* BKK SECTION & TABLE (G) */
         .bkk-table-header {
+        grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
           display: none !important;
         }
 
         .bkk-table-row {
+          grid-template-columns: 1fr;
           display: flex !important;
           flex-direction: column !important;
           align-items: flex-start !important;
@@ -4025,7 +3474,6 @@
           padding: 1.2rem !important;
           margin-bottom: 1.2rem !important;
         }
-      }
 
       /* 360px & 390px (Narrow Mobile Benchmark) */
       @media (max-width: 560px) {
@@ -4060,51 +3508,12 @@
       /* ==========================================================================
            ROBUST STANDARD NAVBAR & MOBILE DRAWER (Z-INDEX & ACCESSIBILITY FIX)
            ========================================================================== */
-      .header-wrapper {
-        position: fixed !important;
-        top: 1rem;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 90% !important;
-        max-width: 1320px !important;
-        background: #ffffff !important;
-        border-radius: 50px !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
-        border: 1px solid var(--border-card) !important;
-        pointer-events: auto !important;
-      }
-
-      .nav-island {
-        width: 100% !important;
-        padding: 0.8rem 1.8rem !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        position: relative !important;
-      }
 
       /* Hamburger button MUST have relative position, high z-index, and pointer-events */
       .hamburger,
       .nav-toggle {
-        display: none;
         background: var(--primary-surface) !important;
-        border: 1px solid rgba(30, 64, 175, 0.15) !important;
         color: var(--primary) !important;
-        font-size: 1.4rem !important;
-        cursor: pointer !important;
-        width: 44px !important;
-        height: 44px !important;
-        min-width: 44px !important;
-        min-height: 44px !important;
-        border-radius: 10px !important;
-        align-items: center !important;
-        justify-content: center !important;
-        position: relative !important;
-        z-index: 10000 !important;
-        pointer-events: auto !important;
-        transition: all 0.2s ease !important;
-        user-select: none !important;
-        -webkit-tap-highlight-color: transparent !important;
       }
 
       .hamburger:hover,
@@ -4190,15 +3599,26 @@
       .header-bg-pattern {
         pointer-events: none !important;
       }
-
-      @media (max-width: 900px) {
         .header-wrapper {
+        pointer-events: auto !important;
+        border: 1px solid var(--border-card) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+        background: #ffffff !important;
+        max-width: 1320px !important;
+        transform: translateX(-50%) !important;
+        left: 50% !important;
+        position: fixed !important;
           top: 0.5rem !important;
           width: calc(100% - 20px) !important;
           border-radius: 20px !important;
         }
 
         .nav-island {
+        position: relative !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        display: flex !important;
+        width: 100% !important;
           padding: 0.6rem 1rem !important;
         }
 
@@ -4206,20 +3626,26 @@
           display: none !important;
         }
 
-        .nav-mobile-cta {
-          display: inline-flex !important;
-          margin-left: auto;
-          margin-right: 0.6rem;
-          padding: 0.45rem 1rem !important;
-          font-size: 0.82rem !important;
-          min-height: 40px !important;
-        }
-
         .hamburger,
         .nav-toggle {
+        -webkit-tap-highlight-color: transparent !important;
+        user-select: none !important;
+        transition: all 0.2s ease !important;
+        pointer-events: auto !important;
+        z-index: 10000 !important;
+        position: relative !important;
+        justify-content: center !important;
+        align-items: center !important;
+        border-radius: 10px !important;
+        min-height: 44px !important;
+        min-width: 44px !important;
+        height: 44px !important;
+        width: 44px !important;
+        cursor: pointer !important;
+        font-size: 1.4rem !important;
+        border: 1px solid rgba(30, 64, 175, 0.15) !important;
           display: flex !important;
         }
-      }
 }
 /* ==========================================================================
    TESTIMONI ALUMNI — KARTU & SLIDER VERTIKAL (section Jejak Prestasi)
@@ -4431,6 +3857,10 @@
    ========================================================================== */
 @media (max-width: 768px) {
   .hero-grid {
+          text-align: center;
+          grid-template-columns: 1fr;
+        z-index: 2;
+        position: relative;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -4438,6 +3868,9 @@
   }
 
   .hero-text-col {
+          text-align: center;
+          align-items: center;
+        flex-direction: column;
     display: contents;
   }
 
@@ -4453,12 +3886,16 @@
 
   /* Kartu statistik sudah mengalir di bawah gambar, jadi tinggi minimum kolom tidak diperlukan. */
   .hero-image-col {
+        position: relative;
     order: 3;
     min-height: 0;
     margin: 0.5rem 0 1.5rem;
   }
 
   .hero-headline {
+          letter-spacing: -0.03em;
+          line-height: 1.2 !important;
+          font-size: clamp(1.75rem, 7.5vw, 2.4rem) !important;
     order: 4;
     text-align: center;
   }
@@ -4471,6 +3908,7 @@
   }
 
   .hero-actions {
+          justify-content: center;
     order: 6;
     flex-direction: column;
     align-items: stretch;

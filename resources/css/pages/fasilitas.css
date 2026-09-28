@@ -45,12 +45,6 @@
       --transition-fast: all 0.3s ease !important;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: var(--font-body);
       background-color: var(--bg-main);
@@ -107,36 +101,18 @@
 
     /* 1. FLOATING ISLAND NAVBAR WITH GLASSMORPHISM 2.0 */
     .header-wrapper {
-      position: fixed;
-      border-radius: 50px;
-      top: 1rem;
-      left: 50%;
-      transform: translate(-50%, 0);
-      width: 90%;
-      z-index: 1000;
-      background: #ffffff;
       border-bottom: 1px solid var(--border-card);
     }
 
     .nav-island {
       max-width: 1320px;
       margin: 0 auto;
-      padding: 1rem 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       transition: var(--transition) !important;
     }
 
     .nav-island.scrolled {
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
-    }
-
-    .brand-box {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
     }
 
     .brand-logo {
@@ -155,10 +131,6 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-    }
-
-    .nav-item {
-      position: relative;
     }
 
     .nav-link {
@@ -245,52 +217,6 @@
     }
 
     /* Mobile Drawer */
-    .mobile-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(20, 18, 16, 0.6);
-      backdrop-filter: blur(8px);
-      z-index: 1050;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition) !important;
-    }
-
-    .mobile-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-drawer {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 320px;
-      max-width: 85vw;
-      background: #ffffff;
-      z-index: 1100;
-      padding: 2rem 1.5rem;
-      transform: translateX(100%);
-      transition: var(--transition) !important;
-      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
-      overflow-y: auto;
-    }
-
-    .mobile-drawer.active {
-      transform: translateX(0);
-    }
-
-    .drawer-close {
-      background: var(--bg-alt);
-      border: none;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      cursor: pointer;
-      margin-bottom: 1.5rem;
-    }
 
     .drawer-links a {
       display: flex;
@@ -303,12 +229,6 @@
       color: var(--text-dark);
       margin-bottom: 0.3rem;
       transition: var(--transition-fast) !important;
-    }
-
-    .drawer-links a:hover,
-    .drawer-links a.active {
-      background: var(--primary-surface);
-      color: var(--primary);
     }
 
     .drawer-section-title {
@@ -845,10 +765,6 @@
       .tefa-title {
         font-size: 2.2rem;
       }
-
-      .nav-menu {
-        display: none;
-      }
     }
 
     /* General Mobile Responsiveness (H) */
@@ -861,16 +777,6 @@
       body {
         overflow-x: hidden !important;
         max-width: 100vw !important;
-      }
-
-      .header-wrapper {
-        top: 0.5rem;
-        width: calc(100% - 20px);
-        border-radius: 20px;
-      }
-
-      .nav-island {
-        padding: 0.6rem 1rem !important;
       }
 
       .brand-logo {
@@ -895,17 +801,6 @@
         padding: 0;
       }
 
-      .mobile-drawer {
-        width: 85vw;
-        max-width: 340px;
-        background: #ffffff !important;
-      }
-
-      .drawer-close {
-        width: 44px;
-        height: 44px;
-      }
-
       .drawer-links a {
         transition: var(--transition) !important;
         min-height: 44px;
@@ -919,8 +814,6 @@
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
       }
-
-      /* Magazine & Card Descriptions permanently visible on mobile */
 
       /* Visi quote line clamp */
 
@@ -976,21 +869,16 @@
 
     /* ================= FILTER ================= */
     .filter-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
       margin: 2.2rem 0 1.8rem;
     }
 
     .filter-btn {
-      padding: 0.6rem 1.15rem;
       border: 1px solid var(--border-card);
       background: #fff;
       border-radius: 50px;
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-muted);
-      transition: all 0.25s ease !important;
     }
 
     .filter-btn:hover {
@@ -1106,9 +994,6 @@
       fill: var(--primary);
       stroke: #fff;
       stroke-width: 2.5;
-      transition:
-        fill 0.25s,
-        r 0.25s !important;
     }
 
     .hs-num {
@@ -1124,11 +1009,6 @@
       fill: var(--secondary);
     }
 
-    .hotspot:hover .hs-dot,
-    .hotspot:focus-visible .hs-dot {
-      r: 16;
-    }
-
     .hotspot:hover .hs-halo,
     .hotspot:focus-visible .hs-halo {
       opacity: 1;
@@ -1137,11 +1017,6 @@
     .hotspot:focus-visible .hs-dot {
       stroke: var(--primary-dark);
       stroke-width: 3.5;
-    }
-
-    .hotspot.is-active .hs-dot {
-      fill: var(--secondary);
-      r: 17;
     }
 
     .hotspot.is-active .hs-halo {
@@ -1247,10 +1122,6 @@
       text-shadow: none;
     }
 
-    .panel-kicker {
-      z-index: 2;
-    }
-
     .photo-note {
       position: absolute;
       bottom: 0.85rem;
@@ -1264,6 +1135,7 @@
     }
 
     .panel-kicker {
+      z-index: 2;
       position: absolute;
       top: 1rem;
       left: 1.2rem;
@@ -1361,11 +1233,6 @@
     }
 
     /* ---- Daftar ---- */
-    .index-list {
-      margin-top: 2.5rem;
-      border-top: 1px solid var(--border-card);
-      padding-top: 2rem;
-    }
 
     .index-grid {
       display: grid;
@@ -1375,15 +1242,10 @@
     }
 
     .index-btn {
-      text-align: left;
-      padding: 0.85rem 1rem;
       border: 1px solid var(--border-card);
       background: #fff;
       border-radius: 10px;
-      transition: all 0.22s ease !important;
       display: flex;
-      align-items: center;
-      gap: 0.7rem;
     }
 
     .index-btn:hover {
@@ -1456,6 +1318,7 @@
 
     /* Mobile Enhancements for Peta Sekolah (F) */
     .filter-row {
+      flex-wrap: wrap;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
@@ -1468,26 +1331,11 @@
       display: none;
     }
 
-    .filter-btn {
-      white-space: nowrap;
-      flex-shrink: 0;
-      min-height: 44px;
-      padding: 0.6rem 1.2rem;
-    }
-
-    .index-btn {
-      min-height: 48px;
-    }
-
     @media (max-width: 768px) {
 
       .map-layout {
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
-      }
-
-      .detail-panel {
-        position: static !important;
       }
 
       /* Hide small room labels on mobile, keep large blocks */
@@ -1523,6 +1371,7 @@
 
     /* ========================================================================== ROBUST STANDARD NAVBAR & MOBILE DRAWER (Z-INDEX & ACCESSIBILITY FIX) ========================================================================== */
     .header-wrapper {
+      z-index: 1000;
       position: fixed !important;
       top: 1rem;
       left: 50% !important;
@@ -1669,15 +1518,6 @@
         display: none !important;
       }
 
-      .nav-mobile-cta {
-        display: inline-flex !important;
-        margin-left: auto;
-        margin-right: 0.6rem;
-        padding: 0.45rem 1rem !important;
-        font-size: 0.82rem !important;
-        min-height: 40px !important;
-      }
-
       .hamburger,
       .nav-toggle {
         display: flex !important;
@@ -1702,16 +1542,26 @@
 }
 
 .hotspot.is-active .hs-dot {
+      fill: var(--secondary);
   r: 13;
   transform: scale(1.31);
 }
 
 /* Transisi hanya pada properti yang berubah (sebelumnya `all`). */
 .filter-btn {
+      padding: 0.6rem 1.2rem;
+      min-height: 44px;
+      flex-shrink: 0;
+      white-space: nowrap;
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
 }
 
 .index-btn {
+      min-height: 48px;
+      gap: 0.7rem;
+      align-items: center;
+      padding: 0.85rem 1rem;
+      text-align: left;
   transition: border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease !important;
 }
 
@@ -1780,6 +1630,9 @@
 
 /* Laptop: titik denah menjadi cara utama memilih lokasi */
 .index-list {
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-card);
+      margin-top: 2.5rem;
   display: none;
 }
 

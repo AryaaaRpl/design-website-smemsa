@@ -158,7 +158,7 @@
 
       <div style="margin-top: 1.5rem">
         <a href="{{ url('/spmb') }}" class="btn btn-primary"
-          style="width: 100%; text-align: center; justify-content: center">Daftar SPMB {{ $site->spmbYear() }}</a>
+          style="width: 100%; text-align: center; justify-content: center;">Daftar SPMB {{ $site->spmbYear() }}</a>
       </div>
     </div>
   </div>

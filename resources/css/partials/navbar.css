@@ -1,0 +1,27 @@
+/* ==========================================================================
+   ATURAN BERSAMA SEMUA HALAMAN PUBLIK
+   Aturan yang sebelumnya disalin identik ke setiap file resources/css/pages/*.css.
+   Dimuat lewat app.css (sebelum CSS halaman), jadi CSS halaman tetap bisa menimpanya.
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.brand-box {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.drawer-links a:hover,
+.drawer-links a.active {
+  background: var(--primary-surface);
+  color: var(--primary);
+}

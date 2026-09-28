@@ -26,13 +26,11 @@
         </div>
 
         <div class="badge hero-badge-excellence" style="
-                background: var(--secondary-surface);
                 color: var(--secondary);
                 text-transform: uppercase;
                 letter-spacing: 0.1em;
                 font-size: 0.75rem;
                 margin-bottom: 1rem;
-                border: 1px solid rgba(234, 179, 8, 0.3);
               ">
           SMK Pusat Keunggulan &bull; Excellent School
         </div>
