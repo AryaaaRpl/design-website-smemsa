@@ -888,3 +888,34 @@
         display: flex !important;
       }
     }
+/* ==========================================================================
+   EKSTRAKURIKULER - TAMPILAN HP (<= 768px)
+   Header tidak dikunci setinggi layar & judul lebih proporsional; section kartu
+   mendapat jarak atas-bawah 3.5rem (sebelumnya terhapus oleh aturan
+   .container mobile sehingga kartu menempel ke header & footer).
+   Desktop tidak terpengaruh.
+   ========================================================================== */
+@media (max-width: 768px) {
+  .page-header {
+    height: auto;
+    padding: 7.5rem 0 3rem;
+  }
+
+  .page-title {
+    font-size: 2.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  .ekskul-section.container {
+    padding-top: 2.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  .ekskul-grid {
+    gap: 1.25rem;
+  }
+}
