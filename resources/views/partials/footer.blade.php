@@ -162,8 +162,7 @@
             <div><strong>NPSN:</strong> {{ $site->get('npsn') }}</div>
             <div><strong>Akreditasi:</strong> {{ $site->get('accreditation') }} ({{ $site->get('accreditation_predicate') }} BAN-S/M)</div>
             <div><strong>Lembaga Sertifikasi:</strong> LSP-P1 BNSP</div>
-            <div><strong>Status Sekolah:</strong> SMK Pusat Keunggulan (Excellent School)</div>
-            <div><strong>Domain Resmi:</strong> smksmuh1gtg.com</div>
+            <div><strong>Status Sekolah:</strong> SMK Pusat Keunggulan & Excellent School</div>
           </div>
         </div>
       </div>

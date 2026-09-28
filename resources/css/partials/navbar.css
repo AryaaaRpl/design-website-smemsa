@@ -25,3 +25,80 @@
   background: var(--primary-surface);
   color: var(--primary);
 }
+
+/* ==========================================================================
+   DRAWER HP: daftar link rata kiri dengan garis pemisah di bawah tiap link.
+   Selector sengaja lebih spesifik agar berlaku sama di semua halaman.
+   ========================================================================== */
+.mobile-drawer .drawer-links a:not(.btn) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 50px;
+  margin: 0;
+  padding: 0.8rem 0.35rem;
+  border-radius: 0;
+  border-bottom: 1px solid var(--border-card);
+  background: transparent;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  transition: color 0.2s ease, padding-left 0.2s ease, background-color 0.2s ease;
+}
+
+/* Tanda arah kecil di kanan */
+.mobile-drawer .drawer-links a:not(.btn)::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--text-subtle);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.mobile-drawer .drawer-links a:not(.btn):hover {
+  background: transparent;
+  color: var(--primary);
+  padding-left: 0.6rem;
+}
+
+.mobile-drawer .drawer-links a:not(.btn):hover::after {
+  color: var(--primary);
+  transform: translateX(2px);
+}
+
+/* Halaman yang sedang dibuka */
+.mobile-drawer .drawer-links a.active:not(.btn) {
+  background: var(--primary-surface);
+  color: var(--primary);
+  font-weight: 700;
+  padding-left: 0.85rem;
+  box-shadow: inset 3px 0 0 var(--secondary);
+}
+
+.mobile-drawer .drawer-links a.active:not(.btn)::after {
+  color: var(--primary);
+}
+
+.mobile-drawer .drawer-section-title {
+  margin: 1.75rem 0 0.35rem;
+  padding: 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+/* Tombol "Daftar SPMB" di drawer: teks selalu putih (tidak ikut warna link halaman) */
+.mobile-drawer .drawer-links a.btn-primary {
+  color: #ffffff;
+}
+
+/* Logo lebar (LSP/BKK) jangan sampai menjepit nama sekolah di drawer */
+.mobile-drawer .brand-box .brand-logo {
+  max-width: 88px;
+}

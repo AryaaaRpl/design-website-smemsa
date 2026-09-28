@@ -29,6 +29,22 @@
   transform: scale(1.1) rotate(5deg);
 }
 
+.chatbot-btn .chatbot-icon-close {
+  display: none;
+}
+
+.chatbot-btn .chatbot-icon-open {
+  display: block;
+}
+
+.chatbot-btn.active .chatbot-icon-open {
+  display: none;
+}
+
+.chatbot-btn.active .chatbot-icon-close {
+  display: block;
+}
+
 .chat-panel {
   position: fixed;
   bottom: 6.5rem;

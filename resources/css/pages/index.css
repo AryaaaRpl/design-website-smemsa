@@ -714,7 +714,6 @@
       font-weight: 600;
       font-size: 0.95rem;
       border-radius: var(--radius-sm);
-      color: var(--text-dark);
       margin-bottom: 0.3rem;
     }
 
@@ -1266,10 +1265,10 @@
       background: #ffffff;
       border: 1px solid var(--border-card);
       border-radius: var(--radius-xl);
-      padding: 3.5rem 0;
+      padding: 3rem;
       box-shadow: var(--shadow-card);
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
       gap: 3.5rem;
       align-items: center;
       position: relative;
@@ -1281,14 +1280,17 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-card);
+      aspect-ratio: 4 / 5;
+      background: var(--bg-alt);
     }
 
     .executive-photo-frame img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       transition: var(--transition);
-      margin-bottom: 50px;
     }
 
     .executive-photo-frame:hover img {
@@ -1297,7 +1299,7 @@
 
     .executive-photo-badge {
       position: absolute;
-      bottom: 1.5rem;
+      bottom: 0rem;
       left: 1.5rem;
       right: 1.5rem;
       background: rgba(255, 255, 255, 0.95);
@@ -1772,7 +1774,8 @@
     .major-nav-top {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: space-between;
+      gap: 0.75rem;
       margin-bottom: 0.15rem;
     }
 
@@ -1798,6 +1801,8 @@
       background: rgba(30, 64, 175, 0.08);
       padding: 0.12rem 0.45rem;
       border-radius: var(--radius-xs);
+      flex-shrink: 0;
+      margin-left: auto;
     }
 
     .major-nav-chevron {
@@ -2571,14 +2576,12 @@
         padding: 0.8rem 1rem;
         font-weight: 600;
         border-radius: var(--radius-sm);
-        color: var(--text-dark);
         margin-bottom: 0.3rem;
       }
 
       .drawer-links a:hover,
       .drawer-links a.active {
         background: var(--primary-surface);
-        color: var(--primary);
       }
 
       /* ==========================================================================
@@ -2742,45 +2745,6 @@
 
       .mitra-item:hover img {
         opacity: 1;
-      }
-
-      /* ==========================================================================
-           6. EXECUTIVE CARD - SAMBUTAN KEPALA SEKOLAH (PAK WAHID)
-           ========================================================================== */
-
-      .executive-card {
-        background: #ffffff;
-        border: 1px solid var(--border-card);
-        border-radius: var(--radius-xl);
-        display: grid;
-        grid-template-columns: 0.9fr 1.1fr;
-        gap: 3.5rem;
-        align-items: center;
-      }
-
-      .executive-photo-frame img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-        margin-bottom: 50px;
-      }
-
-      .executive-quote {
-        font-family: var(--font-display);
-        font-size: clamp(1.4rem, 2.2vw, 1.85rem);
-        font-weight: 700;
-        color: var(--primary);
-        line-height: 1.35;
-        margin-bottom: 1.5rem;
-        letter-spacing: -0.025em;
-      }
-
-      .executive-bio-text {
-        font-size: 1.05rem;
-        color: var(--text-muted);
-        line-height: 1.8;
-        margin-bottom: 2rem;
       }
 
       /* Why Choose SMEMSA Bento Cards */
@@ -3278,12 +3242,6 @@
           grid-template-columns: 1fr;
         }
 
-        .executive-card {
-        overflow: hidden;
-        position: relative;
-        box-shadow: var(--shadow-card);
-          padding: 2rem 1.5rem;
-        }
 
       /* ==========================================================================
            15. COMPREHENSIVE MOBILE ULTRA-OPTIMIZATION (360px, 390px, 768px)
@@ -4043,4 +4001,70 @@
 .major-nav-logo {
   object-fit: contain;
   flex-shrink: 0;
+}
+
+/* ==========================================================================
+   SAMBUTAN KEPALA SEKOLAH (.executive-card) — TABLET & HP
+   ========================================================================== */
+/* Tablet: tetap 2 kolom, foto lebih ramping */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .executive-card {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2.5rem;
+    padding: 2.5rem;
+  }
+
+  .executive-photo-badge {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    padding: 0.85rem 1rem;
+  }
+}
+
+/* HP: bertumpuk — foto, nama, lalu pesan */
+@media (max-width: 768px) {
+  .executive-card {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 1.25rem 1.25rem 1.75rem;
+  }
+
+  .executive-photo-frame {
+    aspect-ratio: auto;
+    background: #ffffff;
+  }
+
+  .executive-photo-frame img {
+    aspect-ratio: 1 / 1;
+    height: auto;
+  }
+
+  /* Kotak nama pindah ke bawah foto agar wajah tidak tertutup */
+  .executive-photo-badge {
+    position: static;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    background: #ffffff;
+    padding: 1rem 1.1rem;
+    border-top: 1px solid var(--border-card);
+  }
+
+  .executive-quote {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .executive-bio-text {
+    text-align: left !important;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .executive-card .btn {
+    width: 100%;
+  }
 }
