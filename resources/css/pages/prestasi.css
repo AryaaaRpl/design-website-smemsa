@@ -1645,3 +1645,158 @@
         display: flex !important;
       }
     }
+/* ==========================================================================
+   KATALOG PRESTASI: PAGINASI (18 per halaman) & STATUS MEMUAT
+   ========================================================================== */
+#award-catalog-results {
+  transition: opacity 0.2s ease;
+}
+
+#award-catalog-results.is-loading {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.award-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.award-page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.award-page-number,
+.award-page-arrow,
+.award-page-gap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-head);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.award-page-number,
+.award-page-arrow {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  color: var(--text-dark);
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition);
+}
+
+.award-page-arrow {
+  gap: 0.5rem;
+  padding: 0 1.2rem;
+}
+
+a.award-page-number:hover,
+a.award-page-arrow:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.award-page-number.is-current {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 8px 20px -8px rgba(30, 64, 175, 0.55);
+}
+
+.award-page-arrow.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.award-page-gap {
+  min-width: 28px;
+  padding: 0;
+  color: var(--text-subtle);
+}
+
+/* "Halaman X dari Y" hanya ditampilkan di HP (pengganti deretan nomor) */
+.award-page-info {
+  display: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   MOBILE / HP (≤768px) — tidak memengaruhi desktop
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Header: beri jarak dari navbar seperti halaman lain */
+  .page-header {
+    padding: 7.5rem 0 2.25rem !important;
+  }
+
+  /* Statistik: kartu ke-3 penuh agar tidak tersisa satu kotak sendirian */
+  .award-stat-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .awards-stats-grid {
+    margin-bottom: 0 !important;
+  }
+
+  /* Jarak antarbagian (aturan .container lama menghapus padding vertikal) */
+  .pinnacle-section {
+    margin-top: 1.5rem !important;
+  }
+
+  #katalog-prestasi {
+    padding-top: 3rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  /* Paginasi HP: ← Halaman X dari Y → dalam satu baris */
+  .award-pagination {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 2.25rem;
+  }
+
+  .award-page-numbers {
+    display: none;
+  }
+
+  .award-page-info {
+    display: block;
+    text-align: center;
+  }
+
+  .award-page-arrow {
+    padding: 0;
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    font-size: 1.05rem;
+  }
+
+  .award-page-arrow-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}

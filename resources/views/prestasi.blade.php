@@ -81,10 +81,10 @@
         </section>
     @endif
 
-    <!-- 4. REAL INTERACTIVE CATALOG SECTION -->
+    <!-- 4. KATALOG PRESTASI (paginasi server, 18 per halaman) -->
     <section class="container" id="katalog-prestasi" style="padding-bottom: 5rem">
-        <!-- Control Panel: Search, Category Filters, Year Select, View Switcher -->
-        <div class="catalog-control-panel">
+        <!-- Kontrol: pencarian, kategori, tahun, tampilan. Form GET agar tetap berfungsi tanpa JavaScript. -->
+        <form class="catalog-control-panel" id="award-filter-form" method="GET" action="{{ route('prestasi') }}#katalog-prestasi" role="search">
             <div class="catalog-top-bar">
                 <!-- Search input -->
                 <div class="award-search-box">
@@ -93,14 +93,14 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" id="award-search-input"
+                    <input type="search" name="cari" id="award-search-input" value="{{ $search }}"
                         placeholder="Cari nama kejuaraan, penyelenggara, atau kata kunci..."
-                        aria-label="Cari prestasi kejuaraan" />
+                        aria-label="Cari prestasi kejuaraan" autocomplete="off" />
                 </div>
 
                 <!-- View Switcher -->
                 <div class="view-switcher-group" role="group" aria-label="Pilihan tampilan katalog">
-                    <button class="view-toggle-btn active" id="view-grid-btn" aria-pressed="true"
+                    <button type="button" class="view-toggle-btn active" id="view-grid-btn" aria-pressed="true"
                         onclick="switchCatalogView('grid')">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2.5">
@@ -111,7 +111,7 @@
                         </svg>
                         Grid
                     </button>
-                    <button class="view-toggle-btn" id="view-timeline-btn" aria-pressed="false"
+                    <button type="button" class="view-toggle-btn" id="view-timeline-btn" aria-pressed="false"
                         onclick="switchCatalogView('timeline')">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2.5">
@@ -125,14 +125,19 @@
 
             <!-- Category & Year Filter Row -->
             <div class="catalog-filters-row">
+                {{-- Kategori aktif ikut terkirim saat mencari / mengganti tahun. Diletakkan SEBELUM tombol
+                     kategori: jika tombol diklik, nilainya terkirim sesudahnya dan yang dipakai server. --}}
+                <input type="hidden" name="kategori" id="award-category-input" value="{{ $activeCategory?->slug }}">
+
                 <div class="category-chip-list" role="toolbar" aria-label="Filter kategori prestasi">
-                    <button class="category-chip active" aria-pressed="true" data-category="all"
-                        onclick="filterByCategory('all', this)">
+                    <button type="submit" name="kategori" value="" class="category-chip {{ $activeCategory ? '' : 'active' }}"
+                        aria-pressed="{{ $activeCategory ? 'false' : 'true' }}">
                         Semua
                     </button>
                     @foreach ($categories as $category)
-                        <button class="category-chip" aria-pressed="false" data-category="{{ $category->slug }}"
-                            onclick="filterByCategory('{{ $category->slug }}', this)">
+                        <button type="submit" name="kategori" value="{{ $category->slug }}"
+                            class="category-chip {{ $activeCategory?->is($category) ? 'active' : '' }}"
+                            aria-pressed="{{ $activeCategory?->is($category) ? 'true' : 'false' }}">
                             {{ $category->name }}
                         </button>
                     @endforeach
@@ -140,69 +145,20 @@
 
                 <div class="year-select-wrap">
                     <label for="award-year-filter">Tahun:</label>
-                    <select id="award-year-filter" class="year-select-dropdown" onchange="filterByYear(this.value)"
-                        aria-label="Filter tahun kejuaraan">
-                        <option value="all">Semua Tahun</option>
-                        @foreach ($years as $year)
-                            <option value="{{ $year }}">{{ $year }}</option>
+                    <select name="tahun" id="award-year-filter" class="year-select-dropdown"
+                        aria-label="Filter tahun kejuaraan" onchange="this.form.requestSubmit ? this.form.requestSubmit() : this.form.submit()">
+                        <option value="">Semua Tahun</option>
+                        @foreach ($years as $optionYear)
+                            <option value="{{ $optionYear }}" @selected($year === $optionYear)>{{ $optionYear }}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
-        </div>
+        </form>
 
-        <!-- Accessible Status Live Region -->
-        <div class="catalog-status-bar" id="catalog-status-bar" aria-live="polite">
-            <span id="catalog-count-text">Menampilkan {{ min(6, $achievements->count()) }} dari
-                {{ $achievements->count() }} prestasi</span>
-            <span id="active-filter-indicator" style="font-size: 0.85rem; color: var(--primary); font-weight: 700"></span>
-        </div>
-
-        <!-- VIEW 1: Modern Typographic Grid -->
-        <div class="awards-catalog-grid" id="awards-grid-container">
-            <!-- Rendered by JavaScript -->
-        </div>
-
-        <!-- VIEW 2: Chronological Timeline -->
-        <div class="awards-timeline-wrap" id="awards-timeline-container">
-            <!-- Rendered by JavaScript -->
-        </div>
-
-        <!-- Empty State -->
-        <div class="catalog-empty-state" id="catalog-empty-state">
-            <h3
-                style="
-            color: var(--primary-dark);
-            font-size: 1.4rem;
-            margin-bottom: 0.6rem;
-          ">
-                {{ $achievements->isEmpty() ? 'Belum ada data prestasi' : 'Tidak ada prestasi yang cocok' }}
-            </h3>
-            <p
-                style="
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-          ">
-                @if ($achievements->isEmpty())
-                    Rekam jejak prestasi siswa sedang disiapkan. Silakan kembali lagi nanti.
-                @else
-                    Coba gunakan kata kunci pencarian lain atau atur ulang filter kategori
-                    dan tahun.
-                @endif
-            </p>
-            @if ($achievements->isNotEmpty())
-                <button class="btn btn-outline" onclick="resetAllFilters()">
-                    Atur Ulang Filter
-                </button>
-            @endif
-        </div>
-
-        <!-- Load More Section -->
-        <div class="load-more-section" id="load-more-container">
-            <button class="btn btn-outline" id="load-more-btn" onclick="loadMoreAwards()" style="min-width: 220px">
-                Muat Lebih Banyak (+6)
-            </button>
+        <!-- Isi katalog (dimuat ulang tanpa refresh halaman oleh resources/js/pages/prestasi.js) -->
+        <div id="award-catalog-results" aria-live="polite">
+            @include('prestasi._catalog')
         </div>
     </section>
 
@@ -256,9 +212,3 @@
     <!-- FOOTER -->
 @endsection
 
-@push('scripts')
-    <script>
-        // Data katalog prestasi dari database (dipakai oleh resources/js/pages/prestasi.js)
-        window.awardsData = {{ Js::from($awardsData) }};
-    </script>
-@endpush

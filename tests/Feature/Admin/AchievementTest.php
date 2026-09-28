@@ -124,7 +124,57 @@ class AchievementTest extends TestCase
             ->assertSee('Mahkota Prestasi')
             ->assertSee('Juara Umum Muhammadiyah Education Awards')
             ->assertSee('Juara 1 MPL Student League', false)
-            ->assertSee('<option value="2024">2024</option>', false);
+            ->assertSee('<option value="2024" >2024</option>', false);
+    }
+
+    public function test_public_page_paginates_18_per_page(): void
+    {
+        foreach (range(1, 20) as $i) {
+            $this->makeAchievement(['title' => "Prestasi Nomor {$i}", 'achieved_at' => now()->subDays($i)]);
+        }
+
+        $this->get(route('prestasi'))
+            ->assertOk()
+            ->assertSee('Menampilkan 1–18 dari 20 prestasi')
+            ->assertSee('Prestasi Nomor 18')
+            ->assertDontSee('Prestasi Nomor 19')
+            ->assertSee('Halaman 1 dari 2');
+
+        $this->get(route('prestasi', ['page' => 2]))
+            ->assertOk()
+            ->assertSee('Menampilkan 19–20 dari 20 prestasi')
+            ->assertSee('Prestasi Nomor 20');
+    }
+
+    public function test_public_page_filters_by_search_category_and_year(): void
+    {
+        $other = Category::create(['type' => CategoryType::Achievement, 'name' => 'Olahraga', 'slug' => 'olahraga']);
+        $this->makeAchievement(['title' => 'Juara Robot Nasional', 'achieved_at' => '2025-05-01']);
+        $this->makeAchievement(['title' => 'Juara Silat Daerah', 'category_id' => $other->id, 'achieved_at' => '2024-05-01']);
+
+        $this->get(route('prestasi', ['cari' => 'robot']))
+            ->assertSee('Juara Robot Nasional')->assertDontSee('Juara Silat Daerah');
+
+        $this->get(route('prestasi', ['kategori' => 'olahraga']))
+            ->assertSee('Juara Silat Daerah')->assertDontSee('Juara Robot Nasional');
+
+        $this->get(route('prestasi', ['tahun' => 2025]))
+            ->assertSee('Juara Robot Nasional')->assertDontSee('Juara Silat Daerah');
+
+        $this->get(route('prestasi', ['cari' => 'tidak-ada']))
+            ->assertSee('Tidak ada prestasi yang cocok');
+    }
+
+    public function test_ajax_request_returns_only_catalog(): void
+    {
+        $this->makeAchievement(['title' => 'Prestasi Ajax']);
+
+        $this->get(route('prestasi'), ['X-Requested-With' => 'XMLHttpRequest'])
+            ->assertOk()
+            ->assertHeader('Vary', 'X-Requested-With')
+            ->assertSee('Prestasi Ajax')
+            ->assertSee('awards-page-data', false)
+            ->assertDontSee('award-filter-form', false);
     }
 
     public function test_public_page_shows_empty_state_without_achievements(): void

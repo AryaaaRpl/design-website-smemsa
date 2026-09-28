@@ -1,314 +1,183 @@
 /* ==========================================================================
-   PRESTASI & PENGHARGAAN - CATALOG, FILTERS & MODAL LOGIC
+   PRESTASI & PENGHARGAAN - KATALOG (PAGINASI SERVER), TAMPILAN & MODAL
+   Pencarian, filter kategori/tahun, dan paginasi (18 per halaman) diproses
+   di server. Script ini memuat ulang isi katalog tanpa refresh halaman,
+   mengatur tampilan grid/linimasa, dan membuka modal detail.
+   Tanpa JavaScript, semua kontrol tetap berfungsi sebagai form/link biasa.
    ========================================================================== */
 
 (function () {
-  // ==========================================
-  // 1. DATA PRESTASI DARI DATABASE (dikirim oleh AchievementController)
-  // ==========================================
-  const awardsList = window.awardsData || [];
+  const form = document.getElementById("award-filter-form");
+  const results = document.getElementById("award-catalog-results");
+  const catalog = document.getElementById("katalog-prestasi");
 
-  // Escape teks sebelum dimasukkan ke HTML (data berasal dari input admin).
-  function escapeHtml(value) {
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
-
-  // ==========================================
-  // 2. STATE MANAGEMENT & FILTER CONTROLS
-  // ==========================================
-  let currentCategory = "all";
-  let currentYear = "all";
-  let searchQuery = "";
   let currentView = "grid";
-  const pageSize = 6;
-  let displayedCount = pageSize;
+  let awardsList = [];
+  let pendingRequest = null;
 
-  function getFilteredAwards() {
-    return awardsList.filter((item) => {
-      const matchCategory =
-        currentCategory === "all" || item.category === currentCategory;
-      const matchYear = currentYear === "all" || item.year === currentYear;
-      const query = searchQuery.trim().toLowerCase();
-      const matchSearch =
-        !query ||
-        item.title.toLowerCase().includes(query) ||
-        item.org.toLowerCase().includes(query) ||
-        item.categoryLabel.toLowerCase().includes(query) ||
-        item.location.toLowerCase().includes(query) ||
-        item.excerpt.toLowerCase().includes(query);
+  // Data modal untuk prestasi yang sedang tampil (disisipkan server di dalam katalog).
+  function readAwardsData() {
+    const el = document.getElementById("awards-page-data");
+    try {
+      awardsList = el ? JSON.parse(el.textContent) : [];
+    } catch (e) {
+      awardsList = [];
+    }
+  }
 
-      return matchCategory && matchYear && matchSearch;
+  // ==========================================
+  // 1. TAMPILAN GRID / LINIMASA
+  // ==========================================
+  function applyView() {
+    const grid = document.getElementById("awards-grid-container");
+    const timeline = document.getElementById("awards-timeline-container");
+    if (grid) grid.style.display = currentView === "grid" ? "grid" : "none";
+    if (timeline) timeline.style.display = currentView === "timeline" ? "block" : "none";
+
+    [["view-grid-btn", "grid"], ["view-timeline-btn", "timeline"]].forEach(([id, view]) => {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.classList.toggle("active", currentView === view);
+      btn.setAttribute("aria-pressed", currentView === view ? "true" : "false");
     });
   }
-
-  // Render Catalog Grid View
-  function renderGridView(itemsToRender) {
-    const gridContainer = document.getElementById("awards-grid-container");
-    if (!gridContainer) return;
-
-    if (itemsToRender.length === 0) {
-      gridContainer.innerHTML = "";
-      return;
-    }
-
-    const html = itemsToRender
-      .map((item) => {
-        const isNational = item.level === "nasional";
-        const badgeClass = isNational
-          ? "award-badge-pill national"
-          : "award-badge-pill";
-        const hasImage = Boolean(item.imageUrl);
-        const headerClass = hasImage
-          ? "award-card-header has-image"
-          : "award-card-header";
-        const headerStyle = hasImage
-          ? ` style="background-image: url('${escapeHtml(item.imageUrl)}');"`
-          : "";
-
-        return `
-          <article class="award-card" onclick="openAwardModal('${escapeHtml(item.id)}')" role="button" tabindex="0" aria-label="Detail prestasi: ${escapeHtml(item.title)}">
-            <div class="${headerClass}"${headerStyle}>
-              <div class="award-card-tags-row">
-                <span class="${badgeClass}">${escapeHtml(item.badge)}</span>
-                <span class="award-year-tag">${escapeHtml(item.year)}</span>
-              </div>
-              <div class="award-headline-typo">${escapeHtml(item.categoryLabel)}</div>
-            </div>
-            <div class="award-card-body">
-              <div>
-                <div class="award-sub-meta">
-                  <span>${escapeHtml(item.dateStr)}</span>
-                  <span>&bull;</span>
-                  <span>${escapeHtml(item.location)}</span>
-                </div>
-                <h3 class="award-card-title">${escapeHtml(item.title)}</h3>
-                <p class="award-card-desc">${escapeHtml(item.excerpt)}</p>
-              </div>
-              <div class="award-card-footer">
-                <span class="award-organizer" title="${escapeHtml(item.org)}">${escapeHtml(item.org)}</span>
-                <span class="award-view-link">Detail &rarr;</span>
-              </div>
-            </div>
-          </article>
-        `;
-      })
-      .join("");
-
-    gridContainer.innerHTML = html;
-  }
-
-  // Render Timeline View (Grouped by Year)
-  function renderTimelineView(filteredList) {
-    const timelineContainer = document.getElementById(
-      "awards-timeline-container",
-    );
-    if (!timelineContainer) return;
-
-    if (filteredList.length === 0) {
-      timelineContainer.innerHTML = "";
-      return;
-    }
-
-    // Group by year descending
-    const grouped = {};
-    filteredList.forEach((item) => {
-      if (!grouped[item.year]) grouped[item.year] = [];
-      grouped[item.year].push(item);
-    });
-
-    const sortedYears = Object.keys(grouped).sort((a, b) => b - a);
-
-    const html = sortedYears
-      .map((yr) => {
-        const itemsInYear = grouped[yr]
-          .map((item) => {
-            const isNational = item.level === "nasional";
-            const badgeClass = isNational ? "badge-gold" : "badge-primary";
-
-            return `
-              <div class="timeline-item-card" onclick="openAwardModal('${escapeHtml(item.id)}')" role="button" tabindex="0" aria-label="${escapeHtml(item.title)}">
-                <div class="timeline-card-content">
-                  <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.3rem;">
-                    <span class="${badgeClass}" style="font-size:0.72rem;">${escapeHtml(item.badge)}</span>
-                    <span style="font-size:0.8rem; color:var(--text-subtle);">${escapeHtml(item.dateStr)} &bull; ${escapeHtml(item.location)}</span>
-                  </div>
-                  <h3>${escapeHtml(item.title)}</h3>
-                  <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6; margin-bottom:0.4rem;">${escapeHtml(item.excerpt)}</p>
-                  <span style="font-size:0.8rem; color:var(--text-subtle);">${escapeHtml(item.org)}</span>
-                </div>
-                <span class="award-view-link" style="white-space:nowrap;">Lihat &rarr;</span>
-              </div>
-            `;
-          })
-          .join("");
-
-        return `
-          <div class="timeline-year-block">
-            <div class="timeline-year-marker">${escapeHtml(yr)}</div>
-            ${itemsInYear}
-          </div>
-        `;
-      })
-      .join("");
-
-    timelineContainer.innerHTML = html;
-  }
-
-  // Main Refresh Function
-  function updateCatalog() {
-    const filtered = getFilteredAwards();
-    const totalMatching = filtered.length;
-    const itemsToShow = filtered.slice(0, displayedCount);
-
-    // Render Views
-    const gridContainer = document.getElementById("awards-grid-container");
-    const timelineContainer = document.getElementById("awards-timeline-container");
-    const emptyState = document.getElementById("catalog-empty-state");
-    const countText = document.getElementById("catalog-count-text");
-    const loadMoreBtn = document.getElementById("load-more-container");
-
-    if (currentView === "grid") {
-      renderGridView(itemsToShow);
-      if (gridContainer) gridContainer.style.display = "grid";
-      if (timelineContainer) timelineContainer.style.display = "none";
-    } else {
-      renderTimelineView(itemsToShow);
-      if (gridContainer) gridContainer.style.display = "none";
-      if (timelineContainer) timelineContainer.style.display = "block";
-    }
-
-    // Status count & live region update
-    const totalCount = awardsList.length;
-    if (totalMatching === 0) {
-      if (countText) countText.innerText = `Menampilkan 0 dari ${totalCount} prestasi`;
-      if (emptyState) emptyState.classList.add("active");
-      if (loadMoreBtn) loadMoreBtn.style.display = "none";
-    } else {
-      const currentShown = Math.min(displayedCount, totalMatching);
-      if (countText) countText.innerText = `Menampilkan ${currentShown} dari ${totalMatching} prestasi (Total ${totalCount} koleksi)`;
-      if (emptyState) emptyState.classList.remove("active");
-
-      // Load More Button visibility
-      if (loadMoreBtn) {
-        if (displayedCount >= totalMatching) {
-          loadMoreBtn.style.display = "none";
-        } else {
-          loadMoreBtn.style.display = "block";
-        }
-      }
-    }
-  }
-
-  // Global Event Handlers for Filters
-  window.filterByCategory = function (category, btnElement) {
-    currentCategory = category;
-    displayedCount = pageSize; // reset pagination
-
-    // Update ARIA pressed state
-    document.querySelectorAll(".category-chip").forEach((btn) => {
-      btn.classList.remove("active");
-      btn.setAttribute("aria-pressed", "false");
-    });
-    if (btnElement) {
-      btnElement.classList.add("active");
-      btnElement.setAttribute("aria-pressed", "true");
-    }
-
-    updateCatalog();
-  };
-
-  window.filterByYear = function (year) {
-    currentYear = year;
-    displayedCount = pageSize;
-    updateCatalog();
-  };
 
   window.switchCatalogView = function (viewType) {
     currentView = viewType;
-    const gridBtn = document.getElementById("view-grid-btn");
-    const timelineBtn = document.getElementById("view-timeline-btn");
-
-    if (viewType === "grid") {
-      if (gridBtn) {
-        gridBtn.classList.add("active");
-        gridBtn.setAttribute("aria-pressed", "true");
-      }
-      if (timelineBtn) {
-        timelineBtn.classList.remove("active");
-        timelineBtn.setAttribute("aria-pressed", "false");
-      }
-    } else {
-      if (timelineBtn) {
-        timelineBtn.classList.add("active");
-        timelineBtn.setAttribute("aria-pressed", "true");
-      }
-      if (gridBtn) {
-        gridBtn.classList.remove("active");
-        gridBtn.setAttribute("aria-pressed", "false");
-      }
-    }
-
-    updateCatalog();
-  };
-
-  window.loadMoreAwards = function () {
-    displayedCount += pageSize;
-    updateCatalog();
-  };
-
-  window.resetAllFilters = function () {
-    currentCategory = "all";
-    currentYear = "all";
-    searchQuery = "";
-    displayedCount = pageSize;
-
-    const searchInput = document.getElementById("award-search-input");
-    if (searchInput) searchInput.value = "";
-
-    const yearSelect = document.getElementById("award-year-filter");
-    if (yearSelect) yearSelect.value = "all";
-
-    document.querySelectorAll(".category-chip").forEach((btn) => {
-      if (btn.dataset.category === "all") {
-        btn.classList.add("active");
-        btn.setAttribute("aria-pressed", "true");
-      } else {
-        btn.classList.remove("active");
-        btn.setAttribute("aria-pressed", "false");
-      }
-    });
-
-    updateCatalog();
+    applyView();
   };
 
   // ==========================================
-  // 3. MODAL DIALOG LOGIC
+  // 2. MEMUAT KATALOG TANPA REFRESH
+  // ==========================================
+  // Samakan kontrol filter dengan URL (kategori aktif, tahun, kata kunci).
+  function syncControls(url) {
+    const params = new URL(url, window.location.origin).searchParams;
+    const category = params.get("kategori") || "";
+
+    document.querySelectorAll(".category-chip").forEach((chip) => {
+      const isActive = (chip.value || "") === category;
+      chip.classList.toggle("active", isActive);
+      chip.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+
+    const hidden = document.getElementById("award-category-input");
+    if (hidden) hidden.value = category;
+
+    const yearSelect = document.getElementById("award-year-filter");
+    if (yearSelect) yearSelect.value = params.get("tahun") || "";
+
+    const searchInput = document.getElementById("award-search-input");
+    if (searchInput && document.activeElement !== searchInput) {
+      searchInput.value = params.get("cari") || "";
+    }
+  }
+
+  function scrollToCatalog() {
+    if (!catalog || catalog.getBoundingClientRect().top >= 0) return;
+    const top = window.scrollY + catalog.getBoundingClientRect().top - 90;
+    if (window.lenis) window.lenis.scrollTo(top, { duration: 0.6 });
+    else window.scrollTo({ top, behavior: "smooth" });
+  }
+
+  function loadCatalog(url, { push = true, scroll = false } = {}) {
+    if (!results) {
+      window.location.href = url;
+      return;
+    }
+
+    if (pendingRequest) pendingRequest.abort();
+    pendingRequest = new AbortController();
+    results.classList.add("is-loading");
+
+    fetch(url, {
+      headers: { "X-Requested-With": "XMLHttpRequest" },
+      signal: pendingRequest.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.text();
+      })
+      .then((html) => {
+        results.innerHTML = html;
+        readAwardsData();
+        applyView();
+        syncControls(url);
+        if (push) history.pushState({ catalog: true }, "", url);
+        if (scroll) scrollToCatalog();
+      })
+      .catch((error) => {
+        // Permintaan dibatalkan karena ada permintaan baru: abaikan. Selain itu, muat halaman biasa.
+        if (error.name !== "AbortError") window.location.href = url;
+      })
+      .finally(() => results.classList.remove("is-loading"));
+  }
+
+  // Bangun URL dari form (kosong dibuang; halaman kembali ke 1 saat filter berubah).
+  function urlFromForm(submitter) {
+    const data = new FormData(form, submitter || undefined);
+    const params = new URLSearchParams();
+    const category = data.getAll("kategori").pop(); // tombol kategori yang diklik menimpa nilai aktif
+    if (data.get("cari")) params.set("cari", String(data.get("cari")).trim());
+    if (category) params.set("kategori", category);
+    if (data.get("tahun")) params.set("tahun", data.get("tahun"));
+
+    const query = params.toString();
+    return form.action.split("#")[0] + (query ? "?" + query : "") + "#katalog-prestasi";
+  }
+
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      loadCatalog(urlFromForm(event.submitter));
+    });
+
+    // Pencarian langsung saat mengetik (jeda 400ms setelah berhenti mengetik).
+    const searchInput = document.getElementById("award-search-input");
+    let searchTimer = null;
+    if (searchInput) {
+      searchInput.addEventListener("input", () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => loadCatalog(urlFromForm()), 400);
+      });
+    }
+  }
+
+  // Link paginasi & "Atur Ulang Filter" di dalam katalog.
+  if (results) {
+    results.addEventListener("click", (event) => {
+      const link = event.target.closest("a[data-catalog-link]");
+      if (!link || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      event.preventDefault();
+      loadCatalog(link.href, { scroll: true });
+    });
+  }
+
+  // Tombol kembali/maju browser.
+  window.addEventListener("popstate", () => {
+    loadCatalog(window.location.href, { push: false });
+  });
+
+  // ==========================================
+  // 3. MODAL DETAIL
   // ==========================================
   window.openAwardModal = function (awardId) {
     const item = awardsList.find((a) => a.id === awardId);
     if (!item) return;
 
-    const badgeEl = document.getElementById("modal-award-badge");
     const catEl = document.getElementById("modal-award-cat");
     const locEl = document.getElementById("modal-award-location");
     const titleEl = document.getElementById("modal-award-title");
     const orgEl = document.getElementById("modal-award-org");
     const descEl = document.getElementById("modal-award-desc");
-    const bannerSubEl = document.getElementById("modal-banner-sub");
     const modalOverlay = document.getElementById("award-modal-overlay");
 
-    if (badgeEl) badgeEl.innerText = item.badge;
     if (catEl) catEl.innerText = item.categoryLabel;
     if (locEl) locEl.innerText = `${item.location} • ${item.year}`;
     if (titleEl) titleEl.innerText = item.title;
     if (orgEl) orgEl.innerText = item.org;
+    // fullDesc sudah di-escape di server (Achievement::toCatalogArray).
     if (descEl) descEl.innerHTML = item.fullDesc;
-    if (bannerSubEl) bannerSubEl.innerText = `Kategori: ${item.categoryLabel} • Tahun ${item.year}`;
 
     if (modalOverlay) {
       modalOverlay.classList.add("active");
@@ -340,15 +209,28 @@
     }
   });
 
-  // Word Reveal Animation Fix
+  // Kartu bisa dibuka dengan keyboard (Enter / Spasi).
+  document.addEventListener("keydown", (e) => {
+    const card = e.target.closest && e.target.closest(".award-card, .timeline-item-card, .pinnacle-card");
+    if (card && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      card.click();
+    }
+  });
+
+  // ==========================================
+  // 4. ANIMASI TEKS PRESTASI UNGGULAN
+  // ==========================================
   function initWordReveal() {
     const revealTarget = document.getElementById("pinnacle-text-reveal");
     if (revealTarget && typeof gsap !== "undefined") {
+      const escapeHtml = (value) =>
+        value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       const words = revealTarget.innerText.split(" ");
       revealTarget.innerHTML = words
         .map(
           (w) =>
-            `<span class="reveal-word" style="opacity: 0.25; display: inline-block; transition: opacity 0.2s;">${w}</span>`,
+            `<span class="reveal-word" style="opacity: 0.25; display: inline-block; transition: opacity 0.2s;">${escapeHtml(w)}</span>`,
         )
         .join(" ");
 
@@ -374,16 +256,8 @@
   }
 
   function initPrestasiPage() {
-    const searchInputEl = document.getElementById("award-search-input");
-    if (searchInputEl) {
-      searchInputEl.addEventListener("input", (e) => {
-        searchQuery = e.target.value;
-        displayedCount = pageSize;
-        updateCatalog();
-      });
-    }
-
-    updateCatalog();
+    readAwardsData();
+    applyView();
     initWordReveal();
   }
 
