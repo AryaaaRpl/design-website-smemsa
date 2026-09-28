@@ -752,6 +752,7 @@
   background: #ffffff;
   color: inherit;
   text-decoration: none;
+  width: 100%;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -931,4 +932,63 @@
   width: 100%;
   height: 100%;
   color: #cbd5e1;
+}
+
+/* ==========================================================================
+   MOBILE / HP (≤768px) — halaman daftar jurusan, tidak memengaruhi desktop
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Header: tinggi mengikuti isi agar statistik tidak terpotong */
+  .page-header.jr-page-header {
+    height: auto;
+    min-height: 0;
+    padding: 7.5rem 0 2.5rem;
+  }
+
+  .jr-page-header .page-title {
+    font-size: clamp(1.9rem, 8.5vw, 2.4rem);
+    line-height: 1.2;
+  }
+
+  .jr-page-header .page-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  /* Statistik 2 x 2 yang ringkas */
+  .jr-page-header .jr-header-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+
+  .jr-page-header .jr-header-stat {
+    padding: 0.9rem 1rem;
+  }
+
+  .jr-page-header .jr-header-stat strong {
+    font-size: 1.6rem;
+  }
+
+  .jr-page-header .jr-header-stat span {
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  /* Baris TEFA / Sertifikasi: label di kiri, isi rata di kanan */
+  .jr-card-meta li {
+    display: grid;
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .jr-card-meta span {
+    min-width: 0;
+  }
+
+  .jr-cta-section {
+    padding-top: 0;
+    padding-bottom: 3.5rem;
+  }
 }
