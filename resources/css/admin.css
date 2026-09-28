@@ -433,6 +433,190 @@ h3 {
     color: var(--text-muted);
 }
 
+/* ---------- Pengunjung Website (dashboard) ---------- */
+
+.visitor-card {
+    margin-bottom: 28px;
+}
+
+.visitor-card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+}
+
+.visitor-card-header small {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.visitor-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-bottom: 1px solid var(--blue-line);
+}
+
+.visitor-summary-item {
+    padding: 16px 20px;
+    border-right: 1px solid var(--blue-line);
+}
+
+.visitor-summary-item:last-child {
+    border-right: none;
+}
+
+.visitor-summary-item span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.visitor-summary-item strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 24px;
+    color: var(--blue);
+    font-variant-numeric: tabular-nums;
+}
+
+.visitor-summary-item.is-today {
+    background: var(--yellow-soft);
+    box-shadow: inset 0 3px 0 var(--yellow);
+}
+
+.visitor-summary-item.is-today strong {
+    color: var(--black);
+}
+
+.visitor-tabs {
+    padding: 16px 20px 20px;
+}
+
+.visitor-tabs input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.visitor-tabs label {
+    display: inline-block;
+    margin: 0 6px 14px 0;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blue);
+    border: 1px solid var(--blue-line);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.visitor-tabs input:checked + label {
+    color: var(--white);
+    background: var(--blue);
+    border-color: var(--blue);
+}
+
+.visitor-tabs input:focus-visible + label {
+    outline: 2px solid var(--yellow);
+    outline-offset: 2px;
+}
+
+.visitor-panel {
+    display: none;
+    overflow-x: auto;
+}
+
+.visitor-panel .visitor-chart {
+    padding: 20px 8px 0;
+}
+
+#visitor-range-daily:checked ~ .visitor-panel-daily,
+#visitor-range-monthly:checked ~ .visitor-panel-monthly {
+    display: block;
+}
+
+.visitor-chart {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+    min-width: 560px;
+    height: 220px;
+    padding-top: 20px;
+}
+
+.visitor-bar {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 22px;
+}
+
+.visitor-bar-fill {
+    width: 100%;
+    max-width: 36px;
+    min-height: 2px;
+    background: var(--blue);
+    border-radius: 4px 4px 0 0;
+    opacity: 0.85;
+    transition: opacity 0.15s ease;
+}
+
+.visitor-bar.is-current .visitor-bar-fill {
+    background: var(--yellow);
+    opacity: 1;
+}
+
+.visitor-bar:hover .visitor-bar-fill {
+    opacity: 1;
+}
+
+.visitor-bar-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 4px;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.visitor-bar:hover .visitor-bar-value,
+.visitor-bar.is-current .visitor-bar-value {
+    opacity: 1;
+}
+
+.visitor-bar-label {
+    position: absolute;
+    bottom: 0;
+    font-size: 10px;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+/* 30 hari: label tanggal ditampilkan selang-seling agar tidak berdempetan */
+.visitor-panel-daily .visitor-bar:nth-child(even):not(.is-current) .visitor-bar-label,
+.visitor-panel-daily .visitor-bar:nth-last-child(2) .visitor-bar-label {
+    visibility: hidden;
+}
+
+@media (max-width: 700px) {
+    .visitor-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visitor-summary-item:nth-child(2) {
+        border-right: none;
+    }
+
+    .visitor-summary-item:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--blue-line);
+    }
+}
+
 /* ---------- CRUD ---------- */
 
 .page-header-action {

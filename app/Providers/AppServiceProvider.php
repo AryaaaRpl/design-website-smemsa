@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\Registration;
 use App\Models\Teacher;
 use App\Support\SiteSettings;
+use App\Support\VisitorStats;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -55,6 +56,18 @@ class AppServiceProvider extends ServiceProvider
                 // Contoh: "7 Konsentrasi Keahlian". Tanpa angka jika belum ada data.
                 'majorCountLabel' => trim(($majors->count() ?: '').' Konsentrasi Keahlian'),
             ]);
+        });
+
+        // Statistik pengunjung di footer. Jika gagal (mis. tabel belum dimigrasi), kotaknya disembunyikan.
+        View::composer('partials.footer', function ($view) {
+            try {
+                $visitorStats = app(VisitorStats::class)->summary();
+            } catch (\Throwable $e) {
+                report($e);
+                $visitorStats = null;
+            }
+
+            $view->with('visitorStats', $visitorStats);
         });
 
         View::composer(['layouts.app', 'index'], fn ($view) => $view->with('principal', app('site.principal')));

@@ -10,11 +10,12 @@ use App\Models\Order;
 use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Teacher;
+use App\Support\VisitorStats;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function __invoke(): View
+    public function __invoke(VisitorStats $visitorStats): View
     {
         $stats = [
             ['label' => 'Berita', 'value' => Post::count()],
@@ -27,6 +28,11 @@ class DashboardController extends Controller
 
         $latestPosts = Post::latest()->take(5)->get();
 
-        return view('admin.dashboard', compact('stats', 'latestPosts'));
+        // Statistik pengunjung website (unik per hari, WIB).
+        $visitors = $visitorStats->summary();
+        $dailyVisitors = $visitorStats->daily(30);
+        $monthlyVisitors = $visitorStats->monthly(12);
+
+        return view('admin.dashboard', compact('stats', 'latestPosts', 'visitors', 'dailyVisitors', 'monthlyVisitors'));
     }
 }

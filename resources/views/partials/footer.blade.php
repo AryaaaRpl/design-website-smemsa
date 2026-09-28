@@ -164,6 +164,26 @@
             <div><strong>Lembaga Sertifikasi:</strong> LSP-P1 BNSP</div>
             <div><strong>Status Sekolah:</strong> SMK Pusat Keunggulan & Excellent School</div>
           </div>
+
+          @if ($visitorStats)
+            <!-- Statistik Pengunjung (unik per hari, WIB) -->
+            <h4 class="footer-visitor-title">Statistik Pengunjung</h4>
+            <dl class="footer-visitor-grid" aria-label="Statistik pengunjung website">
+              @foreach ([
+                'today' => 'Hari Ini',
+                'month' => 'Bulan Ini',
+                'year' => 'Tahun Ini',
+              ] as $key => $label)
+                <div class="footer-visitor-item {{ $key === 'today' ? 'is-today' : '' }}">
+                  <dt>
+                    @if ($key === 'today')<span class="footer-visitor-dot" aria-hidden="true"></span>@endif
+                    {{ $label }}
+                  </dt>
+                  <dd>{{ number_format($visitorStats[$key], 0, ',', '.') }}</dd>
+                </div>
+              @endforeach
+            </dl>
+          @endif
         </div>
       </div>
 

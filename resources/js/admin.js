@@ -73,3 +73,15 @@ document.querySelectorAll('[data-map-picker]').forEach((picker) => {
         marker.style.display = 'none';
     });
 });
+
+// Grafik pengunjung (dashboard): di layar sempit, gulir langsung ke data terbaru (paling kanan).
+function scrollVisitorPanels() {
+    document.querySelectorAll('.visitor-panel').forEach((panel) => {
+        panel.scrollLeft = panel.scrollWidth;
+    });
+}
+
+document.querySelectorAll('input[name="visitor-range"]').forEach((radio) => {
+    radio.addEventListener('change', scrollVisitorPanels);
+});
+scrollVisitorPanels();

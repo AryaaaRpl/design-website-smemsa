@@ -223,6 +223,43 @@
   font-weight: 700;
 }
 
+/* Statistik Pengunjung */
+.footer-visitor-title {
+  margin-top: 1.8rem;
+}
+
+.footer-visitor-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 0;
+}
+
+.footer-visitor-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-visitor-item dt {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-visitor-item dd {
+  margin: 0;
+  font-weight: 700;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-visitor-dot {
+    animation: none;
+  }
+}
+
 /* Footer Bottom Bar */
 .footer-bottom {
   padding-top: 2rem;
