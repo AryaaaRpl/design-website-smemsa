@@ -33,9 +33,8 @@
 
 /* ---------- Header halaman daftar ---------- */
 .page-header.jr-page-header {
-  height: auto;
-  min-height: 0;
-  padding: 10rem 0 4.5rem;
+  padding: 8rem 0 4rem;
+  height: 100vh;
   text-align: left;
 }
 
