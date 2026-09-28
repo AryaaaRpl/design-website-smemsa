@@ -1653,6 +1653,8 @@
     max-height: 85vh;
     min-height: 0;
     overflow-y: auto;
+    /* Ruang scrollbar selalu disediakan agar posisi tombol tutup sama di semua kartu */
+    scrollbar-gutter: stable;
     overscroll-behavior: contain;
     border-radius: 18px 18px 0 0;
     transform: translateY(105%);
@@ -1676,7 +1678,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
+    height: 48px;
     background: #fff;
     border-bottom: 1px solid var(--border-card);
   }
@@ -1688,20 +1690,25 @@
     background: var(--border-card);
   }
 
+  /* Cukup jauh dari sudut panel yang melengkung (radius 18px) agar lingkaran tidak terpotong */
   .panel-sheet-close {
     position: absolute;
-    right: 0.6rem;
+    right: 1rem;
     top: 50%;
     transform: translateY(-50%);
     width: 34px;
     height: 34px;
-    border: none;
+    border: 1px solid var(--border-card);
     border-radius: 50%;
     background: var(--bg-alt);
     color: var(--text-dark);
     font-size: 1.4rem;
     line-height: 1;
     cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center; 
   }
 
   .panel-backdrop {
@@ -1724,5 +1731,92 @@
 
   .detail-panel {
     transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   FASILITAS - TAMPILAN HP (<= 768px)
+   Header tidak dikunci setinggi layar, denah bisa digeser agar label & titik
+   lokasi terbaca/mudah diketuk, jarak antar section seragam (3.5rem), dan
+   kartu fasilitas seragam rata kiri. Desktop tidak terpengaruh.
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Header */
+  .page-header {
+    height: auto;
+    padding: 7.5rem 0 3rem;
+  }
+
+  .page-title {
+    font-size: 2.1rem;
+  }
+
+  /* Denah */
+  .map-section {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .filter-row {
+    flex-wrap: nowrap;
+  }
+
+  .filter-row .filter-btn {
+    flex-shrink: 0;
+  }
+
+  /* Denah diperlebar & bisa digeser menyamping (titik lokasi ikut, karena berada di dalam SVG). */
+  .map-stage {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .map-stage .school-svg {
+    min-width: 640px;
+  }
+
+  .map-legend {
+    position: sticky;
+    left: 0;
+  }
+
+  /* TEFA */
+  .tefa-section {
+    padding: 3.5rem 0;
+  }
+
+  /* Fasilitas unggulan: beri jarak dari bagian TEFA & kartu lebih ringkas */
+  section.section-padding.container {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  section.section-padding.container h2 {
+    font-size: 1.85rem !important;
+    line-height: 1.25;
+  }
+
+  .fasilitas-grid {
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .fac-card {
+    padding: 1.5rem;
+  }
+
+  .fac-card.wide {
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .fac-icon-wrapper,
+  .fac-card.wide .fac-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem !important;
+  }
+
+  .fac-card h3 {
+    font-size: 1.2rem;
   }
 }
