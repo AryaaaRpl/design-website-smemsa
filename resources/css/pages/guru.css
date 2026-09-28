@@ -1015,3 +1015,122 @@ a {
     display: flex !important;
   }
 }
+/* ==========================================================================
+   GURU - TAMPILAN HP (<= 768px)
+   Header tidak lagi dikunci setinggi layar (statistik terpotong), bilah
+   filter/pencarian sticky dibuat ringkas, judul section seragam rata kiri,
+   dan jarak antar section 3.5rem. Banyak gaya di Blade berupa inline style,
+   karena itu beberapa aturan memakai !important. Desktop tidak terpengaruh.
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Header */
+  .page-header {
+    height: auto;
+    padding: 7rem 0 2.5rem;
+    margin-bottom: 0 !important;
+  }
+
+  .page-header .page-title {
+    font-size: 2rem;
+    line-height: 1.15;
+    margin: 0.8rem 0 1rem;
+  }
+
+  .page-header .page-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Statistik: 3 kolom sejajar, tanpa garis pemisah */
+  .page-header .container > div:last-child {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem !important;
+    margin-top: 0 !important;
+  }
+
+  .page-header .header-stat-divider {
+    display: none;
+  }
+
+  .page-header .header-stat-num {
+    font-size: 1.75rem !important;
+  }
+
+  .page-header .header-stat-label {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  /* Bilah sticky: pencarian di atas, kategori digeser menyamping */
+  .sticky-nav-container {
+    top: 76px;
+    margin-top: 0;
+    padding: 0.75rem 0;
+  }
+
+  .sticky-nav-container .container {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .sticky-nav-container .container > div:first-child {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    gap: 0.5rem !important;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .sticky-nav-container .container > div:first-child::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sticky-nav-container .filter-btn {
+    flex-shrink: 0;
+    padding: 0.5rem 1.1rem;
+  }
+
+  .search-wrapper {
+    width: 100% !important;
+  }
+
+  .search-input {
+    padding: 0.7rem 1.1rem;
+    font-size: 16px; /* cegah zoom otomatis iOS */
+  }
+
+  /* Section: jarak seragam & judul rata kiri */
+  #pimpinan,
+  #k3,
+  #guru,
+  #tendik {
+    margin-bottom: 3.5rem !important;
+  }
+
+  #pimpinan > div:first-child {
+    text-align: left !important;
+    margin: 2.5rem 0 2rem !important;
+  }
+
+  #pimpinan > div:first-child > div:last-child {
+    margin: 0.85rem 0 0 !important;
+  }
+
+  #k3 > div:first-child,
+  #guru > div:first-child,
+  #tendik > div:first-child {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  #pimpinan > div:last-child {
+    margin-top: 2.5rem !important;
+  }
+}
