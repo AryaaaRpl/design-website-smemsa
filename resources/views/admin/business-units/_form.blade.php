@@ -93,10 +93,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="whatsapp" class="form-label">Nomor WhatsApp Pesanan <span class="required">*</span></label>
+                    <label for="whatsapp" class="form-label">Nomor WhatsApp <span class="required">*</span></label>
                     <input type="text" id="whatsapp" name="whatsapp" class="form-input" inputmode="tel"
                         value="{{ old('whatsapp', $unit->whatsapp) }}" placeholder="082241356668" required>
-                    <div class="form-help">Pesanan dari website dikirim ke nomor ini. Boleh ditulis 0822..., otomatis diubah ke 62822...</div>
+                    <div class="form-help">Tujuan tombol "Pesan via WhatsApp" untuk produk unit ini (kecuali produk punya nomor sendiri). Boleh ditulis 0822..., otomatis diubah ke 62822...</div>
                     @error('whatsapp') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
             </div>

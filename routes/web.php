@@ -10,7 +10,6 @@ use App\Http\Controllers\Admin\ExtracurricularController as AdminExtracurricular
 use App\Http\Controllers\Admin\FacilityController as AdminFacilityController;
 use App\Http\Controllers\Admin\JobVacancyController;
 use App\Http\Controllers\Admin\MajorController;
-use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
@@ -44,9 +43,6 @@ Route::get('/jurusan/{major}', [MajorPageController::class, 'show'])->name('juru
 Route::get('/blud', [BludController::class, 'index'])->name('blud.index');
 Route::get('/blud/unit/{businessUnit}', [BludController::class, 'unit'])->name('blud.unit');
 Route::get('/blud/{product}', [BludController::class, 'show'])->name('blud.show');
-Route::post('/blud/{product}/pesan', [BludController::class, 'order'])
-    ->middleware('throttle:5,1')
-    ->name('blud.order');
 
 Route::get('/lsp', function () {
     return view('lsp');
@@ -85,7 +81,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/login/portal/shadow/realm', [AuthController::class, 'create'])->name('login');
         Route::post('/login/portal/shadow/realm', [AuthController::class, 'store'])
             ->middleware('throttle:5,1')
-            ->name('login.store');  
+            ->name('login.store');
     });
 
     Route::middleware('auth')->group(function () {
@@ -103,7 +99,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('partners', PartnerController::class)->except('show');
         Route::resource('business-units', BusinessUnitController::class)->except('show');
         Route::resource('products', ProductController::class)->except('show');
-        Route::resource('orders', OrderController::class)->only(['index', 'update', 'destroy']);
         Route::resource('registrations', RegistrationController::class)->except('show');
         Route::get('settings/{group?}', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings/{group}', [SettingController::class, 'update'])->name('settings.update');

@@ -76,7 +76,6 @@ class ProductController extends Controller
 
     public function destroy(Product $product): RedirectResponse
     {
-        // Riwayat pesanan tetap disimpan (nama & harga produk sudah disalin ke pesanan).
         $this->deleteUpload($product->image);
         $product->delete();
 

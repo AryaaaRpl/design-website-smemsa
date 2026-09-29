@@ -4,7 +4,7 @@
 
   @php
     $unit = $product->businessUnit;
-    $canOrder = $product->isAvailable();
+    $whatsappLink = $product->whatsappLink();
   @endphp
 
   <!-- 2. HEADER PRODUK -->
@@ -36,7 +36,7 @@
     </div>
   </header>
 
-  <!-- 3. DETAIL & PESAN -->
+  <!-- 3. DETAIL & PESAN VIA WHATSAPP -->
   <section class="section-padding" style="padding-top: 3rem">
     <div class="container bl-detail">
       <div>
@@ -61,16 +61,10 @@
           </div>
         @endif
 
-        @if (! empty($product->variants) || ! empty($product->specs))
+        @if (! empty($product->specs))
           <div class="bl-block">
             <h2>Spesifikasi</h2>
             <dl class="bl-specs">
-              @if (! empty($product->variants))
-                <div>
-                  <dt>Varian</dt>
-                  <dd>{{ implode(', ', $product->variants) }}</dd>
-                </div>
-              @endif
               @foreach ($product->specs ?? [] as $spec)
                 <div>
                   <dt>{{ $spec['label'] }}</dt>
@@ -82,70 +76,28 @@
         @endif
       </div>
 
-      <!-- Kartu pesan -->
+      <!-- Pesan via WhatsApp (harga & ketersediaan ditanyakan langsung) -->
       <aside class="bl-order" id="pesan">
-        <div class="bl-price">{{ $product->price_label }}</div>
-        <span class="bl-stock {{ $canOrder ? '' : 'is-empty' }}">{{ $product->availability_label }}</span>
-
-        <form method="POST" action="{{ route('blud.order', $product) }}">
-          @csrf
-
-          <div class="bl-field">
-            <label for="customer_name">Nama Pemesan</label>
-            <input type="text" id="customer_name" name="customer_name" value="{{ old('customer_name') }}"
-              maxlength="100" autocomplete="name" required @disabled(! $canOrder)>
-            @error('customer_name') <div class="bl-field-error">{{ $message }}</div> @enderror
-          </div>
-
-          <div class="bl-field">
-            <label for="customer_phone">Nomor WhatsApp</label>
-            <input type="tel" id="customer_phone" name="customer_phone" value="{{ old('customer_phone') }}"
-              placeholder="081234567890" autocomplete="tel" required @disabled(! $canOrder)>
-            @error('customer_phone') <div class="bl-field-error">{{ $message }}</div> @enderror
-          </div>
-
-          @if (! empty($product->variants))
-            <div class="bl-field">
-              <label for="variant">Varian</label>
-              <select id="variant" name="variant" required @disabled(! $canOrder)>
-                <option value="">Pilih varian</option>
-                @foreach ($product->variants as $variant)
-                  <option value="{{ $variant }}" @selected(old('variant') === $variant)>{{ $variant }}</option>
-                @endforeach
-              </select>
-              @error('variant') <div class="bl-field-error">{{ $message }}</div> @enderror
-            </div>
-          @endif
-
-          <div class="bl-field">
-            <label for="quantity">Jumlah{{ $product->price_unit ? ' ('.$product->price_unit.')' : '' }}</label>
-            <input type="number" id="quantity" name="quantity" value="{{ old('quantity', 1) }}" min="1"
-              max="{{ $product->tracksStock() ? max($product->stock, 1) : 100 }}" required @disabled(! $canOrder)>
-            @error('quantity') <div class="bl-field-error">{{ $message }}</div> @enderror
-          </div>
-
-          <div class="bl-field">
-            <label for="note">Catatan (opsional)</label>
-            <textarea id="note" name="note" rows="3" maxlength="500"
-              placeholder="{{ $product->type->notePlaceholder() }}"
-              @disabled(! $canOrder)>{{ old('note') }}</textarea>
-            @error('note') <div class="bl-field-error">{{ $message }}</div> @enderror
-          </div>
-
-          <button type="submit" class="btn btn-primary" @disabled(! $canOrder)>
-            {{ $canOrder ? 'Pesan via WhatsApp' : 'Stok Habis' }}
-          </button>
-          <p class="bl-order-note">
-            Pesanan tercatat, lalu Anda diarahkan ke WhatsApp {{ $unit->name }} untuk konfirmasi pembayaran & pengambilan.
+        <div class="bl-order-text">
+          <h2>Tertarik dengan {{ $product->name }}?</h2>
+          <p>
+            Tanyakan harga, ketersediaan, dan detail {{ mb_strtolower($product->type->label()) }} ini langsung
+            ke pemilik/perwakilannya lewat WhatsApp.
           </p>
-        </form>
-
-        <a href="{{ route('blud.unit', $unit) }}" class="bl-seller">
-          <span>
+          <a href="{{ route('blud.unit', $unit) }}" class="bl-seller">
             <strong>{{ $unit->name }}</strong>
             <span>{{ $unit->manager_label }}</span>
-          </span>
-        </a>
+          </a>
+        </div>
+
+        @if ($whatsappLink)
+          <a href="{{ $whatsappLink }}" class="btn btn-primary bl-wa-btn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5a9.47 9.47 0 0 1-4.83-1.32l-.35-.21-3.59.94.96-3.5-.23-.36a9.46 9.46 0 0 1-1.45-5.04c0-5.23 4.26-9.49 9.5-9.49 2.54 0 4.92.99 6.71 2.79a9.43 9.43 0 0 1 2.78 6.71c0 5.23-4.26 9.48-9.49 9.48zm8.08-17.56A11.35 11.35 0 0 0 12.04.6C5.74.6.62 5.72.62 12.02c0 2.01.53 3.98 1.53 5.71L.53 23.4l5.81-1.52a11.4 11.4 0 0 0 5.7 1.45c6.29 0 11.42-5.12 11.42-11.42 0-3.05-1.19-5.92-3.34-8.08z" />
+            </svg>
+            Pesan via WhatsApp
+          </a>
+        @endif
       </aside>
     </div>
   </section>

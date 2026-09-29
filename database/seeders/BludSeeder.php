@@ -66,7 +66,6 @@ class BludSeeder extends Seeder
                         'type' => 'barang',
                         'price' => 45000,
                         'price_unit' => 'pcs',
-                        'stock' => 20,
                         'specs' => [
                             ['label' => 'Material', 'value' => 'Flexi Banner Recycled + Heavy Webbing Strap'],
                             ['label' => 'Fitur', 'value' => 'Tahan Air, Kapasitas Besar, Jahitan Double Stitch'],
@@ -173,8 +172,6 @@ class BludSeeder extends Seeder
                         'type' => 'barang',
                         'price' => 35000,
                         'price_unit' => 'botol',
-                        'stock' => 30,
-                        'variants' => ['Bubblegum', 'Taylor Swift', 'Scandalous', 'Baccarat'],
                         'specs' => [
                             ['label' => 'Kemasan', 'value' => 'Eau de Parfum 35 mL'],
                         ],
@@ -190,8 +187,6 @@ class BludSeeder extends Seeder
                         'type' => 'barang',
                         'price' => 20000,
                         'price_unit' => 'botol 250 mL',
-                        'stock' => 25,
-                        'variants' => ['Snappy Fresh', 'Sakura Blossom'],
                         'specs' => [
                             ['label' => 'Kemasan', 'value' => '250 mL'],
                         ],
@@ -235,7 +230,6 @@ class BludSeeder extends Seeder
                         'type' => 'barang',
                         'price' => 25000,
                         'price_unit' => 'pouch 100 gr',
-                        'stock' => 40,
                         'specs' => [
                             ['label' => 'Kemasan', 'value' => '30 gram (sachet) & 100 gram (pouch)'],
                             ['label' => 'Penyajian', 'value' => 'French Press, V60, Vietnam Drip, Espresso'],
@@ -252,8 +246,6 @@ class BludSeeder extends Seeder
                         'type' => 'barang',
                         'price' => 15000,
                         'price_unit' => 'pouch 200 gr',
-                        'stock' => 50,
-                        'variants' => ['Gurih Original', 'Pedas Manis'],
                         'specs' => [
                             ['label' => 'Kemasan', 'value' => '200 gram standing pouch'],
                         ],

@@ -6,7 +6,7 @@
     <div class="page-header page-header-action">
         <div>
             <h1>Unit Usaha</h1>
-            <p>Unit usaha BLUD yang dikelola siswa atau sekolah. Setiap unit menerima pesanan lewat WhatsApp sendiri.</p>
+            <p>Unit usaha BLUD yang dikelola siswa atau sekolah. Pembeli memesan lewat WhatsApp unit (atau nomor khusus produk).</p>
         </div>
         <a href="{{ route('admin.business-units.create') }}" class="btn btn-primary">+ Tambah Unit Usaha</a>
     </div>

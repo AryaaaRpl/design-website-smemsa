@@ -12,15 +12,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * Produk BLUD: barang (punya stok) atau jasa (tanpa stok).
- * Stok barang boleh kosong (null) = tidak dihitung.
+ * Produk/layanan BLUD. Pemesanan lewat WhatsApp: nomor produk, atau nomor unit usaha jika kosong.
  */
 #[Fillable([
     'business_unit_id', 'name', 'slug', 'tagline', 'summary', 'description', 'image',
-    'type', 'price', 'price_unit', 'variants', 'specs', 'stock',
+    'type', 'price', 'price_unit', 'whatsapp', 'specs',
     'is_featured', 'sort_order', 'is_active',
 ])]
 class Product extends Model
@@ -36,9 +34,7 @@ class Product extends Model
         return [
             'type' => ProductType::class,
             'price' => 'integer',
-            'variants' => 'array',
             'specs' => 'array',
-            'stock' => 'integer',
             'is_featured' => 'boolean',
             'sort_order' => 'integer',
             'is_active' => 'boolean',
@@ -48,11 +44,6 @@ class Product extends Model
     public function businessUnit(): BelongsTo
     {
         return $this->belongsTo(BusinessUnit::class);
-    }
-
-    public function orders(): HasMany
-    {
-        return $this->hasMany(Order::class);
     }
 
     /**
@@ -96,28 +87,30 @@ class Product extends Model
     }
 
     /**
-     * Stok hanya dihitung untuk barang yang kolom stoknya diisi.
+     * Nomor WhatsApp tujuan pesan: milik produk, atau unit usahanya jika kosong.
      */
-    public function tracksStock(): bool
+    public function whatsappNumber(): ?string
     {
-        return $this->type === ProductType::Goods && $this->stock !== null;
-    }
-
-    public function isAvailable(): bool
-    {
-        return $this->is_active && (! $this->tracksStock() || $this->stock > 0);
+        return $this->whatsapp ?: $this->businessUnit?->whatsapp;
     }
 
     /**
-     * Contoh: "Stok tersisa 12", "Stok habis", "Menerima pesanan".
+     * Tautan wa.me dengan pesan otomatis berisi nama & tautan produk.
      */
-    protected function availabilityLabel(): Attribute
+    public function whatsappLink(): ?string
     {
-        return Attribute::get(fn () => match (true) {
-            ! $this->tracksStock() => $this->type === ProductType::Service ? 'Menerima pesanan' : 'Tersedia',
-            $this->stock > 0 => "Stok tersisa {$this->stock}",
-            default => 'Stok habis',
-        });
+        $number = $this->whatsappNumber();
+
+        if (! $number) {
+            return null;
+        }
+
+        // Contoh: "Halo, saya tertarik dengan *iCareMu* (SMEMSA Tech Solutions). ..."
+        $message = 'Halo, saya tertarik dengan *'.$this->name.'*'
+            .($this->businessUnit ? ' ('.$this->businessUnit->name.')' : '')
+            .". Boleh minta info lebih lanjut?\n\n".route('blud.show', $this);
+
+        return 'https://wa.me/'.$number.'?text='.rawurlencode($message);
     }
 
     public static function rupiah(int $amount): string

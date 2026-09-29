@@ -81,7 +81,7 @@ class BusinessUnitController extends Controller
 
     public function destroy(BusinessUnit $businessUnit): RedirectResponse
     {
-        // Produk milik unit ini ikut terhapus (cascadeOnDelete). Riwayat pesanan tetap disimpan.
+        // Produk milik unit ini ikut terhapus (cascadeOnDelete).
         $businessUnit->products->each(fn ($product) => $this->deleteUpload($product->image));
         $this->deleteUpload($businessUnit->image);
         $businessUnit->delete();

@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Enums\BusinessManager;
-use App\Http\Requests\OrderRequest;
 use App\Models\BusinessUnit;
-use App\Models\Order;
 use App\Models\Product;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 /**
- * Halaman publik BLUD: katalog produk, profil unit usaha, detail produk & pemesanan.
+ * Halaman publik BLUD: katalog produk, profil unit usaha, detail produk (pesan lewat WhatsApp).
  */
 class BludController extends Controller
 {
@@ -66,29 +63,5 @@ class BludController extends Controller
             ->get();
 
         return view('blud.show', compact('product', 'relatedProducts'));
-    }
-
-    /**
-     * Simpan pesanan lalu arahkan pemesan ke WhatsApp unit usaha.
-     */
-    public function order(OrderRequest $request, Product $product): RedirectResponse
-    {
-        $product->load('businessUnit');
-
-        abort_unless($product->is_active && $product->businessUnit->is_active, 404);
-
-        if (! $product->isAvailable()) {
-            return back()->withErrors(['quantity' => 'Maaf, stok produk ini sedang habis.']);
-        }
-
-        $order = Order::create([
-            ...$request->validated(),
-            'product_id' => $product->id,
-            'business_unit_id' => $product->business_unit_id,
-            'product_name' => $product->name,
-            'unit_price' => $product->price,
-        ]);
-
-        return redirect()->away($product->businessUnit->whatsappLink($order->whatsappMessage()));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use App\Enums\ProductType;
+use App\Support\SiteSettings;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -17,17 +18,14 @@ class ProductRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
-        $isGoods = $this->input('type') === ProductType::Goods->value;
-
         $this->merge([
             'slug' => Str::slug($this->input('slug') ?: $this->input('name')),
             'is_active' => $this->boolean('is_active'),
             'is_featured' => $this->boolean('is_featured'),
             // Harga boleh ditulis "35.000".
             'price' => preg_replace('/\D/', '', (string) $this->input('price')),
-            // Jasa tidak memakai stok. Stok barang kosong = tidak dihitung.
-            'stock' => $isGoods && filled($this->input('stock')) ? $this->input('stock') : null,
-            'variants' => $this->lines('variants')->all(),
+            // 0822... menjadi 62822...; kosong = memakai nomor unit usaha.
+            'whatsapp' => SiteSettings::normalizeWhatsapp($this->input('whatsapp')),
             // "Kemasan: 35 mL" menjadi ['label' => 'Kemasan', 'value' => '35 mL'].
             'specs' => $this->lines('specs')
                 ->map(function (string $line) {
@@ -55,9 +53,7 @@ class ProductRequest extends FormRequest
             'type' => ['required', Rule::enum(ProductType::class)],
             'price' => ['required', 'integer', 'min:0', 'max:1000000000'],
             'price_unit' => ['nullable', 'string', 'max:50'],
-            'stock' => ['nullable', 'integer', 'min:0'],
-            'variants' => ['array', 'max:20'],
-            'variants.*' => ['string', 'max:100'],
+            'whatsapp' => ['nullable', 'regex:/^62[0-9]{8,13}$/'],
             'specs' => ['array', 'max:10'],
             'specs.*.label' => ['required', 'string', 'max:50'],
             'specs.*.value' => ['required', 'string', 'max:255'],
@@ -82,9 +78,7 @@ class ProductRequest extends FormRequest
             'type' => 'jenis',
             'price' => 'harga',
             'price_unit' => 'satuan harga',
-            'stock' => 'stok',
-            'variants' => 'varian',
-            'variants.*' => 'varian',
+            'whatsapp' => 'nomor WhatsApp',
             'specs' => 'spesifikasi',
             'sort_order' => 'urutan',
         ];
@@ -98,6 +92,7 @@ class ProductRequest extends FormRequest
         return [
             'specs.*.label.required' => 'Setiap baris spesifikasi harus ditulis "Label: Isi".',
             'specs.*.value.required' => 'Setiap baris spesifikasi harus ditulis "Label: Isi".',
+            'whatsapp.regex' => 'Nomor WhatsApp tidak valid. Contoh: 082241356668.',
         ];
     }
 

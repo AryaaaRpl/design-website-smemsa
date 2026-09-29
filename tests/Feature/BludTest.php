@@ -2,19 +2,19 @@
 
 namespace Tests\Feature;
 
-use App\Enums\OrderStatus;
 use App\Models\BusinessUnit;
 use App\Models\Major;
-use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Database\Seeders\BludSeeder;
 use Database\Seeders\MajorSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
 /**
- * Modul BLUD: admin unit usaha & produk, halaman publik, pemesanan, dan stok.
+ * Modul BLUD: CRUD unit usaha & produk, halaman publik, dan pesan via WhatsApp.
  */
 class BludTest extends TestCase
 {
@@ -31,7 +31,7 @@ class BludTest extends TestCase
     {
         return Product::create(array_merge([
             'business_unit_id' => $unit->id, 'name' => 'Parfum', 'slug' => 'parfum',
-            'type' => 'barang', 'price' => 35000, 'price_unit' => 'botol', 'stock' => 5,
+            'type' => 'barang', 'price' => 35000, 'price_unit' => 'botol',
         ], $overrides));
     }
 
@@ -41,12 +41,11 @@ class BludTest extends TestCase
     {
         $this->get(route('admin.business-units.index'))->assertRedirect(route('admin.login'));
         $this->get(route('admin.products.index'))->assertRedirect(route('admin.login'));
-        $this->get(route('admin.orders.index'))->assertRedirect(route('admin.login'));
     }
 
     public function test_admin_pages_render(): void
     {
-        $product = $this->product($unit = $this->unit(), ['variants' => ['A'], 'specs' => [['label' => 'Kemasan', 'value' => '35 mL']]]);
+        $product = $this->product($unit = $this->unit(), ['specs' => [['label' => 'Kemasan', 'value' => '35 mL']]]);
         $this->actingAs(User::factory()->create());
 
         $this->get(route('admin.business-units.index'))->assertOk()->assertSee('Print Studio');
@@ -55,7 +54,7 @@ class BludTest extends TestCase
         $this->get(route('admin.products.index'))->assertOk()->assertSee('Rp 35.000 / botol');
         $this->get(route('admin.products.create'))->assertOk();
         $this->get(route('admin.products.edit', $product))->assertOk()->assertSee('Kemasan: 35 mL');
-        $this->get(route('admin.dashboard'))->assertOk()->assertSee('Pesanan BLUD Baru');
+        $this->get(route('admin.dashboard'))->assertOk()->assertDontSee('Pesanan BLUD Baru');
     }
 
     public function test_admin_can_create_business_unit_with_normalized_whatsapp(): void
@@ -76,29 +75,57 @@ class BludTest extends TestCase
         $this->assertSame('Dikelola Siswa DKV', $unit->manager_label);
     }
 
-    public function test_admin_can_create_product_and_service_has_no_stock(): void
+    public function test_admin_can_create_product_with_optional_whatsapp(): void
     {
         $unit = $this->unit();
         $admin = User::factory()->create();
 
         $this->actingAs($admin)->post(route('admin.products.store'), [
             'business_unit_id' => $unit->id, 'name' => 'Eners Perfume', 'type' => 'barang',
-            'price' => '35.000', 'stock' => 10, 'variants' => "Bubblegum\nBaccarat",
+            'price' => '35.000', 'whatsapp' => '0812-3456-7890',
             'specs' => "Kemasan: 35 mL\n", 'sort_order' => 1, 'is_active' => '1',
         ])->assertRedirect(route('admin.products.index'));
 
         $product = Product::firstWhere('slug', 'eners-perfume');
         $this->assertSame(35000, $product->price);
-        $this->assertSame(10, $product->stock);
-        $this->assertSame(['Bubblegum', 'Baccarat'], $product->variants);
+        $this->assertSame('6281234567890', $product->whatsapp);
         $this->assertSame([['label' => 'Kemasan', 'value' => '35 mL']], $product->specs);
 
-        // Jasa: stok selalu dikosongkan.
+        // Nomor boleh dikosongkan (memakai nomor unit usaha).
         $this->actingAs($admin)->post(route('admin.products.store'), [
-            'business_unit_id' => $unit->id, 'name' => 'Servis Laptop', 'type' => 'jasa',
-            'price' => 50000, 'stock' => 99, 'sort_order' => 2,
-        ]);
-        $this->assertNull(Product::firstWhere('slug', 'servis-laptop')->stock);
+            'business_unit_id' => $unit->id, 'name' => 'Aplikasi iCareMu', 'type' => 'jasa',
+            'price' => 20000, 'price_unit' => '3 tahun', 'sort_order' => 2,
+        ])->assertSessionHasNoErrors();
+        $this->assertNull(Product::firstWhere('slug', 'aplikasi-icaremu')->whatsapp);
+    }
+
+    public function test_invalid_product_whatsapp_is_rejected(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->post(route('admin.products.store'), [
+                'business_unit_id' => $this->unit()->id, 'name' => 'Kopi', 'type' => 'barang',
+                'price' => 20000, 'whatsapp' => '12', 'sort_order' => 1,
+            ])
+            ->assertSessionHasErrors('whatsapp');
+    }
+
+    public function test_admin_can_update_and_delete_product_and_unit(): void
+    {
+        $unit = $this->unit();
+        $product = $this->product($unit);
+        $this->actingAs(User::factory()->create());
+
+        $this->put(route('admin.products.update', $product), [
+            'business_unit_id' => $unit->id, 'name' => 'Parfum Baru', 'slug' => 'parfum', 'type' => 'barang',
+            'price' => 40000, 'sort_order' => 1, 'is_active' => '1',
+        ])->assertRedirect(route('admin.products.index'));
+        $this->assertSame('Parfum Baru', $product->fresh()->name);
+
+        $this->delete(route('admin.products.destroy', $product))->assertRedirect(route('admin.products.index'));
+        $this->assertModelMissing($product);
+
+        $this->delete(route('admin.business-units.destroy', $unit))->assertRedirect(route('admin.business-units.index'));
+        $this->assertModelMissing($unit);
     }
 
     public function test_spec_lines_must_use_label_colon_value(): void
@@ -122,12 +149,12 @@ class BludTest extends TestCase
             ->assertSee(route('blud.show', 'eners-perfume'), false)
             ->assertSee(route('blud.unit', 'smemsa-print-studio'), false)
             ->assertDontSee('openBludModal')
-            // Harga hanya tampil di halaman detail.
+            // Harga tidak ditampilkan di halaman publik (ditanyakan lewat WhatsApp).
             ->assertDontSee('Rp 35.000');
 
         $this->get(route('blud.index'))->assertOk()->assertSee('SMEMSA Tech Solutions');
         $this->get(route('blud.unit', 'smemsa-hospitality-hub'))->assertOk()->assertSee('Laundry Kiloan');
-        $this->get(route('blud.show', 'eners-perfume'))->assertOk()->assertSee('Rp 35.000 / botol')->assertSee('Stok tersisa 30');
+        $this->get(route('blud.show', 'eners-perfume'))->assertOk()->assertDontSee('Rp 35.000')->assertSee('Pesan via WhatsApp');
         $this->get(route('jurusan.show', 'ph'))->assertOk()->assertSee('Produk BLUD PH')->assertSee('Eners Perfume');
     }
 
@@ -169,96 +196,43 @@ class BludTest extends TestCase
         $this->get(route('blud.unit', $unit))->assertNotFound();
     }
 
-    // ---------- Pemesanan ----------
+    // ---------- Pesan via WhatsApp ----------
 
-    public function test_visitor_order_is_saved_and_redirected_to_unit_whatsapp(): void
-    {
-        $product = $this->product($this->unit(), ['variants' => ['Bubblegum']]);
-
-        $response = $this->post(route('blud.order', $product), [
-            'customer_name' => 'Budi', 'customer_phone' => '081234567890',
-            'variant' => 'Bubblegum', 'quantity' => 2, 'note' => 'Ambil hari Senin',
-        ]);
-
-        $order = Order::sole();
-        $this->assertSame('6281234567890', $order->customer_phone);
-        $this->assertSame(70000, $order->total);
-        $this->assertSame(OrderStatus::New, $order->status);
-        // Stok belum berkurang sebelum diproses admin.
-        $this->assertSame(5, $product->fresh()->stock);
-
-        $response->assertRedirect();
-        $this->assertStringStartsWith('https://wa.me/6281111111111?text=', $response->headers->get('Location'));
-        $this->assertStringContainsString(rawurlencode($order->code), $response->headers->get('Location'));
-    }
-
-    public function test_order_validation_for_variant_and_stock(): void
-    {
-        $product = $this->product($this->unit(), ['variants' => ['Bubblegum']]);
-
-        $this->post(route('blud.order', $product), [
-            'customer_name' => 'Budi', 'customer_phone' => '0812345678', 'variant' => 'Lain', 'quantity' => 6,
-        ])->assertSessionHasErrors(['variant', 'quantity']);
-
-        $product->update(['stock' => 0]);
-        $this->post(route('blud.order', $product), [
-            'customer_name' => 'Budi', 'customer_phone' => '0812345678', 'variant' => 'Bubblegum', 'quantity' => 1,
-        ])->assertSessionHasErrors('quantity');
-
-        $this->assertDatabaseCount('orders', 0);
-    }
-
-    public function test_processing_order_deducts_stock_and_cancel_restores_it(): void
+    public function test_whatsapp_button_uses_unit_number_with_product_message(): void
     {
         $product = $this->product($this->unit());
-        $order = Order::create([
-            'product_id' => $product->id, 'business_unit_id' => $product->business_unit_id,
-            'product_name' => 'Parfum', 'quantity' => 3, 'unit_price' => 35000,
-            'customer_name' => 'Budi', 'customer_phone' => '6281234567890',
-        ]);
-        $admin = User::factory()->create();
 
-        $this->actingAs($admin)->put(route('admin.orders.update', $order), ['status' => 'diproses']);
-        $this->assertSame(2, $product->fresh()->stock);
+        $link = $product->whatsappLink();
+        $this->assertStringStartsWith('https://wa.me/6281111111111?text=', $link);
+        $this->assertStringContainsString(rawurlencode('*Parfum*'), $link);
+        $this->assertStringContainsString(rawurlencode(route('blud.show', $product)), $link);
 
-        // Diproses -> Selesai tidak memotong stok lagi.
-        $this->actingAs($admin)->put(route('admin.orders.update', $order), ['status' => 'selesai']);
-        $this->assertSame(2, $product->fresh()->stock);
-
-        $this->actingAs($admin)->put(route('admin.orders.update', $order), ['status' => 'batal']);
-        $this->assertSame(5, $product->fresh()->stock);
-    }
-
-    public function test_processing_fails_when_stock_is_not_enough(): void
-    {
-        $product = $this->product($this->unit(), ['stock' => 1]);
-        $order = Order::create([
-            'product_id' => $product->id, 'business_unit_id' => $product->business_unit_id,
-            'product_name' => 'Parfum', 'quantity' => 3, 'unit_price' => 35000,
-            'customer_name' => 'Budi', 'customer_phone' => '6281234567890',
-        ]);
-
-        $this->actingAs(User::factory()->create())
-            ->put(route('admin.orders.update', $order), ['status' => 'diproses'])
-            ->assertSessionHasErrors('status');
-
-        $this->assertSame(OrderStatus::New, $order->fresh()->status);
-        $this->assertSame(1, $product->fresh()->stock);
-    }
-
-    public function test_admin_order_list_shows_new_order_badge(): void
-    {
-        $product = $this->product($this->unit());
-        Order::create([
-            'product_id' => $product->id, 'business_unit_id' => $product->business_unit_id,
-            'product_name' => 'Parfum', 'quantity' => 1, 'unit_price' => 35000,
-            'customer_name' => 'Pemesan Uji', 'customer_phone' => '6281234567890',
-        ]);
-
-        $this->actingAs(User::factory()->create())
-            ->get(route('admin.orders.index'))
+        $this->get(route('blud.show', $product))
             ->assertOk()
-            ->assertSee('Pemesan Uji')
-            ->assertSee('title="Pesanan baru">1<', false);
+            ->assertSee('Pesan via WhatsApp')
+            ->assertSee('https://wa.me/6281111111111', false)
+            ->assertDontSee('customer_name');
+    }
+
+    public function test_product_whatsapp_overrides_unit_number(): void
+    {
+        $product = $this->product($this->unit(), ['whatsapp' => '6289999999999']);
+
+        $this->get(route('blud.show', $product))
+            ->assertSee('https://wa.me/6289999999999', false)
+            ->assertDontSee('https://wa.me/6281111111111', false);
+    }
+
+    public function test_order_system_is_removed(): void
+    {
+        $this->assertFalse(Route::has('blud.order'));
+        $this->assertFalse(Route::has('admin.orders.index'));
+        $this->assertFalse(Schema::hasTable('orders'));
+        $this->assertFalse(Schema::hasColumn('products', 'stock'));
+
+        $this->actingAs(User::factory()->create())
+            ->get(route('admin.dashboard'))
+            ->assertOk()
+            ->assertDontSee('Pesanan');
     }
 }

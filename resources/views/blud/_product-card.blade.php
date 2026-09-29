@@ -14,6 +14,6 @@
     @if ($product->summary)
       <p>{{ $product->summary }}</p>
     @endif
-    <span class="bl-card-link">{{ $product->isAvailable() ? 'Lihat & Pesan' : 'Stok Habis · Lihat Detail' }} &rarr;</span>
+    <span class="bl-card-link">Lihat & Pesan &rarr;</span>
   </div>
 </a>

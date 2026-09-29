@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Unit usaha BLUD ("toko"), dikelola siswa jurusan tertentu atau oleh sekolah.
- * Setiap unit punya nomor WhatsApp sendiri untuk menerima pesanan.
+ * Setiap unit punya nomor WhatsApp untuk pesan produknya (kecuali produk punya nomor sendiri).
  */
 #[Fillable([
     'name', 'slug', 'tagline', 'summary', 'description', 'image',
@@ -48,11 +48,6 @@ class BusinessUnit extends Model
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
-    }
-
-    public function orders(): HasMany
-    {
-        return $this->hasMany(Order::class);
     }
 
     #[Scope]

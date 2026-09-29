@@ -1,6 +1,5 @@
 @php
     // Array menjadi teks "satu baris satu isi" untuk textarea.
-    $variantLines = implode("\n", (array) old('variants', $product->variants ?? []));
     $specLines = collect(old('specs', $product->specs ?? []))
         ->map(fn ($spec) => is_array($spec) ? trim(($spec['label'] ?? '').': '.($spec['value'] ?? ''), ': ') : $spec)
         ->implode("\n");
@@ -65,14 +64,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="variants" class="form-label">Varian</label>
-                    <textarea id="variants" name="variants" class="form-input" rows="3" placeholder="Bubblegum&#10;Baccarat">{{ $variantLines }}</textarea>
-                    <div class="form-help">Satu varian per baris. Jika diisi, pemesan wajib memilih varian. Kosongkan jika tidak ada.</div>
-                    @error('variants') <div class="form-error">{{ $message }}</div> @enderror
-                    @error('variants.*') <div class="form-error">{{ $message }}</div> @enderror
-                </div>
-
-                <div class="form-group">
                     <label for="specs" class="form-label">Spesifikasi</label>
                     <textarea id="specs" name="specs" class="form-input" rows="4" placeholder="Kemasan: Eau de Parfum 35 mL&#10;Garansi: 30 hari">{{ $specLines }}</textarea>
                     <div class="form-help">Satu spesifikasi per baris dengan format <strong>Label: Isi</strong>.</div>
@@ -86,10 +77,10 @@
         </div>
     </div>
 
-    {{-- Kolom kanan: harga, stok & tampilan --}}
+    {{-- Kolom kanan: harga, kontak & tampilan --}}
     <div>
         <div class="card form-card">
-            <div class="card-header">Harga & Stok</div>
+            <div class="card-header">Harga & Kontak</div>
             <div class="card-body">
                 <div class="form-group">
                     <label for="type" class="form-label">Jenis <span class="required">*</span></label>
@@ -107,7 +98,7 @@
                     <label for="price" class="form-label">Harga (Rp) <span class="required">*</span></label>
                     <input type="text" id="price" name="price" class="form-input" inputmode="numeric"
                         value="{{ old('price', $product->price) }}" placeholder="35000" required>
-                    <div class="form-help">Hanya tampil di halaman detail produk.</div>
+                    <div class="form-help">Hanya untuk catatan admin, tidak ditampilkan di website (pembeli bertanya harga lewat WhatsApp).</div>
                     @error('price') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
 
@@ -120,14 +111,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="stock" class="form-label">Stok</label>
-                    <input type="number" id="stock" name="stock" class="form-input" min="0"
-                        value="{{ old('stock', $product->stock) }}">
+                    <label for="whatsapp" class="form-label">Nomor WhatsApp Pemesanan</label>
+                    <input type="text" id="whatsapp" name="whatsapp" class="form-input" inputmode="tel"
+                        value="{{ old('whatsapp', $product->whatsapp) }}" placeholder="082241356668">
                     <div class="form-help">
-                        Hanya untuk jenis <strong>Barang</strong>. Kosongkan jika stok tidak dihitung.
-                        Stok berkurang saat pesanan diubah ke "Diproses".
+                        Tujuan tombol "Pesan via WhatsApp" (pemilik/perwakilan produk). Kosongkan untuk memakai
+                        nomor unit usaha. Boleh ditulis 0822..., otomatis diubah ke 62822...
                     </div>
-                    @error('stock') <div class="form-error">{{ $message }}</div> @enderror
+                    @error('whatsapp') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
             </div>
         </div>

@@ -2,12 +2,10 @@
 
 namespace App\Providers;
 
-use App\Enums\OrderStatus;
 use App\Enums\RegistrationStatus;
 use App\Enums\TeacherCategory;
 use App\Models\JobVacancy;
 use App\Models\Major;
-use App\Models\Order;
 use App\Models\Registration;
 use App\Models\Teacher;
 use App\Support\SiteSettings;
@@ -73,9 +71,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['layouts.app', 'index'], fn ($view) => $view->with('principal', app('site.principal')));
         View::composer('layouts.app', fn ($view) => $view->with('chatVacancies', app('site.chatVacancies')));
 
-        // Jumlah pesanan BLUD & pendaftar SPMB yang belum ditangani, untuk penanda di menu admin.
+        // Jumlah pendaftar SPMB yang belum ditangani, untuk penanda di menu admin.
         View::composer('admin.partials.sidebar', fn ($view) => $view->with([
-            'newOrdersCount' => Order::ofStatus(OrderStatus::New)->count(),
             'pendingRegistrationsCount' => Registration::ofStatus(RegistrationStatus::Pending)->count(),
         ]));
     }

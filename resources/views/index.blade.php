@@ -570,9 +570,6 @@
           @if (! empty($product->specs))
           <span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;"><strong>{{ $product->specs[0]['label'] }}:</strong> {{ $product->specs[0]['value'] }}</span>
           @endif
-          @if (! empty($product->variants))
-          <span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;"><strong>Varian:</strong> {{ implode(', ', $product->variants) }}</span>
-          @endif
         </div>
       </a>
       @endforeach
