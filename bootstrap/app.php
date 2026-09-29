@@ -16,6 +16,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectGuestsTo(fn () => route('admin.login'));
         $middleware->redirectUsersTo(fn () => route('admin.dashboard'));
 
+        // Situs berada di belakang Cloudflare: pengunjung memakai HTTPS, lalu Cloudflare meneruskan
+        // ke server lewat HTTP. Dengan ini Laravel membaca header X-Forwarded-Proto dari Cloudflare,
+        // sehingga link aset (font, gambar, CSS, JS) dibuat https:// dan tidak diblokir browser.
+        $middleware->trustProxies(at: '*');
+
         // Penghitung pengunjung unik harian (footer & dashboard admin).
         $middleware->web(append: [TrackVisitor::class]);
     })

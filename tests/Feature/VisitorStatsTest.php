@@ -51,7 +51,7 @@ class VisitorStatsTest extends TestCase
     {
         $this->withHeaders(['User-Agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1)'])->get('/')->assertOk();
         $this->visit('/prestasi', ['X-Requested-With' => 'XMLHttpRequest']);
-        $this->visit('/admin/login');
+        $this->visit(route('admin.login', [], false));
 
         $this->assertSame(0, Visit::count());
     }
@@ -102,7 +102,7 @@ class VisitorStatsTest extends TestCase
             ->assertOk()
             ->assertSee('Statistik Pengunjung')
             ->assertSee('Hari Ini')
-            ->assertSee('Total');
+            ->assertSee('Tahun Ini');
     }
 
     public function test_admin_dashboard_shows_visitor_chart(): void

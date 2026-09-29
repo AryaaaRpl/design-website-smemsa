@@ -98,7 +98,7 @@ class TeacherTest extends TestCase
 
         $this->get(route('guru'))
             ->assertOk()
-            ->assertSee('Wahid Wahyudi, S.Ag., M.Pd')
+            ->assertSee('Wahid wahyudi, S.E., M.M')
             ->assertSee('Kepala SMKS Muhammadiyah 1 Genteng')
             ->assertSee('<span id="stat-tendik">15</span>', false)
             ->assertDontSee('Rudi Hariyanto');

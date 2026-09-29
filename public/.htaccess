@@ -23,3 +23,49 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# ==========================================================================
+# PERFORMA: kompresi & cache browser untuk file statis.
+# Setiap blok dibungkus IfModule, jadi aman walau modulnya tidak aktif di server.
+# ==========================================================================
+
+# Kompresi teks (HTML, CSS, JS, SVG, JSON, font) -> ukuran unduhan jauh lebih kecil.
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/xml text/javascript application/javascript application/json application/xml image/svg+xml font/ttf font/otf
+</IfModule>
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml text/javascript application/javascript application/json application/xml image/svg+xml font/ttf font/otf
+</IfModule>
+
+<IfModule mod_headers.c>
+    # 1 tahun (immutable): nama file sudah mengandung hash/versi, jadi isinya tidak pernah berubah.
+    #   build/ (hasil Vite), vendor/ (gsap-3.12.5, lenis-1.1.20), fonts/ (nama hash Google Fonts),
+    #   js/site.js (dimuat dengan ?v=waktu-ubah-file).
+    <If "%{REQUEST_URI} =~ m#^/(build|vendor|fonts|js)/#">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </If>
+
+    # 30 hari: gambar & file unggahan (namanya bisa dipakai ulang saat diganti admin).
+    <If "%{REQUEST_URI} =~ m#^/(assets|storage)/#">
+        Header set Cache-Control "public, max-age=2592000"
+    </If>
+
+    # File yang dikompresi berbeda per browser.
+    <FilesMatch "\.(js|css|svg|json|html)$">
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+</IfModule>
+
+# Cadangan jika mod_headers tidak aktif.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType image/webp "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/svg+xml "access plus 30 days"
+    ExpiresByType image/x-icon "access plus 30 days"
+</IfModule>

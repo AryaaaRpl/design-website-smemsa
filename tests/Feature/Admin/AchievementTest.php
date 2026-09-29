@@ -127,7 +127,7 @@ class AchievementTest extends TestCase
             ->assertSee('<option value="2024" >2024</option>', false);
     }
 
-    public function test_public_page_paginates_18_per_page(): void
+    public function test_public_page_paginates_9_per_page(): void
     {
         foreach (range(1, 20) as $i) {
             $this->makeAchievement(['title' => "Prestasi Nomor {$i}", 'achieved_at' => now()->subDays($i)]);
@@ -135,12 +135,12 @@ class AchievementTest extends TestCase
 
         $this->get(route('prestasi'))
             ->assertOk()
-            ->assertSee('Menampilkan 1–18 dari 20 prestasi')
-            ->assertSee('Prestasi Nomor 18')
-            ->assertDontSee('Prestasi Nomor 19')
-            ->assertSee('Halaman 1 dari 2');
+            ->assertSee('Menampilkan 1–9 dari 20 prestasi')
+            ->assertSee('Prestasi Nomor 9<', false)
+            ->assertDontSee('Prestasi Nomor 10<', false)
+            ->assertSee('Halaman 1 dari 3');
 
-        $this->get(route('prestasi', ['page' => 2]))
+        $this->get(route('prestasi', ['page' => 3]))
             ->assertOk()
             ->assertSee('Menampilkan 19–20 dari 20 prestasi')
             ->assertSee('Prestasi Nomor 20');
