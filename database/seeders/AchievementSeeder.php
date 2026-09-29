@@ -30,7 +30,6 @@ class AchievementSeeder extends Seeder
                 'organizer' => 'Pimpinan Wilayah Muhammadiyah & Majelis Dikdasmen Nasional',
                 'excerpt' => 'Mengungguli ratusan sekolah kejuruan se-Indonesia dalam kompetisi riset inovasi digital, robotika, seni budaya, dan kepemimpinan Islami.',
                 'image' => 'assets/juara-me-awards.jpg',
-                'is_featured' => true,
                 'description' => "SMKS Muhammadiyah 1 Genteng berhasil menorehkan sejarah gemilang dengan dinobatkan sebagai Juara Umum Tingkat Nasional dalam perhelatan akbar Muhammadiyah Education Awards (ME Awards) 2026.\n\n"
                     ."Prestasi ini diraih berkat akumulasi medali emas dan perak pada berbagai cabang perlombaan bergengsi, meliputi Lomba Inovasi Robotika Vokasi, Desain Aplikasi Digital Software, Pidato Bahasa Asing, Seni Budaya, dan Tata Kelola Sekolah Kejuruan Unggul.\n\n"
                     .'Pencapaian ini membuktikan komitmen civitas akademika SMEMSA dalam mengintegrasikan keahlian sains teknologi abad ke-21 dengan penanaman akhlakul karimah yang berwawasan global.',
@@ -210,7 +209,6 @@ class AchievementSeeder extends Seeder
                 ['slug' => $achievement['slug']],
                 $achievement + [
                     'category_id' => $categoryIds[$category] ?? null,
-                    'is_featured' => $achievement['is_featured'] ?? false,
                 ],
             );
         }

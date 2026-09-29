@@ -48,7 +48,7 @@
         <span class="badge badge-primary mb-2">Pilih Program Keahlianmu</span>
         <h2 class="font-head jr-section-title">Temukan Jurusan yang Sesuai Minat & Bakatmu</h2>
         <p class="jr-section-desc">
-          Klik kartu untuk melihat kurikulum, tempat praktik, sertifikasi, prestasi, hingga peluang karir tiap jurusan.
+          Klik kartu untuk melihat kurikulum, tempat praktik, sertifikasi, hingga peluang karir tiap jurusan.
         </p>
       </div>
 
@@ -91,7 +91,7 @@
 
                 <div class="jr-card-footer">
                   <span class="jr-card-counts">
-                    {{ $major->achievements_count }} Prestasi &bull; {{ $major->partners_count }} Mitra
+                    {{ $major->partners_count }} Mitra
                   </span>
                   <span class="jr-card-link">Lihat Detail &rarr;</span>
                 </div>

@@ -381,7 +381,7 @@
 
 .jr-facts {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
     padding: 1.4rem;
     background: #ffffff;
@@ -599,39 +599,6 @@
 }
 
 /* ---------- Prestasi ---------- */
-.jr-achievement-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.2rem;
-}
-
-.jr-achievement {
-    padding: 1.4rem;
-    background: #ffffff;
-    border: 1px solid var(--border-card);
-    border-top: 4px solid var(--secondary);
-    border-radius: var(--radius-lg);
-}
-
-.jr-achievement-badge {
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    color: #a16207;
-}
-
-.jr-achievement h3 {
-    margin: 0.5rem 0;
-    font-family: var(--font-head);
-    font-size: 1rem;
-    color: var(--primary-dark);
-    line-height: 1.45;
-}
-
-.jr-achievement-meta {
-    font-size: 0.8rem;
-    color: var(--text-subtle);
-}
 
 /* ---------- Mitra (kartu memakai gaya BKK) ---------- */
 .jr-partner-initial {
@@ -789,8 +756,7 @@
 /* ---------- Responsif ---------- */
 @media (max-width: 992px) {
     .jr-steps,
-    .jr-facts,
-    .jr-header-stats {
+  .jr-header-stats {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 

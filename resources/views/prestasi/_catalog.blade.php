@@ -24,7 +24,7 @@
   <!-- VIEW 1: Grid -->
   <div class="awards-catalog-grid" id="awards-grid-container">
     @foreach ($items as $item)
-      <article class="award-card" onclick="openAwardModal('{{ $item['id'] }}')" role="button" tabindex="0" aria-label="Detail prestasi: {{ $item['title'] }}">
+      <a href="{{ route('prestasi.show', $item['id']) }}" class="award-card" aria-label="Detail prestasi: {{ $item['title'] }}">
         <div class="award-card-header {{ $item['imageUrl'] ? 'has-image' : '' }}" @if ($item['imageUrl']) style="background-image: url('{{ $item['imageUrl'] }}');" @endif>
           <div class="award-card-tags-row">
             <span class="award-badge-pill {{ $item['level'] === 'nasional' ? 'national' : '' }}">{{ $item['badge'] }}</span>
@@ -47,7 +47,7 @@
             <span class="award-view-link">Detail &rarr;</span>
           </div>
         </div>
-      </article>
+      </a>
     @endforeach
   </div>
 
@@ -57,7 +57,7 @@
       <div class="timeline-year-block">
         <div class="timeline-year-marker">{{ $groupYear }}</div>
         @foreach ($yearItems as $item)
-          <div class="timeline-item-card" onclick="openAwardModal('{{ $item['id'] }}')" role="button" tabindex="0" aria-label="{{ $item['title'] }}">
+          <a href="{{ route('prestasi.show', $item['id']) }}" class="timeline-item-card" aria-label="{{ $item['title'] }}">
             <div class="timeline-card-content">
               <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.3rem;">
                 <span class="{{ $item['level'] === 'nasional' ? 'badge-gold' : 'badge-primary' }}" style="font-size:0.72rem;">{{ $item['badge'] }}</span>
@@ -68,7 +68,7 @@
               <span style="font-size:0.8rem; color:var(--text-subtle);">{{ $item['org'] }}</span>
             </div>
             <span class="award-view-link" style="white-space:nowrap;">Lihat &rarr;</span>
-          </div>
+          </a>
         @endforeach
       </div>
     @endforeach
@@ -93,6 +93,3 @@
     @endif
   </div>
 @endif
-
-{{-- Data modal detail untuk prestasi di halaman ini (dibaca oleh prestasi.js) --}}
-<script type="application/json" id="awards-page-data">{!! Js::encode($awardsData) !!}</script>

@@ -60,36 +60,30 @@
 
 <!-- 4. BERITA LAINNYA -->
 @if ($relatedPosts->isNotEmpty())
-<section class="container news-detail-related">
-    <div class="news-detail-related-head">
-        <h2 class="font-display">Berita Lainnya</h2>
-        <a href="{{ route('berita') }}">Lihat Semua Berita &rarr;</a>
-    </div>
+<section class="nd-others">
+    <div class="container news-detail-wide">
+        <div class="news-detail-related-head">
+            <h2 class="font-display">Berita Lainnya</h2>
+            <a href="{{ route('berita') }}">Lihat Semua Berita &rarr;</a>
+        </div>
 
-    <div class="news-grid">
-        @foreach ($relatedPosts as $related)
-        <a href="{{ route('berita.show', $related) }}" class="news-card">
-            <div class="news-card-img-wrap">
-                @if ($related->thumbnail_url)
-                    <img src="{{ $related->thumbnail_url }}" alt="{{ $related->title }}" class="news-card-img" loading="lazy">
-                @endif
-            </div>
-            <div class="news-card-body">
-                <div>
-                    <div class="news-card-meta">
-                        <span class="badge-primary" style="font-size:0.72rem;">{{ mb_strtoupper($related->category?->name ?? 'Berita') }}</span>
-                        <span>&bull; {{ $related->published_date }}</span>
-                    </div>
-                    <h3 class="news-card-title">{{ $related->title }}</h3>
-                    <p class="news-card-excerpt">{{ $related->excerpt }}</p>
-                </div>
-                <div class="news-card-footer">
-                    <span>{{ $related->location }}</span>
-                    <span>Baca Warta &rarr;</span>
-                </div>
-            </div>
-        </a>
-        @endforeach
+        <div class="nd-others-grid">
+            @foreach ($relatedPosts as $related)
+            <a href="{{ route('berita.show', $related) }}" class="nd-other">
+                <span class="nd-other-photo">
+                    @if ($related->thumbnail_url)
+                        <img src="{{ $related->thumbnail_url }}" alt="{{ $related->title }}" loading="lazy">
+                    @else
+                        <span aria-hidden="true">📰</span>
+                    @endif
+                </span>
+                <span class="nd-other-body">
+                    <small>{{ $related->category?->name ?? 'Berita' }} &middot; {{ $related->published_date }}</small>
+                    <strong>{{ $related->title }}</strong>
+                </span>
+            </a>
+            @endforeach
+        </div>
     </div>
 </section>
 @endif

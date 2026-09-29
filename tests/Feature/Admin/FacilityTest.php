@@ -4,6 +4,7 @@ namespace Tests\Feature\Admin;
 
 use App\Enums\FacilityType;
 use App\Models\Facility;
+use App\Models\FacilityImage;
 use App\Models\User;
 use Database\Seeders\FacilitySeeder;
 use Database\Seeders\MajorSeeder;
@@ -120,10 +121,41 @@ class FacilityTest extends TestCase
             ->assertSee('view-1.webp');
 
         // Semua foto seeder memakai webp & file-nya ada.
-        foreach (\App\Models\FacilityImage::pluck('path') as $path) {
+        foreach (FacilityImage::pluck('path') as $path) {
             $this->assertStringEndsWith('.webp', $path);
             $this->assertFileExists(public_path($path));
         }
+    }
+
+    public function test_cards_link_to_detail_page_instead_of_modal(): void
+    {
+        $this->seed([MajorSeeder::class, FacilitySeeder::class]);
+
+        $this->get(route('fasilitas'))
+            ->assertOk()
+            ->assertSee(route('fasilitas.show', 'tekaje'), false)
+            ->assertDontSee('openItemModal', false)
+            ->assertDontSee('facility-modal-overlay', false);
+    }
+
+    public function test_detail_page_shows_facility_information(): void
+    {
+        $this->seed([MajorSeeder::class, FacilitySeeder::class]);
+        $facility = Facility::firstWhere('slug', 'tefa-edotel');
+
+        $this->get(route('fasilitas.show', $facility))
+            ->assertOk()
+            ->assertSee($facility->name)
+            ->assertSee('Spesifikasi &amp; Sarana Utama', false)
+            ->assertSee($facility->features[0])
+            ->assertSee('Nilai Tambah Pembelajaran')
+            ->assertSee('Teaching Factory Lainnya')
+            ->assertSee(route('fasilitas').'#denah', false);
+    }
+
+    public function test_unknown_facility_returns_404(): void
+    {
+        $this->get('/fasilitas/tidak-ada')->assertNotFound();
     }
 
     public function test_public_page_without_facilities_shows_empty_states(): void

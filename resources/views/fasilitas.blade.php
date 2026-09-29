@@ -130,8 +130,7 @@
                 </div>
                 <div class="tefa-list">
                     @foreach ($tefaList as $facility)
-                        <div class="tefa-item" data-facility="{{ $facility->slug }}"
-                            onclick="openItemModal('{{ $facility->slug }}')">
+                        <a href="{{ route('fasilitas.show', $facility) }}" class="tefa-item" data-facility="{{ $facility->slug }}">
                             <span class="tefa-number">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                             <div>
                                 <strong
@@ -141,7 +140,7 @@
                                         ({{ $facility->major->code }})</span>
                                 @endif
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             </div>
@@ -163,8 +162,7 @@
         <div class="fasilitas-grid">
             @forelse ($featuredFacilities as $facility)
                 <!-- {{ $facility->name }} -->
-                <div class="fac-card {{ $facility->is_wide ? 'wide' : '' }}" data-facility="{{ $facility->slug }}"
-                    onclick="openItemModal('{{ $facility->slug }}')">
+                <a href="{{ route('fasilitas.show', $facility) }}" class="fac-card {{ $facility->is_wide ? 'wide' : '' }}" data-facility="{{ $facility->slug }}">
                     <div class="fac-icon-wrapper" @if ($facility->is_wide) style="margin-bottom: 0" @endif>
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -180,7 +178,7 @@
                         <h3>{{ $facility->list_name }}</h3>
                         <p>{{ $facility->short_description }}</p>
                     @endif
-                </div>
+                </a>
             @empty
                 <!-- Tampilan saat belum ada fasilitas unggulan -->
                 <div class="content-empty">
@@ -192,54 +190,6 @@
         </div>
     </section>
 
-    <!-- 6. INTERACTIVE DETAIL MODAL -->
-    <div class="modal-overlay" id="facility-modal-overlay" onclick="closeItemModalOnOverlay(event)">
-        <div class="facility-modal-card" id="facility-modal-card">
-            <!-- Modal Header Banner -->
-            <div class="modal-banner" id="modal-banner">
-                <div class="modal-banner-icon" id="modal-icon">🏢</div>
-                <button class="modal-close-btn" onclick="closeItemModal()" aria-label="Tutup Detail">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-x">
-                        <path d="M18 6 6 18" />
-                        <path d="m6 6 12 12" />
-                    </svg>
-                </button>
-            </div>
-            <!-- Modal Content Body -->
-            <div class="modal-body">
-                <span class="modal-tag" id="modal-tag">FASILITAS UNGGULAN</span>
-                <h3 class="modal-title" id="modal-title">Nama Fasilitas</h3>
-                <p class="modal-desc" id="modal-desc">
-                    Deskripsi detail fasilitas sekolah.
-                </p>
-                <div class="modal-features-box">
-                    <div class="modal-section-title">
-                        Spesifikasi & Keunggulan Fasilitas:
-                    </div>
-                    <div class="modal-chips-row" id="modal-features">
-                        <!-- Chips dynamically rendered -->
-                    </div>
-                </div>
-                <div class="modal-highlight-box">
-                    <div class="modal-section-title" style="color: var(--primary); margin-bottom: 0.4rem">
-                        Nilai Tambah Pembelajaran:
-                    </div>
-                    <div class="modal-highlight-text" id="modal-highlight">
-                        Informasi nilai tambah.
-                    </div>
-                </div>
-                <div class="modal-footer-cta">
-                    <span style="font-size: 0.85rem; color: var(--text-muted)">Sekolah Berstandar Industri &bull;
-                        <strong>SMEMSA Genteng</strong></span>
-                    <a href="/spmb" class="btn-primary" style="text-decoration: none">
-                        Daftar & Rasakan Fasilitasnya &rarr;
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- 13. FOOTER -->
 @endsection
 @push('scripts')

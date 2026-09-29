@@ -19,7 +19,6 @@ class AchievementRequest extends FormRequest
     {
         $this->merge([
             'slug' => Str::slug($this->input('slug') ?: $this->input('title')),
-            'is_featured' => $this->boolean('is_featured'),
         ]);
     }
 
@@ -45,7 +44,6 @@ class AchievementRequest extends FormRequest
             'excerpt' => ['nullable', 'string', 'max:500'],
             'description' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'max:2048'],
-            'is_featured' => ['boolean'],
         ];
     }
 

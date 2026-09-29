@@ -62,9 +62,6 @@
                                 </td>
                                 <td>
                                     <strong>{{ $achievement->title }}</strong>
-                                    @if ($achievement->is_featured)
-                                        <span class="badge-soon">Unggulan</span>
-                                    @endif
                                 </td>
                                 <td>{{ $achievement->category?->name ?? '-' }}</td>
                                 <td>

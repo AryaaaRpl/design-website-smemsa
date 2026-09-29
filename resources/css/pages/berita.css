@@ -682,9 +682,91 @@ a {
     background: var(--primary-surface);
 }
 
-.news-detail-related {
+/* Header detail: tinggi mengikuti isi (bukan setinggi layar) */
+.page-header.news-detail-header {
+    height: auto;
+    min-height: 0;
+}
+
+/* Berita Lainnya: gaya sama dengan "Prestasi Lainnya" */
+.news-detail-wide {
+    max-width: 1040px;
+}
+
+.nd-others {
+    padding: 3.5rem 0 4.5rem;
+    background: var(--bg-alt);
     border-top: 1px solid var(--border-card);
-    padding-top: 3.5rem;
+}
+
+.nd-others-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.nd-other {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.nd-other:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-light);
+}
+
+.nd-other-photo {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    font-size: 2rem;
+}
+
+/* Foto mengisi kotak tanpa ikut meregangkan tinggi kartu */
+.nd-other-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    display: block;
+}
+
+.nd-other-body {
+    padding: 1rem 1.1rem 1.2rem;
+}
+
+.nd-other-body small {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #a16207;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.nd-other-body strong {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    margin-top: 0.3rem;
+    font-family: var(--font-head);
+    line-height: 1.35;
+    color: var(--primary-dark);
 }
 
 .news-detail-related-head {
@@ -930,5 +1012,99 @@ a {
     .hamburger,
     .nav-toggle {
         display: flex !important;
+    }
+}
+
+/* ==========================================================================
+   DETAIL BERITA — TABLET & HP
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .nd-others-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header.news-detail-header {
+        padding: 7.5rem 0 2rem;
+    }
+
+    .page-title.news-detail-title {
+        font-size: clamp(1.6rem, 7vw, 2rem);
+    }
+
+    .news-detail-meta {
+        font-size: 0.82rem;
+    }
+
+    .news-detail-cover {
+        aspect-ratio: 4 / 3;
+        margin-bottom: 1.6rem;
+    }
+
+    .news-detail-lead {
+        font-size: 1.02rem;
+        padding-left: 0.9rem;
+    }
+
+    .news-detail-body {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .news-detail {
+        padding-bottom: 3rem;
+    }
+
+    /* Bagikan & ajakan: bertumpuk, tombol selebar layar */
+    .news-detail-share {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .news-detail-share-links {
+        flex-wrap: wrap;
+    }
+
+    .news-detail-share .btn {
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Berita Lainnya: baris ringkas, foto di kiri */
+    .nd-others {
+        padding: 2.75rem 0 3.5rem;
+    }
+
+    .news-detail-related-head {
+        margin-bottom: 1.25rem;
+    }
+
+    .news-detail-related-head h2 {
+        font-size: 1.3rem;
+    }
+
+    .nd-others-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+
+    .nd-other {
+        flex-direction: row;
+    }
+
+    .nd-other-photo {
+        width: 110px;
+        flex-shrink: 0;
+        aspect-ratio: auto;
+        min-height: 84px;
+    }
+
+    .nd-other-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.85rem 1rem;
     }
 }

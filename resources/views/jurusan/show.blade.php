@@ -70,10 +70,6 @@
         <strong>{{ $major->certification_summary ?: '-' }}</strong>
       </div>
       <div class="jr-fact">
-        <span class="jr-fact-label">Prestasi Siswa</span>
-        <strong>{{ $achievements->count() }} Capaian</strong>
-      </div>
-      <div class="jr-fact">
         <span class="jr-fact-label">Mitra Industri</span>
         <strong>{{ $major->partners->count() }} Perusahaan</strong>
       </div>
@@ -199,31 +195,6 @@
     </section>
   @endif
 
-  <!-- 7. PRESTASI -->
-  @if ($achievements->isNotEmpty())
-    <section class="jr-band">
-      <div class="container">
-        <div class="jr-heading">
-          <span class="badge badge-amber mb-2">Rekam Jejak</span>
-          <h2 class="font-head jr-section-title">Prestasi Siswa {{ $major->code }}</h2>
-        </div>
-        <div class="jr-achievement-grid">
-          @foreach ($achievements as $achievement)
-            <div class="jr-achievement">
-              <span class="jr-achievement-badge">{{ mb_strtoupper($achievement->rank ?: $achievement->level?->label()) }}</span>
-              <h3>{{ $achievement->title }}</h3>
-              <span class="jr-achievement-meta">
-                {{ $achievement->achieved_label }} &bull; Tingkat {{ $achievement->level?->label() }}
-              </span>
-            </div>
-          @endforeach
-        </div>
-        <div class="text-center" style="margin-top: 2rem">
-          <a href="{{ url('/prestasi') }}" class="btn btn-outline">Lihat Semua Prestasi &rarr;</a>
-        </div>
-      </div>
-    </section>
-  @endif
 
   <!-- 8. MITRA INDUSTRI -->
   @if ($major->partners->isNotEmpty())

@@ -85,26 +85,6 @@
                         value="{{ old('organizer', $achievement->organizer) }}">
                     @error('organizer') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
-
-                <div class="form-group">
-                    <label class="form-check">
-                        <input type="checkbox" name="is_featured" value="1" @checked(old('is_featured', $achievement->is_featured))
-                            @if ($currentHeadline) data-toggle-target="headline-warning" @endif>
-                        Jadikan prestasi unggulan
-                    </label>
-                    <div class="form-help">
-                        Tampil di bagian "Mahkota Prestasi".
-                        @if ($currentHeadline)
-                            Unggulan saat ini: <strong>{{ $currentHeadline->title }}</strong>
-                        @endif
-                    </div>
-                    @if ($currentHeadline)
-                        <div class="alert alert-inline" id="headline-warning" @unless (old('is_featured', $achievement->is_featured)) hidden @endunless>
-                            Prestasi "{{ $currentHeadline->title }}" tidak lagi menjadi unggulan setelah prestasi ini disimpan.
-                        </div>
-                    @endif
-                    @error('is_featured') <div class="form-error">{{ $message }}</div> @enderror
-                </div>
             </div>
         </div>
 

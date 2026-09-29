@@ -30,57 +30,6 @@
         </div>
     </header>
 
-    <!-- 3. PINNACLE AWARD: PRESTASI UNGGULAN (dari database) -->
-    @if ($featured)
-        <section class="pinnacle-section container" data-px-stage="gold">
-            <div class="pinnacle-card" onclick="openAwardModal('{{ $featured->slug }}')" role="button" tabindex="0"
-                aria-label="Buka rincian {{ $featured->title }}">
-                <div>
-                    <div class="pinnacle-badge">Mahkota Prestasi {{ $featured->level?->label() }}
-                        {{ $featured->achieved_at?->year }}</div>
-                    <h2 class="pinnacle-title">
-                        {{ $featured->title }}
-                    </h2>
-                    <p class="pinnacle-desc" id="pinnacle-text-reveal">
-                        {{ $featured->excerpt }}
-                    </p>
-
-                    <div class="pinnacle-meta-grid">
-                        <div class="pinnacle-meta-item">
-                            <strong>Tingkat {{ $featured->level?->label() }}</strong>
-                            <span>Skala Kompetisi</span>
-                        </div>
-                        <div class="pinnacle-meta-item">
-                            <strong>{{ $featured->location }}</strong>
-                            <span>Lokasi Penyelenggaraan</span>
-                        </div>
-                        <div class="pinnacle-meta-item">
-                            <strong>Tahun {{ $featured->achieved_at?->year }}</strong>
-                            <span>Periode Capaian</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pinnacle-trophy-box">
-                    <div class="pinnacle-img-frame">
-                        <img src="{{ $featured->image_url }}" alt="{{ $featured->title }}" loading="lazy"
-                            onerror="
-                this.closest('.card')
-                  ? this.closest('.card').classList.add('no-image')
-                  : null;
-                this.remove();
-              " />
-                    </div>
-                    <span class="badge-gold"
-                        style="color: #facc15; font-size: 0.78rem">{{ mb_strtoupper($featured->rank ?: $featured->level?->label()) }}</span>
-                    <p style="font-size: 0.85rem; margin-top: 0.6rem; opacity: 0.85">
-                        Klik untuk membaca liputan lengkap &rarr;
-                    </p>
-                </div>
-            </div>
-        </section>
-    @endif
-
     <!-- 4. KATALOG PRESTASI (paginasi server, 18 per halaman) -->
     <section class="container" id="katalog-prestasi" style="padding-bottom: 5rem">
         <!-- Kontrol: pencarian, kategori, tahun, tampilan. Form GET agar tetap berfungsi tanpa JavaScript. -->
@@ -161,52 +110,6 @@
             @include('prestasi._catalog')
         </div>
     </section>
-
-    <!-- 5. INTERACTIVE AWARD DETAIL MODAL -->
-    <div class="modal-overlay" id="award-modal-overlay" onclick="closeAwardModalOnOverlay(event)" role="dialog"
-        aria-modal="true" aria-labelledby="modal-award-title">
-        <div class="award-modal-card" id="award-modal-card" data-lenis-prevent>
-            <!-- Modal Header Typographic Banner -->
-            <button class="modal-close-btn" onclick="closeAwardModal()" aria-label="Tutup Detail Prestasi">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" class="lucide lucide-x">
-                    <path d="M18 6 6 18" />
-                    <path d="m6 6 12 12" />
-                </svg>
-            </button>
-
-            <!-- Modal Content Body -->
-            <div class="modal-body">
-                <div class="modal-meta-row">
-                    <span class="badge-primary" id="modal-award-cat" style="font-size: 0.75rem">TEKNOLOGI</span>
-                    <span id="modal-award-location">Universitas Muhammadiyah Malang &bull; 2026</span>
-                </div>
-
-                <h2 class="modal-headline" id="modal-award-title">
-                    Juara Umum Muhammadiyah Education Awards (ME Awards) 2026
-                </h2>
-
-                <div class="modal-achievement-box">
-                    <strong>Penyelenggara & Kategori:</strong>
-                    <span id="modal-award-org">Majelis Dikdasmen PWM Jawa Timur &bull; Seluruh Jenjang SMK
-                        se-Indonesia</span>
-                </div>
-
-                <div class="modal-full-text" id="modal-award-desc">
-                    <!-- Dynamic Full Text -->
-                </div>
-
-                <div class="modal-footer-share">
-                    <span style="font-size: 0.88rem; color: var(--text-muted)">Pusat Keunggulan Vokasi &bull;
-                        <strong>SMEMSA Genteng</strong></span>
-                    <a href="/spmb" class="btn btn-primary" style="padding: 0.5rem 1.4rem; font-size: 0.88rem">
-                        Daftar & Berprestasi Bersama SMEMSA &rarr;
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- 6. FOOTER -->
     <!-- FOOTER -->

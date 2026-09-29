@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 #[Fillable([
     'category_id', 'major_id', 'title', 'field_label', 'slug', 'rank', 'event_name',
     'organizer', 'location', 'level', 'participants', 'excerpt', 'description',
-    'image', 'achieved_at', 'is_featured',
+    'image', 'achieved_at',
 ])]
 class Achievement extends Model
 {
@@ -31,7 +31,6 @@ class Achievement extends Model
         return [
             'level' => AchievementLevel::class,
             'achieved_at' => 'date',
-            'is_featured' => 'boolean',
         ];
     }
 
@@ -48,15 +47,6 @@ class Achievement extends Model
     public function major(): BelongsTo
     {
         return $this->belongsTo(Major::class);
-    }
-
-    /**
-     * Prestasi unggulan yang tampil di bagian "Mahkota Prestasi" (maksimal satu).
-     */
-    #[Scope]
-    protected function headline(Builder $query): void
-    {
-        $query->where('is_featured', true);
     }
 
     #[Scope]
@@ -98,19 +88,10 @@ class Achievement extends Model
     }
 
     /**
-     * Data untuk katalog & modal di halaman prestasi (dipakai oleh JavaScript).
+     * Data kartu katalog halaman prestasi.
      */
     public function toCatalogArray(): array
     {
-        $fullDesc = $this->description_html;
-
-        // Foto dokumentasi tampil di atas deskripsi, sama seperti desain awal.
-        if ($this->image_url) {
-            $fullDesc = '<div style="margin-bottom: 1.5rem; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">'
-                .'<img src="'.e($this->image_url).'" alt="'.e($this->title).'" loading="lazy" style="width: 100%; height: auto; display: block;">'
-                .'</div>'.$fullDesc;
-        }
-
         return [
             'id' => $this->slug,
             'title' => $this->title,
@@ -124,7 +105,6 @@ class Achievement extends Model
             'org' => (string) $this->organizer,
             'excerpt' => (string) $this->excerpt,
             'imageUrl' => $this->image_url,
-            'fullDesc' => $fullDesc,
         ];
     }
 }

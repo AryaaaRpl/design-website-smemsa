@@ -519,203 +519,8 @@
     }
 
     /* 6. INTERACTIVE DETAIL MODAL */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition) !important;
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .facility-modal-card {
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-xl);
-      max-width: 680px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.25);
-      transform: scale(0.92) translateY(20px);
-      transition: var(--transition) !important;
-      position: relative;
-      scrollbar-width: thin;
-      scrollbar-color: var(--primary) rgba(30, 64, 175, 0.05);
-    }
 
     /* Custom Sleek Scrollbar */
-    .facility-modal-card::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .facility-modal-card::-webkit-scrollbar-track {
-      background: rgba(30, 64, 175, 0.04);
-      border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
-      margin: 12px 0;
-    }
-
-    .facility-modal-card::-webkit-scrollbar-thumb {
-      background: linear-gradient(to bottom,
-          var(--secondary),
-          var(--primary));
-      border-radius: var(--radius-full);
-      transition: var(--transition) !important;
-    }
-
-    .facility-modal-card::-webkit-scrollbar-thumb:hover {
-      background: var(--primary);
-    }
-
-    .modal-overlay.active .facility-modal-card {
-      transform: scale(1) translateY(0);
-    }
-
-    .modal-banner {
-      height: 190px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .modal-banner-icon {
-      font-size: 5rem;
-      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
-      animation: modalFloat 3s ease-in-out infinite;
-    }
-
-    @keyframes modalFloat {
-
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      width: 38px;
-      height: 38px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      color: #ffffff;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: var(--transition) !important;
-      z-index: 10;
-    }
-
-    .modal-close-btn:hover {
-      background: #ffffff;
-      color: var(--primary);
-      transform: rotate(90deg);
-    }
-
-    .modal-body {
-      padding: 2.2rem;
-    }
-
-    .modal-tag {
-      font-family: var(--font-head);
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #a16207;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.4rem;
-      display: block;
-    }
-
-    .modal-title {
-      font-family: var(--font-display);
-      font-size: 1.85rem;
-      color: var(--primary-dark);
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-    }
-
-    .modal-desc {
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 1.8rem;
-    }
-
-    .modal-features-box {
-      margin-bottom: 1.8rem;
-    }
-
-    .modal-section-title {
-      font-family: var(--font-head);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .modal-feature-chip {
-      background: var(--bg-alt);
-      border: 1px solid var(--border-card);
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    .modal-highlight-box {
-      background: var(--primary-surface);
-      border: 1px solid rgba(30, 64, 175, 0.15);
-      border-radius: var(--radius);
-      padding: 1.2rem;
-      margin-bottom: 2rem;
-    }
-
-    .modal-highlight-text {
-      font-size: 0.92rem;
-      color: var(--primary-dark);
-      font-weight: 600;
-      line-height: 1.6;
-    }
-
-    .modal-footer-cta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      border-top: 1px solid var(--border-card);
-      padding-top: 1.5rem;
-    }
 
     /* GSAP Prep */
     .reveal {
@@ -742,6 +547,11 @@
     @media (max-width: 768px) {
       .fasilitas-grid {
         grid-template-columns: 1fr;
+      }
+
+      .tefa-item:hover {
+        transform: translateX(0px);
+        transform: translateY(-8px);
       }
 
       .fac-card.wide {
@@ -1040,6 +850,17 @@
       width: 11px;
       height: 11px;
       border-radius: 50%;
+    }
+
+    .badge {
+      padding: 0.45rem 0;
+      font-size: 0.82rem;
+      font-family: var(--font-head);
+      font-weight: 700;
+      color: #a16207;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
     }
 
     /* ---- Panel detail ---- */
@@ -1818,5 +1639,391 @@
 
   .fac-card h3 {
     font-size: 1.2rem;
+  }
+}
+
+/* Kartu TEFA & Sarana Penunjang kini berupa link ke halaman detail: tampilan sama seperti sebelumnya */
+a.tefa-item,
+a.fac-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   HALAMAN DETAIL FASILITAS / TEFA (/fasilitas/{slug})
+   ========================================================================== */
+.fs-narrow {
+  max-width: 1040px;
+}
+
+.page-header.fs-detail-header {
+  height: auto;
+  padding: 9rem 0 3rem;
+}
+
+.fs-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+}
+
+.fs-breadcrumb a {
+  color: inherit;
+}
+
+.fs-breadcrumb a:hover,
+.fs-breadcrumb [aria-current] {
+  color: var(--primary);
+}
+
+.page-title.fs-detail-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 1rem 0 0.8rem;
+}
+
+.fs-detail {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+/* Foto utama */
+.fs-cover {
+  position: relative;
+  aspect-ratio: 16 / 8;
+  margin: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-card);
+  display: grid;
+  place-items: center;
+}
+
+.fs-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fs-cover figcaption {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  max-width: calc(100% - 2rem);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: rgba(15, 23, 42, 0.65);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.fs-noimg {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+}
+
+/* Thumbnail galeri */
+.fs-thumbs {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.fs-thumb {
+  flex: 0 0 auto;
+  width: 88px;
+  height: 64px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-alt);
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.fs-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fs-thumb:hover,
+.fs-thumb.is-active {
+  opacity: 1;
+  border-color: var(--primary);
+}
+
+.fs-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 2.5rem;
+}
+
+.fs-subtitle {
+  font-family: var(--font-head);
+  font-size: 1.35rem;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+}
+
+.fs-prose p {
+  color: var(--text-dark);
+  line-height: 1.8;
+  margin-bottom: 1.1rem;
+}
+
+.fs-block {
+  margin-top: 2rem;
+}
+
+.fs-features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.fs-features li {
+  position: relative;
+  padding: 0.8rem 1rem 0.8rem 2.4rem;
+  background: var(--primary-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--primary-dark);
+}
+
+.fs-features li::before {
+  content: "\2713";
+  position: absolute;
+  left: 1rem;
+  top: 0.8rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.fs-highlight {
+  margin-top: 2rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--secondary-surface);
+  border-left: 4px solid var(--secondary);
+  border-radius: var(--radius);
+}
+
+.fs-highlight span {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a16207;
+}
+
+.fs-highlight p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--text-dark);
+}
+
+/* Kartu info samping */
+.fs-info-card {
+  position: sticky;
+  top: 110px;
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.fs-info-card dl {
+  display: grid;
+  gap: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.fs-info-card dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.fs-info-card dd {
+  margin: 0.2rem 0 0;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.fs-cta {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.fs-link {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.fs-link:hover {
+  text-decoration: underline;
+}
+
+/* Fasilitas lainnya */
+.fs-others {
+  padding: 3.5rem 0 4.5rem;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border-card);
+}
+
+.fs-others-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.fs-other {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.fs-other:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-light);
+}
+
+.fs-other-photo {
+  aspect-ratio: 16 / 10;
+  display: grid;
+  place-items: center;
+  background: var(--primary-surface);
+  color: var(--primary);
+}
+
+.fs-other-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fs-other-body {
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.fs-other-body small {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #a16207;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fs-other-body strong {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--font-head);
+  color: var(--primary-dark);
+}
+
+/* Detail di HP (<= 768px) */
+@media (max-width: 768px) {
+  .page-header.fs-detail-header {
+    padding: 7.5rem 0 2.25rem;
+  }
+
+  .fs-detail {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .fs-cover {
+    aspect-ratio: 4 / 3;
+  }
+
+  .fs-thumb {
+    width: 72px;
+    height: 54px;
+  }
+
+  .fs-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    margin-top: 1.75rem;
+  }
+
+  /* Info & tombol daftar tampil lebih dulu di HP */
+  .fs-info-card {
+    position: static;
+    order: -1;
+    padding: 1.25rem;
+  }
+
+  .fs-features {
+    grid-template-columns: 1fr;
+  }
+
+  .fs-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .fs-others {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .fs-others-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .fs-other {
+    flex-direction: row;
+  }
+
+  .fs-other-photo {
+    width: 110px;
+    flex-shrink: 0;
+    aspect-ratio: auto;
+    min-height: 84px;
+  }
+
+  .fs-other-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }

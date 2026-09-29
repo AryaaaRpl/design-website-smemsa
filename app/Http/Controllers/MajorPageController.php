@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Enums\FacilityType;
-use App\Models\Achievement;
 use App\Models\Facility;
 use App\Models\JobVacancy;
 use App\Models\Major;
@@ -19,7 +18,7 @@ class MajorPageController extends Controller
     public function index(): View
     {
         $majors = Major::active()
-            ->withCount(['achievements', 'facilities', 'partners'])
+            ->withCount(['facilities', 'partners'])
             ->ordered()
             ->get();
 
@@ -44,8 +43,6 @@ class MajorPageController extends Controller
             'partners' => fn ($query) => $query->ordered(),
         ]);
 
-        $achievements = Achievement::where('major_id', $major->id)->latestAchieved()->take(6)->get();
-
         // Lowongan yang masih dibuka dari mitra jurusan ini.
         $vacancies = JobVacancy::open()
             ->with('partner')
@@ -65,6 +62,6 @@ class MajorPageController extends Controller
 
         $otherMajors = Major::active()->ordered()->whereKeyNot($major->id)->get();
 
-        return view('jurusan.show', compact('major', 'achievements', 'vacancies', 'products', 'otherMajors'));
+        return view('jurusan.show', compact('major', 'vacancies', 'products', 'otherMajors'));
     }
 }

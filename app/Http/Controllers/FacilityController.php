@@ -17,9 +17,28 @@ class FacilityController extends Controller
         $tefaList = $facilities->where('show_in_tefa_list', true)->values();
         $featuredFacilities = $facilities->where('is_featured', true)->values();
 
-        // Data panel & modal untuk semua fasilitas, dikunci dengan slug.
+        // Data panel denah untuk semua fasilitas, dikunci dengan slug.
         $facilityData = $facilities->mapWithKeys(fn (Facility $facility) => [$facility->slug => $facility->toPageArray()]);
 
         return view('fasilitas', compact('mapFacilities', 'tefaList', 'featuredFacilities', 'facilityData'));
+    }
+
+    /**
+     * Halaman detail fasilitas / Teaching Factory (pengganti modal).
+     */
+    public function show(Facility $facility): View
+    {
+        $facility->load(['major', 'images']);
+
+        // Fasilitas lain dengan jenis yang sama (TEFA / fasilitas penunjang).
+        $others = Facility::with('images')
+            ->where('type', $facility->type)
+            ->whereKeyNot($facility->id)
+            ->where(fn ($query) => $query->where('show_in_tefa_list', true)->orWhere('is_featured', true))
+            ->ordered()
+            ->take(3)
+            ->get();
+
+        return view('fasilitas.show', compact('facility', 'others'));
     }
 }

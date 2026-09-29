@@ -62,6 +62,7 @@ Route::get('/ekstrakurikuler', [ExtracurricularController::class, 'index'])->nam
 Route::get('/ekstrakurikuler/{extracurricular}', [ExtracurricularController::class, 'show'])->name('ekstrakurikuler.show');
 
 Route::get('/prestasi', AchievementController::class)->name('prestasi');
+Route::get('/prestasi/{achievement}', [AchievementController::class, 'show'])->name('prestasi.show');
 
 Route::get('/berita', [NewsController::class, 'index'])->name('berita');
 Route::get('/berita/{post}', [NewsController::class, 'show'])->name('berita.show');
@@ -69,6 +70,7 @@ Route::get('/berita/{post}', [NewsController::class, 'show'])->name('berita.show
 Route::get('/guru', TeacherController::class)->name('guru');
 
 Route::get('/fasilitas', FacilityController::class)->name('fasilitas');
+Route::get('/fasilitas/{facility}', [FacilityController::class, 'show'])->name('fasilitas.show');
 
 /*
 |--------------------------------------------------------------------------

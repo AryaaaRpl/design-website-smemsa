@@ -72,16 +72,48 @@ class AchievementTest extends TestCase
             ->assertSessionHasErrors('category_id');
     }
 
-    public function test_new_featured_replaces_previous_featured(): void
+    public function test_admin_form_has_no_featured_option(): void
     {
-        $old = $this->makeAchievement(['title' => 'Unggulan Lama', 'is_featured' => true]);
-
         $this->actingAs($this->admin)
-            ->post(route('admin.achievements.store'), $this->validData(['is_featured' => '1']))
-            ->assertSessionHas('success', fn (string $message) => str_contains($message, 'Unggulan Lama'));
+            ->get(route('admin.achievements.create'))
+            ->assertOk()
+            ->assertDontSee('name="is_featured"', false)
+            ->assertDontSee('Jadikan prestasi unggulan');
+    }
 
-        $this->assertFalse($old->fresh()->is_featured);
-        $this->assertSame(1, Achievement::headline()->count());
+    public function test_catalog_cards_link_to_detail_page_without_modal(): void
+    {
+        $achievement = $this->makeAchievement(['title' => 'Juara Robot', 'slug' => 'juara-robot']);
+
+        $this->get(route('prestasi'))
+            ->assertOk()
+            ->assertSee(route('prestasi.show', $achievement), false)
+            ->assertDontSee('openAwardModal', false)
+            ->assertDontSee('award-modal-overlay', false);
+    }
+
+    public function test_detail_page_shows_achievement(): void
+    {
+        $achievement = $this->makeAchievement([
+            'title' => 'Juara Robot Nasional', 'slug' => 'juara-robot', 'rank' => 'Medali Emas',
+            'organizer' => 'Kemendikbud', 'location' => 'Jakarta', 'excerpt' => 'Ringkasan singkat.',
+            'description' => "Paragraf satu.\n\nParagraf dua.",
+        ]);
+        $this->makeAchievement(['title' => 'Prestasi Lain']);
+
+        $this->get(route('prestasi.show', $achievement))
+            ->assertOk()
+            ->assertSee('Juara Robot Nasional')
+            ->assertSee('MEDALI EMAS')
+            ->assertSee('Kemendikbud')
+            ->assertSee('Paragraf dua.')
+            ->assertSee('Prestasi Lainnya')
+            ->assertSee('Prestasi Lain');
+    }
+
+    public function test_unknown_achievement_returns_404(): void
+    {
+        $this->get('/prestasi/tidak-ada')->assertNotFound();
     }
 
     public function test_admin_can_update_and_delete_achievement(): void
@@ -112,7 +144,6 @@ class AchievementTest extends TestCase
         $this->assertSame('Maret 2026', $data['dateStr']);
         $this->assertSame('teknologi', $data['category']);
         $this->assertArrayHasKey('imageUrl', $data);
-        $this->assertStringContainsString('&lt;b&gt;tebal&lt;/b&gt;', $data['fullDesc']);
     }
 
     public function test_public_page_shows_achievements_from_database(): void
@@ -121,7 +152,6 @@ class AchievementTest extends TestCase
 
         $this->get(route('prestasi'))
             ->assertOk()
-            ->assertSee('Mahkota Prestasi')
             ->assertSee('Juara Umum Muhammadiyah Education Awards')
             ->assertSee('Juara 1 MPL Student League', false)
             ->assertSee('<option value="2024" >2024</option>', false);
@@ -152,13 +182,16 @@ class AchievementTest extends TestCase
         $this->makeAchievement(['title' => 'Juara Robot Nasional', 'achieved_at' => '2025-05-01']);
         $this->makeAchievement(['title' => 'Juara Silat Daerah', 'category_id' => $other->id, 'achieved_at' => '2024-05-01']);
 
-        $this->get(route('prestasi', ['cari' => 'robot']))
+        // Cukup cek isi katalog (request AJAX).
+        $ajax = ['X-Requested-With' => 'XMLHttpRequest'];
+
+        $this->get(route('prestasi', ['cari' => 'robot']), $ajax)
             ->assertSee('Juara Robot Nasional')->assertDontSee('Juara Silat Daerah');
 
-        $this->get(route('prestasi', ['kategori' => 'olahraga']))
+        $this->get(route('prestasi', ['kategori' => 'olahraga']), $ajax)
             ->assertSee('Juara Silat Daerah')->assertDontSee('Juara Robot Nasional');
 
-        $this->get(route('prestasi', ['tahun' => 2025]))
+        $this->get(route('prestasi', ['tahun' => 2025]), $ajax)
             ->assertSee('Juara Robot Nasional')->assertDontSee('Juara Silat Daerah');
 
         $this->get(route('prestasi', ['cari' => 'tidak-ada']))
@@ -173,7 +206,6 @@ class AchievementTest extends TestCase
             ->assertOk()
             ->assertHeader('Vary', 'X-Requested-With')
             ->assertSee('Prestasi Ajax')
-            ->assertSee('awards-page-data', false)
             ->assertDontSee('award-filter-form', false);
     }
 

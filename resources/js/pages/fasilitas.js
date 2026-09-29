@@ -1,5 +1,6 @@
 /* ==========================================================================
-   FASILITAS & TEFA - DENAH INTERAKTIF, PANEL DETAIL & MODAL
+   FASILITAS & TEFA - DENAH INTERAKTIF & PANEL DETAIL
+   (Kartu TEFA & Sarana Penunjang membuka halaman detail /fasilitas/{slug}.)
    Data dari database lewat window.facilityData & window.facilityMapOrder.
    ========================================================================== */
 
@@ -290,7 +291,8 @@
     });
 
     // Animasi muncul titik denah (sekali, saat denah terlihat).
-    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+    // Hanya di halaman denah (halaman detail fasilitas juga memuat file ini).
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined" && document.querySelector(".hotspot")) {
       try {
         gsap.from(".hotspot", {
           opacity: 0,
@@ -310,68 +312,6 @@
       } catch (e) {}
     }
   }
-
-  /* ==========================================================================
-     MODAL DETAIL (daftar TEFA & grid fasilitas unggulan)
-     ========================================================================== */
-  const MODAL_GRADIENTS = {
-    tefa: "linear-gradient(135deg, #b45309 0%, #eab308 100%)",
-    fasilitas: "linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)",
-  };
-
-  window.openItemModal = function (id) {
-    const data = FACILITIES[id];
-    if (!data) return;
-
-    const banner = document.getElementById("modal-banner");
-    const icon = document.getElementById("modal-icon");
-    const tag = document.getElementById("modal-tag");
-    const title = document.getElementById("modal-title");
-    const desc = document.getElementById("modal-desc");
-    const featuresContainer = document.getElementById("modal-features");
-    const highlight = document.getElementById("modal-highlight");
-
-    if (banner) banner.style.background = MODAL_GRADIENTS[data.kind];
-    if (icon) icon.innerText = data.icon;
-    if (tag) tag.innerText = (data.kicker || "Fasilitas Unggulan").toUpperCase();
-    if (title) title.innerText = data.full;
-    if (desc) desc.innerText = data.desc;
-    if (highlight) highlight.innerText = data.highlight || "-";
-
-    if (featuresContainer) {
-      featuresContainer.innerHTML = "";
-      data.tools.forEach(function (feat) {
-        const chip = document.createElement("span");
-        chip.className = "modal-feature-chip";
-        chip.innerText = feat;
-        featuresContainer.appendChild(chip);
-      });
-    }
-
-    const modalOverlay = document.getElementById("facility-modal-overlay");
-    if (modalOverlay) {
-      modalOverlay.classList.add("active");
-      document.body.style.overflow = "hidden";
-    }
-  };
-
-  window.closeItemModal = function () {
-    const modalOverlay = document.getElementById("facility-modal-overlay");
-    if (modalOverlay) {
-      modalOverlay.classList.remove("active");
-      document.body.style.overflow = "";
-    }
-  };
-
-  window.closeItemModalOnOverlay = function (e) {
-    if (e.target.id === "facility-modal-overlay") {
-      window.closeItemModal();
-    }
-  };
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && window.closeItemModal) window.closeItemModal();
-  });
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initMapAndDenah);

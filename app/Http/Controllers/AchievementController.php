@@ -7,6 +7,7 @@ use App\Models\Achievement;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class AchievementController extends Controller
 {
@@ -36,9 +37,6 @@ class AchievementController extends Controller
             ->withQueryString()
             ->fragment('katalog-prestasi');
 
-        // Prestasi unggulan untuk bagian "Mahkota Prestasi". Jika tidak ada, bagian ini disembunyikan.
-        $featured = Achievement::with('category')->headline()->latestAchieved()->first();
-
         $years = Achievement::query()
             ->whereNotNull('achieved_at')
             ->pluck('achieved_at')
@@ -49,16 +47,9 @@ class AchievementController extends Controller
 
         $totalAchievements = Achievement::count();
 
-        // Data modal detail: prestasi di halaman ini + prestasi unggulan.
-        $awardsData = collect($achievements->items())
-            ->when($featured, fn ($items) => $items->push($featured))
-            ->unique('id')
-            ->map->toCatalogArray()
-            ->values();
-
         $data = compact(
-            'achievements', 'featured', 'categories', 'activeCategory', 'years',
-            'search', 'year', 'totalAchievements', 'awardsData',
+            'achievements', 'categories', 'activeCategory', 'years',
+            'search', 'year', 'totalAchievements',
         );
 
         // Permintaan dari prestasi.js (ganti filter/halaman tanpa refresh): cukup kirim isi katalog.
@@ -66,5 +57,23 @@ class AchievementController extends Controller
         $view = $request->ajax() ? 'prestasi._catalog' : 'prestasi';
 
         return response()->view($view, $data)->header('Vary', 'X-Requested-With');
+    }
+
+    /**
+     * Halaman detail prestasi (pengganti modal).
+     */
+    public function show(Achievement $achievement): View
+    {
+        $achievement->load(['category', 'major']);
+
+        // Prestasi lain dari kategori yang sama (jika kurang, isi dengan yang terbaru).
+        $others = Achievement::with('category')
+            ->whereKeyNot($achievement->id)
+            ->orderByRaw('category_id = ? desc', [$achievement->category_id])
+            ->latestAchieved()
+            ->take(3)
+            ->get();
+
+        return view('prestasi.show', compact('achievement', 'others'));
     }
 }
