@@ -22,7 +22,6 @@
 
 .drawer-links a:hover,
 .drawer-links a.active {
-  background: var(--primary-surface);
   color: var(--primary);
 }
 

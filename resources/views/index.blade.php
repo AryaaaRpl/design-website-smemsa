@@ -688,12 +688,20 @@
           </div>
 
           @if ($testimonials->count() > 1)
-          <!-- Indikator vertikal: klik untuk lompat ke testimoni tertentu -->
-          <div class="testi-dots" role="tablist" aria-label="Pilih cerita alumni">
-            @foreach ($testimonials as $testimonial)
-            <button type="button" class="testi-dot {{ $loop->first ? 'is-active' : '' }}" data-index="{{ $loop->index }}"
-              aria-label="Tampilkan cerita {{ $testimonial->name }}"></button>
-            @endforeach
+          <!-- Navigasi vertikal: panah atas/bawah + nomor (3 elemen berapa pun jumlah testimoninya) -->
+          <div class="testi-nav" aria-label="Navigasi cerita alumni">
+            <button type="button" class="testi-nav-btn" data-testi-prev aria-label="Cerita sebelumnya">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6" /></svg>
+            </button>
+            <span class="testi-counter" aria-live="polite">
+              <span class="testi-counter-current">01</span>
+              <span class="testi-counter-total">/{{ str_pad($testimonials->count(), 2, '0', STR_PAD_LEFT) }}</span>
+            </span>
+            <button type="button" class="testi-nav-btn" data-testi-next aria-label="Cerita berikutnya">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </button>
           </div>
           @endif
           @endif

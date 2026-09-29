@@ -1,6 +1,7 @@
 /* ==========================================================================
    BERANDA - SLIDER VERTIKAL TESTIMONI ALUMNI
-   Slide lama bergeser naik, slide berikutnya masuk dari bawah.
+   Otomatis / panah bawah: slide lama naik, slide berikutnya masuk dari bawah.
+   Panah atas: kebalikannya (slide sebelumnya masuk dari atas).
    Berhenti saat kursor/fokus di kartu & saat kartu tidak terlihat di layar.
    ========================================================================== */
 
@@ -10,7 +11,9 @@
 
   const slides = Array.from(slider.querySelectorAll(".testi-slide"));
   const card = slider.closest(".testi-card");
-  const dots = card ? Array.from(card.querySelectorAll(".testi-dot")) : [];
+  const prevBtn = card ? card.querySelector("[data-testi-prev]") : null;
+  const nextBtn = card ? card.querySelector("[data-testi-next]") : null;
+  const counter = card ? card.querySelector(".testi-counter-current") : null;
   const interval = Number(slider.dataset.interval) || 5000;
   const DURATION = 800; // sama dengan durasi transisi di CSS
 
@@ -22,41 +25,51 @@
   let isHovered = false;
   let isVisible = false;
 
-  function show(next) {
+  // direction: 1 = berikutnya (masuk dari bawah), -1 = sebelumnya (masuk dari atas)
+  function show(next, direction) {
     if (next === current) return;
 
     const leaving = slides[current];
     const entering = slides[next];
+    const backward = direction < 0;
 
-    // Slide lama naik ke atas.
+    // Mundur: taruh slide baru di atas dulu tanpa animasi, baru dianimasikan masuk.
+    if (backward) {
+      entering.classList.add("no-transition", "from-top");
+      void entering.offsetWidth;
+      entering.classList.remove("no-transition");
+    }
+
     leaving.classList.remove("is-active");
-    leaving.classList.add("is-leaving");
+    leaving.classList.add(backward ? "is-leaving-down" : "is-leaving");
     leaving.setAttribute("aria-hidden", "true");
 
-    // Slide baru masuk dari bawah.
     entering.classList.add("is-active");
     entering.removeAttribute("aria-hidden");
 
-    // Setelah transisi selesai, slide lama dikembalikan ke bawah tanpa animasi.
+    // Setelah transisi selesai, kembalikan slide lama ke posisi awal (bawah) tanpa animasi.
     setTimeout(function () {
       leaving.classList.add("no-transition");
-      leaving.classList.remove("is-leaving");
+      leaving.classList.remove("is-leaving", "is-leaving-down");
       void leaving.offsetWidth;
       leaving.classList.remove("no-transition");
+      entering.classList.remove("from-top");
     }, DURATION);
 
-    dots.forEach(function (dot, i) {
-      dot.classList.toggle("is-active", i === next);
-    });
+    if (counter) counter.textContent = String(next + 1).padStart(2, "0");
 
     current = next;
+  }
+
+  function step(direction) {
+    show((current + direction + slides.length) % slides.length, direction);
   }
 
   function start() {
     stop();
     if (isHovered || !isVisible || document.hidden) return;
     timer = setInterval(function () {
-      show((current + 1) % slides.length);
+      step(1);
     }, interval);
   }
 
@@ -65,13 +78,19 @@
     timer = null;
   }
 
-  // Klik indikator: lompat ke testimoni tertentu, lalu hitung ulang jedanya.
-  dots.forEach(function (dot) {
-    dot.addEventListener("click", function () {
-      show(Number(dot.dataset.index));
+  // Panah atas/bawah, lalu hitung ulang jeda otomatisnya.
+  if (prevBtn) {
+    prevBtn.addEventListener("click", function () {
+      step(-1);
       start();
     });
-  });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function () {
+      step(1);
+      start();
+    });
+  }
 
   // Berhenti saat kursor atau fokus keyboard ada di kartu (agar bisa selesai membaca).
   if (card) {

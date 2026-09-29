@@ -1223,8 +1223,9 @@ ScrollTrigger.batch(".prestasi-item", {
 });
 
 // Parallax 3D Card Effect on Scroll
+// Efek 3D hanya di desktop: di HP efek ini dihitung ulang terus selama scroll (berat).
 const testiCard = document.getElementById("testi-parallax-card");
-if (testiCard) {
+if (testiCard && window.matchMedia("(min-width: 769px)").matches) {
   gsap.fromTo(
     testiCard,
     { y: 60, rotationY: -4, rotationX: 4 },

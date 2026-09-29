@@ -64,19 +64,33 @@
 
     let currentFilter = "all";
     let selectToken = 0;
+    let backdropTimer = null;
+    const SHEET_DURATION = 300; // sama dengan transisi .detail-panel di CSS
 
     /* ---------- Bottom sheet (HP) ---------- */
     function openSheet() {
       if (!sheetQuery.matches || !panel) return;
       panel.classList.add("is-open");
-      if (panelBackdrop) panelBackdrop.hidden = false;
+      if (panelBackdrop) {
+        clearTimeout(backdropTimer);
+        panelBackdrop.hidden = false;
+        void panelBackdrop.offsetWidth; // agar transisi memudar berjalan
+        panelBackdrop.classList.add("is-visible");
+      }
       document.body.style.overflow = "hidden";
     }
 
     function closeSheet() {
       if (!panel) return;
       panel.classList.remove("is-open");
-      if (panelBackdrop) panelBackdrop.hidden = true;
+      if (panelBackdrop) {
+        // Latar gelap memudar bersamaan dengan kartu turun, baru disembunyikan.
+        panelBackdrop.classList.remove("is-visible");
+        clearTimeout(backdropTimer);
+        backdropTimer = setTimeout(function () {
+          panelBackdrop.hidden = true;
+        }, SHEET_DURATION);
+      }
       document.body.style.overflow = "";
     }
 
@@ -285,6 +299,8 @@
           duration: 0.55,
           stagger: 0.05,
           ease: "back.out(2)",
+          // Hapus opacity/transform inline setelah muncul, supaya filter (.is-dimmed) terlihat.
+          clearProps: "opacity,transform",
           scrollTrigger: {
             trigger: ".map-stage",
             start: "top 85%",

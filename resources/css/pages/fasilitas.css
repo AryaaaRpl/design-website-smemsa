@@ -1649,13 +1649,16 @@
     overscroll-behavior: contain;
     border-radius: 18px 18px 0 0;
     transform: translateY(105%);
-    transition: transform 0.3s ease !important;
+    /* Tutup: meluncur turun 0.3s dulu, baru disembunyikan (visibility ditunda 0.3s) */
+    transition: transform 0.3s ease, visibility 0s linear 0.3s !important;
     visibility: hidden;
   }
 
   .detail-panel.is-open {
     transform: translateY(0);
     visibility: visible;
+    /* Buka: langsung terlihat lalu meluncur naik 0.3s */
+    transition: transform 0.3s ease, visibility 0s !important;
   }
 
   .detail-panel .panel-empty {
@@ -1708,6 +1711,13 @@
     inset: 0;
     z-index: 1150;
     background: rgba(15, 23, 42, 0.45);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Latar gelap memudar masuk/keluar bersamaan dengan kartu (0.3s) */
+  .panel-backdrop.is-visible {
+    opacity: 1;
   }
 
   .panel-backdrop[hidden] {
@@ -1734,7 +1744,6 @@
 @media (max-width: 768px) {
   /* Header */
   .page-header {
-    height: auto;
     padding: 7.5rem 0 3rem;
   }
 

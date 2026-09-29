@@ -72,7 +72,7 @@
               " />
                     </div>
                     <span class="badge-gold"
-                        style="font-size: 0.78rem">{{ mb_strtoupper($featured->rank ?: $featured->level?->label()) }}</span>
+                        style="color: #facc15; font-size: 0.78rem">{{ mb_strtoupper($featured->rank ?: $featured->level?->label()) }}</span>
                     <p style="font-size: 0.85rem; margin-top: 0.6rem; opacity: 0.85">
                         Klik untuk membaca liputan lengkap &rarr;
                     </p>

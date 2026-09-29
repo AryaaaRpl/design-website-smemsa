@@ -40,19 +40,6 @@
             overflow: hidden;
             box-shadow: 0 20px 40px -10px rgba(30, 64, 175, 0.3);
           ">
-        <div style="
-              position: absolute;
-              right: -20px;
-              bottom: -20px;
-              opacity: 0.08;
-              font-size: 15rem;
-              font-family: var(--font-head);
-              font-weight: 800;
-              line-height: 1;
-              pointer-events: none;
-            ">
-          VISI
-        </div>
         <span class="visi-label" style="
               color: var(--secondary);
               padding: 0.3rem 0;
@@ -100,17 +87,6 @@
             overflow: hidden;
           ">
         <div style="
-              font-size: 2rem;
-              font-weight: 800;
-              color: var(--primary);
-              opacity: 0.15;
-              position: absolute;
-              top: 1rem;
-              right: 1.5rem;
-            ">
-          01
-        </div>
-        <div style="
               width: 48px;
               height: 48px;
               background: var(--primary-surface);
@@ -145,17 +121,6 @@
             position: relative;
             overflow: hidden;
           ">
-        <div style="
-              font-size: 2rem;
-              font-weight: 800;
-              color: var(--primary);
-              opacity: 0.15;
-              position: absolute;
-              top: 1rem;
-              right: 1.5rem;
-            ">
-          02
-        </div>
         <div style="
               width: 48px;
               height: 48px;
@@ -192,17 +157,6 @@
             overflow: hidden;
           ">
         <div style="
-              font-size: 2rem;
-              font-weight: 800;
-              color: var(--primary);
-              opacity: 0.15;
-              position: absolute;
-              top: 1rem;
-              right: 1.5rem;
-            ">
-          03
-        </div>
-        <div style="
               width: 48px;
               height: 48px;
               background: var(--primary-surface);
@@ -238,17 +192,6 @@
             overflow: hidden;
           ">
         <div style="
-              font-size: 2rem;
-              font-weight: 800;
-              color: var(--primary);
-              opacity: 0.15;
-              position: absolute;
-              top: 1rem;
-              right: 1.5rem;
-            ">
-          04
-        </div>
-        <div style="
               width: 48px;
               height: 48px;
               background: var(--primary-surface);
@@ -283,17 +226,6 @@
             position: relative;
             overflow: hidden;
           ">
-        <div style="
-              font-size: 2rem;
-              font-weight: 800;
-              color: var(--primary);
-              opacity: 0.15;
-              position: absolute;
-              top: 1rem;
-              right: 1.5rem;
-            ">
-          05
-        </div>
         <div style="
               width: 48px;
               height: 48px;
@@ -451,8 +383,9 @@
           });
 
           // Timeline Progress Bar ScrollTrigger Animation for Tujuan Section
+          // Di HP garis progress disembunyikan (visi-misi.css), jadi animasinya tidak perlu dijalankan.
           const tujuanBar = document.getElementById("tujuan-bar");
-          if (tujuanBar) {
+          if (tujuanBar && window.matchMedia("(min-width: 769px)").matches) {
             gsap.to(tujuanBar, {
               height: "100%",
               ease: "none",

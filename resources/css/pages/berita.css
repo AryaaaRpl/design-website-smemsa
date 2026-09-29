@@ -425,11 +425,6 @@ a {
 
 /* Layar kecil: pencarian di atas, kategori digeser menyamping agar bilah tetap pendek. */
 @media (max-width: 900px) {
-    .page-header {
-        
-        height: auto;
-    }
-    
     .news-sticky-bar {
         top: 76px;
         padding: 0.8rem 0;

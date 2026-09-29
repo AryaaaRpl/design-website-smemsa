@@ -82,17 +82,21 @@ class TestimonialTest extends TestCase
             ->assertSee('id="testi-slider"', false)
             ->assertSee('Ahmad Rizqi Pratama')
             ->assertSee('Nadia Putri Lestari')
-            ->assertSee('class="testi-dots"', false)
+            // 2 testimoni tampil: navigasi panah atas/bawah + nomor "01 / 02".
+            ->assertSee('class="testi-nav"', false)
+            ->assertSee('data-testi-prev', false)
+            ->assertSee('data-testi-next', false)
+            ->assertSee('/02')
             ->assertDontSee('Rizal Maulana');
     }
 
-    public function test_single_testimonial_has_no_dots(): void
+    public function test_single_testimonial_has_no_navigation(): void
     {
         Testimonial::create(['name' => 'Satu Saja', 'quote' => 'Hanya satu.', 'is_published' => true]);
 
         $this->get(route('home'))
             ->assertSee('Satu Saja')
-            ->assertDontSee('class="testi-dots"', false);
+            ->assertDontSee('class="testi-nav"', false);
     }
 
     public function test_home_shows_empty_card_without_testimonials(): void

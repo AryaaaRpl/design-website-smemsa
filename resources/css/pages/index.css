@@ -3693,6 +3693,11 @@
 }
 
 /* Slide yang sedang tampil */
+/* Mundur (panah atas): slide baru mulai dari atas. Harus sebelum .is-active */
+.testi-slide.from-top {
+  transform: translateY(-100%);
+}
+
 .testi-slide.is-active {
   opacity: 1;
   visibility: visible;
@@ -3708,6 +3713,13 @@
   opacity: 0;
   visibility: visible;
   transform: translateY(-100%);
+}
+
+/* Mundur: slide lama turun ke bawah lalu menghilang */
+.testi-slide.is-leaving-down {
+  opacity: 0;
+  visibility: visible;
+  transform: translateY(100%);
 }
 
 /* Slide yang direset ke bawah tanpa animasi (tidak terlihat) */
@@ -3782,36 +3794,107 @@
 }
 
 /* Indikator vertikal di sisi kanan kartu */
-.testi-dots {
+/* Navigasi vertikal: panah atas, nomor, panah bawah (hanya warna yang dianimasikan: ringan) */
+.testi-nav {
   position: absolute;
-  right: 1.2rem;
+  right: 1.1rem;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.45rem;
   z-index: 2;
 }
 
-.testi-dot {
-  width: 8px;
-  height: 8px;
+.testi-nav-btn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
   padding: 0;
-  border: none;
-  border-radius: 99px;
-  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
   cursor: pointer;
-  transition: height 0.3s ease, background-color 0.3s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.testi-dot.is-active {
-  height: 24px;
-  background: var(--secondary-light);
+/* Hanya untuk perangkat ber-mouse: di layar sentuh warna hover "menempel" setelah disentuh */
+@media (hover: hover) {
+  .testi-nav-btn:hover {
+    background: var(--secondary-light);
+    border-color: var(--secondary-light);
+    color: var(--primary-dark);
+  }
 }
 
-.testi-dot:focus-visible {
+.testi-nav-btn:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.testi-nav-btn:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 2px;
+}
+
+.testi-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+  font-family: var(--font-head);
+  font-variant-numeric: tabular-nums;
+}
+
+.testi-counter-current {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--secondary-light);
+}
+
+.testi-counter-total {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Beri ruang agar teks testimoni tidak tertimpa navigasi */
+.testi-card:has(.testi-nav) .testi-slider {
+  padding-right: 2.5rem;
+}
+
+/* HP: kartu tanpa efek 3D (parallax dimatikan di site.js), jadi lapisan GPU tidak perlu */
+@media (max-width: 768px) {
+  .testi-card {
+    will-change: auto;
+  }
+
+  /* Navigasi pindah ke satu baris di bawah testimoni, agar teks memakai lebar penuh */
+  .testi-nav {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .testi-counter {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.1rem;
+  }
+
+  .testi-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .testi-card:has(.testi-nav) .testi-slider {
+    padding-right: 0;
+  }
 }
 
 /* Kartu kosong */
