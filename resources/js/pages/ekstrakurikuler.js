@@ -5,13 +5,16 @@
 (function () {
   function initEkskulAnimations() {
     if (typeof gsap !== "undefined") {
-      // 1. Header Reveal
-      gsap.to(".page-header .reveal-item", {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-      });
+      // 1. Header Reveal (halaman detail ekstrakurikuler tidak punya elemen ini)
+      const headerReveal = document.querySelectorAll(".page-header .reveal-item");
+      if (headerReveal.length) {
+        gsap.to(headerReveal, {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        });
+      }
 
       if (typeof ScrollTrigger !== "undefined") {
         // 2. Card Reveal & Image Animation Batch

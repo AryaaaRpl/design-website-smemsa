@@ -855,7 +855,8 @@ document.querySelectorAll("[data-scroll-reveal]").forEach((el) => queueAnimation
 /* =====================================================================
        HERO SECTION ANIMATIONS
        ===================================================================== */
-if (!prefersReducedMotion) {
+// Hanya di halaman yang punya hero beranda (mencegah peringatan "GSAP target not found").
+if (!prefersReducedMotion && document.querySelector(".hero-text-col")) {
   const heroTL = gsap.timeline({ defaults: { ease: "power3.out" } });
 
   // Left column texts
@@ -1253,12 +1254,15 @@ Promise.all([
   document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(),
 ]).then(() => ScrollTrigger.refresh());
 
-gsap.to(".marquee-track", {
-  xPercent: -50,
-  ease: "none",
-  duration: 50,
-  repeat: -1,
-});
+// Marquee mitra hanya ada di beranda.
+if (document.querySelector(".marquee-track")) {
+  gsap.to(".marquee-track", {
+    xPercent: -50,
+    ease: "none",
+    duration: 50,
+    repeat: -1,
+  });
+}
 
 // Jalankan antrean animasi (lihat ANTREAN ANIMASI di atas).
 flushAnimationQueue();
