@@ -550,7 +550,7 @@
       @foreach ($bludProducts as $product)
       <a href="{{ route('blud.show', $product) }}" class="product-bento"
         style="padding: 1.5rem; justify-content: space-between; text-decoration: none;">
-        <div>
+        <div class="bento-body">
           @if ($product->image_url)
           <div style="position: relative; overflow: hidden; border-radius: var(--radius-sm); margin-bottom: 1.2rem;">
             <img src="{{ $product->image_url }}" alt="{{ $product->name }}" width="400" height="300" loading="lazy"
@@ -563,13 +563,13 @@
           </div>
           @endif
           <div class="blud-learner-tag">{{ $product->businessUnit->manager_label }}</div>
-          <h3 class="font-head" style="font-size:1.25rem; color:#ffffff; margin: 0.4rem 0 0.6rem; line-height: 1.3;">{{ $product->name }}</h3>
-          @if ($product->summary)
-          <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0.6rem; line-height: 1.5;">{{ $product->summary }}</p>
-          @endif
-          @if (! empty($product->specs))
-          <span style="font-size: 0.82rem; color: #a8a29e; display: block; margin-bottom: 0.2rem;"><strong>{{ $product->specs[0]['label'] }}:</strong> {{ $product->specs[0]['value'] }}</span>
-          @endif
+          <h3 class="font-head bento-title" title="{{ $product->name }}">{{ $product->name }}</h3>
+          <p class="bento-summary">{{ $product->summary }}</p>
+          <span class="bento-spec">
+            @if (! empty($product->specs))
+            <strong>{{ $product->specs[0]['label'] }}:</strong> {{ $product->specs[0]['value'] }}
+            @endif
+          </span>
         </div>
       </a>
       @endforeach
@@ -737,7 +737,7 @@
       @foreach ($businessUnits as $unit)
       <a href="{{ route('blud.unit', $unit) }}" class="product-bento"
         style="padding: 1.8rem; justify-content: space-between; text-decoration: none;">
-        <div>
+        <div class="bento-body">
           @if ($unit->image_url)
           <div style="overflow: hidden; border-radius: var(--radius-sm); margin-bottom: 1.2rem;">
             <img src="{{ $unit->image_url }}" alt="{{ $unit->name }}" width="400" height="300" loading="lazy"
@@ -750,20 +750,9 @@
           </div>
           @endif
           <div class="blud-learner-tag">{{ $unit->majors_label ?: $unit->managed_by->label() }}</div>
-          <h3 class="font-head" style="font-size:1.25rem; color:#ffffff; margin: 0.4rem 0 0.6rem; line-height: 1.3;">
-            {{ $unit->name }}</h3>
-          @if ($unit->summary)
-          <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0.8rem; line-height: 1.5;">
-            {{ $unit->summary }}
-          </p>
-          @endif
+          <h3 class="font-head bento-title" title="{{ $unit->name }}">{{ $unit->name }}</h3>
+          <p class="bento-summary">{{ $unit->summary }}</p>
           @if (! empty($unit->features))
-          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
-            @foreach ($unit->features as $feature)
-            <span
-              style="font-size: 0.78rem; background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">{{ $feature }}</span>
-            @endforeach
-          </div>
           @endif
         </div>
       </a>
