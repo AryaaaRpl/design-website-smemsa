@@ -11,12 +11,7 @@
     </svg>
     <div class="container">
       <div style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.4rem 1rem;
+            padding: 0.4rem 0;
             border-radius: var(--radius-full);
             font-size: 0.85rem;
             font-weight: 700;

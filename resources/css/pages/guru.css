@@ -103,13 +103,7 @@ a {
 
 /* Badges */
 .badge-gold {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 1.2rem;
-  background: var(--secondary-surface);
-  border: 1px solid rgba(234, 179, 8, 0.35);
-  border-radius: var(--radius-full);
+  padding: 0.45rem 0;
   font-size: 0.82rem;
   font-family: var(--font-head);
   font-weight: 700;
@@ -119,13 +113,7 @@ a {
 }
 
 .badge-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 1rem;
-  background: var(--primary-surface);
-  border: 1px solid rgba(30, 64, 175, 0.2);
-  border-radius: var(--radius-full);
+  padding: 0.4rem 0;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--primary);

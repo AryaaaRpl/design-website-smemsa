@@ -530,10 +530,10 @@
         width: 100%;
         text-align: left;
         display: grid;
-        grid-template-columns: 64px 1fr auto auto;
-        gap: 1.2rem;
+        grid-template-columns: 48px minmax(0, 1fr) auto auto;
+        gap: 1.25rem;
         align-items: center;
-        padding: 1.5rem 1rem 1.5rem 0;
+        padding: 1.4rem 1.25rem;
         transition:
           background 0.3s,
           padding 0.3s !important;
@@ -555,7 +555,7 @@
 
       .scheme-head:hover {
         background: var(--primary-surface);
-        padding-left: 1.2rem;
+        padding-left: 1.6rem;
       }
 
       .scheme-head:hover::before {
@@ -564,7 +564,7 @@
 
       .scheme-head[aria-expanded="true"] {
         background: var(--primary-surface);
-        padding-left: 1.2rem;
+        padding-left: 1.6rem;
       }
 
       .scheme-head[aria-expanded="true"]::before {
@@ -589,6 +589,7 @@
       }
 
       .scheme-name {
+        display: block;
         font-size: 1.08rem;
         font-weight: 700;
         color: var(--primary-dark);
@@ -596,9 +597,11 @@
       }
 
       .scheme-sub {
+        display: block;
         font-size: 0.84rem;
+        line-height: 1.5;
         color: var(--text-muted);
-        margin-top: 0.25rem;
+        margin-top: 0.35rem;
       }
 
       .scheme-tag {
@@ -868,7 +871,6 @@
 
       .tuk-card:hover {
         border-color: var(--primary-light);
-        transform: translateX(3px);
       }
 
       .tuk-name {
@@ -1026,14 +1028,37 @@
           border-bottom: none;
         }
 
+        /* HP: nomor | nama + keterangan + tag | tombol, rata atas */
         .scheme-head {
-          grid-template-columns: 40px 1fr auto;
-          row-gap: 0.6rem;
+          grid-template-columns: 28px minmax(0, 1fr) 30px;
+          column-gap: 0.85rem;
+          row-gap: 0.65rem;
+          align-items: start;
+          padding: 1.2rem 0.9rem;
+        }
+
+        .scheme-head:hover,
+        .scheme-head[aria-expanded="true"] {
+          padding-left: 1.1rem;
+        }
+
+        .scheme-num {
+          padding-top: 0.2rem;
+        }
+
+        .scheme-name {
+          font-size: 1rem;
         }
 
         .scheme-tag {
           grid-column: 2 / 3;
+          grid-row: 2;
           justify-self: start;
+        }
+
+        .scheme-toggle {
+          grid-column: 3;
+          grid-row: 1;
         }
 
         .assessor-grid {

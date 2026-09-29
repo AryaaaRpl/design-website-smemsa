@@ -13,16 +13,10 @@
     </svg>
     <div class="container reveal">
       <div style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--primary-surface);
-            border: 1px solid var(--border-light);
-            padding: 0.4rem 1rem;
-            border-radius: var(--radius-full);
+            padding: 0.4rem 0;
             font-size: 0.85rem;
             font-weight: 700;
-            color: var(--primary);
+            color: #a16207;
             margin-bottom: 1.2rem;
           ">
         SMKS Muhammadiyah 1 Genteng
@@ -61,10 +55,7 @@
         </div>
         <span class="visi-label" style="
               color: var(--secondary);
-              display: inline-block;
-              background: rgba(234, 179, 8, 0.15);
-              padding: 0.3rem 1rem;
-              border-radius: var(--radius-full);
+              padding: 0.3rem 0;
               font-size: 0.85rem;
               letter-spacing: 2px;
             ">VISI SEKOLAH</span>

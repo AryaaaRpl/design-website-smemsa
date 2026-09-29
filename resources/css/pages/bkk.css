@@ -97,15 +97,11 @@
     }
 
     .badge-primary {
-      background: var(--primary-surface);
       color: var(--primary);
-      border: 1px solid var(--primary-glow);
     }
 
     .badge-amber {
-      background: var(--secondary-surface);
       color: #b45309;
-      border: 1px solid var(--secondary-glow);
     }
 
     .skill-tag {

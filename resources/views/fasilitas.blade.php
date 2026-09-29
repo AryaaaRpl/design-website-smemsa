@@ -114,10 +114,7 @@
             <div class="container tefa-grid">
                 <div class="">
                     <div class="visi-label"
-                        style="
-              background: rgba(234, 179, 8, 0.2);
-              color: var(--secondary-light);
-            ">
+                        style="color: var(--secondary-light);">
                         Standar Industri
                     </div>
                     <h2 class="tefa-title font-head">

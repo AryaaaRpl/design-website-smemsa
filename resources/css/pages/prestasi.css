@@ -104,17 +104,11 @@
 
     /* Badges */
     .badge-gold {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
       padding: 0.45rem 1.2rem;
-      background: var(--secondary-surface);
-      border: 1px solid rgba(234, 179, 8, 0.35);
-      border-radius: var(--radius-full);
       font-size: 0.82rem;
       font-family: var(--font-head);
       font-weight: 800;
-      color: var(--secondary-light);
+      color: #a16207;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }

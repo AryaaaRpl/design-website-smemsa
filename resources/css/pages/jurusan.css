@@ -39,12 +39,8 @@
 }
 
 .jr-eyebrow {
-    display: inline-block;
     margin-bottom: 1.2rem;
-    padding: 0.4rem 1rem;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 0;
     color: var(--secondary-light);
     font-size: 0.85rem;
     font-weight: 700;
@@ -100,10 +96,7 @@
 }
 
 .jr-code {
-    display: inline-block;
-    padding: 0.2rem 0.7rem;
-    border-radius: var(--radius-full);
-    background: var(--secondary-surface);
+    padding: 0.2rem 0rem;
     color: #a16207;
     width: fit-content;
     font-size: 0.75rem;
@@ -112,7 +105,6 @@
 }
 
 .jr-code-light {
-    background: rgba(234, 179, 8, 0.2);
     color: var(--secondary-light);
 }
 
