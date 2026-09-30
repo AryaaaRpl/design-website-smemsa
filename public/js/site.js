@@ -1279,7 +1279,7 @@ if (document.querySelector(".marquee-track")) {
   gsap.to(".marquee-track", {
     xPercent: -50,
     ease: "none",
-    duration: 50,
+    duration: 40,
     repeat: -1,
   });
 }

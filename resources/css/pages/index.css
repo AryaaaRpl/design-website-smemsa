@@ -1316,10 +1316,17 @@
       line-height: 1.35;
       margin-bottom: 1.5rem;
       letter-spacing: -0.025em;
+      
+      display: inline-block;
+      width: 100%;
+      text-align: justify !important;
     }
 
     .executive-bio-text {
+      display: inline-block;
+      width: 100%;
       text-align: justify !important;
+      
       font-size: 1.05rem;
       color: var(--text-muted);
       line-height: 1.8;
@@ -2802,6 +2809,14 @@
         transition: var(--transition-fast);
       }
 
+      /* HP: lebar logo dipesan sejak awal. Dengan width:auto, logo lazy yang baru
+         termuat melebarkan track dan marquee (xPercent GSAP) terlihat meloncat. */
+      @media (max-width: 768px) {
+        .mitra-item img {
+          width: 60px;
+        }
+      }
+
       .mitra-item:hover img {
         opacity: 1;
       }
@@ -4193,18 +4208,23 @@
     border-top: 1px solid var(--border-card);
   }
 
-  .executive-quote {
+  /* .executive-quote {
+    display: inline-block;
+    width: 100%;
+    text-align: justify !important;
     font-size: 1.3rem;
     line-height: 1.4;
     margin-bottom: 1rem;
   }
 
   .executive-bio-text {
-    text-align: left !important;
+    display: inline-block;
+    width: 100%;
+    text-align: justify !important;
     font-size: 0.95rem;
     line-height: 1.75;
     margin-bottom: 1.5rem;
-  }
+  } */
 
   .executive-card .btn {
     width: 100%;
