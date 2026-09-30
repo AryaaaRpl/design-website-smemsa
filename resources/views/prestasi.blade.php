@@ -32,7 +32,7 @@
 
     <!-- 4. KATALOG PRESTASI (paginasi server, 18 per halaman) -->
     <section class="container" id="katalog-prestasi" style="padding-bottom: 5rem">
-        <!-- Kontrol: pencarian, kategori, tahun, tampilan. Form GET agar tetap berfungsi tanpa JavaScript. -->
+        <!-- Kontrol: pencarian, kategori, tahun. Form GET agar tetap berfungsi tanpa JavaScript. -->
         <form class="catalog-control-panel" id="award-filter-form" method="GET" action="{{ route('prestasi') }}#katalog-prestasi" role="search">
             <div class="catalog-top-bar">
                 <!-- Search input -->
@@ -45,30 +45,6 @@
                     <input type="search" name="cari" id="award-search-input" value="{{ $search }}"
                         placeholder="Cari nama kejuaraan, penyelenggara, atau kata kunci..."
                         aria-label="Cari prestasi kejuaraan" autocomplete="off" />
-                </div>
-
-                <!-- View Switcher -->
-                <div class="view-switcher-group" role="group" aria-label="Pilihan tampilan katalog">
-                    <button type="button" class="view-toggle-btn active" id="view-grid-btn" aria-pressed="true"
-                        onclick="switchCatalogView('grid')">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5">
-                            <rect x="3" y="3" width="7" height="7"></rect>
-                            <rect x="14" y="3" width="7" height="7"></rect>
-                            <rect x="14" y="14" width="7" height="7"></rect>
-                            <rect x="3" y="14" width="7" height="7"></rect>
-                        </svg>
-                        Grid
-                    </button>
-                    <button type="button" class="view-toggle-btn" id="view-timeline-btn" aria-pressed="false"
-                        onclick="switchCatalogView('timeline')">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                        Linimasa
-                    </button>
                 </div>
             </div>
 

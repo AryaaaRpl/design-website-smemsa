@@ -460,39 +460,6 @@ h4 {
       pointer-events: none;
     }
 
-    /* View switcher (Grid vs Timeline) */
-    .view-switcher-group {
-      display: inline-flex;
-      background: var(--bg-alt);
-      padding: 0.3rem;
-      border-radius: var(--radius-full);
-      border: 1px solid var(--border-card);
-      gap: 0.25rem;
-    }
-
-    .view-toggle-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.45rem 1.1rem;
-      border-radius: var(--radius-full);
-      border: none;
-      background: transparent;
-      font-family: var(--font-head);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: var(--transition-fast);
-    }
-
-    .view-toggle-btn.active,
-    .view-toggle-btn[aria-pressed="true"] {
-      background: #ffffff;
-      color: var(--primary);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-
     /* Filter Chips row */
     .catalog-filters-row {
       display: flex;
@@ -775,69 +742,6 @@ h4 {
       gap: 0.3rem;
     }
 
-    /* ==========================================================================
-           7. CATALOG VIEW B: CHRONOLOGICAL TIMELINE
-           ========================================================================== */
-    .awards-timeline-wrap {
-      display: none;
-      position: relative;
-      margin: 2rem auto 4rem;
-      max-width: 900px;
-    }
-
-    .awards-timeline-wrap.active {
-      display: block;
-    }
-
-    .timeline-year-block {
-      position: relative;
-      padding-left: 3rem;
-      margin-bottom: 3.5rem;
-      border-left: 2px solid var(--border-card);
-    }
-
-    .timeline-year-marker {
-      position: absolute;
-      left: -19px;
-      top: 0;
-      background: var(--primary);
-      color: #ffffff;
-      font-family: var(--font-head);
-      font-size: 0.82rem;
-      font-weight: 800;
-      padding: 0.3rem 0.85rem;
-      border-radius: var(--radius-full);
-      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
-    }
-
-    .timeline-item-card {
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem 1.8rem;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow-subtle);
-      transition: var(--transition);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
-
-    .timeline-item-card:hover {
-      border-color: var(--primary);
-      transform: translateX(6px);
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    .timeline-card-content h3 {
-      font-size: 1.15rem;
-      color: var(--primary-dark);
-      margin: 0.3rem 0 0.5rem;
-      font-weight: 800;
-    }
-
     /* Load More Action */
 
     /* Empty State */
@@ -967,17 +871,6 @@ h4 {
         text-overflow: ellipsis;
       }
 
-      .view-switcher-group {
-        width: 100% !important;
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-      }
-
-      .view-toggle-btn {
-        min-height: 44px;
-        justify-content: center;
-      }
-
       /* Chip kategori membungkus ke baris berikutnya: semua kategori terlihat
          dan tidak ada yang terpotong/keluar dari panel di lebar HP berapa pun. */
       .catalog-filters-row {
@@ -1084,12 +977,6 @@ h4 {
       .award-card-footer {
         padding-top: 0.85rem !important;
         margin-top: 0.85rem !important;
-      }
-
-      /* Timeline Mobile */
-      .timeline-item-card {
-        padding: 1.1rem !important;
-        gap: 1rem !important;
       }
 
       /* C. Modal Prestasi Mobile */
@@ -1442,8 +1329,7 @@ a.award-page-arrow:hover {
 }
 
 /* Kartu prestasi kini berupa link ke halaman detail: tampilan sama seperti sebelumnya */
-a.award-card,
-a.timeline-item-card {
+a.award-card {
   color: inherit;
   text-decoration: none;
 }

@@ -1,4 +1,4 @@
-{{-- Isi katalog prestasi: status, grid, linimasa, keadaan kosong, paginasi.
+{{-- Isi katalog prestasi: status, grid, keadaan kosong, paginasi.
      Dirender di server; saat filter/halaman berganti, bagian ini dimuat ulang oleh prestasi.js. --}}
 @php
   $items = collect($achievements->items())->map->toCatalogArray();
@@ -21,7 +21,6 @@
 </div>
 
 @if ($items->isNotEmpty())
-  <!-- VIEW 1: Grid -->
   <div class="awards-catalog-grid" id="awards-grid-container">
     @foreach ($items as $item)
       <a href="{{ route('prestasi.show', $item['id']) }}" class="award-card" aria-label="Detail prestasi: {{ $item['title'] }}">
@@ -48,29 +47,6 @@
           </div>
         </div>
       </a>
-    @endforeach
-  </div>
-
-  <!-- VIEW 2: Linimasa (dikelompokkan per tahun) -->
-  <div class="awards-timeline-wrap" id="awards-timeline-container" style="display: none">
-    @foreach ($items->groupBy('year') as $groupYear => $yearItems)
-      <div class="timeline-year-block">
-        <div class="timeline-year-marker">{{ $groupYear }}</div>
-        @foreach ($yearItems as $item)
-          <a href="{{ route('prestasi.show', $item['id']) }}" class="timeline-item-card" aria-label="{{ $item['title'] }}">
-            <div class="timeline-card-content">
-              <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.3rem;">
-                <span class="{{ $item['level'] === 'nasional' ? 'badge-gold' : 'badge-primary' }}" style="font-size:0.72rem;">{{ $item['badge'] }}</span>
-                <span style="font-size:0.8rem; color:var(--text-subtle);">{{ $item['dateStr'] }} &bull; {{ $item['location'] }}</span>
-              </div>
-              <h3>{{ $item['title'] }}</h3>
-              <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6; margin-bottom:0.4rem;">{{ $item['excerpt'] }}</p>
-              <span style="font-size:0.8rem; color:var(--text-subtle);">{{ $item['org'] }}</span>
-            </div>
-            <span class="award-view-link" style="white-space:nowrap;">Lihat &rarr;</span>
-          </a>
-        @endforeach
-      </div>
     @endforeach
   </div>
 

@@ -1,8 +1,8 @@
 /* ==========================================================================
    PRESTASI & PENGHARGAAN - KATALOG (PAGINASI SERVER) & TAMPILAN
    Pencarian, filter kategori/tahun, dan paginasi (18 per halaman) diproses
-   di server. Script ini memuat ulang isi katalog tanpa refresh halaman,
-   dan mengatur tampilan grid/linimasa. Kartu membuka halaman detail /prestasi/{slug}.
+   di server. Script ini memuat ulang isi katalog tanpa refresh halaman.
+   Kartu membuka halaman detail /prestasi/{slug}.
    Tanpa JavaScript, semua kontrol tetap berfungsi sebagai form/link biasa.
    ========================================================================== */
 
@@ -11,33 +11,10 @@
   const results = document.getElementById("award-catalog-results");
   const catalog = document.getElementById("katalog-prestasi");
 
-  let currentView = "grid";
   let pendingRequest = null;
 
   // ==========================================
-  // 1. TAMPILAN GRID / LINIMASA
-  // ==========================================
-  function applyView() {
-    const grid = document.getElementById("awards-grid-container");
-    const timeline = document.getElementById("awards-timeline-container");
-    if (grid) grid.style.display = currentView === "grid" ? "grid" : "none";
-    if (timeline) timeline.style.display = currentView === "timeline" ? "block" : "none";
-
-    [["view-grid-btn", "grid"], ["view-timeline-btn", "timeline"]].forEach(([id, view]) => {
-      const btn = document.getElementById(id);
-      if (!btn) return;
-      btn.classList.toggle("active", currentView === view);
-      btn.setAttribute("aria-pressed", currentView === view ? "true" : "false");
-    });
-  }
-
-  window.switchCatalogView = function (viewType) {
-    currentView = viewType;
-    applyView();
-  };
-
-  // ==========================================
-  // 2. MEMUAT KATALOG TANPA REFRESH
+  // 1. MEMUAT KATALOG TANPA REFRESH
   // ==========================================
   // Samakan kontrol filter dengan URL (kategori aktif, tahun, kata kunci).
   function syncControls(url) {
@@ -89,7 +66,6 @@
       })
       .then((html) => {
         results.innerHTML = html;
-        applyView();
         syncControls(url);
         if (push) history.pushState({ catalog: true }, "", url);
         if (scroll) scrollToCatalog();
@@ -146,13 +122,4 @@
     loadCatalog(window.location.href, { push: false });
   });
 
-  function initPrestasiPage() {
-    applyView();
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initPrestasiPage);
-  } else {
-    initPrestasiPage();
-  }
 })();
