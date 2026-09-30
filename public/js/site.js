@@ -810,6 +810,10 @@ const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
 
+// HP: animasi hero & parallax dilewati. Hero langsung tampil (LCP tidak
+// menunggu GSAP) dan main thread tidak sibuk saat halaman baru dibuka.
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
 // Pecah teks menjadi <span class="sr-word"> per kata (spasi dipertahankan)
 function splitIntoWords(el) {
   if (el.dataset.srSplit === "true")
@@ -856,7 +860,7 @@ document.querySelectorAll("[data-scroll-reveal]").forEach((el) => queueAnimation
        HERO SECTION ANIMATIONS
        ===================================================================== */
 // Hanya di halaman yang punya hero beranda (mencegah peringatan "GSAP target not found").
-if (!prefersReducedMotion && document.querySelector(".hero-text-col")) {
+if (!prefersReducedMotion && !isMobile && document.querySelector(".hero-text-col")) {
   const heroTL = gsap.timeline({ defaults: { ease: "power3.out" } });
 
   // Left column texts
@@ -893,7 +897,7 @@ if (!prefersReducedMotion && document.querySelector(".hero-text-col")) {
        negatif = berlawanan arah). Nilai = fraksi dari tinggi section.
        ===================================================================== */
 function initParallax() {
-  if (prefersReducedMotion) return;
+  if (prefersReducedMotion || isMobile) return;
 
   document.querySelectorAll("[data-parallax]").forEach((layer) => {
     const speed = parseFloat(layer.dataset.parallax) || 0;

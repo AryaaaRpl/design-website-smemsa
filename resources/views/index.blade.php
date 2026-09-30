@@ -3,7 +3,10 @@
 
 @push('styles')
   {{-- Gambar hero adalah konten terbesar di layar pertama: unduh paling awal. --}}
-  <link rel="preload" as="image" href="{{ Media::asset('assets/background/3orang.png') }}" fetchpriority="high">
+  {{-- HP ambil versi 800px (±38KB), desktop versi penuh. Harus sama dengan srcset/sizes di <img>. --}}
+  <link rel="preload" as="image" href="{{ Media::asset('assets/background/3orang.png') }}" fetchpriority="high"
+    imagesrcset="{{ asset('assets/background/3orang-800.webp') }} 800w, {{ Media::asset('assets/background/3orang.png') }} 1400w"
+    imagesizes="(max-width: 768px) 100vw, 50vw">
 @endpush
 
 @section('content')
@@ -55,6 +58,8 @@
           <!-- SATU gambar untuk semua ukuran layar. Kelas desktop-only /
                  mobile-only dihapus agar tidak pernah tampil ganda. -->
           <img src="{{ Media::asset('assets/background/3orang.png') }}" class="hero-students-img" fetchpriority="high"
+            srcset="{{ asset('assets/background/3orang-800.webp') }} 800w, {{ Media::asset('assets/background/3orang.png') }} 1400w"
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt="Tiga siswa SMKS Muhammadiyah 1 Genteng mengenakan seragam jurusan" width="1200" height="900" />
 
 

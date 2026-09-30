@@ -53,6 +53,7 @@ class Partner extends Model
 
     protected function logoUrl(): Attribute
     {
-        return Attribute::get(fn () => $this->mediaUrl($this->logo));
+        // Logo tampil kecil (±105px): pakai varian -card.webp bila ada
+        return Attribute::get(fn () => $this->cardMediaUrl($this->logo));
     }
 }
