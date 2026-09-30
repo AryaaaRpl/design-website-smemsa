@@ -62,6 +62,14 @@
     -webkit-user-select: none;
   }
 
+  /* HP: loader tidak ditampilkan. Ia menutupi konten sampai semua JS selesai
+     dimuat, sehingga FCP/LCP di jaringan seluler ikut tertunda beberapa detik. */
+  @media (max-width: 768px) {
+    .page-loader-wrapper {
+      display: none;
+    }
+  }
+
   .page-loader-wrapper.loaded {
     opacity: 0;
     visibility: hidden;

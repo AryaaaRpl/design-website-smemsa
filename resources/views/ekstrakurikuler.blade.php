@@ -4,7 +4,7 @@
 
 <!-- 2. PAGE HEADER -->
 <header class="page-header">
-  <div class="container reveal-item">
+  <div class="container">
     <span class="badge">Pengembangan Karakter & Minat</span>
     <h1 class="page-title">
       Membentuk Karakter,<br />Mengasah Talenta Juara.
@@ -23,7 +23,9 @@
     @forelse ($extracurriculars as $ekskul)
     <!-- {{ $loop->iteration }}. {{ $ekskul->name }} -->
     <a href="{{ route('ekstrakurikuler.show', $ekskul) }}" class="ekskul-card {{ $ekskul->card_style->cssClass() }} reveal-item">
-      <div class="card-bg" style="background-image: url('{{ $ekskul->image_url }}');"></div>
+      {{-- Kartu pertama langsung dimuat (kandidat LCP di HP), sisanya lazy --}}
+      <img class="card-bg" src="{{ $ekskul->image_url }}" alt="" width="400" height="500" decoding="async"
+        @if ($loop->first) fetchpriority="high" @else loading="lazy" @endif>
       <div class="card-content">
         <span class="tag">{{ $ekskul->tag }}</span>
         <h2 class="card-title">{{ $ekskul->name }}</h2>

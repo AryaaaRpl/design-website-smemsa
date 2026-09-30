@@ -6,6 +6,8 @@ use App\Models\Extracurricular;
 use App\Models\User;
 use Database\Seeders\ExtracurricularSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ExtracurricularTest extends TestCase
@@ -46,6 +48,24 @@ class ExtracurricularTest extends TestCase
 
         $ekskul = Extracurricular::firstWhere('slug', 'robotik-club');
         $this->assertSame(['Juara 1 Robotik', 'Juara 2 Line Follower'], $ekskul->achievements);
+    }
+
+    public function test_uploaded_photo_is_resized_to_webp(): void
+    {
+        if (! function_exists('imagewebp')) {
+            $this->markTestSkipped('GD tanpa dukungan WebP.');
+        }
+        Storage::fake('public');
+
+        $this->actingAs($this->admin)
+            ->post(route('admin.extracurriculars.store'), $this->validData([
+                'image' => UploadedFile::fake()->image('foto.jpg', 3200, 2400),
+            ]));
+
+        $path = Extracurricular::firstWhere('slug', 'robotik-club')->image;
+        $this->assertStringEndsWith('.webp', $path);
+        [$width, $height] = getimagesizefromstring(Storage::disk('public')->get($path));
+        $this->assertSame([1600, 1200], [$width, $height]);
     }
 
     public function test_card_style_must_be_valid(): void

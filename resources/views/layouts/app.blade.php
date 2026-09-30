@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add('js')</script>
   <title>
     SMKS Muhammadiyah 1 Genteng - Pusat Keunggulan Vokasi & Karakter Islami
   </title>
