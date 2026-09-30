@@ -1493,7 +1493,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 48px;
+    /* .detail-panel adalah flex kolom dengan max-height: tanpa ini, bar ikut
+       menyusut saat isi panel lebih tinggi dari layar dan tombol tutup keluar bar. */
+    flex: 0 0 48px;
     background: #fff;
     border-bottom: 1px solid var(--border-card);
   }
@@ -1513,6 +1515,7 @@
     transform: translateY(-50%);
     width: 34px;
     height: 34px;
+    padding: 0;
     border: 1px solid var(--border-card);
     border-radius: 50%;
     background: var(--bg-alt);

@@ -22,7 +22,9 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+  /* Keluar: memudar & turun 0.3s dulu, baru disembunyikan (visibility ditunda 0.3s).
+     Tanpa penundaan ini tombol langsung hilang tanpa animasi. */
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease, visibility 0s linear 0.3s;
 }
 
 #backToTopBtn.show,
@@ -30,6 +32,8 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  /* Masuk: langsung terlihat, lalu memudar & naik 0.3s */
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease, visibility 0s;
 }
 
 #backToTopBtn:hover,

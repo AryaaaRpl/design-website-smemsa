@@ -660,10 +660,25 @@ const chatBody = document.getElementById("chat-body");
 const chatInput = document.getElementById("chat-input-text");
 
 if (chatbotToggle) {
-  chatbotToggle.addEventListener("click", () => {
-    const isActive = chatPanel.classList.toggle("active");
+  const setChatOpen = (isActive) => {
+    chatPanel.classList.toggle("active", isActive);
     chatbotToggle.classList.toggle("active", isActive);
     chatbotToggle.setAttribute("aria-label", isActive ? "Tutup Asisten AI" : "Buka Asisten AI");
+  };
+
+  chatbotToggle.addEventListener("click", () => {
+    setChatOpen(!chatPanel.classList.contains("active"));
+  });
+
+  // Tutup panel saat klik/ketuk di luar panel & tombolnya, atau tekan Escape
+  document.addEventListener("click", (event) => {
+    if (!chatPanel.classList.contains("active")) return;
+    if (chatPanel.contains(event.target) || chatbotToggle.contains(event.target)) return;
+    setChatOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && chatPanel.classList.contains("active")) setChatOpen(false);
   });
 }
 

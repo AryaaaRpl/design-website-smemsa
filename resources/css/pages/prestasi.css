@@ -327,6 +327,7 @@ h4 {
     .page-header {
       padding: 9.5rem 0 3.5rem;
       height: 100vh;
+      display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
@@ -951,8 +952,11 @@ h4 {
         gap: 0.85rem !important;
       }
 
+      /* min-width 260px bawaan desktop meluber di HP kecil (≤340px) */
       .award-search-box {
         width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
       }
 
       .award-search-box input {
@@ -960,6 +964,7 @@ h4 {
         /* Prevents iOS auto-zoom */
         min-height: 44px;
         padding: 0.6rem 1rem 0.6rem 2.5rem !important;
+        text-overflow: ellipsis;
       }
 
       .view-switcher-group {
@@ -973,47 +978,47 @@ h4 {
         justify-content: center;
       }
 
-      /* Scrollable Category Chips */
+      /* Chip kategori membungkus ke baris berikutnya: semua kategori terlihat
+         dan tidak ada yang terpotong/keluar dari panel di lebar HP berapa pun. */
       .catalog-filters-row {
         flex-direction: column !important;
         align-items: stretch !important;
-        gap: 0.85rem !important;
+        gap: 1rem !important;
+        padding-top: 1rem !important;
       }
 
       .category-chip-list {
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        display: flex !important;
-        flex-wrap: nowrap !important;
+        flex-wrap: wrap !important;
         gap: 0.5rem !important;
-        padding-bottom: 0.4rem;
-        margin: 0 -0.5rem;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-      }
-
-      .category-chip-list::-webkit-scrollbar {
-        display: none;
+        min-width: 0;
       }
 
       .category-chip {
-        white-space: nowrap !important;
-        flex-shrink: 0 !important;
-        min-height: 44px !important;
+        min-height: 40px !important;
         display: inline-flex !important;
         align-items: center !important;
-        padding: 0.5rem 1.1rem !important;
+        justify-content: center !important;
+        padding: 0.4rem 0.95rem !important;
+        font-size: 0.82rem !important;
+        /* Nama kategori panjang tetap di dalam panel */
+        max-width: 100%;
+        text-align: center;
+        overflow-wrap: anywhere;
       }
 
       .year-select-wrap {
         width: 100% !important;
-        justify-content: space-between !important;
+        gap: 0.75rem !important;
+      }
+
+      .year-select-wrap label {
+        flex-shrink: 0;
       }
 
       .year-select-dropdown {
         min-height: 44px !important;
         flex: 1;
+        min-width: 0;
         font-size: 16px !important;
       }
 
