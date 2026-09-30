@@ -849,7 +849,7 @@
         @forelse ($latestPosts as $post)
         <!-- Article {{ $loop->iteration }} -->
         <a href="{{ route('berita.show', $post) }}" class="article-card" data-category="{{ $post->category?->slug }}">
-          <div class="article-thumb"><img loading="lazy" decoding="async" src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}"
+          <div class="article-thumb"><img loading="lazy" decoding="async" src="{{ $post->card_thumbnail_url }}" alt="{{ $post->title }}"
               style="width: 100%; height: 100%; object-fit: cover;"></div>
           <div class="article-body">
             <div>

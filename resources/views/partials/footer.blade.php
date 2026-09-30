@@ -92,12 +92,29 @@
           </div>
 
           <!-- D. Peta Lokasi Sekolah Google Maps -->
+          <!-- Peta baru dimuat saat diklik: iframe Maps membawa ±400KB JS yang
+               membebani HP bila dimuat di setiap halaman. -->
           <div class="footer-map-box">
-            <iframe
-              src="{{ $site->get('maps_embed_url') }}"
-              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <button type="button" class="footer-map-facade" data-src="{{ $site->get('maps_embed_url') }}"
+              aria-label="Tampilkan peta lokasi sekolah">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Tampilkan Peta Lokasi</span>
+            </button>
           </div>
+          <script>
+            document.querySelector('.footer-map-facade')?.addEventListener('click', function () {
+              const iframe = document.createElement('iframe');
+              iframe.src = this.dataset.src;
+              iframe.title = 'Peta lokasi SMKS Muhammadiyah 1 Genteng';
+              iframe.allowFullscreen = true;
+              iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+              this.replaceWith(iframe);
+            }, { once: true });
+          </script>
         </div>
 
         <!-- Kolom 2: Halaman Terkait -->

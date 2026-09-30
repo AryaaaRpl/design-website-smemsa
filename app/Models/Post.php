@@ -67,6 +67,12 @@ class Post extends Model
         return Attribute::get(fn () => $this->mediaUrl($this->thumbnail));
     }
 
+    /** Thumbnail kecil untuk kartu daftar berita (lihat HasMediaUrl::cardMediaUrl). */
+    protected function cardThumbnailUrl(): Attribute
+    {
+        return Attribute::get(fn () => $this->cardMediaUrl($this->thumbnail));
+    }
+
     /**
      * Tanggal terbit dalam bahasa Indonesia, contoh: "18 Juni 2026".
      */

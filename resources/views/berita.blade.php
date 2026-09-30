@@ -53,8 +53,10 @@
             data-category="{{ $post->category?->slug }}"
             data-search="{{ mb_strtolower(implode(' ', array_filter([$post->title, $post->excerpt, $post->location, $post->category?->name]))) }}">
             <div class="news-card-img-wrap">
-                <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}" class="news-card-img"
-                    loading="{{ $loop->index < 3 ? 'eager' : 'lazy' }}"
+                {{-- Kartu pertama = kandidat LCP di HP (1 kolom), sisanya lazy --}}
+                <img src="{{ $post->card_thumbnail_url }}" alt="{{ $post->title }}" class="news-card-img"
+                    width="640" height="480" decoding="async"
+                    @if ($loop->first) fetchpriority="high" @else loading="lazy" @endif
                     onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">
             </div>
             <div class="news-card-body">

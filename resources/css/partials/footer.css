@@ -130,6 +130,30 @@
   background: rgba(15, 23, 42, 0.6);
 }
 
+.footer-map-facade {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0;
+  cursor: pointer;
+  color: #ffffff;
+  font: 700 0.85rem var(--font-head, 'Plus Jakarta Sans', sans-serif);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 24px 24px,
+    rgba(30, 64, 175, 0.35);
+  transition: background-color 0.3s ease;
+}
+
+.footer-map-facade:hover,
+.footer-map-facade:focus-visible {
+  background-color: rgba(30, 64, 175, 0.55);
+}
+
 .footer-map-box iframe {
   width: 100%;
   height: 150px;

@@ -17,7 +17,19 @@ class Media
 
     public static function asset(string $path): string
     {
-        return asset(self::manifest()[$path] ?? $path);
+        return asset(self::path($path));
+    }
+
+    /** Path file yang benar-benar dipakai (kembaran .webp bila ada). */
+    public static function path(string $path): string
+    {
+        return self::manifest()[$path] ?? $path;
+    }
+
+    /** Path varian kecil untuk kartu/thumbnail: foto.webp -> foto-card.webp */
+    public static function cardPath(string $path): string
+    {
+        return preg_replace('/\.\w+$/', '-card.webp', $path);
     }
 
     /**

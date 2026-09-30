@@ -4,6 +4,7 @@ namespace Tests\Feature\Admin;
 
 use App\Models\Extracurricular;
 use App\Models\User;
+use App\Support\Media;
 use Database\Seeders\ExtracurricularSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -66,6 +67,8 @@ class ExtracurricularTest extends TestCase
         $this->assertStringEndsWith('.webp', $path);
         [$width, $height] = getimagesizefromstring(Storage::disk('public')->get($path));
         $this->assertSame([1600, 1200], [$width, $height]);
+        [$cardWidth] = getimagesizefromstring(Storage::disk('public')->get(Media::cardPath($path)));
+        $this->assertSame(640, $cardWidth);
     }
 
     public function test_card_style_must_be_valid(): void

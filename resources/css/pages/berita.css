@@ -1108,3 +1108,11 @@ a {
         padding: 0.85rem 1rem;
     }
 }
+
+/* HP: bilah sticky tanpa blur (dihitung ulang tiap scroll); latarnya sudah hampir putih solid */
+@media (max-width: 768px) {
+    .news-sticky-bar {
+        backdrop-filter: none;
+        background: #ffffff;
+    }
+}

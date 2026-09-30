@@ -72,7 +72,7 @@
             <a href="{{ route('berita.show', $related) }}" class="nd-other">
                 <span class="nd-other-photo">
                     @if ($related->thumbnail_url)
-                        <img src="{{ $related->thumbnail_url }}" alt="{{ $related->title }}" loading="lazy">
+                        <img src="{{ $related->card_thumbnail_url }}" alt="{{ $related->title }}" loading="lazy">
                     @else
                         <span aria-hidden="true">📰</span>
                     @endif
