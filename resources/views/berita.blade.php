@@ -63,7 +63,12 @@
                 <div>
                     <div class="news-card-meta">
                         <span class="badge-primary" style="font-size:0.72rem;">{{ mb_strtoupper($post->category?->name ?? 'Berita') }}</span>
-                        <span>&bull; {{ $post->published_date }}</span>
+                        <span>{{ $post->published_date }}</span>
+                        @php($views = number_format($post->views, 0, ',', '.'))
+                        <span class="meta-views" title="Dibaca {{ $views }} kali" aria-label="Dibaca {{ $views }} kali">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            {{ $views }}
+                        </span>
                     </div>
                     <h3 class="news-card-title">{{ $post->title }}</h3>
                     <p class="news-card-excerpt">

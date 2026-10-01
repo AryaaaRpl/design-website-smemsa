@@ -24,6 +24,14 @@ class NewsController extends Controller
         // Draf atau berita terjadwal belum boleh dibuka dari website.
         abort_unless(Post::published()->whereKey($post->id)->exists(), 404);
 
+        // Hitung sekali per sesi agar refresh berulang tidak menambah jumlah dibaca.
+        // withoutTimestamps: menambah views tidak boleh mengubah updated_at berita.
+        $viewed = session()->get('viewed_posts', []);
+        if (! in_array($post->id, $viewed)) {
+            Post::withoutTimestamps(fn () => $post->increment('views'));
+            session()->push('viewed_posts', $post->id);
+        }
+
         $post->load('category');
 
         // Berita lain dari kategori yang sama, dilengkapi berita terbaru jika kurang.

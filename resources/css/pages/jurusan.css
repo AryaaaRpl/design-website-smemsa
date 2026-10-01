@@ -921,8 +921,6 @@
 @media (max-width: 768px) {
     /* Header: tinggi mengikuti isi agar statistik tidak terpotong */
     .page-header.jr-page-header {
-        height: auto;
-        min-height: 0;
         padding: 7.5rem 0 2.5rem;
     }
 

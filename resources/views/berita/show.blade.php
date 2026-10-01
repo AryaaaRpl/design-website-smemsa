@@ -24,6 +24,11 @@
             @if ($post->location)
                 <span>&bull; {{ $post->location }}</span>
             @endif
+            <span>&bull;</span>
+            <span class="meta-views">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                Dibaca {{ number_format($post->views, 0, ',', '.') }} kali
+            </span>
         </div>
     </div>
 </header>
