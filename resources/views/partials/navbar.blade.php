@@ -141,20 +141,20 @@
     <div class="drawer-links">
       <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Beranda</a>
 
-      <div class="drawer-section-title">Halaman Informasi</div>
-      <a href="{{ url('/bkk') }}" class="{{ request()->is('bkk*') ? 'active' : '' }}">Bursa Kerja Khusus (BKK)</a>
+      <div class="drawer-section-title">Profil & Info</div>
+      <a href="{{ url('/#sambutan') }}">Sambutan Kepala Sekolah</a>
       <a href="{{ url('/visi-misi') }}" class="{{ request()->is('visi-misi*') ? 'active' : '' }}">Visi & Misi Sekolah</a>
       <a href="{{ url('/guru') }}" class="{{ request()->is('guru*') ? 'active' : '' }}">Guru & Tenaga Kependidikan</a>
       <a href="{{ url('/fasilitas') }}" class="{{ request()->is('fasilitas*') ? 'active' : '' }}">Fasilitas Unggulan</a>
       <a href="{{ url('/ekstrakurikuler') }}" class="{{ request()->is('ekstrakurikuler*') ? 'active' : '' }}">Ekstrakurikuler & IPM</a>
       <a href="{{ url('/prestasi') }}" class="{{ request()->is('prestasi*') ? 'active' : '' }}">Prestasi & Penghargaan</a>
-      <a href="{{ url('/berita') }}" class="{{ request()->is('berita*') ? 'active' : '' }}">Jurnal & Kabar Sekolah</a>
 
-      <div class="drawer-section-title">Navigasi Halaman Utama</div>
-      <a href="{{ url('/#sambutan') }}">Sambutan Kepala Sekolah</a>
+      <div class="drawer-section-title">Layanan & Program</div>
       <a href="{{ url('/jurusan') }}" class="{{ request()->is('jurusan*') ? 'active' : '' }}">{{ trim(($navMajors->count() ?: '') . ' Program Keahlian') }}</a>
       <a href="{{ url('/lsp') }}" class="{{ request()->is('lsp*') ? 'active' : '' }}">LSP-P1</a>
+      <a href="{{ url('/bkk') }}" class="{{ request()->is('bkk*') ? 'active' : '' }}">Bursa Kerja Khusus (BKK)</a>
       <a href="{{ route('blud.index') }}" class="{{ request()->is('blud*') ? 'active' : '' }}">Unit Produksi BLUD</a>
+      <a href="{{ url('/berita') }}" class="{{ request()->is('berita*') ? 'active' : '' }}">Jurnal & Kabar Sekolah</a>
 
       <div style="margin-top: 1.5rem">
         <a href="{{ url('/spmb') }}" class="btn btn-primary"
