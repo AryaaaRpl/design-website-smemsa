@@ -1341,6 +1341,31 @@ textarea.form-input {
 
 /* ---------- Modal konfirmasi (dialog bawaan, animasi masuk & keluar sama) ---------- */
 
+.confirm-modal,
+.spmb-guide {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.confirm-modal::backdrop,
+.spmb-guide::backdrop {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.confirm-modal.is-open,
+.confirm-modal.is-open::backdrop,
+.spmb-guide.is-open,
+.spmb-guide.is-open::backdrop {
+    opacity: 1;
+}
+
+.confirm-modal.is-open,
+.spmb-guide.is-open {
+    transform: none;
+}
+
 .confirm-modal {
     width: min(420px, calc(100% - 32px));
     padding: 28px;
@@ -1349,24 +1374,10 @@ textarea.form-input {
     border-radius: var(--radius);
     color: var(--black);
     text-align: center;
-    opacity: 0;
-    transform: translateY(12px) scale(0.96);
-    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .confirm-modal::backdrop {
     background: rgba(15, 23, 42, 0.55);
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.confirm-modal.is-open,
-.confirm-modal.is-open::backdrop {
-    opacity: 1;
-}
-
-.confirm-modal.is-open {
-    transform: none;
 }
 
 .confirm-modal.is-danger {
@@ -1422,7 +1433,9 @@ textarea.form-input {
 
 @media (prefers-reduced-motion: reduce) {
     .confirm-modal,
-    .confirm-modal::backdrop {
+    .confirm-modal::backdrop,
+    .spmb-guide,
+    .spmb-guide::backdrop {
         transition-duration: 0.01ms;
     }
 }

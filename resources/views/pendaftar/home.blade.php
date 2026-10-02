@@ -56,7 +56,21 @@
             </form>
         </dialog>
         <script>
-            document.getElementById("spmb-guide").showModal();
+            // Animasi masuk & keluar sama dengan modal konfirmasi (kelas is-open).
+            const guide = document.getElementById("spmb-guide");
+            const closeGuide = (event) => {
+                event.preventDefault();
+                guide.classList.remove("is-open");
+            };
+
+            guide.addEventListener("submit", closeGuide);
+            guide.addEventListener("cancel", closeGuide);
+            guide.addEventListener("transitionend", (event) => {
+                if (event.target === guide && !guide.classList.contains("is-open")) guide.close();
+            });
+
+            guide.showModal();
+            requestAnimationFrame(() => requestAnimationFrame(() => guide.classList.add("is-open")));
         </script>
     @endif
 @endsection
