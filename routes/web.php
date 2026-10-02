@@ -3,10 +3,6 @@
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\Admin\AchievementController as AdminAchievementController;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Applicant\AuthController as ApplicantAuthController;
-use App\Http\Controllers\Applicant\DashboardController as ApplicantDashboardController;
-use App\Http\Controllers\Applicant\ProfileController as ApplicantProfileController;
-use App\Http\Middleware\EnsureApplicantRegistered;
 use App\Http\Controllers\Admin\BusinessUnitController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -22,6 +18,10 @@ use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeacherController as AdminTeacherController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Applicant\AuthController as ApplicantAuthController;
+use App\Http\Controllers\Applicant\DashboardController as ApplicantDashboardController;
+use App\Http\Controllers\Applicant\ProfileController as ApplicantProfileController;
+use App\Http\Controllers\Applicant\RegistrationFormController as ApplicantFormController;
 use App\Http\Controllers\BkkController;
 use App\Http\Controllers\BludController;
 use App\Http\Controllers\ExtracurricularController;
@@ -32,6 +32,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RegistrationStatusController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\VisionMissionController;
+use App\Http\Middleware\EnsureApplicantRegistered;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -95,7 +96,11 @@ Route::prefix('pendaftar')->name('pendaftar.')->group(function () {
     Route::middleware('auth:applicant')->group(function () {
         Route::middleware(EnsureApplicantRegistered::class)->group(function () {
             Route::get('/', [ApplicantDashboardController::class, 'home'])->name('dashboard');
-            Route::get('/pendaftaran', [ApplicantDashboardController::class, 'registration'])->name('registration');
+            Route::get('/pendaftaran', [ApplicantFormController::class, 'index'])->name('registration');
+            Route::post('/pendaftaran/kirim', [ApplicantFormController::class, 'submit'])->name('submit');
+            Route::get('/pendaftaran/{phase}', [ApplicantFormController::class, 'show'])->name('phase');
+            Route::post('/pendaftaran/{phase}', [ApplicantFormController::class, 'update'])->name('phase.update');
+            Route::get('/berkas/{document}', [ApplicantFormController::class, 'document'])->name('document');
             Route::get('/pengumuman', [ApplicantDashboardController::class, 'announcement'])->name('announcement');
             Route::get('/bantuan', [ApplicantDashboardController::class, 'help'])->name('help');
         });

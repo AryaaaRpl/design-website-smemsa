@@ -1,7 +1,7 @@
 @php
     $menus = [
         ['label' => 'Beranda', 'route' => 'pendaftar.dashboard', 'icon' => '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/>'],
-        ['label' => 'Pendaftaran', 'route' => 'pendaftar.registration', 'icon' => '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 11h2"/>'],
+        ['label' => 'Pendaftaran', 'route' => 'pendaftar.registration', 'active' => 'pendaftar.phase', 'icon' => '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 11h2"/>'],
         ['label' => 'Pengumuman', 'route' => 'pendaftar.announcement', 'icon' => '<path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/>'],
         ['label' => 'Bantuan', 'route' => 'pendaftar.help', 'icon' => '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>'],
     ];
@@ -33,7 +33,7 @@
 
         <nav class="admin-navbar">
             @foreach ($menus as $menu)
-                <a href="{{ route($menu['route']) }}" class="sidebar-link {{ request()->routeIs($menu['route']) ? 'active' : '' }}">
+                <a href="{{ route($menu['route']) }}" class="sidebar-link {{ request()->routeIs($menu['route'], $menu['active'] ?? $menu['route']) ? 'active' : '' }}">
                     <span class="sidebar-link-label">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{!! $menu['icon'] !!}</svg>

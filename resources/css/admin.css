@@ -1204,3 +1204,132 @@ textarea.form-input {
         height: 14px;
     }
 }
+
+/* Navigasi fase pendaftaran */
+.spmb-phases {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.spmb-phase {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--blue-line);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+    background: var(--white);
+}
+
+.spmb-phase span {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 12px;
+    background: var(--blue-soft);
+    color: var(--blue);
+}
+
+.spmb-phase.is-done span {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.spmb-phase.is-current {
+    border-color: var(--blue);
+    color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+.spmb-phase.is-locked {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Pilihan jalur & jurusan */
+.spmb-choices {
+    display: grid;
+    gap: 10px;
+}
+
+.spmb-choice {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--blue-line);
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.spmb-choice:has(input:checked) {
+    border-color: var(--blue);
+    background: var(--blue-soft);
+}
+
+.spmb-choice input {
+    accent-color: var(--blue);
+    width: 18px;
+    height: 18px;
+}
+
+/* Unggah berkas */
+.spmb-docs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.spmb-doc {
+    padding: 14px;
+    border: 1px dashed var(--blue-line);
+    border-radius: var(--radius);
+}
+
+.spmb-doc.is-done {
+    border-style: solid;
+    border-color: var(--blue);
+}
+
+.spmb-doc-head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.spmb-doc-head a {
+    color: var(--blue);
+    font-weight: 600;
+    word-break: break-all;
+}
+
+.spmb-submit {
+    margin-top: 24px;
+    border-color: var(--yellow);
+    background: var(--yellow-soft);
+}
+
+.spmb-submit p {
+    margin: 6px 0 14px;
+}
+
+@media (max-width: 900px) {
+    .spmb-card .form-grid,
+    .spmb-docs {
+        grid-template-columns: 1fr;
+    }
+
+    .spmb-card .form-actions .btn,
+    .spmb-submit .btn {
+        width: 100%;
+    }
+}

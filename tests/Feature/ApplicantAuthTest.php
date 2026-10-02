@@ -112,7 +112,7 @@ class ApplicantAuthTest extends TestCase
             ->assertSee('d@contoh.id')
             ->assertSee('Belum dipilih');
 
-        foreach (['registration', 'announcement', 'help'] as $page) {
+        foreach (['announcement', 'help'] as $page) {
             $this->get(route('pendaftar.'.$page))->assertOk()
                 ->assertSee('No. Pendaftaran')
                 ->assertSee('SMK Muhammadiyah 1 Genteng');

@@ -10,17 +10,44 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 /**
- * Pendaftar SPMB. Sementara diinput panitia dari admin, nanti juga dari form pendaftaran online.
+ * Pendaftar SPMB: diinput panitia dari admin atau lewat pendaftaran online (akun Applicant).
  */
 #[Fillable([
     'name', 'birth_date', 'nik', 'school_origin', 'phone', 'major_id', 'pathway', 'status', 'note',
+    'gender', 'birth_place', 'religion', 'nisn', 'kk_number', 'shirt_size',
+    'father_name', 'father_status', 'father_job', 'father_phone',
+    'mother_name', 'mother_status', 'mother_job', 'mother_phone',
+    'guardian_name', 'guardian_job', 'guardian_phone', 'guardian_relation',
+    'residence_status', 'address', 'submitted_at',
 ])]
 class Registration extends Model
 {
     public const PATHWAYS = ['Reguler', 'Prestasi', 'Beasiswa & KIP'];
+
+    // Pilihan isian formulir online.
+    public const GENDERS = ['Laki-laki', 'Perempuan'];
+
+    public const RELIGIONS = ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu'];
+
+    public const SHIRT_SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
+
+    public const PARENT_STATUSES = ['Masih Hidup', 'Meninggal', 'Cerai'];
+
+    public const GUARDIAN_RELATIONS = ['Ayah', 'Ibu', 'Kakek/Nenek', 'Paman/Bibi', 'Kakak', 'Lainnya'];
+
+    public const RESIDENCES = ['Bersama Orang Tua', 'Bersama Wali', 'Kos', 'Asrama/Pondok'];
+
+    /** Berkas wajib: kunci => label. */
+    public const DOCUMENTS = [
+        'kk' => 'Kartu Keluarga',
+        'akte' => 'Akte Kelahiran',
+        'ijazah' => 'Ijazah SMP/MTs',
+        'foto' => 'Pas Foto 3x4',
+    ];
 
     protected $attributes = [
         'status' => 'menunggu',
@@ -52,6 +79,7 @@ class Registration extends Model
         return [
             'status' => RegistrationStatus::class,
             'birth_date' => 'date',
+            'submitted_at' => 'datetime',
         ];
     }
 
@@ -62,7 +90,6 @@ class Registration extends Model
 
     /**
      * Alur pendaftaran online: label => sudah selesai?
-     * Kolom data diri, formulir & berkas ditambahkan di tahap 3 (selama belum ada, bernilai null = belum selesai).
      *
      * @return array<string, bool>
      */
@@ -72,7 +99,7 @@ class Registration extends Model
             'Pilih Jalur' => filled($this->pathway),
             'Isi Data Diri' => filled($this->gender),
             'Formulir' => filled($this->school_origin) && filled($this->guardian_name),
-            'Unggah Berkas' => (bool) $this->documents_completed,
+            'Unggah Berkas' => $this->documents()->count() >= count(self::DOCUMENTS),
             'Pilih Jurusan' => filled($this->major_id),
             'Pengumuman' => in_array($this->status, [RegistrationStatus::Accepted, RegistrationStatus::Rejected], true),
         ];
@@ -86,6 +113,16 @@ class Registration extends Model
         $index = array_search(false, array_values($this->steps()), true);
 
         return $index === false ? count($this->steps()) : $index + 1;
+    }
+
+    public function documents(): HasMany
+    {
+        return $this->hasMany(RegistrationDocument::class);
+    }
+
+    public function isSubmitted(): bool
+    {
+        return $this->submitted_at !== null;
     }
 
     public function major(): BelongsTo

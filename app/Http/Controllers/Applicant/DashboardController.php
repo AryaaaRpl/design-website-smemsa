@@ -15,11 +15,6 @@ class DashboardController extends Controller
         return view('pendaftar.home');
     }
 
-    public function registration(): View
-    {
-        return view('pendaftar.registration');
-    }
-
     public function announcement(): View
     {
         return view('pendaftar.announcement');
