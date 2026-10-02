@@ -286,6 +286,10 @@
           </p>
         </div>
 
+        @php
+            $tuition = (int) $site->get('fee_tuition');
+            $installment = intdiv($tuition, 2);
+          @endphp
         <div class="fee-section-wrapper">
           <!-- TAHAP 1: BIAYA SERAGAM SEKOLAH -->
           <div class="fee-group-block">
@@ -303,8 +307,8 @@
                     <span class="fee-tag-pill">1x di Awal Masuk</span>
                   </div>
                   <h4 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 0.3rem;">Paket Seragam Laki-laki</h4>
-                  <div class="fee-price-amount">Rp 1.550.000</div>
-                  <p class="fee-price-note">Termasuk paket seragam kejuruan lengkap, seragam khas sekolah/batik, seragam olahraga, jas almamater, dan atribut sekolah.</p>
+                  <div class="fee-price-amount">{{ $site->rupiah('fee_uniform_male') }}</div>
+                  <p class="fee-price-note">{{ $site->get('fee_uniform_male_note') }}</p>
                 </div>
               </div>
 
@@ -316,8 +320,8 @@
                     <span class="fee-tag-pill">1x di Awal Masuk</span>
                   </div>
                   <h4 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 0.3rem;">Paket Seragam Perempuan</h4>
-                  <div class="fee-price-amount">Rp 1.700.000</div>
-                  <p class="fee-price-note">Termasuk paket seragam kejuruan muslimah lengkap, rok panjang, jilbab seragam, seragam olahraga, jas almamater, dan atribut.</p>
+                  <div class="fee-price-amount">{{ $site->rupiah('fee_uniform_female') }}</div>
+                  <p class="fee-price-note">{{ $site->get('fee_uniform_female_note') }}</p>
                 </div>
               </div>
             </div>
@@ -339,7 +343,7 @@
                   <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
                 <div class="fee-cicilan-text">
-                  <strong>Skema Cicilan PSM:</strong> Biaya PSM 1 Tahun & Daftar Ulang (Rp 6.350.000) <strong>bisa dicicil 2x per semester (Rp 3.175.000 / semester)</strong> guna memudahkan perencanaan keuangan keluarga.
+                  <strong>Skema Cicilan PSM:</strong> Biaya PSM 1 Tahun & Daftar Ulang ({{ $site->rupiah($tuition) }}) <strong>bisa dicicil 2x per semester ({{ $site->rupiah($installment) }} / semester)</strong> guna memudahkan perencanaan keuangan keluarga.
                 </div>
               </div>
               <span class="badge-status-open" style="background: var(--secondary-surface); color: #a16207; border: 1px solid rgba(234, 179, 8, 0.35);">Dicicil 2x / Semester</span>
@@ -356,11 +360,11 @@
                   <div class="fee-item-row">
                     <div class="fee-item-detail">
                       <span class="label">Biaya PSM 1 Tahun:</span>
-                      <span class="val">Rp 6.350.000</span>
+                      <span class="val">{{ $site->rupiah($tuition) }}</span>
                     </div>
                     <div class="fee-item-detail">
                       <span class="label">Opsi Cicilan (2x/Thn):</span>
-                      <span class="val" style="color: #15803d;">Rp 3.175.000 / semester</span>
+                      <span class="val" style="color: #15803d;">{{ $site->rupiah($installment) }} / semester</span>
                     </div>
                     <div class="fee-item-detail">
                       <span class="label">Program Khusus:</span>
@@ -371,7 +375,7 @@
 
                 <div class="fee-total-box">
                   <div class="fee-total-label">Estimasi Total Biaya / Tahun</div>
-                  <div class="fee-total-val">Rp 6.350.000</div>
+                  <div class="fee-total-val">{{ $site->rupiah($tuition) }}</div>
                 </div>
               </div>
 
@@ -385,11 +389,11 @@
                   <div class="fee-item-row">
                     <div class="fee-item-detail">
                       <span class="label">Biaya PSM 1 Tahun:</span>
-                      <span class="val">Rp 6.350.000</span>
+                      <span class="val">{{ $site->rupiah($tuition) }}</span>
                     </div>
                     <div class="fee-item-detail">
                       <span class="label">Opsi Cicilan (2x/Thn):</span>
-                      <span class="val" style="color: #15803d;">Rp 3.175.000 / semester</span>
+                      <span class="val" style="color: #15803d;">{{ $site->rupiah($installment) }} / semester</span>
                     </div>
                     <div class="fee-item-detail">
                       <span class="label">Program Khusus PKL:</span>
@@ -397,11 +401,11 @@
                     </div>
                     <div class="fee-item-detail">
                       <span class="label">• PKL Dalam Kota:</span>
-                      <span class="val">Rp 950.000</span>
+                      <span class="val">{{ $site->rupiah('fee_pkl_local') }}</span>
                     </div>
                     <div class="fee-item-detail">
                       <span class="label">• PKL Luar Kota:</span>
-                      <span class="val">Rp 1.200.000</span>
+                      <span class="val">{{ $site->rupiah('fee_pkl_outside') }}</span>
                     </div>
                   </div>
                 </div>
@@ -409,8 +413,8 @@
                 <div class="fee-total-box">
                   <div class="fee-total-label">Estimasi Total Biaya / Tahun</div>
                   <div class="fee-total-val">
-                    Rp 7.300.000 <small style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);">(Dlm Kota)</small><br>
-                    <span style="font-size: 1.05rem;">Rp 7.550.000</span> <small style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);">(Luar Kota)</small>
+                    {{ $site->rupiah($tuition + (int) $site->get('fee_pkl_local')) }} <small style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);">(Dlm Kota)</small><br>
+                    <span style="font-size: 1.05rem;">{{ $site->rupiah($tuition + (int) $site->get('fee_pkl_outside')) }}</span> <small style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);">(Luar Kota)</small>
                   </div>
                 </div>
               </div>
@@ -425,11 +429,11 @@
                   <div class="fee-item-row">
                     <div class="fee-item-detail">
                       <span class="label">Biaya PSM 1 Tahun:</span>
-                      <span class="val">Rp 6.350.000</span>
+                      <span class="val">{{ $site->rupiah($tuition) }}</span>
                     </div>
                     <div class="fee-item-detail">
                       <span class="label">Opsi Cicilan (2x/Thn):</span>
-                      <span class="val" style="color: #15803d;">Rp 3.175.000 / semester</span>
+                      <span class="val" style="color: #15803d;">{{ $site->rupiah($installment) }} / semester</span>
                     </div>
                     <div class="fee-item-detail">
                       <span class="label">Program Khusus:</span>
@@ -437,28 +441,28 @@
                     </div>
                     <div class="fee-item-detail">
                       <span class="label">• Biaya UKK & LSP:</span>
-                      <span class="val">Rp 1.250.000</span>
+                      <span class="val">{{ $site->rupiah('fee_certification') }}</span>
                     </div>
                   </div>
                 </div>
 
                 <div class="fee-total-box">
                   <div class="fee-total-label">Estimasi Total Biaya / Tahun</div>
-                  <div class="fee-total-val">Rp 7.600.000</div>
+                  <div class="fee-total-val">{{ $site->rupiah($tuition + (int) $site->get('fee_certification')) }}</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- TAHAP 3: SKEMA BEASISWA & KERINGANAN BIAYA (9 KATEGORI LENGKAP) -->
+          <!-- TAHAP 3: SKEMA BEASISWA & KERINGANAN BIAYA (DARI ADMIN: BIAYA & BEASISWA) -->
           <div class="fee-group-block">
             <div class="fee-subheading">
-              <span class="fee-subheading-badge" style="background: var(--secondary-surface); color: #a16207;">9 Kategori Beasiswa</span>
+              <span class="fee-subheading-badge" style="background: var(--secondary-surface); color: #a16207;">{{ $scholarships->count() }} Kategori Beasiswa</span>
               <h3 class="fee-subheading-title">3. Skema Beasiswa & Keringanan Biaya</h3>
             </div>
             
             <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">
-              Dukungan nyata SMKS Muhammadiyah 1 Genteng melalui 9 kategori beasiswa. Program beasiswa sosial/tahfidz berlaku berkelanjutan <strong>selama 3 tahun masa studi</strong>, dan voucher pendaftaran awal dapat dikombinasikan dengan jalur beasiswa prestasi/alumni.
+              Dukungan nyata SMKS Muhammadiyah 1 Genteng melalui {{ $scholarships->count() }} kategori beasiswa. Program beasiswa sosial/tahfidz berlaku berkelanjutan <strong>selama 3 tahun masa studi</strong>, dan voucher pendaftaran awal dapat dikombinasikan dengan jalur beasiswa prestasi/alumni.
             </p>
 
             <div class="beasiswa-table-hint">
@@ -479,221 +483,31 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- 1. Voucher Early Bird (100 Pendaftar Pertama) -->
-                    <tr class="row-highlight">
-                      <td style="text-align: center;">
-                        <span class="beasiswa-num-badge highlight">1</span>
-                      </td>
-                      <td>
-                        <div class="beasiswa-name-cell">
-                          <span class="beasiswa-name">Voucher Early Bird</span>
-                          <span class="badge-tag-sm amber">100 Pendaftar Pertama</span>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="beasiswa-table-desc">
-                          Khusus 100 pendaftar pertama pada gelombang awal. <em>Potongan langsung pada biaya PSM Tahun Pertama (Kelas X) & dapat dikombinasikan dengan beasiswa prestasi/alumni.</em>
-                        </p>
-                      </td>
-                      <td>
-                        <span class="beasiswa-period-tag amber">PSM Thn Pertama (Kelas X)</span>
-                      </td>
-                      <td style="text-align: right;">
-                        <span class="beasiswa-amount-badge discount">Potongan Rp 1.000.000</span>
-                      </td>
-                    </tr>
-
-                    <!-- 2. Alumni SD Muhammadiyah -->
-                    <tr>
-                      <td style="text-align: center;">
-                        <span class="beasiswa-num-badge">2</span>
-                      </td>
-                      <td>
-                        <div class="beasiswa-name-cell">
-                          <span class="beasiswa-name">Beasiswa Alumni Muhammadiyah – SD</span>
-                          <span class="badge-tag-sm blue">Jalur Alumni</span>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="beasiswa-table-desc">
-                          Bagi calon peserta didik yang merupakan <strong>alumni SD / MI Muhammadiyah</strong>.
-                        </p>
-                      </td>
-                      <td>
-                        <span class="beasiswa-period-tag">Sekali (Daftar Ulang)</span>
-                      </td>
-                      <td style="text-align: right;">
-                        <span class="beasiswa-amount-badge nominal">Potongan Rp 200.000</span>
-                      </td>
-                    </tr>
-
-                    <!-- 3. Alumni SMP Muhammadiyah -->
-                    <tr>
-                      <td style="text-align: center;">
-                        <span class="beasiswa-num-badge">3</span>
-                      </td>
-                      <td>
-                        <div class="beasiswa-name-cell">
-                          <span class="beasiswa-name">Beasiswa Alumni Muhammadiyah – SMP</span>
-                          <span class="badge-tag-sm blue">Jalur Alumni</span>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="beasiswa-table-desc">
-                          Bagi calon peserta didik lulusan dari <strong>SMP / MTs Muhammadiyah</strong>.
-                        </p>
-                      </td>
-                      <td>
-                        <span class="beasiswa-period-tag">Sekali (Daftar Ulang)</span>
-                      </td>
-                      <td style="text-align: right;">
-                        <span class="beasiswa-amount-badge nominal">Potongan Rp 500.000</span>
-                      </td>
-                    </tr>
-
-                    <!-- 4. Orang Tua Alumni SMK -->
-                    <tr>
-                      <td style="text-align: center;">
-                        <span class="beasiswa-num-badge">4</span>
-                      </td>
-                      <td>
-                        <div class="beasiswa-name-cell">
-                          <span class="beasiswa-name">Beasiswa Orang Tua Alumni SMK</span>
-                          <span class="badge-tag-sm slate">Keluarga Alumni</span>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="beasiswa-table-desc">
-                          Bagi calon siswa yang <strong>orang tuanya merupakan alumni SMK Muhammadiyah</strong>.
-                        </p>
-                      </td>
-                      <td>
-                        <span class="beasiswa-period-tag">Sekali (Daftar Ulang)</span>
-                      </td>
-                      <td style="text-align: right;">
-                        <span class="beasiswa-amount-badge nominal">Potongan Rp 500.000</span>
-                      </td>
-                    </tr>
-
-                    <!-- 5. Beasiswa Berprestasi -->
-                    <tr>
-                      <td style="text-align: center;">
-                        <span class="beasiswa-num-badge">5</span>
-                      </td>
-                      <td>
-                        <div class="beasiswa-name-cell">
-                          <span class="beasiswa-name">Beasiswa Berprestasi</span>
-                          <span class="badge-tag-sm blue">Akademik & Non-Akademik</span>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="beasiswa-table-desc">
-                          Bagi siswa dengan <strong>prestasi akademik atau non-akademik</strong> (kejuaraan olahraga/seni/sains).
-                        </p>
-                      </td>
-                      <td>
-                        <span class="beasiswa-period-tag">Sekali (Daftar Ulang)</span>
-                      </td>
-                      <td style="text-align: right;">
-                        <span class="beasiswa-amount-badge nominal">Potongan Rp 500.000</span>
-                      </td>
-                    </tr>
-
-                    <!-- 6. Beasiswa Tidak Mampu -->
-                    <tr>
-                      <td style="text-align: center;">
-                        <span class="beasiswa-num-badge">6</span>
-                      </td>
-                      <td>
-                        <div class="beasiswa-name-cell">
-                          <span class="beasiswa-name">Beasiswa Tidak Mampu (Afirmasi)</span>
-                          <span class="badge-tag-sm blue">KIP / PKH / SKTM</span>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="beasiswa-table-desc">
-                          Bagi siswa dari <strong>keluarga kurang mampu</strong> (pemegang KIP/PKH/SKTM kelurahan).
-                        </p>
-                      </td>
-                      <td>
-                        <span class="beasiswa-period-tag blue">Berlaku 3 Tahun</span>
-                      </td>
-                      <td style="text-align: right;">
-                        <span class="beasiswa-amount-badge discount">Potongan 50% / Tahun</span>
-                      </td>
-                    </tr>
-
-                    <!-- 7. Beasiswa Yatim / Piatu -->
-                    <tr>
-                      <td style="text-align: center;">
-                        <span class="beasiswa-num-badge">7</span>
-                      </td>
-                      <td>
-                        <div class="beasiswa-name-cell">
-                          <span class="beasiswa-name">Beasiswa Yatim atau Piatu</span>
-                          <span class="badge-tag-sm blue">Sosial Afirmasi</span>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="beasiswa-table-desc">
-                          Bagi calon siswa dengan <strong>salah satu orang tua (ayah atau ibu) telah wafat</strong>.
-                        </p>
-                      </td>
-                      <td>
-                        <span class="beasiswa-period-tag blue">Berlaku 3 Tahun</span>
-                      </td>
-                      <td style="text-align: right;">
-                        <span class="beasiswa-amount-badge discount">Potongan 50% / Tahun</span>
-                      </td>
-                    </tr>
-
-                    <!-- 8. Beasiswa Yatim Piatu -->
-                    <tr class="row-free">
-                      <td style="text-align: center;">
-                        <span class="beasiswa-num-badge green">8</span>
-                      </td>
-                      <td>
-                        <div class="beasiswa-name-cell">
-                          <span class="beasiswa-name">Beasiswa Yatim Piatu</span>
-                          <span class="badge-tag-sm green">Bebas Biaya 100%</span>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="beasiswa-table-desc">
-                          Bagi calon siswa yang <strong>kedua orang tuanya telah wafat</strong>. Bebas biaya pendidikan 100% selama 3 tahun.
-                        </p>
-                      </td>
-                      <td>
-                        <span class="beasiswa-period-tag green">Berlaku 3 Tahun Penuh</span>
-                      </td>
-                      <td style="text-align: right;">
-                        <span class="beasiswa-amount-badge free">Gratis 100% (Bebas Biaya 3 Thn)</span>
-                      </td>
-                    </tr>
-
-                    <!-- 9. Beasiswa Hafidz 30 Juz -->
-                    <tr class="row-free">
-                      <td style="text-align: center;">
-                        <span class="beasiswa-num-badge green">9</span>
-                      </td>
-                      <td>
-                        <div class="beasiswa-name-cell">
-                          <span class="beasiswa-name">Beasiswa Hafidz 30 Juz</span>
-                          <span class="badge-tag-sm green">Bebas Biaya 100%</span>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="beasiswa-table-desc">
-                          Bagi penghafal <strong>Al-Qur'an 30 Juz</strong> dengan syahadah resmi. Bebas biaya pendidikan 100% selama 3 tahun.
-                        </p>
-                      </td>
-                      <td>
-                        <span class="beasiswa-period-tag green">Berlaku 3 Tahun Penuh</span>
-                      </td>
-                      <td style="text-align: right;">
-                        <span class="beasiswa-amount-badge free">Gratis 100% (Bebas Biaya 3 Thn)</span>
-                      </td>
-                    </tr>
+                    @foreach ($scholarships as $scholarship)
+                      @php [$rowClass, $numClass, $periodClass, $amountClass] = $scholarship->toneClasses(); @endphp
+                      <tr @class([$rowClass => $rowClass])>
+                        <td style="text-align: center;">
+                          <span @class(['beasiswa-num-badge', $numClass => $numClass])>{{ $loop->iteration }}</span>
+                        </td>
+                        <td>
+                          <div class="beasiswa-name-cell">
+                            <span class="beasiswa-name">{{ $scholarship->name }}</span>
+                            @if ($scholarship->tag)
+                              <span class="badge-tag-sm {{ $scholarship->tag_color }}">{{ $scholarship->tag }}</span>
+                            @endif
+                          </div>
+                        </td>
+                        <td>
+                          <p class="beasiswa-table-desc">{!! strip_tags($scholarship->description, '<strong><em>') !!}</p>
+                        </td>
+                        <td>
+                          <span @class(['beasiswa-period-tag', $periodClass => $periodClass])>{{ $scholarship->period }}</span>
+                        </td>
+                        <td style="text-align: right;">
+                          <span class="beasiswa-amount-badge {{ $amountClass }}">{{ $scholarship->amount }}</span>
+                        </td>
+                      </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -749,7 +563,7 @@
               </svg>
             </button>
             <div class="faq-content" id="faq-ans-2">
-              <p>Biaya PSM 1 Tahun sebesar Rp 6.350.000 dapat dicicil 2 kali per semester (Rp 3.175.000 per semester) pada Semester Ganjil dan Genap guna memberikan fleksibilitas pembayaran.</p>
+              <p>Biaya PSM 1 Tahun sebesar {{ $site->rupiah($tuition) }} dapat dicicil 2 kali per semester ({{ $site->rupiah($installment) }} per semester) pada Semester Ganjil dan Genap guna memberikan fleksibilitas pembayaran.</p>
             </div>
           </div>
 

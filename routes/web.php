@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RegistrationController;
+use App\Http\Controllers\Admin\ScholarshipController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeacherController as AdminTeacherController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -32,6 +33,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\VisionMissionController;
 use App\Http\Middleware\EnsureApplicantRegistered;
+use App\Models\Scholarship;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -54,7 +56,7 @@ Route::get('/lsp', function () {
 Route::get('/bkk', BkkController::class)->name('bkk');
 
 Route::get('/spmb', function () {
-    return view('spmb');
+    return view('spmb', ['scholarships' => Scholarship::published()->ordered()->get()]);
 });
 
 Route::get('/ekstrakurikuler', [ExtracurricularController::class, 'index'])->name('ekstrakurikuler');
@@ -78,7 +80,7 @@ Route::get('/fasilitas/{facility}', [FacilityController::class, 'show'])->name('
 */
 
 // Pendaftaran SPMB online: akun pendaftar (guard "applicant"), terpisah dari admin.
-Route::prefix('/rpl-smemsa-' . date('Y') . '/pendaftar')->name('pendaftar.')->group(function () {
+Route::prefix('/rpl-smemsa-'.date('Y').'/pendaftar')->name('pendaftar.')->group(function () {
     Route::middleware('guest:applicant')->group(function () {
         Route::get('/masuk', [ApplicantAuthController::class, 'showLogin'])->name('login');
         Route::post('/masuk', [ApplicantAuthController::class, 'login'])->middleware('throttle:5,1')->name('login.store');
@@ -126,6 +128,7 @@ Route::prefix('/rpl-smemsa-space/admin')->name('admin.')->group(function () {
         Route::resource('business-units', BusinessUnitController::class)->except('show');
         Route::resource('products', ProductController::class)->except('show');
         Route::resource('registrations', RegistrationController::class);
+        Route::resource('scholarships', ScholarshipController::class)->except('show');
         Route::post('registrations/{registration}/unlock', [RegistrationController::class, 'unlock'])->name('registrations.unlock');
         Route::post('registrations/{registration}/reset-password', [RegistrationController::class, 'resetPassword'])->name('registrations.reset-password');
         Route::get('registration-documents/{document}', [RegistrationController::class, 'document'])->name('registrations.document');

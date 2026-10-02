@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             MajorPartnerSeeder::class,
             ExtracurricularSeeder::class,
             BludSeeder::class,
+            ScholarshipSeeder::class,
         ]);
     }
 }

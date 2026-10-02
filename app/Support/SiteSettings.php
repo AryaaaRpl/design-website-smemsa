@@ -210,6 +210,67 @@ class SiteSettings
                 ],
             ],
         ],
+        'fees' => [
+            'label' => 'Biaya SPMB',
+            'fields' => [
+                'fee_uniform_male' => [
+                    'label' => 'Seragam Laki-laki',
+                    'type' => 'number',
+                    'default' => '1550000',
+                    'rules' => ['nullable', 'integer', 'min:0', 'max:100000000'],
+                    'help' => 'Rupiah tanpa titik, contoh: 1550000. Sekali bayar saat masuk.',
+                ],
+                'fee_uniform_male_note' => [
+                    'label' => 'Isi Paket Seragam Laki-laki',
+                    'type' => 'textarea',
+                    'default' => 'Termasuk paket seragam kejuruan lengkap, seragam khas sekolah/batik, seragam olahraga, jas almamater, dan atribut sekolah.',
+                    'rules' => ['nullable', 'string', 'max:300'],
+                    'help' => 'Keterangan di bawah harga seragam.',
+                ],
+                'fee_uniform_female' => [
+                    'label' => 'Seragam Perempuan',
+                    'type' => 'number',
+                    'default' => '1700000',
+                    'rules' => ['nullable', 'integer', 'min:0', 'max:100000000'],
+                    'help' => 'Rupiah tanpa titik. Sekali bayar saat masuk.',
+                ],
+                'fee_uniform_female_note' => [
+                    'label' => 'Isi Paket Seragam Perempuan',
+                    'type' => 'textarea',
+                    'default' => 'Termasuk paket seragam kejuruan muslimah lengkap, rok panjang, jilbab seragam, seragam olahraga, jas almamater, dan atribut.',
+                    'rules' => ['nullable', 'string', 'max:300'],
+                    'help' => 'Keterangan di bawah harga seragam.',
+                ],
+                'fee_tuition' => [
+                    'label' => 'Biaya PSM 1 Tahun',
+                    'type' => 'number',
+                    'default' => '6350000',
+                    'rules' => ['nullable', 'integer', 'min:0', 'max:100000000'],
+                    'help' => 'Sama untuk kelas X, XI, XII. Cicilan per semester dihitung otomatis (dibagi 2).',
+                ],
+                'fee_pkl_local' => [
+                    'label' => 'PKL Dalam Kota (Kelas XI)',
+                    'type' => 'number',
+                    'default' => '950000',
+                    'rules' => ['nullable', 'integer', 'min:0', 'max:100000000'],
+                    'help' => 'Total kelas XI dihitung otomatis: PSM + PKL.',
+                ],
+                'fee_pkl_outside' => [
+                    'label' => 'PKL Luar Kota (Kelas XI)',
+                    'type' => 'number',
+                    'default' => '1200000',
+                    'rules' => ['nullable', 'integer', 'min:0', 'max:100000000'],
+                    'help' => 'Total kelas XI dihitung otomatis: PSM + PKL.',
+                ],
+                'fee_certification' => [
+                    'label' => 'Biaya UKK & LSP (Kelas XII)',
+                    'type' => 'number',
+                    'default' => '1250000',
+                    'rules' => ['nullable', 'integer', 'min:0', 'max:100000000'],
+                    'help' => 'Total kelas XII dihitung otomatis: PSM + UKK & LSP.',
+                ],
+            ],
+        ],
     ];
 
     /**
@@ -324,6 +385,16 @@ class SiteSettings
     public function yearsServing(): int
     {
         return max(0, (int) now()->year - (int) $this->get('founded_year'));
+    }
+
+    /**
+     * Format rupiah dari angka atau kunci pengaturan, contoh: 6350000 → "Rp 6.350.000".
+     */
+    public function rupiah(int|string $amount): string
+    {
+        $value = is_int($amount) ? $amount : (int) $this->get($amount);
+
+        return 'Rp '.number_format($value, 0, ',', '.');
     }
 
     /**
