@@ -109,7 +109,7 @@
                     <div class="card-body">
                         <p class="form-help" style="margin: 0 0 16px;">Format PDF, JPG, atau PNG, maksimal 2 MB per berkas. Unggah ulang untuk mengganti.</p>
                         <div class="spmb-docs">
-                            @foreach (Registration::DOCUMENTS as $type => $label)
+                            @foreach ($registration->requiredDocuments() as $type => $label)
                                 <div class="spmb-doc {{ isset($documents[$type]) ? 'is-done' : '' }}">
                                     <div class="spmb-doc-head">
                                         <strong>{{ $label }} <span class="required">*</span></strong>

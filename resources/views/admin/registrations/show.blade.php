@@ -90,7 +90,7 @@
             <div class="card-header">Berkas</div>
             <div class="table-wrap">
                 <table class="table">
-                    @foreach (Registration::DOCUMENTS as $type => $label)
+                    @foreach ($registration->requiredDocuments() as $type => $label)
                         <tr>
                             <th style="width: 40%;">{{ $label }}</th>
                             <td>

@@ -67,14 +67,18 @@ class ApplicantRegistrationFormTest extends TestCase
             ->assertRedirect(route('pendaftar.phase', 'formulir'));
         $this->post(route('pendaftar.phase.update', 'formulir'), $this->formulir())
             ->assertRedirect(route('pendaftar.phase', 'berkas'));
+        // Jalur Prestasi: 4 berkas umum belum cukup, wajib berkas pendukung.
         $this->post(route('pendaftar.phase.update', 'berkas'), $this->files())
+            ->assertRedirect(route('pendaftar.phase', 'berkas'));
+        $this->get(route('pendaftar.phase', 'berkas'))->assertSee('Sertifikat/Piagam Prestasi');
+        $this->post(route('pendaftar.phase.update', 'berkas'), ['pendukung' => UploadedFile::fake()->create('piagam.pdf', 100, 'application/pdf')])
             ->assertRedirect(route('pendaftar.phase', 'jurusan'));
         $this->post(route('pendaftar.phase.update', 'jurusan'), ['major_id' => $major->id])
             ->assertRedirect(route('pendaftar.phase', 'jurusan'));
 
         $registration = $this->registration->fresh();
         $this->assertSame(6, $registration->currentStep());
-        $this->assertSame(4, $registration->documents()->count());
+        $this->assertSame(5, $registration->documents()->count());
         Storage::disk('local')->assertExists($registration->documents()->first()->path);
 
         $this->get(route('pendaftar.phase', 'jurusan'))->assertSee('Kirim Pendaftaran');

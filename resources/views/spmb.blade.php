@@ -78,6 +78,12 @@
                 </svg>
                 <span>Surat rekomendasi dari Kepala Sekolah SMP/MTs asal (opsional)</span>
               </li>
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Sertifikat/piagam diunggah sebagai berkas pendukung saat pendaftaran online</span>
+              </li>
             </ul>
           </div>
 
@@ -103,6 +109,12 @@
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
                 <span>Surat Keterangan Tidak Mampu (SKTM) dari Kelurahan/Desa</span>
+              </li>
+              <li class="berkas-item">
+                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Kartu KIP/PKH/KKS atau SKTM diunggah sebagai berkas pendukung saat pendaftaran online</span>
               </li>
             </ul>
           </div>

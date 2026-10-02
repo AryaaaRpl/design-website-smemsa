@@ -73,7 +73,7 @@ class RegistrationFormController extends Controller
         $keys = array_keys(self::PHASES);
         $next = $keys[min(array_search($phase, $keys) + 1, count($keys) - 1)];
 
-        return redirect()->route('pendaftar.phase', $phase === 'berkas' && $registration->documents()->count() < count(Registration::DOCUMENTS) ? 'berkas' : $next)
+        return redirect()->route('pendaftar.phase', $phase === 'berkas' && ! $registration->hasAllDocuments() ? 'berkas' : $next)
             ->with('success', self::PHASES[$phase][0].' berhasil disimpan.');
     }
 
@@ -175,10 +175,11 @@ class RegistrationFormController extends Controller
     /** Simpan berkas yang diunggah (boleh sebagian dulu); berkas lama dengan jenis sama diganti. */
     private function storeDocuments(Request $request, Registration $registration): void
     {
+        $documents = $registration->requiredDocuments();
         $files = $request->validate(
-            collect(Registration::DOCUMENTS)->mapWithKeys(fn ($label, $type) => [$type => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:2048']])->all(),
+            collect($documents)->mapWithKeys(fn ($label, $type) => [$type => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:2048']])->all(),
             ['mimes' => ':attribute harus PDF/JPG/PNG.', 'max' => ':attribute maksimal 2 MB.'],
-            Registration::DOCUMENTS,
+            $documents,
         );
 
         foreach (array_filter($files) as $type => $file) {

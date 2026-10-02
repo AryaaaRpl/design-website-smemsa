@@ -19,6 +19,6 @@ class RegistrationDocument extends Model
 
     public function label(): string
     {
-        return Registration::DOCUMENTS[$this->type] ?? $this->type;
+        return Registration::DOCUMENTS[$this->type] ?? ($this->type === 'pendukung' ? 'Berkas Pendukung Jalur' : $this->type);
     }
 }

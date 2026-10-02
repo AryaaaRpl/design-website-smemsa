@@ -48,6 +48,12 @@ class Registration extends Model
         'foto' => 'Pas Foto 3x4',
     ];
 
+    /** Berkas pendukung tambahan per jalur (jenis 'pendukung'). */
+    public const SUPPORTING_DOCUMENTS = [
+        'Prestasi' => 'Sertifikat/Piagam Prestasi',
+        'Beasiswa & KIP' => 'Kartu KIP/PKH/KKS atau SKTM',
+    ];
+
     protected $attributes = [
         'status' => 'menunggu',
     ];
@@ -98,7 +104,7 @@ class Registration extends Model
             'Pilih Jalur' => filled($this->pathway),
             'Isi Data Diri' => filled($this->gender),
             'Formulir' => filled($this->school_origin) && filled($this->guardian_name),
-            'Unggah Berkas' => $this->documents()->count() >= count(self::DOCUMENTS),
+            'Unggah Berkas' => $this->hasAllDocuments(),
             'Pilih Jurusan' => filled($this->major_id),
             'Pengumuman' => in_array($this->status, [RegistrationStatus::Accepted, RegistrationStatus::Rejected], true),
         ];
@@ -112,6 +118,25 @@ class Registration extends Model
         $index = array_search(false, array_values($this->steps()), true);
 
         return $index === false ? count($this->steps()) : $index + 1;
+    }
+
+    /**
+     * Berkas wajib untuk jalur yang dipilih: 4 berkas umum + 1 berkas pendukung untuk jalur Prestasi / Beasiswa & KIP.
+     *
+     * @return array<string, string>
+     */
+    public function requiredDocuments(): array
+    {
+        $supporting = self::SUPPORTING_DOCUMENTS[$this->pathway] ?? null;
+
+        return self::DOCUMENTS + ($supporting ? ['pendukung' => $supporting] : []);
+    }
+
+    public function hasAllDocuments(): bool
+    {
+        $required = array_keys($this->requiredDocuments());
+
+        return $this->documents()->whereIn('type', $required)->count() >= count($required);
     }
 
     public function documents(): HasMany
