@@ -33,7 +33,7 @@
           <span class="badge-primary">Kelengkapan Administrasi</span>
           <h2 class="section-title">Syarat & Berkas Pendaftaran</h2>
           <p class="section-desc">
-            Persiapkan dokumen berikut sesuai dengan jalur pendaftaran yang Anda pilih.
+            Berkas wajib diunggah saat pendaftaran online (PDF, JPG, atau PNG, maks. 2 MB per berkas). Siapkan juga berkas tambahan sesuai jalur yang Anda pilih.
           </p>
         </div>
 
@@ -43,30 +43,15 @@
             <div class="berkas-category-tag" style="color: var(--primary);">Semua Jalur</div>
             <h3 class="berkas-title">Berkas Wajib</h3>
             <ul class="berkas-list">
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Scan/Fotokopi Kartu Keluarga (KK)</span>
-              </li>
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Scan/Fotokopi Akta Kelahiran</span>
-              </li>
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Scan/Fotokopi SKHUN atau Ijazah SMP/MTs (bisa menyusul)</span>
-              </li>
-              <li class="berkas-item">
-                <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Pas Foto Berwarna 3x4 terbaru (3 lembar)</span>
-              </li>
+              {{-- Sama dengan berkas yang diunggah di pendaftaran online --}}
+              @foreach (App\Models\Registration::DOCUMENTS as $label)
+                <li class="berkas-item">
+                  <svg class="berkas-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span>Scan/Foto {{ $label }}</span>
+                </li>
+              @endforeach
             </ul>
           </div>
 

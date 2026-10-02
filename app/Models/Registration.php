@@ -43,7 +43,7 @@ class Registration extends Model
     /** Berkas wajib: kunci => label. */
     public const DOCUMENTS = [
         'kk' => 'Kartu Keluarga',
-        'akte' => 'Akte Kelahiran',
+        'akte' => 'Akta Kelahiran',
         'ijazah' => 'Ijazah SMP/MTs',
         'foto' => 'Pas Foto 3x4',
     ];

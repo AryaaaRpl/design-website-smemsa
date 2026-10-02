@@ -25,7 +25,9 @@ class ScholarshipTest extends TestCase
             ->assertSee('Rp 7.300.000')->assertSee('Rp 7.550.000')->assertSee('Rp 7.600.000')
             ->assertSee('9 Kategori Beasiswa')
             ->assertSee('<strong>kedua orang tuanya telah wafat</strong>', false)
-            ->assertSee('Gratis 100% (Bebas Biaya 3 Thn)');
+            ->assertSee('Gratis 100% (Bebas Biaya 3 Thn)')
+            // Berkas wajib sama dengan unggahan pendaftaran online.
+            ->assertSeeInOrder(['Scan/Foto Kartu Keluarga', 'Scan/Foto Akta Kelahiran', 'Scan/Foto Ijazah SMP/MTs', 'Scan/Foto Pas Foto 3x4']);
     }
 
     public function test_fee_setting_recalculates_totals(): void
