@@ -55,7 +55,7 @@
                                 <td>
                                     <div class="table-actions">
                                         <a href="{{ route('admin.extracurriculars.edit', $extracurricular) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.extracurriculars.destroy', $extracurricular) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.extracurriculars.destroy', $extracurricular) }}"
                                             data-confirm="Hapus ekstrakurikuler &quot;{{ $extracurricular->name }}&quot;?">
                                             @csrf
                                             @method('DELETE')

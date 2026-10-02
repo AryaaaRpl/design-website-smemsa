@@ -8,7 +8,7 @@
         <p>Tambahkan fasilitas atau Teaching Factory beserta galerinya.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.facilities.store') }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.facilities.store') }}" enctype="multipart/form-data">
         @csrf
         @include('admin.facilities._form')
     </form>

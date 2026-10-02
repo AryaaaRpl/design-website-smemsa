@@ -1,7 +1,7 @@
 @php use App\Models\Scholarship; @endphp
 
 @if ($errors->any())
-    <div class="alert">Periksa kembali isian form, masih ada data yang belum valid.</div>
+    <div class="alert alert-error">Periksa kembali isian form, masih ada data yang belum valid.</div>
 @endif
 
 <div class="form-layout">

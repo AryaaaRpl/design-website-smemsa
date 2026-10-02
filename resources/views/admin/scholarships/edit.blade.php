@@ -8,7 +8,7 @@
         <p>{{ $scholarship->name }}</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.scholarships.update', $scholarship) }}">
+    <form method="POST" novalidate action="{{ route('admin.scholarships.update', $scholarship) }}">
         @csrf
         @method('PUT')
         @include('admin.scholarships._form')

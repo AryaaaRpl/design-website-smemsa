@@ -8,7 +8,7 @@
         <p>{{ $extracurricular->name }}</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.extracurriculars.update', $extracurricular) }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.extracurriculars.update', $extracurricular) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         @include('admin.extracurriculars._form')

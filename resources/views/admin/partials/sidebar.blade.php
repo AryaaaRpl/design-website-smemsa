@@ -85,7 +85,7 @@
                 Lihat Website
             </span>
         </a>
-        <form method="POST" action="{{ route('admin.logout') }}">
+        <form method="POST" novalidate action="{{ route('admin.logout') }}">
             @csrf
             <button type="submit" class="btn btn-outline btn-block" style="margin-top: 8px;">Keluar</button>
         </form>

@@ -8,7 +8,7 @@
         <p>Berita baru disimpan sebagai draf sampai statusnya diubah menjadi Terbit.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
         @csrf
         @include('admin.posts._form')
     </form>

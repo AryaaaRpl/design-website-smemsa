@@ -66,7 +66,7 @@
                                     <div class="table-actions">
                                         <a href="{{ route('admin.vacancies.create', ['partner' => $partner->id]) }}" class="btn btn-outline btn-sm">+ Lowongan</a>
                                         <a href="{{ route('admin.partners.edit', $partner) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.partners.destroy', $partner) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.partners.destroy', $partner) }}"
                                             data-confirm="Hapus mitra &quot;{{ $partner->name }}&quot;?{{ $partner->job_vacancies_count ? ' '.$partner->job_vacancies_count.' lowongan milik mitra ini ikut terhapus.' : '' }}">
                                             @csrf
                                             @method('DELETE')

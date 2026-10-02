@@ -53,7 +53,7 @@
                                 <td>
                                     <div class="table-actions">
                                         <a href="{{ route('admin.testimonials.edit', $testimonial) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.testimonials.destroy', $testimonial) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.testimonials.destroy', $testimonial) }}"
                                             data-confirm="Hapus testimoni &quot;{{ $testimonial->name }}&quot;?">
                                             @csrf
                                             @method('DELETE')

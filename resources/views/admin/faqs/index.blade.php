@@ -41,7 +41,7 @@
                                 <td>
                                     <div class="table-actions">
                                         <a href="{{ route('admin.faqs.edit', $faq) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.faqs.destroy', $faq) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.faqs.destroy', $faq) }}"
                                             data-confirm="Hapus FAQ &quot;{{ $faq->question }}&quot;?">
                                             @csrf
                                             @method('DELETE')

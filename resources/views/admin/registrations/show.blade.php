@@ -53,14 +53,14 @@
         <div class="table-actions">
             <a href="{{ route('admin.registrations.edit', $registration) }}" class="btn btn-primary">Ubah Status</a>
             @if ($registration->isSubmitted())
-                <form method="POST" action="{{ route('admin.registrations.unlock', $registration) }}"
+                <form method="POST" novalidate action="{{ route('admin.registrations.unlock', $registration) }}"
                     data-confirm-title="Buka Kunci Data?" data-confirm-ok="Ya, Buka Kunci" data-confirm="Buka kunci data {{ $registration->registration_number }}? Pendaftar bisa mengubah data lalu mengirim ulang.">
                     @csrf
                     <button type="submit" class="btn btn-outline">Buka Kunci</button>
                 </form>
             @endif
             @if ($registration->applicant)
-                <form method="POST" action="{{ route('admin.registrations.reset-password', $registration) }}"
+                <form method="POST" novalidate action="{{ route('admin.registrations.reset-password', $registration) }}"
                     data-confirm-title="Reset Kata Sandi?" data-confirm-ok="Ya, Reset" data-confirm="Buat kata sandi baru untuk {{ $registration->applicant->email }}?">
                     @csrf
                     <button type="submit" class="btn btn-outline">Reset Kata Sandi</button>

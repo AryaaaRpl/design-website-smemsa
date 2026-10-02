@@ -8,7 +8,7 @@
         <p>Buat kategori baru untuk berita atau prestasi.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.categories.store') }}" class="form-narrow">
+    <form method="POST" novalidate action="{{ route('admin.categories.store') }}" class="form-narrow">
         @csrf
         @include('admin.categories._form')
     </form>

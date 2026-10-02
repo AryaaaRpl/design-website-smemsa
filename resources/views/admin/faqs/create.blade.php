@@ -8,7 +8,7 @@
         <p>Tambahkan pertanyaan di halaman SPMB.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.faqs.store') }}">
+    <form method="POST" novalidate action="{{ route('admin.faqs.store') }}">
         @csrf
         @include('admin.faqs._form')
     </form>

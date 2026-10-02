@@ -8,7 +8,7 @@
         <p>Tambahkan data pimpinan, guru, atau staff karyawan.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.teachers.store') }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.teachers.store') }}" enctype="multipart/form-data">
         @csrf
         @include('admin.teachers._form')
     </form>

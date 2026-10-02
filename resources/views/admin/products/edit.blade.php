@@ -8,7 +8,7 @@
         <p>{{ $product->name }}</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.products.update', $product) }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.products.update', $product) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         @include('admin.products._form')

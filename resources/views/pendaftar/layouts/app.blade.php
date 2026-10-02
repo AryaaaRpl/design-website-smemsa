@@ -44,7 +44,7 @@
         </nav>
 
         <div class="sidebar-footer">
-            <form method="POST" action="{{ route('pendaftar.logout') }}">
+            <form method="POST" novalidate action="{{ route('pendaftar.logout') }}">
                 @csrf
                 <button type="submit" class="btn btn-outline btn-block">Keluar</button>
             </form>

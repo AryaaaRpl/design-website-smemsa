@@ -70,7 +70,7 @@
                                     <div class="table-actions">
                                         <a href="{{ route('admin.products.create', ['unit' => $unit->id]) }}" class="btn btn-outline btn-sm">+ Produk</a>
                                         <a href="{{ route('admin.business-units.edit', $unit) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.business-units.destroy', $unit) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.business-units.destroy', $unit) }}"
                                             data-confirm="Hapus unit usaha &quot;{{ $unit->name }}&quot;?{{ $unit->products_count ? ' '.$unit->products_count.' produk milik unit ini ikut terhapus.' : '' }}">
                                             @csrf
                                             @method('DELETE')

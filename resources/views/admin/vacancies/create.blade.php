@@ -8,7 +8,7 @@
         <p>Batas lamaran otomatis diisi 30 hari dari hari ini, bisa diubah.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.vacancies.store') }}">
+    <form method="POST" novalidate action="{{ route('admin.vacancies.store') }}">
         @csrf
         @include('admin.vacancies._form')
     </form>

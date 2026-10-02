@@ -12,7 +12,7 @@
                 <p>Masuk untuk melanjutkan pendaftaran</p>
             </div>
 
-            <form method="POST" action="{{ route('pendaftar.login.store') }}">
+            <form method="POST" novalidate action="{{ route('pendaftar.login.store') }}">
                 @csrf
 
                 <div class="form-group">

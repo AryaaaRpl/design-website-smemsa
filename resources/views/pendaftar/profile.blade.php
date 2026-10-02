@@ -12,7 +12,7 @@
                 <p>Lengkapi data berikut untuk mendapatkan nomor pendaftaran</p>
             </div>
 
-            <form method="POST" action="{{ route('pendaftar.profile.store') }}">
+            <form method="POST" novalidate action="{{ route('pendaftar.profile.store') }}">
                 @csrf
 
                 <div class="form-group">
@@ -47,7 +47,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Simpan &amp; Lanjutkan</button>
             </form>
 
-            <form method="POST" action="{{ route('pendaftar.logout') }}" class="login-switch">
+            <form method="POST" novalidate action="{{ route('pendaftar.logout') }}" class="login-switch">
                 @csrf
                 <button type="submit" class="login-link-btn">Keluar</button>
             </form>

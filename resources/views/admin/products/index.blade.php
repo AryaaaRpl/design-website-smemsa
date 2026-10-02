@@ -74,7 +74,7 @@
                                     <div class="table-actions">
                                         <a href="{{ route('blud.show', $product) }}" target="_blank" class="btn btn-outline btn-sm">Lihat</a>
                                         <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.products.destroy', $product) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.products.destroy', $product) }}"
                                             data-confirm="Hapus produk &quot;{{ $product->name }}&quot;?">
                                             @csrf
                                             @method('DELETE')

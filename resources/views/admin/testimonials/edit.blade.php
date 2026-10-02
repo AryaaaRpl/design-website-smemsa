@@ -8,7 +8,7 @@
         <p>{{ $testimonial->name }}</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.testimonials.update', $testimonial) }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.testimonials.update', $testimonial) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         @include('admin.testimonials._form')

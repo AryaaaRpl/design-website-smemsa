@@ -46,7 +46,7 @@
                                 <td>
                                     <div class="table-actions">
                                         <a href="{{ route('admin.scholarships.edit', $scholarship) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.scholarships.destroy', $scholarship) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.scholarships.destroy', $scholarship) }}"
                                             data-confirm="Hapus beasiswa &quot;{{ $scholarship->name }}&quot;?">
                                             @csrf
                                             @method('DELETE')

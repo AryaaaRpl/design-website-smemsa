@@ -8,7 +8,7 @@
         <p>{{ $registration->registration_number }} · {{ $registration->name }}</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.registrations.update', $registration) }}">
+    <form method="POST" novalidate action="{{ route('admin.registrations.update', $registration) }}">
         @csrf
         @method('PUT')
         @include('admin.registrations._form')

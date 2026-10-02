@@ -74,7 +74,7 @@
                                         @endif
                                         <a href="{{ route('admin.registrations.show', $registration) }}" class="btn btn-outline btn-sm">Detail</a>
                                         <a href="{{ route('admin.registrations.edit', $registration) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.registrations.destroy', $registration) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.registrations.destroy', $registration) }}"
                                             data-confirm="Hapus pendaftar {{ $registration->registration_number }} ({{ $registration->name }})?">
                                             @csrf
                                             @method('DELETE')

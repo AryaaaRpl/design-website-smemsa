@@ -8,7 +8,7 @@
         <p>{{ $faq->question }}</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.faqs.update', $faq) }}">
+    <form method="POST" novalidate action="{{ route('admin.faqs.update', $faq) }}">
         @csrf
         @method('PUT')
         @include('admin.faqs._form')

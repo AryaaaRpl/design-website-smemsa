@@ -76,7 +76,7 @@
                                 <td>
                                     <div class="table-actions">
                                         <a href="{{ route('admin.teachers.edit', $teacher) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.teachers.destroy', $teacher) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.teachers.destroy', $teacher) }}"
                                             data-confirm="Hapus data &quot;{{ $teacher->name }}&quot;?">
                                             @csrf
                                             @method('DELETE')

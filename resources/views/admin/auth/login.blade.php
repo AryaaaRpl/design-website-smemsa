@@ -11,7 +11,7 @@
                 <p>Masuk untuk mengelola konten website</p>
             </div>
 
-            <form method="POST" action="{{ route('admin.login.store') }}">
+            <form method="POST" novalidate action="{{ route('admin.login.store') }}">
                 @csrf
 
                 <div class="form-group">

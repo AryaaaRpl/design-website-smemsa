@@ -8,7 +8,7 @@
         <p>{{ $major->code }} &middot; {{ $major->name }}</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.majors.update', $major) }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.majors.update', $major) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         @include('admin.majors._form')

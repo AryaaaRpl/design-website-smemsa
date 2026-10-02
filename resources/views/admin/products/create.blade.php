@@ -11,7 +11,7 @@
     @if ($units->isEmpty())
         <div class="alert">Belum ada unit usaha. <a href="{{ route('admin.business-units.create') }}">Tambah unit usaha</a> terlebih dahulu.</div>
     @else
-        <form method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
+        <form method="POST" novalidate action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
             @csrf
             @include('admin.products._form')
         </form>

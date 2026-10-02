@@ -8,7 +8,7 @@
         <p>Lengkapi data konsentrasi keahlian baru.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.majors.store') }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.majors.store') }}" enctype="multipart/form-data">
         @csrf
         @include('admin.majors._form')
     </form>

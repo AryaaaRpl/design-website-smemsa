@@ -17,10 +17,10 @@
     </div>
 
     @if ($errors->any())
-        <div class="alert">Periksa kembali isian form, masih ada data yang belum valid.</div>
+        <div class="alert alert-error">Periksa kembali isian form, masih ada data yang belum valid.</div>
     @endif
 
-    <form method="POST" action="{{ route('admin.settings.update', $activeGroup) }}" class="form-narrow">
+    <form method="POST" novalidate action="{{ route('admin.settings.update', $activeGroup) }}" class="form-narrow">
         @csrf
         @method('PUT')
 

@@ -27,7 +27,7 @@
         <div class="alert">Pendaftaran sudah dikirim pada {{ $registration->submitted_at->translatedFormat('d F Y, H:i') }} dan data dikunci. Hubungi panitia lewat menu Bantuan untuk perubahan.</div>
     @endif
 
-    <form method="POST" action="{{ route('pendaftar.phase.update', $phase) }}" @if ($phase === 'berkas') enctype="multipart/form-data" @endif>
+    <form method="POST" novalidate action="{{ route('pendaftar.phase.update', $phase) }}" @if ($phase === 'berkas') enctype="multipart/form-data" @endif>
         @csrf
 
         @switch($phase)
@@ -155,7 +155,7 @@
 
     {{-- Semua fase lengkap: kirim pendaftaran (data lalu dikunci) --}}
     @if (! $locked && $current >= 6)
-        <form method="POST" action="{{ route('pendaftar.submit') }}" class="card spmb-card spmb-submit"
+        <form method="POST" novalidate action="{{ route('pendaftar.submit') }}" class="card spmb-card spmb-submit"
             data-confirm-title="Kirim Pendaftaran?" data-confirm-ok="Ya, Kirim"
             data-confirm="Setelah dikirim, data tidak bisa diubah lagi. Pastikan semua isian sudah benar.">
             @csrf

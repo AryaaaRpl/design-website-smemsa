@@ -8,7 +8,7 @@
         <p>Tambahkan unit usaha BLUD baru.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.business-units.store') }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.business-units.store') }}" enctype="multipart/form-data">
         @csrf
         @include('admin.business-units._form')
     </form>

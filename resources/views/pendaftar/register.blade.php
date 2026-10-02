@@ -12,7 +12,7 @@
                 <p>Buat akun untuk memulai pendaftaran</p>
             </div>
 
-            <form method="POST" action="{{ route('pendaftar.register.store') }}">
+            <form method="POST" novalidate action="{{ route('pendaftar.register.store') }}">
                 @csrf
 
                 <div class="form-group">

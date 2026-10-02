@@ -8,7 +8,7 @@
         <p>Nomor pendaftaran dibuat otomatis setelah disimpan. Berikan nomor itu ke calon siswa.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.registrations.store') }}">
+    <form method="POST" novalidate action="{{ route('admin.registrations.store') }}">
         @csrf
         @include('admin.registrations._form')
     </form>

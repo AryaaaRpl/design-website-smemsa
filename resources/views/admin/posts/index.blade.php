@@ -73,7 +73,7 @@
                                 <td>
                                     <div class="table-actions">
                                         <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.posts.destroy', $post) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.posts.destroy', $post) }}"
                                             data-confirm="Hapus berita &quot;{{ $post->title }}&quot;?">
                                             @csrf
                                             @method('DELETE')

@@ -47,7 +47,7 @@
                 <li><strong>Pilih Jalur</strong> &mdash; Reguler, Prestasi, atau Beasiswa &amp; KIP.</li>
                 <li><strong>Isi Data Diri</strong> &mdash; identitas calon peserta didik.</li>
                 <li><strong>Formulir</strong> &mdash; sekolah asal, data orang tua, wali &amp; alamat.</li>
-                <li><strong>Unggah Berkas</strong> &mdash; KK, Akte, Ijazah SMP, Pas Foto 3x4.</li>
+                <li><strong>Unggah Berkas</strong> &mdash; KK, Akta, Ijazah SMP, Pas Foto 3x4.</li>
                 <li><strong>Pilih Jurusan</strong> &mdash; satu konsentrasi keahlian.</li>
                 <li><strong>Pengumuman</strong> &mdash; hasil seleksi dari panitia.</li>
             </ol>

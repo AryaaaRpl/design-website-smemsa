@@ -8,7 +8,7 @@
         <p>Tambahkan skema beasiswa di halaman SPMB.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.scholarships.store') }}">
+    <form method="POST" novalidate action="{{ route('admin.scholarships.store') }}">
         @csrf
         @include('admin.scholarships._form')
     </form>

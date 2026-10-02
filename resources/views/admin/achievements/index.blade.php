@@ -73,7 +73,7 @@
                                 <td>
                                     <div class="table-actions">
                                         <a href="{{ route('admin.achievements.edit', $achievement) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.achievements.destroy', $achievement) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.achievements.destroy', $achievement) }}"
                                             data-confirm="Hapus prestasi &quot;{{ $achievement->title }}&quot;?">
                                             @csrf
                                             @method('DELETE')

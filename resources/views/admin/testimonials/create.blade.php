@@ -8,7 +8,7 @@
         <p>Tambahkan cerita sukses alumni.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.testimonials.store') }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.testimonials.store') }}" enctype="multipart/form-data">
         @csrf
         @include('admin.testimonials._form')
     </form>

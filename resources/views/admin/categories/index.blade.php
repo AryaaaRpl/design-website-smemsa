@@ -51,7 +51,7 @@
                                 <td>
                                     <div class="table-actions">
                                         <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.categories.destroy', $category) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.categories.destroy', $category) }}"
                                             data-confirm="Hapus kategori {{ $category->name }}?{{ $usage ? ' '.$usage.' data terkait akan menjadi tanpa kategori.' : '' }}">
                                             @csrf
                                             @method('DELETE')

@@ -8,7 +8,7 @@
         <p>{{ $teacher->name }} &middot; {{ $teacher->category->label() }}</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.teachers.update', $teacher) }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.teachers.update', $teacher) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         @include('admin.teachers._form')

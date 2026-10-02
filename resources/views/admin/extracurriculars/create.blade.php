@@ -8,7 +8,7 @@
         <p>Tambahkan kegiatan ekstrakurikuler baru.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.extracurriculars.store') }}" enctype="multipart/form-data">
+    <form method="POST" novalidate action="{{ route('admin.extracurriculars.store') }}" enctype="multipart/form-data">
         @csrf
         @include('admin.extracurriculars._form')
     </form>

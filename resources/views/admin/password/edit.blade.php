@@ -8,12 +8,12 @@
         <p>Ganti password akun admin secara berkala agar tetap aman.</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.password.update') }}" class="form-narrow">
+    <form method="POST" novalidate action="{{ route('admin.password.update') }}" class="form-narrow">
         @csrf
         @method('PUT')
 
         @if ($errors->any())
-            <div class="alert">Periksa kembali isian form, masih ada data yang belum valid.</div>
+            <div class="alert alert-error">Periksa kembali isian form, masih ada data yang belum valid.</div>
         @endif
 
         <div class="card form-card">

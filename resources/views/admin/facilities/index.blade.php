@@ -80,7 +80,7 @@
                                 <td>
                                     <div class="table-actions">
                                         <a href="{{ route('admin.facilities.edit', $facility) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <form method="POST" action="{{ route('admin.facilities.destroy', $facility) }}"
+                                        <form method="POST" novalidate action="{{ route('admin.facilities.destroy', $facility) }}"
                                             data-confirm="Hapus fasilitas &quot;{{ $facility->name }}&quot; beserta galerinya?">
                                             @csrf
                                             @method('DELETE')

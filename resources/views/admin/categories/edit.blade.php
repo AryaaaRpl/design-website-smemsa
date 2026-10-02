@@ -8,7 +8,7 @@
         <p>{{ $category->type->label() }} &middot; {{ $category->name }}</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.categories.update', $category) }}" class="form-narrow">
+    <form method="POST" novalidate action="{{ route('admin.categories.update', $category) }}" class="form-narrow">
         @csrf
         @method('PUT')
         @include('admin.categories._form')

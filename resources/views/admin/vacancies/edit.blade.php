@@ -8,7 +8,7 @@
         <p>{{ $vacancy->position }} &middot; {{ $vacancy->partner?->name }} &middot; {{ $vacancy->display_status }}</p>
     </div>
 
-    <form method="POST" action="{{ route('admin.vacancies.update', $vacancy) }}">
+    <form method="POST" novalidate action="{{ route('admin.vacancies.update', $vacancy) }}">
         @csrf
         @method('PUT')
         @include('admin.vacancies._form')
