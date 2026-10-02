@@ -3,6 +3,10 @@
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\Admin\AchievementController as AdminAchievementController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Applicant\AuthController as ApplicantAuthController;
+use App\Http\Controllers\Applicant\DashboardController as ApplicantDashboardController;
+use App\Http\Controllers\Applicant\ProfileController as ApplicantProfileController;
+use App\Http\Middleware\EnsureApplicantRegistered;
 use App\Http\Controllers\Admin\BusinessUnitController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -79,15 +83,36 @@ Route::get('/fasilitas/{facility}', [FacilityController::class, 'show'])->name('
 |--------------------------------------------------------------------------
 */
 
+// Pendaftaran SPMB online: akun pendaftar (guard "applicant"), terpisah dari admin.
+Route::prefix('pendaftar')->name('pendaftar.')->group(function () {
+    Route::middleware('guest:applicant')->group(function () {
+        Route::get('/masuk', [ApplicantAuthController::class, 'showLogin'])->name('login');
+        Route::post('/masuk', [ApplicantAuthController::class, 'login'])->middleware('throttle:5,1')->name('login.store');
+        Route::get('/daftar', [ApplicantAuthController::class, 'showRegister'])->name('register');
+        Route::post('/daftar', [ApplicantAuthController::class, 'register'])->middleware('throttle:5,1')->name('register.store');
+    });
+
+    Route::middleware('auth:applicant')->group(function () {
+        Route::middleware(EnsureApplicantRegistered::class)->group(function () {
+            Route::get('/', [ApplicantDashboardController::class, 'home'])->name('dashboard');
+            Route::get('/pendaftaran', [ApplicantDashboardController::class, 'registration'])->name('registration');
+            Route::get('/pengumuman', [ApplicantDashboardController::class, 'announcement'])->name('announcement');
+            Route::get('/bantuan', [ApplicantDashboardController::class, 'help'])->name('help');
+        });
+        Route::get('/data-awal', [ApplicantProfileController::class, 'create'])->name('profile');
+        Route::post('/data-awal', [ApplicantProfileController::class, 'store'])->name('profile.store');
+        Route::post('/keluar', [ApplicantAuthController::class, 'logout'])->name('logout');
+    });
+});
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::middleware('guest')->group(function () {
+    Route::middleware('guest:web')->group(function () {
         Route::get('/login/portal/shadow/realm', [AuthController::class, 'create'])->name('login');
         Route::post('/login/portal/shadow/realm', [AuthController::class, 'store'])
             ->middleware('throttle:5,1')
             ->name('login.store');
     });
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware('auth:web')->group(function () {
         Route::get('/', DashboardController::class)->name('dashboard');
         Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 

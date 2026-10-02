@@ -13,15 +13,14 @@
           berkarakter Islami.
         </p>
         <div class="header-actions">
-          <a href="{{ $site->whatsappLink('spmb', 'Halo Panitia SPMB SMKS Muhammadiyah 1 Genteng, saya ingin mendaftar siswa baru') }}"
-            target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <a href="{{ route('pendaftar.register') }}" class="btn btn-primary">
             Daftar Sekarang
+          </a>
+          <a href="{{ route('pendaftar.login') }}" class="btn btn-outline">
+            Masuk Akun SPMB
           </a>
           <a href="{{ $site->whatsappLink('spmb') }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             Hubungi Panitia (WhatsApp)
-          </a>
-          <a href="{{ route('spmb.status') }}" class="btn btn-outline">
-            Cek Status Pendaftaran
           </a>
         </div>
       </div>

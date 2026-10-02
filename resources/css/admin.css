@@ -185,6 +185,34 @@ h3 {
     color: var(--blue);
 }
 
+/* Link pindah login/daftar (pendaftar SPMB) */
+.login-switch {
+    margin-top: 18px;
+    font-size: 14px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.login-switch a,
+.login-link-btn {
+    font-weight: 700;
+    color: var(--blue);
+}
+
+.login-switch-muted {
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+.login-link-btn {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
 /* ---------- Layout Dashboard ---------- */
 
 .admin-sidebar {
@@ -1005,4 +1033,174 @@ textarea.form-input {
     font-size: 13px;
     font-weight: 700;
     color: var(--blue);
+}
+
+/* ---------- Dashboard SPMB Pendaftar ---------- */
+
+.spmb-card {
+    margin-bottom: 24px;
+}
+
+.spmb-topbar-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px 18px;
+    text-align: right;
+}
+
+/* Alur pendaftaran: lingkaran nomor + garis penghubung */
+.spmb-steps {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    margin: 0 0 24px;
+    padding: 0;
+    list-style: none;
+}
+
+.spmb-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.spmb-step::before {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: -50%;
+    width: 100%;
+    height: 3px;
+    background: var(--blue-line);
+}
+
+.spmb-step:first-child::before {
+    display: none;
+}
+
+.spmb-step-num {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--blue-line);
+    background: var(--white);
+    font-weight: 700;
+}
+
+.spmb-step.is-active {
+    color: var(--black);
+}
+
+.spmb-step.is-active::before {
+    background: var(--blue);
+}
+
+.spmb-step.is-active .spmb-step-num {
+    border-color: var(--blue);
+    background: var(--blue);
+    color: var(--white);
+}
+
+.spmb-step.is-current .spmb-step-num {
+    border-color: var(--yellow);
+    box-shadow: 0 0 0 4px var(--yellow-soft);
+}
+
+.spmb-announce-desc {
+    margin: 14px 0 18px;
+    line-height: 1.6;
+}
+
+.spmb-note {
+    padding: 14px 16px;
+    border-left: 4px solid var(--yellow);
+    border-radius: var(--radius);
+    background: var(--yellow-soft);
+}
+
+.spmb-note p {
+    margin: 6px 0 0;
+}
+
+/* Modal tata cara (dialog bawaan browser) */
+.spmb-guide {
+    width: min(480px, calc(100% - 32px));
+    padding: 28px;
+    border: 0;
+    border-top: 4px solid var(--yellow);
+    border-radius: var(--radius);
+    color: var(--black);
+}
+
+.spmb-guide::backdrop {
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.spmb-guide h2 {
+    margin: 0 0 14px;
+    font-size: 20px;
+    color: var(--blue);
+}
+
+.spmb-guide ol {
+    margin: 0 0 22px;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+    .spmb-topbar-info {
+        display: none;
+    }
+
+    /* Tabel 1 baris jadi daftar label: isi di HP */
+    .spmb-card .table thead {
+        display: none;
+    }
+
+    .spmb-card .table tr,
+    .spmb-card .table td {
+        display: block;
+    }
+
+    .spmb-card .table td {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        text-align: right;
+    }
+
+    .spmb-card .table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--text-muted);
+        text-align: left;
+    }
+
+    .spmb-steps {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .spmb-step {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .spmb-step::before {
+        top: -14px;
+        left: 17px;
+        width: 3px;
+        height: 14px;
+    }
 }

@@ -13,8 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->redirectGuestsTo(fn () => route('admin.login'));
-        $middleware->redirectUsersTo(fn () => route('admin.dashboard'));
+        // Area pendaftar SPMB (/pendaftar) punya login sendiri, terpisah dari admin.
+        $middleware->redirectGuestsTo(fn (Request $request) => $request->is('pendaftar*') ? route('pendaftar.login') : route('admin.login'));
+        $middleware->redirectUsersTo(fn (Request $request) => $request->is('pendaftar*') ? route('pendaftar.dashboard') : route('admin.dashboard'));
 
         // Situs berada di belakang Cloudflare: pengunjung memakai HTTPS, lalu Cloudflare meneruskan
         // ke server lewat HTTP. Dengan ini Laravel membaca header X-Forwarded-Proto dari Cloudflare,
