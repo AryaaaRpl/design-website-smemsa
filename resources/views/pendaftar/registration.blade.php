@@ -156,7 +156,8 @@
     {{-- Semua fase lengkap: kirim pendaftaran (data lalu dikunci) --}}
     @if (! $locked && $current >= 6)
         <form method="POST" action="{{ route('pendaftar.submit') }}" class="card spmb-card spmb-submit"
-            onsubmit="return confirm('Kirim pendaftaran? Setelah dikirim, data tidak bisa diubah lagi.')">
+            data-confirm-title="Kirim Pendaftaran?" data-confirm-ok="Ya, Kirim"
+            data-confirm="Setelah dikirim, data tidak bisa diubah lagi. Pastikan semua isian sudah benar.">
             @csrf
             <div class="card-body">
                 <strong>Semua fase sudah lengkap.</strong>

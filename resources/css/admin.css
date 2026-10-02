@@ -120,6 +120,11 @@ h3 {
     width: 100%;
 }
 
+.btn-danger {
+    color: var(--white);
+    background: #dc2626;
+}
+
 /* ---------- Alert ---------- */
 
 .alert {
@@ -310,7 +315,7 @@ h3 {
 
 .sidebar-footer {
     margin-top: auto;
-    padding: 10px 15px 0;
+    padding: 10px 15px 10px;
     border-top: 1px solid var(--blue-line);
 }
 
@@ -1331,5 +1336,93 @@ textarea.form-input {
     .spmb-card .form-actions .btn,
     .spmb-submit .btn {
         width: 100%;
+    }
+}
+
+/* ---------- Modal konfirmasi (dialog bawaan, animasi masuk & keluar sama) ---------- */
+
+.confirm-modal {
+    width: min(420px, calc(100% - 32px));
+    padding: 28px;
+    border: 0;
+    border-top: 4px solid var(--yellow);
+    border-radius: var(--radius);
+    color: var(--black);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.confirm-modal::backdrop {
+    background: rgba(15, 23, 42, 0.55);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.confirm-modal.is-open,
+.confirm-modal.is-open::backdrop {
+    opacity: 1;
+}
+
+.confirm-modal.is-open {
+    transform: none;
+}
+
+.confirm-modal.is-danger {
+    border-top-color: #dc2626;
+}
+
+.confirm-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--yellow);
+    background: var(--yellow-soft);
+}
+
+.confirm-modal.is-danger .confirm-icon {
+    color: #dc2626;
+    background: #fee2e2;
+}
+
+.confirm-title {
+    margin: 0 0 8px;
+    font-size: 19px;
+    color: var(--blue);
+}
+
+.confirm-message {
+    margin: 0 0 22px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    overflow-wrap: anywhere;
+}
+
+.confirm-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+@media (max-width: 480px) {
+    .confirm-actions {
+        flex-direction: column-reverse;
+    }
+
+    .confirm-actions .btn {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .confirm-modal,
+    .confirm-modal::backdrop {
+        transition-duration: 0.01ms;
     }
 }

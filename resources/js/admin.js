@@ -22,12 +22,66 @@ document.querySelectorAll('input[type="checkbox"][data-toggle-target]').forEach(
     });
 });
 
-// Konfirmasi sebelum submit: <form data-confirm="Pesan konfirmasi">
+// Konfirmasi sebelum submit lewat modal: <form data-confirm="Pesan" data-confirm-title="Judul" data-confirm-ok="Ya, ...">
+// Form DELETE otomatis memakai tombol merah "Ya, Hapus". Modal dibuat sekali saat pertama dipakai.
+let confirmDialog;
+let confirmForm;
+
+function closeConfirm() {
+    confirmDialog.classList.remove('is-open');
+}
+
+function buildConfirm() {
+    confirmDialog = document.createElement('dialog');
+    confirmDialog.className = 'confirm-modal';
+    confirmDialog.innerHTML = `
+        <div class="confirm-icon" aria-hidden="true">!</div>
+        <h2 class="confirm-title"></h2>
+        <p class="confirm-message"></p>
+        <div class="confirm-actions">
+            <button type="button" class="btn btn-outline" data-cancel>Batal</button>
+            <button type="button" class="btn" data-ok></button>
+        </div>`;
+    document.body.append(confirmDialog);
+
+    confirmDialog.querySelector('[data-cancel]').addEventListener('click', closeConfirm);
+    confirmDialog.querySelector('[data-ok]').addEventListener('click', () => {
+        closeConfirm();
+        HTMLFormElement.prototype.submit.call(confirmForm);
+    });
+    // Esc dan klik di luar kotak: tutup dengan animasi yang sama.
+    confirmDialog.addEventListener('cancel', (event) => {
+        event.preventDefault();
+        closeConfirm();
+    });
+    confirmDialog.addEventListener('click', (event) => {
+        if (event.target === confirmDialog) closeConfirm();
+    });
+    // Dialog baru benar-benar ditutup setelah animasi keluar selesai.
+    confirmDialog.addEventListener('transitionend', (event) => {
+        if (event.target === confirmDialog && !confirmDialog.classList.contains('is-open')) confirmDialog.close();
+    });
+}
+
 document.querySelectorAll('form[data-confirm]').forEach((form) => {
     form.addEventListener('submit', (event) => {
-        if (!confirm(form.dataset.confirm)) {
-            event.preventDefault();
-        }
+        event.preventDefault();
+        if (!confirmDialog) buildConfirm();
+
+        const danger = form.querySelector('input[name="_method"]')?.value === 'DELETE';
+        const ok = confirmDialog.querySelector('[data-ok]');
+
+        confirmForm = form;
+        confirmDialog.classList.toggle('is-danger', danger);
+        confirmDialog.querySelector('.confirm-title').textContent = form.dataset.confirmTitle ?? (danger ? 'Hapus Data?' : 'Konfirmasi');
+        confirmDialog.querySelector('.confirm-message').textContent = form.dataset.confirm;
+        ok.textContent = form.dataset.confirmOk ?? (danger ? 'Ya, Hapus' : 'Ya, Lanjutkan');
+        ok.className = `btn ${danger ? 'btn-danger' : 'btn-primary'}`;
+
+        confirmDialog.showModal();
+        ok.focus();
+        // Frame berikutnya: kelas is-open memicu transisi masuk.
+        requestAnimationFrame(() => requestAnimationFrame(() => confirmDialog.classList.add('is-open')));
     });
 });
 

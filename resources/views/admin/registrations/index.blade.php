@@ -6,7 +6,7 @@
     <div class="page-header page-header-action">
         <div>
             <h1>Pendaftar SPMB</h1>
-            <p>Status di sini tampil di halaman <a href="{{ route('spmb.status') }}" target="_blank">Cek Status Pendaftaran</a>. Calon siswa mengecek dengan nomor pendaftaran & tanggal lahir.</p>
+            <p>Status di sini tampil di menu Pengumuman pada akun pendaftar. Buka Detail untuk melihat data, berkas, buka kunci, dan reset kata sandi.</p>
         </div>
         <a href="{{ route('admin.registrations.create') }}" class="btn btn-primary">+ Tambah Pendaftar</a>
     </div>
@@ -72,6 +72,7 @@
                                         @if ($registration->phone)
                                             <a href="https://wa.me/{{ $registration->phone }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Chat WA</a>
                                         @endif
+                                        <a href="{{ route('admin.registrations.show', $registration) }}" class="btn btn-outline btn-sm">Detail</a>
                                         <a href="{{ route('admin.registrations.edit', $registration) }}" class="btn btn-outline btn-sm">Edit</a>
                                         <form method="POST" action="{{ route('admin.registrations.destroy', $registration) }}"
                                             data-confirm="Hapus pendaftar {{ $registration->registration_number }} ({{ $registration->name }})?">

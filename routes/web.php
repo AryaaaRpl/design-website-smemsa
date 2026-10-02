@@ -29,7 +29,6 @@ use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MajorPageController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\RegistrationStatusController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\VisionMissionController;
 use App\Http\Middleware\EnsureApplicantRegistered;
@@ -42,10 +41,8 @@ Route::get('/peta-sekolah', function () {
 });
 
 Route::get('/visi-misi', VisionMissionController::class)->name('visi-misi');
-
 Route::get('/jurusan', [MajorPageController::class, 'index'])->name('jurusan.index');
 Route::get('/jurusan/{major}', [MajorPageController::class, 'show'])->name('jurusan.show');
-
 Route::get('/blud', [BludController::class, 'index'])->name('blud.index');
 Route::get('/blud/unit/{businessUnit}', [BludController::class, 'unit'])->name('blud.unit');
 Route::get('/blud/{product}', [BludController::class, 'show'])->name('blud.show');
@@ -59,10 +56,6 @@ Route::get('/bkk', BkkController::class)->name('bkk');
 Route::get('/spmb', function () {
     return view('spmb');
 });
-Route::get('/spmb/cek-status', [RegistrationStatusController::class, 'show'])->name('spmb.status');
-Route::post('/spmb/cek-status', [RegistrationStatusController::class, 'check'])
-    ->middleware('throttle:10,1')
-    ->name('spmb.status.check');
 
 Route::get('/ekstrakurikuler', [ExtracurricularController::class, 'index'])->name('ekstrakurikuler');
 Route::get('/ekstrakurikuler/{extracurricular}', [ExtracurricularController::class, 'show'])->name('ekstrakurikuler.show');
@@ -85,7 +78,7 @@ Route::get('/fasilitas/{facility}', [FacilityController::class, 'show'])->name('
 */
 
 // Pendaftaran SPMB online: akun pendaftar (guard "applicant"), terpisah dari admin.
-Route::prefix('pendaftar')->name('pendaftar.')->group(function () {
+Route::prefix('/rpl-smemsa-' . date('Y') . '/pendaftar')->name('pendaftar.')->group(function () {
     Route::middleware('guest:applicant')->group(function () {
         Route::get('/masuk', [ApplicantAuthController::class, 'showLogin'])->name('login');
         Route::post('/masuk', [ApplicantAuthController::class, 'login'])->middleware('throttle:5,1')->name('login.store');
@@ -109,7 +102,7 @@ Route::prefix('pendaftar')->name('pendaftar.')->group(function () {
         Route::post('/keluar', [ApplicantAuthController::class, 'logout'])->name('logout');
     });
 });
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('/rpl-smemsa-space/admin')->name('admin.')->group(function () {
     Route::middleware('guest:web')->group(function () {
         Route::get('/login/portal/shadow/realm', [AuthController::class, 'create'])->name('login');
         Route::post('/login/portal/shadow/realm', [AuthController::class, 'store'])
@@ -118,7 +111,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::middleware('auth:web')->group(function () {
-        Route::get('/', DashboardController::class)->name('dashboard');
+        Route::get('/dashboard', DashboardController::class)->name('dashboard');
         Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 
         Route::resource('majors', MajorController::class)->except('show');
@@ -132,7 +125,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('partners', PartnerController::class)->except('show');
         Route::resource('business-units', BusinessUnitController::class)->except('show');
         Route::resource('products', ProductController::class)->except('show');
-        Route::resource('registrations', RegistrationController::class)->except('show');
+        Route::resource('registrations', RegistrationController::class);
+        Route::post('registrations/{registration}/unlock', [RegistrationController::class, 'unlock'])->name('registrations.unlock');
+        Route::post('registrations/{registration}/reset-password', [RegistrationController::class, 'resetPassword'])->name('registrations.reset-password');
+        Route::get('registration-documents/{document}', [RegistrationController::class, 'document'])->name('registrations.document');
         Route::get('settings/{group?}', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings/{group}', [SettingController::class, 'update'])->name('settings.update');
         Route::get('password', [PasswordController::class, 'edit'])->name('password.edit');

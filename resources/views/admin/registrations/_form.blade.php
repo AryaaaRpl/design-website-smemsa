@@ -25,8 +25,7 @@
                     <label for="birth_date" class="form-label">Tanggal Lahir <span class="required">*</span></label>
                     <input type="date" id="birth_date" name="birth_date" class="form-input"
                         value="{{ old('birth_date', $registration->birth_date?->format('Y-m-d')) }}" required>
-                    <div class="form-help">Dipakai calon siswa bersama nomor pendaftaran untuk mengecek status.</div>
-                    @error('birth_date') <div class="form-error">{{ $message }}</div> @enderror
+                                        @error('birth_date') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
@@ -70,7 +69,7 @@
         </div>
     </div>
 
-    {{-- Kolom kanan: status yang dilihat calon siswa --}}
+    {{-- Kolom kanan: status yang dilihat pendaftar di menu Pengumuman --}}
     <div>
         <div class="card form-card">
             <div class="card-header">Status Pendaftaran</div>
@@ -91,7 +90,7 @@
                     <label for="note" class="form-label">Catatan untuk Calon Siswa</label>
                     <textarea id="note" name="note" class="form-input" rows="5"
                         placeholder="Contoh: Scan Kartu Keluarga buram, mohon unggah ulang.">{{ old('note', $registration->note) }}</textarea>
-                    <div class="form-help">Tampil di halaman cek status. Jangan tulis hal yang bersifat pribadi.</div>
+                    <div class="form-help">Tampil di menu Pengumuman pendaftar. Jangan tulis hal yang bersifat pribadi.</div>
                     @error('note') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
             </div>

@@ -3,13 +3,16 @@
 namespace Tests\Feature;
 
 use App\Enums\RegistrationStatus;
+use App\Models\Applicant;
 use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 /**
- * SPMB: data pendaftar di admin dan cek status oleh calon siswa.
+ * SPMB: data pendaftar di admin.
  */
 class RegistrationStatusTest extends TestCase
 {
@@ -28,47 +31,6 @@ class RegistrationStatusTest extends TestCase
 
         $this->assertMatchesRegularExpression('/^SPMB-\d{4}-[A-Z0-9]{5}$/', $registration->registration_number);
         $this->assertSame(RegistrationStatus::Pending, $registration->fresh()->status);
-    }
-
-    public function test_status_page_renders(): void
-    {
-        $this->get(route('spmb.status'))->assertOk()->assertSee('Cek Status Pendaftaran');
-    }
-
-    public function test_student_can_check_status_with_number_and_birth_date(): void
-    {
-        $registration = $this->registration([
-            'status' => RegistrationStatus::Incomplete, 'note' => 'Scan KK buram, mohon unggah ulang.',
-        ]);
-
-        $this->post(route('spmb.status.check'), [
-            'registration_number' => strtolower($registration->registration_number),
-            'birth_date' => '2011-05-14',
-        ])
-            ->assertOk()
-            ->assertSee('Berkas Perlu Dilengkapi')
-            ->assertSee('Scan KK buram, mohon unggah ulang.')
-            ->assertSee('Ah*** Fa***')
-            ->assertDontSee('Ahmad Fauzi');
-    }
-
-    public function test_wrong_birth_date_shows_not_found(): void
-    {
-        $registration = $this->registration();
-
-        $this->post(route('spmb.status.check'), [
-            'registration_number' => $registration->registration_number,
-            'birth_date' => '2011-05-15',
-        ])
-            ->assertOk()
-            ->assertSee('Data tidak ditemukan')
-            ->assertDontSee('Menunggu Verifikasi');
-    }
-
-    public function test_status_check_requires_both_fields(): void
-    {
-        $this->post(route('spmb.status.check'), [])
-            ->assertSessionHasErrors(['registration_number', 'birth_date']);
     }
 
     public function test_guest_cannot_access_registration_admin(): void
@@ -99,5 +61,33 @@ class RegistrationStatusTest extends TestCase
 
         $this->delete(route('admin.registrations.destroy', $registration))->assertRedirect();
         $this->assertModelMissing($registration);
+    }
+
+    public function test_admin_detail_unlock_and_reset_password(): void
+    {
+        Storage::fake('local');
+        Storage::disk('local')->put('berkas/kk.pdf', 'isi');
+
+        $applicant = Applicant::create(['email' => 'budi@contoh.id', 'password' => 'rahasia123']);
+        $registration = $applicant->registration()->create([
+            'name' => 'Budi Santoso', 'birth_date' => '2011-05-10', 'phone' => '081234567890',
+            'nik' => '3510123456789012', 'guardian_name' => 'Pak Ahmad', 'submitted_at' => now(),
+        ]);
+        $document = $registration->documents()->create(['type' => 'kk', 'path' => 'berkas/kk.pdf', 'original_name' => 'kk.pdf']);
+
+        // Pendaftar tidak bisa membuka admin.
+        $this->get(route('admin.registrations.document', $document))->assertRedirect(route('admin.login'));
+
+        $this->actingAs(User::factory()->create());
+
+        $this->get(route('admin.registrations.show', $registration))->assertOk()
+            ->assertSee('budi@contoh.id')->assertSee('Pak Ahmad')->assertSee('Buka Kunci');
+        $this->get(route('admin.registrations.document', $document))->assertOk();
+
+        $this->post(route('admin.registrations.unlock', $registration))->assertRedirect();
+        $this->assertFalse($registration->fresh()->isSubmitted());
+
+        $this->post(route('admin.registrations.reset-password', $registration))->assertSessionHas('success');
+        $this->assertFalse(Hash::check('rahasia123', $applicant->fresh()->password));
     }
 }

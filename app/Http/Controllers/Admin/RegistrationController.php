@@ -7,12 +7,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RegistrationRequest;
 use App\Models\Major;
 use App\Models\Registration;
+use App\Models\RegistrationDocument;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
- * Data pendaftar SPMB. Status di sini yang dilihat calon siswa di halaman cek status.
+ * Data pendaftar SPMB. Status di sini yang dilihat pendaftar di halaman Pengumuman.
  */
 class RegistrationController extends Controller
 {
@@ -57,6 +61,42 @@ class RegistrationController extends Controller
 
         return redirect()->route('admin.registrations.index')
             ->with('success', "Pendaftar {$registration->name} ditambahkan dengan nomor {$registration->registration_number}.");
+    }
+
+    public function show(Registration $registration): View
+    {
+        return view('admin.registrations.show', [
+            'registration' => $registration->load('major', 'applicant'),
+            'documents' => $registration->documents->keyBy('type'),
+        ]);
+    }
+
+    /**
+     * Buka kunci pendaftaran yang sudah dikirim agar pendaftar bisa memperbaiki data.
+     */
+    public function unlock(Registration $registration): RedirectResponse
+    {
+        $registration->update(['submitted_at' => null]);
+
+        return back()->with('success', "Data {$registration->registration_number} dibuka kembali, pendaftar bisa mengubah dan mengirim ulang.");
+    }
+
+    /**
+     * Lupa kata sandi: panitia membuat sandi baru lalu memberikannya ke pendaftar.
+     */
+    public function resetPassword(Registration $registration): RedirectResponse
+    {
+        abort_unless($registration->applicant, 404);
+
+        $password = Str::lower(Str::random(8));
+        $registration->applicant->update(['password' => $password]);
+
+        return back()->with('success', "Kata sandi baru untuk {$registration->applicant->email}: {$password} (berikan ke pendaftar, sandi ini tidak ditampilkan lagi).");
+    }
+
+    public function document(RegistrationDocument $document): StreamedResponse
+    {
+        return Storage::disk('local')->response($document->path, $document->original_name);
     }
 
     public function edit(Registration $registration): View
