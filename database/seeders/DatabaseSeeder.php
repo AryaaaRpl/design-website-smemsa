@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             ExtracurricularSeeder::class,
             BludSeeder::class,
             ScholarshipSeeder::class,
+            FaqSeeder::class,
         ]);
     }
 }

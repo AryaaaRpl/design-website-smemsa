@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExtracurricularController as AdminExtracurricularController;
 use App\Http\Controllers\Admin\FacilityController as AdminFacilityController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\JobVacancyController;
 use App\Http\Controllers\Admin\MajorController;
 use App\Http\Controllers\Admin\PartnerController;
@@ -33,6 +34,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\VisionMissionController;
 use App\Http\Middleware\EnsureApplicantRegistered;
+use App\Models\Faq;
 use App\Models\Scholarship;
 use Illuminate\Support\Facades\Route;
 
@@ -56,7 +58,10 @@ Route::get('/lsp', function () {
 Route::get('/bkk', BkkController::class)->name('bkk');
 
 Route::get('/spmb', function () {
-    return view('spmb', ['scholarships' => Scholarship::published()->ordered()->get()]);
+    return view('spmb', [
+        'scholarships' => Scholarship::published()->ordered()->get(),
+        'faqs' => Faq::published()->ordered()->get(),
+    ]);
 });
 
 Route::get('/ekstrakurikuler', [ExtracurricularController::class, 'index'])->name('ekstrakurikuler');
@@ -129,6 +134,7 @@ Route::prefix('/rpl-smemsa-space/admin')->name('admin.')->group(function () {
         Route::resource('products', ProductController::class)->except('show');
         Route::resource('registrations', RegistrationController::class);
         Route::resource('scholarships', ScholarshipController::class)->except('show');
+        Route::resource('faqs', FaqController::class)->except('show');
         Route::post('registrations/{registration}/unlock', [RegistrationController::class, 'unlock'])->name('registrations.unlock');
         Route::post('registrations/{registration}/reset-password', [RegistrationController::class, 'resetPassword'])->name('registrations.reset-password');
         Route::get('registration-documents/{document}', [RegistrationController::class, 'document'])->name('registrations.document');

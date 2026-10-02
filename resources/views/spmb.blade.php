@@ -543,65 +543,19 @@
         </div>
 
         <div class="faq-wrapper" id="faq-container">
-          <div class="faq-item">
-            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-1">
-              <span>Kapan periode pendaftaran siswa baru Tahun Ajaran {{ $site->get('spmb_academic_year') }} dibuka?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            <div class="faq-content" id="faq-ans-1">
-              <p>Pendaftaran gelombang awal telah dibuka secara online dan offline. Anda dapat langsung berkonsultasi dan mendaftar melalui sekretariat sekolah atau via WhatsApp resmi panitia.</p>
+          @foreach ($faqs as $faq)
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-{{ $loop->iteration }}">
+                <span>{{ App\Models\Faq::withValues($faq->question) }}</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="faq-content" id="faq-ans-{{ $loop->iteration }}">
+                <p>{{ App\Models\Faq::withValues($faq->answer) }}</p>
+              </div>
             </div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-2">
-              <span>Bagaimana mekanisme cicilan biaya pendidikan (PSM)?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            <div class="faq-content" id="faq-ans-2">
-              <p>Biaya PSM 1 Tahun sebesar {{ $site->rupiah($tuition) }} dapat dicicil 2 kali per semester ({{ $site->rupiah($installment) }} per semester) pada Semester Ganjil dan Genap guna memberikan fleksibilitas pembayaran.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-3">
-              <span>Berapa lama masa berlaku beasiswa di SMKS Muhammadiyah 1 Genteng?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            <div class="faq-content" id="faq-ans-3">
-              <p>Beasiswa sosial/afirmasi (Yatim Piatu, Yatim/Piatu, Tidak Mampu) dan Beasiswa Hafidz 30 Juz berlaku selama 3 tahun penuh (Kelas X, XI, dan XII). Sedangkan Voucher Early Bird Rp 1.000.000 berlaku khusus untuk pemotongan biaya PSM di tahun pertama (Kelas X).</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-4">
-              <span>Apakah Voucher 100 Pendaftar Pertama bisa digabung dengan beasiswa lain?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            <div class="faq-content" id="faq-ans-4">
-              <p>Ya, Voucher Early Bird pendaftaran awal dapat dikombinasikan dengan salah satu beasiswa alumni (SMP/SD Muhammadiyah) atau beasiswa prestasi. Untuk beasiswa gratis 100% (Yatim Piatu / Tahfidz 30 Juz), biaya sudah otomatis bebas sepenuhnya.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-5">
-              <span>Apakah calon siswa boleh memilih konsentrasi keahlian cadangan?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            <div class="faq-content" id="faq-ans-5">
-              <p>Ya, calon siswa dapat memilih jurusan prioritas utama dan jurusan alternatif cadangan saat mengisi formulir pendaftaran.</p>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </section>
