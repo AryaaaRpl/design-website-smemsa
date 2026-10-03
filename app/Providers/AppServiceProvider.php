@@ -10,6 +10,9 @@ use App\Models\Registration;
 use App\Models\Teacher;
 use App\Support\SiteSettings;
 use App\Support\VisitorStats;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -43,6 +46,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Chatbot: 10 pesan per menit per pengunjung. Di belakang Cloudflare, IP asli ada di
+        // header CF-Connecting-IP; tanpa Cloudflare (lokal) memakai IP dari X-Forwarded-For/koneksi.
+        RateLimiter::for('chat', fn (Request $request) => Limit::perMinute(10)
+            ->by($request->header('CF-Connecting-IP') ?: $request->ip()));
+
         // $site tersedia di semua view, contoh: {{ $site->get('npsn') }}.
         View::composer('*', fn ($view) => $view->with('site', app(SiteSettings::class)));
 

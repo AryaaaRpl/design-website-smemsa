@@ -95,60 +95,8 @@
     @include('partials.footer')
     @include('partials.back-to-top')
 
-  <!-- 14. CHATBOT AI ASISTEN VIRTUAL -->
-  <button class="chatbot-btn" id="chatbot-toggle" aria-label="Buka Asisten AI">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      class="lucide lucide-message-circle-more-icon lucide-message-circle-more chatbot-icon-open">
-      <path
-        d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
-      <path d="M8 12h.01" />
-      <path d="M12 12h.01" />
-      <path d="M16 12h.01" />
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-      stroke-linejoin="round" class="lucide lucide-x chatbot-icon-close">
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
-    </svg>
-  </button>
-  <div class="chat-panel" id="chat-panel" data-lenis-prevent>
-    <div class="chat-header">
-      <span>Asisten AI SMEMSA</span>
-      <span style="
-            font-size: 0.75rem;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.2rem 0.5rem;
-            border-radius: 10px;
-          ">Online</span>
-    </div>
-    <div class="chat-body" id="chat-body" data-lenis-prevent>
-      <div class="chat-msg bot">
-        Assalamu'alaikum! Saya asisten AI resmi SMKS Muhammadiyah 1 Genteng.
-        Ada yang bisa saya bantu terkait info {{ $navMajors->isNotEmpty() ? $navMajors->count() . ' ' : '' }}jurusan, alur pendaftaran SPMB,
-        sertifikasi LSP-P1 BNSP, fasilitas, atau loker BKK?
-      </div>
-    </div>
-    <div class="chat-quick-pills">
-      <button class="chat-pill" onclick="sendQuickMsg('Info Jurusan')">
-        Info {{ $navMajors->isNotEmpty() ? $navMajors->count() . ' ' : '' }}Jurusan
-      </button>
-      <button class="chat-pill" onclick="sendQuickMsg('Alur Pendaftaran SPMB')">
-        Alur SPMB
-      </button>
-      <button class="chat-pill" onclick="sendQuickMsg('Info LSP-P1 BNSP')">
-        LSP-P1 BNSP
-      </button>
-      <button class="chat-pill" onclick="sendQuickMsg('Lowongan BKK')">
-        Lowongan BKK
-      </button>
-    </div>
-    <div class="chat-input-bar">
-      <input type="text" id="chat-input-text" placeholder="Ketik pertanyaan Anda..." />
-      <button onclick="handleChatSubmit()">Kirim</button>
-    </div>
-  </div>
+  <!-- 14. CHATBOT AI ASISTEN SMEMSA -->
+  @include('partials.chat-widget')
 
   <!-- Data dari server untuk public/js/site.js (navbar, beranda, chatbot) -->
   <script>

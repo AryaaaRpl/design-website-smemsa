@@ -31,6 +31,7 @@ export default defineConfig({
                 'resources/css/admin.css',
                 'resources/js/admin.js',
                 'resources/js/editor.js',
+                'resources/js/chat-widget.js',
             ],
             refresh: true,
             fonts: [
