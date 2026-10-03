@@ -65,6 +65,22 @@ class ChatTest extends TestCase
         });
     }
 
+    public function test_newer_models_use_thinking_level_and_retry_without_it_on_400(): void
+    {
+        config(['services.gemini.model' => 'gemini-3.8-flash']);
+        Http::fakeSequence('generativelanguage.googleapis.com/*')
+            ->push(['error' => ['message' => 'Request contains an invalid argument.']], 400)
+            ->push(['candidates' => [['content' => ['parts' => [['text' => 'Ada 7 jurusan.']]]]]]);
+
+        $this->postJson('/api/chat', ['message' => 'Ada jurusan apa saja?'])
+            ->assertExactJson(['reply' => 'Ada 7 jurusan.', 'source' => 'ai']);
+
+        $requests = Http::recorded()->map(fn ($pair) => $pair[0]);
+        $this->assertSame(['thinkingLevel' => 'low'], $requests[0]['generationConfig']['thinkingConfig']);
+        $this->assertArrayNotHasKey('thinkingConfig', $requests[1]['generationConfig']);
+        $this->assertStringContainsString('models/gemini-3.8-flash:generateContent', $requests[1]->url());
+    }
+
     public function test_identical_question_without_history_is_served_from_cache(): void
     {
         $this->fakeGemini();
@@ -141,9 +157,9 @@ class ChatTest extends TestCase
             ->assertDontSee('API key not valid')
             ->assertDontSee('kunci-uji-rahasia');
 
-        // Fallback tidak di-cache: pertanyaan yang sama dicoba lagi ke Gemini.
+        // Fallback tidak di-cache: pertanyaan yang sama dicoba lagi ke Gemini (400 diulang sekali → 2 request per pertanyaan).
         $this->postJson('/api/chat', ['message' => 'Ada jurusan apa saja?'])->assertJsonPath('source', 'fallback');
-        Http::assertSentCount(2);
+        Http::assertSentCount(4);
     }
 
     public function test_missing_api_key_returns_fallback(): void

@@ -7,6 +7,7 @@ use App\Models\JobVacancy;
 use App\Models\Major;
 use App\Models\Teacher;
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -71,24 +72,28 @@ class ChatAssistant
             ->map(fn (string $category) => ['category' => "HARM_CATEGORY_{$category}", 'threshold' => 'BLOCK_LOW_AND_ABOVE'])
             ->all();
 
-        try {
-            $response = Http::withHeaders(['x-goog-api-key' => $key])
-                ->acceptJson()
-                ->connectTimeout(5)
-                ->timeout(15)
-                ->post(sprintf(self::ENDPOINT, config('services.gemini.model')), [
-                    'systemInstruction' => ['parts' => [['text' => $this->systemPrompt()]]],
-                    'contents' => $contents,
-                    'safetySettings' => $safety,
-                    'generationConfig' => [
-                        'temperature' => 0.3,
-                        'maxOutputTokens' => 400,
-                        // Tanpa "thinking" agar jatah token habis untuk jawaban & respons lebih cepat.
-                        'thinkingConfig' => ['thinkingBudget' => 0],
-                    ],
-                ]);
-        } catch (ConnectionException $e) {
-            throw new RuntimeException('Gemini tidak merespons: '.$e->getMessage(), previous: $e);
+        $model = (string) config('services.gemini.model');
+        $payload = [
+            'systemInstruction' => ['parts' => [['text' => $this->systemPrompt()]]],
+            'contents' => $contents,
+            'safetySettings' => $safety,
+            'generationConfig' => [
+                'temperature' => 0.3,
+                'maxOutputTokens' => 400,
+                // "Thinking" seminimal mungkin agar jatah token untuk jawaban & respons cepat.
+                // Gemini 2.5 memakai thinkingBudget, Gemini 3 ke atas memakai thinkingLevel.
+                'thinkingConfig' => str_starts_with($model, 'gemini-2.5')
+                    ? ['thinkingBudget' => 0]
+                    : ['thinkingLevel' => 'low'],
+            ],
+        ];
+
+        $response = $this->send($key, $model, $payload);
+
+        // Model yang tidak mengenal pengaturan thinking menolak dengan 400: ulangi sekali tanpa pengaturan itu.
+        if ($response->status() === 400) {
+            unset($payload['generationConfig']['thinkingConfig']);
+            $response = $this->send($key, $model, $payload);
         }
 
         if ($response->failed()) {
@@ -97,6 +102,24 @@ class ChatAssistant
         }
 
         return trim(collect($response->json('candidates.0.content.parts', []))->pluck('text')->implode(''));
+    }
+
+    /**
+     * @param  array<string, mixed>  $payload
+     *
+     * @throws RuntimeException bila Gemini tidak merespons (timeout/koneksi).
+     */
+    private function send(string $key, string $model, array $payload): Response
+    {
+        try {
+            return Http::withHeaders(['x-goog-api-key' => $key])
+                ->acceptJson()
+                ->connectTimeout(5)
+                ->timeout(15)
+                ->post(sprintf(self::ENDPOINT, $model), $payload);
+        } catch (ConnectionException $e) {
+            throw new RuntimeException('Gemini tidak merespons: '.$e->getMessage(), previous: $e);
+        }
     }
 
     /**
