@@ -6,7 +6,6 @@ use App\Enums\TeacherCategory;
 use App\Models\Teacher;
 use Closure;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class TeacherRequest extends FormRequest
@@ -19,7 +18,6 @@ class TeacherRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'slug' => Str::slug($this->input('slug') ?: $this->input('name')),
             'is_active' => $this->boolean('is_active'),
         ]);
     }
@@ -33,7 +31,6 @@ class TeacherRequest extends FormRequest
 
         return [
             'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('teachers')->ignore($teacher)],
             'nip' => ['nullable', 'string', 'max:30', Rule::unique('teachers')->ignore($teacher)],
             'position' => ['required', 'string', 'max:255'],
             'category' => [

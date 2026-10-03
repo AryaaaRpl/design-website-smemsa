@@ -4,7 +4,6 @@ namespace App\Http\Requests\Admin;
 
 use App\Enums\CardStyle;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class ExtracurricularRequest extends FormRequest
@@ -17,7 +16,6 @@ class ExtracurricularRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'slug' => Str::slug($this->input('slug') ?: $this->input('name')),
             'is_active' => $this->boolean('is_active'),
             // Textarea "satu baris satu prestasi" menjadi array.
             'achievements' => collect(preg_split('/\R/', (string) $this->input('achievements')))
@@ -35,7 +33,6 @@ class ExtracurricularRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('extracurriculars')->ignore($this->route('extracurricular'))],
             'tag' => ['nullable', 'string', 'max:100'],
             'short_description' => ['nullable', 'string', 'max:500'],
             'description' => ['nullable', 'string'],

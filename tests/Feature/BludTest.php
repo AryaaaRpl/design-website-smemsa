@@ -121,7 +121,7 @@ class BludTest extends TestCase
         ])->assertRedirect(route('admin.products.index'));
         $this->assertSame('Parfum Baru', $product->fresh()->name);
 
-        $this->delete(route('admin.products.destroy', $product))->assertRedirect(route('admin.products.index'));
+        $this->delete(route('admin.products.destroy', $product->fresh()))->assertRedirect(route('admin.products.index'));
         $this->assertModelMissing($product);
 
         $this->delete(route('admin.business-units.destroy', $unit))->assertRedirect(route('admin.business-units.index'));

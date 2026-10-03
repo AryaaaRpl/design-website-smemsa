@@ -87,7 +87,7 @@ class ExtracurricularTest extends TestCase
             ->assertRedirect(route('admin.extracurriculars.index'));
         $this->assertSame('Baru', $ekskul->fresh()->name);
 
-        $this->actingAs($this->admin)->delete(route('admin.extracurriculars.destroy', $ekskul));
+        $this->actingAs($this->admin)->delete(route('admin.extracurriculars.destroy', $ekskul->fresh()));
         $this->assertModelMissing($ekskul);
     }
 

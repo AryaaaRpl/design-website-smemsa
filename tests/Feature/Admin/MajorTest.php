@@ -60,7 +60,7 @@ class MajorTest extends TestCase
 
         $major = Major::firstWhere('code', 'TKR');
 
-        $this->assertSame('teknik-kendaraan-ringan', $major->slug);
+        $this->assertSame('tkr', $major->slug);
         $this->assertSame(['Mesin', 'Kelistrikan'], $major->competencies);
         Storage::disk('public')->assertExists($major->logo);
     }

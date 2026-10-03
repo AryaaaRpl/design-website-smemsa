@@ -13,13 +13,6 @@
         </div>
 
         <div class="form-group">
-            <label for="slug" class="form-label">Slug</label>
-            <input type="text" id="slug" name="slug" class="form-input" value="{{ old('slug', $partner->slug) }}">
-            <div class="form-help">Kosongkan agar dibuat otomatis dari nama.</div>
-            @error('slug') <div class="form-error">{{ $message }}</div> @enderror
-        </div>
-
-        <div class="form-group">
             <label for="industry" class="form-label">Bidang Industri</label>
             <input type="text" id="industry" name="industry" class="form-input"
                 value="{{ old('industry', $partner->industry) }}" placeholder="Teknologi Informasi">

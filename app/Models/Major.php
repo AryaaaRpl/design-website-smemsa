@@ -28,6 +28,12 @@ class Major extends Model
 {
     use HasMediaUrl, HasSlug;
 
+    /** Slug dari kode jurusan, contoh: PPLG → /jurusan/pplg. */
+    protected function slugSource(): string
+    {
+        return 'code';
+    }
+
     protected function casts(): array
     {
         return [

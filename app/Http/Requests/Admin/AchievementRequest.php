@@ -5,7 +5,6 @@ namespace App\Http\Requests\Admin;
 use App\Enums\AchievementLevel;
 use App\Enums\CategoryType;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class AchievementRequest extends FormRequest
@@ -15,13 +14,6 @@ class AchievementRequest extends FormRequest
         return true;
     }
 
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'slug' => Str::slug($this->input('slug') ?: $this->input('title')),
-        ]);
-    }
-
     /**
      * @return array<string, mixed>
      */
@@ -29,7 +21,6 @@ class AchievementRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('achievements')->ignore($this->route('achievement'))],
             'category_id' => [
                 'required',
                 Rule::exists('categories', 'id')->where('type', CategoryType::Achievement->value),

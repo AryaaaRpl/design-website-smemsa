@@ -125,7 +125,7 @@ class AchievementTest extends TestCase
             ->assertRedirect(route('admin.achievements.index'));
         $this->assertSame('Baru', $achievement->fresh()->title);
 
-        $this->actingAs($this->admin)->delete(route('admin.achievements.destroy', $achievement));
+        $this->actingAs($this->admin)->delete(route('admin.achievements.destroy', $achievement->fresh()));
         $this->assertSoftDeleted($achievement);
     }
 

@@ -6,7 +6,6 @@ use App\Enums\ProductType;
 use App\Support\SiteSettings;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class ProductRequest extends FormRequest
@@ -19,7 +18,6 @@ class ProductRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'slug' => Str::slug($this->input('slug') ?: $this->input('name')),
             'is_active' => $this->boolean('is_active'),
             'is_featured' => $this->boolean('is_featured'),
             // Harga boleh ditulis "35.000".
@@ -45,7 +43,6 @@ class ProductRequest extends FormRequest
         return [
             'business_unit_id' => ['required', 'integer', 'exists:business_units,id'],
             'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('products')->ignore($this->route('product'))],
             'tagline' => ['nullable', 'string', 'max:255'],
             'summary' => ['nullable', 'string', 'max:500'],
             'description' => ['nullable', 'string'],

@@ -5,7 +5,6 @@ namespace App\Http\Requests\Admin;
 use App\Enums\FacilityIcon;
 use App\Enums\FacilityType;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class FacilityRequest extends FormRequest
@@ -18,7 +17,6 @@ class FacilityRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'slug' => Str::slug($this->input('slug') ?: $this->input('name')),
             'show_in_tefa_list' => $this->boolean('show_in_tefa_list'),
             'is_featured' => $this->boolean('is_featured'),
             'is_wide' => $this->boolean('is_wide'),
@@ -40,7 +38,6 @@ class FacilityRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'short_name' => ['nullable', 'string', 'max:100'],
             'mark' => ['nullable', 'string', 'max:5'],
-            'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('facilities')->ignore($this->route('facility'))],
             'type' => ['required', Rule::enum(FacilityType::class)],
             'major_id' => ['nullable', 'exists:majors,id'],
             'tag' => ['nullable', 'string', 'max:100'],

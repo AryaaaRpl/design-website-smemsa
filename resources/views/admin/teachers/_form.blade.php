@@ -31,12 +31,6 @@
                         @error('nip') <div class="form-error">{{ $message }}</div> @enderror
                     </div>
 
-                    <div class="form-group">
-                        <label for="slug" class="form-label">Slug</label>
-                        <input type="text" id="slug" name="slug" class="form-input" value="{{ old('slug', $teacher->slug) }}">
-                        <div class="form-help">Kosongkan agar dibuat otomatis.</div>
-                        @error('slug') <div class="form-error">{{ $message }}</div> @enderror
-                    </div>
                 </div>
 
                 <div class="form-group">

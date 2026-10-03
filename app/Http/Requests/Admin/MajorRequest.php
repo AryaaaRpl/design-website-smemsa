@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class MajorRequest extends FormRequest
@@ -21,7 +20,6 @@ class MajorRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $data = [
-            'slug' => Str::slug($this->input('slug') ?: $this->input('name')),
             'is_active' => $this->boolean('is_active'),
         ];
 
@@ -47,7 +45,6 @@ class MajorRequest extends FormRequest
             'code' => ['required', 'string', 'max:20', Rule::unique('majors')->ignore($major)],
             'name' => ['required', 'string', 'max:255'],
             'short_name' => ['nullable', 'string', 'max:50'],
-            'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('majors')->ignore($major)],
             'description' => ['nullable', 'string', 'max:1000'],
             'logo' => ['nullable', 'image', 'max:2048'],
             'student_photo' => ['nullable', 'image', 'max:2048'],
@@ -78,7 +75,6 @@ class MajorRequest extends FormRequest
             'code' => 'kode',
             'name' => 'nama jurusan',
             'short_name' => 'nama pendek',
-            'slug' => 'slug',
             'description' => 'deskripsi',
             'logo' => 'logo',
             'student_photo' => 'foto siswa',

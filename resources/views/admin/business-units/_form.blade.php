@@ -21,13 +21,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="slug" class="form-label">Slug</label>
-                    <input type="text" id="slug" name="slug" class="form-input" value="{{ old('slug', $unit->slug) }}">
-                    <div class="form-help">Kosongkan agar dibuat otomatis dari nama.</div>
-                    @error('slug') <div class="form-error">{{ $message }}</div> @enderror
-                </div>
-
-                <div class="form-group">
                     <label for="tagline" class="form-label">Bidang Usaha</label>
                     <input type="text" id="tagline" name="tagline" class="form-input" value="{{ old('tagline', $unit->tagline) }}"
                         placeholder="Percetakan & Merchandise">

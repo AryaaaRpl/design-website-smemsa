@@ -24,13 +24,6 @@
             @error('name') <div class="form-error">{{ $message }}</div> @enderror
         </div>
 
-        <div class="form-group">
-            <label for="slug" class="form-label">Slug</label>
-            <input type="text" id="slug" name="slug" class="form-input" value="{{ old('slug', $category->slug) }}"
-                placeholder="kegiatan">
-            <div class="form-help">Kosongkan agar dibuat otomatis dari nama. Dipakai untuk filter di halaman website.</div>
-            @error('slug') <div class="form-error">{{ $message }}</div> @enderror
-        </div>
     </div>
 </div>
 

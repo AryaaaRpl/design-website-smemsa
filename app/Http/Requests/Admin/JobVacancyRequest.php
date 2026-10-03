@@ -5,7 +5,6 @@ namespace App\Http\Requests\Admin;
 use App\Enums\EmploymentType;
 use App\Enums\VacancyStatus;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class JobVacancyRequest extends FormRequest
@@ -13,13 +12,6 @@ class JobVacancyRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
-    }
-
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'slug' => Str::slug($this->input('slug') ?: $this->input('position')),
-        ]);
     }
 
     /**
@@ -30,7 +22,6 @@ class JobVacancyRequest extends FormRequest
         return [
             'partner_id' => ['required', 'exists:partners,id'],
             'position' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('job_vacancies')->ignore($this->route('vacancy'))],
             'employment_type' => ['required', Rule::enum(EmploymentType::class)],
             'location' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],

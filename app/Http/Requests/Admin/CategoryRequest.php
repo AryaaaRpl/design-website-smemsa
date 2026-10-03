@@ -17,7 +17,7 @@ class CategoryRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'slug' => Str::slug($this->input('slug') ?: $this->input('name')),
+            'slug' => Str::slug((string) $this->input('name')),
         ]);
     }
 
@@ -50,7 +50,7 @@ class CategoryRequest extends FormRequest
         return [
             'type' => 'tipe',
             'name' => 'nama kategori',
-            'slug' => 'slug',
+            'slug' => 'nama kategori',
         ];
     }
 }

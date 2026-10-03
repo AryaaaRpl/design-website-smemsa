@@ -21,13 +21,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="slug" class="form-label">Slug</label>
-                    <input type="text" id="slug" name="slug" class="form-input" value="{{ old('slug', $extracurricular->slug) }}">
-                    <div class="form-help">Kosongkan agar dibuat otomatis dari nama.</div>
-                    @error('slug') <div class="form-error">{{ $message }}</div> @enderror
-                </div>
-
-                <div class="form-group">
                     <label for="tag" class="form-label">Label</label>
                     <input type="text" id="tag" name="tag" class="form-input" value="{{ old('tag', $extracurricular->tag) }}"
                         placeholder="Kepanduan Islami Wajib">

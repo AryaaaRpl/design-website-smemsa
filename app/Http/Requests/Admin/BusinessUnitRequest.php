@@ -5,7 +5,6 @@ namespace App\Http\Requests\Admin;
 use App\Enums\BusinessManager;
 use App\Support\SiteSettings;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class BusinessUnitRequest extends FormRequest
@@ -18,7 +17,6 @@ class BusinessUnitRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'slug' => Str::slug($this->input('slug') ?: $this->input('name')),
             'is_active' => $this->boolean('is_active'),
             // 0822... menjadi 62822...
             'whatsapp' => SiteSettings::normalizeWhatsapp($this->input('whatsapp')),
@@ -38,7 +36,6 @@ class BusinessUnitRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('business_units')->ignore($this->route('business_unit'))],
             'tagline' => ['nullable', 'string', 'max:255'],
             'summary' => ['nullable', 'string', 'max:500'],
             'description' => ['nullable', 'string'],

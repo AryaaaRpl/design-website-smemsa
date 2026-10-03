@@ -33,14 +33,6 @@
         </div>
 
         <div class="form-group">
-            <label for="slug" class="form-label">Slug</label>
-            <input type="text" id="slug" name="slug" class="form-input" value="{{ old('slug', $major->slug) }}"
-                placeholder="rpl">
-            <div class="form-help">Kosongkan agar dibuat otomatis dari nama. Dipakai tombol pintasan jurusan di beranda.</div>
-            @error('slug') <div class="form-error">{{ $message }}</div> @enderror
-        </div>
-
-        <div class="form-group">
             <label for="sort_order" class="form-label">Urutan Tampil <span class="required">*</span></label>
             <input type="number" id="sort_order" name="sort_order" class="form-input" min="0"
                 value="{{ old('sort_order', $major->sort_order) }}" required>

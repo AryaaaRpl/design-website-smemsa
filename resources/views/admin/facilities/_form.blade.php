@@ -33,13 +33,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="slug" class="form-label">Slug</label>
-                        <input type="text" id="slug" name="slug" class="form-input" value="{{ old('slug', $facility->slug) }}">
-                        <div class="form-help">Kosongkan agar dibuat otomatis.</div>
-                        @error('slug') <div class="form-error">{{ $message }}</div> @enderror
-                    </div>
-
-                    <div class="form-group">
                         <label for="tag" class="form-label">Label Kategori</label>
                         <input type="text" id="tag" name="tag" class="form-input" value="{{ old('tag', $facility->tag) }}"
                             placeholder="Teaching Factory · DKV">

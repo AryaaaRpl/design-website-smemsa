@@ -30,13 +30,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="slug" class="form-label">Slug</label>
-                    <input type="text" id="slug" name="slug" class="form-input" value="{{ old('slug', $vacancy->slug) }}">
-                    <div class="form-help">Kosongkan agar dibuat otomatis dari posisi.</div>
-                    @error('slug') <div class="form-error">{{ $message }}</div> @enderror
-                </div>
-
-                <div class="form-group">
                     <label for="location" class="form-label">Lokasi Penempatan</label>
                     <input type="text" id="location" name="location" class="form-input"
                         value="{{ old('location', $vacancy->location) }}" placeholder="Surabaya / Banyuwangi">

@@ -16,13 +16,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="slug" class="form-label">Slug</label>
-                    <input type="text" id="slug" name="slug" class="form-input" value="{{ old('slug', $achievement->slug) }}">
-                    <div class="form-help">Kosongkan agar dibuat otomatis dari judul.</div>
-                    @error('slug') <div class="form-error">{{ $message }}</div> @enderror
-                </div>
-
-                <div class="form-group">
                     <label for="excerpt" class="form-label">Ringkasan</label>
                     <textarea id="excerpt" name="excerpt" class="form-input" rows="2">{{ old('excerpt', $achievement->excerpt) }}</textarea>
                     <div class="form-help">Tampil di kartu katalog. Maks. 500 karakter.</div>
