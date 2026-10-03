@@ -219,8 +219,10 @@
   transition: border-color 0.2s, background 0.2s;
 }
 
-.chat-form input:focus {
-  outline: none;
+/* Fokus cukup cincin biru; timpa outline oranye global (index.css memakai !important). */
+.chat-panel .chat-form input:focus,
+.chat-panel .chat-form input:focus-visible {
+  outline: none !important;
   background: #fff;
   border-color: var(--primary-light, #2563eb);
   box-shadow: 0 0 0 3px var(--primary-glow, rgba(30, 64, 175, 0.2));
