@@ -102,3 +102,55 @@
     background: rgba(15, 23, 42, 0.8) !important;
   }
 }
+
+/* ==========================================================================
+   ISI DARI EDITOR (Trix): judul, daftar, kutipan, link di halaman detail
+   ========================================================================== */
+:is(.news-detail-body, .bl-prose, .ek-prose, .pd-prose) :is(h1, h2, h3) {
+  margin: 1.6rem 0 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--text-dark);
+}
+
+:is(.news-detail-body, .bl-prose, .ek-prose, .pd-prose) :is(ul, ol) {
+  margin: 0 0 1.1rem;
+  padding-left: 1.4rem;
+}
+
+:is(.news-detail-body, .bl-prose, .ek-prose, .pd-prose) ul {
+  list-style: disc;
+}
+
+:is(.news-detail-body, .bl-prose, .ek-prose, .pd-prose) ol {
+  list-style: decimal;
+}
+
+:is(.news-detail-body, .bl-prose, .ek-prose, .pd-prose) li {
+  margin-bottom: 0.35rem;
+}
+
+:is(.news-detail-body, .bl-prose, .ek-prose, .pd-prose) blockquote {
+  margin: 0 0 1.1rem;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--primary);
+  background: rgba(30, 64, 175, 0.05);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+:is(.news-detail-body, .bl-prose, .ek-prose, .pd-prose) a {
+  color: var(--primary);
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+:is(.news-detail-body, .bl-prose, .ek-prose, .pd-prose) pre {
+  margin: 0 0 1.1rem;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #f1f5f9;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}

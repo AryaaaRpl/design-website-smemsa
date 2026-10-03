@@ -24,8 +24,8 @@
 
                 <div class="form-group">
                     <label for="description" class="form-label">Deskripsi Lengkap</label>
-                    <textarea id="description" name="description" class="form-input" rows="10">{{ old('description', $achievement->description) }}</textarea>
-                    <div class="form-help">Tampil di modal detail. Pisahkan paragraf dengan satu baris kosong.</div>
+                    @include('admin.partials.rich-editor', ['name' => 'description', 'value' => old('description', $achievement->description)])
+                    <div class="form-help">Tampil di modal detail.</div>
                     @error('description') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
             </div>

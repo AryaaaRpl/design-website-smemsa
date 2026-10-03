@@ -23,8 +23,7 @@
 
                 <div class="form-group">
                     <label for="body" class="form-label">Isi Berita <span class="required">*</span></label>
-                    <textarea id="body" name="body" class="form-input" rows="12" required>{{ old('body', $post->body) }}</textarea>
-                    <div class="form-help">Pisahkan paragraf dengan satu baris kosong.</div>
+                    @include('admin.partials.rich-editor', ['name' => 'body', 'value' => old('body', $post->body)])
                     @error('body') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
             </div>

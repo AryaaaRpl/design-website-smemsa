@@ -1556,3 +1556,26 @@ textarea.form-input {
         display: none;
     }
 }
+
+/* ---------- Editor isi (Trix) ---------- */
+
+trix-toolbar .trix-button-group {
+    border-color: var(--blue-line);
+    border-radius: var(--radius);
+}
+
+/* Tanpa unggah berkas di dalam isi */
+trix-toolbar .trix-button-group--file-tools {
+    display: none;
+}
+
+.rich-editor {
+    min-height: 260px;
+    max-height: 70vh;
+    overflow-y: auto;
+    line-height: 1.7;
+}
+
+.rich-editor h1 {
+    font-size: 1.25em;
+}

@@ -42,8 +42,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="description" class="form-label">Deskripsi Lengkap</label>
-                    <textarea id="description" name="description" class="form-input" rows="8">{{ old('description', $extracurricular->description) }}</textarea>
-                    <div class="form-help">Pisahkan paragraf dengan satu baris kosong.</div>
+                    @include('admin.partials.rich-editor', ['name' => 'description', 'value' => old('description', $extracurricular->description)])
                     @error('description') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
 
