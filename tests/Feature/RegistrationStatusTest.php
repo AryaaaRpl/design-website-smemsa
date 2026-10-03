@@ -87,7 +87,7 @@ class RegistrationStatusTest extends TestCase
         $this->post(route('admin.registrations.unlock', $registration))->assertRedirect();
         $this->assertFalse($registration->fresh()->isSubmitted());
 
-        $this->post(route('admin.registrations.reset-password', $registration))->assertSessionHas('success');
+        $this->post(route('admin.registrations.reset-password', $registration))->assertSessionHas('new_password');
         $this->assertFalse(Hash::check('rahasia123', $applicant->fresh()->password));
     }
 }

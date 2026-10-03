@@ -15,6 +15,8 @@
     --yellow-soft: rgba(234, 179, 8, 0.15);
     --red: #dc2626;
     --red-soft: rgba(220, 38, 38, 0.06);
+    --green: #16a34a;
+    --green-soft: rgba(22, 163, 74, 0.1);
     --text-muted: rgba(15, 23, 42, 0.6);
 
     --radius: 10px;
@@ -1458,6 +1460,58 @@ textarea.form-input {
     gap: 10px;
 }
 
+/* Notifikasi berhasil: versi hijau modal konfirmasi */
+.btn-success {
+    color: var(--white);
+    background: var(--green);
+}
+
+.confirm-modal.is-success {
+    overflow: hidden;
+    border-top-color: var(--green);
+}
+
+.confirm-modal.is-success .confirm-icon {
+    color: var(--green);
+    background: var(--green-soft);
+}
+
+.confirm-modal.is-success .confirm-title {
+    color: var(--green);
+}
+
+.flash-password {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: -8px 0 22px;
+}
+
+.flash-password code {
+    padding: 8px 14px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: var(--radius);
+    background: var(--green-soft);
+}
+
+/* Garis waktu tutup otomatis 3 detik */
+.flash-timer {
+    height: 3px;
+    margin: 20px -28px -28px;
+    background: var(--green);
+    transform-origin: left;
+    animation: flash-timer 3s linear forwards;
+}
+
+@keyframes flash-timer {
+    to {
+        transform: scaleX(0);
+    }
+}
+
 @media (max-width: 480px) {
     .confirm-actions {
         flex-direction: column-reverse;
@@ -1474,5 +1528,9 @@ textarea.form-input {
     .spmb-guide,
     .spmb-guide::backdrop {
         transition-duration: 0.01ms;
+    }
+
+    .flash-timer {
+        display: none;
     }
 }

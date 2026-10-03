@@ -30,7 +30,7 @@
 
         <main class="admin-content">
             @if (session('success'))
-                <div class="alert">{{ session('success') }}</div>
+                <div id="flash-success" data-message="{{ session('success') }}" data-password="{{ session('new_password') }}" hidden></div>
             @endif
 
             @yield('content')

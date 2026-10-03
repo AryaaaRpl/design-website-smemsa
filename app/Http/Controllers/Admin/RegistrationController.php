@@ -91,7 +91,9 @@ class RegistrationController extends Controller
         $password = Str::lower(Str::random(8));
         $registration->applicant->update(['password' => $password]);
 
-        return back()->with('success', "Kata sandi baru untuk {$registration->applicant->email}: {$password} (berikan ke pendaftar, sandi ini tidak ditampilkan lagi).");
+        return back()
+            ->with('success', "Kata sandi baru untuk {$registration->applicant->email}. Berikan ke pendaftar, sandi ini tidak ditampilkan lagi.")
+            ->with('new_password', $password);
     }
 
     public function document(RegistrationDocument $document): StreamedResponse

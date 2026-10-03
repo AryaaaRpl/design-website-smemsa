@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         // Akun admin awal. Ganti password setelah login pertama.
         User::firstOrCreate(
-            ['email' => 'testinger@gmail.com'],
-            ['name' => 'Administrator', 'password' => 'cacamalicaee'],
+            ['email' => 'adminsmemsa1968@gmail.com'],
+            ['name' => 'Administrator', 'password' => '123password123'],
         );
 
         $this->call([

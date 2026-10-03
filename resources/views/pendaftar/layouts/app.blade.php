@@ -69,8 +69,9 @@
         </nav>
 
         <main class="admin-content">
-            @if (session('success'))
-                <div class="alert">{{ session('success') }}</div>
+            {{-- Saat modal Tata Cara tampil, notifikasi berhasil tidak ikut muncul agar modal tidak bertumpuk. --}}
+            @if (session('success') && ! session('show_guide'))
+                <div id="flash-success" data-message="{{ session('success') }}" hidden></div>
             @endif
 
             @yield('content')
