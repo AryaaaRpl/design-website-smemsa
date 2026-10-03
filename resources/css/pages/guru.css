@@ -319,12 +319,14 @@ a {
 }
 
 .hero-bg-img {
+  /* relative: ikut urutan tumpukan, jadi di atas grid ::before */
+  position: relative;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
-  opacity: 0.28;
-  filter: contrast(1.1) brightness(0.9);
+  /* Gambar tetap pekat (tanpa opacity) agar grid di belakangnya tertutup; diredupkan lewat brightness. */
+  filter: contrast(1.1) brightness(0.45);
   animation: heroFloat 10s ease-in-out infinite alternate;
 }
 
@@ -333,6 +335,20 @@ a {
   inset: 0;
   background: radial-gradient(circle at center, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.85) 85%);
   pointer-events: none;
+}
+
+/* Grid garis putih tipis seperti hero beranda (.px-grid), memudar ke tepi.
+   ::before = digambar sebelum foto, jadi tampil di belakang trio.webp (gambar transparan). */
+.hero-bg-art::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.20) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.20) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, #000 20%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 72%);
 }
 
 @keyframes heroFloat {
@@ -983,8 +999,9 @@ a {
 }
 
 @media (max-width: 900px) {
+  /* Sama seperti desktop: gambar tetap pekat (tanpa opacity) agar grid tetap di belakang; diredupkan lewat brightness */
   .hero-bg-img {
-    opacity: 0.2;
+    filter: contrast(1.1) brightness(0.35);
   }
 
   .header-wrapper {

@@ -96,6 +96,33 @@
     }
 
     if (panelClose) panelClose.addEventListener("click", closeSheet);
+
+    // Geser bar pegangan ke bawah untuk menutup: kartu ikut jari, lepas > 80px = tutup, kurang = kembali.
+    const sheetBar = panel && panel.querySelector(".panel-sheet-bar");
+    if (sheetBar) {
+      let startY = null;
+      let dragY = 0;
+      sheetBar.addEventListener("touchstart", function (e) {
+        if (e.target.closest(".panel-sheet-close")) return;
+        startY = e.touches[0].clientY;
+        dragY = 0;
+        panel.classList.add("is-dragging");
+      }, { passive: true });
+      sheetBar.addEventListener("touchmove", function (e) {
+        if (startY === null) return;
+        dragY = Math.max(0, e.touches[0].clientY - startY);
+        panel.style.transform = "translateY(" + dragY + "px)";
+      }, { passive: true });
+      const endDrag = function () {
+        if (startY === null) return;
+        startY = null;
+        panel.classList.remove("is-dragging");
+        panel.style.transform = "";
+        if (dragY > 80) closeSheet();
+      };
+      sheetBar.addEventListener("touchend", endDrag);
+      sheetBar.addEventListener("touchcancel", endDrag);
+    }
     if (panelBackdrop) panelBackdrop.addEventListener("click", closeSheet);
     // Jika layar diperbesar ke ukuran laptop, tutup mode bottom sheet.
     sheetQuery.addEventListener("change", function (e) {

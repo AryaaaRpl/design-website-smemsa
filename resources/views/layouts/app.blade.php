@@ -12,13 +12,24 @@
   <meta name="description"
     content="Website Resmi SMKS Muhammadiyah 1 Genteng (SMEMSA / SMEMSA Genteng) Banyuwangi. SMK Pusat Keunggulan, Akreditasi A BAN-S/M, Berlisensi LSP-P1 BNSP, dengan {{ $majorCountLabel }} Industri." />
 
-  <!-- Open Graph / WhatsApp Preview Meta Tags -->
+  <!-- Open Graph / WhatsApp Preview Meta Tags: link yang dibagikan menampilkan logo, judul & deskripsi.
+       URL gambar harus absolut (memakai APP_URL), jadi di server APP_URL wajib https://smksmuh1gtg.my.id -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://smksmuh1gtg.com/" />
+  <meta property="og:site_name" content="SMKS Muhammadiyah 1 Genteng" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:url" content="{{ url()->current() }}" />
   <meta property="og:title" content="SMKS Muhammadiyah 1 Genteng - Good Skill, Good Attitude" />
   <meta property="og:description"
     content="SMK Pusat Keunggulan di Genteng Banyuwangi. Terakreditasi A, LSP-P1 BNSP, Kelas Industri Dudika, dan {{ $majorCountLabel }} Unggulan." />
-  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:image" content="{{ asset('assets/logo.webp') }}" />
+  <meta property="og:image:secure_url" content="{{ asset('assets/logo.webp') }}" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="173" />
+  <meta property="og:image:height" content="156" />
+  <meta property="og:image:alt" content="Logo SMKS Muhammadiyah 1 Genteng" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="SMKS Muhammadiyah 1 Genteng - Good Skill, Good Attitude" />
+  <meta name="twitter:image" content="{{ asset('assets/logo.webp') }}" />
 
   <!-- Structured Data (JSON-LD) for School -->
   <script type="application/ld+json">
@@ -27,9 +38,9 @@
         "@@type": "School",
         "name": "SMKS Muhammadiyah 1 Genteng",
         "alternateName": ["SMEMSA", "SMEMSA Genteng"],
-        "url": "https://smksmuh1gtg.com",
-        "logo": "assets/logo.png",
-        "image": "assets/logo.png",
+        "url": "https://smksmuh1gtg.my.id",
+        "logo": "{{ asset('assets/logo.webp') }}",
+        "image": "{{ asset('assets/logo.webp') }}",
         "description": "Sekolah Menengah Kejuruan Pusat Keunggulan di Genteng Banyuwangi dengan {{ $majorCountLabel }} Industri dan Lisensi LSP-P1 BNSP.",
         "address": {
           "@@type": "PostalAddress",

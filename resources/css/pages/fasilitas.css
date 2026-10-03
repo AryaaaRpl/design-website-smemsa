@@ -1482,6 +1482,11 @@
     transition: transform 0.3s ease, visibility 0s !important;
   }
 
+  /* Sedang digeser lewat bar pegangan: kartu langsung ikut jari tanpa transisi */
+  .detail-panel.is-open.is-dragging {
+    transition: none !important;
+  }
+
   .detail-panel .panel-empty {
     display: none;
   }
@@ -1497,6 +1502,9 @@
        menyusut saat isi panel lebih tinggi dari layar dan tombol tutup keluar bar. */
     flex: 0 0 48px;
     background: #fff;
+    /* Bar bisa digeser ke bawah untuk menutup; jangan ikut menggulir halaman */
+    touch-action: none;
+    cursor: grab;
     border-bottom: 1px solid var(--border-card);
   }
 

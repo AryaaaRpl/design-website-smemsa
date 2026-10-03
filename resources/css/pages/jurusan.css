@@ -847,10 +847,14 @@
     overflow: hidden;
 }
 
+/* Bingkai 4:3 sama untuk semua kartu; gambar utuh (tidak dipotong), sisa ruang = latar biru muda */
 .bl-card-photo img {
+    /* absolute: ukuran ikut bingkai 4:3, bukan ukuran asli gambar */
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .bl-card-type {

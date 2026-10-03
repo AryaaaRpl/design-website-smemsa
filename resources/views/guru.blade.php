@@ -5,7 +5,7 @@
   <!-- 2. PAGE HEADER -->
   <header class="page-header" style="margin-bottom: 4rem">
     <div class="hero-bg-art" aria-hidden="true">
-      <img src="{{ asset('assets/guru/trio.jpeg') }}" alt="" class="hero-bg-img" />
+      <img src="{{ asset('assets/guru/trio.webp') }}" alt="" class="hero-bg-img" />
       <div class="hero-bg-overlay"></div>
     </div>
     <div class="container" style="position: relative; z-index: 2;">
@@ -449,11 +449,7 @@
         const wrapper = container.closest(".struktur2-scroll-wrapper");
         if (!wrapper) return;
 
-        let btn = wrapper.querySelector(".auto-scroll-btn");
-        if (isSearch) {
-          if (btn) btn.remove();
-          return;
-        }
+        if (isSearch) return;
 
         // Gandakan konten untuk efek infinite scroll
         const originalChildren = Array.from(container.children);
@@ -467,25 +463,6 @@
 
         if (prefersReducedMotion || window.innerWidth < 768) return;
 
-        if (!btn) {
-          btn = document.createElement("button");
-          btn.className = "auto-scroll-btn";
-          btn.style.cssText = "position:absolute; top:10px; right:10px; width:44px; height:44px; border-radius:50%; background:var(--primary); color:#fff; border:none; z-index:10; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-card); transition:var(--transition);";
-          wrapper.appendChild(btn);
-        }
-        let isPausedByBtn = false;
-
-        function updateBtn() {
-          if (isPausedByBtn) {
-            btn.setAttribute("aria-label", "Lanjutkan gulir otomatis");
-            btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
-          } else {
-            btn.setAttribute("aria-label", "Jeda gulir otomatis");
-            btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>`;
-          }
-        }
-        updateBtn();
-
         let state = {
           hovered: false,
           focused: false,
@@ -494,18 +471,6 @@
         let interactionTimeout;
 
         container.classList.add('is-autoscroll');
-
-        function togglePause() {
-          isPausedByBtn = !isPausedByBtn;
-          updateBtn();
-          if (isPausedByBtn) {
-            container.classList.remove('is-autoscroll');
-          } else {
-            container.classList.add('is-autoscroll');
-          }
-        }
-
-        btn.addEventListener("click", togglePause, { signal });
 
         wrapper.addEventListener("mouseenter", () => { state.hovered = true; }, { signal });
         wrapper.addEventListener("mouseleave", () => { state.hovered = false; }, { signal });
@@ -543,9 +508,7 @@
           container.style.cursor = '';
           interactionTimeout = setTimeout(() => {
             state.interacting = false;
-            if (!isPausedByBtn) {
-              container.classList.add('is-autoscroll');
-            }
+            container.classList.add('is-autoscroll');
           }, 2000);
         };
 
@@ -578,7 +541,7 @@
             }
           }
 
-          const shouldPause = isPausedByBtn || state.hovered || state.focused || state.interacting || document.visibilityState !== 'visible';
+          const shouldPause = state.hovered || state.focused || state.interacting || document.visibilityState !== 'visible';
 
           if (!shouldPause && resetPoint > 0) {
             pos += reverse ? -speed : speed;
