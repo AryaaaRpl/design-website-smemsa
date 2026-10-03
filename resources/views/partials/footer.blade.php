@@ -55,6 +55,7 @@
 
           <!-- C. Media Sosial Monokrom -->
           <div class="footer-social-row" aria-label="Media Sosial SMKS Muhammadiyah 1 Genteng">
+            @if ($site->get('instagram_url'))
             <a href="{{ $site->get('instagram_url') }}" target="_blank" rel="noopener noreferrer"
               class="footer-social-btn" aria-label="Instagram SMKS Muhammadiyah 1 Genteng">
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -66,6 +67,8 @@
                   stroke-linecap="round" />
               </svg>
             </a>
+            @endif
+            @if ($site->get('youtube_url'))
             <a href="{{ $site->get('youtube_url') }}" target="_blank" rel="noopener noreferrer"
               class="footer-social-btn" aria-label="YouTube SMKS Muhammadiyah 1 Genteng">
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -75,6 +78,8 @@
                 <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
               </svg>
             </a>
+            @endif
+            @if ($site->get('facebook_url'))
             <a href="{{ $site->get('facebook_url') }}" target="_blank" rel="noopener noreferrer"
               class="footer-social-btn" aria-label="Facebook SMKS Muhammadiyah 1 Genteng">
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -82,6 +87,8 @@
                   stroke="currentColor" stroke-width="2" />
               </svg>
             </a>
+            @endif
+            @if ($site->get('tiktok_url'))
             <a href="{{ $site->get('tiktok_url') }}" target="_blank" rel="noopener noreferrer"
               class="footer-social-btn" aria-label="TikTok SMKS Muhammadiyah 1 Genteng">
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -89,6 +96,7 @@
                   stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
+            @endif
           </div>
 
           <!-- D. Peta Lokasi Sekolah Google Maps -->

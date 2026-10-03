@@ -5,7 +5,7 @@
 @section('content')
     <div class="page-header">
         <h1>Pengaturan Situs</h1>
-        <p>Data yang tampil di semua halaman website. Isian kosong otomatis memakai nilai bawaan (tertulis di contoh isian).</p>
+        <p>Data yang tampil di semua halaman website. Kolom bertanda * wajib diisi.</p>
     </div>
 
     <div class="filter-tabs">
@@ -30,15 +30,21 @@
                 @foreach ($fields as $key => $field)
                     @php
                         $value = old($key, $values[$key] ?? null);
-                        // Contoh isian = nilai bawaan (untuk WhatsApp BKK/SPMB: nomor umum).
-                        $placeholder = $field['default'] ?? 'Kosong = memakai WhatsApp Umum';
+                        $placeholder = $field['placeholder'] ?? '';
+                        $required = in_array('required', $field['rules'], true);
                     @endphp
                     <div class="form-group">
-                        <label for="{{ $key }}" class="form-label">{{ $field['label'] }}</label>
+                        <label for="{{ $key }}" class="form-label">{{ $field['label'] }} @if ($required)<span class="required">*</span>@endif</label>
 
                         @if ($field['type'] === 'textarea')
                             <textarea id="{{ $key }}" name="{{ $key }}" class="form-input" rows="3"
                                 placeholder="{{ $placeholder }}">{{ $value }}</textarea>
+                        @elseif ($field['type'] === 'money')
+                            <div class="input-prefix">
+                                <span>Rp</span>
+                                <input type="number" id="{{ $key }}" name="{{ $key }}" class="form-input" value="{{ $value }}"
+                                    placeholder="{{ $placeholder }}" step="1000" min="0">
+                            </div>
                         @else
                             <input type="{{ $field['type'] === 'number' ? 'number' : ($field['type'] === 'url' ? 'url' : 'text') }}"
                                 id="{{ $key }}" name="{{ $key }}" class="form-input" value="{{ $value }}"
@@ -47,9 +53,6 @@
 
                         <div class="form-help">
                             {{ $field['help'] }}
-                            @if (blank($values[$key] ?? null) && $field['default'])
-                                <br><strong>Sedang memakai nilai bawaan.</strong>
-                            @endif
                         </div>
                         @error($key) <div class="form-error">{{ $message }}</div> @enderror
                     </div>

@@ -46,7 +46,7 @@ class SettingController extends Controller
         );
 
         foreach ($fields as $key => $field) {
-            // Kosong disimpan sebagai null: website otomatis memakai nilai bawaan.
+            // Kolom opsional yang dikosongkan disimpan null (misal sosial media tidak ditampilkan).
             Setting::setValue($key, filled($data[$key] ?? null) ? trim((string) $data[$key]) : null);
         }
 

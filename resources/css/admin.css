@@ -71,6 +71,28 @@ h3 {
     transition: border-color 0.2s;
 }
 
+/* Kolom dengan awalan, contoh: Rp */
+.input-prefix {
+    display: flex;
+    align-items: stretch;
+}
+
+.input-prefix span {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--blue-soft);
+    border: 1px solid var(--blue-line);
+    border-right: 0;
+    border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.input-prefix .form-input {
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
 .form-input:focus {
     border-color: var(--blue);
 }

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->call([
+            SettingSeeder::class,
             MajorSeeder::class,
             TeacherSeeder::class,
             FacilitySeeder::class,
