@@ -12,28 +12,49 @@ const MESSAGES = {
 const escapeHtml = (text) =>
     text.replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
 
-// Markdown minimal & aman: teks di-escape dulu, baru **tebal** dan daftar "- " / "1. " diubah ke HTML.
+// Markdown minimal & aman: teks di-escape dulu, baru format umum dari AI diubah ke HTML.
+// Didukung: **tebal**/__tebal__, *miring*/_miring_, `kode`, [teks](url) (jadi teks saja), judul "#",
+// kutipan ">", daftar "- "/"• " dan "1. ". Sisa tanda * yang tidak berpasangan dibuang agar rapi.
+function inlineMarkdown(line) {
+    return escapeHtml(line)
+        .replace(/\[([^\]]+)\]\((?:[^()]|\([^)]*\))*\)/g, '$1')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/(\*\*|__)(?=\S)(.+?)(?<=\S)\1/g, '<strong>$2</strong>')
+        .replace(/(^|[^\w*])\*(?=\S)([^*]+?)(?<=\S)\*(?!\w)/g, '$1<em>$2</em>')
+        .replace(/(^|[^\w])_(?=\S)([^_]+?)(?<=\S)_(?!\w)/g, '$1<em>$2</em>')
+        .replace(/\*+/g, '');
+}
+
 function renderMarkdown(text) {
-    const inline = (line) => escapeHtml(line).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     const html = [];
     let list = null;
 
-    for (const raw of text.split('\n')) {
-        const line = raw.trim();
-        const item = line.match(/^(?:[-*•]|\d+[.)])\s+(.*)$/);
+    const closeList = () => {
+        if (list) html.push(`<${list.tag}>${list.items.join('')}</${list.tag}>`);
+        list = null;
+    };
 
-        if (item) {
-            list ??= [];
-            list.push(`<li>${inline(item[1])}</li>`);
+    for (const raw of text.replace(/\r/g, '').split('\n')) {
+        const line = raw.trim().replace(/^>\s?/, '');
+        const bullet = line.match(/^[-*•]\s+(.*)$/);
+        const numbered = line.match(/^\d+[.)]\s+(.*)$/);
+        const heading = line.match(/^#{1,6}\s+(.*)$/);
+
+        if (bullet || numbered) {
+            const tag = bullet ? 'ul' : 'ol';
+            if (list?.tag !== tag) {
+                closeList();
+                list = { tag, items: [] };
+            }
+            list.items.push(`<li>${inlineMarkdown((bullet || numbered)[1])}</li>`);
             continue;
         }
-        if (list) {
-            html.push(`<ul>${list.join('')}</ul>`);
-            list = null;
-        }
-        if (line) html.push(`<p>${inline(line)}</p>`);
+
+        closeList();
+        if (heading) html.push(`<p><strong>${inlineMarkdown(heading[1])}</strong></p>`);
+        else if (line && !/^([-*_])\1{2,}$/.test(line)) html.push(`<p>${inlineMarkdown(line)}</p>`);
     }
-    if (list) html.push(`<ul>${list.join('')}</ul>`);
+    closeList();
 
     return html.join('');
 }

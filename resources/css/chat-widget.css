@@ -109,11 +109,13 @@
 }
 
 .chat-msg p:last-child,
-.chat-msg ul:last-child {
+.chat-msg ul:last-child,
+.chat-msg ol:last-child {
   margin-bottom: 0;
 }
 
-.chat-msg ul {
+.chat-msg ul,
+.chat-msg ol {
   margin: 0 0 0.4rem;
   padding-left: 1.1rem;
 }
