@@ -30,6 +30,7 @@ export default defineConfig({
                 'resources/js/pages/blud.js',
                 'resources/css/admin.css',
                 'resources/js/admin.js',
+                'resources/js/chat-widget.js',
             ],
             refresh: true,
             fonts: [
