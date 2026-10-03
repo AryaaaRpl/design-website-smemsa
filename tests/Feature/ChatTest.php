@@ -187,7 +187,6 @@ class ChatTest extends TestCase
     public function test_widget_button_is_rendered_without_loading_widget_script(): void
     {
         $this->get('/')->assertOk()
-            ->assertSee('Tanya Asisten SMEMSA')
             ->assertSee('data-src=', false)
             ->assertDontSee('<script type="module" src="'.e(\Illuminate\Support\Facades\Vite::asset('resources/js/chat-widget.js')).'"', false);
     }

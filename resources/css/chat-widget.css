@@ -196,41 +196,57 @@
   outline: none;
 }
 
+/* Baris bawah: kolom pertanyaan + kirim + WhatsApp admin, sejajar dan sama tinggi */
 .chat-form {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1rem;
+  padding: 0.75rem 1rem 0.9rem;
+  border-top: 1px solid var(--border-card, #e2e8f0);
   background: var(--bg-main, #fff);
 }
 
 .chat-form input {
   flex: 1;
   min-width: 0;
+  height: 42px;
   border: 1px solid var(--border-card, #e2e8f0);
   border-radius: 999px;
-  padding: 0.6rem 0.9rem;
+  padding: 0 1rem;
   font: 0.875rem inherit;
   color: inherit;
-  background: #fff;
+  background: #f8fafc;
+  transition: border-color 0.2s, background 0.2s;
 }
 
 .chat-form input:focus {
   outline: none;
+  background: #fff;
   border-color: var(--primary-light, #2563eb);
   box-shadow: 0 0 0 3px var(--primary-glow, rgba(30, 64, 175, 0.2));
 }
 
-.chat-send {
-  width: 40px;
-  height: 40px;
+.chat-send,
+.chat-wa {
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   border: none;
-  background: var(--primary, #1e40af);
   color: #fff;
   cursor: pointer;
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.chat-send {
+  background: var(--primary, #1e40af);
+}
+
+.chat-send svg {
+  margin: 0 2px 0 0;
 }
 
 .chat-send:disabled {
@@ -239,18 +255,12 @@
 }
 
 .chat-wa {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  margin: 0 1rem 0.8rem;
-  padding: 0.55rem;
-  border-radius: 999px;
   background: #16a34a;
-  color: #fff;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-decoration: none;
+}
+
+.chat-send:not(:disabled):hover,
+.chat-wa:hover {
+  transform: translateY(-1px);
 }
 
 .chat-wa:hover,

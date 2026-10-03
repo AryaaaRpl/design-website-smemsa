@@ -18,7 +18,6 @@
     <path d="M18 6 6 18" />
     <path d="m6 6 12 12" />
   </svg>
-  <span class="chatbot-label">Tanya Asisten SMEMSA</span>
 </button>
 <script>
   // Muat widget chat hanya saat tombol pertama kali diklik (tidak membebani loading awal).
