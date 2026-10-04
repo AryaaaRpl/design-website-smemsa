@@ -22,7 +22,7 @@
   <div class="ekskul-grid">
     @forelse ($extracurriculars as $ekskul)
     <!-- {{ $loop->iteration }}. {{ $ekskul->name }} -->
-    <a href="{{ route('ekstrakurikuler.show', $ekskul) }}" class="ekskul-card {{ $ekskul->card_style->cssClass() }} reveal-item">
+    <a href="{{ route('ekstrakurikuler.show', $ekskul) }}" class="ekskul-card {{ $ekskul->card_style->cssClass() }}">
       {{-- Kartu pertama langsung dimuat (kandidat LCP di HP), sisanya lazy --}}
       <img class="card-bg" src="{{ $ekskul->image_url }}" alt="" width="400" height="500" decoding="async"
         @if ($loop->first) fetchpriority="high" @else loading="lazy" @endif>

@@ -452,21 +452,6 @@
       transform: translateX(3px);
     }
 
-    /* Kartu muncul saat masuk layar (IntersectionObserver di ekstrakurikuler.js).
-       Hanya disembunyikan bila JS aktif, agar tanpa JS kartu tetap terlihat. */
-    .js .reveal-item {
-      opacity: 0;
-      transform: translateY(40px);
-      transition:
-        opacity 0.8s ease,
-        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .js .reveal-item.is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
     /* HP: efek filter/blur mahal di GPU ponsel, ganti yang ringan */
     @media (max-width: 768px) {
       .card-bg {
@@ -477,13 +462,6 @@
       .tag {
         backdrop-filter: none;
         background: rgba(11, 24, 66, 0.75);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .js .reveal-item {
-        transition: none;
-        transform: none;
       }
     }
 

@@ -522,12 +522,6 @@
 
     /* Custom Sleek Scrollbar */
 
-    /* GSAP Prep */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
     /* RESPONSIVE */
     @media (max-width: 992px) {
       .fasilitas-grid {

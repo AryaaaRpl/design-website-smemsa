@@ -316,28 +316,6 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeSheet();
     });
-
-    // Animasi muncul titik denah (sekali, saat denah terlihat).
-    // Hanya di halaman denah (halaman detail fasilitas juga memuat file ini).
-    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined" && document.querySelector(".hotspot")) {
-      try {
-        gsap.from(".hotspot", {
-          opacity: 0,
-          scale: 0,
-          svgOrigin: "500 400",
-          duration: 0.55,
-          stagger: 0.05,
-          ease: "back.out(2)",
-          // Hapus opacity/transform inline setelah muncul, supaya filter (.is-dimmed) terlihat.
-          clearProps: "opacity,transform",
-          scrollTrigger: {
-            trigger: ".map-stage",
-            start: "top 85%",
-            once: true,
-          },
-        });
-      } catch (e) {}
-    }
   }
 
   if (document.readyState === "loading") {

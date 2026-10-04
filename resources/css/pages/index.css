@@ -1089,30 +1089,6 @@ img {
     box-shadow: 0 0 8px var(--secondary-glow);
 }
 
-/* ---- Text Scroll Reveal (skiper31-style, word by word) ---- */
-.sr-word {
-    display: inline-block;
-    opacity: 0.18;
-    filter: blur(2px);
-    transform: translateY(0.12em);
-    will-change: opacity, filter, transform;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .sr-word {
-        opacity: 1 !important;
-        filter: none !important;
-        transform: none !important;
-    }
-
-    .synergy-center-star,
-    .synergy-star-aura,
-    .synergy-kicker,
-    .synergy-closing {
-        opacity: 1 !important;
-        transform: none !important;
-    }
-}
 
 /* ---- Parallax Layers ---- */
 [data-parallax] {
@@ -2776,23 +2752,6 @@ img {
         padding: 4rem 0;
     }
 
-    /* ---- Text Scroll Reveal (skiper31-style, word by word) ---- */
-
-    @media (prefers-reduced-motion: reduce) {
-        .sr-word {
-            opacity: 1 !important;
-            filter: none !important;
-            transform: none !important;
-        }
-
-        .synergy-center-star,
-        .synergy-star-aura,
-        .synergy-kicker,
-        .synergy-closing {
-            opacity: 1 !important;
-            transform: none !important;
-        }
-    }
 
     /* ---- Parallax Layers ---- */
     .px-orb {

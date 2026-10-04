@@ -364,24 +364,6 @@
             gsap.registerPlugin(ScrollTrigger);
           }
 
-          // Simple Reveal Animation
-          gsap.utils.toArray(".reveal").forEach((elem) => {
-            gsap.fromTo(elem, 
-              { opacity: 0, y: 30 },
-              {
-                scrollTrigger: {
-                  trigger: elem,
-                  start: "top 85%",
-                },
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: "power2.out",
-                clearProps: "transform"
-              }
-            );
-          });
-
           // Timeline Progress Bar ScrollTrigger Animation for Tujuan Section
           // Di HP garis progress disembunyikan (visi-misi.css), jadi animasinya tidak perlu dijalankan.
           const tujuanBar = document.getElementById("tujuan-bar");

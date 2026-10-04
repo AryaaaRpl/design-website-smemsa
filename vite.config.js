@@ -23,7 +23,6 @@ export default defineConfig({
                 'resources/css/pages/blud.css',
                 'resources/js/app.js',
                 'resources/js/pages/fasilitas.js',
-                'resources/js/pages/ekstrakurikuler.js',
                 'resources/js/pages/prestasi.js',
                 'resources/js/pages/berita.js',
                 'resources/js/pages/index.js',
