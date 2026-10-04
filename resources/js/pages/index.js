@@ -24,10 +24,12 @@
   let timer = null;
   let isHovered = false;
   let isVisible = false;
+  let isAnimating = false; // selama slide berpindah, klik/otomatis diabaikan
 
   // direction: 1 = berikutnya (masuk dari bawah), -1 = sebelumnya (masuk dari atas)
   function show(next, direction) {
-    if (next === current) return;
+    if (next === current || isAnimating) return;
+    isAnimating = true;
 
     const leaving = slides[current];
     const entering = slides[next];
@@ -54,6 +56,7 @@
       void leaving.offsetWidth;
       leaving.classList.remove("no-transition");
       entering.classList.remove("from-top");
+      isAnimating = false;
     }, DURATION);
 
     if (counter) counter.textContent = String(next + 1).padStart(2, "0");
