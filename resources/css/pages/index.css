@@ -1179,6 +1179,13 @@ img {
     z-index: 2;
 }
 
+/* HP: filter blur(70px) berat digambar; radial-gradient orb sudah lembut tanpa blur */
+@media (max-width: 768px) {
+    .px-orb {
+        filter: none !important;
+    }
+}
+
 @media (max-width: 900px) {
     .px-orb {
         opacity: 0.3;

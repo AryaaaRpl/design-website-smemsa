@@ -63,6 +63,12 @@ class Teacher extends Model
         return Attribute::get(fn () => $this->mediaUrl($this->photo));
     }
 
+    /** Varian kecil foto (-card.webp) untuk layar HP. */
+    protected function photoCardUrl(): Attribute
+    {
+        return Attribute::get(fn () => $this->cardMediaUrl($this->photo));
+    }
+
     /**
      * Data untuk kartu di halaman guru (dipakai oleh JavaScript).
      */

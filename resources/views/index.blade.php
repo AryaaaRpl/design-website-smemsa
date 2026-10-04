@@ -3,9 +3,9 @@
 
 @push('styles')
   {{-- Gambar hero adalah konten terbesar di layar pertama: unduh paling awal. --}}
-  {{-- HP ambil versi 800px (±38KB), desktop versi penuh. Harus sama dengan srcset/sizes di <img>. --}}
+  {{-- HP ambil versi 480/640/800px (±21-37KB) sesuai kepadatan layar, desktop versi penuh. Harus sama dengan srcset/sizes di <img>. --}}
   <link rel="preload" as="image" href="{{ Media::asset('assets/background/3orang.png') }}" fetchpriority="high"
-    imagesrcset="{{ asset('assets/background/3orang-800.webp') }} 800w, {{ Media::asset('assets/background/3orang.png') }} 1400w"
+    imagesrcset="{{ asset('assets/background/3orang-480.webp') }} 480w, {{ asset('assets/background/3orang-640.webp') }} 640w, {{ asset('assets/background/3orang-800.webp') }} 800w, {{ Media::asset('assets/background/3orang.png') }} 1400w"
     imagesizes="(max-width: 768px) 100vw, 50vw">
 @endpush
 
@@ -58,7 +58,7 @@
           <!-- SATU gambar untuk semua ukuran layar. Kelas desktop-only /
                  mobile-only dihapus agar tidak pernah tampil ganda. -->
           <img src="{{ Media::asset('assets/background/3orang.png') }}" class="hero-students-img" fetchpriority="high"
-            srcset="{{ asset('assets/background/3orang-800.webp') }} 800w, {{ Media::asset('assets/background/3orang.png') }} 1400w"
+            srcset="{{ asset('assets/background/3orang-480.webp') }} 480w, {{ asset('assets/background/3orang-640.webp') }} 640w, {{ asset('assets/background/3orang-800.webp') }} 800w, {{ Media::asset('assets/background/3orang.png') }} 1400w"
             sizes="(max-width: 768px) 100vw, 50vw"
             alt="Tiga siswa SMKS Muhammadiyah 1 Genteng mengenakan seragam jurusan" width="1200" height="900" />
 
@@ -150,12 +150,14 @@
     // Data Kepala Sekolah dari modul Guru. Jika belum ada, pakai data bawaan.
     $principalName = $principal?->name ?: 'Wahid Wahyudi, S.E., M.M.';
     $principalPhoto = $principal?->photo_url ?: Media::asset('assets/PAK-WAHID-AI-e1781064934191.png');
+    // HP memakai varian kecil (-card.webp, lebar 640px)
+    $principalPhotoCard = $principal?->photo_card_url ?: asset('assets/PAK-WAHID-AI-e1781064934191-card.webp');
     $principalQuote = $principal?->quote ?: 'Sekolah yang baik adalah sekolah yang mengantar siswanya sampai ke tujuan, bukan hanya sampai ke ijazah.';
   @endphp
   <div class="container">
     <div class="executive-card" style="text-align: left">
       <div class="executive-photo-frame">
-        <img loading="lazy" decoding="async" src="{{ $principalPhoto }}" alt="Kepala Sekolah SMEMSA {{ $principalName }}"
+        <img loading="lazy" decoding="async" src="{{ $principalPhoto }}" srcset="{{ $principalPhotoCard }} 640w, {{ $principalPhoto }} 1400w" sizes="(max-width: 768px) 92vw, 480px" alt="Kepala Sekolah SMEMSA {{ $principalName }}"
           width="480" height="580" loading="lazy" onerror="
                 this.closest('.card')
                   ? this.closest('.card').classList.add('no-image')

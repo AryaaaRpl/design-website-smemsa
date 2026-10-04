@@ -303,14 +303,19 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem 2rem;
+  gap: 2.25rem 2rem;
   padding: 1rem 1.5rem;
   border-radius: 12px;
 }
 
 .footer-partners-logos img {
-  height: 60px;
+  height: 55px;
   width: auto;
+  transition: transform 0.3s ease;
+}
+
+.footer-partners-logos img:hover {
+  transform: scale(1.08);
 }
 
 .footer-partners-logos img.is-wide {

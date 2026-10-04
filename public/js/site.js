@@ -98,7 +98,8 @@
 
 // ---------- Lenis, animasi, beranda, chatbot, back-to-top ----------
 // 1. Initialize Lenis Smooth Scroll
-const lenis = new Lenis({
+// Desktop saja: di HP scroll bawaan browser sudah mulus, Lenis hanya membebani main thread.
+const lenis = window.matchMedia("(max-width: 768px)").matches ? null : new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   smoothWheel: true,
@@ -109,11 +110,12 @@ const lenis = new Lenis({
 });
 
 // Synchronize Lenis with GSAP ScrollTrigger
-lenis.on("scroll", ScrollTrigger.update);
-
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
+if (lenis) {
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+}
 
 gsap.ticker.lagSmoothing(0);
 
@@ -125,7 +127,11 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
-        lenis.scrollTo(targetEl, { offset: -70, duration: 1.2 });
+        if (lenis) {
+          lenis.scrollTo(targetEl, { offset: -70, duration: 1.2 });
+        } else {
+          window.scrollTo({ top: targetEl.getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" });
+        }
         // Close mobile drawer if open
         closeMobileDrawer();
       }
