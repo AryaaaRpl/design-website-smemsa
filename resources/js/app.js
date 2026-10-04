@@ -24,8 +24,12 @@ const revealObserver = 'IntersectionObserver' in window
   : null;
 
 // Pantau elemen di dalam root; dipanggil ulang untuk isi yang dimuat lewat JS (contoh: katalog prestasi).
+// HP / "kurangi gerakan": tanpa animasi. Penanda dilepas agar elemen tetap tampil walau layar diperlebar.
+const revealEnabled = matchMedia('(min-width: 769px) and (prefers-reduced-motion: no-preference)').matches;
+
 window.revealIn = (root = document) => {
   root.querySelectorAll('[data-reveal]:not(.is-visible)').forEach((el) => {
+    if (!revealEnabled) return el.removeAttribute('data-reveal');
     // Sudah di dalam elemen beranimasi: ikut induknya saja (tidak dobel).
     if (el.parentElement?.closest('[data-reveal]')) return el.removeAttribute('data-reveal');
     revealObserver ? revealObserver.observe(el) : el.classList.add('is-visible');
