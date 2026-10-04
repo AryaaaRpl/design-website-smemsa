@@ -212,6 +212,17 @@
         </div>
       </div>
 
+      <div class="footer-partners">
+        <p class="footer-partners-title">Powered by:</p>
+        <div class="footer-partners-logos">
+          <img src="{{ asset('assets/garudaspark.webp') }}" alt="Garuda Spark Innovation Hub" width="153" height="80" loading="lazy" decoding="async" />
+          <img src="{{ asset('assets/innovation.webp') }}" alt="Jagoan Hosting Innovation Competition 2026" width="146" height="80" loading="lazy" decoding="async" />
+          <img src="{{ asset('assets/jagoanhosting.webp') }}" alt="Jagoan Hosting" width="271" height="80" loading="lazy" decoding="async" />
+          <img src="{{ asset('assets/komdigi.webp') }}" alt="Komdigi" width="114" height="80" loading="lazy" decoding="async" />
+          <img src="{{ asset('assets/ngalup.webp') }}" alt="Ngalup.co" width="506" height="80" loading="lazy" decoding="async" class="is-wide" />
+        </div>
+      </div>
+
       <div class="footer-bottom">
         <div>
           &copy; {{ now()->year }} SMKS Muhammadiyah 1 Genteng. Seluruh hak cipta

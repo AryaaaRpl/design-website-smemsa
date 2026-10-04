@@ -177,3 +177,12 @@
     translate: none;
   }
 }
+
+/* Sembunyikan scrollbar di semua halaman publik agar tidak memakan lebar halaman */
+* {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}

@@ -14,7 +14,9 @@
   display: grid;
   grid-template-columns: 1.6fr 1fr 1.2fr 1.2fr;
   gap: 3rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid var(--border-dark, #263559);
 }
 
 .footer-brand-name {
@@ -284,6 +286,37 @@
   }
 }
 
+/* Logo Pendukung (Powered by) — latar terang agar logo transparan tetap terbaca di footer gelap */
+.footer-partners {
+  margin-bottom: 2.5rem;
+}
+
+.footer-partners-title {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0 0 0.9rem;
+}
+
+.footer-partners-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+}
+
+.footer-partners-logos img {
+  height: 40px;
+  width: auto;
+}
+
+.footer-partners-logos img.is-wide {
+  height: 26px;
+}
+
 /* Footer Bottom Bar */
 .footer-bottom {
   padding-top: 2rem;
@@ -313,6 +346,27 @@
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2.2rem;
+  }
+
+  /* Logo pendukung: 4 di atas, Ngalup sendiri di bawah */
+  .footer-partners-logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem 0.6rem;
+    padding: 1rem 0.8rem;
+  }
+
+  .footer-partners-logos img {
+    justify-self: center;
+    max-width: 100%;
+    height: auto;
+    max-height: 30px;
+  }
+
+  .footer-partners-logos img.is-wide {
+    grid-column: 1 / -1;
+    height: auto;
+    max-height: 24px;
   }
 
   .footer-bottom {
