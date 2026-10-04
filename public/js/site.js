@@ -296,6 +296,7 @@ let preloadedImages = [];
 
 // B.2 PRELOAD SEMUA FOTO JURUSAN AGAR TIDAK ADA KEDIP SAAT HOVER
 function preloadMajorImages() {
+  if (isMajorsMobile()) return; // HP: hemat kuota, foto dimuat saat jurusan diketuk
   majorsData.forEach((m) => {
     if (m.foto) {
       const img = new Image();
@@ -678,23 +679,40 @@ function flushAnimationQueue() {
 }
 
 // Counter Numbers Animation
-queueAnimation(() => document.querySelectorAll(".counter-value").forEach((counter) => {
+// HP (<=768px): tanpa parallax & ScrollTrigger agar main thread tidak sibuk.
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+// ScrollTrigger tetap termuat tapi dimatikan: tanpa ini ia mengukur ulang seluruh halaman saat load.
+if (isMobile) ScrollTrigger.disable();
+
+// HP memakai IntersectionObserver (tanpa ScrollTrigger yang mengukur ulang layout saat scroll).
+const counterObserver = isMobile && "IntersectionObserver" in window
+  ? new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      counterObserver.unobserve(entry.target);
+      countUp(entry.target);
+    }), { rootMargin: "0px 0px -10% 0px" })
+  : null;
+
+function countUp(counter) {
   const target = parseInt(counter.getAttribute("data-target"));
+  let zero = { val: 0 };
+  gsap.to(zero, {
+    val: target,
+    duration: 2,
+    ease: "power2.out",
+    onUpdate: () => {
+      counter.innerHTML = Math.floor(zero.val);
+    },
+  });
+}
+
+queueAnimation(() => document.querySelectorAll(".counter-value").forEach((counter) => {
+  if (counterObserver) return counterObserver.observe(counter);
   ScrollTrigger.create({
     trigger: counter,
     start: "top 90%",
     once: true,
-    onEnter: () => {
-      let zero = { val: 0 };
-      gsap.to(zero, {
-        val: target,
-        duration: 2,
-        ease: "power2.out",
-        onUpdate: () => {
-          counter.innerHTML = Math.floor(zero.val);
-        },
-      });
-    },
+    onEnter: () => countUp(counter),
   });
 }));
 
@@ -702,8 +720,6 @@ const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
 
-// HP: parallax dilewati agar main thread tidak sibuk saat halaman baru dibuka.
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
 /* =====================================================================
        SCROLL PARALLAX ENGINE
@@ -743,7 +759,9 @@ initParallax();
 // 9. Prestasi Section GSAP ScrollTrigger & Parallax
 queueAnimation(() => {
 const timelineBar = document.getElementById("timeline-bar");
-if (timelineBar) {
+if (timelineBar && isMobile) {
+  timelineBar.style.height = "100%"; // HP: garis langsung penuh, tanpa scrub saat scroll
+} else if (timelineBar) {
   gsap.to(timelineBar, {
     height: "100%",
     ease: "none",
@@ -784,10 +802,13 @@ if (testiCard && window.matchMedia("(min-width: 769px)").matches) {
 // supaya perhitungan parallax tidak meleset.
 // Cukup SATU kali setelah gambar (load) DAN font sama-sama siap: setiap refresh
 // mengukur ulang semua trigger (mahal, memicu forced reflow).
-Promise.all([
-  new Promise((resolve) => (document.readyState === "complete" ? resolve() : window.addEventListener("load", resolve, { once: true }))),
-  document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(),
-]).then(() => ScrollTrigger.refresh());
+// HP tidak memakai ScrollTrigger, jadi pengukuran ulang dilewati.
+if (!isMobile) {
+  Promise.all([
+    new Promise((resolve) => (document.readyState === "complete" ? resolve() : window.addEventListener("load", resolve, { once: true }))),
+    document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(),
+  ]).then(() => ScrollTrigger.refresh());
+}
 
 // Jalankan antrean animasi (lihat ANTREAN ANIMASI di atas).
 flushAnimationQueue();
