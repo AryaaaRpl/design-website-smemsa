@@ -65,7 +65,7 @@
 .footer-contact-icon {
   width: 16px;
   height: 16px;
-  stroke: var(--text-subtle, #94a3b8);
+  stroke: #94a3b8;
   stroke-width: 1.8;
   fill: none;
   flex-shrink: 0;
@@ -176,7 +176,7 @@
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-subtle, #94a3b8);
+  color: #94a3b8;
   margin-bottom: 1.2rem;
 }
 
@@ -330,7 +330,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: 0.85rem;
-  color: #78716c;
+  color: #94a3b8;
   flex-wrap: wrap;
   gap: 1rem;
 }

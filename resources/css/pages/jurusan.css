@@ -7,6 +7,7 @@
 
 .btn-secondary {
     background: var(--secondary, #eab308);
+    color: #422006;
 }
 
 .btn-outline {
@@ -246,7 +247,7 @@
 .jr-card-link {
     font-weight: 700;
     font-size: 0.88rem;
-    color: var(--secondary);
+    color: var(--secondary-text);
 }
 
 /* ---------- CTA ---------- */
@@ -645,7 +646,7 @@
 .jr-vacancy-link {
     font-weight: 700;
     font-size: 0.9rem;
-    color: var(--secondary);
+    color: var(--secondary-text);
     text-decoration: none;
 }
 
@@ -908,7 +909,7 @@
 .bl-noimg {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--text-subtle);
+    color: #475569;
 }
 
 .bl-noimg-dark {

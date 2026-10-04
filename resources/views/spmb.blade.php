@@ -343,7 +343,7 @@
                   <strong>Skema Cicilan PSM:</strong> Biaya PSM 1 Tahun & Daftar Ulang ({{ $site->rupiah($tuition) }}) <strong>bisa dicicil 2x per semester ({{ $site->rupiah($installment) }} / semester)</strong> guna memudahkan perencanaan keuangan keluarga.
                 </div>
               </div>
-              <span class="badge-status-open" style="background: var(--secondary-surface); color: #a16207; border: 1px solid rgba(234, 179, 8, 0.35);">Dicicil 2x / Semester</span>
+              <span class="badge-status-open" style="background: var(--secondary-surface); color: #854d0e; border: 1px solid rgba(234, 179, 8, 0.35);">Dicicil 2x / Semester</span>
             </div>
 
             <div class="fee-grade-grid">
@@ -379,7 +379,7 @@
               <!-- KELAS XI -->
               <div class="fee-grade-card featured-grade" data-reveal>
                 <div>
-                  <span class="fee-grade-badge" style="background: var(--secondary-surface); color: #a16207; border: 1px solid rgba(234, 179, 8, 0.35);">Tingkat Kedua • Program PKL</span>
+                  <span class="fee-grade-badge" style="background: var(--secondary-surface); color: #854d0e; border: 1px solid rgba(234, 179, 8, 0.35);">Tingkat Kedua • Program PKL</span>
                   <h4 class="fee-grade-title">Kelas XI (Sebelas)</h4>
                   <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;">Praktik Kerja Lapangan (PKL) langsung di dunia usaha & industri mitra.</p>
                   
@@ -454,7 +454,7 @@
           <!-- TAHAP 3: SKEMA BEASISWA & KERINGANAN BIAYA (DARI ADMIN: BIAYA & BEASISWA) -->
           <div class="fee-group-block">
             <div class="fee-subheading">
-              <span class="fee-subheading-badge" style="background: var(--secondary-surface); color: #a16207;">{{ $scholarships->count() }} Kategori Beasiswa</span>
+              <span class="fee-subheading-badge" style="background: var(--secondary-surface); color: #854d0e;">{{ $scholarships->count() }} Kategori Beasiswa</span>
               <h3 class="fee-subheading-title">3. Skema Beasiswa & Keringanan Biaya</h3>
             </div>
             

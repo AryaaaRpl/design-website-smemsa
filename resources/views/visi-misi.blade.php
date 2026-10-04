@@ -41,7 +41,7 @@
             box-shadow: 0 20px 40px -10px rgba(30, 64, 175, 0.3);
           ">
         <span class="visi-label" style="
-              color: var(--secondary);
+              color: var(--secondary-text);
               padding: 0.3rem 0;
               font-size: 0.85rem;
               letter-spacing: 2px;

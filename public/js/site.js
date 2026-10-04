@@ -327,7 +327,7 @@ function renderMajorTabList() {
                 ${m.logo ? `<img class="major-nav-logo" src="${m.logo}" alt="Logo ${m.code}" width="20" height="20" loading="lazy" />` : ""}
                 <div class="major-nav-content">
                     <div class="major-nav-top">
-                        <h4 class="major-nav-name">${m.title}</h4>
+                        <h3 class="major-nav-name">${m.title}</h3>
                         <span class="major-nav-code">${m.code}</span>
                     </div>
                 </div>

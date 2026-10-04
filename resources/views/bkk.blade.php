@@ -40,7 +40,7 @@
           <span>{{ $site->percent('employment_rate') }}%</span>
         </div>
         <div class="bkk-summary-text">
-          <h3>Tingkat Keterserapan Alumni SMEMSA</h3>
+          <h3 aria-level="2">Tingkat Keterserapan Alumni SMEMSA</h3>
           <p>
             Sebanyak <strong>{{ $site->get('graduates_absorbed') }}+ lulusan tahun terakhir</strong> langsung
             terserap kerja di mitra DUDIKA, berwirausaha mandiri lewat BLUD,
@@ -118,7 +118,7 @@
           <div>
             <a href="{{ $vacancy->apply_link }}"
               target="_blank" rel="noopener" style="
-                  color: var(--secondary);
+                  color: var(--secondary-text);
                   font-weight: 700;
                   font-size: 0.9rem;
                 ">Lamar Loker &rarr;</a>
@@ -215,7 +215,7 @@
                 alt="{{ $partner->name }}"
                 style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>
             <div class="mitra-info">
-              <h4>{{ $partner->name }}</h4>
+              <h4 aria-level="3">{{ $partner->name }}</h4>
             </div>
           </div>
           @empty

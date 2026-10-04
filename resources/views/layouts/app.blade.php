@@ -102,7 +102,9 @@
 
   <!-- 1. FLOATING ISLAND NAVBAR WITH GLASSMORPHISM 2.0 -->
     @include('partials.navbar')
+    <main id="konten">
     @yield('content')
+    </main>
     @include('partials.footer')
     @include('partials.back-to-top')
 

@@ -70,7 +70,7 @@
                             {{ $views }}
                         </span>
                     </div>
-                    <h3 class="news-card-title">{{ $post->title }}</h3>
+                    <h3 class="news-card-title" aria-level="2">{{ $post->title }}</h3>
                     <p class="news-card-excerpt">
                         {{ $post->excerpt }}
                     </p>

@@ -26,7 +26,7 @@
 
     --text-dark: #0f172a;
     --text-muted: #64748b;
-    --text-subtle: #94a3b8;
+    --text-subtle: #64748b;
     --text-light: #f8fafc;
 
     --border-light: rgba(30, 64, 175, 0.1);
@@ -1377,7 +1377,9 @@ img {
 }
 
 .executive-quote {
-    font-family: italic;
+    font-family: var(--font-head);
+    margin-left: 0;
+    margin-right: 0;
     font-style: italic;
     font-size: clamp(1.4rem, 2.2vw, 1.85rem);
     font-weight: 700;

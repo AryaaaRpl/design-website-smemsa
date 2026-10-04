@@ -19,7 +19,7 @@
       --bg-dark-elevated: #1c2b4d;
       --text-dark: #0f172a;
       --text-muted: #64748b;
-      --text-subtle: #94a3b8;
+      --text-subtle: #64748b;
       --text-light: #f8fafc;
       --border-light: rgba(30, 64, 175, 0.1);
       --border-card: #e2e8f0;
@@ -631,7 +631,7 @@
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--secondary);
+      color: var(--secondary-text);
       margin-bottom: 1.2rem;
     }
 

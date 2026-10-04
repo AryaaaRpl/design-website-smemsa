@@ -16,7 +16,7 @@
       --bg-dark: #0f172a;
       --text-dark: #0f172a;
       --text-muted: #64748b;
-      --text-subtle: #94a3b8;
+      --text-subtle: #64748b;
       --border-card: #e2e8f0;
       --border: #e2e8f0;
       --border-dark: #263559;
@@ -291,7 +291,7 @@
 
     .visi-label {
       font-family: var(--font-head);
-      color: var(--secondary);
+      color: var(--secondary-text);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;

@@ -29,7 +29,7 @@
         </div>
 
         <div class="badge hero-badge-excellence" style="
-                color: var(--secondary);
+                color: var(--secondary-text);
                 text-transform: uppercase;
                 letter-spacing: 0.1em;
                 font-size: 0.75rem;
@@ -178,9 +178,9 @@
         <div class="badge badge-amber mb-2" style="margin-bottom: 1rem">
           Pesan Pimpinan Lembaga
         </div>
-        <h3 class="executive-quote">
+        <blockquote class="executive-quote">
           "{{ $principalQuote }}"
-        </h3>
+        </blockquote>
         <p class="executive-bio-text">
           Kami berkomitmen mencetak generasi unggul yang tidak hanya cakap
           secara teknis dan adaptif terhadap revolusi industri, tetapi juga
@@ -926,7 +926,7 @@
               </p>
             </div>
             <span style="
-                    color: var(--secondary);
+                    color: var(--secondary-text);
                     font-weight: 700;
                     font-size: 0.92rem;
                   ">Baca selengkapnya &rarr;</span>

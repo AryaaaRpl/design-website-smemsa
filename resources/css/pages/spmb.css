@@ -25,7 +25,7 @@
 
       --text-dark: #0f172a;
       --text-muted: #64748b;
-      --text-subtle: #94a3b8;
+      --text-subtle: #64748b;
       --text-light: #f8fafc;
 
       --border-light: rgba(30, 64, 175, 0.1);
@@ -1045,12 +1045,12 @@
 
     .badge-tag-sm.amber {
       background: rgba(234, 179, 8, 0.15);
-      color: #a16207;
+      color: #854d0e;
     }
 
     .badge-tag-sm.green {
       background: rgba(34, 197, 94, 0.15);
-      color: #15803d;
+      color: #166534;
     }
 
     .badge-tag-sm.blue {

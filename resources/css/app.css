@@ -20,6 +20,7 @@
     --primary-glow: rgba(30, 64, 175, 0.2);
 
     --secondary: #eab308;
+    --secondary-text: #a16207; /* kuning tua: teks di latar terang (kontras 4,9:1) */
     --secondary-light: #facc15;
     --secondary-surface: rgba(234, 179, 8, 0.1);
     --secondary-glow: rgba(234, 179, 8, 0.25);
@@ -36,7 +37,7 @@
 
     --text-dark: #0f172a;
     --text-muted: #64748b;
-    --text-subtle: #94a3b8;
+    --text-subtle: #64748b;
     --text-light: #f8fafc;
 
     --border-light: rgba(30, 64, 175, 0.1);

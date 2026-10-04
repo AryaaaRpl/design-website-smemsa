@@ -217,7 +217,7 @@
                 @endif
               </div>
               <div class="mitra-info">
-                <h4>{{ $partner->name }}</h4>
+                <h4 aria-level="3">{{ $partner->name }}</h4>
               </div>
             </div>
           @endforeach

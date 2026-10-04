@@ -320,8 +320,8 @@
         // Label jurusan diambil dari data jurusan yang dipilih di admin.
         const major = guru.jurusan || (guru.jabatan !== "Ketua Program" ? guru.jabatan : "Konsentrasi");
 
-        badgeHTML = `<div style="position: absolute; top: 1rem; right: 1rem; background: var(--secondary); color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 700; font-size: 0.75rem; z-index: 10;">${escapeHtml(major)}</div>`;
-        linkHTML = `<a href="{{ url('/') }}#jurusan" style="display: block; font-size: 0.75rem; color: var(--secondary); font-weight: 700; margin-top: 0.5rem;">Lihat alur karier jurusan ini &rarr;</a>`;
+        badgeHTML = `<div style="position: absolute; top: 1rem; right: 1rem; background: var(--secondary); color: #422006; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 700; font-size: 0.75rem; z-index: 10;">${escapeHtml(major)}</div>`;
+        linkHTML = `<a href="{{ url('/') }}#jurusan" style="display: block; font-size: 0.75rem; color: var(--secondary-text); font-weight: 700; margin-top: 0.5rem;">Lihat alur karier jurusan ini &rarr;</a>`;
       }
 
       return `
@@ -459,6 +459,7 @@
         originalChildren.forEach(child => {
           const clone = child.cloneNode(true);
           clone.setAttribute("aria-hidden", "true");
+          clone.inert = true; // tidak bisa difokus/diklik lewat keyboard
           container.appendChild(clone);
         });
 

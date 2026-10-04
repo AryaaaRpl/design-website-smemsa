@@ -38,7 +38,7 @@
               <span>&bull;</span>
               <span>{{ $item['location'] }}</span>
             </div>
-            <h3 class="award-card-title">{{ $item['title'] }}</h3>
+            <h3 class="award-card-title" aria-level="2">{{ $item['title'] }}</h3>
             <p class="award-card-desc">{{ $item['excerpt'] }}</p>
           </div>
           <div class="award-card-footer">

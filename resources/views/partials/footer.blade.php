@@ -127,7 +127,7 @@
 
         <!-- Kolom 2: Halaman Terkait -->
         <div class="footer-col">
-          <h4>Halaman Terkait</h4>
+          <h4 aria-level="2">Halaman Terkait</h4>
           <nav class="footer-nav" aria-label="Navigasi Halaman Terkait">
             <ul class="footer-links">
               <li>
@@ -160,7 +160,7 @@
 
         <!-- Kolom 3: Konsentrasi Keahlian (dari database) -->
         <div class="footer-col">
-          <h4>{{ trim(($navMajors->count() ?: '') . ' Konsentrasi') }}</h4>
+          <h4 aria-level="2">{{ trim(($navMajors->count() ?: '') . ' Konsentrasi') }}</h4>
           <nav class="footer-nav" aria-label="Navigasi {{ $majorCountLabel }}">
             <ul class="footer-links">
               @forelse ($navMajors as $major)
@@ -182,7 +182,7 @@
 
         <!-- Kolom 4: Identitas Lembaga Resmi -->
         <div class="footer-col">
-          <h4>Identitas Lembaga</h4>
+          <h4 aria-level="2">Identitas Lembaga</h4>
           <div class="footer-identity-card">
             <div><strong>NPSN:</strong> {{ $site->get('npsn') }}</div>
             <div><strong>Akreditasi:</strong> {{ $site->get('accreditation') }} ({{ $site->get('accreditation_predicate') }} BAN-S/M)</div>
@@ -192,7 +192,7 @@
 
           @if ($visitorStats)
             <!-- Statistik Pengunjung (unik per hari, WIB) -->
-            <h4 class="footer-visitor-title">Statistik Pengunjung</h4>
+            <h4 class="footer-visitor-title" aria-level="2">Statistik Pengunjung</h4>
             <dl class="footer-visitor-grid" aria-label="Statistik pengunjung website">
               @foreach ([
                 'today' => 'Hari Ini',
