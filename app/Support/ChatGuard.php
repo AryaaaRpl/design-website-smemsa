@@ -9,7 +9,7 @@ namespace App\Support;
 class ChatGuard
 {
     /** Kalimat penolakan baku (juga dipakai AI lewat system prompt). */
-    public const REFUSAL = 'Maaf, aku hanya bisa membantu informasi seputar SMKS Muhammadiyah 1 Genteng, seperti jurusan, PPDB, biaya, dan fasilitas. Ada yang ingin kamu tanyakan tentang sekolah kami? 😊';
+    public const REFUSAL = 'Maaf, aku hanya bisa membantu informasi seputar SMKS Muhammadiyah 1 Genteng, seperti jurusan, SPMB, biaya, dan fasilitas. Ada yang ingin kamu tanyakan tentang sekolah kami? 😊';
 
     /** Pola jailbreak umum (Bahasa Indonesia & Inggris), dicocokkan pada teks huruf kecil. */
     private const JAILBREAK_PATTERNS = [

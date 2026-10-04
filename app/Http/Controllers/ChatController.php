@@ -31,13 +31,13 @@ class ChatController extends Controller
         }
 
         // Pertanyaan yang persis sama dengan FAQ dijawab dari database.
-        $faq = $this->faqs()->first(fn (array $item) => mb_strtolower($item['question']) === mb_strtolower($message));
+        $faq = $this->faqs()->first(fn(array $item) => mb_strtolower($item['question']) === mb_strtolower($message));
         if ($faq) {
             return $this->respond($faq['answer'], 'faq');
         }
 
         // Pertanyaan identik tanpa riwayat memakai jawaban tersimpan (hemat kuota & tahan trafik tinggi).
-        $cacheKey = 'chat:reply:'.sha1(config('services.gemini.model').'|'.mb_strtolower(preg_replace('/\s+/u', ' ', $message)));
+        $cacheKey = 'chat:reply:' . sha1(config('services.gemini.model') . '|' . mb_strtolower(preg_replace('/\s+/u', ' ', $message)));
         if ($history === [] && ($cached = Cache::get($cacheKey))) {
             return $this->respond($cached, 'cache');
         }
@@ -48,7 +48,7 @@ class ChatController extends Controller
             Log::warning('Chatbot: Gemini gagal, memakai jawaban cadangan.', ['error' => $e->getMessage()]);
 
             return $this->respond(
-                'Maaf, Asisten SMEMSA sedang sibuk sehingga belum bisa menjawab. Silakan coba lagi sebentar lagi, atau hubungi Admin PPDB via WhatsApp di '.$site->whatsappDisplay('spmb').'.',
+                'Maaf, Asisten SMEMSA sedang sibuk sehingga belum bisa menjawab. Silakan coba lagi sebentar lagi, atau hubungi Admin SPMB via WhatsApp di ' . $site->whatsappDisplay('spmb') . '.',
                 'fallback',
             );
         }
@@ -80,8 +80,8 @@ class ChatController extends Controller
      */
     private function faqs(): Collection
     {
-        return collect(Cache::remember('chat:faqs', now()->addMinutes(10), fn () => Faq::published()->ordered()->take(5)->get()
-            ->map(fn (Faq $faq) => [
+        return collect(Cache::remember('chat:faqs', now()->addMinutes(10), fn() => Faq::published()->ordered()->take(5)->get()
+            ->map(fn(Faq $faq) => [
                 'question' => Faq::withValues($faq->question),
                 'answer' => Faq::withValues($faq->answer),
             ])

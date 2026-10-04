@@ -36,12 +36,12 @@ class ChatAssistant
      */
     public function systemPrompt(): string
     {
-        $version = @filemtime($this->path('system-prompt.md')).'-'.@filemtime($this->path('knowledge.md'));
+        $version = @filemtime($this->path('system-prompt.md')) . '-' . @filemtime($this->path('knowledge.md'));
 
         return Cache::remember("chat:system-prompt:{$version}", now()->addHour(), function () {
             // Bagian yang belum diisi ([ISI]) dibaca AI sebagai "belum tersedia".
-            $knowledge = str_replace('[ISI]', '(belum tersedia, sarankan menghubungi Admin PPDB)', trim($this->file('knowledge.md')))
-                ."\n\n".$this->liveKnowledge();
+            $knowledge = str_replace('[ISI]', '(belum tersedia, sarankan menghubungi Admin SPMB)', trim($this->file('knowledge.md')))
+                . "\n\n" . $this->liveKnowledge();
 
             return str_replace('{{KNOWLEDGE}}', $knowledge, $this->rules());
         });
@@ -63,13 +63,13 @@ class ChatAssistant
         }
 
         $contents = collect($history)
-            ->map(fn (array $item) => ['role' => $item['role'], 'parts' => [['text' => $item['text']]]])
+            ->map(fn(array $item) => ['role' => $item['role'], 'parts' => [['text' => $item['text']]]])
             ->push(['role' => 'user', 'parts' => [['text' => $message]]])
             ->values()
             ->all();
 
         $safety = collect(['HARASSMENT', 'HATE_SPEECH', 'SEXUALLY_EXPLICIT', 'DANGEROUS_CONTENT'])
-            ->map(fn (string $category) => ['category' => "HARM_CATEGORY_{$category}", 'threshold' => 'BLOCK_LOW_AND_ABOVE'])
+            ->map(fn(string $category) => ['category' => "HARM_CATEGORY_{$category}", 'threshold' => 'BLOCK_LOW_AND_ABOVE'])
             ->all();
 
         $model = (string) config('services.gemini.model');
@@ -98,7 +98,7 @@ class ChatAssistant
 
         if ($response->failed()) {
             // Isi body error Gemini tidak memuat API key (key dikirim lewat header).
-            throw new RuntimeException('Gemini HTTP '.$response->status().': '.mb_substr((string) $response->json('error.message'), 0, 200));
+            throw new RuntimeException('Gemini HTTP ' . $response->status() . ': ' . mb_substr((string) $response->json('error.message'), 0, 200));
         }
 
         return trim(collect($response->json('candidates.0.content.parts', []))->pluck('text')->implode(''));
@@ -118,7 +118,7 @@ class ChatAssistant
                 ->timeout(15)
                 ->post(sprintf(self::ENDPOINT, $model), $payload);
         } catch (ConnectionException $e) {
-            throw new RuntimeException('Gemini tidak merespons: '.$e->getMessage(), previous: $e);
+            throw new RuntimeException('Gemini tidak merespons: ' . $e->getMessage(), previous: $e);
         }
     }
 
@@ -133,7 +133,7 @@ class ChatAssistant
         try {
             $majors = Major::active()->ordered()->get(['short_name', 'name']);
             if ($majors->isNotEmpty()) {
-                $lines[] = "- Konsentrasi keahlian ({$majors->count()}): ".$majors->map(fn ($m) => "{$m->name} ({$m->short_name})")->implode('; ');
+                $lines[] = "- Konsentrasi keahlian ({$majors->count()}): " . $majors->map(fn($m) => "{$m->name} ({$m->short_name})")->implode('; ');
             }
 
             $principal = Teacher::active()->ofCategory(TeacherCategory::Principal)->value('name');
@@ -142,9 +142,9 @@ class ChatAssistant
             }
 
             $vacancies = JobVacancy::open()->with('partner')->orderBy('closes_at')->take(5)->get();
-            $lines[] = '- Lowongan BKK yang sedang dibuka: '.($vacancies->isEmpty()
+            $lines[] = '- Lowongan BKK yang sedang dibuka: ' . ($vacancies->isEmpty()
                 ? 'belum ada, pantau halaman BKK.'
-                : $vacancies->map(fn ($v) => trim("{$v->position} di {$v->partner?->name}".($v->location ? " ({$v->location})" : '')))->implode('; '));
+                : $vacancies->map(fn($v) => trim("{$v->position} di {$v->partner?->name}" . ($v->location ? " ({$v->location})" : '')))->implode('; '));
         } catch (\Throwable $e) {
             Log::warning('Chatbot: gagal membaca data terkini dari database.', ['error' => $e->getMessage()]);
         }
@@ -152,8 +152,8 @@ class ChatAssistant
         $tuition = (int) $site->get('fee_tuition');
         $lines[] = "- Tahun ajaran SPMB: {$site->get('spmb_academic_year')}";
         $lines[] = "- Biaya PSM (SPP) 1 tahun: {$site->rupiah($tuition)}, bisa dicicil 2x per semester ({$site->rupiah(intdiv($tuition, 2))} per semester)";
-        $lines[] = "- Seragam laki-laki: {$site->rupiah((int) $site->get('fee_uniform_male'))}; seragam perempuan: {$site->rupiah((int) $site->get('fee_uniform_female'))} (sekali bayar)";
-        $lines[] = "- Biaya PKL dalam kota: {$site->rupiah((int) $site->get('fee_pkl_local'))}; luar kota: {$site->rupiah((int) $site->get('fee_pkl_outside'))}; sertifikasi kompetensi: {$site->rupiah((int) $site->get('fee_certification'))}";
+        $lines[] = "- Seragam laki-laki: {$site->rupiah((int)$site->get('fee_uniform_male'))}; seragam perempuan: {$site->rupiah((int)$site->get('fee_uniform_female'))} (sekali bayar)";
+        $lines[] = "- Biaya PKL dalam kota: {$site->rupiah((int)$site->get('fee_pkl_local'))}; luar kota: {$site->rupiah((int)$site->get('fee_pkl_outside'))}; sertifikasi kompetensi: {$site->rupiah((int)$site->get('fee_certification'))}";
         $lines[] = "- Alamat: {$site->get('address')}";
         $lines[] = "- Telepon kantor: {$site->get('phone')}; email: {$site->get('email')}";
         $lines[] = "- WhatsApp Panitia SPMB: {$site->whatsappDisplay('spmb')}";
@@ -169,6 +169,6 @@ class ChatAssistant
 
     private function path(string $name): string
     {
-        return storage_path('app/chatbot/'.$name);
+        return storage_path('app/chatbot/' . $name);
     }
 }
