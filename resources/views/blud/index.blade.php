@@ -11,8 +11,8 @@
     </svg>
     <div class="container">
       <span class="jr-eyebrow">BLUD & Unit Usaha Sekolah</span>
-      <h1 class="page-title">Karya Siswa,<br />Siap Dipesan.</h1>
-      <p class="page-subtitle">
+      <h1 class="page-title" data-reveal>Karya Siswa,<br />Siap Dipesan.</h1>
+      <p class="page-subtitle" data-reveal>
         Produk dan jasa dari unit usaha SMKS Muhammadiyah 1 Genteng, dikerjakan siswa sebagai praktik
         kewirausahaan nyata. Pilih produk, isi formulir, dan pesanan langsung terhubung ke WhatsApp unit usahanya.
       </p>

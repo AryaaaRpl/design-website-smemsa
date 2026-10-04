@@ -11,7 +11,7 @@
       <circle cx="50" cy="50" fill="none" r="30" stroke="var(--secondary)" stroke-dasharray="2 2" stroke-width="1">
       </circle>
     </svg>
-    <div class="container reveal">
+    <div class="container reveal" data-reveal>
       <div style="
             padding: 0.4rem 0;
             font-size: 0.85rem;
@@ -21,8 +21,8 @@
           ">
         SMKS Muhammadiyah 1 Genteng
       </div>
-      <h1 class="page-title">Visi, Misi &amp; Tujuan</h1>
-      <p class="page-subtitle">
+      <h1 class="page-title" data-reveal>Visi, Misi &amp; Tujuan</h1>
+      <p class="page-subtitle" data-reveal>
         Arah dan landasan utama SMKS Muhammadiyah 1 Genteng dalam mencetak
         generasi Islam yang berkemajuan, kompeten, dan berjiwa wirausaha.
       </p>
@@ -30,7 +30,7 @@
   </header>
   <!-- VISI SECTION -->
   <section class="container visi-section">
-    <div class="reveal">
+    <div class="reveal" data-reveal>
       <div class="visi-card-wrapper" style="
             background: linear-gradient(135deg, #1e40af 0%, #16296b 100%);
             color: #ffffff;
@@ -61,7 +61,7 @@
   </section>
   <!-- MISI SECTION -->
   <section class="container misi-section" style="padding-bottom: 6rem">
-    <div class="misi-header reveal" style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem">
+    <div class="misi-header reveal" data-reveal style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem">
       <span class="visi-label">Misi Lembaga</span>
       <h2 class="font-head" style="font-size: 2.5rem; color: var(--primary); margin-top: 0.5rem">
         Misi Sekolah
@@ -76,7 +76,7 @@
           grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
           gap: 1.5rem;
         ">
-      <div class="misi-card reveal" style="
+      <div class="misi-card reveal" data-reveal style="
             background: var(--bg-main);
             border: 1px solid var(--border-card);
             border-radius: var(--radius-lg);
@@ -111,7 +111,7 @@
           yang holistik dalam semua mata pelajaran.
         </p>
       </div>
-      <div class="misi-card reveal" style="
+      <div class="misi-card reveal" data-reveal style="
             background: var(--bg-main);
             border: 1px solid var(--border-card);
             border-radius: var(--radius-lg);
@@ -146,7 +146,7 @@
           memenuhi kebutuhan dunia kerja dan mengembangkan potensi didik.
         </p>
       </div>
-      <div class="misi-card reveal" style="
+      <div class="misi-card reveal" data-reveal style="
             background: var(--bg-main);
             border: 1px solid var(--border-card);
             border-radius: var(--radius-lg);
@@ -181,7 +181,7 @@
           informasi dan digitalisasi.
         </p>
       </div>
-      <div class="misi-card reveal" style="
+      <div class="misi-card reveal" data-reveal style="
             background: var(--bg-main);
             border: 1px solid var(--border-card);
             border-radius: var(--radius-lg);
@@ -216,7 +216,7 @@
           serta pendidikan yang inklusif.
         </p>
       </div>
-      <div class="misi-card reveal" style="
+      <div class="misi-card reveal" data-reveal style="
             background: var(--bg-main);
             border: 1px solid var(--border-card);
             border-radius: var(--radius-lg);
@@ -256,7 +256,7 @@
   <!-- TUJUAN SECTION -->
   <section class="tujuan-section section-padding bg-alt" style="padding: 6rem 0">
     <div class="container">
-      <div class="reveal" style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem">
+      <div class="reveal" data-reveal style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem">
         <span class="visi-label">Tujuan Institusi</span>
         <h2 class="font-head" style="font-size: 2.5rem; color: var(--primary); margin-top: 0.5rem">
           Tujuan Sekolah
@@ -270,7 +270,7 @@
         <div class="tujuan-progress-line">
           <div class="tujuan-progress-bar" id="tujuan-bar"></div>
         </div>
-        <div class="tujuan-card reveal">
+        <div class="tujuan-card reveal" data-reveal>
           <div class="tujuan-icon">1</div>
           <p style="
                 font-size: 1.05rem;
@@ -282,7 +282,7 @@
             bertaqwa kepada Allah SWT dengan perilaku akhlak mulia.
           </p>
         </div>
-        <div class="tujuan-card reveal">
+        <div class="tujuan-card reveal" data-reveal>
           <div class="tujuan-icon">2</div>
           <p style="
                 font-size: 1.05rem;
@@ -295,7 +295,7 @@
             dan digital dalam pembelajaran.
           </p>
         </div>
-        <div class="tujuan-card reveal">
+        <div class="tujuan-card reveal" data-reveal>
           <div class="tujuan-icon">3</div>
           <p style="
                 font-size: 1.05rem;
@@ -309,7 +309,7 @@
             yang diminatinya.
           </p>
         </div>
-        <div class="tujuan-card reveal">
+        <div class="tujuan-card reveal" data-reveal>
           <div class="tujuan-icon">4</div>
           <p style="
                 font-size: 1.05rem;
@@ -326,7 +326,7 @@
   </section>
   <!-- KONSENTRASI KEAHLIAN (EX-SIDEBAR SEPERTI DI GAMBAR) -->
   <section class="majors-section container" style="padding: 6rem 0">
-    <div class="reveal" style="text-align: center; max-width: 700px; margin: 0 auto 3rem">
+    <div class="reveal" data-reveal style="text-align: center; max-width: 700px; margin: 0 auto 3rem">
       <span class="visi-label">Program Unggulan</span>
       <h2 class="font-head" style="font-size: 2.5rem; color: var(--primary); margin-top: 0.5rem">
         Konsentrasi Keahlian
@@ -336,7 +336,7 @@
         1 Genteng sesuai data gambar rujukan.
       </p>
     </div>
-    <div class="majors-grid reveal" style="justify-content: center">
+    <div class="majors-grid reveal" data-reveal style="justify-content: center">
       @forelse ($majors as $major)
       <a href="{{ route('jurusan.show', $major) }}" class="major-chip">
         <div class="major-chip-img-wrapper">

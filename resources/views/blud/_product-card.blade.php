@@ -1,5 +1,5 @@
 {{-- Kartu produk BLUD. Butuh $product dengan relasi businessUnit. --}}
-<a href="{{ route('blud.show', $product) }}" class="bl-card" aria-label="Lihat detail {{ $product->name }}">
+<a href="{{ route('blud.show', $product) }}" class="bl-card" data-reveal aria-label="Lihat detail {{ $product->name }}">
   <div class="bl-card-photo">
     @if ($product->image_url)
       <img src="{{ $product->image_url }}" alt="{{ $product->name }}" loading="lazy">

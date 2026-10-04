@@ -11,10 +11,10 @@
     </svg>
     <div class="container">
       <span class="jr-eyebrow">Konsentrasi Keahlian</span>
-      <h1 class="page-title">
+      <h1 class="page-title" data-reveal>
         {{ $stats['majors'] ? $stats['majors'] . ' Program Keahlian,' : 'Program Keahlian,' }}<br />Satu Tujuan: Siap Kerja.
       </h1>
-      <p class="page-subtitle">
+      <p class="page-subtitle" data-reveal>
         Setiap konsentrasi keahlian di SMKS Muhammadiyah 1 Genteng dibekali Teaching Factory,
         sertifikasi kompetensi BNSP, dan jejaring mitra industri agar lulusan siap kerja,
         berwirausaha, atau melanjutkan studi.
@@ -61,7 +61,7 @@
       @else
         <div class="jr-grid">
           @foreach ($majors as $major)
-            <a href="{{ route('jurusan.show', $major) }}" class="jr-card" aria-label="Lihat detail jurusan {{ $major->name }}">
+            <a href="{{ route('jurusan.show', $major) }}" class="jr-card" data-reveal aria-label="Lihat detail jurusan {{ $major->name }}">
               <div class="jr-card-visual">
                 @if ($major->logo_url)
                   <span class="jr-card-logo"><img src="{{ $major->logo_url }}" alt="Logo {{ $major->code }}" loading="lazy"></span>

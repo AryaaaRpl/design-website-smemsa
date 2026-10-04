@@ -28,9 +28,9 @@
     @if ($facility->tag)
       <span class="badge {{ $facility->is_tefa ? 'badge-gold' : 'badge-primary' }}">{{ $facility->tag }}</span>
     @endif
-    <h1 class="page-title fs-detail-title">{{ $facility->name }}</h1>
+    <h1 class="page-title fs-detail-title" data-reveal>{{ $facility->name }}</h1>
     @if ($facility->short_description)
-      <p class="page-subtitle">{{ $facility->short_description }}</p>
+      <p class="page-subtitle" data-reveal>{{ $facility->short_description }}</p>
     @endif
   </div>
 </header>
@@ -92,7 +92,7 @@
       @endif
     </div>
 
-    <aside class="fs-info-card">
+    <aside class="fs-info-card" data-reveal>
       @if ($infos)
         <dl>
           @foreach ($infos as $label => $value)

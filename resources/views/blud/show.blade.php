@@ -29,9 +29,9 @@
         <span class="jr-code jr-code-light">{{ $product->type->label() }} &bull; {{ $unit->manager_label }}</span>
       </div>
 
-      <h1 class="page-title">{{ $product->name }}</h1>
+      <h1 class="page-title" data-reveal>{{ $product->name }}</h1>
       @if ($product->tagline)
-        <p class="page-subtitle">{{ $product->tagline }}</p>
+        <p class="page-subtitle" data-reveal>{{ $product->tagline }}</p>
       @endif
     </div>
   </header>
@@ -40,7 +40,7 @@
   <section class="section-padding" style="padding-top: 3rem">
     <div class="container bl-detail">
       <div>
-        <div class="bl-detail-photo">
+        <div class="bl-detail-photo" data-reveal>
           @if ($product->image_url)
             <img src="{{ $product->image_url }}" alt="{{ $product->name }}">
           @else
@@ -49,7 +49,7 @@
         </div>
 
         @if ($product->description || $product->summary)
-          <div class="bl-block">
+          <div class="bl-block" data-reveal>
             <h2>Deskripsi</h2>
             <div class="bl-prose">
               @if ($product->description)
@@ -62,7 +62,7 @@
         @endif
 
         @if (! empty($product->specs))
-          <div class="bl-block">
+          <div class="bl-block" data-reveal>
             <h2>Spesifikasi</h2>
             <dl class="bl-specs">
               @foreach ($product->specs ?? [] as $spec)

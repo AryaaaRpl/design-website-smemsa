@@ -10,8 +10,8 @@
     </div>
     <div class="container" style="position: relative; z-index: 2;">
       <span class="badge-gold">Tenaga Pendidik</span>
-      <h1 class="page-title">Orang-Orang di Balik<br />Setiap Kompetensi.</h1>
-      <p class="page-subtitle">
+      <h1 class="page-title" data-reveal>Orang-Orang di Balik<br />Setiap Kompetensi.</h1>
+      <p class="page-subtitle" data-reveal>
         Mengenal lebih dekat para pendidik inspiratif dan tenaga kependidikan
         dedikatif yang membimbing siswa-siswi SMKS Muhammadiyah 1 Genteng
         menuju prestasi gemilang.
@@ -121,7 +121,7 @@
       <div class="badge-primary" style="margin-bottom: 1rem">
         Manajemen Sekolah
       </div>
-      <h2 class="section-title">Pimpinan Utama Sekolah</h2>
+      <h2 class="section-title" data-reveal>Pimpinan Utama Sekolah</h2>
       <div style="
             width: 60px;
             height: 4px;
@@ -173,7 +173,7 @@
         <div class="badge-primary" style="margin-bottom: 0.5rem">
           Ketua Program
         </div>
-        <h2 class="section-title" style="text-align: left">
+        <h2 class="section-title" data-reveal style="text-align: left">
           Kepala Konsentrasi Keahlian
         </h2>
         <p style="color: var(--text-muted); margin-top: 0.3rem">
@@ -199,7 +199,7 @@
         <div class="badge-primary" style="margin-bottom: 0.5rem">
           Tenaga Pengajar
         </div>
-        <h2 class="section-title" style="text-align: left">
+        <h2 class="section-title" data-reveal style="text-align: left">
           Guru &amp; Pendidik
         </h2>
         <p style="color: var(--text-muted); margin-top: 0.3rem">
@@ -225,7 +225,7 @@
         <div class="badge-primary" style="margin-bottom: 0.5rem">
           Staff Karyawan & Petugas
         </div>
-        <h2 class="section-title" style="text-align: left">
+        <h2 class="section-title" data-reveal style="text-align: left">
           Staff Karyawan
         </h2>
         <p style="color: var(--text-muted); margin-top: 0.3rem">
@@ -373,7 +373,7 @@
 
             if (isKepsek) {
               kepsekCardHTML = `
-                  <div class="struktur1-card kepsek-card">
+                  <div class="struktur1-card kepsek-card" data-reveal>
                     <div class="struktur1-img-wrap">
                       ${imgHTML}
                     </div>
@@ -385,7 +385,7 @@
                   </div>`;
             } else {
               wakasekCardHTML = `
-                  <div class="struktur1-card wakasek-card">
+                  <div class="struktur1-card wakasek-card" data-reveal>
                     <div class="struktur1-body">
                       <div class="struktur1-name">${nama}</div>
                       <div class="struktur1-role">${title}</div>

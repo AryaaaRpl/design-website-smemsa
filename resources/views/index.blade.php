@@ -23,7 +23,7 @@
 
   <div class="container">
     <div class="hero-grid">
-      <div class="hero-text-col">
+      <div class="hero-text-col" data-reveal>
         <div class="badge badge-primary hero-badge-welcome">
           <p>Selamat datang di <span>SMKS Muhammadiyah 1 Genteng</span></p>
         </div>
@@ -123,21 +123,21 @@
   </div>
   <div class="container">
     <div class="stats-grid">
-      <div class="stat-card">
+      <div class="stat-card" data-reveal>
         <div class="stat-num counter-value" data-target="{{ $site->get('founded_year') }}">0</div>
         <div class="stat-label">Tahun Berdiri</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" data-reveal>
         <div class="stat-num counter-value" data-target="{{ $stats['partners'] }}">0</div>
         <div class="stat-label">Jumlah Mitra</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" data-reveal>
         <div class="stat-num">
           <span class="counter-value" data-target="{{ $stats['extracurriculars'] }}">0</span>+
         </div>
         <div class="stat-label">Ekstrakurikuler & Pembinaan Bakat</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" data-reveal>
         <div class="stat-num" style="color: #ffffff">{{ $site->get('accreditation') }} ({{ $site->get('accreditation_predicate') }})</div>
         <div class="stat-label">Akreditasi BAN-S/M Kemendikdasmen</div>
       </div>
@@ -201,8 +201,8 @@
   <div class="container">
     <div class="text-center section-header" style="margin-bottom: 2.5rem">
       <div class="badge badge-amber mb-2">SMK Pusat Keunggulan</div>
-      <h2 class="section-title">Mengapa Memilih SMEMSA?</h2>
-      <p class="section-desc" style="margin: 0 auto">
+      <h2 class="section-title" data-reveal>Mengapa Memilih SMEMSA?</h2>
+      <p class="section-desc" data-reveal style="margin: 0 auto">
         Sinergi kurikulum industri, fasilitas Teaching Factory modern,
         sertifikasi lisensi BNSP, dan pembentukan karakter Islami
         berkemajuan.
@@ -212,7 +212,7 @@
     <!-- Why Choose SMEMSA Bento Grid -->
     <div class="why-bento-grid">
       <!-- Card 1 (Baris 1 Kolom 1) -->
-      <div class="why-bento-card">
+      <div class="why-bento-card" data-reveal>
         <div class="why-icon-box">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -234,7 +234,7 @@
       </div>
 
       <!-- Card 2 (Baris 1 Kolom 2) -->
-      <div class="why-bento-card">
+      <div class="why-bento-card" data-reveal>
         <div class="why-icon-box">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -261,7 +261,7 @@
       </div>
 
       <!-- Card 3 (Baris 1 Kolom 3) -->
-      <div class="why-bento-card">
+      <div class="why-bento-card" data-reveal>
         <div class="why-icon-box">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -284,7 +284,7 @@
       </div>
 
       <!-- Card 4 (Baris 2 Kolom 1) -->
-      <div class="why-bento-card">
+      <div class="why-bento-card" data-reveal>
         <div class="why-icon-box">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -303,7 +303,7 @@
       </div>
 
       <!-- Card 5 (Baris 2 Kolom 2) -->
-      <div class="why-bento-card">
+      <div class="why-bento-card" data-reveal>
         <div class="why-icon-box">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -323,7 +323,7 @@
       </div>
 
       <!-- Card 6 (Baris 2 Kolom 3) -->
-      <div class="why-bento-card">
+      <div class="why-bento-card" data-reveal>
         <div class="why-icon-box">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -535,7 +535,7 @@
         <div class="badge badge-amber mb-2">
           Kewirausahaan Nyata
         </div>
-        <h2 class="section-title" style="color: #ffffff; margin: 0.5rem 0">
+        <h2 class="section-title" data-reveal style="color: #ffffff; margin: 0.5rem 0">
           Karya & Unit Usaha Dikelola Siswa (BLUD)
         </h2>
         <p style="opacity: 0.85; max-width: 640px">
@@ -553,7 +553,7 @@
     @else
     <div class="blud-grid" id="blud-container">
       @foreach ($bludProducts as $product)
-      <a href="{{ route('blud.show', $product) }}" class="product-bento"
+      <a href="{{ route('blud.show', $product) }}" class="product-bento" data-reveal
         style="padding: 1.5rem; justify-content: space-between; text-decoration: none;">
         <div class="bento-body">
           @if ($product->image_url)
@@ -593,7 +593,7 @@
         <div class="badge badge-amber mb-2" style="margin-bottom: 1rem">
           Tradisi Kejuaraan
         </div>
-        <h2 class="section-title">Jejak Prestasi Siswa SMEMSA</h2>
+        <h2 class="section-title" data-reveal>Jejak Prestasi Siswa SMEMSA</h2>
         <p style="
                 color: var(--text-muted);
                 font-size: 1.05rem;
@@ -610,7 +610,7 @@
           </div>
 
           @forelse ($latestAchievements as $achievement)
-          <div class="timeline-card prestasi-item">
+          <div class="timeline-card prestasi-item" data-reveal>
             <span class="badge badge-primary mb-2" style="font-size: 0.75rem">{{ $achievement->achieved_label }}</span>
             <h3 class="font-head" style="
                     font-size: 1.2rem;
@@ -625,7 +625,7 @@
           </div>
           @empty
           <!-- Tampilan saat belum ada data prestasi -->
-          <div class="timeline-card prestasi-item">
+          <div class="timeline-card prestasi-item" data-reveal>
             <h3 class="font-head" style="
                     font-size: 1.2rem;
                     color: var(--primary);
@@ -731,7 +731,7 @@
         <div class="badge badge-amber mb-2">
           Unit Usaha &amp; Bisnis Vokasi
         </div>
-        <h2 class="section-title" style="color: #ffffff; margin: 0.5rem 0">
+        <h2 class="section-title" data-reveal style="color: #ffffff; margin: 0.5rem 0">
           Ekosistem Unit Usaha Sekolah (TEFA &amp; BLUD)
         </h2>
         <p style="opacity: 0.85; max-width: 640px; color: #cbd5e1;">
@@ -748,7 +748,7 @@
     @else
     <div class="blud-grid">
       @foreach ($businessUnits as $unit)
-      <a href="{{ route('blud.unit', $unit) }}" class="product-bento"
+      <a href="{{ route('blud.unit', $unit) }}" class="product-bento" data-reveal
         style="padding: 1.8rem; justify-content: space-between; text-decoration: none;">
         <div class="bento-body">
           @if ($unit->image_url)
@@ -782,7 +782,7 @@
     <div class="spmb-cta-band">
       <div class="spmb-cta-main">
         <span class="spmb-cta-badge">Tahun Ajaran {{ $site->get('spmb_academic_year') }}</span>
-        <h2 class="spmb-cta-title">Ayo Sekolah SMEMSA.</h2>
+        <h2 class="spmb-cta-title" data-reveal>Ayo Sekolah SMEMSA.</h2>
         <p class="spmb-cta-desc">
           Mulai langkah menuju karier vokasi bersama sekolah pusat keunggulan
           dengan Teaching Factory, sertifikasi BNSP, dan penyaluran kerja.
@@ -820,8 +820,8 @@
   <div class="container">
     <div class="text-center section-header">
       <div class="badge badge-amber mb-2">Jurnal & Informasi</div>
-      <h2 class="section-title">Kabar & Berita</h2>
-      <p class="section-desc" style="margin: 0 auto">
+      <h2 class="section-title" data-reveal>Kabar & Berita</h2>
+      <p class="section-desc" data-reveal style="margin: 0 auto">
         Liputan kegiatan, prestasi terbaru, dan pengumuman resmi SMKS
         Muhammadiyah 1 Genteng.
       </p>
@@ -829,7 +829,7 @@
 
     <div class="news-grid">
       <!-- Sidebar Category Filter -->
-      <div class="news-filter-card">
+      <div class="news-filter-card" data-reveal>
         <h3 class="font-head" style="
                 font-size: 1.15rem;
                 color: var(--primary);
@@ -853,7 +853,7 @@
       <div class="news-cards-grid">
         @forelse ($latestPosts as $post)
         <!-- Article {{ $loop->iteration }} -->
-        <a href="{{ route('berita.show', $post) }}" class="article-card" data-category="{{ $post->category?->slug }}">
+        <a href="{{ route('berita.show', $post) }}" class="article-card" data-reveal data-category="{{ $post->category?->slug }}">
           <div class="article-thumb"><img loading="lazy" decoding="async" src="{{ $post->card_thumbnail_url }}" alt="{{ $post->title }}"
               style="width: 100%; height: 100%; object-fit: cover;"></div>
           <div class="article-body">

@@ -14,7 +14,7 @@
         </nav>
 
         <span class="badge-gold" style="font-size:0.75rem;">{{ mb_strtoupper($post->category?->name ?? 'Berita') }}</span>
-        <h1 class="page-title news-detail-title">{{ $post->title }}</h1>
+        <h1 class="page-title news-detail-title" data-reveal>{{ $post->title }}</h1>
 
         <div class="news-detail-meta">
             <span>{{ $post->published_date }}</span>
@@ -47,7 +47,7 @@
         <p class="news-detail-lead">{{ $post->excerpt }}</p>
     @endif
 
-    <div class="news-detail-body">
+    <div class="news-detail-body" data-reveal>
         {!! $post->body_html !!}
     </div>
 

@@ -6,8 +6,8 @@
 <header class="page-header">
     <div class="container">
         <span class="badge-gold">Warta & Jurnalistik Sekolah</span>
-        <h1 class="page-title">Kabar Terkini &<br>Inovasi Vokasi MUHI.</h1>
-        <p class="page-subtitle">
+        <h1 class="page-title" data-reveal>Kabar Terkini &<br>Inovasi Vokasi MUHI.</h1>
+        <p class="page-subtitle" data-reveal>
             Ikuti liputan kegiatan belajar mengajar, kerja sama industri nasional, pengabdian masyarakat, dan
             prestasi mutakhir civitas akademika SMKS Muhammadiyah 1 Genteng.
         </p>

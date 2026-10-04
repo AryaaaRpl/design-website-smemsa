@@ -6,7 +6,7 @@
     <header class="page-header">
       <div class="container">
         <span class="eyebrow">Lembaga Sertifikasi Profesi</span>
-        <h1 class="page-title">LSP <em>SMKS Muhammadiyah 1 Genteng.</em></h1>
+        <h1 class="page-title" data-reveal>LSP <em>SMKS Muhammadiyah 1 Genteng.</em></h1>
         <p class="page-lead">
           Lembaga Sertifikasi Profesi Pihak Pertama yang menyelenggarakan uji
           kompetensi bagi peserta didik. Lulusan tidak hanya membawa ijazah,
@@ -16,25 +16,25 @@
 
         <!-- Strip legitimasi -->
         <div class="legit-strip">
-          <div class="legit-item">
+          <div class="legit-item" data-reveal>
             <div class="legit-label">Nomor Lisensi BNSP</div>
             <div class="legit-value is-placeholder" data-fill="nomor-lisensi">
               BNSP-LSP-1911-ID
             </div>
           </div>
-          <div class="legit-item">
+          <div class="legit-item" data-reveal>
             <div class="legit-label">Tanggal Penetapan</div>
             <div class="legit-value is-placeholder" data-fill="tanggal-lisensi">
               Menunggu data
             </div>
           </div>
-          <div class="legit-item">
+          <div class="legit-item" data-reveal>
             <div class="legit-label">Masa Berlaku</div>
             <div class="legit-value is-placeholder" data-fill="masa-berlaku">
               2031-04-24
             </div>
           </div>
-          <div class="legit-item">
+          <div class="legit-item" data-reveal>
             <div class="legit-label">Jumlah Skema</div>
             <div class="legit-value" id="scheme-count">9 Skema</div>
           </div>
@@ -47,7 +47,7 @@
       <div class="container about-grid">
         <div class="about-text">
           <span class="eyebrow">Tentang Lembaga</span>
-          <h2 class="section-title">Sertifikasi yang Diakui Industri.</h2>
+          <h2 class="section-title" data-reveal>Sertifikasi yang Diakui Industri.</h2>
           <p style="margin-top: 1.2rem">
             LSP-P1 adalah lembaga sertifikasi yang dibentuk oleh satuan
             pendidikan dan memperoleh lisensi dari Badan Nasional Sertifikasi
@@ -70,7 +70,7 @@
           </p>
         </div>
 
-        <aside class="id-card">
+        <aside class="id-card" data-reveal>
           <h3>Identitas Lembaga</h3>
           <dl>
             <div class="id-row">
@@ -113,8 +113,8 @@
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Skema Sertifikasi</span>
-          <h2 class="section-title">Skema yang Diselenggarakan.</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-reveal>Skema yang Diselenggarakan.</h2>
+          <p class="section-desc" data-reveal>
             Setiap konsentrasi keahlian memiliki skema sertifikasi tersendiri
             dengan unit kompetensi yang mengacu pada Standar Kompetensi Kerja
             Nasional Indonesia (SKKNI). Klik salah satu skema untuk melihat
@@ -133,8 +133,8 @@
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Proses Sertifikasi</span>
-          <h2 class="section-title">Alur Uji Kompetensi.</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-reveal>Alur Uji Kompetensi.</h2>
+          <p class="section-desc" data-reveal>
             Lima tahap yang dilalui peserta didik sejak mendaftar hingga
             menerima sertifikat kompetensi.
           </p>
@@ -151,8 +151,8 @@
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Sumber Daya</span>
-          <h2 class="section-title">Asesor Kompetensi.</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-reveal>Asesor Kompetensi.</h2>
+          <p class="section-desc" data-reveal>
             Uji kompetensi dilaksanakan oleh asesor bersertifikat BNSP yang
             berasal dari internal sekolah maupun praktisi industri mitra.
           </p>
@@ -169,8 +169,8 @@
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Tempat Uji Kompetensi</span>
-          <h2 class="section-title">TUK Terverifikasi.</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-reveal>TUK Terverifikasi.</h2>
+          <p class="section-desc" data-reveal>
             Asesmen dilaksanakan di tempat uji kompetensi yang telah
             diverifikasi sesuai standar, sebagian besar merupakan unit Teaching
             Factory yang beroperasi nyata.

@@ -10,8 +10,8 @@
         </svg>
         <div class="container">
             <span class="badge-header">Sekolah Vokasi Terpadu</span>
-            <h1 class="page-title">Infrastruktur &<br />Fasilitas Unggulan.</h1>
-            <p class="page-subtitle">
+            <h1 class="page-title" data-reveal>Infrastruktur &<br />Fasilitas Unggulan.</h1>
+            <p class="page-subtitle" data-reveal>
                 Lingkungan belajar modern yang didesain khusus untuk mendukung
                 pengembangan keterampilan vokasi, kreativitas, dan inovasi peserta
                 didik.
@@ -130,7 +130,7 @@
                 </div>
                 <div class="tefa-list">
                     @foreach ($tefaList as $facility)
-                        <a href="{{ route('fasilitas.show', $facility) }}" class="tefa-item" data-facility="{{ $facility->slug }}">
+                        <a href="{{ route('fasilitas.show', $facility) }}" class="tefa-item" data-reveal data-facility="{{ $facility->slug }}">
                             <span class="tefa-number">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                             <div>
                                 <strong
@@ -162,7 +162,7 @@
         <div class="fasilitas-grid">
             @forelse ($featuredFacilities as $facility)
                 <!-- {{ $facility->name }} -->
-                <a href="{{ route('fasilitas.show', $facility) }}" class="fac-card {{ $facility->is_wide ? 'wide' : '' }}" data-facility="{{ $facility->slug }}">
+                <a href="{{ route('fasilitas.show', $facility) }}" class="fac-card {{ $facility->is_wide ? 'wide' : '' }}" data-reveal data-facility="{{ $facility->slug }}">
                     <div class="fac-icon-wrapper" @if ($facility->is_wide) style="margin-bottom: 0" @endif>
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">

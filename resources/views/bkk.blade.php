@@ -20,10 +20,10 @@
           ">
         Penyaluran Lulusan & Karir Alumni
       </div>
-      <h1 class="page-title">
+      <h1 class="page-title" data-reveal>
         Bursa Kerja Khusus (BKK)<br />SMKS Muhammadiyah 1 Genteng
       </h1>
-      <p class="page-subtitle">
+      <p class="page-subtitle" data-reveal>
         Jembatan karir terpercaya yang menghubungkan alumni dan peserta didik
         dengan ratusan lowongan kerja di mitra industri & DUDIKA terkemuka
         secara nasional.
@@ -51,19 +51,19 @@
 
       <!-- BKK Key Statistics -->
       <div class="bkk-stats-grid">
-        <div class="stat-card">
+        <div class="stat-card" data-reveal>
           <div class="stat-value">{{ $partnerCount }}+</div>
           <div class="stat-label">Mitra DUDI & Industri</div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card" data-reveal>
           <div class="stat-value">{{ $site->percent('employment_rate') }}%</div>
           <div class="stat-label">Alumni Terserap Kerja</div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card" data-reveal>
           <div class="stat-value">{{ $site->get('vacancies_per_year') }}+</div>
           <div class="stat-label">Lowongan Kerja Per Tahun</div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card" data-reveal>
           <div class="stat-value">100%</div>
           <div class="stat-label">Fasilitasi Rekrutmen Direct</div>
         </div>
@@ -90,7 +90,7 @@
       </div>
 
       <!-- BKK Table Card -->
-      <div class="bkk-table-card">
+      <div class="bkk-table-card" data-reveal>
         <div class="bkk-table-header">
           <div>Perusahaan Mitra</div>
           <div>Posisi Pekerjaan</div>
@@ -156,28 +156,28 @@
         </div>
 
         <div class="service-grid">
-          <div class="service-card">
+          <div class="service-card" data-reveal>
             <h3>Penyaluran Kerja Direct</h3>
             <p>
               Rekrutmen sekolah langsung (School Recruitment) bekerjasama
               dengan puluhan perusahan DUDI terkemuka nasional.
             </p>
           </div>
-          <div class="service-card">
+          <div class="service-card" data-reveal>
             <h3>Bimbingan Karir & CV Workshop</h3>
             <p>
               Pelatihan pembuatan CV profesional, portofolio digital, dan
               psikotes kerja bagi seluruh calon lulusan.
             </p>
           </div>
-          <div class="service-card">
+          <div class="service-card" data-reveal>
             <h3>Simulasi Interview Kerja</h3>
             <p>
               Sesi wawancara kerja tiruan dengan instruktur industri agar
               alumni percaya diri saat menghadapi HRD perusahaan.
             </p>
           </div>
-          <div class="service-card">
+          <div class="service-card" data-reveal>
             <h3>Program Praktik Kerja Lapangan (PKL)</h3>
             <p>
               Penempatan magang terstruktur di Teaching Factory dan industri
@@ -210,7 +210,7 @@
 
         <div class="mitra-grid">
           @forelse ($partners as $partner)
-          <div class="mitra-card">
+          <div class="mitra-card" data-reveal>
             <div class="mitra-icon" style="background:transparent;"><img src="{{ $partner->logo_url }}"
                 alt="{{ $partner->name }}"
                 style="width:100%; height:100%; object-fit:contain; border-radius:var(--radius);"></div>

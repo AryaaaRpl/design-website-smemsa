@@ -26,9 +26,9 @@
     @if ($ekskul->tag)
       <span class="badge">{{ $ekskul->tag }}</span>
     @endif
-    <h1 class="page-title ek-detail-title">{{ $ekskul->name }}</h1>
+    <h1 class="page-title ek-detail-title" data-reveal>{{ $ekskul->name }}</h1>
     @if ($ekskul->short_description)
-      <p class="page-subtitle">{{ $ekskul->short_description }}</p>
+      <p class="page-subtitle" data-reveal>{{ $ekskul->short_description }}</p>
     @endif
   </div>
 </header>
@@ -47,7 +47,7 @@
     <div>
       @if ($ekskul->description)
         <h2 class="ek-subtitle">Tentang Program</h2>
-        <div class="ek-prose">{!! $ekskul->description_html !!}</div>
+        <div class="ek-prose" data-reveal>{!! $ekskul->description_html !!}</div>
       @endif
 
       @if (! empty($ekskul->achievements))
@@ -62,7 +62,7 @@
       @endif
     </div>
 
-    <aside class="ek-info-card">
+    <aside class="ek-info-card" data-reveal>
       @if ($infos)
         <dl>
           @foreach ($infos as $label => $value)

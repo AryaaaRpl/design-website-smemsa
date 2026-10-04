@@ -23,9 +23,9 @@
           <span class="jr-code jr-code-light">{{ $unit->manager_label }}</span>
         </div>
 
-        <h1 class="page-title">{{ $unit->name }}</h1>
+        <h1 class="page-title" data-reveal>{{ $unit->name }}</h1>
         @if ($unit->summary)
-          <p class="page-subtitle">{{ $unit->summary }}</p>
+          <p class="page-subtitle" data-reveal>{{ $unit->summary }}</p>
         @endif
 
         <div class="jr-hero-actions">

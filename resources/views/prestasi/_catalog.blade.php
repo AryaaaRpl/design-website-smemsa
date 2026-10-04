@@ -23,7 +23,7 @@
 @if ($items->isNotEmpty())
   <div class="awards-catalog-grid" id="awards-grid-container">
     @foreach ($items as $item)
-      <a href="{{ route('prestasi.show', $item['id']) }}" class="award-card" aria-label="Detail prestasi: {{ $item['title'] }}">
+      <a href="{{ route('prestasi.show', $item['id']) }}" class="award-card" data-reveal aria-label="Detail prestasi: {{ $item['title'] }}">
         <div class="award-card-header {{ $item['imageUrl'] ? 'has-image' : '' }}" @if ($item['imageUrl']) style="background-image: url('{{ $item['imageUrl'] }}');" @endif>
           <div class="award-card-tags-row">
             <span class="award-badge-pill {{ $item['level'] === 'nasional' ? 'national' : '' }}">{{ $item['badge'] }}</span>

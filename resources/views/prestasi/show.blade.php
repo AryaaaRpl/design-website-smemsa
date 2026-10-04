@@ -32,7 +32,7 @@
     <span class="pd-rank {{ $isTopLevel ? 'is-top' : '' }}">
       {{ mb_strtoupper($achievement->rank ?: ($achievement->level?->label() ?? 'Prestasi')) }}
     </span>
-    <h1 class="page-title pd-title">{{ $achievement->title }}</h1>
+    <h1 class="page-title pd-title" data-reveal>{{ $achievement->title }}</h1>
     <p class="pd-meta">
       @if ($achievement->achieved_label)<span>{{ $achievement->achieved_label }}</span>@endif
       @if ($achievement->location)<span>{{ $achievement->location }}</span>@endif
@@ -57,11 +57,11 @@
 
       @if ($achievement->description)
         <h2 class="pd-subtitle">Liputan Lengkap</h2>
-        <div class="pd-prose">{!! $achievement->description_html !!}</div>
+        <div class="pd-prose" data-reveal>{!! $achievement->description_html !!}</div>
       @endif
     </div>
 
-    <aside class="pd-info-card">
+    <aside class="pd-info-card" data-reveal>
       @if ($infos)
         <dl>
           @foreach ($infos as $label => $value)

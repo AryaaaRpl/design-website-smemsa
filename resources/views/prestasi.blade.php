@@ -5,8 +5,8 @@
     <header class="page-header">
         <div class="container">
             <span class="badge-gold">Rekam Jejak Prestasi & Kejuaraan</span>
-            <h1 class="page-title">Tradisi Juara &<br />Hall of Fame Prestasi.</h1>
-            <p class="page-subtitle">
+            <h1 class="page-title" data-reveal>Tradisi Juara &<br />Hall of Fame Prestasi.</h1>
+            <p class="page-subtitle" data-reveal>
                 Dedikasi, inovasi rekayasa, dan kerja keras peserta didik SMKS
                 Muhammadiyah 1 Genteng yang telah diakui hingga podium tertinggi
                 kejuaraan tingkat regional, provinsi, dan nasional.
@@ -18,15 +18,15 @@
         <div container>
             <!-- Stats Bar: Homogenized Number + Label -->
             <div class="awards-stats-grid">
-                <div class="award-stat-card">
+                <div class="award-stat-card" data-reveal>
                     <div class="stat-number">{{ $site->get('trophy_count') }}+</div>
                     <div class="stat-title">Piala Kejuaraan Tingkat Daerah & Jatim</div>
                 </div>
-                <div class="award-stat-card">
+                <div class="award-stat-card" data-reveal>
                     <div class="stat-number">{{ $site->percent('bnsp_rate') }}%</div>
                     <div class="stat-title">Kelulusan Bersertifikasi BNSP</div>
                 </div>
-                <div class="award-stat-card">
+                <div class="award-stat-card" data-reveal>
                     <div class="stat-number">{{ $site->yearsServing() }} Th</div>
                     <div class="stat-title">Pengabdian Vokasi Sejak {{ $site->get('founded_year') }}</div>
                 </div>

@@ -6,10 +6,10 @@
 <header class="page-header">
   <div class="container">
     <span class="badge">Pengembangan Karakter & Minat</span>
-    <h1 class="page-title">
+    <h1 class="page-title" data-reveal>
       Membentuk Karakter,<br />Mengasah Talenta Juara.
     </h1>
-    <p class="page-subtitle">
+    <p class="page-subtitle" data-reveal>
       Beragam pilihan kegiatan ekstrakurikuler di SMKS Muhammadiyah 1
       Genteng untuk menyalurkan potensi, minat, dan melatih jiwa
       kepemimpinan peserta didik.
@@ -22,7 +22,7 @@
   <div class="ekskul-grid">
     @forelse ($extracurriculars as $ekskul)
     <!-- {{ $loop->iteration }}. {{ $ekskul->name }} -->
-    <a href="{{ route('ekstrakurikuler.show', $ekskul) }}" class="ekskul-card {{ $ekskul->card_style->cssClass() }}">
+    <a href="{{ route('ekstrakurikuler.show', $ekskul) }}" class="ekskul-card {{ $ekskul->card_style->cssClass() }}" data-reveal>
       {{-- Kartu pertama langsung dimuat (kandidat LCP di HP), sisanya lazy --}}
       <img class="card-bg" src="{{ $ekskul->image_url }}" alt="" width="400" height="500" decoding="async"
         @if ($loop->first) fetchpriority="high" @else loading="lazy" @endif>

@@ -66,6 +66,7 @@
       })
       .then((html) => {
         results.innerHTML = html;
+        window.revealIn?.(results);
         syncControls(url);
         if (push) history.pushState({ catalog: true }, "", url);
         if (scroll) scrollToCatalog();

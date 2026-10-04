@@ -36,9 +36,9 @@
           <span class="jr-code jr-code-light">{{ $major->code }}</span>
         </div>
 
-        <h1 class="page-title">{{ $major->name }}</h1>
+        <h1 class="page-title" data-reveal>{{ $major->name }}</h1>
         @if ($major->description)
-          <p class="page-subtitle">{{ $major->description }}</p>
+          <p class="page-subtitle" data-reveal>{{ $major->description }}</p>
         @endif
 
         <div class="jr-hero-actions">
@@ -207,7 +207,7 @@
         </div>
         <div class="mitra-grid">
           @foreach ($major->partners as $partner)
-            <div class="mitra-card">
+            <div class="mitra-card" data-reveal>
               <div class="mitra-icon" style="background:transparent;">
                 @if ($partner->logo_url)
                   <img src="{{ $partner->logo_url }}" alt="{{ $partner->name }}"

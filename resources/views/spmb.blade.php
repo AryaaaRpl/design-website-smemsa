@@ -7,8 +7,8 @@
     <header class="page-header">
       <div class="container">
         <div class="badge-amber mb-2">Tahun Ajaran {{ $site->get('spmb_academic_year') }}</div>
-        <h1 class="page-title">Sistem Penerimaan Siswa Baru</h1>
-        <p class="page-subtitle">
+        <h1 class="page-title" data-reveal>Sistem Penerimaan Siswa Baru</h1>
+        <p class="page-subtitle" data-reveal>
           Wujudkan potensi dan keahlian vokasi masa depan bersama SMK Pusat Keunggulan berstandar nasional dan
           berkarakter Islami.
         </p>
@@ -31,15 +31,15 @@
       <div class="container">
         <div class="section-header">
           <span class="badge-primary">Kelengkapan Administrasi</span>
-          <h2 class="section-title">Syarat & Berkas Pendaftaran</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-reveal>Syarat & Berkas Pendaftaran</h2>
+          <p class="section-desc" data-reveal>
             Berkas wajib diunggah saat pendaftaran online (PDF, JPG, atau PNG, maks. 2 MB per berkas). Siapkan juga berkas tambahan sesuai jalur yang Anda pilih.
           </p>
         </div>
 
         <div class="berkas-grid" id="berkas-container">
           <!-- Berkas Wajib -->
-          <div class="berkas-card featured">
+          <div class="berkas-card featured" data-reveal>
             <div class="berkas-category-tag" style="color: var(--primary);">Semua Jalur</div>
             <h3 class="berkas-title">Berkas Wajib</h3>
             <ul class="berkas-list">
@@ -56,7 +56,7 @@
           </div>
 
           <!-- Jalur Prestasi -->
-          <div class="berkas-card">
+          <div class="berkas-card" data-reveal>
             <div class="berkas-category-tag" style="color: #a16207;">Jalur Khusus</div>
             <h3 class="berkas-title">Jalur Prestasi</h3>
             <ul class="berkas-list">
@@ -88,7 +88,7 @@
           </div>
 
           <!-- Jalur Bantuan & Beasiswa -->
-          <div class="berkas-card">
+          <div class="berkas-card" data-reveal>
             <div class="berkas-category-tag" style="color: #15803d;">Jalur Bantuan</div>
             <h3 class="berkas-title">Jalur Beasiswa & KIP</h3>
             <ul class="berkas-list">
@@ -127,8 +127,8 @@
       <div class="container">
         <div class="section-header">
           <span class="badge-primary">Tahapan Seleksi</span>
-          <h2 class="section-title">Alur Pendaftaran Siswa Baru</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-reveal>Alur Pendaftaran Siswa Baru</h2>
+          <p class="section-desc" data-reveal>
             Pilih jalur pendaftaran online atau offline sesuai kenyamanan Anda untuk bergabung bersama SMKS Muhammadiyah 1 Genteng.
           </p>
         </div>
@@ -163,7 +163,7 @@
               </div>
 
               <!-- Langkah 1 Online -->
-              <div class="timeline-step-card-v2">
+              <div class="timeline-step-card-v2" data-reveal>
                 <div class="timeline-step-icon">1</div>
                 <div class="timeline-step-body">
                   <div class="timeline-step-tag">Tahap 1 • Registrasi Digital</div>
@@ -175,7 +175,7 @@
               </div>
 
               <!-- Langkah 2 Online -->
-              <div class="timeline-step-card-v2">
+              <div class="timeline-step-card-v2" data-reveal>
                 <div class="timeline-step-icon">2</div>
                 <div class="timeline-step-body">
                   <div class="timeline-step-tag">Tahap 2 • Dokumen Persyaratan</div>
@@ -187,7 +187,7 @@
               </div>
 
               <!-- Langkah 3 Online -->
-              <div class="timeline-step-card-v2">
+              <div class="timeline-step-card-v2" data-reveal>
                 <div class="timeline-step-icon">3</div>
                 <div class="timeline-step-body">
                   <div class="timeline-step-tag">Tahap 3 • Validasi Panitia</div>
@@ -199,7 +199,7 @@
               </div>
 
               <!-- Langkah 4 Online -->
-              <div class="timeline-step-card-v2">
+              <div class="timeline-step-card-v2" data-reveal>
                 <div class="timeline-step-icon">4</div>
                 <div class="timeline-step-body">
                   <div class="timeline-step-tag">Tahap 4 • Finalisasi & MPLS</div>
@@ -220,7 +220,7 @@
               </div>
 
               <!-- Langkah 1 Offline -->
-              <div class="timeline-step-card-v2">
+              <div class="timeline-step-card-v2" data-reveal>
                 <div class="timeline-step-icon">1</div>
                 <div class="timeline-step-body">
                   <div class="timeline-step-tag">Tahap 1 • Kunjungan Sekolah</div>
@@ -232,7 +232,7 @@
               </div>
 
               <!-- Langkah 2 Offline -->
-              <div class="timeline-step-card-v2">
+              <div class="timeline-step-card-v2" data-reveal>
                 <div class="timeline-step-icon">2</div>
                 <div class="timeline-step-body">
                   <div class="timeline-step-tag">Tahap 2 • Pengisian Formulir & Berkas</div>
@@ -244,7 +244,7 @@
               </div>
 
               <!-- Langkah 3 Offline -->
-              <div class="timeline-step-card-v2">
+              <div class="timeline-step-card-v2" data-reveal>
                 <div class="timeline-step-icon">3</div>
                 <div class="timeline-step-body">
                   <div class="timeline-step-tag">Tahap 3 • Peminatan & Tes Kejuruan</div>
@@ -256,7 +256,7 @@
               </div>
 
               <!-- Langkah 4 Offline -->
-              <div class="timeline-step-card-v2">
+              <div class="timeline-step-card-v2" data-reveal>
                 <div class="timeline-step-icon">4</div>
                 <div class="timeline-step-body">
                   <div class="timeline-step-tag">Tahap 4 • Administrasi & Seragam</div>
@@ -277,8 +277,8 @@
       <div class="container">
         <div class="section-header">
           <span class="badge-primary">Transparansi Biaya & Beasiswa</span>
-          <h2 class="section-title">Rincian Biaya Pendidikan & Skema Beasiswa</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-reveal>Rincian Biaya Pendidikan & Skema Beasiswa</h2>
+          <p class="section-desc" data-reveal>
             Komitmen SMKS Muhammadiyah 1 Genteng menghadirkan pendidikan vokasi berkualitas unggul dengan skema pembiayaan yang transparan, opsi cicilan 1 tahun, serta beragam peluang beasiswa.
           </p>
         </div>
@@ -297,7 +297,7 @@
             
             <div class="fee-seragam-grid">
               <!-- Seragam Laki-laki -->
-              <div class="fee-seragam-card">
+              <div class="fee-seragam-card" data-reveal>
                 <div>
                   <div class="fee-card-top">
                     <span class="badge-amber">Siswa Putra (LK)</span>
@@ -310,7 +310,7 @@
               </div>
 
               <!-- Seragam Perempuan -->
-              <div class="fee-seragam-card">
+              <div class="fee-seragam-card" data-reveal>
                 <div>
                   <div class="fee-card-top">
                     <span class="badge-amber">Siswi Putri (PR)</span>
@@ -348,7 +348,7 @@
 
             <div class="fee-grade-grid">
               <!-- KELAS X -->
-              <div class="fee-grade-card">
+              <div class="fee-grade-card" data-reveal>
                 <div>
                   <span class="fee-grade-badge">Tingkat Pertama</span>
                   <h4 class="fee-grade-title">Kelas X (Sepuluh)</h4>
@@ -377,7 +377,7 @@
               </div>
 
               <!-- KELAS XI -->
-              <div class="fee-grade-card featured-grade">
+              <div class="fee-grade-card featured-grade" data-reveal>
                 <div>
                   <span class="fee-grade-badge" style="background: var(--secondary-surface); color: #a16207; border: 1px solid rgba(234, 179, 8, 0.35);">Tingkat Kedua • Program PKL</span>
                   <h4 class="fee-grade-title">Kelas XI (Sebelas)</h4>
@@ -417,7 +417,7 @@
               </div>
 
               <!-- KELAS XII -->
-              <div class="fee-grade-card">
+              <div class="fee-grade-card" data-reveal>
                 <div>
                   <span class="fee-grade-badge">Tingkat Akhir • Uji Sertifikasi</span>
                   <h4 class="fee-grade-title">Kelas XII (Dua Belas)</h4>
@@ -467,7 +467,7 @@
               <span>Geser tabel ke samping untuk melihat detail beasiswa</span>
             </div>
 
-            <div class="beasiswa-table-wrapper">
+            <div class="beasiswa-table-wrapper" data-reveal>
               <div class="beasiswa-table-responsive">
                 <table class="beasiswa-table">
                   <thead>
@@ -533,8 +533,8 @@
       <div class="container">
         <div class="section-header">
           <span class="badge-primary">Tanya Jawab</span>
-          <h2 class="section-title">Pertanyaan Sering Diajukan (FAQ)</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-reveal>Pertanyaan Sering Diajukan (FAQ)</h2>
+          <p class="section-desc" data-reveal>
             Temukan jawaban cepat atas pertanyaan umum seputar proses pendaftaran siswa baru, rincian biaya, dan beasiswa.
           </p>
         </div>
@@ -562,8 +562,8 @@
       <div class="container">
         <div class="section-header">
           <span class="badge-primary">Bantuan & Layanan</span>
-          <h2 class="section-title">Sekretariat Panitia SPMB</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-reveal>Sekretariat Panitia SPMB</h2>
+          <p class="section-desc" data-reveal>
             Kunjungi sekolah kami atau hubungi panitia untuk informasi lengkap pendaftaran.
           </p>
         </div>
