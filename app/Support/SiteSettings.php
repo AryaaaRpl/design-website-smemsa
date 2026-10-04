@@ -14,7 +14,7 @@ class SiteSettings
 {
     /**
      * Definisi pengaturan per tab.
-     * type: text | textarea | url | number | whatsapp
+     * type: text | textarea | url | number | whatsapp | money | image
      */
     public const GROUPS = [
         'identity' => [
@@ -149,6 +149,26 @@ class SiteSettings
                     'default' => 'https://www.tiktok.com/@smkmuhigts',
                     'rules' => ['nullable', 'url', 'max:255'],
                     'help' => 'Ikon di footer.',
+                ],
+            ],
+        ],
+        'video' => [
+            'label' => 'Video Profil',
+            'fields' => [
+                'profile_video_url' => [
+                    'label' => 'Link Video YouTube',
+                    'placeholder' => 'https://youtu.be/...',
+                    'type' => 'url',
+                    'default' => 'https://youtu.be/HYD1Y4L_b1I',
+                    'rules' => ['nullable', 'url', 'max:255', 'regex:/^https:\/\/(www\.|m\.)?(youtube\.com|youtu\.be)\//'],
+                    'help' => 'Video "Profil SMEMSA" di bawah daftar jurusan beranda. Kosongkan untuk menyembunyikan video.',
+                ],
+                'profile_video_cover' => [
+                    'label' => 'Sampul Video',
+                    'type' => 'image',
+                    'default' => null,
+                    'rules' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+                    'help' => 'Gambar 16:9 (contoh 1600x900), maks 4 MB. Otomatis dikecilkan ke WebP. Kosong = memakai sampul bawaan YouTube.',
                 ],
             ],
         ],
@@ -418,6 +438,16 @@ class SiteSettings
         $digits = ltrim($this->phoneLink(), '0');
 
         return '+62-'.substr($digits, 0, 3).'-'.substr($digits, 3);
+    }
+
+    /**
+     * ID video YouTube dari link apa pun (youtu.be/ID, watch?v=ID, embed/ID, shorts/ID). Null bila tidak dikenali.
+     */
+    public function youtubeId(): ?string
+    {
+        preg_match('~(?:youtu\.be/|[?&]v=|/embed/|/shorts/|/live/)([\w-]{11})~', (string) $this->get('profile_video_url'), $match);
+
+        return $match[1] ?? null;
     }
 
     /**

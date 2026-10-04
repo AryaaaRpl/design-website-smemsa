@@ -20,7 +20,7 @@
         <div class="alert alert-error">Periksa kembali isian form, masih ada data yang belum valid.</div>
     @endif
 
-    <form method="POST" novalidate action="{{ route('admin.settings.update', $activeGroup) }}" class="form-narrow">
+    <form method="POST" novalidate action="{{ route('admin.settings.update', $activeGroup) }}" class="form-narrow" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -39,6 +39,12 @@
                         @if ($field['type'] === 'textarea')
                             <textarea id="{{ $key }}" name="{{ $key }}" class="form-input" rows="3"
                                 placeholder="{{ $placeholder }}">{{ $value }}</textarea>
+                        @elseif ($field['type'] === 'image')
+                            @if (filled($values[$key] ?? null))
+                                <img src="{{ Storage::disk('public')->url($values[$key]) }}" alt="{{ $field['label'] }} saat ini"
+                                    style="display:block; max-width:320px; width:100%; border-radius:8px; margin-bottom:0.6rem;">
+                            @endif
+                            <input type="file" id="{{ $key }}" name="{{ $key }}" class="form-input" accept="image/jpeg,image/png,image/webp">
                         @elseif ($field['type'] === 'money')
                             <div class="input-prefix">
                                 <span>Rp</span>

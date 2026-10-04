@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Concerns\HandlesUploads;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Support\SiteSettings;
@@ -11,6 +12,8 @@ use Illuminate\View\View;
 
 class SettingController extends Controller
 {
+    use HandlesUploads;
+
     public function edit(string $group = 'identity'): View
     {
         abort_unless(isset(SiteSettings::GROUPS[$group]), 404);
@@ -46,6 +49,16 @@ class SettingController extends Controller
         );
 
         foreach ($fields as $key => $field) {
+            // Gambar: hanya diganti bila ada file baru (yang lama dihapus). Disimpan WebP + varian -card.webp.
+            if ($field['type'] === 'image') {
+                if ($request->hasFile($key)) {
+                    $this->deleteUpload(Setting::getValue($key));
+                    Setting::setValue($key, $this->storeUpload($request->file($key), 'settings'));
+                }
+
+                continue;
+            }
+
             // Kolom opsional yang dikosongkan disimpan null (misal sosial media tidak ditampilkan).
             Setting::setValue($key, filled($data[$key] ?? null) ? trim((string) $data[$key]) : null);
         }

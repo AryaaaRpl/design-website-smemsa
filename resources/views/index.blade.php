@@ -517,6 +517,53 @@
       </div>
     </div>
     @endif
+
+    {{-- Video profil: hanya sampul (gambar) dulu; iframe YouTube (±1 MB JS) baru dimuat saat diklik. --}}
+    @php($videoId = $site->youtubeId())
+    @php($cover = $site->get('profile_video_cover'))
+    @if ($videoId)
+    <div class="profile-video">
+      <div class="text-center section-header profile-video-header">
+        <div class="badge">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+          Video Profil
+        </div>
+        <h2 class="section-title" data-reveal>Kenali SMEMSA Lebih Dekat</h2>
+        <span class="profile-video-accent" aria-hidden="true"></span>
+        <p class="section-desc" data-reveal>
+          Lihat suasana belajar, fasilitas, dan prestasi siswa SMKS Muhammadiyah 1 Genteng.
+        </p>
+      </div>
+      <div class="profile-video-frame">
+      <button type="button" class="profile-video-facade" data-video="{{ $videoId }}" aria-label="Putar video Profil SMEMSA">
+        @if ($cover)
+        <img src="{{ Storage::disk('public')->url($cover) }}"
+          srcset="{{ Storage::disk('public')->url(App\Support\Media::cardPath($cover)) }} 640w, {{ Storage::disk('public')->url($cover) }} 1600w"
+          sizes="(max-width: 960px) 100vw, 900px" alt="" width="1600" height="900" loading="lazy" decoding="async" />
+        @else
+        <img src="https://i.ytimg.com/vi/{{ $videoId }}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" />
+        @endif
+        <span class="profile-video-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+        </span>
+        <span class="profile-video-caption" aria-hidden="true">
+          <strong>Profil SMEMSA</strong>
+          <span>Tonton video</span>
+        </span>
+      </button>
+      </div>
+    </div>
+    <script>
+      document.querySelector('.profile-video-facade')?.addEventListener('click', function () {
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + this.dataset.video + '?autoplay=1&rel=0';
+        iframe.title = 'Video Profil SMEMSA';
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        this.replaceWith(iframe);
+      }, { once: true });
+    </script>
+    @endif
   </div>
 </section>
 

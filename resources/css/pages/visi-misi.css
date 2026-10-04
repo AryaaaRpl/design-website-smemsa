@@ -258,7 +258,6 @@
       background: linear-gradient(to bottom, #e7e5e433, var(--bg-main));
       position: relative;
       overflow: hidden;
-      border-bottom: 1px solid var(--border);
     }
 
     .header-bg-pattern {
