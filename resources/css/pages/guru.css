@@ -538,7 +538,47 @@ a {
   margin-bottom: 1rem;
 }
 
+/* Tombol panah slider (desktop, muncul saat auto-scroll aktif) */
+.struktur2-arrow {
+  position: absolute;
+  top: 40%;
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-card);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-card);
+  color: var(--primary);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.struktur2-arrow[hidden] {
+  display: none;
+}
+
+.struktur2-arrow:hover,
+.struktur2-arrow:focus-visible {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.struktur2-arrow.is-prev {
+  left: -14px;
+}
+
+.struktur2-arrow.is-next {
+  right: -14px;
+}
+
 .struktur2-scroll-container {
+  user-select: none;
   display: flex;
   gap: 1.5rem;
   overflow-x: auto;

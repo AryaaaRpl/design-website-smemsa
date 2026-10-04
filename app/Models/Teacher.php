@@ -83,6 +83,7 @@ class Teacher extends Model
             'judulKartu' => $this->category->cardTitle(),
             'kutipan' => $this->quote,
             'foto' => $this->photo_url,
+            'fotoCard' => $this->photo_card_url,
             'jurusan' => $this->major?->chip_label,
         ];
     }
