@@ -783,16 +783,6 @@ Promise.all([
   document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(),
 ]).then(() => ScrollTrigger.refresh());
 
-// Marquee mitra hanya ada di beranda.
-if (document.querySelector(".marquee-track")) {
-  gsap.to(".marquee-track", {
-    xPercent: -50,
-    ease: "none",
-    duration: 40,
-    repeat: -1,
-  });
-}
-
 // Jalankan antrean animasi (lihat ANTREAN ANIMASI di atas).
 flushAnimationQueue();
 

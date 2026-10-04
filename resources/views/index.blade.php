@@ -90,24 +90,24 @@
 <!-- 3. MARQUEE MITRA INDUSTRI DUDI (disembunyikan jika belum ada mitra) -->
 @if ($partners->isNotEmpty())
 <section class="marquee-section" aria-label="Mitra Industri DUDI">
+  {{-- 3 baris (kiri, kanan, kiri) bila mitra cukup banyak; sedikit mitra tetap 1 baris --}}
+  <p class="marquee-title">Dipercaya oleh Mitra Industri &amp; DUDI</p>
+  <div class="marquee-rows">
+  @foreach ($partners->count() >= 9 ? $partners->split(3) : [$partners] as $row)
+  <div class="marquee-row">
   <div class="marquee-track">
     @foreach ([false, true] as $isDuplicate)
-    @if ($isDuplicate)
-    <!-- Seamless Loop Duplicate -->
-    @endif
     <div class="marquee-group" @if ($isDuplicate) aria-hidden="true" @endif>
-      @foreach ($partners as $partner)
+      @foreach ($row as $partner)
       <div class="mitra-item">
-        <img loading="lazy" decoding="async" src="{{ $partner->logo_url }}" alt="{{ $partner->name }}" onerror="
-                this.closest('.card')
-                  ? this.closest('.card').classList.add('no-image')
-                  : null;
-                this.remove();
-              " />
+        <img loading="lazy" decoding="async" src="{{ $partner->logo_url }}" alt="{{ $isDuplicate ? '' : $partner->name }}" width="120" height="48" onerror="this.remove();" />
       </div>
       @endforeach
     </div>
     @endforeach
+  </div>
+  </div>
+  @endforeach
   </div>
 </section>
 @endif

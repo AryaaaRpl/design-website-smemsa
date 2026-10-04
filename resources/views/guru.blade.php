@@ -410,6 +410,7 @@
 
       if (utamaContainer) {
         utamaContainer.innerHTML = kepsekCardHTML + wakasekCardHTML;
+        window.revealIn?.(utamaContainer); // kartu dibuat lewat JS: daftarkan ke animasi muncul
       }
       if (wakasekContainer)
         wakasekContainer.innerHTML =

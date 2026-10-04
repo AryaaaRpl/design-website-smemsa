@@ -1200,13 +1200,85 @@ img {
     background: #ffffff;
     overflow: hidden;
     position: relative;
+    border-top: 1px solid var(--border-card);
+    border-bottom: 1px solid var(--border-card);
 }
 
+/* Judul kecil diapit garis tipis */
+.marquee-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 720px;
+    margin: 0 auto 1.2rem;
+    padding: 0 1rem;
+    font-family: var(--font-head);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.marquee-title::before,
+.marquee-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-card);
+}
+
+/* Logo memudar di kiri-kanan, tidak terpotong tajam */
+.marquee-rows {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-row {
+    padding: 0.8rem 0;
+}
+
+.marquee-row + .marquee-row {
+    border-top: 1px dashed var(--border-card);
+}
+
+/* Marquee CSS murni (tanpa JS): transform dianimasikan di GPU sehingga mulus.
+   Isi baris digandakan 2x, jadi geser -50% = satu putaran tanpa sambungan. */
 .marquee-track {
     display: flex;
     align-items: center;
     white-space: nowrap;
     width: max-content;
+    animation: marquee-scroll 40s linear infinite;
+    will-change: transform;
+}
+
+.marquee-row:nth-child(2) .marquee-track {
+    animation-duration: 46s;
+    animation-direction: reverse;
+}
+
+.marquee-row:nth-child(3) .marquee-track {
+    animation-duration: 36s;
+}
+
+@keyframes marquee-scroll {
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@media (hover: hover) {
+    .marquee-track:hover {
+        animation-play-state: paused;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
 }
 
 .marquee-group {
@@ -1234,8 +1306,8 @@ img {
 }
 
 .mitra-item img {
-    height: 60px;
-    width: auto;
+    width: 120px;
+    height: 48px;
     object-fit: contain;
     opacity: 1;
     transition: var(--transition-fast);
@@ -2779,22 +2851,25 @@ img {
         background: #ffffff;
         overflow: hidden;
         position: relative;
-        border-bottom: 1px solid var(--border-card);
+    }
+
+    .marquee-row {
+        padding: 0.6rem 0;
+    }
+
+    .marquee-title {
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+    }
+
+    .marquee-group {
+        gap: 2.5rem;
+        padding-right: 2.5rem;
     }
 
     .mitra-item img {
-        height: 60px;
-        width: auto;
-        object-fit: contain;
-        transition: var(--transition-fast);
-    }
-
-    /* HP: lebar logo dipesan sejak awal. Dengan width:auto, logo lazy yang baru
-         termuat melebarkan track dan marquee (xPercent GSAP) terlihat meloncat. */
-    @media (max-width: 768px) {
-        .mitra-item img {
-            width: 60px;
-        }
+        width: 84px;
+        height: 40px;
     }
 
     .mitra-item:hover img {
