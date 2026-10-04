@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="image" class="form-label">Foto Kartu</label>
+                    <label for="image" class="form-label">Foto</label>
                     @if ($extracurricular->image_url)
                         <img src="{{ $extracurricular->image_url }}" alt="Foto kartu saat ini" class="thumb-wide">
                     @endif
@@ -122,15 +122,6 @@
                     @error('image') <div class="form-error">{{ $message }}</div> @enderror
                 </div>
 
-                <div class="form-group">
-                    <label for="modal_image" class="form-label">Foto Detail (Modal)</label>
-                    @if ($extracurricular->modal_image)
-                        <img src="{{ $extracurricular->modal_image_url }}" alt="Foto detail saat ini" class="thumb-wide">
-                    @endif
-                    <input type="file" id="modal_image" name="modal_image" class="form-input" accept="image/*">
-                    <div class="form-help">Opsional. Jika kosong, modal memakai foto kartu. Maks. 2 MB per foto.</div>
-                    @error('modal_image') <div class="form-error">{{ $message }}</div> @enderror
-                </div>
 
                 <div class="form-group">
                     <label class="form-check">

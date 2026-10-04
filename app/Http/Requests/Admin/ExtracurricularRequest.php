@@ -43,7 +43,6 @@ class ExtracurricularRequest extends FormRequest
             'location' => ['nullable', 'string', 'max:255'],
             'audience' => ['nullable', 'string', 'max:255'],
             'image' => ['nullable', 'image', 'max:2048'],
-            'modal_image' => ['nullable', 'image', 'max:2048'],
             'card_style' => ['required', Rule::enum(CardStyle::class)],
             'sort_order' => ['required', 'integer', 'min:0'],
             'is_active' => ['boolean'],
@@ -66,7 +65,6 @@ class ExtracurricularRequest extends FormRequest
             'location' => 'tempat latihan',
             'audience' => 'terbuka untuk',
             'image' => 'foto kartu',
-            'modal_image' => 'foto detail',
             'card_style' => 'ukuran kartu',
             'sort_order' => 'urutan',
         ];

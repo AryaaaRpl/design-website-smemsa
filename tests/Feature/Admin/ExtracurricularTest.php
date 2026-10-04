@@ -91,11 +91,11 @@ class ExtracurricularTest extends TestCase
         $this->assertModelMissing($ekskul);
     }
 
-    public function test_modal_image_falls_back_to_card_image(): void
+    public function test_detail_page_uses_card_image(): void
     {
-        $ekskul = new Extracurricular(['image' => 'assets/ekskul/silat.webp']);
+        $ekskul = Extracurricular::create(['name' => 'Silat', 'slug' => 'silat', 'image' => 'assets/ekskul/silat.webp', 'is_active' => true]);
 
-        $this->assertSame(asset('assets/ekskul/silat.webp'), $ekskul->modal_image_url);
+        $this->get(route('ekstrakurikuler.show', $ekskul))->assertOk()->assertSee($ekskul->image_url, false);
     }
 
     public function test_public_page_shows_active_extracurriculars(): void

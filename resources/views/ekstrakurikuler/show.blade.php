@@ -36,8 +36,8 @@
 <!-- 3. ISI DETAIL -->
 <section class="container ek-narrow ek-detail">
   <figure class="ek-detail-cover">
-    @if ($ekskul->modal_image_url)
-      <img src="{{ $ekskul->modal_image_url }}" alt="Kegiatan {{ $ekskul->name }}">
+    @if ($ekskul->image_url)
+      <img src="{{ $ekskul->image_url }}" alt="Kegiatan {{ $ekskul->name }}">
     @else
       <span class="ek-noimg">Belum ada gambar</span>
     @endif

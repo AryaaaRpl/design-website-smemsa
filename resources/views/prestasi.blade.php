@@ -11,11 +11,7 @@
                 Muhammadiyah 1 Genteng yang telah diakui hingga podium tertinggi
                 kejuaraan tingkat regional, provinsi, dan nasional.
             </p>
-        </div>
-    </header>
 
-    <div class="page-header">
-        <div container>
             <!-- Stats Bar: Homogenized Number + Label -->
             <div class="awards-stats-grid">
                 <div class="award-stat-card" data-reveal>
@@ -32,8 +28,7 @@
                 </div>
             </div>
         </div>
-
-    </div>
+    </header>
 
     <!-- 4. KATALOG PRESTASI (paginasi server, 18 per halaman) -->
     <section class="container" id="katalog-prestasi" style="padding-bottom: 5rem">

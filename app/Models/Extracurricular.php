@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 #[Fillable([
     'coach_id', 'coach_name', 'name', 'slug', 'tag', 'short_description', 'description',
-    'achievements', 'schedule', 'location', 'audience', 'image', 'modal_image',
+    'achievements', 'schedule', 'location', 'audience', 'image',
     'card_style', 'sort_order', 'is_active',
 ])]
 class Extracurricular extends Model
@@ -59,14 +59,6 @@ class Extracurricular extends Model
     protected function imageUrl(): Attribute
     {
         return Attribute::get(fn () => $this->mediaUrl($this->image));
-    }
-
-    /**
-     * Foto utama di halaman detail (kolom modal_image). Jika kosong, pakai foto kartu.
-     */
-    protected function modalImageUrl(): Attribute
-    {
-        return Attribute::get(fn () => $this->mediaUrl($this->modal_image) ?? $this->image_url);
     }
 
     /**

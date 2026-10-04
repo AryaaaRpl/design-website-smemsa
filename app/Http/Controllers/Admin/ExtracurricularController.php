@@ -14,7 +14,7 @@ class ExtracurricularController extends Controller
 {
     use HandlesUploads;
 
-    private const UPLOAD_FIELDS = ['image', 'modal_image'];
+    private const UPLOAD_FIELDS = ['image'];
 
     public function index(): View
     {

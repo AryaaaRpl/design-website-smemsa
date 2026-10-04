@@ -298,7 +298,6 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      border-bottom: 1px solid var(--border-card);
       background: linear-gradient(to bottom,
           rgba(30, 64, 175, 0.04),
           var(--bg-main));
