@@ -451,13 +451,9 @@
       transform: translateX(3px);
     }
 
-    /* HP: efek filter/blur mahal di GPU ponsel, ganti yang ringan */
+    /* HP: blur tag mahal di GPU ponsel, ganti yang ringan.
+       Gambar kartu sengaja tidak di-override agar hover sama halusnya dengan desktop. */
     @media (max-width: 768px) {
-      .card-bg {
-        filter: none;
-        transition: none;
-      }
-
       .tag {
         backdrop-filter: none;
         background: rgba(11, 24, 66, 0.75);

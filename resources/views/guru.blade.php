@@ -4,9 +4,7 @@
     <!-- 2. PAGE HEADER -->
     <header class="page-header" style="margin-bottom: 4rem">
         <div class="hero-bg-art" aria-hidden="true">
-            <img src="{{ asset('assets/guru/trio.webp') }}"
-                srcset="{{ asset('assets/guru/trio-800.webp') }} 800w, {{ asset('assets/guru/trio.webp') }} 1920w"
-                sizes="100vw" alt="" class="hero-bg-img" fetchpriority="high" />
+            <img src="{{ asset('assets/guru/trio.webp') }}" alt="" class="hero-bg-img" fetchpriority="high" />
             <div class="hero-bg-overlay"></div>
         </div>
         <div class="container" style="position: relative; z-index: 2;">

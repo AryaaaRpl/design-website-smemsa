@@ -1902,7 +1902,6 @@ a.fac-card {
 .fs-others {
   padding: 3.5rem 0 4.5rem;
   background: var(--bg-alt);
-  border-top: 1px solid var(--border-card);
 }
 
 .fs-others-grid {

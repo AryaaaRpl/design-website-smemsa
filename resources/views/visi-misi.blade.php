@@ -380,9 +380,9 @@
             });
           }
 
-          // Parallax for Header Pattern
+          // Parallax for Header Pattern (desktop saja; di HP bintang statis)
           const headerPattern = document.querySelector(".header-bg-pattern");
-          if (headerPattern) {
+          if (headerPattern && window.matchMedia("(min-width: 769px)").matches) {
             gsap.to(headerPattern, {
               y: 100,
               rotation: 15,
