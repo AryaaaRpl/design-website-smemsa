@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             BludSeeder::class,
             ScholarshipSeeder::class,
             FaqSeeder::class,
+            DummyDataSeeder::class, // data contoh tambahan
         ]);
     }
 }
