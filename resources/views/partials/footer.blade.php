@@ -215,11 +215,11 @@
       <div class="footer-partners">
         <p class="footer-partners-title">Powered by:</p>
         <div class="footer-partners-logos">
-          <img src="{{ asset('assets/garuda.webp') }}" alt="Garuda Spark Innovation Hub" width="152" height="80" loading="lazy" decoding="async" />
-          <img src="{{ asset('assets/innovation.webp') }}" alt="Jagoan Hosting Innovation Competition 2026" width="150" height="80" loading="lazy" decoding="async" />
-          <img src="{{ asset('assets/jahos.webp') }}" alt="Jagoan Hosting" width="271" height="80" loading="lazy" decoding="async" />
-          <img src="{{ asset('assets/komdigi.webp') }}" alt="Komdigi" width="114" height="80" loading="lazy" decoding="async" />
-          <img src="{{ asset('assets/ngalup.webp') }}" alt="Ngalup.co" width="508" height="80" loading="lazy" decoding="async" class="is-wide" />
+          <img src="{{ asset('assets/garuda.webp') }}" srcset="{{ asset('assets/garuda-sm.webp') }} 116w, {{ asset('assets/garuda.webp') }} 152w" sizes="(max-width: 768px) 57px, 105px" alt="Garuda Spark Innovation Hub" width="152" height="80" loading="lazy" decoding="async" />
+          <img src="{{ asset('assets/innovation.webp') }}" srcset="{{ asset('assets/innovation-sm.webp') }} 113w, {{ asset('assets/innovation.webp') }} 150w" sizes="(max-width: 768px) 56px, 103px" alt="Jagoan Hosting Innovation Competition 2026" width="150" height="80" loading="lazy" decoding="async" />
+          <img src="{{ asset('assets/jahos.webp') }}" srcset="{{ asset('assets/jahos-sm.webp') }} 205w, {{ asset('assets/jahos.webp') }} 271w" sizes="(max-width: 768px) 70px, 186px" alt="Jagoan Hosting" width="271" height="80" loading="lazy" decoding="async" />
+          <img src="{{ asset('assets/komdigi.webp') }}" srcset="{{ asset('assets/komdigi-sm.webp') }} 86w, {{ asset('assets/komdigi.webp') }} 114w" sizes="(max-width: 768px) 43px, 78px" alt="Komdigi" width="114" height="80" loading="lazy" decoding="async" />
+          <img src="{{ asset('assets/ngalup.webp') }}" srcset="{{ asset('assets/ngalup-sm.webp') }} 280w, {{ asset('assets/ngalup.webp') }} 508w" sizes="(max-width: 768px) 152px, 165px" alt="Ngalup.co" width="508" height="80" loading="lazy" decoding="async" class="is-wide" />
         </div>
       </div>
 

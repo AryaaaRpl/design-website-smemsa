@@ -318,6 +318,11 @@ a {
   overflow: hidden;
 }
 
+/* <picture> pembungkus foto header tidak ikut tata letak: img tetap mengisi .hero-bg-art */
+.hero-bg-art picture {
+  display: contents;
+}
+
 .hero-bg-img {
   /* relative: ikut urutan tumpukan, jadi di atas grid ::before */
   position: relative;

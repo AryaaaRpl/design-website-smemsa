@@ -4,7 +4,12 @@
     <!-- 2. PAGE HEADER -->
     <header class="page-header" style="margin-bottom: 4rem">
         <div class="hero-bg-art" aria-hidden="true">
-            <img src="{{ asset('assets/guru/trio.webp') }}" alt="" class="hero-bg-img" fetchpriority="high" />
+            {{-- HP tegak: header sempit & tinggi, yang terlihat hanya bagian tengah foto.
+                 trio-mobile.webp = potongan tengah itu saja (jauh lebih ringan, ketajaman setara). --}}
+            <picture>
+              <source media="(max-width: 768px) and (orientation: portrait)" srcset="{{ asset('assets/guru/trio-mobile.webp') }}" width="660" height="868" />
+              <img src="{{ asset('assets/guru/trio.webp') }}" alt="" class="hero-bg-img" fetchpriority="high" width="1920" height="1158" />
+            </picture>
             <div class="hero-bg-overlay"></div>
         </div>
         <div class="container" style="position: relative; z-index: 2;">
@@ -445,7 +450,7 @@
                                 `<div class="struktur1-desc">"${escapeHtml(guru.kutipan)}"</div>` :
                                 "";
                             const imgHTML = guru.foto ?
-                                `<img src="${escapeHtml(guru.foto)}" alt="Foto ${nama}" class="struktur1-img" onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">` :
+                                `<img src="${escapeHtml(guru.foto)}"${guru.fotoCard && guru.fotoCard !== guru.foto ? ` srcset="${escapeHtml(encodeURI(guru.fotoCard))} 460w, ${escapeHtml(encodeURI(guru.foto))} 600w" sizes="(max-width: 900px) calc(100vw - 48px), 240px"` : ""} alt="Foto ${nama}" class="struktur1-img" onerror="this.closest('.card') ? this.closest('.card').classList.add('no-image') : null; this.remove();">` :
                                 createFallbackImage(guru.nama);
 
                             if (isKepsek) {
