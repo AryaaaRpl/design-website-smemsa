@@ -983,7 +983,7 @@ h4 {
       /* C. Modal Prestasi Mobile */
     }
 
-    @media (max-width: 425px) {
+    @media (max-width: 576px) {
       .awards-catalog-grid {
         grid-template-columns: 1fr !important;
         gap: 1rem !important;

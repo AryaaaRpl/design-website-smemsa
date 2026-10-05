@@ -516,7 +516,7 @@ a {
   border-left: 3px solid var(--secondary);
 }
 
-@media (max-width: 425px) {
+@media (max-width: 576px) {
   .struktur1-grid {
     grid-template-columns: 1fr !important;
     gap: 1.5rem;

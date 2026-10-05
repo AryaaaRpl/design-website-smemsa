@@ -879,8 +879,10 @@ a {
     }
 }
 
-@media (max-width: 425px) {
-    .news-grid {
+@media (max-width: 576px) {
+    .ekskul-grid,
+    .news-grid,
+    .news-cards-grid {
         grid-template-columns: 1fr !important;
     }
 }

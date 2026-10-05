@@ -1003,7 +1003,7 @@ img {
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 576px) {
     .ekskul-grid {
         grid-template-columns: 1fr;
     }

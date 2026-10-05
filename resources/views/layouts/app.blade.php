@@ -96,7 +96,7 @@
   {{-- Tampilan tablet: satu file, hanya berlaku di rentang tablet (lihat resources/css/tablet.css).
        Di HP & desktop media tidak cocok, jadi tidak menghambat render. --}}
   <link rel="stylesheet" href="{{ Vite::asset('resources/css/tablet.css') }}"
-    media="(min-width: 769px) and (max-width: 1024px), (min-width: 1025px) and (max-width: 1180px) and (hover: none) and (pointer: coarse)">
+    media="(min-width: 769px) and (max-width: 1024px) and (min-height: 500px), (min-width: 1025px) and (max-width: 1180px) and (hover: none) and (pointer: coarse)">
   @stack('styles')
 </head>
 
