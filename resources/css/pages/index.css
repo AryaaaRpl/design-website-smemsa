@@ -2336,7 +2336,7 @@ img {
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 576px) {
     .why-bento-grid {
         grid-template-columns: repeat(1, 1fr) !important;
     }
