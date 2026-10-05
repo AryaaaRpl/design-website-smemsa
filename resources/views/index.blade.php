@@ -888,11 +888,11 @@
         </h3>
         <ul class="news-filter-list">
           <li>
-            <a href="javascript:void(0)" class="news-filter-link active" onclick="filterIndexNews('all', this)">Semua Berita</a>
+            <button type="button" class="news-filter-link active" aria-pressed="true" onclick="filterIndexNews('all', this)">Semua Berita</button>
           </li>
           @foreach ($postCategories as $category)
           <li>
-            <a href="javascript:void(0)" class="news-filter-link" onclick="filterIndexNews('{{ $category->slug }}', this)">{{ $category->name }}</a>
+            <button type="button" class="news-filter-link" aria-pressed="false" onclick="filterIndexNews('{{ $category->slug }}', this)">{{ $category->name }}</button>
           </li>
           @endforeach
         </ul>

@@ -815,9 +815,10 @@ flushAnimationQueue();
 
 function filterIndexNews(category, element) {
   const filterLinks = document.querySelectorAll(".news-filter-link");
-  filterLinks.forEach(link => link.classList.remove("active"));
+  filterLinks.forEach(link => { link.classList.remove("active"); link.setAttribute("aria-pressed", "false"); });
   if (element) {
     element.classList.add("active");
+    element.setAttribute("aria-pressed", "true");
   }
 
   const articles = document.querySelectorAll(".news-cards-grid .article-card");
