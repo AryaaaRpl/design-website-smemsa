@@ -713,7 +713,6 @@ a {
 .nd-others {
     padding: 3.5rem 0 4.5rem;
     background: var(--bg-alt);
-    border-top: 1px solid var(--border-card);
 }
 
 .nd-others-grid {
@@ -865,7 +864,7 @@ a {
     .ekskul-grid,
     .news-grid,
     .news-cards-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 1.5rem !important;
     }
 
@@ -877,6 +876,12 @@ a {
 
     .btn {
         min-height: 44px;
+    }
+}
+
+@media (max-width: 425px) {
+    .news-grid {
+        grid-template-columns: 1fr !important;
     }
 }
 

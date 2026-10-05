@@ -21,6 +21,7 @@ export default defineConfig({
                 'resources/css/pages/spmb.css',
                 'resources/css/pages/jurusan.css',
                 'resources/css/pages/blud.css',
+                'resources/css/tablet.css',
                 'resources/js/app.js',
                 'resources/js/pages/fasilitas.js',
                 'resources/js/pages/prestasi.js',

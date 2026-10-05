@@ -1,0 +1,101 @@
+/* ==========================================================================
+   TABLET (satu-satunya file untuk tampilan tablet)
+   Dimuat lewat <link media="..."> di layouts/app.blade.php, setelah CSS halaman:
+     - lebar 769px–1024px (tablet tegak & iPad mendatar), atau
+     - lebar 1025px–1180px KHUSUS layar sentuh (tablet mendatar besar).
+   Di HP (≤768px) dan desktop/laptop, file ini tidak berlaku sama sekali dan
+   diunduh browser dengan prioritas terendah (tidak menghambat tampilan).
+   Pola: navbar hamburger, grid kartu 2 kolom, kolom teks+gambar bertumpuk.
+   ========================================================================== */
+
+/* ---------- Navbar: menu hamburger seperti HP (menu desktop terlalu sempit) ---------- */
+.header-wrapper {
+  width: calc(100% - 32px) !important;
+  top: 0.75rem !important;
+  border-radius: 20px !important;
+}
+
+.nav-island {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0.6rem 1.25rem !important;
+}
+
+.nav-menu {
+  display: none !important;
+}
+
+.hamburger {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary-surface);
+  color: var(--primary);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* ---------- Beranda: hero bertumpuk & rata tengah ---------- */
+.hero-grid {
+  grid-template-columns: 1fr !important;
+  gap: 2rem !important;
+}
+
+.hero-text-col {
+  align-items: center !important;
+  text-align: center !important;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.hero-text-col .hero-lead {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  justify-content: center !important;
+  flex-wrap: wrap;
+}
+
+.hero-image-col {
+  justify-content: center !important;
+  min-height: 0 !important;
+}
+
+.hero-img-wrapper {
+  width: min(560px, 100%);
+  margin: 0 auto;
+}
+
+/* ---------- Grid kartu: 2 kolom (bukan 1 seperti HP, bukan 3–4 seperti desktop) ---------- */
+/* .awards-catalog-grid,
+.ekskul-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+} */
+
+/* SPMB: berkas & kontak panitia (3 kartu) sejajar bila muat */
+.berkas-grid,
+.contact-panitia-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+}
+
+/* Angka ringkas di header halaman (jurusan/BLUD): satu baris, berapa pun jumlahnya */
+.jr-header-stats {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+}
+
+/* Ekstrakurikuler: section menimpa padding .container, jadi kartu menempel ke tepi layar */
+.ekskul-section {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}

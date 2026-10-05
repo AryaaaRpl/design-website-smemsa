@@ -918,7 +918,7 @@ h4 {
 
       /* B. Kartu Prestasi 1 Kolom Penuh */
       .awards-catalog-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 1.2rem !important;
       }
 
@@ -981,6 +981,17 @@ h4 {
       }
 
       /* C. Modal Prestasi Mobile */
+    }
+
+    @media (max-width: 425px) {
+      .awards-catalog-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+
+      .award-card {
+        width: 100% !important;
+      }
     }
 
     /* ==========================================================================

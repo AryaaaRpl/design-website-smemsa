@@ -105,8 +105,8 @@ class ExtracurricularTest extends TestCase
 
         $this->get(route('ekstrakurikuler'))
             ->assertOk()
-            ->assertSee('ekskul-card featured reveal-item', false)
-            ->assertSee('ekskul-card tall reveal-item', false)
+            ->assertSee('ekskul-card featured" data-reveal', false)
+            ->assertSee('ekskul-card tall" data-reveal', false)
             ->assertSee('Hizbul Wathan (HW)')
             ->assertDontSee('PMR Wira Unit SMEMSA');
     }
