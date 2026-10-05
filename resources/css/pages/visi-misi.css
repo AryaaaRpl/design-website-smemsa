@@ -764,7 +764,7 @@
   }
 
   .misi-cards-container {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 1rem !important;
   }
 
@@ -839,5 +839,11 @@
     text-align: left;
     padding: 0.75rem 1.1rem;
     border-radius: var(--radius-lg);
+  }
+}
+
+@media (max-width: 425px) {
+  .misi-cards-container {
+    grid-template-columns: 1fr !important;
   }
 }

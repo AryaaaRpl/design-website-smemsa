@@ -99,3 +99,21 @@
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
 }
+
+/* ---------- Konsentrasi Keahlian: Hilangkan animasi lingkaran orbit logo jurusan ---------- */
+.majors-hero-orbit,
+.orbit-hero-stage {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.orbit-hero-svg,
+.orbit-ring-outer,
+.orbit-ring-inner {
+  display: none !important;
+}
+
+.orbit-hero-center {
+  max-width: 100% !important;
+  padding: 1rem 0.5rem !important;
+}

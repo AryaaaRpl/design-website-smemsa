@@ -2329,6 +2329,17 @@ img {
         margin: 0 0 1rem 0;
         border-top: 2px solid var(--secondary);
     }
+
+    .why-bento-grid {
+        gap: 1.5rem;
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 425px) {
+    .why-bento-grid {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
 }
 
 @media (max-width: 560px) {
@@ -2656,6 +2667,12 @@ img {
     }
 }
 
+@media (max-width: 425px) {
+    .news-cards-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
 .bkk-table-card {
     background: #ffffff;
     border: 1px solid var(--border-card);
@@ -2800,12 +2817,8 @@ img {
         gap: 2.5rem;
     }
 
-    .why-bento-grid {
-        grid-template-columns: 1fr;
-    }
-
     .blud-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .bkk-table-header {
@@ -3523,11 +3536,6 @@ img {
         gap: 2.5rem;
     }
 
-    .why-bento-grid {
-        gap: 1.5rem;
-        grid-template-columns: 1fr;
-    }
-
     .stats-grid {
         text-align: center;
         grid-template-columns: repeat(2, 1fr);
@@ -3567,13 +3575,7 @@ img {
 
     .blud-grid {
         gap: 2rem;
-        grid-template-columns: 1fr !important;
-    }
-
-    .news-cards-grid {
-        gap: 1.8rem;
-        display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 
     /* ==========================================================================
@@ -3641,41 +3643,21 @@ img {
     /* KONSENTRASI KEAHLIAN (D) */
     .majors-hero-orbit {
         position: relative;
-        height: 280px !important;
+        height: auto !important;
+        min-height: 0 !important;
         margin-bottom: 2rem !important;
     }
 
     .orbit-hero-stage {
         position: relative;
-        height: 280px !important;
+        height: auto !important;
+        min-height: 0 !important;
     }
 
-    .orbit-ring-outer {
-        height: 370px;
-        width: 370px;
-        pointer-events: none;
-        transform-origin: center center;
-        inset: 0;
-        position: absolute;
-        display: none !important;
-    }
-
+    .orbit-hero-svg,
+    .orbit-ring-outer,
     .orbit-ring-inner {
-        pointer-events: none;
-        transform-origin: center center;
-        inset: 0;
-        position: absolute;
-        width: 240px !important;
-        height: 240px !important;
-    }
-
-    .orbit-ring-inner .orbit-slot {
-        transform: rotate(var(--a)) translateY(-120px) !important;
-    }
-
-    .orbit-ring-inner .orbit-icon {
-        width: 42px !important;
-        height: 42px !important;
+        display: none !important;
     }
 
     .orbit-hero-center {
@@ -3684,8 +3666,8 @@ img {
         text-align: center;
         z-index: 5;
         position: relative;
-        max-width: 290px !important;
-        padding: 1rem !important;
+        max-width: 100% !important;
+        padding: 1rem 0.5rem !important;
     }
 
     .orbit-hero-title {
@@ -3935,6 +3917,12 @@ img {
         font-size: 1.4rem !important;
         border: 1px solid rgba(30, 64, 175, 0.15) !important;
         display: flex !important;
+    }
+}
+
+@media (max-width: 425px) {
+    .blud-grid {
+        grid-template-columns: 1fr !important;
     }
 }
 /* ==========================================================================
