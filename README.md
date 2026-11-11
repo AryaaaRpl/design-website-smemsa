@@ -1,58 +1,75 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SMKS Muhammadiyah 1 Genteng Official Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[Versi Bahasa Indonesia](README.id.md)
 
-## About Laravel
+An integrated web platform for SMKS Muhammadiyah 1 Genteng (SMEMSA), serving as the school's official digital profile, public information center, online student admissions system (SPMB), business service catalog (BLUD), and job placement portal (BKK).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Problems It Solves
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Fragmented Information**: Replaces scattered announcements across social media with a centralized and verified source for school profile, academic concentrations, extracurricular activities, faculty directory, and campus facilities.
+- **Manual Student Admissions**: Eliminates paper-based registration bottlenecks through a self-service admissions workflow with multi-phase form completion, document uploads, and application status tracking.
+- **Visibility for School Production Units**: Provides a dedicated showcase for Teaching Factory products and BLUD services with direct WhatsApp order links.
+- **Alumni Career Bridge**: Connects graduates and job seekers directly with hiring partners through the integrated BKK vacancy board.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## User Roles and Usage
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. General Public and Prospective Students
+- **Explore Academic Programs**: Navigate to `/jurusan` to view vocational concentrations, industry partners, and career competencies.
+- **Online Admissions (SPMB)**:
+  - Visit `/spmb` for admission guidelines, timeline, fee schemes, and scholarship details.
+  - Register an account via `/rpl-smemsa-2026/pendaftar/daftar`.
+  - Log in at `/rpl-smemsa-2026/pendaftar/masuk` to fill out biodata, upload requirement files, submit applications, and monitor verification results.
+- **Inquire via Virtual Assistant**: Use the floating chat widget on public pages for instant FAQ answers and school guidance with WhatsApp fallback.
+- **Campus Units & Vacancies**: View BLUD products at `/blud` and job postings at `/bkk`.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 2. School Administrators
+- **Access Panel**: Log in via the protected administration portal (`/rpl-smemsa-space/admin/login/...`).
+- **Data Management**:
+  - Review, verify, reset, and export student admissions data.
+  - Manage news articles, achievements, vacancies, products, majors, faculty members, and SPMB scholarship configurations.
+  - Update institutional settings (contact numbers, accreditation metadata, statistics, tuition structures) from the settings module.
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Technical Stack
 
-```bash
-composer require laravel/boost --dev
+- **Backend**: Laravel 13, PHP 8.5
+- **Frontend**: Blade Templates, Tailwind CSS / Vanilla CSS, Modern JavaScript
+- **Database**: SQLite / MySQL
+- **Assets Optimization**: WebP image delivery and local self-hosted web fonts
 
-php artisan boost:install
-```
+---
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Local Development Setup
 
-## Contributing
+1. **Clone and Install Dependencies**:
+   ```bash
+   composer install
+   npm install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. **Environment Configuration**:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-## Code of Conduct
+3. **Database Migration and Seeding**:
+   ```bash
+   php artisan migrate --seed
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Build Assets & Start Servers**:
+   ```bash
+   npm run build
+   php artisan serve
+   ```
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. **Run Test Suite**:
+   ```bash
+   php artisan test
+   ```
