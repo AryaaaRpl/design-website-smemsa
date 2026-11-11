@@ -37,8 +37,10 @@ class SettingTest extends TestCase
 
     public function test_whatsapp_number_is_normalized(): void
     {
+        $contactData = array_merge(SiteSettings::defaults('contact'), ['whatsapp' => '0812-3456-7890']);
+
         $this->actingAs($this->admin)
-            ->put(route('admin.settings.update', 'contact'), ['whatsapp' => '0812-3456-7890'])
+            ->put(route('admin.settings.update', 'contact'), $contactData)
             ->assertRedirect(route('admin.settings.edit', 'contact'))
             ->assertSessionHasNoErrors();
 
@@ -74,9 +76,13 @@ class SettingTest extends TestCase
 
     public function test_saved_settings_appear_on_public_pages(): void
     {
-        $this->actingAs($this->admin)->put(route('admin.settings.update', 'stats'), ['employment_rate' => '95.5', 'student_count' => '1200']);
-        $this->actingAs($this->admin)->put(route('admin.settings.update', 'spmb'), ['spmb_academic_year' => '2027/2028', 'whatsapp_spmb' => '081111111111']);
-        $this->actingAs($this->admin)->put(route('admin.settings.update', 'identity'), ['npsn' => '12345678', 'founded_year' => '1970']);
+        $statsData = array_merge(SiteSettings::defaults('stats'), ['employment_rate' => '95.5', 'student_count' => '1200']);
+        $spmbData = array_merge(SiteSettings::defaults('spmb'), ['spmb_academic_year' => '2027/2028', 'whatsapp_spmb' => '081111111111']);
+        $identityData = array_merge(SiteSettings::defaults('identity'), ['npsn' => '12345678', 'founded_year' => '1970']);
+
+        $this->actingAs($this->admin)->put(route('admin.settings.update', 'stats'), $statsData);
+        $this->actingAs($this->admin)->put(route('admin.settings.update', 'spmb'), $spmbData);
+        $this->actingAs($this->admin)->put(route('admin.settings.update', 'identity'), $identityData);
 
         $this->get(route('home'))
             ->assertSee('95,5%')
@@ -107,11 +113,11 @@ class SettingTest extends TestCase
 
     public function test_clearing_a_setting_returns_to_default(): void
     {
-        Setting::setValue('npsn', '11111111');
+        Setting::setValue('tiktok_url', 'https://www.tiktok.com/@lama');
 
-        $this->actingAs($this->admin)->put(route('admin.settings.update', 'identity'), ['npsn' => '']);
+        $this->actingAs($this->admin)->put(route('admin.settings.update', 'social'), ['tiktok_url' => '']);
 
-        $this->assertNull(Setting::getValue('npsn'));
-        $this->assertSame('20525597', (new SiteSettings)->get('npsn'));
+        $this->assertNull(Setting::getValue('tiktok_url'));
+        $this->assertNull((new SiteSettings)->get('tiktok_url'));
     }
 }

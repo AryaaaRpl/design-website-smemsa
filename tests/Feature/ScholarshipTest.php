@@ -32,7 +32,7 @@ class ScholarshipTest extends TestCase
 
     public function test_fee_setting_recalculates_totals(): void
     {
-        Setting::create(['key' => 'fee_tuition', 'value' => '7000000']);
+        Setting::updateOrCreate(['key' => 'fee_tuition'], ['value' => '7000000']);
 
         $this->get('/spmb')->assertOk()
             ->assertSee('Rp 3.500.000 / semester')

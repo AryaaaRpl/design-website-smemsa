@@ -19,7 +19,7 @@ class FaqTest extends TestCase
     public function test_spmb_page_shows_seeded_faqs_with_settings_values(): void
     {
         $this->seed(FaqSeeder::class);
-        Setting::create(['key' => 'fee_tuition', 'value' => '7000000']);
+        Setting::updateOrCreate(['key' => 'fee_tuition'], ['value' => '7000000']);
 
         $this->get('/spmb')->assertOk()
             ->assertSee('Tahun Ajaran 2026/2027 dibuka?')

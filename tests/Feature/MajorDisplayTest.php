@@ -42,7 +42,7 @@ class MajorDisplayTest extends TestCase
         $this->get(route('home'))
             ->assertOk()
             ->assertSee('Jelajahi 1 Konsentrasi Keahlian')
-            ->assertSee('<h4>1 Konsentrasi</h4>', false)
+            ->assertSee('<h4 aria-level="2">1 Konsentrasi</h4>', false)
             ->assertSee('jumpToMajor(\'jurusan-1\')', false)
             ->assertSee('--a: 0deg; --r: 210px', false);
     }

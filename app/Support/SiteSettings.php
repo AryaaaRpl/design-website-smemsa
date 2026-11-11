@@ -352,10 +352,21 @@ class SiteSettings
      *
      * @return array<string, string>
      */
-    public static function defaults(): array
+    public static function defaults(?string $group = null): array
     {
+        if ($group !== null) {
+            if (! isset(self::GROUPS[$group])) {
+                return [];
+            }
+
+            return collect(self::GROUPS[$group]['fields'])
+                ->map(fn (array $field) => $field['default'])
+                ->filter(fn ($value) => filled($value))
+                ->all();
+        }
+
         return collect(self::GROUPS)
-            ->flatMap(fn (array $group) => array_map(fn (array $field) => $field['default'], $group['fields']))
+            ->flatMap(fn (array $g) => array_map(fn (array $field) => $field['default'], $g['fields']))
             ->filter(fn ($value) => filled($value))
             ->all();
     }
